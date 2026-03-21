@@ -3,6 +3,7 @@ import Hero from './components/Hero'
 import Zielgruppen from './components/Zielgruppen'
 import News from './components/News'
 import Destinationen from './components/Destinationen'
+import Yachten from './components/Yachten'
 import Bewertungen from './components/Bewertungen'
 import Team from './components/Team'
 import Kontakt from './components/Kontakt'
@@ -18,6 +19,7 @@ export default function App() {
         <Zielgruppen />
         <News />
         <Destinationen />
+        <Yachten />
         <Bewertungen />
         <Team />
         <Kontakt />
