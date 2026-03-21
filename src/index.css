@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #122b40;
+  --blue: #1b6d85;
+  --blue-light: #269abc;
+  --gold: #e8a020;
+  --white: #ffffff;
+  --gray-light: #f5f7f9;
+  --gray: #666;
+  --text: #333;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Open Sans', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 70px 0; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--navy); margin-bottom: 1rem; }
+.section-subtitle { color: var(--gray); font-size: 1rem; max-width: 620px; line-height: 1.8; }
+.btn { display: inline-block; padding: 12px 28px; border-radius: 3px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: none; transition: all 0.25s; }
+.btn-primary { background: var(--blue); color: #fff; }
+.btn-primary:hover { background: var(--navy); }
+.btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.7); }
+.btn-outline:hover { background: rgba(255,255,255,0.15); border-color: #fff; }
+.btn-navy { background: var(--navy); color: #fff; }
+.btn-navy:hover { background: #0d1f2d; }
+a { text-decoration: none; color: inherit; }
