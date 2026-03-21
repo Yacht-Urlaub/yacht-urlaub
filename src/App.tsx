@@ -1,31 +1,25 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Zielgruppen from './components/Zielgruppen'
-import News from './components/News'
-import Destinationen from './components/Destinationen'
-import Yachten from './components/Yachten'
-import Bewertungen from './components/Bewertungen'
-import Team from './components/Team'
-import Kontakt from './components/Kontakt'
 import Footer from './components/Footer'
 import WhatsApp from './components/WhatsApp'
+import HomePage from './pages/HomePage'
+import DestinationenPage from './pages/DestinationenPage'
+import DestinationPage from './pages/DestinationPage'
+import YachtenPage from './pages/YachtenPage'
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
-      <main>
-        <Hero />
-        <Zielgruppen />
-        <News />
-        <Destinationen />
-        <Yachten />
-        <Bewertungen />
-        <Team />
-        <Kontakt />
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/destinationen" element={<DestinationenPage />} />
+        <Route path="/destinationen/:id" element={<DestinationPage />} />
+        <Route path="/yachten" element={<YachtenPage />} />
+        <Route path="*" element={<HomePage />} />
+      </Routes>
       <Footer />
       <WhatsApp />
-    </>
+    </BrowserRouter>
   )
 }

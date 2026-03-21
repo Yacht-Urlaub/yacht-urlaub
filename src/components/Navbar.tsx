@@ -1,51 +1,49 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const nav = [
   {
-    label: 'Törns', items: [
-      { label: 'Jetzt buchen', href: '#toerns', sub: ['Dalmatien', 'Kornaten', 'Istrien', 'Griechenland', 'Karibik-BVI', 'Kabinen Angebote', 'Grenadinen'] },
-      { label: 'Für Einsteiger', href: '#einsteiger' },
-      { label: 'Für Freunde', href: '#freunde' },
-      { label: 'Für Familien', href: '#familien' },
-      { label: 'Luxury', href: '#luxury' },
-      { label: 'Individuell planen', href: '#individuell' },
-      { label: 'Törnberichte', href: '#toernberichte' },
-      { label: 'Anfrage starten', href: '#kontakt' },
+    label: 'Törns', href: '/#toerns', items: [
+      { label: 'Für Einsteiger', href: '/#einsteiger' },
+      { label: 'Für Freunde', href: '/#freunde' },
+      { label: 'Für Familien', href: '/#familien' },
+      { label: 'Luxury', href: '/#luxury' },
+      { label: 'Individuell planen', href: '/#individuell' },
+      { label: 'Törnberichte', href: '/#toernberichte' },
+      { label: 'Anfrage starten', href: '/#kontakt' },
     ]
   },
   {
-    label: 'Charter', items: [
-      { label: 'Yacht-Charter anfragen', href: '#charter' },
-      { label: 'Skipper- und Bord-Service', href: '#skipper' },
+    label: 'Charter', href: '/#charter', items: [
+      { label: 'Yacht-Charter anfragen', href: '/#charter' },
+      { label: 'Skipper- und Bord-Service', href: '/#skipper' },
     ]
   },
   {
-    label: 'Destinationen', items: [
-      { label: 'Törnberichte', href: '#toernberichte' },
-      { label: 'Kroatien', href: '#kroatien' },
-      { label: 'Griechenland', href: '#griechenland' },
-      { label: 'Balearen', href: '#balearen' },
-      { label: 'Kanaren', href: '#kanaren' },
-      { label: 'Karibik-BVI', href: '#karibik' },
-      { label: 'Karibik-Windward Islands', href: '#windward' },
-      { label: 'Thailand', href: '#thailand' },
-      { label: 'Seychellen', href: '#seychellen' },
+    label: 'Destinationen', href: '/destinationen', items: [
+      { label: 'Alle Destinationen', href: '/destinationen' },
+      { label: 'Kroatien', href: '/destinationen/kroatien' },
+      { label: 'Griechenland', href: '/destinationen/griechenland' },
+      { label: 'Balearen', href: '/destinationen/balearen' },
+      { label: 'Karibik-BVI', href: '/destinationen/karibik' },
+      { label: 'Seychellen', href: '/destinationen/seychellen' },
+      { label: 'Thailand', href: '/destinationen/thailand' },
     ]
   },
   {
-    label: 'Yachten', items: [
-      { label: 'Segelyacht (Monohull)', href: '#segelyacht' },
-      { label: 'Segel-Katamaran', href: '#katamaran' },
-      { label: 'Motoryacht (Monohull)', href: '#motoryacht' },
-      { label: 'Motor-Katamaran', href: '#motorkat' },
+    label: 'Yachten', href: '/yachten', items: [
+      { label: 'Alle Yachten', href: '/yachten' },
+      { label: 'Segelyacht (Monohull)', href: '/yachten?tab=monohull' },
+      { label: 'Segel-Katamaran', href: '/yachten?tab=katamaran' },
+      { label: 'Motoryacht (Monohull)', href: '/yachten?tab=motoryacht' },
+      { label: 'Motor-Katamaran', href: '/yachten?tab=motorkat' },
     ]
   },
   {
-    label: 'Kontakt', items: [
-      { label: 'Anfrage starten', href: '#kontakt' },
-      { label: 'Crew', href: '#crew' },
-      { label: 'FAQ', href: '#faq' },
-      { label: 'Für Reisebüros/Affiliate-Partner', href: '#partner' },
+    label: 'Kontakt', href: '/#kontakt', items: [
+      { label: 'Anfrage starten', href: '/#kontakt' },
+      { label: 'FAQ', href: '/#faq' },
+      { label: 'Für Reisebüros/Affiliate-Partner', href: '/#partner' },
     ]
   },
 ]
@@ -71,9 +69,9 @@ export default function Navbar() {
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
         {/* Logo */}
-        <a href="#home">
+        <Link to="/">
           <img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '42px', filter: 'brightness(0) invert(1)' }} />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <nav style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }} className="desktop-nav">
@@ -105,7 +103,7 @@ export default function Navbar() {
                   zIndex: 100,
                 }}>
                   {item.items.map(sub => (
-                    <a key={sub.label} href={sub.href} style={{
+                    <Link key={sub.label} to={sub.href} onClick={() => setOpen(null)} style={{
                       display: 'block', padding: '10px 18px',
                       fontSize: '0.82rem', color: '#333', fontWeight: 400,
                       borderBottom: '1px solid #f0f0f0',
@@ -115,15 +113,15 @@ export default function Navbar() {
                       onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.color = '#333' }}
                     >
                       {sub.label}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               )}
             </div>
           ))}
-          <a href="#kontakt" className="btn btn-primary" style={{ marginLeft: '12px', fontSize: '0.75rem', padding: '9px 20px' }}>
+          <Link to="/#kontakt" className="btn btn-primary" style={{ marginLeft: '12px', fontSize: '0.75rem', padding: '9px 20px' }}>
             Jetzt buchen
-          </a>
+          </Link>
           <div style={{ marginLeft: '12px', display: 'flex', gap: '6px' }}>
             <button style={{ background: 'none', border: '1px solid rgba(255,255,255,0.4)', color: '#fff', padding: '4px 10px', fontSize: '0.72rem', cursor: 'pointer', borderRadius: '2px' }}>DE</button>
             <button style={{ background: 'none', border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.5)', padding: '4px 10px', fontSize: '0.72rem', cursor: 'pointer', borderRadius: '2px' }}>EN</button>
@@ -149,12 +147,12 @@ export default function Navbar() {
                 {item.label}
               </div>
               {item.items.map(sub => (
-                <a key={sub.label} href={sub.href} onClick={() => setMobileOpen(false)} style={{
+                <Link key={sub.label} to={sub.href} onClick={() => setMobileOpen(false)} style={{
                   display: 'block', padding: '10px 32px', color: 'rgba(255,255,255,0.85)', fontSize: '0.85rem',
                   borderBottom: '1px solid rgba(255,255,255,0.05)',
                 }}>
                   {sub.label}
-                </a>
+                </Link>
               ))}
             </div>
           ))}
