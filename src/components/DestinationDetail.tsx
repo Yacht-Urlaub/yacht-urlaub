@@ -185,13 +185,13 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
         <img src={dest.headerImg} alt={dest.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} onError={e => { (e.target as HTMLImageElement).style.opacity = '0.3' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(18,43,64,0.4) 0%, rgba(18,43,64,0.7) 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: '3rem' }}>
-          <button onClick={onBack} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)', fontSize: '0.82rem', cursor: 'pointer', padding: 0, marginBottom: '1rem', textAlign: 'left', fontFamily: 'Open Sans, sans-serif' }}>
+          <button onClick={onBack} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)', fontSize: '0.82rem', cursor: 'pointer', padding: 0, marginBottom: '1rem', textAlign: 'left', fontFamily: 'DM Sans, sans-serif' }}>
             ← Alle Destinationen
           </button>
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: 600 }}>
             {dest.country} Destination
           </p>
-          <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff' }}>{dest.name}</h1>
+          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff' }}>{dest.name}</h1>
         </div>
       </div>
 
@@ -202,7 +202,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             <p style={{ fontSize: '1.05rem', color: '#555', lineHeight: 1.9, marginBottom: '2.5rem' }}>{dest.intro}</p>
 
             {/* Highlights */}
-            <h2 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Highlights</h2>
+            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Highlights</h2>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '2.5rem' }}>
               {dest.highlights.map(h => (
                 <li key={h} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.9rem', color: '#444' }}>
@@ -212,7 +212,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             </ul>
 
             {/* Regionen */}
-            <h2 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Regionen</h2>
+            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Regionen</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2.5rem' }}>
               {dest.regions.map(r => (
                 <div key={r.name} style={{ padding: '1.25rem', background: 'var(--gray-light)', borderLeft: '3px solid var(--blue)', borderRadius: '0 4px 4px 0' }}>
@@ -225,7 +225,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             {/* Gallery */}
             {dest.gallery.length > 0 && (
               <>
-                <h2 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Fotogalerie</h2>
+                <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Fotogalerie</h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                   {dest.gallery.map((img, i) => (
                     <div key={img} onClick={() => setLightbox(i)} style={{ aspectRatio: '4/3', overflow: 'hidden', cursor: 'pointer', borderRadius: '3px', background: '#eee' }}>
@@ -244,7 +244,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
           {/* Sidebar */}
           <div>
             <div style={{ background: 'var(--navy)', color: '#fff', borderRadius: '4px', padding: '2rem', marginBottom: '1.5rem' }}>
-              <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.1rem', marginBottom: '1.5rem' }}>Reisedaten</h3>
+              <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.1rem', marginBottom: '1.5rem' }}>Reisedaten</h3>
               {[
                 { icon: '📅', label: 'Beste Reisezeit', val: dest.bestTime },
                 { icon: '⚓', label: 'Schwierigkeit', val: dest.difficulty },

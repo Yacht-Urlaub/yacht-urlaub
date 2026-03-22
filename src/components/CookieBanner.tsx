@@ -65,7 +65,7 @@ export default function CookieBanner() {
             }}>
               {/* Text */}
               <div style={{ flex: '1 1 400px' }}>
-                <p style={{ color: '#fff', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.35rem', fontFamily: 'Open Sans, sans-serif' }}>
+                <p style={{ color: '#fff', fontWeight: 700, fontSize: '0.9rem', marginBottom: '0.35rem', fontFamily: 'DM Sans, sans-serif' }}>
                   🍪 Wir verwenden Cookies
                 </p>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.8rem', lineHeight: 1.6 }}>
@@ -92,7 +92,7 @@ export default function CookieBanner() {
                     background: 'transparent', border: '1.5px solid rgba(255,255,255,0.25)',
                     color: 'rgba(255,255,255,0.7)', fontSize: '0.78rem', fontWeight: 600,
                     letterSpacing: '0.08em', textTransform: 'uppercase', cursor: 'pointer',
-                    fontFamily: 'Open Sans, sans-serif', transition: 'all 0.2s',
+                    fontFamily: 'DM Sans, sans-serif', transition: 'all 0.2s',
                   }}
                   onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.6)'; e.currentTarget.style.color = '#fff' }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; e.currentTarget.style.color = 'rgba(255,255,255,0.7)' }}
@@ -106,7 +106,7 @@ export default function CookieBanner() {
                     background: 'var(--blue)', border: '1.5px solid var(--blue)',
                     color: '#fff', fontSize: '0.78rem', fontWeight: 700,
                     letterSpacing: '0.08em', textTransform: 'uppercase', cursor: 'pointer',
-                    fontFamily: 'Open Sans, sans-serif', transition: 'all 0.2s',
+                    fontFamily: 'DM Sans, sans-serif', transition: 'all 0.2s',
                     boxShadow: '0 2px 12px rgba(27,122,158,0.4)',
                   }}
                   onMouseEnter={e => { e.currentTarget.style.background = 'var(--navy)'; e.currentTarget.style.borderColor = 'var(--navy)' }}

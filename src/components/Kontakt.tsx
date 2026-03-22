@@ -6,7 +6,7 @@ const inputStyle = (error?: boolean): React.CSSProperties => ({
   width: '100%', padding: '11px 14px',
   border: `1.5px solid ${error ? '#e53e3e' : '#e2e8f0'}`,
   borderRadius: '4px', fontSize: '0.9rem', outline: 'none',
-  fontFamily: 'Open Sans, sans-serif', background: '#fff',
+  fontFamily: 'DM Sans, sans-serif', background: '#fff',
   color: 'var(--text)', transition: 'border-color 0.2s',
 })
 
@@ -141,7 +141,7 @@ export default function Kontakt() {
                   transition={{ type: 'spring', delay: 0.2 }}
                   style={{ fontSize: '3rem', marginBottom: '1rem' }}
                 >⛵</motion.div>
-                <h3 style={{ fontFamily: 'Playfair Display, serif', fontSize: '1.5rem', color: 'var(--navy)', marginBottom: '0.75rem' }}>Anfrage gesendet!</h3>
+                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.5rem', color: 'var(--navy)', marginBottom: '0.75rem' }}>Anfrage gesendet!</h3>
                 <p style={{ color: 'var(--gray)', lineHeight: 1.75, marginBottom: '1.5rem' }}>
                   Vielen Dank, <strong>{form.name}</strong>! Wir melden uns innerhalb von 24 Stunden bei Ihnen unter <strong>{form.email}</strong>.
                 </p>
@@ -177,7 +177,7 @@ export default function Kontakt() {
                   {/* Step 0: Reisedaten */}
                   {step === 0 && (
                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                      <h3 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
+                      <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
                         Wohin soll die Reise gehen?
                       </h3>
 
@@ -279,7 +279,7 @@ export default function Kontakt() {
                   {/* Step 1: Kontaktdaten */}
                   {step === 1 && (
                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                      <h3 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
+                      <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
                         Wie können wir Sie erreichen?
                       </h3>
 

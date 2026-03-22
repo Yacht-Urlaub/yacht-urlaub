@@ -15,7 +15,7 @@ export default function Hero() {
       {/* Overlay */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(to bottom, rgba(18,43,64,0.55) 0%, rgba(18,43,64,0.3) 50%, rgba(18,43,64,0.7) 100%)',
+        background: 'linear-gradient(to bottom, rgba(7,27,47,0.65) 0%, rgba(7,27,47,0.25) 45%, rgba(7,27,47,0.78) 100%)',
       }} />
 
       {/* Content */}
@@ -37,7 +37,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
-          style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2.4rem, 6vw, 5rem)', fontWeight: 700, lineHeight: 1.15, marginBottom: '0.5rem' }}
+          style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2.4rem, 6vw, 5rem)', fontWeight: 700, lineHeight: 1.15, marginBottom: '0.5rem' }}
         >
           Yacht-Urlaub
         </motion.h1>
@@ -46,7 +46,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.6 }}
-          style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(1.1rem, 3vw, 1.8rem)', fontStyle: 'italic', marginBottom: '2.5rem', opacity: 0.9 }}
+          style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.1rem, 3vw, 1.8rem)', fontStyle: 'italic', marginBottom: '2.5rem', opacity: 0.9 }}
         >
           A Taste of Paradise
         </motion.p>

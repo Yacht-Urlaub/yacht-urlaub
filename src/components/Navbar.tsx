@@ -70,7 +70,7 @@ export default function Navbar() {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
         {/* Logo */}
         <Link to="/">
-          <img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '42px', filter: 'brightness(0) invert(1)' }} />
+          <img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '52px', filter: 'brightness(0) invert(1)' }} />
         </Link>
 
         {/* Desktop Nav */}
@@ -86,7 +86,7 @@ export default function Navbar() {
                 background: 'none', border: 'none', color: 'rgba(255,255,255,0.88)',
                 padding: '8px 14px', fontSize: '0.82rem', fontWeight: 600,
                 letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer',
-                fontFamily: 'Open Sans, sans-serif',
+                fontFamily: 'DM Sans, sans-serif',
                 transition: 'color 0.2s',
               }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#fff')}

@@ -57,7 +57,7 @@ export default function YachtenOverview() {
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,35,56,0.9) 0%, rgba(15,35,56,0.2) 50%, transparent 100%)' }} />
               <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.5rem' }}>
                 <p style={{ color: 'var(--blue-light)', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.3rem' }}>{t.sub}</p>
-                <h3 style={{ color: '#fff', fontFamily: 'Playfair Display, serif', fontSize: '1.1rem', marginBottom: '0.75rem' }}>{t.label}</h3>
+                <h3 style={{ color: '#fff', fontFamily: 'Cormorant Garamond, serif', fontSize: '1.1rem', marginBottom: '0.75rem' }}>{t.label}</h3>
                 <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.72rem', fontWeight: 600 }}>Details ansehen →</span>
               </div>
             </motion.div>

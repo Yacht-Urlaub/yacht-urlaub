@@ -62,12 +62,12 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#0d1e2e', color: 'rgba(255,255,255,0.65)', fontFamily: 'Open Sans, sans-serif' }}>
+    <footer style={{ background: '#0d1e2e', color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans, sans-serif' }}>
       {/* Newsletter bar */}
       <div style={{ background: 'var(--blue)', padding: '2.5rem 0' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
           <div>
-            <h3 style={{ color: '#fff', fontFamily: 'Playfair Display, serif', fontSize: '1.3rem', marginBottom: '0.3rem' }}>Newsletter — Angebote &amp; Neuigkeiten</h3>
+            <h3 style={{ color: '#fff', fontFamily: 'Cormorant Garamond, serif', fontSize: '1.3rem', marginBottom: '0.3rem' }}>Newsletter — Angebote &amp; Neuigkeiten</h3>
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>Kein Spam. Nur echte Segelträume.</p>
           </div>
           <form
@@ -80,7 +80,7 @@ export default function Footer() {
             <input
               type="email"
               placeholder="Ihre E-Mail-Adresse"
-              style={{ padding: '10px 16px', borderRadius: '3px', border: 'none', fontSize: '0.85rem', width: '240px', outline: 'none', fontFamily: 'Open Sans, sans-serif' }}
+              style={{ padding: '10px 16px', borderRadius: '3px', border: 'none', fontSize: '0.85rem', width: '240px', outline: 'none', fontFamily: 'DM Sans, sans-serif' }}
             />
             <button type="submit" className="btn btn-navy" style={{ fontSize: '0.8rem', whiteSpace: 'nowrap' }}>
               Ich bin dabei!

@@ -69,7 +69,7 @@ function Card({ g, i }: { g: typeof groups[0]; i: number }) {
       }} />
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.75rem' }}>
         <p style={{ color: 'var(--blue-light)', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>{g.subtitle}</p>
-        <h3 style={{ fontFamily: 'Playfair Display, serif', color: '#fff', fontSize: '1.4rem', marginBottom: '0.75rem', lineHeight: 1.25 }}>{g.title}</h3>
+        <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: '#fff', fontSize: '1.4rem', marginBottom: '0.75rem', lineHeight: 1.25 }}>{g.title}</h3>
         <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.82rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>{g.text}</p>
         <a href={g.href} className="btn btn-outline" style={{ fontSize: '0.72rem', padding: '9px 18px' }}>{g.cta} →</a>
       </div>

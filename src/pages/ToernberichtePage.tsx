@@ -178,11 +178,11 @@ function BerichtDetail({ b, onBack }: { b: Bericht; onBack: () => void }) {
           onError={e => { (e.target as HTMLImageElement).src = '/images/Sail-Away.jpg' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(15,35,56,0.3) 0%, rgba(15,35,56,0.75) 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: '3rem' }}>
-          <button onClick={onBack} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)', fontSize: '0.82rem', cursor: 'pointer', padding: 0, marginBottom: '1rem', textAlign: 'left', fontFamily: 'Open Sans, sans-serif' }}>
+          <button onClick={onBack} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.7)', fontSize: '0.82rem', cursor: 'pointer', padding: 0, marginBottom: '1rem', textAlign: 'left', fontFamily: 'DM Sans, sans-serif' }}>
             ← Alle Törnberichte
           </button>
           <p style={{ color: 'var(--blue-light)', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>{b.destination} · {b.date}</p>
-          <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff' }}>{b.title}</h1>
+          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff' }}>{b.title}</h1>
         </div>
       </div>
 
@@ -199,7 +199,7 @@ function BerichtDetail({ b, onBack }: { b: Bericht; onBack: () => void }) {
             {/* Gallery */}
             {b.gallery.length > 0 && (
               <div style={{ marginTop: '2.5rem' }}>
-                <h3 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.3rem', marginBottom: '1rem' }}>Fotos</h3>
+                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.3rem', marginBottom: '1rem' }}>Fotos</h3>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                   {b.gallery.map((img, i) => (
                     <div key={img} onClick={() => setLightbox(i)} style={{ aspectRatio: '4/3', overflow: 'hidden', cursor: 'pointer', borderRadius: '3px', background: '#eee' }}>
@@ -219,7 +219,7 @@ function BerichtDetail({ b, onBack }: { b: Bericht; onBack: () => void }) {
           {/* Sidebar */}
           <div>
             <div style={{ background: 'var(--gray-light)', borderRadius: '4px', padding: '1.75rem', marginBottom: '1.5rem' }}>
-              <h3 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1rem', marginBottom: '1.25rem' }}>Törn-Details</h3>
+              <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1rem', marginBottom: '1.25rem' }}>Törn-Details</h3>
               {[
                 { label: '📍 Destination', val: b.destination },
                 { label: '📅 Zeitraum', val: b.date },
@@ -279,7 +279,7 @@ export default function ToernberichtePage() {
             <div style={{ background: 'var(--navy)', padding: '5rem 0 4rem' }}>
               <div className="container">
                 <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>Erfahrungsberichte</p>
-                <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff', marginBottom: '1rem' }}>Törnberichte</h1>
+                <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff', marginBottom: '1rem' }}>Törnberichte</h1>
                 <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem', maxWidth: '520px', lineHeight: 1.8 }}>
                   Authentische Reiseberichte direkt von unseren Törns — persönlich, ehrlich und voller Inspiration für Ihre nächste Segelreise.
                 </p>
@@ -311,7 +311,7 @@ export default function ToernberichtePage() {
                       </div>
                       <div style={{ padding: '1.75rem' }}>
                         <p style={{ color: 'var(--blue)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>{b.destination} · {b.date}</p>
-                        <h2 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.3rem', marginBottom: '0.75rem', lineHeight: 1.3 }}>{b.title}</h2>
+                        <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.3rem', marginBottom: '0.75rem', lineHeight: 1.3 }}>{b.title}</h2>
                         <p style={{ color: 'var(--gray)', fontSize: '0.88rem', lineHeight: 1.75, marginBottom: '1.25rem' }}>{b.teaser}</p>
                         <span style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>Bericht lesen →</span>
                       </div>

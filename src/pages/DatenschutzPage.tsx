@@ -5,7 +5,7 @@ export default function DatenschutzPage() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   const headingStyle: React.CSSProperties = {
-    fontFamily: 'Playfair Display, serif',
+    fontFamily: 'Cormorant Garamond, serif',
     color: 'var(--navy)',
     fontSize: '1.1rem',
     marginBottom: '0.75rem',
@@ -36,7 +36,7 @@ export default function DatenschutzPage() {
       <div style={{ background: 'var(--navy)', padding: '5rem 0 4rem' }}>
         <div className="container">
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>Rechtliches</p>
-          <h1 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff' }}>Datenschutzerklärung</h1>
+          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff' }}>Datenschutzerklärung</h1>
         </div>
       </div>
 

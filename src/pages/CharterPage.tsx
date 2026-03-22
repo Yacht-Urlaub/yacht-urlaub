@@ -55,7 +55,7 @@ export default function CharterPage() {
             Yacht mieten
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
-            style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff', marginBottom: '1rem' }}>
+            style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff', marginBottom: '1rem' }}>
             Charter
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
@@ -88,7 +88,7 @@ export default function CharterPage() {
               <div style={{ direction: 'ltr' }}>
                 <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '1rem' }}>{s.icon}</span>
                 <p style={{ color: 'var(--blue)', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '0.5rem' }}>{s.subtitle}</p>
-                <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '1.25rem' }}>{s.title}</h2>
+                <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '1.25rem' }}>{s.title}</h2>
                 <p style={{ color: 'var(--gray)', lineHeight: 1.85, marginBottom: '1.5rem', fontSize: '0.95rem' }}>{s.desc}</p>
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '2rem' }}>
                   {s.features.map(f => (
@@ -173,7 +173,7 @@ export default function CharterPage() {
       <section style={{ background: 'var(--navy)', padding: '5rem 0', textAlign: 'center' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 style={{ fontFamily: 'Playfair Display, serif', color: '#fff', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', marginBottom: '1rem' }}>
+            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: '#fff', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', marginBottom: '1rem' }}>
               Bereit für Ihren Charter?
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.65)', marginBottom: '2rem', fontSize: '0.95rem' }}>

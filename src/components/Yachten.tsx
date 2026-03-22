@@ -215,7 +215,7 @@ export default function Yachten() {
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
             Unsere Flotte
           </p>
-          <h2 style={{ fontFamily: 'Playfair Display, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff', marginBottom: '0.5rem' }}>
+          <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff', marginBottom: '0.5rem' }}>
             {cat.label}
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem' }}>{cat.subtitle}</p>
@@ -234,7 +234,7 @@ export default function Yachten() {
                 padding: '1rem 1.5rem',
                 color: activeTab === c.id ? '#fff' : 'rgba(255,255,255,0.45)',
                 fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.08em',
-                textTransform: 'uppercase', fontFamily: 'Open Sans, sans-serif',
+                textTransform: 'uppercase', fontFamily: 'DM Sans, sans-serif',
                 borderBottom: activeTab === c.id ? '3px solid var(--blue-light)' : '3px solid transparent',
                 transition: 'all 0.2s',
               }}
@@ -262,7 +262,7 @@ export default function Yachten() {
               </div>
               {/* Specs */}
               <div style={{ background: 'var(--gray-light)', borderRadius: '4px', padding: '1.75rem' }}>
-                <h3 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.1rem', marginBottom: '1.25rem' }}>Technische Daten</h3>
+                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.1rem', marginBottom: '1.25rem' }}>Technische Daten</h3>
                 {cat.specs.map(s => (
                   <div key={s.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.6rem 0', borderBottom: '1px solid #e8e8e8' }}>
                     <span style={{ fontSize: '0.82rem', color: 'var(--gray)', fontWeight: 400 }}>{s.label}</span>
@@ -273,7 +273,7 @@ export default function Yachten() {
             </div>
 
             {/* Modelle */}
-            <h3 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Unsere Modelle</h3>
+            <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Unsere Modelle</h3>
             <div className="yacht-models-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem', marginBottom: '3rem' }}>
               {cat.models.map((m, i) => (
                 <motion.div
@@ -306,7 +306,7 @@ export default function Yachten() {
             </div>
 
             {/* Galerie */}
-            <h3 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Fotogalerie</h3>
+            <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Fotogalerie</h3>
             <div className="yacht-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
               {cat.gallery.map((img, i) => (
                 <motion.div
