@@ -26,7 +26,22 @@ Den Höhepunkt bildete der Besuch des Nationalparks Brijuni — eine Inselgruppe
     date: 'Januar 2019',
     teaser: 'Zwei Wochen in den BVIs — von Tortola bis Anegada. Konstante Passatwinde, kristallklares Wasser und die legendäre Soggy Dollar Bar.',
     headerImg: '/images/Berichte/BVI Play.jpg',
-    gallery: ['/images/Berichte/BVI Play.jpg', '/images/Berichte/ImmonialBVI.webp'],
+    gallery: [
+      '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg',
+      '/images/packages/Karibik-BVI/gallery/the baths.jpg',
+      '/images/packages/Karibik-BVI/gallery/Sandy Spit.jpg',
+      '/images/packages/Karibik-BVI/gallery/marina_cay.jpg',
+      '/images/packages/Karibik-BVI/gallery/Norman island.jpg',
+      '/images/packages/Karibik-BVI/gallery/Indians.jpg',
+      '/images/packages/Karibik-BVI/gallery/kat.jpg',
+      '/images/packages/Karibik-BVI/gallery/relaxing-auf-sandy-cay-bei-yacht-urlaub (2).jpg',
+      '/images/packages/Karibik-BVI/gallery/DSC_0353_695.webp',
+      '/images/packages/Karibik-BVI/gallery/DSC_0436_774.webp',
+      '/images/packages/Karibik-BVI/gallery/DSC_0889_150.webp',
+      '/images/packages/Karibik-BVI/gallery/DSC_0918_1247.webp',
+      '/images/packages/Karibik-BVI/gallery/Willie Ts.webp',
+      '/images/packages/Karibik-BVI/gallery/Willy_T_T-Shirt.jpg',
+    ],
     content: `Die Britischen Jungferninseln im Januar — perfektes Segeln mit 15-20 Knoten Passatwind, Sonnenschein und Temperaturen um 28°C. Was will man mehr?
 
 Unser Törn startete auf Tortola, wo wir unsere Lagoon 43 übernahmen. Das erste Ziel war The Baths auf Virgin Gorda — bizarre Granitfelsen, zwischen denen man in Grotten und Pools schnorcheln kann. Ein absolutes Highlight.
@@ -34,6 +49,119 @@ Unser Törn startete auf Tortola, wo wir unsere Lagoon 43 übernahmen. Das erste
 Jost Van Dyke und die legendäre Soggy Dollar Bar: Man ankert vor der Insel und schwimmt ans Ufer — deshalb zahlt man mit durchnässten Dollarscheinen. Der Painkiller-Cocktail ist Pflicht.
 
 Anegada, die flachste Insel der BVIs, war unser Fernziel. Das Riff davor hat schon Hunderte Schiffe verspeist — wir navigierten vorsichtig durch die Kanäle und wurden mit dem besten Hummer der Karibik belohnt.`,
+  },
+  {
+    id: 'dalmatien-split-dubrovnik',
+    title: 'Dalmatien — Von Split bis Dubrovnik',
+    destination: 'Kroatien · Dalmatien',
+    date: 'Juli 2022',
+    teaser: 'Eine Woche entlang der süddalmatinischen Küste — von Splits römischem Diokletianpalast bis zur Perle der Adria, Dubrovnik. Mit Stopps auf Hvar, Vis und der Badestrand-Insel Mljet.',
+    headerImg: '/images/packages/dalmatien/gallery/Split 1.jpg',
+    gallery: [
+      '/images/packages/dalmatien/gallery/Split 1.jpg',
+      '/images/packages/dalmatien/gallery/Split.jpg',
+      '/images/packages/dalmatien/gallery/dalmatien_gallery1.jpg',
+      '/images/packages/dalmatien/gallery/dalmatien_gallery2.jpg',
+      '/images/packages/dalmatien/gallery/dalmatien_gallery3.jpg',
+      '/images/packages/dalmatien/gallery/dalmatien_gallery4.jpg',
+      '/images/packages/dalmatien/gallery/dalmatien_gallery5.jpg',
+      '/images/packages/dalmatien/gallery/dalmatien_gallery6.jpg',
+      '/images/packages/dalmatien/gallery/milna.jpg',
+      '/images/packages/dalmatien/gallery/Makarska Kai.jpg',
+      '/images/packages/dalmatien/gallery/Segeln in Dalmatien.png',
+    ],
+    content: `Unser Dalmatien-Törn begann im strahlenden Morgenlicht von Split — einer Stadt, die ihresgleichen sucht. Der Diokletianpalast, vor über 1.700 Jahren als kaiserliche Residenz erbaut, bildet noch heute das pulsierende Herz der Altstadt. Zwischen seinen antiken Mauern reihen sich Cafés, Restaurants und Boutiquen aneinander, während die Einwohner ihr alltägliches Leben inmitten von Weltgeschichte führen. Nach einem langen Spaziergang durch die Gassen und einem Espresso auf der Riva stachen wir in See — die Segel gesetzt, der Wind sanft aus Nordwest.
+
+Erste Station war Hvar, die Sonneninsel der Adria. Die Altstadt mit ihrer venezianischen Piazza, dem Arsenale und dem mittelalterlichen Kastell St. Stephan ist ein Juwel der dalmatinischen Küste. Wir ankerten in der ruhigen Bucht von Pakleni-Inseln und erkundeten die kristallklaren Unterwasserwelten beim Schnorcheln. Abends flanierte die ganze Crew durch Hvars belebte Altstadt und genoss frisch gegrillte Dorade mit lokalem Plavac Mali — dem kraftvollen Rotwein der Region.
+
+Von Hvar aus segelten wir nach Vis, der entlegensten bewohnten Insel Dalmatiens, die bis 1989 als Militärsperrgebiet kaum Touristen kannte. Hier besuchten wir die berühmte Blaue Grotte auf der Nachbarinsel Biševo — ein Naturwunder, das man mit eigenen Augen gesehen haben muss. Das neonblaue Licht, das durch eine Unterwasseröffnung einfällt und den ganzen Innenraum der Grotte in ein magisches Leuchten taucht, ist unvergesslich. Weiter ging es nach Korčula, der Geburtsstadt von Marco Polo, mit ihrer wunderschön erhaltenen venezianischen Altstadt auf einer schmalen Halbinsel.
+
+Den krönenden Abschluss bildete Dubrovnik — die Perle der Adria. Wir liefen in den Hafen von Gruž ein und spazierten auf den mittelalterlichen Stadtmauern rund um die Altstadt, mit einem atemberaubenden Blick auf die Dächer, die Adria und die vorgelagerten Inseln. Die engen Gassen, Marmortreppen und barocken Kirchen machen Dubrovnik zu einem der schönsten Orte Europas. Ein Törn, der süchtig macht — nach Dalmatien, nach Segeln, nach dieser Küste.`,
+  },
+  {
+    id: 'griechenland-kykladen',
+    title: 'Griechenland — Kykladen-Träume',
+    destination: 'Griechenland · Kykladen',
+    date: 'September 2021',
+    teaser: 'Zwei Wochen durch die Kykladen — weißgetünchte Dörfer, tiefblaues Meer und der unvergessliche Sonnenuntergang von Santorin. Ein Törn, der alle Klischees über Griechenland wahr macht.',
+    headerImg: '/images/packages/Griechenland/gallery/Greece_Sunset_header.webp',
+    gallery: [
+      '/images/packages/Griechenland/gallery/Greece_Sunset_header.webp',
+      '/images/packages/Griechenland/gallery/santorini-1776236_1920.jpg',
+      '/images/packages/Griechenland/gallery/Mykonos.jpg',
+      '/images/packages/Griechenland/gallery/Naxos Beach.jpg',
+      '/images/packages/Griechenland/gallery/BlaueBucht.jpg',
+      '/images/packages/Griechenland/gallery/Navajo Bucht - Griechenland.jpg',
+      '/images/packages/Griechenland/gallery/Poseidon.jpg',
+      '/images/packages/Griechenland/gallery/Poros.jpg',
+      '/images/packages/Griechenland/gallery/hydra.jpg',
+      '/images/packages/Griechenland/gallery/Sonnenuntergang.jpg',
+      '/images/packages/Griechenland/gallery/20181008_184812.jpg',
+      '/images/packages/Griechenland/gallery/20181017_122302.jpg',
+    ],
+    content: `Zwei Wochen, eine Bavaria 46 und die Kykladen — das ist ein Rezept für Glück. Unser Törn startete im Hafen von Piräus, wo wir unsere Yacht übernahmen und sofort in Richtung Süden Kurs setzten. Erste Station war Aegina mit seinem pittoresken Fischerdorf und dem Aphaia-Tempel aus dem 5. Jahrhundert vor Christus. Weiter ging es nach Hydra, eine der charmantesten Inseln Griechenlands — keine Autos, keine Motorräder, nur Esel und Wasserfahrzeuge. Die pastellfarbenen Häuser klettern den Felshang hinauf, während Segelboote aus aller Welt im Hafen schaukeln.
+
+Mit frischem Nordwind — dem berühmten Meltemi, der im Sommer über die Ägäis fegt — segelten wir in zwei Etappen nach Mykonos. Der Meltemi ist ein zweischneidiges Schwert: Er sorgt für herrliche Segelwinde mit 20 bis 25 Knoten, aber auch für kurze, steile Wellen, die einem nassen Ritt gleichen. Auf Mykonos bummelten wir durch die labyrinthischen Gassen von Chora, vorbei an weiß getünchten Kapellen und leuchtend blauen Türen — das Klischee der Kykladen ist ein Klischee, weil es wahr ist.
+
+Von Mykonos segelten wir nach Naxos, der größten und grünsten Kykladeninsel. Hier gibt es alles: endlose Sandstrände, ein venetianisches Kastell in der Altstadt, herrliche Bergdörfer im Inneren und die besten Produkte der Kykladen — Naxos-Käse, Kartoffeln und Kitron-Likör. Auf Paros ankerten wir in der malerischen Naussa-Bucht und erkundeten das bezaubernde Dörfchen mit seinen Restaurants direkt am Wasser, wo Fischerboote gegen die bunten Häuserwände schaukeln.
+
+Das Finale bildete Santorin — und was für ein Finale. Die Yacht in der Caldera verankert, dem riesigen Vulkankrater, der von der Insel umgeben wird. Der Sonnenuntergang von Oia: ein Spektakel, für das Menschen aus aller Welt anreisen. Von der Yacht aus erlebten wir ihn ganz für uns allein, mit einem Glas griechischem Wein in der Hand und den rötlichen Klippen ringsum. Zwei Wochen Kykladen — eine Reise, die man nie vergisst.`,
+  },
+  {
+    id: 'karibik-grenadinen',
+    title: 'A Taste of Paradise — Grenadinen',
+    destination: 'Karibik · Grenadinen',
+    date: 'März 2023',
+    teaser: 'Von Grenada bis St. Vincent durch die Grenadinen — Tobago Cays, Sandy Island, Mustique. Passatwinde, türkisblaues Wasser und Sonnenuntergänge wie aus dem Bilderbuch.',
+    headerImg: '/images/packages/Karibik-Grenadinen/gallery/Header.jpg',
+    gallery: [
+      '/images/packages/Karibik-Grenadinen/gallery/Header.jpg',
+      '/images/packages/Karibik-Grenadinen/gallery/sonnenuntergang-grenadinen.jpg',
+      '/images/packages/Karibik-Grenadinen/gallery/SandyIsland.jpg',
+      '/images/packages/Karibik-Grenadinen/gallery/strand-auf-grenada.jpg',
+      '/images/packages/Karibik-Grenadinen/gallery/Tobago.jpg',
+      '/images/packages/Karibik-Grenadinen/gallery/Wallilabou1.jpg',
+      '/images/packages/Karibik-Grenadinen/gallery/Wallilabou2.jpg',
+      '/images/packages/Karibik-Grenadinen/gallery/Lobster_tobago.jpg',
+      '/images/packages/Karibik-Grenadinen/gallery/bay-601526_1920.jpg',
+      '/images/packages/Karibik-Grenadinen/gallery/sundowner.jpg',
+      '/images/packages/Karibik-Grenadinen/gallery/Grenadinen_Panorama.png',
+      '/images/packages/Karibik-Grenadinen/gallery/Hammock-22_RMT8726.jpg',
+    ],
+    content: `Grenada — die Gewürzinsel der Karibik — duftet buchstäblich nach Muskatnuss und Zimt. Unser Törn durch die Grenadinen startete in St. George's, der farbenprächtigen Hauptstadt mit ihrem hufeisenförmigen Hafen und den bunten Gewürzmärkten. Nach einer ausgiebigen Erkundung der Insel — Grand Anse Beach mit seinem über drei Kilometer langen weißen Sand, die üppigen Regenwälder und der Grand Etang Kratersee — übernahmen wir unsere Catana 47 und setzten Kurs nach Norden, den Passatwind im Rücken.
+
+Das absolute Highlight des Törns waren die Tobago Cays — ein geschütztes Meeresschutzgebiet, das aus fünf kleinen, unbewohnten Inseln und einem atemberaubenden Korallenriff besteht. Hier schwammen wir mit echten Karettschildkröten, die sich von den Booten überhaupt nicht stören ließen. Das Wasser hatte eine Transparenz und ein Türkisblau, das man kaum zu fotografieren wagt, weil man weiß, dass kein Bild die Realität einfangen kann. Am Abend ankerten ein Dutzend Boote aus aller Welt friedlich nebeneinander, während die Sonne hinter den Inseln versank und jemand am Nachbarboot Gitarre spielte.
+
+Sandy Island vor Carriacou ist genau das, was man sich unter einer karibischen Insel vorstellt: ein schmaler Streifen weißen Sandes mit ein paar Palmen darauf, umgeben von kristallklarem Wasser. Wir ankerten so nah heran, wie es der Tiefgang erlaubte, und schwammen einfach an den Strand. Keine anderen Menschen. Keine Geräusche außer Wellen und Wind. Bequia, eine der Lieblingsinseln der Segler in der Karibik, bot dann wieder Zivilisation der angenehmen Art: ein gemütlicher Hafen, exzellente Restaurants und der beste Rum Punch diesseits von Trinidad.
+
+Den krönenden Abschluss bildete St. Vincent mit seinem wilden, bergigen Inneren und dem berühmten Wallilabou Bay — bekannt als Drehort der ersten Pirates-of-the-Caribbean-Filme. Zwei Wochen auf den Grenadinen sind wie ein Traum: Das Licht ist anders, das Wasser ist anders, die Zeit vergeht anders. Wer einmal durch diese Inselkette gesegelt ist, versteht, warum so viele Segler die Grenadinen als das Paradies auf Erden bezeichnen.`,
+  },
+  {
+    id: 'kornaten-archipel',
+    title: 'Kornaten — Der stille Archipel',
+    destination: 'Kroatien · Kornaten',
+    date: 'August 2023',
+    teaser: 'Hundert Inseln, tausend Buchten — und kaum ein Tourist. Die Kornaten sind Kroatiens best gehütetes Geheimnis, ein Nationalpark aus purem Stein und türkisblauem Wasser.',
+    headerImg: '/images/packages/Kornaten/gallery/Telascica.webp',
+    gallery: [
+      '/images/packages/Kornaten/gallery/Telascica.webp',
+      '/images/packages/Kornaten/gallery/Dugi Otok.webp',
+      '/images/packages/Kornaten/gallery/Dugi Otok Wrack.webp',
+      '/images/packages/Kornaten/gallery/Mono Kornaten.webp',
+      '/images/packages/Kornaten/gallery/20180909_131842.jpg',
+      '/images/packages/Kornaten/gallery/20180910_183458.jpg',
+      '/images/packages/Kornaten/gallery/Stand-Up 2.jpg',
+      '/images/packages/Kornaten/gallery/unnamed.jpg',
+      '/images/packages/Kornaten/gallery/image (93).jpg',
+      '/images/packages/Kornaten/gallery/image (99).jpg',
+    ],
+    content: `Der kroatische Schriftsteller George Bernard Shaw soll einmal gesagt haben, dass Gott an seinem letzten Schöpfungstag die Kornaten aus seinen Tränen, seinem Atem und seinem Herz erschaffen habe. Ob das Zitat echt ist oder nicht — wer einmal durch den Kornaten-Archipel gesegelt ist, versteht es sofort. 89 Inseln, Inselchen und Riffe erstrecken sich über 35 Kilometer Länge, alle aus dem gleichen weißen Kalkstein, kahl und bizarr geformt wie eine Mondlandschaft — und dazwischen Wasser in jedem nur erdenklichen Blauton.
+
+Wir starteten von Šibenik und fuhren zunächst nach Telašćica auf Dugi Otok — einem weitläufigen Naturpark mit einem tief eingeschnittenen Fjord und einem riesigen Salzsee, der sich kaum fünfzehn Meter vom Meer entfernt befindet, aber durch einen Felskamm getrennt ist. Die Klippen von Telašćica fallen über 160 Meter senkrecht ins Meer — ein spektakulärer Anblick von der Yacht aus. In der Abenddämmerung war die Bucht komplett leer, nur wir und das Stille. Der Sternenhimmel ohne jede Lichtverschmutzung war so klar und überwältigend, dass niemand schlafen wollte.
+
+Im eigentlichen Kornaten-Nationalpark ankerten wir in einer Reihe von verlassenen Buchten, die ihren romantischen Namen alle verdienen: Lavsa, Piškera, Kravljačica. Das Wasser hat eine Sichtweite von 30 bis 40 Metern — man sieht jeden Stein am Grund, während man über ihn hinweggleitet. Die Inseln sind unbewohnt, mit Ausnahme einiger Fischhütten, die heute als einfache Restaurants dienen. Diese Konobas auf den Inseln sind ein kleines Wunder: Kein Strom außer Solarenergie, Wasser kommt aus Zisternen, aber der Fisch ist frischer als irgendwo sonst.
+
+Das Wrack eines gesunkenen Frachters vor Dugi Otok war ein unvergesslicher Tauch- und Schnorchelspot: Die Silhouette des Schiffes in 20 Metern Tiefe, umhüllt von Korallen und Fischschwärmen, war ein Bild für die Ewigkeit. Die Kornaten sind kein Ziel für alle — wer lebhafte Häfen, Restaurants und Nachtleben sucht, ist hier falsch. Wer aber die absolute Stille, die Ursprünglichkeit und das Gefühl sucht, der letzte Mensch auf Erden zu sein — der wird die Kornaten auf ewig lieben.`,
   },
 ]
 

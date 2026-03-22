@@ -110,8 +110,29 @@ export default function CharterPage() {
         </div>
       </section>
 
-      {/* Charter Confidence */}
+      {/* Unsere Charter-Partner */}
       <section style={{ background: 'var(--gray-light)', padding: '3rem 0' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <p style={{ color: 'var(--gray)', fontSize: '0.78rem', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', fontWeight: 600, fontVariant: 'small-caps' }}>Unsere Charter-Partner</p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', justifyContent: 'center', alignItems: 'center' }}>
+            {[
+              { name: 'Navigare Yachting', img: '/images/partner/Charter/navigare.png' },
+              { name: 'Dream Yacht Charter', img: '/images/partner/Charter/dream.png' },
+              { name: 'Angelina Yachtcharter', img: '/images/partner/Charter/Angelina.png' },
+              { name: 'Istion Yachting', img: '/images/partner/Charter/Istion_Yachting_small.jpg' },
+              { name: 'Pitter Yachtcharter', img: '/images/partner/Charter/pitter NA.png' },
+            ].map(p => (
+              <img key={p.name} src={p.img} alt={p.name} loading="lazy"
+                style={{ height: '44px', objectFit: 'contain', filter: 'grayscale(0.3)' }}
+                onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Charter Confidence */}
+      <section style={{ background: '#fff', padding: '3rem 0' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <p style={{ color: 'var(--gray)', fontSize: '0.78rem', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', fontWeight: 600 }}>Ihre Sicherheit</p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -127,6 +148,23 @@ export default function CharterPage() {
                 onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
               />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Badges */}
+      <section style={{ background: 'var(--gray-light)', padding: '3rem 0' }}>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <p style={{ color: 'var(--gray)', fontSize: '0.78rem', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.5rem', fontWeight: 600 }}>Zertifiziert &amp; geprüft</p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '2.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
+            <img src="/images/partner/Trusted-shops-logo.png" alt="Trusted Shops" loading="lazy"
+              style={{ height: '50px', objectFit: 'contain' }}
+              onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+            <img src="/images/partner/Sealogy Logo.jpg" alt="Sealogy" loading="lazy"
+              style={{ height: '40px', objectFit: 'contain' }}
+              onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
           </div>
         </div>
       </section>

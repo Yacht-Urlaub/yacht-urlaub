@@ -45,9 +45,9 @@ const cols = [
   {
     title: 'Rechtliches',
     links: [
-      { label: 'Impressum', href: '#impressum' },
-      { label: 'Datenschutz', href: '#datenschutz' },
-      { label: 'AGB', href: '#agb' },
+      { label: 'Impressum', href: '/impressum' },
+      { label: 'Datenschutz', href: '/datenschutz' },
+      { label: 'AGB', href: '/agb' },
     ],
   },
 ]
@@ -57,6 +57,7 @@ const socials = [
   { icon: '📸', label: 'Instagram', href: 'https://www.instagram.com/yacht.holiday/' },
   { icon: '▶', label: 'YouTube', href: 'https://www.youtube.com/channel/UCyCd7UCoTB8TOTZFsGboTGQ' },
   { icon: 'in', label: 'LinkedIn', href: 'https://www.linkedin.com/company/yacht-urlaub' },
+  { icon: 'X', label: 'XING', href: 'https://www.xing.com/companies/yacht-urlaub' },
 ]
 
 export default function Footer() {
@@ -70,9 +71,12 @@ export default function Footer() {
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>Kein Spam. Nur echte Segelträume.</p>
           </div>
           <form
+            name="newsletter"
+            data-netlify="true"
             onSubmit={e => e.preventDefault()}
             style={{ display: 'flex', gap: '0.75rem', flex: '0 0 auto' }}
           >
+            <input type="hidden" name="form-name" value="newsletter" />
             <input
               type="email"
               placeholder="Ihre E-Mail-Adresse"
@@ -142,7 +146,7 @@ export default function Footer() {
           {/* Zahlungsanbieter */}
           <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
             <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.4)', marginRight: '4px' }}>Zahlung:</span>
-            {['Visa', 'MC'].map(p => (
+            {['Visa', 'MC', 'AMEX'].map(p => (
               <span key={p} style={{
                 background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)',
                 padding: '3px 8px', borderRadius: '3px', fontSize: '0.7rem', fontWeight: 600,

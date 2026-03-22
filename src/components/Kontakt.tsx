@@ -70,7 +70,13 @@ export default function Kontakt() {
   const back = () => setStep(s => s - 1)
   const submit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (validateStep(1)) setSent(true)
+    if (validateStep(1)) {
+      const formData = new FormData()
+      formData.append('form-name', 'anfrage')
+      Object.entries(form).forEach(([k, v]) => formData.append(k, String(v)))
+      fetch('/', { method: 'POST', body: formData })
+        .finally(() => setSent(true))
+    }
   }
 
   const today = new Date().toISOString().split('T')[0]
@@ -165,7 +171,8 @@ export default function Kontakt() {
                   ))}
                 </div>
 
-                <form onSubmit={submit} style={{ padding: '2rem' }}>
+                <form name="anfrage" data-netlify="true" onSubmit={submit} style={{ padding: '2rem' }}>
+                  <input type="hidden" name="form-name" value="anfrage" />
 
                   {/* Step 0: Reisedaten */}
                   {step === 0 && (

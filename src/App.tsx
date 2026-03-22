@@ -10,6 +10,9 @@ import YachtenPage from './pages/YachtenPage'
 import CharterPage from './pages/CharterPage'
 import ToernberichtePage from './pages/ToernberichtePage'
 import FaqPage from './pages/FaqPage'
+import ImpressumPage from './pages/ImpressumPage'
+import DatenschutzPage from './pages/DatenschutzPage'
+import AgbPage from './pages/AgbPage'
 
 const pageVariants = {
   initial: { opacity: 0, y: 16 },
@@ -30,6 +33,9 @@ function AnimatedRoutes() {
           <Route path="/charter" element={<CharterPage />} />
           <Route path="/toernberichte" element={<ToernberichtePage />} />
           <Route path="/faq" element={<FaqPage />} />
+          <Route path="/impressum" element={<ImpressumPage />} />
+          <Route path="/datenschutz" element={<DatenschutzPage />} />
+          <Route path="/agb" element={<AgbPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
         <Footer />
