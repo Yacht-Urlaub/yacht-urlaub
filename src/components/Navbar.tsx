@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom'
 const nav = [
   {
     label: 'Törns', href: '/#toerns', items: [
-      { label: 'Für Einsteiger', href: '/#einsteiger' },
-      { label: 'Für Freunde', href: '/#freunde' },
-      { label: 'Für Familien', href: '/#familien' },
-      { label: 'Luxury', href: '/#luxury' },
-      { label: 'Individuell planen', href: '/#individuell' },
-      { label: 'Törnberichte', href: '/#toernberichte' },
+      { label: 'Für Einsteiger', href: '/#toerns' },
+      { label: 'Für Freunde', href: '/#toerns' },
+      { label: 'Für Familien', href: '/#toerns' },
+      { label: 'Luxury', href: '/#toerns' },
+      { label: 'Individuell planen', href: '/#kontakt' },
+      { label: 'Törnberichte', href: '/toernberichte' },
       { label: 'Anfrage starten', href: '/#kontakt' },
     ]
   },
   {
-    label: 'Charter', href: '/#charter', items: [
-      { label: 'Yacht-Charter anfragen', href: '/#charter' },
-      { label: 'Skipper- und Bord-Service', href: '/#skipper' },
+    label: 'Charter', href: '/charter', items: [
+      { label: 'Yacht-Charter anfragen', href: '/charter' },
+      { label: 'Skipper- und Bord-Service', href: '/charter' },
     ]
   },
   {
@@ -42,8 +42,8 @@ const nav = [
   {
     label: 'Kontakt', href: '/#kontakt', items: [
       { label: 'Anfrage starten', href: '/#kontakt' },
-      { label: 'FAQ', href: '/#faq' },
-      { label: 'Für Reisebüros/Affiliate-Partner', href: '/#partner' },
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Für Reisebüros/Affiliate-Partner', href: '/#kontakt' },
     ]
   },
 ]

@@ -1,47 +1,45 @@
+import { Link } from 'react-router-dom'
+
 const cols = [
   {
     title: 'Törns',
     links: [
-      { label: 'Für Einsteiger', href: '#einsteiger' },
-      { label: 'Für Freunde', href: '#freunde' },
-      { label: 'Für Familien', href: '#familien' },
-      { label: 'Luxury', href: '#luxury' },
-      { label: 'Istrien', href: '#istrien' },
-      { label: 'Kornaten', href: '#kornaten' },
-      { label: 'Dalmatien', href: '#dalmatien' },
-      { label: 'Griechenland', href: '#griechenland' },
-      { label: 'Karibik-BVI', href: '#karibik' },
-      { label: 'Grenadinen', href: '#windward' },
-      { label: 'Kabinen-Angebote', href: '#kabinen' },
+      { label: 'Für Einsteiger', href: '/#toerns' },
+      { label: 'Für Freunde', href: '/#toerns' },
+      { label: 'Für Familien', href: '/#toerns' },
+      { label: 'Luxury', href: '/#toerns' },
+      { label: 'Törnberichte', href: '/toernberichte' },
+      { label: 'Anfrage starten', href: '/#kontakt' },
     ],
   },
   {
-    title: 'Individuelle Törns',
+    title: 'Yachten & Charter',
     links: [
-      { label: 'Urlaubsplaner', href: '#individuell' },
-      { label: 'Yachten', href: '#yachten' },
+      { label: 'Segelyacht', href: '/yachten?tab=monohull' },
+      { label: 'Katamaran', href: '/yachten?tab=katamaran' },
+      { label: 'Motoryacht', href: '/yachten?tab=motoryacht' },
+      { label: 'Yacht-Charter', href: '/charter' },
+      { label: 'Crew-Charter', href: '/charter' },
     ],
   },
   {
     title: 'Charter',
     links: [
-      { label: 'Yacht-Charter', href: '#charter' },
-      { label: 'Crew-Charter', href: '#skipper' },
+      { label: 'Yacht-Charter', href: '/charter' },
+      { label: 'Crew-Charter', href: '/charter' },
     ],
   },
   {
     title: 'Destinationen',
     links: [
-      { label: 'Kroatien', href: '#kroatien' },
-      { label: 'Griechenland', href: '#griechenland' },
-      { label: 'Balearen', href: '#balearen' },
-      { label: 'Kanaren', href: '#kanaren' },
-      { label: 'Karibik-BVI', href: '#karibik' },
-      { label: 'Windward Islands', href: '#windward' },
-      { label: 'Thailand', href: '#thailand' },
-      { label: 'Seychellen', href: '#seychellen' },
-      { label: 'Törnberichte', href: '#toernberichte' },
-      { label: 'FAQ', href: '#faq' },
+      { label: 'Kroatien', href: '/destinationen/kroatien' },
+      { label: 'Griechenland', href: '/destinationen/griechenland' },
+      { label: 'Balearen', href: '/destinationen/balearen' },
+      { label: 'Karibik-BVI', href: '/destinationen/karibik' },
+      { label: 'Seychellen', href: '/destinationen/seychellen' },
+      { label: 'Thailand', href: '/destinationen/thailand' },
+      { label: 'Törnberichte', href: '/toernberichte' },
+      { label: 'FAQ', href: '/faq' },
     ],
   },
   {
@@ -98,12 +96,12 @@ export default function Footer() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 {col.links.map(l => (
                   <li key={l.label}>
-                    <a href={l.href} style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.55)', transition: 'color 0.2s' }}
+                    <Link to={l.href} style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.55)', transition: 'color 0.2s' }}
                       onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
                       onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}
                     >
                       {l.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -114,7 +112,7 @@ export default function Footer() {
         {/* Bottom */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '32px', filter: 'brightness(0) invert(1) opacity(0.7)' }} />
+            <Link to="/"><img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '32px', filter: 'brightness(0) invert(1) opacity(0.7)' }} /></Link>
             <p style={{ fontSize: '0.78rem' }}>© YACHT-URLAUB Ing. Manuel Göschl, MBA</p>
           </div>
 
