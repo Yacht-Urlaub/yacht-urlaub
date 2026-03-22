@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 
 const faqs = [
   {
@@ -71,11 +72,29 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   )
 }
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.flatMap(cat =>
+    cat.items.map(item => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    }))
+  ),
+}
+
 export default function FaqPage() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
 
   return (
     <main style={{ paddingTop: '72px' }}>
+      <SEO
+        title="FAQ – Häufige Fragen zu Yachtreisen"
+        description="Antworten auf die häufigsten Fragen: Brauche ich Segelerfahrung? Was kostet ein Törn? Welcher Segelschein? Alles über Buchung, An Bord und Charter bei Yacht-Urlaub."
+        canonical="/faq"
+        schema={faqSchema}
+      />
       {/* Header */}
       <div style={{ background: 'var(--navy)', padding: '5rem 0 4rem' }}>
         <div className="container">

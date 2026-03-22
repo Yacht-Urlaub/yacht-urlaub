@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import SEO from '../components/SEO'
 
 const berichte = [
   {
@@ -135,6 +136,12 @@ export default function ToernberichtePage() {
 
   return (
     <main style={{ paddingTop: '72px' }}>
+      <SEO
+        title="Törnberichte – Reiseerlebnisse aus aller Welt"
+        description="Authentische Törnberichte von unseren Segelreisen: Kroatien-Istrien, Karibik-BVI und mehr. Echte Erfahrungen, Routen-Tipps und Fotos von unseren Skippern und Gästen."
+        canonical="/toernberichte"
+        image="/images/Berichte/Istrien2020/Foto1.jpg"
+      />
       <AnimatePresence mode="wait">
         {selected ? (
           <BerichtDetail key={selected.id} b={selected} onBack={() => { setSelected(null); window.scrollTo(0, 0) }} />

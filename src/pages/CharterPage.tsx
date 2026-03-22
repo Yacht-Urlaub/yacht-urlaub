@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
 
 const services = [
   {
@@ -37,6 +38,12 @@ export default function CharterPage() {
 
   return (
     <main style={{ paddingTop: '72px' }}>
+      <SEO
+        title="Yacht-Charter & Skipper-Service"
+        description="Yacht-Charter mit oder ohne Skipper: Bareboat-Charter ab Segelschein, Skippered Charter für Einsteiger, professioneller Skipper- und Bord-Service. Flotte von 35–60 Fuß weltweit."
+        canonical="/charter"
+        image="/images/charter/yachtchartern-bei-yacht-urlaub.jpg"
+      />
       {/* Hero */}
       <div style={{ position: 'relative', height: '420px', overflow: 'hidden' }}>
         <img src="/images/charter/header.png" alt="Charter" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
