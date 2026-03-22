@@ -24,34 +24,6 @@ export default function Hero() {
         display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',
         textAlign: 'center', color: '#fff',
       }}>
-        {/* Logo mit Glow */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, ease: [0.25, 0.1, 0.25, 1] }}
-          style={{ marginBottom: '2rem', position: 'relative' }}
-        >
-          <motion.div
-            animate={{ opacity: [0.4, 0.75, 0.4] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-            style={{
-              position: 'absolute', inset: '-18px',
-              borderRadius: '50%',
-              background: 'radial-gradient(ellipse, rgba(245,158,11,0.35) 0%, transparent 70%)',
-              filter: 'blur(12px)',
-            }}
-          />
-          <img
-            src="/logo.png"
-            alt="Yacht-Urlaub"
-            style={{
-              height: 'clamp(90px, 14vw, 140px)',
-              filter: 'brightness(0) invert(1) drop-shadow(0 0 18px rgba(245,158,11,0.6))',
-              position: 'relative',
-            }}
-          />
-        </motion.div>
-
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -101,6 +73,21 @@ export default function Hero() {
             Top-News &amp; Angebote
           </a>
         </motion.div>
+
+        {/* Logo unter Buttons */}
+        <motion.img
+          src="/logo.png"
+          alt="Yacht-Urlaub"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2, delay: 1.3 }}
+          style={{
+            height: 'clamp(80px, 12vw, 130px)',
+            marginTop: '3rem',
+            filter: 'brightness(0) invert(1)',
+            imageRendering: 'crisp-edges',
+          }}
+        />
 
         {/* Scroll indicator */}
         <motion.div
