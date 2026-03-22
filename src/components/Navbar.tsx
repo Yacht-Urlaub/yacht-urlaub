@@ -69,10 +69,10 @@ export default function Navbar() {
       borderBottom: '1px solid rgba(255,255,255,0.08)',
       boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.25)' : 'none',
     }}>
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px' }}>
         {/* Logo */}
         <Link to="/">
-          <img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '52px', filter: 'brightness(0) invert(1)' }} />
+          <img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '68px', filter: 'brightness(0) invert(1)' }} />
         </Link>
 
         {/* Desktop Nav */}
