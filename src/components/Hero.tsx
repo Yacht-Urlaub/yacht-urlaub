@@ -66,7 +66,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.0 }}
           style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}
         >
-          <a href="#toerns" className="btn btn-primary" style={{ fontSize: '0.82rem', padding: '14px 32px' }}>
+          <a href="#toerns" className="btn btn-gold" style={{ fontSize: '0.82rem', padding: '14px 32px' }}>
             Törns entdecken
           </a>
           <a href="#news" className="btn btn-outline" style={{ fontSize: '0.82rem', padding: '14px 32px' }}>

@@ -62,10 +62,12 @@ export default function Navbar() {
   return (
     <header style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-      background: scrolled ? 'rgba(18,43,64,0.97)' : 'rgba(18,43,64,0.85)',
-      backdropFilter: 'blur(8px)',
-      transition: 'background 0.3s',
-      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.08)' : 'none',
+      background: scrolled ? 'rgba(7,27,47,0.82)' : 'rgba(7,27,47,0.15)',
+      backdropFilter: 'blur(20px) saturate(180%)',
+      WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+      transition: 'background 0.35s, box-shadow 0.35s',
+      borderBottom: '1px solid rgba(255,255,255,0.08)',
+      boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.25)' : 'none',
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '72px' }}>
         {/* Logo */}
@@ -97,20 +99,23 @@ export default function Navbar() {
               {open === item.label && (
                 <div style={{
                   position: 'absolute', top: '100%', left: 0,
-                  background: '#fff', minWidth: '220px',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
-                  borderTop: '3px solid var(--blue)',
+                  background: 'rgba(7,27,47,0.92)',
+                  backdropFilter: 'blur(16px) saturate(160%)',
+                  WebkitBackdropFilter: 'blur(16px) saturate(160%)',
+                  minWidth: '220px',
+                  boxShadow: '0 16px 48px rgba(0,0,0,0.35)',
+                  borderTop: '3px solid var(--gold)',
                   zIndex: 100,
                 }}>
                   {item.items.map(sub => (
                     <Link key={sub.label} to={sub.href} onClick={() => setOpen(null)} style={{
                       display: 'block', padding: '10px 18px',
-                      fontSize: '0.82rem', color: '#333', fontWeight: 400,
-                      borderBottom: '1px solid #f0f0f0',
+                      fontSize: '0.82rem', color: 'rgba(255,255,255,0.82)', fontWeight: 400,
+                      borderBottom: '1px solid rgba(255,255,255,0.07)',
                       transition: 'background 0.15s, color 0.15s',
                     }}
-                      onMouseEnter={e => { e.currentTarget.style.background = '#f0f7fb'; e.currentTarget.style.color = 'var(--blue)' }}
-                      onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.color = '#333' }}
+                      onMouseEnter={e => { e.currentTarget.style.background = 'rgba(245,158,11,0.15)'; e.currentTarget.style.color = 'var(--gold-light)' }}
+                      onMouseLeave={e => { e.currentTarget.style.background = ''; e.currentTarget.style.color = 'rgba(255,255,255,0.82)' }}
                     >
                       {sub.label}
                     </Link>
