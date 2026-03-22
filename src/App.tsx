@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsApp from './components/WhatsApp'
+import CookieBanner from './components/CookieBanner'
 import HomePage from './pages/HomePage'
 import DestinationenPage from './pages/DestinationenPage'
 import DestinationPage from './pages/DestinationPage'
@@ -50,6 +51,7 @@ export default function App() {
       <Navbar />
       <AnimatedRoutes />
       <WhatsApp />
+      <CookieBanner />
     </BrowserRouter>
   )
 }
