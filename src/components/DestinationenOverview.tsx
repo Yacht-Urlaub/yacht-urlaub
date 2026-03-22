@@ -41,7 +41,7 @@ export default function DestinationenOverview({ standalone = false }: { standalo
         </motion.div>
 
         {/* Mosaic grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+        <div className="dest-mosaic" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
           {grid.map((item, i) => {
             const d = destinations.find(x => x.id === item.id)!
             return (
@@ -52,6 +52,7 @@ export default function DestinationenOverview({ standalone = false }: { standalo
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: i * 0.07 }}
                 onClick={() => navigate(`/destinationen/${item.id}`)}
+                className={item.wide ? 'dest-wide' : ''}
                 style={{
                   position: 'relative', overflow: 'hidden',
                   gridColumn: item.wide ? 'span 2' : 'span 1',
@@ -85,12 +86,12 @@ export default function DestinationenOverview({ standalone = false }: { standalo
         </div>
 
         {/* Extra row */}
-        <div style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
+        <div className="dest-extra-row" style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
           {extra.map(item => (
             <div
               key={item.id}
               onClick={() => navigate('/destinationen')}
-              style={{ flex: 1, position: 'relative', overflow: 'hidden', aspectRatio: '5/1', borderRadius: '3px', cursor: 'pointer', background: 'rgba(255,255,255,0.05)' }}
+              style={{ flex: 1, position: 'relative', overflow: 'hidden', minHeight: '80px', borderRadius: '3px', cursor: 'pointer', background: 'rgba(255,255,255,0.05)' }}
             >
               <img src={item.img} alt={item.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }} onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
               <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', padding: '1.5rem', gap: '1rem' }}>
@@ -108,12 +109,13 @@ export default function DestinationenOverview({ standalone = false }: { standalo
 
       <style>{`
         @media (max-width: 900px) {
-          #destinationen .container > div[style*="repeat(3, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
-          #destinationen .container > div[style*="repeat(3, 1fr)"] > div[style*="span 2"] { grid-column: span 2 !important; }
+          .dest-mosaic { grid-template-columns: 1fr 1fr !important; }
+          .dest-wide { grid-column: span 2 !important; }
         }
         @media (max-width: 560px) {
-          #destinationen .container > div[style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
-          #destinationen .container > div[style*="repeat(3, 1fr)"] > div[style*="span 2"] { grid-column: span 1 !important; }
+          .dest-mosaic { grid-template-columns: 1fr !important; }
+          .dest-wide { grid-column: span 1 !important; aspect-ratio: 16/9 !important; }
+          .dest-extra-row { flex-direction: column; }
         }
       `}</style>
     </section>

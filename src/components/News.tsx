@@ -52,7 +52,7 @@ export default function News() {
           <a href="#toerns" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>Alle Angebote →</a>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+        <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
           {offers.map((o, i) => (
             <motion.article
               key={o.title}
@@ -102,7 +102,10 @@ export default function News() {
 
       <style>{`
         @media (max-width: 900px) {
-          #news .container > div:last-child { grid-template-columns: 1fr !important; }
+          .news-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 560px) {
+          .news-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

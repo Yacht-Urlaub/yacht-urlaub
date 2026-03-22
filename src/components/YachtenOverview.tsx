@@ -31,7 +31,7 @@ export default function YachtenOverview() {
           </button>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem' }}>
+        <div className="yachten-overview-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem' }}>
           {types.map((t, i) => (
             <motion.div
               key={t.label}
@@ -69,8 +69,8 @@ export default function YachtenOverview() {
         @media (max-width: 900px) {
           .yachten-overview-grid { grid-template-columns: 1fr 1fr !important; }
         }
-        @media (max-width: 560px) {
-          .yachten-overview-grid { grid-template-columns: 1fr !important; }
+        @media (max-width: 480px) {
+          .yachten-overview-grid { grid-template-columns: 1fr 1fr !important; gap: 0.75rem !important; }
         }
       `}</style>
     </section>

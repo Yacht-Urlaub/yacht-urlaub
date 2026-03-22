@@ -69,7 +69,7 @@ export default function Team() {
         </motion.div>
 
         {/* Team members */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', marginBottom: '4rem' }}>
+        <div className="team-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem', marginBottom: '4rem' }}>
           {team.map((t, i) => (
             <motion.div
               key={t.name}
@@ -96,7 +96,7 @@ export default function Team() {
         </div>
 
         {/* Info cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+        <div className="team-cards-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
           {cards.map((c, i) => (
             <motion.div
               key={c.title}
@@ -130,10 +130,11 @@ export default function Team() {
       </div>
 
       <style>{`
-        .section .container > div[style*="repeat(3"] {
-          /* handled below */
-        }
         @media (max-width: 900px) {
+          .team-grid { grid-template-columns: 1fr 1fr !important; }
+          .team-cards-grid { grid-template-columns: 1fr !important; }
+        }
+        @media (max-width: 560px) {
           .team-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>

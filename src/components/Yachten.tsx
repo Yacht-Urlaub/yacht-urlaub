@@ -224,7 +224,7 @@ export default function Yachten() {
 
       {/* Tabs */}
       <div style={{ background: 'var(--navy)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-        <div className="container" style={{ display: 'flex' }}>
+        <div className="container" style={{ display: 'flex', overflowX: 'auto' }}>
           {categories.map(c => (
             <button
               key={c.id}
@@ -254,7 +254,7 @@ export default function Yachten() {
           transition={{ duration: 0.4 }}
         >
           <div className="container" style={{ padding: '4rem 20px' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '4rem', marginBottom: '4rem' }}>
+            <div className="yacht-desc-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '4rem', marginBottom: '4rem' }}>
               {/* Description */}
               <div>
                 <p style={{ color: '#555', fontSize: '1rem', lineHeight: 1.85, marginBottom: '2rem' }}>{cat.description}</p>
@@ -274,7 +274,7 @@ export default function Yachten() {
 
             {/* Modelle */}
             <h3 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Unsere Modelle</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem', marginBottom: '3rem' }}>
+            <div className="yacht-models-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem', marginBottom: '3rem' }}>
               {cat.models.map((m, i) => (
                 <motion.div
                   key={m.name}
@@ -307,7 +307,7 @@ export default function Yachten() {
 
             {/* Galerie */}
             <h3 style={{ fontFamily: 'Playfair Display, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Fotogalerie</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
+            <div className="yacht-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
               {cat.gallery.map((img, i) => (
                 <motion.div
                   key={img}
@@ -375,11 +375,13 @@ export default function Yachten() {
 
       <style>{`
         @media (max-width: 900px) {
-          #yachten .container > div[style*="grid-template-columns: 1fr 340px"] { grid-template-columns: 1fr !important; }
-          #yachten .container > div[style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; }
+          .yacht-desc-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+          .yacht-models-grid { grid-template-columns: 1fr 1fr !important; }
+          .yacht-gallery-grid { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 560px) {
-          #yachten .container > div[style*="repeat(4, 1fr)"] { grid-template-columns: 1fr !important; }
+          .yacht-models-grid { grid-template-columns: 1fr 1fr !important; gap: 0.75rem !important; }
+          .yacht-gallery-grid { grid-template-columns: 1fr 1fr !important; }
         }
       `}</style>
     </section>

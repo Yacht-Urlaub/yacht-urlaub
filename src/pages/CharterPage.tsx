@@ -68,9 +68,10 @@ export default function CharterPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
+              className="charter-service-row"
               style={{
                 display: 'grid',
-                gridTemplateColumns: i % 2 === 0 ? '1fr 1fr' : '1fr 1fr',
+                gridTemplateColumns: '1fr 1fr',
                 gap: '4rem',
                 alignItems: 'center',
                 marginBottom: '5rem',
@@ -143,7 +144,7 @@ export default function CharterPage() {
 
       <style>{`
         @media (max-width: 768px) {
-          .charter-grid { grid-template-columns: 1fr !important; direction: ltr !important; }
+          .charter-service-row { grid-template-columns: 1fr !important; direction: ltr !important; gap: 2rem !important; margin-bottom: 3rem !important; }
         }
       `}</style>
     </main>
