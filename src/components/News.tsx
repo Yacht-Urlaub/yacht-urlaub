@@ -4,7 +4,7 @@ import { useInView } from 'framer-motion'
 
 const offers = [
   {
-    img: '/images/Destinationsbilder/Seychellen_Drohne_klein.jpg',
+    img: '/images/Destinationsbilder/Seychellen.webp',
     tag: 'Angebot',
     title: 'DEIN PLATZ AN DER SONNE',
     text: '18.04. – 28.04.2026 ab Mahé, Seychellen inklusive Skipper, Katamaran-Komfort und unvergesslicher Momente.',
