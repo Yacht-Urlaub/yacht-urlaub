@@ -85,7 +85,7 @@ export default function Hero() {
             height: 'clamp(80px, 12vw, 130px)',
             marginTop: '3rem',
             filter: 'brightness(0) invert(1)',
-            imageRendering: 'crisp-edges',
+
           }}
         />
 
