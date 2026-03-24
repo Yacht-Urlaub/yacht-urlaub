@@ -32,5 +32,30 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Trusted Shops Widget -->
+    <div id="MyCustomTrustbadge" style="position: fixed; left: 20px; bottom: 20px; z-index: 2147483647;"></div>
+    <script type="text/javascript">
+      (function () {
+        var _tsid = 'X8C58FF076608DD16CD36F796D67C0862';
+        _tsConfig = {
+          'yOffset': '5',
+          'variant': 'custom_reviews',
+          'customElementId': 'MyCustomTrustbadge',
+          'trustcardDirection': 'topRight',
+          'customBadgeWidth': '',
+          'customBadgeHeight': '',
+          'disableResponsive': 'false',
+          'disableTrustbadge': 'false',
+        };
+        var _ts = document.createElement('script');
+        _ts.type = 'text/javascript';
+        _ts.charset = 'utf-8';
+        _ts.async = true;
+        _ts.src = 'https://widgets.trustedshops.com/js/' + _tsid + '.js';
+        var __ts = document.getElementsByTagName('script')[0];
+        __ts.parentNode.insertBefore(_ts, __ts);
+      })();
+    </script>
   </body>
 </html>
