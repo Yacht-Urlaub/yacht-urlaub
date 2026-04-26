@@ -62,10 +62,7 @@ export default function Navbar() {
   return (
     <header style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-      background: 'rgba(7,27,47,0.92)',
-      backdropFilter: 'blur(20px) saturate(180%)',
-      WebkitBackdropFilter: 'blur(20px) saturate(180%)',
-      transition: 'background 0.35s, box-shadow 0.35s',
+      background: '#071b2f',
       borderBottom: '1px solid rgba(255,255,255,0.08)',
       boxShadow: '0 4px 30px rgba(0,0,0,0.25)',
     }}>
@@ -99,9 +96,7 @@ export default function Navbar() {
               {open === item.label && (
                 <div style={{
                   position: 'absolute', top: '100%', left: 0,
-                  background: 'rgba(7,27,47,0.92)',
-                  backdropFilter: 'blur(16px) saturate(160%)',
-                  WebkitBackdropFilter: 'blur(16px) saturate(160%)',
+                  background: '#071b2f',
                   minWidth: '220px',
                   boxShadow: '0 16px 48px rgba(0,0,0,0.35)',
                   borderTop: '3px solid var(--gold)',
