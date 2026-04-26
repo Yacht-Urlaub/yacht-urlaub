@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 
 const nav = [
   {
-    label: 'Törns', href: '/#toerns', items: [
-      { label: 'Für Einsteiger', href: '/#toerns' },
-      { label: 'Für Freunde', href: '/#toerns' },
-      { label: 'Für Familien', href: '/#toerns' },
-      { label: 'Luxury', href: '/#toerns' },
+    label: 'Törns', href: '/toerns', items: [
+      { label: 'Alle Törns', href: '/toerns' },
+      { label: 'Für Einsteiger', href: '/toerns/einsteiger' },
+      { label: 'Für Freunde', href: '/toerns/freunde' },
+      { label: 'Für Familien', href: '/toerns/familien' },
+      { label: 'Luxury', href: '/toerns/luxury' },
       { label: 'Individuell planen', href: '/#kontakt' },
       { label: 'Törnberichte', href: '/toernberichte' },
-      { label: 'Anfrage starten', href: '/#kontakt' },
     ]
   },
   {

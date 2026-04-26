@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const groups = [
   {
@@ -9,7 +10,7 @@ const groups = [
     text: 'Noch nie gesegelt? Perfekt. Spüren Sie das Kribbeln, wenn sich die Yacht in Bewegung setzt – sicher begleitet von einem erfahrenen Skipper.',
     img: '/images/Zielgruppen/Einsteiger 1.jpg',
     cta: 'Einsteiger-Törns',
-    href: '#einsteiger',
+    href: '/toerns/einsteiger',
   },
   {
     title: 'Mit Freunden',
@@ -17,7 +18,7 @@ const groups = [
     text: 'Auf eurer Yacht erlebt ihr gemeinsam, was sonst nur in Filmen passiert. Sonne, Meer, Freiheit — und das gemeinsam.',
     img: '/images/Zielgruppen/Freunde 1.jpg',
     cta: 'Freunde-Törns',
-    href: '#freunde',
+    href: '/toerns/freunde',
   },
   {
     title: 'Familien-Törns',
@@ -25,7 +26,7 @@ const groups = [
     text: 'Ein Segelabenteuer, das Kinder staunen und Eltern durchatmen lässt. Unvergessliche Momente für die ganze Familie.',
     img: '/images/Zielgruppen/Familie 1.jpg',
     cta: 'Familien-Törns',
-    href: '#familien',
+    href: '/toerns/familien',
   },
   {
     title: 'Luxury',
@@ -33,7 +34,7 @@ const groups = [
     text: 'Gönnen Sie sich Meer mit Stil. An Bord unserer Luxusyachten wird jeder Sonnenuntergang zur Privataufführung.',
     img: '/images/Zielgruppen/Entdecker 3.jpg',
     cta: 'Luxury-Törns',
-    href: '#luxury',
+    href: '/toerns/luxury',
   },
 ]
 
@@ -71,7 +72,7 @@ function Card({ g, i }: { g: typeof groups[0]; i: number }) {
         <p style={{ color: 'var(--blue-light)', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>{g.subtitle}</p>
         <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: '#fff', fontSize: '1.4rem', marginBottom: '0.75rem', lineHeight: 1.25 }}>{g.title}</h3>
         <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.82rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>{g.text}</p>
-        <a href={g.href} className="btn btn-outline" style={{ fontSize: '0.72rem', padding: '9px 18px' }}>{g.cta} →</a>
+        <Link to={g.href} className="btn btn-outline" style={{ fontSize: '0.72rem', padding: '9px 18px' }}>{g.cta} →</Link>
       </div>
     </motion.div>
   )

@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const offers = [
   {
@@ -9,7 +10,7 @@ const offers = [
     title: 'DEIN PLATZ AN DER SONNE',
     text: '18.04. – 28.04.2026 ab Mahé, Seychellen inklusive Skipper, Katamaran-Komfort und unvergesslicher Momente.',
     cta: 'Mehr erfahren',
-    href: '#seychellen',
+    href: '/destinationen/seychellen',
   },
   {
     img: '/images/news/Dalmatia_kat.webp',
@@ -17,7 +18,7 @@ const offers = [
     title: 'VORTEILE FÜR FAMILIEN IN KROATIEN',
     text: 'Unser Partner MySea ermöglicht allen Familien günstiger durch die Inselwelt Kroatiens zu segeln.',
     cta: 'Mehr erfahren',
-    href: '#familien',
+    href: '/toerns/familien',
   },
   {
     img: '/images/news/beach-bikini-jump.jpg',
@@ -25,7 +26,7 @@ const offers = [
     title: 'KABINEN-ANGEBOTE',
     text: 'Entdecken Sie exklusive Kabinenangebote für Ihren Traum-Yachturlaub – individuell und unvergesslich!',
     cta: 'Angebote ansehen',
-    href: '#kabinen',
+    href: '/news',
   },
 ]
 
@@ -49,7 +50,7 @@ export default function News() {
             </p>
             <h2 className="section-title">Top-News &amp; Angebote</h2>
           </div>
-          <a href="#toerns" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>Alle Angebote →</a>
+          <Link to="/news" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>Alle Angebote →</Link>
         </motion.div>
 
         <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
@@ -93,7 +94,7 @@ export default function News() {
                   {o.title}
                 </h3>
                 <p style={{ color: 'var(--gray)', fontSize: '0.85rem', lineHeight: 1.75, flex: 1, marginBottom: '1.25rem' }}>{o.text}</p>
-                <a href={o.href} style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{o.cta} →</a>
+                <Link to={o.href} style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{o.cta} →</Link>
               </div>
             </motion.article>
           ))}

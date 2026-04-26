@@ -14,6 +14,9 @@ import FaqPage from './pages/FaqPage'
 import ImpressumPage from './pages/ImpressumPage'
 import DatenschutzPage from './pages/DatenschutzPage'
 import AgbPage from './pages/AgbPage'
+import ToernsPage from './pages/ToernsPage'
+import ToernDetailPage from './pages/ToernDetailPage'
+import NewsPage from './pages/NewsPage'
 
 const pageVariants = {
   initial: { opacity: 0, y: 16 },
@@ -32,6 +35,9 @@ function AnimatedRoutes() {
           <Route path="/destinationen/:id" element={<DestinationPage />} />
           <Route path="/yachten" element={<YachtenPage />} />
           <Route path="/charter" element={<CharterPage />} />
+          <Route path="/toerns" element={<ToernsPage />} />
+          <Route path="/toerns/:id" element={<ToernDetailPage />} />
+          <Route path="/news" element={<NewsPage />} />
           <Route path="/toernberichte" element={<ToernberichtePage />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/impressum" element={<ImpressumPage />} />
