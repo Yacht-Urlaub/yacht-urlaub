@@ -137,6 +137,91 @@ Sandy Island vor Carriacou ist genau das, was man sich unter einer karibischen I
 Den krönenden Abschluss bildete St. Vincent mit seinem wilden, bergigen Inneren und dem berühmten Wallilabou Bay — bekannt als Drehort der ersten Pirates-of-the-Caribbean-Filme. Zwei Wochen auf den Grenadinen sind wie ein Traum: Das Licht ist anders, das Wasser ist anders, die Zeit vergeht anders. Wer einmal durch diese Inselkette gesegelt ist, versteht, warum so viele Segler die Grenadinen als das Paradies auf Erden bezeichnen.`,
   },
   {
+    id: 'dodekanes',
+    title: 'Dodekanes — Faszinierende Reise durch die östliche Ägäis',
+    destination: 'Griechenland · Dodekanes',
+    date: 'Oktober 2022',
+    teaser: 'Rhodos, Kos, Patmos, Kalymnos — die zwölf großen Inseln der östlichen Ägäis verbinden mittelalterliche Geschichte mit glasklarem Wasser. Ein Törn zwischen ritterlichen Burgen und einsamen Buchten.',
+    headerImg: '/images/Destinationsbilder/bucht-in-den-dodekanes-bei-yacht-urlaub.jpg',
+    gallery: [
+      '/images/Destinationsbilder/bucht-in-den-dodekanes-bei-yacht-urlaub.jpg',
+      '/images/Destinationsbilder/akropolis-von-rhodos-bei-yacht-urlaub.jpg',
+      '/images/packages/Griechenland/gallery/akropolis-von-rhodos-bei-yacht-urlaub.jpg',
+      '/images/packages/Griechenland/gallery/BlaueBucht.jpg',
+      '/images/packages/Griechenland/gallery/Sonnenuntergang.jpg',
+      '/images/packages/Griechenland/gallery/20181008_184812.jpg',
+    ],
+    content: `Unser Törn startete in Rhodos, der größten Insel der Dodekanes und einer der besterhaltenen mittelalterlichen Städte Europas. Der Yachthafen liegt direkt neben der imposanten Stadtmauer — schon beim Einlaufen war klar, dass diese Reise historisch werden würde. Die Altstadt von Rhodos ist UNESCO-Welterbe: Kopfsteinpflaster, der Palast des Großmeisters, die Ritterstraße mit ihren gotischen Palästen. Wir verbrachten den ersten Abend in einem der Restaurants innerhalb der Stadtmauern und tranken lokalen Assyrtiko-Wein, während die Schwalben über das mittelalterliche Pflaster schossen.
+
+Von Rhodos segelten wir nach Kos — die Insel des Hippokrates, des Vaters der modernen Medizin. Das Asklepieion, das antike Heilungszentrum auf einem Hügel oberhalb der Stadt, bietet einen atemberaubenden Blick über die Insel und die türkische Küste, die hier nur wenige Kilometer entfernt liegt. Die Mischung aus griechischer und türkischer Atmosphäre ist spürbar — die Küchen beider Kulturen prägen die lokale Gastronomie.
+
+Patmos war der spirituelle Höhepunkt des Törns. Die Insel, auf der der Evangelist Johannes die Apokalypse geschrieben haben soll, strahlt eine mystische Ruhe aus, die man kaum beschreiben kann. Das Kloster des Heiligen Johannes thront über der Chora und ist ebenfalls UNESCO-Welterbe. Wir besuchten die Apokalypsen-Grotte, in der die Offenbarung verfasst worden sein soll — ein Erlebnis, das selbst überzeugten Nicht-Religiösen nicht gleichgültig lässt.
+
+Den Abschluss bildete Kalymnos, bekannt als die Insel der Schwammtaucher. Die bunten Häuser von Pothia, dem Hafen, und die dramatischen Kalksteinfelsen — das gleiche Gestein, das Kletterern aus aller Welt hierher lockt — sind ein eindrucksvoller Abschluss. Ein Dodekanes-Törn ist für alle, die neben dem Segeln auch Geschichte, Kultur und eine einzigartige Mischung aus Antike und Mittelalter suchen.`,
+  },
+  {
+    id: 'mallorca-menorca-cabrera',
+    title: 'Mallorca – Menorca – Cabrera: Entdeckungstour durch die nördlichen Balearen',
+    destination: 'Spanien · Balearen',
+    date: 'September 2021',
+    teaser: 'Palmas gotische Kathedrale, Menorcas unberührte Calas und das Naturschutzgebiet Cabrera — eine Woche durch die nördlichen Balearen zwischen Kultur, Natur und kristallklarem Wasser.',
+    headerImg: '/images/Destinationsbilder/Header/Header_TB_Mallorca.jpg',
+    gallery: [
+      '/images/Destinationsbilder/Header/Header_TB_Mallorca.jpg',
+      '/images/Destinationsbilder/blick-auf-palma-de-mallorca.jpg',
+      '/images/Destinationsbilder/alcúdia-bucht.jpg',
+      '/images/Destinationsbilder/espalmador-bei-yacht-urlaub.jpg',
+      '/images/Destinationsbilder/cabrera-bei-yacht-urlaub (2).jpg',
+    ],
+    content: `Palma de Mallorca im frühen September: Die Hochsaison ist vorbei, die Marinas atmen auf und die Stadt gehört wieder einem selbst. Wir übernahmen unsere Sun Odyssey 440 im Hafen von Palma und ließen uns zuerst von der Kathedrale La Seu in den Bann ziehen — von der Yacht aus ist sie aus fast jedem Winkel des Hafens zu sehen, ein gotisches Meisterwerk aus dem 13. Jahrhundert, das im Abendlicht golden glüht.
+
+Die erste Nacht ankerten wir in einer der Buchten östlich von Palma und segelten am nächsten Morgen mit frischem Tramontana-Wind nach Norden, in Richtung Alcúdia. Die Bucht von Alcúdia ist einer der wenigen Sandstrände Mallorcas, der von der Yacht aus unmittelbar erreichbar ist — wir ankerten in knapp 3 Metern Wassertiefe und schwammen direkt ans Ufer. Ein Kind, das uns beobachtete, fragte ernsthaft, ob wir Piraten seien.
+
+Menorca empfing uns mit Stille. Nach dem lebhaften Mallorca ist Menorca ein anderes Universum — UNESCO-Biosphärenreservat, wenig Tourismus, endlose Calas mit weißem Sand und türkisblauem Wasser, die man nur per Boot erreicht. Cala Macarella und Cala Macarelleta sind vielleicht die schönsten Buchten der Balearen: steile Felswände, kristallklares Wasser und eine Bar, die Pomada serviert — Gin Xoriguer aus Menorca mit Limonade, die Spezialität der Insel.
+
+Cabrera war der unvergessliche Abschluss. Das Naturschutzgebiet südlich von Mallorca darf nur mit Sondergenehmigung besucht werden — die Mühe lohnt sich. Eine historische Festung auf dem Hügel, Wasser von einer Klarheit, die jeden Fotografen zur Verzweiflung bringt, und abends kein einziges anderes Boot mehr in der Bucht. Die Stille war so vollständig, dass das Gluckern des Wassers am Rumpf laut klang.`,
+  },
+  {
+    id: 'sardinien-korsika',
+    title: 'Sardinien bis Korsika — Entdeckungstour zu den Inseln der Kontraste',
+    destination: 'Italien & Frankreich · Tyrrhenisches Meer',
+    date: 'Juni 2023',
+    teaser: 'Zwei Inseln, zwei Kulturen, ein Meer. Von Sardiniens karibisch anmutendem Costa Smeralda bis zu Korsikas wilden Bergküsten — eine Reise durch die faszinierendsten Kontraste des Mittelmeers.',
+    headerImg: '/images/Destinationsbilder/Header/dennis-van-den-worm-1218300-unsplash.jpg',
+    gallery: [
+      '/images/Destinationsbilder/Header/dennis-van-den-worm-1218300-unsplash.jpg',
+      '/images/Destinationsbilder/enge-gasse-mit-blick-aufs-meer-bei-yacht-urlaub.jpg',
+      '/images/packages/Griechenland/gallery/BlaueBucht.jpg',
+    ],
+    content: `Die Überfahrt von Porto Cervo auf Sardiniens Costa Smeralda nach Bonifacio auf Korsika ist eine der spektakulärsten Segelpassagen des Mittelmeers. Die Bouches de Bonifacio — die Meerenge zwischen den beiden Inseln — sind berüchtigt: Strömungen, Felsen und manchmal starker Wind machen die Durchfahrt anspruchsvoll. Aber der Ausblick auf die weißen Kalksteinklippen beider Inseln, zwischen denen das türkisfarbene Wasser rauscht, ist schlicht unvergesslich.
+
+Sardinien überraschte uns mit seinem karibischen Flair, das man im Mittelmeer nicht erwartet. Die Buchten rund um La Maddalena und Caprera — ein Archipel-Nationalpark — haben ein Wasser, das kaum zu beschreiben ist: mehrere Blautöne übereinander, Sichtweiten von 20 Metern und Sandböden, die von unten leuchten. Die Costa Smeralda ist bekannt für ihre Luxusmarinas (Porto Cervo, Porto Rafael), aber die schönsten Ankerplätze im Archipel sind wild, einsam und kostenlos.
+
+Korsika ist Sardiniens entgegengesetzter Charakter: rauher, grüner, wilder. Das Maquis — das typische korsische Unterholz aus Rosmarin, Myrte und Lavendel — duftet schon auf dem Meer, bevor man die Insel sieht. Napoleon soll auf Korsika geboren worden sein und seinen Geburtsort immer am Duft erkannt haben. Bonifacio, die Stadt auf den Klippen, hängt buchstäblich über dem Meer — die Häuser ragen bis an den Rand der Felskante, 60 Meter über dem Wasser.
+
+Porto Vecchio, Propriano und der Golf von Valinco im Südwesten Korsikas boten die schönsten Ankerbuchten. Das Bergpanorama der zentralen Korsika-Berge, bis in den Juni hinein mit Schneeflecken bedeckt, bildet einen surrealen Kontrast zum mediterranen Blau des Meeres. Zwei Inseln, zwei Kulturen, ein Erlebnis, das bleibt.`,
+  },
+  {
+    id: 'sizilien',
+    title: 'Zauberhaftes Sizilien — Kultur, Kulinarik und Vulkane',
+    destination: 'Italien · Sizilien & Äolische Inseln',
+    date: 'Mai 2022',
+    teaser: 'Palermo, Cefalù, die Äolischen Inseln mit dem aktiven Vulkan Stromboli — Sizilien ist ein Törn durch Jahrtausende Geschichte und mediterrane Sinnlichkeit, umgeben von glasklarem Wasser.',
+    headerImg: '/images/packages/Mamma-Mia/Mamma Mia Rock.webp',
+    gallery: [
+      '/images/packages/Mamma-Mia/Mamma Mia Rock.webp',
+      '/images/Destinationsbilder/enge-gasse-mit-blick-aufs-meer-bei-yacht-urlaub.jpg',
+      '/images/Destinationsbilder/landkarte_europa_Italien_gross.jpg',
+    ],
+    content: `Sizilien ist eine Welt für sich — und kaum eine Segelregion des Mittelmeers bietet eine vergleichbar dichte Mischung aus Geschichte, Kulinarik und Naturspektakel. Unser Törn startete in Palermo, der pulsierenden Hauptstadt, die wie ein barockes Theaterstück aussieht: Prachtbauten aus arab-normannischer Zeit, verwitterte Fassaden, laute Märkte (der Ballarò ist einer der lebendigsten Basare Europas) und das beste Streetfood des Mittelmeers — Arancini, Panelle und Granita alla mandorla.
+
+Von Palermo segelten wir ostwärts nach Cefalù, einem der schönsten Orte Siziliens. Der normannische Dom aus dem 12. Jahrhundert thront über den bunten Fischerbooten im kleinen Hafen, im Hintergrund ragen die Felsen der Rocca auf. Wir ankerten in der Bucht östlich des Ortes und schnorchelten in kristallklarem Wasser — kaum vorstellbar, dass wir uns mitten im Mittelmeer befanden.
+
+Die Äolischen Inseln nördlich Siziliens sind das Herzstück dieses Törns: Stromboli, der aktive Vulkan, der Tag und Nacht Feuerfontänen in den Himmel schleudert; Panarea mit ihren weißgetünchten Häusern und dem Flair einer kleinen Capri; Lipari, die größte und lebendigste der sieben Inseln; und Vulcano mit seinen Schwefeldampfausstößen und dem dazugehörigen Fango-Bad im heißen Schlamm, das Kinder und Erwachsene gleichsam begeistert.
+
+Den unvergesslichsten Moment brachte die Nachtpassage vor Stromboli. Wir ankerten in sicherer Entfernung und beobachteten im Dunkeln, wie der Vulkan alle 20–30 Minuten Glutbrocken ausspie und in orangefarbenen Fontänen wieder niederfielen. Die Glut spiegelte sich auf dem stillen Wasser, kein Wind, kein Laut außer dem fernen Grollen und dem Plätschern der kleinen Wellen. Sizilien ist kein normaler Segeltörn — es ist eine Reise durch Mythos und Geschichte, die unter die Haut geht.`,
+  },
+  {
     id: 'kornaten-archipel',
     title: 'Kornaten — Der stille Archipel',
     destination: 'Kroatien · Kornaten',
