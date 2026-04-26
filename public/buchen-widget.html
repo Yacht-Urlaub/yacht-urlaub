@@ -7,6 +7,7 @@
   <script type="text/javascript" src="https://www.planyo.com/utils.js"></script>
   <link rel="stylesheet" href="https://www.planyo.com/Plugins/PlanyoFiles/bootstrap-planyo.min.css" type="text/css" />
   <link rel="stylesheet" href="https://www.planyo.com/schemes/?calendar=46954&detect_mobile=auto&sel=scheme_css" type="text/css" />
+  <link rel="stylesheet" href="https://www.planyo.com/li.css" type="text/css" />
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; background: #f4f6f8; font-family: Arial, sans-serif; }
@@ -134,16 +135,19 @@
       <div class="form-row">
         <div class="form-group">
           <label for="box_start_date">Startdatum *</label>
-          <div style="position:relative; display:flex; align-items:center;">
-            <input type="text" id="box_start_date" name="box_start_date"
-              autocomplete="off"
-              placeholder="TT.MM.JJJJ"
+          <div class="input-group" style="display:flex;">
+            <input class="with-status-border form-control" type="text" id="box_start_date" name="box_start_date"
+              autocomplete="off" placeholder="TT.MM.JJJJ"
               onfocus="planyo_close_calendar();planyo_show_calendar('box_start_date',null);"
               onmousedown="var e=arguments[0]||window.event;e.stopPropagation();"
               onclick="var e=arguments[0]||window.event;e.stopPropagation();"
-              style="padding-right:36px;" />
-            <span onclick="planyo_close_calendar();planyo_show_calendar('box_start_date',null);"
-              style="position:absolute;right:8px;cursor:pointer;color:#1a6eb5;font-size:1.1rem;">📅</span>
+              style="border-radius:4px 0 0 4px;" />
+            <span class="input-group-addon" onclick="planyo_close_calendar();planyo_show_calendar('box_start_date',null);"
+              style="cursor:pointer;background:#e9ecef;border:1px solid #ccc;border-left:none;border-radius:0 4px 4px 0;padding:0 10px;display:flex;align-items:center;">
+              <a class="planyo-cal-icon" id="box_start_datecalref"
+                onclick="planyo_show_calendar('box_start_date',null);"
+                style="display:block;width:18px;height:18px;text-decoration:none;">&#160;</a>
+            </span>
           </div>
         </div>
 
