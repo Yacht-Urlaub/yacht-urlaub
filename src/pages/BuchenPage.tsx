@@ -100,26 +100,9 @@ export default function BuchenPage() {
             title="Yacht buchen"
             style={{
               width: '100%',
-              height: '900px',
+              height: '1400px',
               border: 'none',
               display: 'block',
-            }}
-            scrolling="no"
-            onLoad={e => {
-              // Auto-resize iframe to content height
-              try {
-                const iframe = e.currentTarget
-                const resize = () => {
-                  const doc = iframe.contentDocument || iframe.contentWindow?.document
-                  if (doc) {
-                    iframe.style.height = doc.body.scrollHeight + 40 + 'px'
-                  }
-                }
-                iframe.contentWindow?.addEventListener('resize', resize)
-                setTimeout(resize, 500)
-                setTimeout(resize, 1500)
-                setTimeout(resize, 3000)
-              } catch { /* cross-origin */ }
             }}
           />
         </motion.div>
