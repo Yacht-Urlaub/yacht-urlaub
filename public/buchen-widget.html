@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yacht buchen</title>
+  <script type="text/javascript" src="https://www.planyo.com/utils.js"></script>
+  <script type="text/javascript" src="https://www.planyo.com/wrappers.js"></script>
+  <link rel="stylesheet" href="https://www.planyo.com/Plugins/PlanyoFiles/bootstrap-planyo.min.css" type="text/css" />
+  <link rel="stylesheet" href="https://www.planyo.com/schemes/?calendar=46954&detect_mobile=auto&sel=scheme_css" type="text/css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', Arial, sans-serif;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+    }
+    .widget-wrapper {
+      padding: 0;
+    }
+    /* Search bar */
+    .search-bar {
+      background: #f4f6f8;
+      border: 1px solid #e0e4ea;
+      border-radius: 6px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .search-hint {
+      font-size: 0.82rem;
+      color: #666;
+      margin-top: 0.6rem;
+      font-style: italic;
+    }
+    /* Override planyo button to match site style */
+    #box_submit_button {
+      background-color: #1a6eb5 !important;
+      border-color: #1a6eb5 !important;
+      border-radius: 3px !important;
+      padding: 8px 28px !important;
+      font-size: 0.9rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.05em !important;
+      cursor: pointer !important;
+    }
+    #box_submit_button:hover {
+      background-color: #155a94 !important;
+    }
+    .horizontal-widget .planyo-form-item-group { margin-right: 20px; }
+    .horizontal-widget .planyo-form-item-group label { margin-right: 8px; }
+    .horizontal-widget #res_form_buttons { display: inline-block; }
+    #search_form label { display: block; float: none; width: 100%; }
+    form#search_form li.planyo_static_help { margin-left: 0; }
+    /* Results iframe */
+    #planyo_li_iframe {
+      width: 100% !important;
+      min-height: 700px !important;
+      border: none !important;
+      display: block !important;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="widget-wrapper">
+    <div class="search-bar">
+      <div id="planyo_search_widget" class="planyo horizontal-widget">
+        <link rel="stylesheet" href="https://www.planyo.com/li.css">
+        <script type="text/javascript" src="https://www.planyo.com/li.js?v=3"></script>
+        <style>
+          #search_form label { display:block; float:none; width:100%; }
+          form#search_form li.planyo_static_help { margin-left:0; }
+        </style>
+
+        <form id="box_search_form" name="search_form" class="title_above form-inline"
+          action="https://www.planyo.com/booking.php" role="form"
+          target="planyo_li_iframe"
+          onsubmit="return planyo_li_on_submit_form()" method="get"
+          style="text-align:center;">
+
+          <input type="hidden" value="46954" id="calendar" name="calendar" />
+
+          <div style="position:absolute;visibility:hidden;z-index:5000;" class="picker_dropdown" id="box_start_datecal"
+            onmousedown="var e=arguments[0]||window.event;e.stopPropagation();"
+            onclick="var e=arguments[0]||window.event;e.stopPropagation();"></div>
+
+          <script type="text/javascript">
+            planyo_set_event(document.getElementById('box_start_datecal'), 'click', 'planyo_dummy', false);
+            document.first_weekday = 1;
+          </script>
+
+          <script type="text/javascript">
+            document.new_scheme = 1;
+            document.s_prev = "Vorherige";
+            document.s_next = "Nächste";
+            document.s_today = "Heute";
+            document.s_day = "Tag";
+            document.s_days = "Tage";
+            document.s_week = "Woche";
+            document.s_weeks = "Wochen";
+            document.s_weekday = "Wochentag";
+            document.s_month = "Monat";
+            document.s_single_res = "Einzelne Ressource";
+            document.s_weekdays_short = ["M","D","M","D","F","S","S"];
+            document.s_weekdays_med = ["Mo","Di","Mi","Do","Fr","Sa","So"];
+            document.s_weekdays_long = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"];
+            document.s_months_short = ["Jan","Feb","Mrz","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+            document.s_months_long = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+            document.s_all = "Alle";
+            document.s_showall = "Alle zeigen";
+            document.s_areav = "sind verfügbar. ";
+            document.s_clickres = "Klicken Sie hier, um eine Buchung vorzunehmen.";
+            document.s_partav = "Nur für einen Teil des Tages verfügbar. Klicken Sie auf das Datum oben, um Details zu erfahren.";
+            document.s_outof = "von";
+            document.s_unav = "Nicht verfügbar";
+            document.s_av = "Verfügbar";
+            document.s_vacation = "Ferien";
+            document.s_allday = "Ganzer Tag";
+            document.s_day_view = "Tag zeigen";
+            document.s_month_view = "Monat zeigen";
+            document.s_more = "mehr";
+            if (!document.date_format) document.date_format = "d.m.Y";
+            planyo_set_event(document, 'mousedown', 'planyo_close_calendar', false);
+          </script>
+
+          <!-- Startdatum -->
+          <div class="form-group planyo-form-item-group datefld single-col" id="row_box_start_date">
+            <label class="control-label">Startdatum<em>*</em></label>
+            <div class="input-group">
+              <input class="with-status-border form-control" type="text" id="box_start_date" name="box_start_date"
+                autocomplete="off" value=""
+                onfocus="planyo_close_calendar();planyo_show_calendar('box_start_date',null);"
+                onmousedown="var e=arguments[0]||window.event;e.stopPropagation();"
+                onclick="var e=arguments[0]||window.event;e.stopPropagation();" />
+              <span class="input-group-addon" onclick="planyo_close_calendar();planyo_show_calendar('box_start_date',null);">
+                <span class="input-group-text">
+                  <a class="planyo-cal-icon" target="_self" onclick="planyo_show_calendar('box_start_date',null);" id="box_start_datecalref">&#160;</a>
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Dauer -->
+          <div class="form-group planyo-form-item-group single-col" id="row_rental_time_value">
+            <label class="control-label">Dauer</label>
+            <select class="with-status-border form-control" name="rental_time_value" id="box_rental_time_value">
+              <option selected="selected" value="168">7 Tage</option>
+              <option value="336">14 Tage</option>
+              <option value="240">10 Tage</option>
+            </select>
+          </div>
+
+          <input type="hidden" value="name" id="sort_fields" name="sort_fields" />
+          <input type="hidden" value="name" id="sort" name="sort" />
+          <input type="hidden" value="1" id="is_night" name="is_night" />
+          <input type="hidden" value="1440" id="granulation" name="granulation" />
+          <input type="hidden" value="search" id="mode" name="mode" />
+          <input type="hidden" value="DE" id="custom-language" name="custom-language" />
+          <input type="hidden" value="" id="tz_offset" name="tz_offset" />
+          <input type="hidden" value="1" id="lightbox" name="lightbox" />
+
+          <div id="res_form_buttons">
+            <label for="submit_button">&nbsp;</label>
+            <input class="btn btn-primary btn-lg" id="box_submit_button" name="submit_button" type="submit" value="Suche" />
+          </div>
+          <input type="hidden" value="true" id="submitted_field" name="submitted" />
+        </form>
+
+        <script type="text/javascript">
+          var user_tz = new Date().getTimezoneOffset();
+          if (document.getElementById('tz_offset')) document.getElementById('tz_offset').value = user_tz;
+        </script>
+        <script type="text/javascript">
+          window.verify_search_fields = "box_start_date";
+        </script>
+        <script src="https://www.planyo.com/verify-search-fields.js"></script>
+      </div>
+
+      <p class="search-hint">&#9432; Für Mai – Oktober als Startdatum bitte Mittwoch oder Samstag wählen!</p>
+    </div>
+  </div>
+</body>
+</html>
