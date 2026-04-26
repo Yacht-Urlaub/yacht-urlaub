@@ -17,6 +17,7 @@ import AgbPage from './pages/AgbPage'
 import ToernsPage from './pages/ToernsPage'
 import ToernDetailPage from './pages/ToernDetailPage'
 import NewsPage from './pages/NewsPage'
+import BuchenPage from './pages/BuchenPage'
 
 const pageVariants = {
   initial: { opacity: 0, y: 16 },
@@ -38,6 +39,7 @@ function AnimatedRoutes() {
           <Route path="/toerns" element={<ToernsPage />} />
           <Route path="/toerns/:id" element={<ToernDetailPage />} />
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/buchen" element={<BuchenPage />} />
           <Route path="/toernberichte" element={<ToernberichtePage />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/impressum" element={<ImpressumPage />} />

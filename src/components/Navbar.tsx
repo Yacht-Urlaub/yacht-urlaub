@@ -112,7 +112,7 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <Link to="/#kontakt" className="btn btn-primary" style={{ marginLeft: '12px', fontSize: '0.75rem', padding: '9px 20px' }}>
+          <Link to="/buchen" className="btn btn-primary" style={{ marginLeft: '12px', fontSize: '0.75rem', padding: '9px 20px' }}>
             Jetzt buchen
           </Link>
           <div style={{ marginLeft: '12px', display: 'flex', gap: '6px' }}>
