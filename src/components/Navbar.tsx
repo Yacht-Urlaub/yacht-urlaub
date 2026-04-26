@@ -62,12 +62,12 @@ export default function Navbar() {
   return (
     <header style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-      background: scrolled ? 'rgba(7,27,47,0.82)' : 'rgba(7,27,47,0.15)',
+      background: 'rgba(7,27,47,0.92)',
       backdropFilter: 'blur(20px) saturate(180%)',
       WebkitBackdropFilter: 'blur(20px) saturate(180%)',
       transition: 'background 0.35s, box-shadow 0.35s',
       borderBottom: '1px solid rgba(255,255,255,0.08)',
-      boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.25)' : 'none',
+      boxShadow: '0 4px 30px rgba(0,0,0,0.25)',
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px' }}>
         {/* Logo */}
