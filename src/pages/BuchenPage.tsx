@@ -29,7 +29,7 @@ const packages = [
     title: 'Grenadinen-Package',
     region: 'Karibik · St. Vincent & Grenadinen',
     text: 'Segelurlaub auf einer Segelyacht oder einem Katamaran in den Grenadinen.',
-    img: '/images/Destinationsbilder/st-vincent-and-the-grenadines-TITELBILD.webp',
+    img: '/images/Destinationsbilder/sonnenuntergang-grenadinen.jpg',
     href: '/destinationen/karibik',
   },
   {
