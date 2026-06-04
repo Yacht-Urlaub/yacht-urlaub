@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 type YachtCategory = {
   id: string
@@ -18,12 +19,14 @@ const categories: YachtCategory[] = [
     label: 'Segelyacht',
     subtitle: 'Monohull',
     headerImg: '/images/yachten/monohull.jpg',
-    description: 'Die klassische Segelyacht — elegant, schnell und mit dem einzigartigen Gefühl des echten Segelns. Von kompakten 35-Fuß-Yachten bis hin zu komfortablen 55-Fuß-Kreuzern.',
+    description: 'Die klassische Segelyacht — der Allrounder unter den Bootstypen. Sportlich, effizient und mit dem einzigartigen Gefühl des echten Segelns. Ideal für alle, die den Wind in den Segeln spüren wollen — als Pärchen, Freundesgruppe oder im Flottillen-Urlaub.',
     specs: [
-      { label: 'Länge', value: '35 – 55 Fuß' },
-      { label: 'Kabinen', value: '2 – 5' },
-      { label: 'Personen', value: '4 – 10' },
-      { label: 'Marken', value: 'Dufour, Bavaria, Hanse, Jeanneau, Elan' },
+      { label: 'Preis', value: 'Unteres Preissegment' },
+      { label: 'Verfügbarkeit', value: 'Hoch' },
+      { label: 'Eigenschaften', value: 'Allrounder, sportlich, effizient' },
+      { label: 'Bestens geeignet für', value: 'Segeln, gemütliche Törns, Flottille' },
+      { label: 'Anzahl Personen', value: '2 – 10' },
+      { label: 'Spritverbrauch', value: 'Sparsam' },
     ],
     gallery: [
       '/images/yachten/monohull.jpg',
@@ -51,12 +54,14 @@ const categories: YachtCategory[] = [
     label: 'Segel-Katamaran',
     subtitle: 'Mehr Platz, mehr Komfort',
     headerImg: '/images/yachten/katamaran.jpg',
-    description: 'Katamarane bieten maximalen Wohnkomfort, minimalen Tiefgang und ein stabiles Segelerlebnis. Ideal für Familien und Gruppen, die das Beste aus Komfort und Abenteuer wollen.',
+    description: 'Der Segel-Katamaran bietet maximalen Wohnkomfort, kaum Krängung und minimalen Tiefgang — ideal für Familien, große Gruppen und alle, die großzügigen Platz an Bord schätzen. Die zwei Rümpfe bieten private Kabinen mit eigenem Bad auf beiden Seiten.',
     specs: [
-      { label: 'Länge', value: '40 – 52 Fuß' },
-      { label: 'Kabinen', value: '3 – 6' },
-      { label: 'Personen', value: '6 – 12' },
-      { label: 'Marken', value: 'Lagoon, Bali, Leopard, Fountaine Pajot' },
+      { label: 'Preis', value: 'Mittleres Preissegment' },
+      { label: 'Verfügbarkeit', value: 'Gut' },
+      { label: 'Eigenschaften', value: 'Viel Platz und Komfort' },
+      { label: 'Bestens geeignet für', value: 'Familien, große Gruppen, flache Gewässer' },
+      { label: 'Anzahl Personen', value: '5 – 10' },
+      { label: 'Spritverbrauch', value: 'Durchschnitt' },
     ],
     gallery: [
       '/images/yachten/katamaran.jpg',
@@ -84,12 +89,14 @@ const categories: YachtCategory[] = [
     label: 'Motoryacht',
     subtitle: 'Monohull',
     headerImg: '/images/yachten/motoryacht.jpg',
-    description: 'Für alle, die das Meer lieber mit Motor erkunden. Unsere Motoryachten bieten luxuriösen Komfort, hohe Geschwindigkeit und stilvolles Design — perfekt für exklusive Törns.',
+    description: 'Für alle, die Luxus, Schnelligkeit und exklusives Design suchen. Die Motoryacht ist das Statussymbol auf dem Wasser — sehr schnell, komfortabel ausgestattet und mit gehobener Inneneinrichtung. Ideal für anspruchsvolle Reisende, die das Beste genießen möchten.',
     specs: [
-      { label: 'Länge', value: '40 – 60 Fuß' },
-      { label: 'Kabinen', value: '2 – 5' },
-      { label: 'Personen', value: '4 – 10' },
-      { label: 'Marken', value: 'Azimut, Ferretti' },
+      { label: 'Preis', value: 'Oberes Preissegment' },
+      { label: 'Verfügbarkeit', value: 'OK' },
+      { label: 'Eigenschaften', value: 'Sehr schnell, luxuriös' },
+      { label: 'Bestens geeignet für', value: 'Luxusbewusste Reisende' },
+      { label: 'Anzahl Personen', value: '2 – 8' },
+      { label: 'Spritverbrauch', value: 'Extrem hoch' },
     ],
     gallery: [
       '/images/yachten/motoryacht.jpg',
@@ -111,12 +118,14 @@ const categories: YachtCategory[] = [
     label: 'Motor-Katamaran',
     subtitle: 'Power & Komfort',
     headerImg: '/images/yachten/motoryacht-katamaran.jpg',
-    description: 'Das Beste aus zwei Welten: die Stabilität und den Platz eines Katamarans kombiniert mit der Motorleistung für komfortables Cruisen ohne Segel.',
+    description: 'Das Beste aus zwei Welten: Stabilität und Wohnkomfort eines Katamarans, kombiniert mit hoher Motorleistung. Ideal für alle, die schnell und komfortabel reisen möchten, ohne auf Segel angewiesen zu sein. Beliebt für Familien und Relaxing-Törns.',
     specs: [
-      { label: 'Länge', value: '47 – 58 Fuß' },
-      { label: 'Kabinen', value: '3 – 6' },
-      { label: 'Personen', value: '6 – 12' },
-      { label: 'Marken', value: 'Leopard, Fountaine Pajot' },
+      { label: 'Preis', value: 'Mittleres bis oberes Preissegment' },
+      { label: 'Verfügbarkeit', value: 'Gering' },
+      { label: 'Eigenschaften', value: 'Schnell, viel Platz und Komfort' },
+      { label: 'Bestens geeignet für', value: 'Familien, gemütliche Relaxing-Törns' },
+      { label: 'Anzahl Personen', value: '4 – 8' },
+      { label: 'Spritverbrauch', value: 'Hoch' },
     ],
     gallery: [
       '/images/yachten/motoryacht-katamaran.jpg',
@@ -145,6 +154,14 @@ const brands = [
   { name: 'Azimut', img: '/images/yachten/yachtbauer/azimut.jpg' },
   { name: 'Leopard', img: '/images/yachten/yachtbauer/leopard-catamarans-logo.jpg' },
 ]
+
+function th(): React.CSSProperties {
+  return { padding: '0.7rem 1rem', textAlign: 'left', fontWeight: 700, letterSpacing: '0.04em', fontSize: '0.78rem', textTransform: 'uppercase' }
+}
+
+function td(): React.CSSProperties {
+  return { padding: '0.65rem 1rem', borderBottom: '1px solid #e8e8e8', fontSize: '0.82rem' }
+}
 
 function Lightbox({ imgs, index, onClose, onPrev, onNext }: { imgs: string[]; index: number; onClose: () => void; onPrev: () => void; onNext: () => void }) {
   return (
@@ -186,7 +203,14 @@ function navBtn(side: 'left' | 'right'): React.CSSProperties {
 }
 
 export default function Yachten() {
-  const [activeTab, setActiveTab] = useState('monohull')
+  const [searchParams] = useSearchParams()
+  const tabParam = searchParams.get('tab')
+  const validTabs = categories.map(c => c.id)
+  const [activeTab, setActiveTab] = useState(validTabs.includes(tabParam ?? '') ? tabParam! : 'monohull')
+
+  useEffect(() => {
+    if (tabParam && validTabs.includes(tabParam)) setActiveTab(tabParam)
+  }, [tabParam])
   const [lightboxImg, setLightboxImg] = useState<number | null>(null)
   const cat = categories.find(c => c.id === activeTab)!
 
@@ -215,7 +239,7 @@ export default function Yachten() {
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
             Unsere Flotte
           </p>
-          <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff', marginBottom: '0.5rem' }}>
+          <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff', marginBottom: '0.5rem' }}>
             {cat.label}
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem' }}>{cat.subtitle}</p>
@@ -245,6 +269,45 @@ export default function Yachten() {
         </div>
       </div>
 
+      {/* Vergleichstabelle */}
+      <div style={{ background: 'var(--gray-light)', borderBottom: '1px solid #e8e8e8' }}>
+        <div className="container" style={{ padding: '2.5rem 20px' }}>
+          <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.25rem', marginBottom: '1.25rem', textAlign: 'center' }}>
+            Alle Yachttypen im Überblick
+          </h3>
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.82rem', minWidth: '560px' }}>
+              <thead>
+                <tr style={{ background: 'var(--navy)', color: '#fff' }}>
+                  <th style={th()}></th>
+                  <th style={th()}>Segelyacht</th>
+                  <th style={th()}>Segel-Katamaran</th>
+                  <th style={th()}>Motoryacht</th>
+                  <th style={th()}>Motor-Katamaran</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ['Preis', 'Unteres Segment', 'Mittleres Segment', 'Oberes Segment', 'Mittel–Oberes'],
+                  ['Verfügbarkeit', 'Hoch', 'Gut', 'OK', 'Gering'],
+                  ['Eigenschaften', 'Sportlich, effizient', 'Viel Platz & Komfort', 'Sehr schnell, luxuriös', 'Schnell, komfortabel'],
+                  ['Bestens für', 'Segeln, Flottille', 'Familien, Gruppen', 'Luxusbewusste', 'Familie, Relaxing'],
+                  ['Personen', '2 – 10', '5 – 10', '2 – 8', '4 – 8'],
+                  ['Spritverbrauch', 'Sparsam', 'Durchschnitt', 'Extrem hoch', 'Hoch'],
+                ].map(([label, ...vals], ri) => (
+                  <tr key={label} style={{ background: ri % 2 === 0 ? '#fff' : 'var(--gray-light)' }}>
+                    <td style={{ ...td(), fontWeight: 600, color: 'var(--navy)', width: '160px' }}>{label}</td>
+                    {vals.map((v, ci) => (
+                      <td key={ci} style={{ ...td(), textAlign: 'center', color: categories[ci].id === activeTab ? 'var(--blue)' : 'var(--gray)', fontWeight: categories[ci].id === activeTab ? 700 : 400 }}>{v}</td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
@@ -262,7 +325,7 @@ export default function Yachten() {
               </div>
               {/* Specs */}
               <div style={{ background: 'var(--gray-light)', borderRadius: '4px', padding: '1.75rem' }}>
-                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.1rem', marginBottom: '1.25rem' }}>Technische Daten</h3>
+                <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.1rem', marginBottom: '1.25rem' }}>Technische Daten</h3>
                 {cat.specs.map(s => (
                   <div key={s.label} style={{ display: 'flex', justifyContent: 'space-between', padding: '0.6rem 0', borderBottom: '1px solid #e8e8e8' }}>
                     <span style={{ fontSize: '0.82rem', color: 'var(--gray)', fontWeight: 400 }}>{s.label}</span>
@@ -273,7 +336,10 @@ export default function Yachten() {
             </div>
 
             {/* Modelle */}
-            <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Unsere Modelle</h3>
+            <div style={{ marginBottom: '1rem' }}>
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '0.5rem' }}>Beispiel-Yachten</h3>
+              <p style={{ color: 'var(--gray)', fontSize: '0.82rem', marginBottom: '1.25rem' }}>Die verfügbaren Yachten variieren je nach Saison und Destination — die gezeigten Modelle sind repräsentative Beispiele.</p>
+            </div>
             <div className="yacht-models-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.25rem', marginBottom: '3rem' }}>
               {cat.models.map((m, i) => (
                 <motion.div
@@ -306,7 +372,7 @@ export default function Yachten() {
             </div>
 
             {/* Galerie */}
-            <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Fotogalerie</h3>
+            <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Fotogalerie</h3>
             <div className="yacht-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
               {cat.gallery.map((img, i) => (
                 <motion.div

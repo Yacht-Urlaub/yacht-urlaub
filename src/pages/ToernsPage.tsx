@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
@@ -46,8 +45,6 @@ const highlights = [
 ]
 
 export default function ToernsPage() {
-  useEffect(() => { window.scrollTo(0, 0) }, [])
-
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
@@ -71,7 +68,7 @@ export default function ToernsPage() {
             Unsere Törns
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
-            style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff', marginBottom: '1rem' }}>
+            style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff', marginBottom: '1rem' }}>
             Dein perfekter Segeltörn
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
@@ -146,7 +143,7 @@ export default function ToernsPage() {
                 }} />
                 <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.75rem' }}>
                   <p style={{ color: 'var(--blue-light)', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>{cat.subtitle}</p>
-                  <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: '#fff', fontSize: '1.4rem', marginBottom: '0.75rem', lineHeight: 1.25 }}>{cat.title}</h3>
+                  <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.4rem', marginBottom: '0.75rem', lineHeight: 1.25 }}>{cat.title}</h3>
                   <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.82rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>{cat.text}</p>
                   <Link to={`/toerns/${cat.id}`} className="btn btn-outline" style={{ fontSize: '0.72rem', padding: '9px 18px' }}>
                     {cat.cta} →
@@ -173,13 +170,13 @@ export default function ToernsPage() {
             <p style={{ color: 'var(--gold)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 600 }}>
               Kein passender Törn dabei?
             </p>
-            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: '#fff', marginBottom: '1.25rem' }}>
+            <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: '#fff', marginBottom: '1.25rem' }}>
               Dein individueller Törn nach Maß
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
               Wir planen deinen Traumtörn ganz nach deinen Wünschen — Reisezeit, Zielgebiet, Yacht und Crew. Kontaktiere uns für ein persönliches Angebot.
             </p>
-            <Link to="/#kontakt" className="btn btn-primary">Jetzt anfragen</Link>
+            <a href="#kontakt" className="btn btn-primary">Jetzt anfragen</a>
           </motion.div>
         </div>
       </section>

@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 
 const faqs = [
@@ -197,8 +196,6 @@ const faqSchema = {
 }
 
 export default function FaqPage() {
-  useEffect(() => { window.scrollTo(0, 0) }, [])
-
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
@@ -211,7 +208,7 @@ export default function FaqPage() {
       <div style={{ background: 'var(--navy)', padding: '5rem 0 4rem' }}>
         <div className="container">
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>Häufige Fragen</p>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff', marginBottom: '1rem' }}>FAQ</h1>
+          <h1 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff', marginBottom: '1rem' }}>FAQ</h1>
           <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem', maxWidth: '500px', lineHeight: 1.8 }}>
             Antworten auf die häufigsten Fragen rund um Ihren Yacht-Urlaub. Seit 2013 begleiten wir Sie von der ersten Anfrage bis zur Rückkehr.
           </p>
@@ -230,7 +227,7 @@ export default function FaqPage() {
               transition={{ duration: 0.5, delay: i * 0.05 }}
               style={{ marginBottom: '3rem' }}
             >
-              <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.3rem', marginBottom: '1.25rem', paddingBottom: '0.75rem', borderBottom: '2px solid var(--blue)' }}>
+              <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.3rem', marginBottom: '1.25rem', paddingBottom: '0.75rem', borderBottom: '2px solid var(--blue)' }}>
                 {cat.cat}
               </h2>
               {cat.items.map(item => <FaqItem key={item.q} {...item} />)}
@@ -239,7 +236,7 @@ export default function FaqPage() {
 
           {/* CTA */}
           <div style={{ background: 'var(--gray-light)', borderRadius: '4px', padding: '2.5rem', textAlign: 'center', marginTop: '2rem' }}>
-            <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.3rem', marginBottom: '0.75rem' }}>
+            <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.3rem', marginBottom: '0.75rem' }}>
               Noch Fragen?
             </h3>
             <p style={{ color: 'var(--gray)', marginBottom: '1.5rem', fontSize: '0.9rem' }}>
@@ -247,7 +244,7 @@ export default function FaqPage() {
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="tel:+43199715820" className="btn btn-navy">+43 1 997 15 82</a>
-              <Link to="/#kontakt" className="btn btn-primary">Nachricht senden →</Link>
+              <a href="#kontakt" className="btn btn-primary">Nachricht senden →</a>
             </div>
           </div>
         </div>

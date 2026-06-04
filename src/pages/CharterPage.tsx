@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
@@ -12,6 +11,7 @@ const services = [
     features: ['Bareboat-Charter ab Segelschein', 'Skippered Charter für Einsteiger', 'Flotte von 35 – 60 Fuß', 'Alle Reviere weltweit', 'Flexible Buchungsbedingungen'],
     img: '/images/charter/yachtchartern-bei-yacht-urlaub.jpg',
     cta: 'Charter anfragen',
+    link: '#kontakt',
   },
   {
     icon: '👨‍✈️',
@@ -21,6 +21,7 @@ const services = [
     features: ['Erfahrene, mehrsprachige Skipper', 'Hostess & Koch auf Anfrage', 'Sicherheitsbriefing inklusive', 'Lokales Revier-Know-how', 'Tagesweise buchbar'],
     img: '/images/team_destinationen/skipper-manuel-goeschl.jpg',
     cta: 'Skipper anfragen',
+    link: '/skipper',
   },
 ]
 
@@ -34,8 +35,6 @@ const confidence = [
 ]
 
 export default function CharterPage() {
-  useEffect(() => { window.scrollTo(0, 0) }, [])
-
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
@@ -55,7 +54,7 @@ export default function CharterPage() {
             Yacht mieten
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
-            style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff', marginBottom: '1rem' }}>
+            style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff', marginBottom: '1rem' }}>
             Charter
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
@@ -88,7 +87,7 @@ export default function CharterPage() {
               <div style={{ direction: 'ltr' }}>
                 <span style={{ fontSize: '2.5rem', display: 'block', marginBottom: '1rem' }}>{s.icon}</span>
                 <p style={{ color: 'var(--blue)', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '0.5rem' }}>{s.subtitle}</p>
-                <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '1.25rem' }}>{s.title}</h2>
+                <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '1.25rem' }}>{s.title}</h2>
                 <p style={{ color: 'var(--gray)', lineHeight: 1.85, marginBottom: '1.5rem', fontSize: '0.95rem' }}>{s.desc}</p>
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '2rem' }}>
                   {s.features.map(f => (
@@ -97,7 +96,10 @@ export default function CharterPage() {
                     </li>
                   ))}
                 </ul>
-                <Link to="/#kontakt" className="btn btn-primary">{s.cta} →</Link>
+                {s.link.startsWith('#')
+                  ? <a href={s.link} className="btn btn-primary">{s.cta} →</a>
+                  : <Link to={s.link} className="btn btn-primary">{s.cta} →</Link>
+                }
               </div>
               <div style={{ direction: 'ltr', borderRadius: '4px', overflow: 'hidden', aspectRatio: '4/3' }}>
                 <img src={s.img} alt={s.title} loading="lazy"
@@ -173,7 +175,7 @@ export default function CharterPage() {
       <section style={{ background: 'var(--navy)', padding: '5rem 0', textAlign: 'center' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: '#fff', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', marginBottom: '1rem' }}>
+            <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', marginBottom: '1rem' }}>
               Bereit für Ihren Charter?
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.65)', marginBottom: '2rem', fontSize: '0.95rem' }}>
@@ -181,7 +183,7 @@ export default function CharterPage() {
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="tel:+43199715820" className="btn btn-outline">+43 1 997 15 82</a>
-              <Link to="/#kontakt" className="btn btn-primary">Anfrage starten →</Link>
+              <a href="#kontakt" className="btn btn-primary">Anfrage starten →</a>
             </div>
           </motion.div>
         </div>

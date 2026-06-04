@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 export default function Hero() {
   return (
@@ -37,7 +38,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
-          style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2.4rem, 6vw, 5rem)', fontWeight: 700, lineHeight: 1.15, marginBottom: '0.5rem' }}
+          style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2.4rem, 6vw, 5rem)', fontWeight: 700, lineHeight: 1.15, marginBottom: '0.5rem' }}
         >
           Yacht-Urlaub
         </motion.h1>
@@ -46,7 +47,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.6 }}
-          style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.1rem, 3vw, 1.8rem)', fontStyle: 'italic', marginBottom: '2.5rem', opacity: 0.9 }}
+          style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.1rem, 3vw, 1.8rem)', fontStyle: 'italic', marginBottom: '2.5rem', opacity: 0.9 }}
         >
           A Taste of Paradise
         </motion.p>
@@ -66,11 +67,11 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.0 }}
           style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}
         >
-          <a href="#toerns" className="btn btn-gold" style={{ fontSize: '0.82rem', padding: '14px 32px' }}>
+          <Link to="/urlaubsplaner" className="btn btn-gold" style={{ fontSize: '0.82rem', padding: '14px 32px' }}>
+            Urlaub planen →
+          </Link>
+          <a href="#toerns" className="btn btn-outline" style={{ fontSize: '0.82rem', padding: '14px 32px' }}>
             Törns entdecken
-          </a>
-          <a href="#news" className="btn btn-outline" style={{ fontSize: '0.82rem', padding: '14px 32px' }}>
-            Top-News &amp; Angebote
           </a>
         </motion.div>
 

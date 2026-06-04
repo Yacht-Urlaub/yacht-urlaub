@@ -14,7 +14,8 @@ const DEFAULT_IMAGE = '/images/Destinationsbilder/Header/seychelles1.jpg'
 export default function SEO({ title, description, canonical, image, schema }: Props) {
   const fullTitle = title.includes('Yacht-Urlaub') ? title : `${title} | Yacht-Urlaub`
   const fullCanonical = `${BASE_URL}${canonical ?? ''}`
-  const fullImage = image ?? DEFAULT_IMAGE
+  const rawImage = image ?? DEFAULT_IMAGE
+  const fullImage = rawImage.startsWith('http') ? rawImage : `${BASE_URL}${rawImage}`
 
   return (
     <Helmet>
@@ -30,6 +31,7 @@ export default function SEO({ title, description, canonical, image, schema }: Pr
       <meta property="og:type" content="website" />
 
       {/* Twitter */}
+      <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={fullImage} />

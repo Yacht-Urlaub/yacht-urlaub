@@ -1,9 +1,7 @@
-import { useEffect } from 'react'
 import SEO from '../components/SEO'
 import Yachten from '../components/Yachten'
 
 export default function YachtenPage() {
-  useEffect(() => { window.scrollTo(0, 0) }, [])
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO

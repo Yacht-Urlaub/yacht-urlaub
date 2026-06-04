@@ -6,7 +6,7 @@ const grid = [
   { id: 'kroatien', img: '/images/Destinationsbilder/blick-auf-den-hafen-von-hvar-bei-yacht-urlaub.png', wide: true },
   { id: 'griechenland', img: '/images/Destinationsbilder/akropolis-von-rhodos-bei-yacht-urlaub.jpg', wide: false },
   { id: 'balearen', img: '/images/Destinationsbilder/blick-auf-palma-de-mallorca.jpg', wide: false },
-  { id: 'karibik', img: '/images/Destinationsbilder/entertainment-in-den-bvis-bei-yacht-urlaub.png', wide: false },
+  { id: 'karibik', img: '/images/Destinationsbilder/sandy-cay-mit-2-katamarane-davor-bei-yacht-urlaub.png', wide: false },
   { id: 'seychellen', img: '/images/Destinationsbilder/Header/seychelles1.jpg', wide: false },
   { id: 'thailand', img: '/images/Destinationsbilder/katamaran-in-thailand.jpg', wide: false },
 ]
@@ -39,7 +39,7 @@ export default function Destinationen() {
                 <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
                   Unsere Segelgebiete
                 </p>
-                <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', color: '#fff', marginBottom: '1rem' }}>
+                <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', color: '#fff', marginBottom: '1rem' }}>
                   Destinationen
                 </h2>
                 <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: '560px', margin: '0 auto', fontSize: '0.92rem', lineHeight: 1.8 }}>
@@ -84,7 +84,7 @@ export default function Destinationen() {
                         onMouseLeave={e => (e.currentTarget.style.background = 'linear-gradient(to top, rgba(18,43,64,0.85) 0%, rgba(18,43,64,0.1) 55%, transparent 100%)')}
                       />
                       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.25rem' }}>
-                        <h3 style={{ color: '#fff', fontSize: item.wide ? '1.3rem' : '1rem', fontWeight: 700, marginBottom: '2px', fontFamily: 'Cormorant Garamond, serif' }}>{d.name}</h3>
+                        <h3 style={{ color: '#fff', fontSize: item.wide ? '1.3rem' : '1rem', fontWeight: 700, marginBottom: '2px', fontFamily: 'DM Sans, sans-serif' }}>{d.name}</h3>
                         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.72rem' }}>{d.country} · {d.bestTime}</p>
                         <span style={{ display: 'inline-block', marginTop: '0.5rem', color: 'var(--blue-light)', fontSize: '0.72rem', fontWeight: 600 }}>Mehr erfahren →</span>
                       </div>

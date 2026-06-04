@@ -1,8 +1,6 @@
-import { useEffect } from 'react'
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
-import Kontakt from '../components/Kontakt'
 
 const toernData: Record<string, {
   id: string
@@ -159,8 +157,6 @@ export default function ToernDetailPage() {
   const { id } = useParams<{ id: string }>()
   const data = id ? toernData[id] : null
 
-  useEffect(() => { window.scrollTo(0, 0) }, [id])
-
   if (!data) return <Navigate to="/toerns" replace />
 
   return (
@@ -194,11 +190,11 @@ export default function ToernDetailPage() {
             {data.subtitle}
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
-            style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff', marginBottom: '1.5rem', maxWidth: '650px', lineHeight: 1.25 }}>
+            style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 4vw, 3rem)', color: '#fff', marginBottom: '1.5rem', maxWidth: '650px', lineHeight: 1.25 }}>
             {data.title}
           </motion.h1>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}>
-            <Link to="/#kontakt" className="btn btn-primary" style={{ marginRight: '1rem' }}>Jetzt anfragen</Link>
+            <a href="#kontakt" className="btn btn-primary" style={{ marginRight: '1rem' }}>Jetzt anfragen</a>
             <Link to="/toerns" style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>← Alle Törns</Link>
           </motion.div>
         </div>
@@ -217,7 +213,7 @@ export default function ToernDetailPage() {
             }} className="content-grid">
               <div style={{ direction: 'ltr' }}>
                 {section.heading && (
-                  <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '1.25rem', lineHeight: 1.3 }}>
+                  <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '1.25rem', lineHeight: 1.3 }}>
                     {section.heading}
                   </h2>
                 )}
@@ -246,7 +242,7 @@ export default function ToernDetailPage() {
             <p style={{ color: 'var(--gold)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
               Unsere Packages
             </p>
-            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', color: '#fff', marginBottom: '0.75rem' }}>
+            <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', color: '#fff', marginBottom: '0.75rem' }}>
               Passende Reisepakete
             </h2>
           </div>
@@ -261,16 +257,16 @@ export default function ToernDetailPage() {
                 <p style={{ color: 'var(--gold)', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: 600 }}>
                   {pkg.region}
                 </p>
-                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: '#fff', fontSize: '1.35rem', marginBottom: '1rem', lineHeight: 1.3 }}>
+                <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.35rem', marginBottom: '1rem', lineHeight: 1.3 }}>
                   {pkg.title}
                 </h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
                   <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.82rem' }}>⏱ {pkg.days}</span>
                   <span style={{ color: 'var(--gold)', fontWeight: 700, fontSize: '0.95rem' }}>{pkg.price}</span>
                 </div>
-                <Link to="/#kontakt" className="btn btn-outline" style={{ fontSize: '0.75rem', padding: '9px 18px', width: '100%', textAlign: 'center', display: 'block', boxSizing: 'border-box' }}>
+                <a href="#kontakt" className="btn btn-outline" style={{ fontSize: '0.75rem', padding: '9px 18px', width: '100%', textAlign: 'center', display: 'block', boxSizing: 'border-box' }}>
                   Anfragen →
-                </Link>
+                </a>
               </div>
             ))}
           </div>
@@ -285,8 +281,6 @@ export default function ToernDetailPage() {
         `}</style>
       </section>
 
-      {/* Kontakt */}
-      <Kontakt />
     </main>
   )
 }

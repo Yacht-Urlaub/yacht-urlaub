@@ -4,28 +4,24 @@ const cols = [
   {
     title: 'Törns',
     links: [
-      { label: 'Für Einsteiger', href: '/#toerns' },
-      { label: 'Für Freunde', href: '/#toerns' },
-      { label: 'Für Familien', href: '/#toerns' },
-      { label: 'Luxury', href: '/#toerns' },
+      { label: 'Für Einsteiger', href: '/toerns/einsteiger' },
+      { label: 'Für Freunde', href: '/toerns/freunde' },
+      { label: 'Für Familien', href: '/toerns/familien' },
+      { label: 'Luxury', href: '/toerns/luxury' },
+      { label: 'Kabinen-Angebote', href: '/kabinen' },
       { label: 'Törnberichte', href: '/toernberichte' },
-      { label: 'Anfrage starten', href: '/#kontakt' },
+      { label: 'Anfrage starten', href: '#kontakt' },
     ],
   },
   {
     title: 'Yachten & Charter',
     links: [
       { label: 'Segelyacht', href: '/yachten?tab=monohull' },
-      { label: 'Katamaran', href: '/yachten?tab=katamaran' },
+      { label: 'Segel-Katamaran', href: '/yachten?tab=katamaran' },
       { label: 'Motoryacht', href: '/yachten?tab=motoryacht' },
+      { label: 'Motor-Katamaran', href: '/yachten?tab=motorkat' },
       { label: 'Yacht-Charter', href: '/charter' },
-      { label: 'Crew-Charter', href: '/charter' },
-    ],
-  },
-  {
-    title: 'Charter',
-    links: [
-      { label: 'Yacht-Charter', href: '/charter' },
+      { label: 'Skipper- & Bord-Service', href: '/skipper' },
       { label: 'Crew-Charter', href: '/charter' },
     ],
   },
@@ -40,6 +36,7 @@ const cols = [
       { label: 'Thailand', href: '/destinationen/thailand' },
       { label: 'Törnberichte', href: '/toernberichte' },
       { label: 'FAQ', href: '/faq' },
+      { label: 'Unser Team', href: '/crew' },
     ],
   },
   {
@@ -48,6 +45,7 @@ const cols = [
       { label: 'Impressum', href: '/impressum' },
       { label: 'Datenschutz', href: '/datenschutz' },
       { label: 'AGB', href: '/agb' },
+      { label: 'Reisebüros & Partner', href: '/reisebuero' },
     ],
   },
 ]
@@ -67,7 +65,7 @@ export default function Footer() {
       <div style={{ background: 'var(--blue)', padding: '2.5rem 0' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
           <div>
-            <h3 style={{ color: '#fff', fontFamily: 'Cormorant Garamond, serif', fontSize: '1.3rem', marginBottom: '0.3rem' }}>Newsletter — Angebote &amp; Neuigkeiten</h3>
+            <h3 style={{ color: '#fff', fontFamily: 'DM Sans, sans-serif', fontSize: '1.3rem', marginBottom: '0.3rem' }}>Newsletter — Angebote &amp; Neuigkeiten</h3>
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>Kein Spam. Nur echte Segelträume.</p>
           </div>
           <form
@@ -91,7 +89,7 @@ export default function Footer() {
 
       {/* Links */}
       <div className="container" style={{ padding: '3.5rem 20px 2.5rem' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '2rem', marginBottom: '3rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', marginBottom: '3rem' }}>
           {cols.map(col => (
             <div key={col.title}>
               <h4 style={{ color: '#fff', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '1.25rem' }}>
@@ -100,12 +98,10 @@ export default function Footer() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
                 {col.links.map(l => (
                   <li key={l.label}>
-                    <Link to={l.href} style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.55)', transition: 'color 0.2s' }}
-                      onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                      onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}
-                    >
-                      {l.label}
-                    </Link>
+                    {l.href.startsWith('#')
+                      ? <a href={l.href} style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.55)', transition: 'color 0.2s', textDecoration: 'none' }} onMouseEnter={e => (e.currentTarget.style.color = '#fff')} onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}>{l.label}</a>
+                      : <Link to={l.href} style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.55)', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#fff')} onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}>{l.label}</Link>
+                    }
                   </li>
                 ))}
               </ul>
@@ -146,7 +142,7 @@ export default function Footer() {
           {/* Zahlungsanbieter */}
           <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
             <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.4)', marginRight: '4px' }}>Zahlung:</span>
-            {['Visa', 'MC', 'AMEX'].map(p => (
+            {['Visa', 'MC', 'AMEX', 'Giropay'].map(p => (
               <span key={p} style={{
                 background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)',
                 padding: '3px 8px', borderRadius: '3px', fontSize: '0.7rem', fontWeight: 600,

@@ -1,9 +1,12 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { useLayoutEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Kontakt from './components/Kontakt'
 import WhatsApp from './components/WhatsApp'
 import CookieBanner from './components/CookieBanner'
+import SideContact from './components/SideContact'
 import HomePage from './pages/HomePage'
 import DestinationenPage from './pages/DestinationenPage'
 import DestinationPage from './pages/DestinationPage'
@@ -18,6 +21,20 @@ import ToernsPage from './pages/ToernsPage'
 import ToernDetailPage from './pages/ToernDetailPage'
 import NewsPage from './pages/NewsPage'
 import BuchenPage from './pages/BuchenPage'
+import PackageDetailPage from './pages/PackageDetailPage'
+import KabinenPage from './pages/KabinenPage'
+import UrlaubsplanerPage from './pages/UrlaubsplanerPage'
+import CrewPage from './pages/CrewPage'
+import ReisebueroPage from './pages/ReisebueroPage'
+import SkipperPage from './pages/SkipperPage'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+  }, [pathname])
+  return null
+}
 
 const pageVariants = {
   initial: { opacity: 0, y: 16 },
@@ -40,13 +57,20 @@ function AnimatedRoutes() {
           <Route path="/toerns/:id" element={<ToernDetailPage />} />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/buchen" element={<BuchenPage />} />
+          <Route path="/packages/:id" element={<PackageDetailPage />} />
           <Route path="/toernberichte" element={<ToernberichtePage />} />
+          <Route path="/kabinen" element={<KabinenPage />} />
+          <Route path="/urlaubsplaner" element={<UrlaubsplanerPage />} />
+          <Route path="/crew" element={<CrewPage />} />
+          <Route path="/reisebuero" element={<ReisebueroPage />} />
+          <Route path="/skipper" element={<SkipperPage />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/impressum" element={<ImpressumPage />} />
           <Route path="/datenschutz" element={<DatenschutzPage />} />
           <Route path="/agb" element={<AgbPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
+        <Kontakt />
         <Footer />
       </motion.div>
     </AnimatePresence>
@@ -56,8 +80,10 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <AnimatedRoutes />
+      <SideContact />
       <WhatsApp />
       <CookieBanner />
     </BrowserRouter>

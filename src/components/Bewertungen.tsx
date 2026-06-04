@@ -3,13 +3,13 @@ import { useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 
 const reviews = [
-  { name: 'Alexandra', img: '/images/Bewertungen/Alexandra.png', text: 'Ein unvergessliches Erlebnis! Das Team von Yacht-Urlaub hat alles perfekt organisiert. Vom Skipper bis zur Route — einfach traumhaft.' },
-  { name: 'Markus', img: '/images/Bewertungen/Markus.png', text: 'Schon zum dritten Mal gebucht und immer wieder begeistert. Die Qualität der Yachten und der Service sind einfach unschlagbar.' },
-  { name: 'Stefanie', img: '/images/Bewertungen/Stefanie.png', text: 'Als Familie mit Kindern war ich anfangs skeptisch, aber es war das beste Urlaub, das wir je hatten. Die Kinder wollen gar nicht mehr heim!' },
-  { name: 'Wolfgang', img: '/images/Bewertungen/Wolfgang.png', text: 'Der Törn durch die Grenadinen war ein absoluter Traum. Professionelle Betreuung, tolle Mitsegler und unvergessliche Buchten.' },
-  { name: 'Gloria', img: '/images/Bewertungen/Gloria.png', text: 'Seychellen mit Yacht-Urlaub — das ist Luxus pur. Jede Bucht atemberaubend schön, der Skipper war ein absoluter Profi.' },
-  { name: 'Dani', img: '/images/Bewertungen/Dani.png', text: 'Für uns als Einsteiger war es perfekt. Keine Vorkenntnisse nötig, der Skipper erklärt alles geduldig. Wir kommen definitiv wieder!' },
-  { name: 'Reinhard', img: '/images/Bewertungen/Reinhard.png', text: 'Kroatien mit Freunden — besser geht es nicht. Die Planung war unkompliziert, die Yacht top und die Kulisse unvergleichlich.' },
+  { name: 'Alexandra M.', color: '#0284c7', text: 'Ein unvergessliches Erlebnis! Das Team hat alles perfekt organisiert. Vom Skipper bis zur Route — einfach traumhaft. Sehr gerne wieder!' },
+  { name: 'Markus T.', color: '#0f2d47', text: 'Schon zum dritten Mal gebucht und immer wieder begeistert. Die Qualität der Yachten und der persönliche Service sind unschlagbar.' },
+  { name: 'Stefanie B.', color: '#0ea5e9', text: 'Als Familie mit Kindern war ich anfangs skeptisch, aber es war der beste Urlaub, den wir je hatten. Die Kinder wollen gar nicht mehr heim!' },
+  { name: 'Wolfgang K.', color: '#075985', text: 'Der Törn durch die Grenadinen war ein absoluter Traum. Professionelle Betreuung, tolle Mitsegler und unvergessliche Buchten.' },
+  { name: 'Gloria S.', color: '#0369a1', text: 'Seychellen mit Yacht-Urlaub — das ist Luxus pur. Jede Bucht atemberaubend schön, der Skipper war ein absoluter Profi.' },
+  { name: 'Daniel F.', color: '#1e40af', text: 'Für uns als Einsteiger war es perfekt. Keine Vorkenntnisse nötig, der Skipper erklärt alles geduldig. Wir kommen definitiv wieder!' },
+  { name: 'Reinhard L.', color: '#0c4a6e', text: 'Kroatien mit Freunden — besser geht es nicht. Die Planung war unkompliziert, die Yacht top und die Kulisse unvergleichlich.' },
 ]
 
 export default function Bewertungen() {
@@ -51,13 +51,15 @@ export default function Bewertungen() {
                 transition: 'outline 0.2s',
               }}
             >
-              <img
-                src={r.img}
-                alt={r.name}
-                loading="lazy"
-                style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', display: 'block' }}
-                onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
-              />
+              <div style={{
+                width: '64px', height: '64px', borderRadius: '50%',
+                background: r.color,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: '#fff', fontWeight: 700, fontSize: '1.1rem',
+                fontFamily: 'DM Sans, sans-serif',
+              }}>
+                {r.name.charAt(0)}
+              </div>
             </motion.button>
           ))}
         </div>

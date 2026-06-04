@@ -194,7 +194,7 @@ export const destinations: Destination[] = [
     id: 'karibik',
     name: 'Karibik-BVI',
     country: '🏝️',
-    headerImg: '/images/Destinationsbilder/Header/caribbean.jpg',
+    headerImg: '/images/Destinationsbilder/Header/karibik_header.webp',
     mapImg: '/images/Destinationsbilder/geographische-lage-der-britischen-jungferninseln.jpg',
     intro: 'Die Britischen Jungferninseln sind das Segelparadies schlechthin. Konstante Passatwinde mit 15–20 Knoten, türkisblaues Wasser, weiße Sandstrände und entspannte Strandbar-Kultur machen die BVIs zum Traumziel jedes Seglers. Über 60 Inseln, Inselchen und Riffe laden ein – jede mit eigenem Charakter und einzigartigen Ankerplätzen.',
     highlights: ['Konstante Passatwinde 15–20 Knoten', 'Legendäre Soggy Dollar Bar (Jost Van Dyke)', 'The Baths auf Virgin Gorda', 'Sandy Cay & Sandy Spit', 'Hummer-Dinner auf Anegada', 'Cristallklares Wasser – Sichtweite 30+ m'],
@@ -202,10 +202,10 @@ export const destinations: Destination[] = [
     difficulty: 'Einsteiger bis Fortgeschrittene',
     distance: 'Ca. 60 Seemeilen Hauptrevier',
     gallery: [
-      '/images/Destinationsbilder/entertainment-in-den-bvis-bei-yacht-urlaub.png',
+      '/images/Destinationsbilder/sandy-cay-mit-2-katamarane-davor-bei-yacht-urlaub.png',
+      '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg',
       '/images/Destinationsbilder/cocktails-auf-der-yacht-bei-yacht-urlaub.jpg',
       '/images/Destinationsbilder/grill-am-strand-bei-yacht-urlaub.png',
-      '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg',
       '/images/packages/Karibik-BVI/gallery/the baths.jpg',
       '/images/packages/Karibik-BVI/gallery/Sandy Spit.jpg',
       '/images/packages/Karibik-BVI/gallery/marina_cay.jpg',
@@ -242,7 +242,7 @@ export const destinations: Destination[] = [
     name: 'Seychellen',
     country: '🏝️',
     headerImg: '/images/Destinationsbilder/Header/seychelles1.jpg',
-    mapImg: '/images/Destinationsbilder/DSC_0009.JPG',
+    mapImg: '/images/Destinationsbilder/Seychellen.webp',
     intro: 'Die Seychellen sind das ultimative Luxus-Segelziel im Indischen Ozean. 115 Inseln auf 400 km² – Granitinseln, Korallenformationen und natürlich gewachsene Inseln bieten eine einzigartige Naturkulisse. Zwischen Mahé, Praslin und La Digue warten Granitfelsen, palmgesäumte Strände und eine faszinierende Unterwasserwelt auf Entdecker, die das Paradies suchen.',
     highlights: ['Einzigartige Granitfelsen (Anse Source d\'Argent)', 'Aldabra-Riesenschildkröten', 'Anse Lazio – einer der schönsten Strände der Welt', 'Vallée de Mai auf Praslin (UNESCO)', 'Coco de Mer – die größte Nuss der Welt', 'Wassertemperatur ganzjährig 27–30°C'],
     bestTime: 'Oktober – Dezember & Februar – April',
@@ -251,7 +251,6 @@ export const destinations: Destination[] = [
     gallery: [
       '/images/Destinationsbilder/Seychellen.webp',
       '/images/Destinationsbilder/Header/seychelles1.jpg',
-      '/images/Destinationsbilder/DSC_0009.JPG',
     ],
     regions: [
       { name: 'Mahé', desc: 'Die Hauptinsel mit der pulsierenden Hauptstadt Victoria, Stränden wie Beau Vallon und Anse Intendance sowie dem Morne Seychellois Nationalpark.' },
@@ -354,7 +353,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: 600 }}>
             {dest.country} Destination
           </p>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff' }}>{dest.name}</h1>
+          <h1 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff' }}>{dest.name}</h1>
         </div>
       </div>
 
@@ -365,7 +364,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             <p style={{ fontSize: '1.05rem', color: '#555', lineHeight: 1.9, marginBottom: '2.5rem' }}>{dest.intro}</p>
 
             {/* Highlights */}
-            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Highlights</h2>
+            <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Highlights</h2>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '2.5rem' }}>
               {dest.highlights.map(h => (
                 <li key={h} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.9rem', color: '#444' }}>
@@ -375,7 +374,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             </ul>
 
             {/* Regionen */}
-            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Regionen & Packages</h2>
+            <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Regionen & Packages</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2.5rem' }}>
               {dest.regions.map(r => (
                 <div key={r.name} style={{ padding: '1.25rem', background: 'var(--gray-light)', borderLeft: '3px solid var(--blue)', borderRadius: '0 4px 4px 0' }}>
@@ -388,7 +387,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             {/* Extended Sections */}
             {dest.extendedSections?.map(section => (
               <div key={section.heading} style={{ marginBottom: '2rem' }}>
-                <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1rem' }}>{section.heading}</h2>
+                <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1rem' }}>{section.heading}</h2>
                 <p style={{ fontSize: '0.92rem', color: '#555', lineHeight: 1.85 }}>{section.text}</p>
               </div>
             ))}
@@ -396,7 +395,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             {/* General Info Table */}
             {dest.infoTable && (
               <div style={{ marginTop: '2rem', marginBottom: '2.5rem' }}>
-                <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Allgemeine Informationen</h2>
+                <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Allgemeine Informationen</h2>
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.88rem' }}>
                   <tbody>
                     {Object.entries(dest.infoTable).map(([key, val]) => (
@@ -413,7 +412,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             {/* Gallery */}
             {dest.gallery.length > 0 && (
               <>
-                <h2 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Fotogalerie</h2>
+                <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.25rem' }}>Fotogalerie</h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                   {dest.gallery.map((img, i) => (
                     <div key={img} onClick={() => setLightbox(i)} style={{ aspectRatio: '4/3', overflow: 'hidden', cursor: 'pointer', borderRadius: '3px', background: '#eee' }}>
@@ -432,7 +431,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
           {/* Sidebar */}
           <div>
             <div style={{ background: 'var(--navy)', color: '#fff', borderRadius: '4px', padding: '2rem', marginBottom: '1.5rem' }}>
-              <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.1rem', marginBottom: '1.5rem' }}>Reisedaten</h3>
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', marginBottom: '1.5rem' }}>Reisedaten</h3>
               {[
                 { icon: '📅', label: 'Beste Reisezeit', val: dest.bestTime },
                 { icon: '⚓', label: 'Schwierigkeit', val: dest.difficulty },

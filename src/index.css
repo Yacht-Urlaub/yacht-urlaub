@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+button, input, select, textarea { font-family: 'DM Sans', sans-serif; }
 
 :root {
   --navy: #071b2f;
@@ -55,7 +56,7 @@ body {
 }
 
 .section-title {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'DM Sans', sans-serif;
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 700;
   color: var(--navy);
@@ -196,8 +197,56 @@ img {
 }
 
 /* ── Responsive helpers ── */
+@media (max-width: 900px) {
+  /* Charter service rows */
+  .charter-service-row { grid-template-columns: 1fr !important; direction: ltr !important; gap: 2rem !important; margin-bottom: 3rem !important; }
+  /* Toerns highlights bar */
+  .highlights-bar { grid-template-columns: 1fr 1fr !important; }
+  /* Toerns category grid */
+  .toerns-grid { grid-template-columns: 1fr 1fr !important; }
+  /* Footer columns */
+  footer .container > div:first-of-type { grid-template-columns: 1fr 1fr !important; }
+  /* Yachten overview */
+  .yachten-overview-grid { grid-template-columns: 1fr 1fr !important; }
+  /* Packages grid */
+  .packages-grid { grid-template-columns: 1fr 1fr !important; }
+  /* News grid */
+  .news-page-grid { grid-template-columns: 1fr 1fr !important; }
+  /* Destination mosaic */
+  .dest-mosaic { grid-template-columns: 1fr 1fr !important; }
+  /* Torn detail content grid */
+  .content-grid { grid-template-columns: 1fr !important; direction: ltr !important; }
+  /* Pkg detail main grid */
+  .pkg-main-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+}
+
 @media (max-width: 768px) {
   .section { padding: 60px 0; }
   .container { padding: 0 16px; }
   .btn { padding: 12px 22px; }
+  .section-title { font-size: clamp(1.5rem, 6vw, 2rem); }
+  /* Toerns grid single column */
+  .toerns-grid { grid-template-columns: 1fr !important; }
+  .highlights-bar { grid-template-columns: 1fr !important; }
+  /* Team grid */
+  .team-grid { grid-template-columns: 1fr !important; }
+  /* News grids */
+  .news-grid { grid-template-columns: 1fr !important; }
+  .news-page-grid { grid-template-columns: 1fr !important; }
+  /* Packages */
+  .packages-grid { grid-template-columns: 1fr !important; }
+  /* Toernberichte */
+  .container > div[style*="repeat(2, 1fr)"] { grid-template-columns: 1fr !important; }
+  /* Yachten gallery */
+  .yacht-gallery-grid { grid-template-columns: 1fr 1fr !important; }
+  .yacht-models-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 560px) {
+  .container { padding: 0 12px; }
+  footer .container > div:first-of-type { grid-template-columns: 1fr !important; }
+  .form-grid-2 { grid-template-columns: 1fr !important; }
+  .pkg-gallery-grid { grid-template-columns: 1fr 1fr !important; }
+  .yachten-overview-grid { grid-template-columns: 1fr !important; }
+  .dest-mosaic { grid-template-columns: 1fr !important; }
 }

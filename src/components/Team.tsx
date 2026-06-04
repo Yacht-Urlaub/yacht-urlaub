@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const team = [
   {
@@ -29,21 +30,21 @@ const cards = [
     text: 'Reiseberichte direkt von unseren Törns — authentisch, persönlich und voller Inspiration.',
     img: '/images/team_destinationen/toernbericht NEU.jpg',
     cta: 'Berichte lesen',
-    href: '#toernberichte',
+    href: '/toernberichte',
   },
   {
     title: 'Destinationen',
     text: 'Alles was Sie über unsere Segelreviere wissen müssen — Tipps, Häfen, Highlights.',
     img: '/images/team_destinationen/destinationen.jpg',
     cta: 'Destinationen entdecken',
-    href: '#destinationen',
+    href: '/destinationen',
   },
   {
     title: 'Charter',
     text: 'Yacht und Crew mieten — für Gruppen, Events oder einfach zum exklusiven Segeln.',
     img: '/images/team_destinationen/crewcharter/crewcharter.jpg',
     cta: 'Charter anfragen',
-    href: '#charter',
+    href: '/charter',
   },
 ]
 
@@ -88,7 +89,7 @@ export default function Team() {
                   onError={e => { (e.target as HTMLImageElement).src = '/images/team_destinationen/Foto.jpg' }}
                 />
               </div>
-              <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.1rem', color: 'var(--navy)', marginBottom: '0.3rem' }}>{t.name}</h3>
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', color: 'var(--navy)', marginBottom: '0.3rem' }}>{t.name}</h3>
               <p style={{ color: 'var(--blue)', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>{t.role}</p>
               <p style={{ color: 'var(--gray)', fontSize: '0.85rem', lineHeight: 1.75 }}>{t.text}</p>
             </motion.div>
@@ -120,9 +121,9 @@ export default function Team() {
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(18,43,64,0.85) 0%, transparent 60%)' }} />
               <div style={{ position: 'absolute', bottom: 0, padding: '1.5rem' }}>
-                <h3 style={{ color: '#fff', fontFamily: 'Cormorant Garamond, serif', fontSize: '1.2rem', marginBottom: '0.5rem' }}>{c.title}</h3>
+                <h3 style={{ color: '#fff', fontFamily: 'DM Sans, sans-serif', fontSize: '1.2rem', marginBottom: '0.5rem' }}>{c.title}</h3>
                 <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem', lineHeight: 1.6, marginBottom: '1rem' }}>{c.text}</p>
-                <a href={c.href} style={{ color: 'var(--blue-light)', fontSize: '0.78rem', fontWeight: 600 }}>{c.cta} →</a>
+                <Link to={c.href} style={{ color: 'var(--blue-light)', fontSize: '0.78rem', fontWeight: 600 }}>{c.cta} →</Link>
               </div>
             </motion.div>
           ))}

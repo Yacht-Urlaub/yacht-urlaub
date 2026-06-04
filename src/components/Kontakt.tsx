@@ -25,6 +25,9 @@ type Form = {
   datum_von: string
   datum_bis: string
   yacht: string
+  buchungsabsicht: string
+  gefunden: string
+  kontaktart: string
   name: string
   email: string
   phone: string
@@ -35,6 +38,7 @@ type Form = {
 const initial: Form = {
   destination: '', toerntyp: '', personen: '2',
   datum_von: '', datum_bis: '', yacht: '',
+  buchungsabsicht: '', gefunden: '', kontaktart: '',
   name: '', email: '', phone: '', message: '', newsletter: false,
 }
 
@@ -141,7 +145,7 @@ export default function Kontakt() {
                   transition={{ type: 'spring', delay: 0.2 }}
                   style={{ fontSize: '3rem', marginBottom: '1rem' }}
                 >⛵</motion.div>
-                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.5rem', color: 'var(--navy)', marginBottom: '0.75rem' }}>Anfrage gesendet!</h3>
+                <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.5rem', color: 'var(--navy)', marginBottom: '0.75rem' }}>Anfrage gesendet!</h3>
                 <p style={{ color: 'var(--gray)', lineHeight: 1.75, marginBottom: '1.5rem' }}>
                   Vielen Dank, <strong>{form.name}</strong>! Wir melden uns innerhalb von 24 Stunden bei Ihnen unter <strong>{form.email}</strong>.
                 </p>
@@ -177,7 +181,7 @@ export default function Kontakt() {
                   {/* Step 0: Reisedaten */}
                   {step === 0 && (
                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                      <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
+                      <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
                         Wohin soll die Reise gehen?
                       </h3>
 
@@ -270,6 +274,25 @@ export default function Kontakt() {
                         </div>
                       </div>
 
+                      <div style={{ marginBottom: '1.5rem' }}>
+                        <label style={labelStyle}>Buchungsabsicht</label>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                          {[
+                            { val: 'sofort', label: 'Ich möchte so bald wie möglich buchen.' },
+                            { val: 'bald', label: 'Ich möchte in den nächsten Wochen buchen.' },
+                            { val: 'info', label: 'Ich erkundige mich vorerst nur.' },
+                          ].map(opt => (
+                            <label key={opt.val} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '0.85rem', color: '#444' }}>
+                              <input type="radio" name="buchungsabsicht" value={opt.val}
+                                checked={form.buchungsabsicht === opt.val}
+                                onChange={() => set('buchungsabsicht', opt.val)}
+                                style={{ accentColor: 'var(--blue)' }} />
+                              {opt.label}
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
                       <button type="button" onClick={next} className="btn btn-primary" style={{ width: '100%' }}>
                         Weiter →
                       </button>
@@ -279,7 +302,7 @@ export default function Kontakt() {
                   {/* Step 1: Kontaktdaten */}
                   {step === 1 && (
                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                      <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
+                      <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
                         Wie können wir Sie erreichen?
                       </h3>
 
@@ -312,11 +335,46 @@ export default function Kontakt() {
                           placeholder="+43 ..." style={inputStyle()} />
                       </div>
 
+                      <div style={{ marginBottom: '1rem' }}>
+                        <label style={labelStyle}>Gewünschte Kontaktart</label>
+                        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                          {['Telefon', 'E-Mail', 'WhatsApp'].map(k => (
+                            <button key={k} type="button"
+                              onClick={() => set('kontaktart', k)}
+                              style={{
+                                padding: '7px 14px', borderRadius: '20px', fontSize: '0.78rem', cursor: 'pointer',
+                                border: `1.5px solid ${form.kontaktart === k ? 'var(--blue)' : '#e2e8f0'}`,
+                                background: form.kontaktart === k ? 'var(--blue-pale)' : '#fff',
+                                color: form.kontaktart === k ? 'var(--blue)' : 'var(--gray)',
+                                fontWeight: form.kontaktart === k ? 700 : 400,
+                                transition: 'all 0.2s',
+                              }}>
+                              {k}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
                       <div style={{ marginBottom: '1.25rem' }}>
                         <label style={labelStyle}>Ihre Wünsche & Fragen</label>
                         <textarea rows={3} value={form.message} onChange={e => set('message', e.target.value)}
                           placeholder="Was ist Ihnen besonders wichtig? Haben Sie spezielle Wünsche?"
                           style={{ ...inputStyle(), resize: 'vertical' }} />
+                      </div>
+
+                      <div style={{ marginBottom: '1rem' }}>
+                        <label style={labelStyle}>Wie haben Sie von uns erfahren?</label>
+                        <select value={form.gefunden} onChange={e => set('gefunden', e.target.value)} style={inputStyle()}>
+                          <option value="">Bitte wählen</option>
+                          <option>Freunde & Bekannte</option>
+                          <option>Online-Suche (Google etc.)</option>
+                          <option>Facebook</option>
+                          <option>Instagram</option>
+                          <option>YouTube</option>
+                          <option>Reisemesse</option>
+                          <option>War bereits Gast</option>
+                          <option>Sonstiges</option>
+                        </select>
                       </div>
 
                       <label style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', marginBottom: '1.5rem', cursor: 'pointer' }}>

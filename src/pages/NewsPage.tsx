@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
@@ -31,7 +31,7 @@ const articles = [
     date: 'Ganzjährig',
     text: 'Entdecken Sie exklusive Kabinenangebote für Ihren Traum-Yachturlaub – individuell und unvergesslich! Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht.',
     img: '/images/news/beach-bikini-jump.jpg',
-    href: '/#kontakt',
+    href: '#kontakt',
     cta: 'Angebote ansehen',
   },
   {
@@ -71,8 +71,6 @@ const tags = ['Alle', 'Angebot', 'Familie', 'Kabinen', 'Einsteiger']
 export default function NewsPage() {
   const [activeTag, setActiveTag] = useState('Alle')
 
-  useEffect(() => { window.scrollTo(0, 0) }, [])
-
   const filtered = activeTag === 'Alle' ? articles : articles.filter(a => a.tag === activeTag)
 
   return (
@@ -99,7 +97,7 @@ export default function NewsPage() {
             Aktuelles
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
-            style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff', marginBottom: '1rem' }}>
+            style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff', marginBottom: '1rem' }}>
             Top-News &amp; Angebote
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
@@ -177,7 +175,7 @@ export default function NewsPage() {
                   <p style={{ color: 'var(--blue)', fontSize: '0.72rem', fontWeight: 600, marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
                     {article.date}
                   </p>
-                  <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.25rem', color: 'var(--navy)', marginBottom: '0.75rem', lineHeight: 1.3 }}>
+                  <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.25rem', color: 'var(--navy)', marginBottom: '0.75rem', lineHeight: 1.3 }}>
                     {article.title}
                   </h3>
                   <p style={{ color: 'var(--gray)', fontSize: '0.85rem', lineHeight: 1.75, flex: 1, marginBottom: '1.25rem' }}>{article.text}</p>
@@ -210,13 +208,13 @@ export default function NewsPage() {
             <p style={{ color: 'var(--gold)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 600 }}>
               Kein Angebot verpassen
             </p>
-            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', color: '#fff', marginBottom: '1.25rem' }}>
+            <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', color: '#fff', marginBottom: '1.25rem' }}>
               Ihr Traumurlaub wartet
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.75)', marginBottom: '2rem', fontSize: '1rem', lineHeight: 1.8 }}>
               Kontaktieren Sie uns für ein persönliches Angebot – wir finden den perfekten Törn für Sie.
             </p>
-            <Link to="/#kontakt" className="btn btn-primary">Jetzt anfragen</Link>
+            <a href="#kontakt" className="btn btn-primary">Jetzt anfragen</a>
           </motion.div>
         </div>
       </section>

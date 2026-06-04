@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
@@ -49,8 +48,6 @@ const packages = [
 ]
 
 export default function BuchenPage() {
-  useEffect(() => { window.scrollTo(0, 0) }, [])
-
   return (
     <main style={{ paddingTop: '72px', minHeight: '100vh', background: 'var(--gray-light)' }}>
       <SEO
@@ -71,7 +68,7 @@ export default function BuchenPage() {
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
-            style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: '#fff', marginBottom: '1rem' }}
+            style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: '#fff', marginBottom: '1rem' }}
           >
             Verfügbare Packages zum Wunschtermin finden
           </motion.h1>
@@ -181,7 +178,7 @@ export default function BuchenPage() {
                     background: 'linear-gradient(to top, rgba(18,43,64,0.85) 0%, transparent 55%)',
                     display: 'flex', alignItems: 'flex-end', padding: '1rem',
                   }}>
-                    <h3 style={{ fontFamily: 'Cormorant Garamond, serif', color: '#fff', fontSize: '1.1rem', lineHeight: 1.3, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.1rem', lineHeight: 1.3, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                       {pkg.title}
                     </h3>
                   </div>
