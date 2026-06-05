@@ -131,7 +131,7 @@ export default function Zielgruppen() {
           style={{ marginBottom: '3.5rem' }}
         >
           <p style={{ color: 'var(--blue)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-            Unsere Törns
+            {lang === 'en' ? 'Holiday-Trips' : 'Unsere Törns'}
           </p>
           <h2 className="section-title">{lang === 'en' ? 'The right thing for everybody' : 'Dein perfekter Segeltörn'}</h2>
           <p className="section-subtitle">{lang === 'en' ? 'From your first sailing lesson to a luxury experience — we have the right cruise for everyone.' : 'Von der ersten Segelstunde bis zum Luxuserlebnis — wir haben den passenden Törn für jeden.'}</p>

@@ -148,7 +148,7 @@ export default function PackageDetailPage() {
   return (
     <main>
       <SEO
-        title={`${pkg.title} | Yacht-Urlaub`}
+        title={`${pkg.title} | ${lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}`}
         description={pkg.subtitle}
         canonical={`/packages/${pkg.id}`}
       />
@@ -421,7 +421,7 @@ export default function PackageDetailPage() {
         {/* CTA */}
         <div style={{ textAlign: 'center', background: 'var(--gray-light)', borderRadius: '6px', padding: '3rem 2rem' }}>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.5rem', marginBottom: '0.75rem' }}>
-            Individueller Törn?
+            {s.indiv}
           </h2>
           <p style={{ color: 'var(--gray)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
             {s.indivSub}

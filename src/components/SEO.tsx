@@ -1,3 +1,4 @@
+import { useLang } from '../i18n'
 import { Helmet } from 'react-helmet-async'
 
 type Props = {
@@ -12,7 +13,9 @@ const BASE_URL = 'https://www.yacht-urlaub.net'
 const DEFAULT_IMAGE = '/images/Destinationsbilder/Header/seychelles1.jpg'
 
 export default function SEO({ title, description, canonical, image, schema }: Props) {
-  const fullTitle = title.includes('Yacht-Urlaub') ? title : `${title} | Yacht-Urlaub`
+  const lang = useLang()
+  const brand = lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'
+  const fullTitle = title.includes('Yacht-Urlaub') || title.includes('Yacht-Holiday') ? title : `${title} | ${brand}`
   const fullCanonical = `${BASE_URL}${canonical ?? ''}`
   const rawImage = image ?? DEFAULT_IMAGE
   const fullImage = rawImage.startsWith('http') ? rawImage : `${BASE_URL}${rawImage}`

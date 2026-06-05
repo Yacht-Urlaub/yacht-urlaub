@@ -129,7 +129,7 @@ export default function KabinenPage() {
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
-        title="Kabinen-Angebote – Einzelne Kabine buchen"
+        title={lang === 'en' ? "Cabin offers – book a single cabin | Yacht-Holiday" : "Kabinen-Angebote – Einzelne Kabine buchen"}
         description="Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für Kroatien (Kornaten) und Thailand. Ideal für Alleinreisende und Paare."
         canonical="/kabinen"
         image="/images/packages/Kornaten/gallery/Telascica.webp"
@@ -161,7 +161,7 @@ export default function KabinenPage() {
       <section style={{ background: 'var(--gray-light)', padding: '4rem 0' }}>
         <div className="container">
           <p style={{ color: 'var(--blue)', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.5rem', textAlign: 'center' }}>
-            Aktuelle Termine
+            {s.current}
           </p>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)', color: 'var(--navy)', marginBottom: '3rem', textAlign: 'center', fontWeight: 700 }}>
             {s.avail}

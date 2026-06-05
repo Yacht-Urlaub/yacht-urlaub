@@ -171,7 +171,7 @@ export default function SkipperPage() {
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
-        title="Skipper- und Bord-Service | Yacht-Urlaub"
+        title={lang === 'en' ? "Crew charter – skipper & board service | Yacht-Holiday" : "Skipper- und Bord-Service | Yacht-Urlaub"}
         description="Professionell ausgebildete Skipper, Bord-Service (Koch, Hostess), Yoga- und Kite-Instruktoren, Kinderbetreuung an Bord – buchen Sie Personal zu Ihrer Yacht."
         canonical="/skipper"
         image="/images/charter/skipper.jpg"

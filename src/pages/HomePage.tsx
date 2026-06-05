@@ -1,4 +1,5 @@
 import SEO from '../components/SEO'
+import { useLang } from '../i18n'
 import Hero from '../components/Hero'
 import Zielgruppen from '../components/Zielgruppen'
 import Packages from '../components/Packages'
@@ -25,10 +26,11 @@ const homeSchema = {
 }
 
 export default function HomePage() {
+  const lang = useLang()
   return (
     <main>
       <SEO
-        title="Yacht-Urlaub – A Taste of Paradise | Segel- & Yachtreisen"
+        title={lang === 'en' ? "Yacht-Holiday – A Taste of Paradise | Sailing holidays" : "Yacht-Urlaub – A Taste of Paradise | Segel- & Yachtreisen"}
         description="Yacht-Urlaub: Seit über 10 Jahren Segel- und Yachtreisen mit Qualität. Von Kroatien bis Karibik, Seychellen und Thailand – für Einsteiger, Familien und Luxury-Reisende."
         canonical="/"
         schema={homeSchema}

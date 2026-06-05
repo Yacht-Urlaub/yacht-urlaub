@@ -8,6 +8,13 @@ import { AlertIcon } from '../components/Icons'
 
 // Inhalte 1:1 von yacht-urlaub.net/charter/yacht-charter-anfragen
 
+const warumEn = [
+  { title: 'Quality you can rely on', text: "With our on-site experience, we have an in-depth knowledge of which fleets and charter bases truly offer quality. In case of any issues on-site, our long-standing connections enable us to quickly and effortlessly reach the right people. We're not just familiar with fleet operators and their booking departments at headquarters but also personally acquainted with many base managers and yacht coordinators at the location where you, as our customers, will be in contact." },
+  { title: 'Tips for a stress-free arrival', text: "The vacation begins even before you arrive. We understand how a charter base operates and how the starting marinas are set up. We're often on the move and frequently visit these locations. What's the local scene like? How does provisioning work? Where can you park? We can provide great insights, offer optimal travel planning recommendations, saving you valuable time. Knowledge about on-site parking conditions or affordable transfers is the special service at Yacht-Holiday." },
+  { title: 'Individual advice and best offers', text: "We tailor our services to your desires and search through the array of yachts to find the best offer for you. Of course, we also maintain a blacklist - we don't offer poorly managed charter bases with subpar yachts or service. However, should something go wrong, we're your point of contact!" },
+  { title: 'Our passion for yachting – your advantage', text: "We're also happy to provide advice on destinations and routes and offer tips for your voyage - worldwide! Because yachting is not just our profession but also our passion." },
+]
+
 const warum = [
   { title: 'Qualität, auf die Sie sich verlassen können', text: 'Dank unserer langjährigen Erfahrung wissen wir genau, welche Flotten und Charter-Basen wirklich überzeugen. Sollten vor Ort Unstimmigkeiten auftreten, greifen wir auf unser breites Netzwerk zurück und lösen Probleme schnell und unkompliziert. Wir kennen die Flottenbetreiber, ihre Buchungsverantwortlichen und sogar die Basisleiter oft persönlich – genau die Menschen, mit denen Sie vor Ort in Kontakt treten.' },
   { title: 'Tipps für eine stressfreie Anreise', text: 'Ihr Urlaub beginnt schon vor der Reise. Wir kennen die Marinas, ihre Umgebung und wissen, wie Charter-Basen funktionieren. Ob Einkaufsmöglichkeiten, Parkplätze oder Transfers – wir geben Ihnen wertvolle Tipps, damit Sie entspannt starten können.' },
@@ -90,7 +97,7 @@ export default function CharterPage() {
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
-        title="Yacht-Charter anfragen – Bareboat-Charter weltweit | Yacht-Urlaub"
+        title={lang === 'en' ? "Yacht charter – bareboat charter worldwide | Yacht-Holiday" : "Yacht-Charter anfragen – Bareboat-Charter weltweit | Yacht-Urlaub"}
         description="Sie wollen eine Yacht chartern? Gerne nehmen wir Ihre Anfrage für Yacht-Charter (nur Yacht ohne Skipper/Bord-Service) entgegen – weltweit, persönlich und mit Qualitätsversprechen."
         canonical="/charter"
         image="/images/charter/header.png"
@@ -240,7 +247,7 @@ export default function CharterPage() {
             {s.why}
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {warum.map((w, i) => (
+            {(lang === 'en' ? warumEn : warum).map((w, i) => (
               <div key={w.title}>
                 <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--blue)', fontSize: '1.02rem', fontWeight: 700, marginBottom: '0.4rem' }}>
                   {i + 1}. {w.title}

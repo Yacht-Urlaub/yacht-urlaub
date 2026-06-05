@@ -35,7 +35,7 @@ export default function DestinationenOverview({ standalone = false }: { standalo
           style={{ marginBottom: '3rem', textAlign: 'center' }}
         >
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-            Unsere Segelgebiete
+            {lang === 'en' ? 'Our sailing areas' : 'Unsere Segelgebiete'}
           </p>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', color: '#fff', marginBottom: '1rem' }}>
             Destinationen

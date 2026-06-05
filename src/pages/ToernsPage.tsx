@@ -85,7 +85,7 @@ export default function ToernsPage() {
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
-        title="Unsere Törns – Segeltörns für jeden | Yacht-Urlaub"
+        title={en ? "Our cruises – sailing trips for everyone | Yacht-Holiday" : "Unsere Törns – Segeltörns für jeden | Yacht-Urlaub"}
         description="Von der ersten Segelstunde bis zum Luxuserlebnis: Einsteiger-Törns, Familien-Törns, Freunde-Törns und Luxury-Törns mit erfahrenen Skippern weltweit."
         canonical="/toerns"
         image="/images/Zielgruppen/Einsteiger 1.jpg"
@@ -102,7 +102,7 @@ export default function ToernsPage() {
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
             style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-            Unsere Törns
+            {s.tag}
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
             style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#fff', marginBottom: '1rem' }}>
@@ -205,15 +205,15 @@ export default function ToernsPage() {
         <div className="container" style={{ maxWidth: '700px' }}>
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
             <p style={{ color: 'var(--gold)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 600 }}>
-              Kein passender Törn dabei?
+              {en ? 'No suitable cruise for you?' : 'Kein passender Törn dabei?'}
             </p>
             <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: '#fff', marginBottom: '1.25rem' }}>
-              Dein individueller Törn nach Maß
+              {en ? 'Your bespoke cruise, tailor-made' : 'Dein individueller Törn nach Maß'}
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
-              Wir planen deinen Traumtörn ganz nach deinen Wünschen — Reisezeit, Zielgebiet, Yacht und Crew. Kontaktiere uns für ein persönliches Angebot.
+              {en ? 'We plan your dream cruise entirely to your wishes — travel time, destination, yacht and crew. Contact us for a personal quote.' : 'Wir planen deinen Traumtörn ganz nach deinen Wünschen — Reisezeit, Zielgebiet, Yacht und Crew. Kontaktiere uns für ein persönliches Angebot.'}
             </p>
-            <a href="#kontakt" className="btn btn-primary">Jetzt anfragen</a>
+            <a href="#kontakt" className="btn btn-primary">{en ? 'Get a quote' : 'Jetzt anfragen'}</a>
           </motion.div>
         </div>
       </section>

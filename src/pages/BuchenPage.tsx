@@ -1,58 +1,89 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { useLang } from '../i18n'
 import { AnchorIcon } from '../components/Icons'
 
-const packages = [
+const packagesListEn = [
+  { title: 'Sailing in Croatia from Split', region: 'Croatia · Dalmatia',
+    text: 'Sailing vacations from Split or Trogir to Hvar, Vis, Korcula, Brac and Solta.',
+    img: '/images/packages/dalmatien/gallery/Split 1.jpg', href: '/en/cruises/book-now/dalmatia-croatia' },
+  { title: 'Caribbean package (BVI)', region: 'Caribbean · British Virgin Islands',
+    text: 'Your sailing holidays on a monohull or catamaran in the British Virgin Islands.',
+    img: '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg', href: '/en/cruises/book-now/caribbean-bvi' },
+  { title: 'Sailing in Greece', region: 'Greece · Aegean & Ionian Sea',
+    text: 'Sailing holiday in the Aegean or the Ionian sea — choice of 4 routes.',
+    img: '/images/packages/Griechenland/gallery/Navajo Bucht - Griechenland.jpg', href: '/en/cruises/book-now/greece' },
+  { title: 'Grenadines-Package', region: 'Caribbean · St. Vincent & Grenadines',
+    text: 'Sailing vacation on a monohull or catamaran in the Grenadines.',
+    img: '/images/Destinationsbilder/sonnenuntergang-grenadinen.jpg', href: '/en/cruises/book-now/caribbean-grenadines' },
+  { title: 'Sailing into the Kornati islands', region: 'Croatia · Kornati',
+    text: 'Sailing holiday in the Kornati islands from Zadar.',
+    img: '/images/Destinationsbilder/Header/Kroatien Bucht.webp', href: '/en/cruises/book-now/kornati-croatia' },
+]
+
+const packagesListDe = [
   {
     title: 'Segeln in Dalmatien ab Split',
     region: 'Kroatien · Dalmatien',
     text: 'Segelurlaub in Dalmatien ab Split oder Trogir zu den Inseln Hvar, Vis, Korčula, Brač und Šolta.',
     img: '/images/packages/dalmatien/gallery/Split 1.jpg',
-    href: '/destinationen/kroatien',
+    href: '/packages/dalmatien',
   },
   {
     title: 'Karibik-Package (BVI)',
     region: 'Karibik · Britische Jungferninseln',
     text: 'Ihr Traum-Segelurlaub auf einer Segelyacht oder Katamaran in den britischen Jungferninseln.',
     img: '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg',
-    href: '/destinationen/karibik-bvi',
+    href: '/packages/karibik-bvi',
   },
   {
     title: 'Segeln in Griechenland',
     region: 'Griechenland · Ägäis & Ionische Inseln',
     text: 'Auswahl aus 4 Routen für einen Segelurlaub in der Ägäis oder den Ionischen Inseln.',
     img: '/images/packages/Griechenland/gallery/Navajo Bucht - Griechenland.jpg',
-    href: '/destinationen/griechenland',
+    href: '/packages/griechenland',
   },
   {
     title: 'Grenadinen-Package',
     region: 'Karibik · St. Vincent & Grenadinen',
     text: 'Segelurlaub auf einer Segelyacht oder einem Katamaran in den Grenadinen.',
     img: '/images/Destinationsbilder/sonnenuntergang-grenadinen.jpg',
-    href: '/destinationen/karibik-bvi',
+    href: '/packages/karibik-grenadinen',
   },
   {
     title: 'Segeln in die Kornaten',
     region: 'Kroatien · Kornaten',
     text: 'Segelurlaub ab Zadar, Biograd oder Šibenik in die traumhafte Inselwelt der Kornaten.',
     img: '/images/Destinationsbilder/Header/Kroatien Bucht.webp',
-    href: '/destinationen/kroatien',
+    href: '/packages/kornaten',
   },
   {
     title: 'Segeln ab Pula oder Krk',
     region: 'Kroatien · Istrien',
     text: 'Segelurlaub in Istrien und in der Marina Punat ab Pula oder Punat auf Krk.',
     img: '/images/Destinationsbilder/bucht-in-den-dodekanes-bei-yacht-urlaub.jpg',
-    href: '/destinationen/kroatien',
+    href: '/packages/istrien',
   },
 ]
 
+const bl = {
+  de: { seoT: 'Jetzt buchen – Verfügbare Packages finden | Yacht-Urlaub',
+    tag: 'Jetzt buchen', h1: 'Verfügbare Packages zum Wunschtermin finden',
+    sub: 'Wähle Startdatum und Reisedauer — wir zeigen dir alle verfügbaren Yachten und Packages.' },
+  en: { seoT: 'Book now – find available packages | Yacht-Holiday',
+    tag: 'Book now', h1: 'Find available packages for your preferred dates',
+    sub: 'Choose your start date and duration — we will show you all available yachts and packages.' },
+}
+
 export default function BuchenPage() {
+  const lang = useLang()
+  const s = bl[lang]
+  const pkgList = lang === 'en' ? packagesListEn : packagesListDe
   return (
     <main style={{ paddingTop: '72px', minHeight: '100vh', background: 'var(--gray-light)' }}>
       <SEO
-        title="Jetzt buchen – Verfügbare Packages finden | Yacht-Urlaub"
+        title={s.seoT}
         description="Segelurlaub direkt online buchen: Startdatum und Dauer wählen, verfügbare Yachten und Packages finden und sofort buchen."
         canonical="/buchen"
         image="/images/Zielgruppen/Freunde 1.jpg"
@@ -65,19 +96,19 @@ export default function BuchenPage() {
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
             style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}
           >
-            Jetzt buchen
+            {s.tag}
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
             style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: '#fff', marginBottom: '1rem' }}
           >
-            Verfügbare Packages zum Wunschtermin finden
+            {s.h1}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
             style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem', maxWidth: '540px', margin: '0 auto' }}
           >
-            Wähle Startdatum und Reisedauer — wir zeigen dir alle verfügbaren Yachten und Packages.
+            {s.sub}
           </motion.p>
         </div>
       </div>
@@ -95,7 +126,7 @@ export default function BuchenPage() {
         >
           <iframe
             src="/buchen-widget.html"
-            title="Yacht buchen"
+            title={lang === 'en' ? 'Book a yacht' : 'Yacht buchen'}
             style={{
               width: '100%',
               height: '1400px',
@@ -121,9 +152,9 @@ export default function BuchenPage() {
           }}
         >
           <p style={{ color: '#fff', fontSize: '0.95rem', fontWeight: 500 }}>
-            Aktuelle Kabinenangebote (für Alleinreisende oder kleine Gruppen)
+            {lang === 'en' ? 'Current cabin offers (for solo travellers or small groups)' : 'Aktuelle Kabinenangebote (für Alleinreisende oder kleine Gruppen)'}
           </p>
-          <Link to="/news" style={{
+          <Link to={lang === 'en' ? '/en/cabin-offers' : '/kabinen'} style={{
             background: '#fff',
             color: '#1a6eb5',
             padding: '8px 20px',
@@ -132,7 +163,7 @@ export default function BuchenPage() {
             fontWeight: 700,
             whiteSpace: 'nowrap',
           }}>
-            Jetzt stöbern →
+            {lang === 'en' ? 'Browse now →' : 'Jetzt stöbern →'}
           </Link>
         </motion.div>
       </div>
@@ -142,13 +173,13 @@ export default function BuchenPage() {
         <div className="container" style={{ maxWidth: '960px' }}>
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
             <p style={{ color: 'var(--blue)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-              Segel-Packages
+              {lang === 'en' ? 'Sailing packages' : 'Segel-Packages'}
             </p>
-            <h2 className="section-title">Alle Packages auf einen Blick</h2>
+            <h2 className="section-title">{lang === 'en' ? 'All packages at a glance' : 'Alle Packages auf einen Blick'}</h2>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }} className="pkg-grid">
-            {packages.map((pkg, i) => (
+            {pkgList.map((pkg, i) => (
               <motion.div
                 key={pkg.title}
                 initial={{ opacity: 0, y: 24 }}
@@ -196,7 +227,7 @@ export default function BuchenPage() {
                     fontSize: '0.75rem', fontWeight: 600,
                     alignSelf: 'flex-start',
                   }}>
-                    <AnchorIcon size={14} style={{ verticalAlign: '-2px', marginRight: '5px' }} />Zum Angebot
+                    <AnchorIcon size={14} style={{ verticalAlign: '-2px', marginRight: '5px' }} />{lang === 'en' ? 'To the offer' : 'Zum Angebot'}
                   </Link>
                 </div>
               </motion.div>

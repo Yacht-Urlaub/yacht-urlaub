@@ -76,7 +76,7 @@ export default function News() {
         >
           <div>
             <p style={{ color: 'var(--blue)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-              Aktuelles
+              {lang === 'en' ? 'Latest' : 'Aktuelles'}
             </p>
             <h2 className="section-title">{lang === 'en' ? 'News & offers' : 'Top-News & Angebote'}</h2>
           </div>
