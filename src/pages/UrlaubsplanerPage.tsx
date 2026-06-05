@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { AnchorIcon } from '../components/Icons'
+import { useLang } from '../i18n'
 
 // Optionen 1:1 vom Original-Urlaubsplaner (yacht-urlaub.net/urlaubsplaner)
 const yachtTypes = [
@@ -65,7 +66,86 @@ const inputStyle = {
 } as const
 const labelStyle = { display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' } as const
 
+const pl = {
+  de: {
+    tag: 'Anfrage starten – mit dem YACHT-URLAUBsplaner', h1: 'Urlaubsplaner',
+    sub: 'In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir! Alles natürlich unverbindlich und kostenlos!',
+    steps: ['Yachtauswahl', 'Revierauswahl', 'Terminplanung', 'Crew & Kommunikation', 'Kontaktperson'],
+    s1h: 'Yachtauswahl', s1sub: "Zuerst einmal zu Ihrem Schiffstyp: Was darf's denn sein?",
+    yachts: ['Gemütliche Segelyacht', 'Geräumiger Katamaran', 'Luxuriöse Motoryacht'],
+    s2h: 'Wo wollen Sie den Urlaub verbringen?',
+    s2sub: 'Haben Sie und Ihre Crew sich schon Gedanken über eine Urlaubsdestination gemacht? Es gibt viele schöne Yacht-Urlaubsreviere auf dieser Welt. Wenn Ihre Wunschdestination nicht dabei ist, einfach Ihre Gedanken unter Sonstiges eintragen.',
+    multi: '(Mehrfachauswahl möglich)', other: 'Sonstiges:', otherPh: 'Ihre Wunschdestination oder Gedanken dazu …',
+    s3h: 'Terminplanung',
+    s3sub: 'Wann wollen Sie mit Ihrer Crew auf Urlaub fahren? Bitte Ihren Wunsch-Anreisetag bekanntgeben. Ohne konkreten Termin gerne einen beliebigen Tag des Wunschmonats eintragen und Gedanken im Feld „Anmerkung/Wünsche" mitteilen!',
+    begin: 'Beginn Ihres Urlaubs *',
+    beginHint: 'In der Hauptsaison Juni–Sept. gilt in Europa grundsätzlich Samstag oder Mittwoch Anreise, Mindestdauer 7 Tage. Kurztrips nur in den Monaten März bis Mai bzw. Oktober möglich.',
+    dauer: 'Und die Dauer in Tagen *', wish: 'Ich möchte meine Reise ... *',
+    wishes: ['... so bald wie möglich buchen.', '... in den nächsten Wochen buchen.', '... derzeit noch nicht buchen. Ich erkundige mich nur.'],
+    notes: 'Anmerkung/Wünsche', notesPh: 'Besondere Wünsche, alternative Termine, Erfahrung, Budget …',
+    s4h: 'Crew & Kommunikation',
+    s4sub: 'Es gibt viele verschiedene Kommunikationsmöglichkeiten für die Planung. Welche Plattform verwenden Sie zur Kommunikation mit den Leuten Ihrer Crew am ehesten?',
+    group: 'Wieviele Personen umfasst Ihre Gruppe? *',
+    komm: 'Wie bzw. wo soll die Planung Ihres Urlaubs stattfinden? (Mehrauswahl möglich)',
+    s5h: 'Kontaktperson',
+    s5sub: 'Sehr gut, Sie haben es fast geschafft! Last, but not least, wollen wir natürlich wissen, wer Sie sind. Sie sind unsere Referenzperson für die erste Kontaktaufnahme – natürlich alles unverbindlich und kostenlos.',
+    yacht: 'Yacht', revier: 'Revier', termin: 'Termin', gruppe: 'Gruppe', tage: 'Tage',
+    vn: 'Vorname *', nn: 'Nachname *', geb: 'Geburtsjahr *', gebPh: 'z.B. 1984', mail: 'E-Mail *',
+    tel: 'Telefonnummer *', telPh: 'mit Ländervorwahl bitte (+49/+43/+41)', nl: 'Zum Newsletter anmelden',
+    privacy: 'Yacht-Urlaub wird die Informationen, die Sie in diesem Formular angeben, dazu verwenden, mit Ihnen in Kontakt zu bleiben und Ihnen Updates und Marketing-Informationen per E-Mail zu übermitteln. Wir werden Ihre Informationen mit Sorgfalt und Respekt behandeln. Weitere Informationen zu unseren Datenschutzpraktiken finden Sie auf unserer',
+    website: 'Website', found: 'Wie haben Sie von uns erfahren?', wahl: 'Bitte wählen …',
+    submit: 'Abschicken — kostenlos & unverbindlich →', nospam: 'Wir melden uns persönlich. Kein Spam.',
+    thanks: (n: string) => `Vielen Dank, ${n}!`,
+    thanksSub: 'Wir haben Ihre Anfrage erhalten und melden uns schnellstmöglich bei Ihnen — persönlich, ohne automatische Antwort.',
+    back: '← Zurück', home: 'Zurück zur Startseite', homeHref: '/',
+    nav: ['weiter zur Revierauswahl', 'Weiter zur Terminplanung', 'Vorletzter Schritt: Kommunikation & Crew', 'Letzter Schritt: Ihre Kontaktdaten'],
+    altText: 'Urlaubsplaner zu langwierig? Sie können gerne alternativ unser', altForm: 'kurzes Anfrage-Formular', altUse: 'verwenden!',
+    bareboat: 'Für BAREBOAT-CHARTER Anfragen (nur Yacht ohne Skipper) bitte', bareboatForm: 'dieses Formular', bareboatUse: 'verwenden.',
+    fixe: 'FIXE ROUTE BUCHEN', nurYacht: '„Nur Yacht"-Anfrage', buchHref: '/buchen', charterHref: '/charter',
+    datenschutzHref: '/datenschutz',
+  },
+  en: {
+    tag: 'Get a quote – with the YACHT-HOLIDAY planner', h1: 'Holiday planner',
+    sub: 'In 5 short steps we clarify the most important questions about your holiday. Then you can sit back and relax – we take care of the rest of the organisation! All non-binding and free of charge!',
+    steps: ['Choice of yacht', 'Sailing area', 'Schedule', 'Crew & communication', 'Contact person'],
+    s1h: 'Choice of yacht', s1sub: 'First of all, your type of boat: what shall it be?',
+    yachts: ['Comfortable sailing yacht', 'Spacious catamaran', 'Luxurious motor yacht'],
+    s2h: 'Where do you want to spend your holiday?',
+    s2sub: 'Have you and your crew already thought about a destination? There are many beautiful yacht sailing areas in this world. If your dream destination is not listed, just enter your thoughts under Other.',
+    multi: '(multiple selection possible)', other: 'Other:', otherPh: 'Your dream destination or thoughts …',
+    s3h: 'Schedule',
+    s3sub: 'When do you want to go on holiday with your crew? Please state your preferred arrival day. Without a fixed date, simply enter any day of the desired month and share your thoughts in the "Notes" field!',
+    begin: 'Start of your holiday *',
+    beginHint: 'In high season June–Sept. in Europe arrival is generally Saturday or Wednesday, minimum duration 7 days. Short trips only possible March to May and October.',
+    dauer: 'And the duration in days *', wish: 'I would like to book my trip ... *',
+    wishes: ['... as soon as possible.', '... within the next weeks.', '... not yet. I am just inquiring.'],
+    notes: 'Notes', notesPh: 'Special wishes, alternative dates, experience, budget …',
+    s4h: 'Crew & communication',
+    s4sub: 'There are many different ways to communicate for planning. Which platform do you most likely use to communicate with your crew?',
+    group: 'How many people are in your group? *',
+    komm: 'How or where should the planning of your holiday take place? (multiple selection possible)',
+    s5h: 'Contact person',
+    s5sub: 'Very good, you have almost made it! Last but not least, we would like to know who you are. You are our reference person for the first contact – all non-binding and free of charge, of course.',
+    yacht: 'Yacht', revier: 'Area', termin: 'Date', gruppe: 'Group', tage: 'days',
+    vn: 'First name *', nn: 'Last name *', geb: 'Year of birth *', gebPh: 'e.g. 1984', mail: 'Email *',
+    tel: 'Telephone number *', telPh: 'with country code please (+49/+43/+41)', nl: 'Subscribe to the newsletter',
+    privacy: 'Yacht-Holiday will use the information you provide on this form to stay in touch with you and to send you updates and marketing information by email. We will treat your information with care and respect. For more information about our privacy practices please visit our',
+    website: 'website', found: 'How did you hear about us?', wahl: 'Please choose …',
+    submit: 'Submit — free & non-binding →', nospam: 'We will reply personally. No spam.',
+    thanks: (n: string) => `Thank you, ${n}!`,
+    thanksSub: 'We have received your request and will get back to you as soon as possible — personally, without an automatic reply.',
+    back: '← Back', home: 'Back to homepage', homeHref: '/en',
+    nav: ['continue to sailing area', 'Continue to schedule', 'Second to last step: communication & crew', 'Last step: your contact details'],
+    altText: 'Holiday planner too lengthy? You are welcome to use our', altForm: 'short inquiry form', altUse: 'instead!',
+    bareboat: 'For BAREBOAT charter requests (yacht only, without skipper) please use', bareboatForm: 'this form', bareboatUse: '.',
+    fixe: 'BOOK A FIXED ROUTE', nurYacht: '"Yacht only" request', buchHref: '/en/book-now', charterHref: '/en/charter/yacht-charter',
+    datenschutzHref: '/en/data-privacy',
+  },
+}
+
 export default function UrlaubsplanerPage() {
+  const lang = useLang()
+  const s = pl[lang]
   const [step, setStep] = useState(0)
   const [sent, setSent] = useState(false)
   const [form, setForm] = useState<FormData>({
@@ -132,13 +212,13 @@ export default function UrlaubsplanerPage() {
       <div style={{ background: 'var(--navy)', padding: '3.5rem 0 3rem' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-            Anfrage starten – mit dem YACHT-URLAUBsplaner
+            {s.tag}
           </p>
           <h1 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#fff', marginBottom: '0.75rem' }}>
-            Urlaubsplaner
+            {s.h1}
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.95rem', maxWidth: '560px', margin: '0 auto' }}>
-            In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir! Alles natürlich unverbindlich und kostenlos!
+            {s.sub}
           </p>
         </div>
       </div>
@@ -147,20 +227,20 @@ export default function UrlaubsplanerPage() {
         <div className="container" style={{ maxWidth: '640px', padding: '5rem 1.5rem', textAlign: 'center' }}>
           <div style={{ marginBottom: '1.5rem', color: 'var(--blue)', display: 'flex', justifyContent: 'center' }}><AnchorIcon size={56} /></div>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '2rem', marginBottom: '1rem' }}>
-            Vielen Dank, {form.vorname}!
+            {s.thanks(form.vorname)}
           </h2>
           <p style={{ color: 'var(--gray)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
-            Wir haben Ihre Anfrage erhalten und melden uns schnellstmöglich bei Ihnen — persönlich, ohne automatische Antwort.
+            {s.thanksSub}
           </p>
-          <a href="/" className="btn btn-primary">Zurück zur Startseite</a>
+          <a href={s.homeHref} className="btn btn-primary">{s.home}</a>
         </div>
       ) : (
         <div className="container" style={{ maxWidth: '860px', padding: '3rem 1.5rem 5rem' }}>
 
           {/* Progress */}
           <div className="planer-stepper" style={{ display: 'flex', justifyContent: 'center', gap: 0, marginBottom: '3rem' }}>
-            {steps.map((s, i) => (
-              <div key={s} style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+            {s.steps.map((st, i) => (
+              <div key={st} style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: i < step ? 'pointer' : 'default' }}
                   onClick={() => i < step && setStep(i)}>
                   <div style={{
@@ -175,7 +255,7 @@ export default function UrlaubsplanerPage() {
                     {i < step ? '✓' : i + 1}
                   </div>
                   <span className="planer-step-label" style={{ fontSize: '0.66rem', marginTop: '4px', color: i === step ? 'var(--navy)' : 'var(--gray)', fontWeight: i === step ? 700 : 400, whiteSpace: 'nowrap' }}>
-                    {s}
+                    {st}
                   </span>
                 </div>
                 {i < steps.length - 1 && (
@@ -191,10 +271,10 @@ export default function UrlaubsplanerPage() {
             {step === 0 && (
               <motion.div key="step0" {...fadeIn}>
                 <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.6rem', marginBottom: '0.5rem', textAlign: 'center' }}>
-                  Yachtauswahl
+                  {s.s1h}
                 </h2>
                 <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem' }}>
-                  Zuerst einmal zu Ihrem Schiffstyp: Was darf's denn sein?
+                  {s.s1sub}
                 </p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }} className="planer-dest-grid">
                   {yachtTypes.map(y => (
@@ -221,7 +301,7 @@ export default function UrlaubsplanerPage() {
                         display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1rem',
                         transition: 'background 0.2s',
                       }}>
-                        <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', textAlign: 'left', lineHeight: 1.2 }}>{y.label}</span>
+                        <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', textAlign: 'left', lineHeight: 1.2 }}>{s.yachts[yachtTypes.indexOf(y)]}</span>
                         {form.yacht === y.id && (
                           <span style={{ position: 'absolute', top: '8px', right: '8px', background: 'var(--blue)', color: '#fff', borderRadius: '50%', width: '22px', height: '22px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>✓</span>
                         )}
@@ -236,10 +316,10 @@ export default function UrlaubsplanerPage() {
             {step === 1 && (
               <motion.div key="step1" {...fadeIn}>
                 <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.6rem', marginBottom: '0.5rem', textAlign: 'center' }}>
-                  Wo wollen Sie den Urlaub verbringen?
+                  {s.s2h}
                 </h2>
                 <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem', maxWidth: '620px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  Haben Sie und Ihre Crew sich schon Gedanken über eine Urlaubsdestination gemacht? Es gibt viele schöne Yacht-Urlaubsreviere auf dieser Welt. Wenn Ihre Wunschdestination nicht dabei ist, oder Ihre Crew sich einfach noch nicht sicher ist, einfach Ihre Gedanken unter Sonstiges eintragen. <strong>(Mehrfachauswahl möglich)</strong>
+                  {s.s2sub} <strong>{s.multi}</strong>
                 </p>
                 <div style={{ background: '#fff', borderRadius: '8px', padding: '2rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem', marginBottom: '1.5rem' }} className="planer-revier-grid">
@@ -257,9 +337,9 @@ export default function UrlaubsplanerPage() {
                       </button>
                     ))}
                   </div>
-                  <label style={labelStyle}>Sonstiges:</label>
+                  <label style={labelStyle}>{s.other}</label>
                   <input type="text" value={form.revierSonstiges} onChange={e => update('revierSonstiges', e.target.value)}
-                    placeholder="Ihre Wunschdestination oder Gedanken dazu …" style={inputStyle} />
+                    placeholder={s.otherPh} style={inputStyle} />
                 </div>
               </motion.div>
             )}
@@ -271,27 +351,27 @@ export default function UrlaubsplanerPage() {
                   Terminplanung
                 </h2>
                 <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem', maxWidth: '620px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  Wann wollen Sie mit Ihrer Crew auf Urlaub fahren? Bitte Ihren Wunsch-Anreisetag bekanntgeben. Wenn Sie mit Ihrer Crew noch keinen konkreten Termin vereinbaren konnten, tragen Sie auch gerne einen beliebigen Tag des Wunschmonats ein und teilen Sie uns Ihre Gedanken im Feld „Anmerkung/Wünsche" mit!
+                  {s.s3sub}
                 </p>
 
                 <div style={{ background: '#fff', borderRadius: '8px', padding: '2.5rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)', maxWidth: '560px', margin: '0 auto' }}>
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>Beginn Ihres Urlaubs *</label>
+                    <label style={labelStyle}>{s.begin}</label>
                     <input type="date" required value={form.beginn} onChange={e => update('beginn', e.target.value)} style={inputStyle} />
                     <p style={{ color: 'var(--gray)', fontSize: '0.74rem', marginTop: '5px', lineHeight: 1.5 }}>
-                      In der Hauptsaison Juni–Sept. gilt in Europa grundsätzlich Samstag oder Mittwoch Anreise, Mindestdauer 7 Tage. Kurztrips nur in den Monaten März bis Mai bzw. Oktober möglich.
+                      {s.beginHint}
                     </p>
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>Und die Dauer in Tagen *</label>
+                    <label style={labelStyle}>{s.dauer}</label>
                     <input type="number" min={3} max={42} required value={form.dauer} onChange={e => update('dauer', e.target.value)} style={inputStyle} />
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>Ich möchte meine Reise ... *</label>
+                    <label style={labelStyle}>{s.wish}</label>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                      {buchungsAbsichten.map(b => (
+                      {(lang === 'en' ? s.wishes : buchungsAbsichten).map(b => (
                         <label key={b} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: '#444', cursor: 'pointer' }}>
                           <input type="radio" name="buchung" checked={form.buchung === b} onChange={() => update('buchung', b)} />
                           {b}
@@ -301,9 +381,9 @@ export default function UrlaubsplanerPage() {
                   </div>
 
                   <div>
-                    <label style={labelStyle}>Anmerkung/Wünsche</label>
+                    <label style={labelStyle}>{s.notes}</label>
                     <textarea rows={4} value={form.anmerkung} onChange={e => update('anmerkung', e.target.value)}
-                      placeholder="Besondere Wünsche, alternative Termine, Erfahrung, Budget …"
+                      placeholder={s.notesPh}
                       style={{ ...inputStyle, resize: 'vertical' }} />
                   </div>
                 </div>
@@ -314,23 +394,23 @@ export default function UrlaubsplanerPage() {
             {step === 3 && (
               <motion.div key="step3" {...fadeIn}>
                 <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.6rem', marginBottom: '0.5rem', textAlign: 'center' }}>
-                  Crew &amp; Kommunikation
+                  {s.s4h}
                 </h2>
                 <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem', maxWidth: '620px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  Es gibt viele verschiedene Kommunikationsmöglichkeiten für die Planung. Welche Plattform verwenden Sie zur Kommunikation mit den Leuten Ihrer Crew am ehesten?
+                  {s.s4sub}
                 </p>
 
                 <div style={{ background: '#fff', borderRadius: '8px', padding: '2.5rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)', maxWidth: '560px', margin: '0 auto' }}>
                   <div style={{ marginBottom: '1.5rem' }}>
-                    <label style={labelStyle}>Wieviele Personen umfasst Ihre Gruppe? *</label>
+                    <label style={labelStyle}>{s.group}</label>
                     <select required value={form.personen} onChange={e => update('personen', e.target.value)} style={inputStyle}>
-                      <option value="">Bitte wählen …</option>
+                      <option value="">{s.wahl}</option>
                       {gruppenGroessen.map(g => <option key={g} value={g}>{g}</option>)}
                     </select>
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>Wie bzw. wo soll die Planung Ihres Urlaubs stattfinden? (Mehrauswahl möglich)</label>
+                    <label style={labelStyle}>{s.komm}</label>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
                       {kommunikationsWege.map(k => (
                         <label key={k} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: '#444', cursor: 'pointer' }}>
@@ -341,7 +421,7 @@ export default function UrlaubsplanerPage() {
                     </div>
                   </div>
 
-                  <label style={labelStyle}>Sonstiges:</label>
+                  <label style={labelStyle}>{s.other}</label>
                   <input type="text" value={form.kommunikationSonstiges} onChange={e => update('kommunikationSonstiges', e.target.value)} style={inputStyle} />
                 </div>
               </motion.div>
@@ -354,27 +434,27 @@ export default function UrlaubsplanerPage() {
                   Kontaktperson
                 </h2>
                 <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem', maxWidth: '620px', marginLeft: 'auto', marginRight: 'auto' }}>
-                  Sehr gut, Sie haben es fast geschafft! Last, but not least, wollen wir natürlich wissen, wer Sie sind. Sie sind unsere Referenzperson für die erste Kontaktaufnahme – natürlich alles unverbindlich und kostenlos.
+                  {s.s5sub}
                 </p>
 
                 {/* Zusammenfassung */}
                 <div style={{ background: 'var(--navy)', borderRadius: '6px', padding: '1.25rem 1.75rem', marginBottom: '2rem', display: 'flex', flexWrap: 'wrap', gap: '1.5rem' }}>
                   <div>
-                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Yacht</span>
+                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>{s.yacht}</span>
                     <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{form.yacht}</p>
                   </div>
                   <div>
-                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Revier</span>
+                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>{s.revier}</span>
                     <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>
                       {[...form.reviere, form.revierSonstiges].filter(Boolean).join(', ')}
                     </p>
                   </div>
                   <div>
-                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Termin</span>
-                    <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{form.beginn} · {form.dauer} Tage</p>
+                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>{s.termin}</span>
+                    <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{form.beginn} · {form.dauer} {s.tage}</p>
                   </div>
                   <div>
-                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Gruppe</span>
+                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>{s.gruppe}</span>
                     <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{form.personen}</p>
                   </div>
                 </div>
@@ -391,45 +471,45 @@ export default function UrlaubsplanerPage() {
 
                   <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
-                      <label style={labelStyle}>Vorname *</label>
+                      <label style={labelStyle}>{s.vn}</label>
                       <input type="text" name="vorname" required value={form.vorname} onChange={e => update('vorname', e.target.value)} style={inputStyle} />
                     </div>
                     <div>
-                      <label style={labelStyle}>Nachname *</label>
+                      <label style={labelStyle}>{s.nn}</label>
                       <input type="text" name="nachname" required value={form.nachname} onChange={e => update('nachname', e.target.value)} style={inputStyle} />
                     </div>
                   </div>
 
                   <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
-                      <label style={labelStyle}>Geburtsjahr *</label>
-                      <input type="number" name="geburtsjahr" required min={1920} max={2010} placeholder="z.B. 1984" value={form.geburtsjahr} onChange={e => update('geburtsjahr', e.target.value)} style={inputStyle} />
+                      <label style={labelStyle}>{s.geb}</label>
+                      <input type="number" name="geburtsjahr" required min={1920} max={2010} placeholder={s.gebPh} value={form.geburtsjahr} onChange={e => update('geburtsjahr', e.target.value)} style={inputStyle} />
                     </div>
                     <div>
-                      <label style={labelStyle}>E-Mail *</label>
+                      <label style={labelStyle}>{s.mail}</label>
                       <input type="email" name="email" required value={form.email} onChange={e => update('email', e.target.value)} style={inputStyle} />
                     </div>
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>Telefonnummer *</label>
-                    <input type="tel" name="telefon" required placeholder="mit Ländervorwahl bitte (+49/+43/+41)" value={form.telefon} onChange={e => update('telefon', e.target.value)} style={inputStyle} />
+                    <label style={labelStyle}>{s.tel}</label>
+                    <input type="tel" name="telefon" required placeholder={s.telPh} value={form.telefon} onChange={e => update('telefon', e.target.value)} style={inputStyle} />
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
                     <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.85rem', color: '#444', cursor: 'pointer' }}>
                       <input type="checkbox" checked={form.newsletter} onChange={e => update('newsletter', e.target.checked)} style={{ marginTop: '3px' }} />
-                      Zum Newsletter anmelden
+                      {s.nl}
                     </label>
                     <p style={{ color: 'var(--gray)', fontSize: '0.7rem', lineHeight: 1.5, marginTop: '0.4rem' }}>
-                      Yacht-Urlaub wird die Informationen, die Sie in diesem Formular angeben, dazu verwenden, mit Ihnen in Kontakt zu bleiben und Ihnen Updates und Marketing-Informationen per E-Mail zu übermitteln. Wir werden Ihre Informationen mit Sorgfalt und Respekt behandeln. Weitere Informationen zu unseren Datenschutzpraktiken finden Sie auf unserer <a href="/datenschutz" style={{ color: 'var(--blue)' }}>Website</a>.
+                      {s.privacy} <a href={s.datenschutzHref} style={{ color: 'var(--blue)' }}>{s.website}</a>.
                     </p>
                   </div>
 
                   <div style={{ marginBottom: '1.75rem' }}>
-                    <label style={labelStyle}>Wie haben Sie von uns erfahren?</label>
+                    <label style={labelStyle}>{s.found}</label>
                     <select value={form.erfahren} onChange={e => update('erfahren', e.target.value)} style={inputStyle}>
-                      <option value="">Bitte wählen …</option>
+                      <option value="">{s.wahl}</option>
                       {erfahrenOptionen.map(o => <option key={o} value={o}>{o}</option>)}
                     </select>
                   </div>
@@ -440,10 +520,10 @@ export default function UrlaubsplanerPage() {
                     className="btn btn-primary"
                     style={{ width: '100%', fontSize: '0.85rem', padding: '14px', opacity: canNext() ? 1 : 0.5, cursor: canNext() ? 'pointer' : 'not-allowed' }}
                   >
-                    Abschicken — kostenlos &amp; unverbindlich →
+                    {s.submit}
                   </button>
                   <p style={{ color: 'var(--gray)', fontSize: '0.75rem', marginTop: '0.75rem', textAlign: 'center' }}>
-                    Wir melden uns persönlich. Kein Spam.
+                    {s.nospam}
                   </p>
                 </form>
               </motion.div>
@@ -464,7 +544,7 @@ export default function UrlaubsplanerPage() {
                   transition: 'all 0.2s',
                 }}
               >
-                ← Zurück
+                {s.back}
               </button>
               <button
                 onClick={() => setStep(s => s + 1)}
@@ -472,7 +552,7 @@ export default function UrlaubsplanerPage() {
                 className="btn btn-primary"
                 style={{ fontSize: '0.85rem', padding: '11px 32px', opacity: canNext() ? 1 : 0.5, cursor: canNext() ? 'pointer' : 'not-allowed' }}
               >
-                {step === 0 ? 'weiter zur Revierauswahl' : step === 1 ? 'Weiter zur Terminplanung' : step === 2 ? 'Vorletzter Schritt: Kommunikation & Crew' : 'Letzter Schritt: Ihre Kontaktdaten'} →
+                {s.nav[step]} →
               </button>
             </div>
           )}
@@ -486,7 +566,7 @@ export default function UrlaubsplanerPage() {
                   fontFamily: 'DM Sans, sans-serif', fontSize: '0.85rem',
                 }}
               >
-                ← Zurück
+                {s.back}
               </button>
             </div>
           )}
@@ -494,14 +574,14 @@ export default function UrlaubsplanerPage() {
           {/* Alternativen (wie auf der Originalseite) */}
           <div style={{ marginTop: '4rem', background: '#fff', borderRadius: '8px', padding: '2rem', boxShadow: '0 2px 14px rgba(0,0,0,0.06)', textAlign: 'center' }}>
             <p style={{ color: '#444', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '0.5rem' }}>
-              Urlaubsplaner zu langwierig? Sie können gerne alternativ unser <a href="#kontakt" style={{ color: 'var(--blue)', fontWeight: 600 }}>kurzes Anfrage-Formular</a> verwenden!
+              {s.altText} <a href="#kontakt" style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.altForm}</a> {s.altUse}
             </p>
             <p style={{ color: '#444', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
-              Für BAREBOAT-CHARTER Anfragen (nur Yacht ohne Skipper) bitte <a href="/charter" style={{ color: 'var(--blue)', fontWeight: 600 }}>dieses Formular</a> verwenden.
+              {s.bareboat} <a href={s.charterHref} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.bareboatForm}</a>{s.bareboatUse}
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href="/buchen" className="btn btn-navy" style={{ fontSize: '0.8rem' }}>FIXE ROUTE BUCHEN</a>
-              <a href="/charter" className="btn btn-ghost" style={{ fontSize: '0.8rem' }}>„Nur Yacht"-Anfrage</a>
+              <a href={s.buchHref} className="btn btn-navy" style={{ fontSize: '0.8rem' }}>{s.fixe}</a>
+              <a href={s.charterHref} className="btn btn-ghost" style={{ fontSize: '0.8rem' }}>{s.nurYacht}</a>
             </div>
             <p style={{ color: 'var(--gray)', fontSize: '0.85rem', marginTop: '1.25rem' }}>
               <a href="tel:+43199715820" style={{ color: 'var(--blue)', fontWeight: 600 }}>+43 1 997 15 82</a> · <a href="mailto:info@yacht-urlaub.net" style={{ color: 'var(--blue)', fontWeight: 600 }}>info@yacht-urlaub.net</a>

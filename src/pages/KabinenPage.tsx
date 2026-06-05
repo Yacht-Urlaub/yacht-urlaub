@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { useLang } from '../i18n'
 import { SparklesIcon } from '../components/Icons'
 
 // Angebote 1:1 von der Originalseite (yacht-urlaub.net/kabinenangebote)
@@ -42,7 +43,60 @@ const reiseOptionen = [
   "WhatsApp Community Törn in Thailand Februar'27",
 ]
 
+const kl = {
+  de: { tag: 'Für Alleinreisende & kleine Gruppen', h1: 'Kabinen Angebote',
+    sub: 'Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht — und teilen Sie sich die Yacht mit einer netten Crew.',
+    current: 'Aktuelle Termine', avail: 'Verfügbare Kabinen-Angebote', dep: 'Abfahrt', book: 'JETZT BUCHEN →',
+    formH: 'Buchungsformular', choose: 'Wählen Sie Ihre Reise *', pax: 'Personen *', contact: 'Kontaktdaten',
+    vn: 'Vorname *', nn: 'Nachname *', adr: 'Adresse *', plz: 'PLZ *', ort: 'Ort *',
+    tel: 'Telefon/Handy *', telHint: '(+43, +49, ..)', mail: 'E-Mail *', notes: 'Anmerkungen',
+    pay: 'Zahlungsart *', trans: 'Überweisung', cc: 'Kreditkarte',
+    bind: 'gelesen und buche verbindlich zu oben angegebenen Wunschdaten!', agb: 'AGB', agbPre: 'Ich habe die',
+    ask: 'Ich frage nur an und benötige mehr Infos', send: 'Senden', sending: 'wird gesendet …',
+    thanks: 'Vielen Dank!', interest: 'Interesse an einem Kabinentörn?',
+    interestSub: 'Fragen Sie uns einfach — wir finden das passende Angebot für Sie.', start: 'Anfrage starten →',
+    wahl: 'Bitte wählen …' },
+  en: { tag: 'For solo travellers & small groups', h1: 'Cabin offers',
+    sub: 'Book a single cabin on a shared yacht — and share the yacht with a lovely crew.',
+    current: 'Current dates', avail: 'Available cabin offers', dep: 'Departure', book: 'BOOK NOW →',
+    formH: 'Booking form', choose: 'Choose date *', pax: 'Pax *', contact: 'Contact details',
+    vn: 'First name *', nn: 'Last name *', adr: 'Address *', plz: 'Postal code *', ort: 'City *',
+    tel: 'Phone/mobile *', telHint: '(+43, +49, ..)', mail: 'Email *', notes: 'Notes',
+    pay: 'Payment method *', trans: 'Bank transfer', cc: 'Credit card',
+    bind: 'and book bindingly for the requested dates above!', agb: 'terms & conditions', agbPre: 'I have read the',
+    ask: 'I am only inquiring and need more information', send: 'Send', sending: 'sending …',
+    thanks: 'Thank you!', interest: 'Interested in a cabin cruise?',
+    interestSub: 'Just ask us — we will find the right offer for you.', start: 'Get a quote →',
+    wahl: 'Please choose …' },
+}
+
+const angeboteEn = [
+  {
+    id: 'kornaten-august',
+    title: 'Sailing Holiday to the Kornati Islands',
+    reiseOption: '22.08. - 29.08.2026 from Zadar',
+    abfahrt: 'Zadar',
+    datum: '22.08. – 29.08.2026',
+    preis: '€ 1,210.–',
+    preisNote: 'per person, in a double cabin (single use +50 %)',
+    plaetze: 'Only 2 spots left!',
+    plaetzeColor: '#dc2626',
+    bord: true,
+    desc: 'Experience an unforgettable week on a sporty monohull sailing yacht! Perfect for ocean lovers. Included: On-board service (breakfast, lunch snack).',
+    img: '/images/packages/Kornaten/gallery/Mono Kornaten.webp',
+  },
+]
+const reiseOptionenEn = [
+  '22.08. - 29.08.2026 from Zadar',
+  'Community Trip for Thailand in February 2027',
+  'on request (see notes)',
+]
+
 export default function KabinenPage() {
+  const lang = useLang()
+  const s = kl[lang]
+  const list = lang === 'en' ? angeboteEn : angebote
+  const optionen = lang === 'en' ? reiseOptionenEn : reiseOptionen
   const [form, setForm] = useState({
     reise: '', personen: '1',
     vorname: '', nachname: '', adresse: '', plz: '', ort: '',
@@ -90,15 +144,15 @@ export default function KabinenPage() {
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
             style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-            Für Alleinreisende & kleine Gruppen
+            {s.tag}
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
             style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: '#fff', marginBottom: '1rem', fontWeight: 700 }}>
-            Kabinen Angebote
+            {s.h1}
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
             style={{ color: 'rgba(255,255,255,0.82)', fontSize: '1rem', maxWidth: '480px', lineHeight: 1.8 }}>
-            Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht — und teilen Sie sich die Yacht mit einer netten Crew.
+            {s.sub}
           </motion.p>
         </div>
       </div>
@@ -110,11 +164,11 @@ export default function KabinenPage() {
             Aktuelle Termine
           </p>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)', color: 'var(--navy)', marginBottom: '3rem', textAlign: 'center', fontWeight: 700 }}>
-            Verfügbare Kabinen-Angebote
+            {s.avail}
           </h2>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '2rem' }}>
-            {angebote.map((a, i) => (
+            {list.map((a, i) => (
               <motion.div
                 key={a.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -139,7 +193,7 @@ export default function KabinenPage() {
 
                 <div style={{ padding: '1.75rem' }}>
                   <p style={{ color: 'var(--blue)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-                    Abfahrt: {a.abfahrt}
+                    {s.dep}: {a.abfahrt}
                   </p>
                   <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '0.75rem', fontWeight: 700 }}>{a.title}</h3>
                   <p style={{ color: 'var(--gray)', fontSize: '0.88rem', lineHeight: 1.75, marginBottom: '1.25rem' }}>{a.desc}</p>
@@ -154,7 +208,7 @@ export default function KabinenPage() {
                       <p style={{ fontSize: '0.78rem', fontWeight: 700, color: a.plaetzeColor, marginBottom: '0.5rem' }}>{a.plaetze}</p>
                       <a href="#buchungsformular" className="btn btn-primary" style={{ fontSize: '0.82rem', padding: '10px 20px' }}
                         onClick={() => set('reise', a.reiseOption)}>
-                        JETZT BUCHEN →
+                        {s.book}
                       </a>
                     </div>
                   </div>
@@ -169,13 +223,13 @@ export default function KabinenPage() {
       <section id="buchungsformular" style={{ background: '#fff', padding: '4.5rem 0' }}>
         <div className="container" style={{ maxWidth: '720px' }}>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', color: 'var(--navy)', marginBottom: '2rem', fontWeight: 700 }}>
-            Buchungsformular
+            {s.formH}
           </h2>
 
           {sent ? (
             <div style={{ background: '#ecfdf5', border: '1px solid #10b981', borderRadius: '6px', padding: '2rem', textAlign: 'center' }}>
               <p style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>✅</p>
-              <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', marginBottom: '0.5rem' }}>Vielen Dank!</h3>
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', marginBottom: '0.5rem' }}>{s.thanks}</h3>
               <p style={{ color: 'var(--gray)', fontSize: '0.92rem' }}>
                 Ihre {form.modus === 'buchen' ? 'Buchung' : 'Anfrage'} wurde erfolgreich übermittelt. Wir melden uns schnellstmöglich bei Ihnen.
               </p>
@@ -188,69 +242,69 @@ export default function KabinenPage() {
               {/* Reise + Personen */}
               <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>Wählen Sie Ihre Reise *</label>
+                  <label style={labelStyle}>{s.choose}</label>
                   <select required name="reise" value={form.reise} onChange={e => set('reise', e.target.value)} style={inputStyle}>
-                    <option value="">Bitte wählen …</option>
-                    {reiseOptionen.map(o => <option key={o} value={o}>{o}</option>)}
+                    <option value="">{s.wahl}</option>
+                    {optionen.map(o => <option key={o} value={o}>{o}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label style={labelStyle}>Personen *</label>
+                  <label style={labelStyle}>{s.pax}</label>
                   <select required name="personen" value={form.personen} onChange={e => set('personen', e.target.value)} style={inputStyle}>
                     {['1', '2', '3', '4'].map(n => <option key={n} value={n}>{n}</option>)}
                   </select>
                 </div>
               </div>
 
-              <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.05rem', fontWeight: 700, margin: '1.5rem 0 1rem' }}>Kontaktdaten</h3>
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.05rem', fontWeight: 700, margin: '1.5rem 0 1rem' }}>{s.contact}</h3>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>Vorname *</label>
+                  <label style={labelStyle}>{s.vn}</label>
                   <input required name="vorname" value={form.vorname} onChange={e => set('vorname', e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>Nachname *</label>
+                  <label style={labelStyle}>{s.nn}</label>
                   <input required name="nachname" value={form.nachname} onChange={e => set('nachname', e.target.value)} style={inputStyle} />
                 </div>
               </div>
 
               <div style={{ marginBottom: '1rem' }}>
-                <label style={labelStyle}>Adresse *</label>
+                <label style={labelStyle}>{s.adr}</label>
                 <input required name="adresse" value={form.adresse} onChange={e => set('adresse', e.target.value)} style={inputStyle} />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>PLZ *</label>
+                  <label style={labelStyle}>{s.plz}</label>
                   <input required name="plz" value={form.plz} onChange={e => set('plz', e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>Ort *</label>
+                  <label style={labelStyle}>{s.ort}</label>
                   <input required name="ort" value={form.ort} onChange={e => set('ort', e.target.value)} style={inputStyle} />
                 </div>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>Telefon/Handy * <span style={{ fontWeight: 400, color: 'var(--gray)' }}>(+43, +49, ..)</span></label>
+                  <label style={labelStyle}>{s.tel} <span style={{ fontWeight: 400, color: 'var(--gray)' }}>{s.telHint}</span></label>
                   <input required type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>E-Mail *</label>
+                  <label style={labelStyle}>{s.mail}</label>
                   <input required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
                 </div>
               </div>
 
               <div style={{ marginBottom: '1.25rem' }}>
-                <label style={labelStyle}>Anmerkungen</label>
+                <label style={labelStyle}>{s.notes}</label>
                 <textarea name="anmerkungen" rows={4} value={form.anmerkungen} onChange={e => set('anmerkungen', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
               </div>
 
               <div style={{ marginBottom: '1.25rem' }}>
-                <label style={labelStyle}>Zahlungsart *</label>
+                <label style={labelStyle}>{s.pay}</label>
                 <div style={{ display: 'flex', gap: '1.5rem' }}>
-                  {['Überweisung', 'Kreditkarte'].map(z => (
+                  {[s.trans, s.cc].map(z => (
                     <label key={z} style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.9rem', color: '#444', cursor: 'pointer' }}>
                       <input type="radio" name="zahlungsart" value={z} checked={form.zahlungsart === z} onChange={e => set('zahlungsart', e.target.value)} />
                       {z}
@@ -262,16 +316,16 @@ export default function KabinenPage() {
               <div style={{ background: 'var(--gray-light)', borderRadius: '6px', padding: '1.25rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.87rem', color: '#444', cursor: 'pointer', lineHeight: 1.5 }}>
                   <input type="radio" name="modus" value="buchen" checked={form.modus === 'buchen'} onChange={e => set('modus', e.target.value)} style={{ marginTop: '3px' }} />
-                  <span>Ich habe die <a href="/agb" style={{ color: 'var(--blue)', fontWeight: 600 }}>AGB</a> gelesen und buche verbindlich zu oben angegebenen Wunschdaten!</span>
+                  <span>{s.agbPre} <a href={lang === 'en' ? '/en/terms' : '/agb'} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.agb}</a> {s.bind}</span>
                 </label>
                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.87rem', color: '#444', cursor: 'pointer', lineHeight: 1.5 }}>
                   <input type="radio" name="modus" value="anfrage" checked={form.modus === 'anfrage'} onChange={e => set('modus', e.target.value)} style={{ marginTop: '3px' }} />
-                  <span>Ich frage nur an und benötige mehr Infos</span>
+                  <span>{s.ask}</span>
                 </label>
               </div>
 
               <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '14px 40px', opacity: sending ? 0.6 : 1 }}>
-                {sending ? 'wird gesendet …' : 'Senden'}
+                {sending ? s.sending : s.send}
               </button>
             </form>
           )}
@@ -283,14 +337,14 @@ export default function KabinenPage() {
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: 'clamp(1.4rem, 3vw, 2rem)', marginBottom: '1rem', fontWeight: 700 }}>
-              Interesse an einem Kabinentörn?
+              {s.interest}
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.65)', marginBottom: '2rem', fontSize: '0.95rem' }}>
-              Fragen Sie uns einfach — wir finden das passende Angebot für Sie.
+              {s.interestSub}
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="tel:+43199715820" className="btn btn-outline">+43 1 997 15 82</a>
-              <a href="#buchungsformular" className="btn btn-primary">Anfrage starten →</a>
+              <a href="#buchungsformular" className="btn btn-primary">{s.start}</a>
             </div>
           </motion.div>
         </div>

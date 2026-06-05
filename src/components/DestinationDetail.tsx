@@ -17,7 +17,7 @@ function isSubheading(b: DestBlock, next?: DestBlock) {
 }
 
 const dd = {
-  de: { back: '{s.back}', dest: 'Destination', pkgs: 'Unsere Packages in', offer: '{s.offer}',
+  de: { back: '← Alle Destinationen', dest: 'Destination', pkgs: 'Unsere Packages in', offer: '▶ ZUM ANGEBOT',
     travel: 'Reisedaten', season: 'Ideale Reisezeit', onreq: 'auf Anfrage', geo: 'Geografie',
     info: 'Allgemeine Informationen', cta: (n: string) => `Törn nach ${n} anfragen →`, planer: '/urlaubsplaner' },
   en: { back: '← All destinations', dest: 'Destination', pkgs: 'Our packages in', offer: '▶ TO THE OFFER',

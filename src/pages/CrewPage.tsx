@@ -2,8 +2,45 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { useLang } from '../i18n'
 
 // Crew 1:1 von yacht-urlaub.net/kontakt/crew übernommen
+const skipperEn = [
+  {
+    name: 'Manuel Göschl',
+    role: 'Founder and skipper',
+    adresse: '1030 Vienna, 3970 Weitra, 51410 Opatija',
+    kontakt: 'office@yacht-holiday.net',
+    img: '/images/crew/Manuel.png',
+    motto: 'Your journey begins where the horizon never ends.',
+    bio: "For over 20 years, the sea has been my second home – a place where freedom comes alive, where the wind tells stories, and every sunset marks the start of something new.\nA yacht holiday is more than just a getaway – it's a feeling. A feeling of freedom without limits, of safety in experienced hands, and the thrill of knowing that your next adventure is just a breeze away.\nWith more than 30,000 nautical miles sailed and nearly 200 personally led voyages, I know what matters most: reliability, quality, safety – and that special touch that transforms a trip into a truly unforgettable experience.\nEvery journey, every route, every skipper is chosen with care – guided by my experience and my passion for the sea.\nWhether you dream of hidden coves, charming harbor towns, or simply drifting with the rhythm of the waves – your time at sea is in the best hands.",
+  },
+  {
+    name: 'Toni Liebscher',
+    role: 'Skipper',
+    adresse: '1100 Vienna',
+    kontakt: 'office@yacht-holiday.net',
+    img: '/images/crew/Toni.jpg',
+    bio: 'Since my childhood I have been sailing on small yawls and big yachts. I love the sea, the wind and the climate of freedom you experience while sailing. You can spend a pleasant evening in a secluded cove or enjoy the luxury and vibrant nightlife of the city harbour. This spirit makes sailing an exceptional experience to me, every time.\nA few years ago I successfully completed my training as a RYA Yachtmaster Offshore and since then I have logged more than 3000 nautical miles. Security and caution, a positive atmosphere and much relaxation provide the foundation for an enjoyable Yacht-Holiday.',
+  },
+  {
+    name: 'Freddie Großmayer',
+    role: 'Skipper',
+    adresse: '1190 Vienna',
+    kontakt: 'office@yacht-holiday.net',
+    img: '/images/crew/Freddie.jpg',
+    bio: 'Also does yacht deliveries and offers consulting for preparation and buying an owner-yacht.',
+  },
+  {
+    name: 'Tharuka Pathirana',
+    role: 'Skipper',
+    adresse: '8010 Graz',
+    kontakt: 'office@yacht-holiday.net',
+    img: '/images/crew/Tharuka.png',
+    bio: '',
+  },
+]
+
 const skipper = [
   {
     name: 'Manuel Göschl',
@@ -89,7 +126,23 @@ function CrewCard({ p, i }: { p: typeof skipper[number] & { motto?: string }; i:
   )
 }
 
+const crl = {
+  de: { sub: 'Die Crew von Yacht-Urlaub besteht dieses Jahr aus 7 Stamm-Skippern + weiteren Profis, die uns vor allem in der Hochsaison unterstützen. Das sind unter anderem ...',
+    h2: 'Unsere Stamm-Skipper', apply: 'Als Profi-Skipper bewerben »', staff: 'Unser Stamm-Personal',
+    need: 'Personal gesucht?', needSub: 'Sie haben bereits eine Yacht und suchen einen Skipper oder anderweitiges Personal? Wir freuen uns auf Ihre Anfrage!',
+    name: 'Name *', mail: 'E-Mail *', tel: 'Telefonnummer', msg: 'Nachricht *', send: 'Senden', sending: 'wird gesendet …',
+    thanks: 'Vielen Dank! Ihre Anfrage wurde übermittelt.' },
+  en: { sub: 'The crew of Yacht-Holiday consists of 7 regular skippers + further professionals who support us especially in peak season. Among them ...',
+    h2: 'Your skipper', apply: 'Apply as professional skipper »', staff: 'Our crew',
+    need: 'Need a skipper?', needSub: 'You have a yacht and you need a skipper? We welcome your inquiries!',
+    name: 'Name *', mail: 'Email *', tel: 'Telephone number', msg: 'Message *', send: 'Send', sending: 'sending …',
+    thanks: 'Thank you! Your inquiry has been sent.' },
+}
+
 export default function CrewPage() {
+  const lang = useLang()
+  const s = crl[lang]
+  const team = lang === 'en' ? skipperEn : skipper
   const [form, setForm] = useState({ name: '', email: '', telefon: '', nachricht: '' })
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
@@ -125,7 +178,7 @@ export default function CrewPage() {
             Crew
           </motion.h1>
           <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '0.97rem', maxWidth: '620px', lineHeight: 1.7 }}>
-            Die Crew von Yacht-Urlaub besteht dieses Jahr aus 7 Stamm-Skippern + weiteren Profis, die uns vor allem in der Hochsaison unterstützen. Das sind unter anderem ...
+            {s.sub}
           </p>
         </div>
       </div>
@@ -134,14 +187,14 @@ export default function CrewPage() {
       <section style={{ background: 'var(--gray-light)', padding: '4rem 0' }}>
         <div className="container">
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: 'clamp(1.4rem, 2.8vw, 1.9rem)', marginBottom: '2rem' }}>
-            Unsere Stamm-Skipper
+            {s.h2}
           </h2>
           <div className="crew-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '2.5rem' }}>
-            {skipper.map((p, i) => <CrewCard key={p.name} p={p} i={i} />)}
+            {team.map((p, i) => <CrewCard key={p.name} p={p} i={i} />)}
           </div>
           <p>
             <a href="mailto:skipper@yacht-urlaub.net?subject=Bewerbung als Profi-Skipper" style={{ color: 'var(--blue)', fontWeight: 700, fontSize: '0.95rem' }}>
-              Als Profi-Skipper bewerben »
+              {s.apply}
             </a>
           </p>
         </div>
@@ -151,7 +204,7 @@ export default function CrewPage() {
       <section style={{ background: '#fff', padding: '4rem 0' }}>
         <div className="container">
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: 'clamp(1.4rem, 2.8vw, 1.9rem)', marginBottom: '2rem' }}>
-            Unser Stamm-Personal
+            {s.staff}
           </h2>
           <div className="crew-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
             {personal.map((p, i) => <CrewCard key={p.name} p={p} i={i} />)}
@@ -162,14 +215,14 @@ export default function CrewPage() {
       {/* Personal gesucht? */}
       <section style={{ background: 'var(--gray-light)', padding: '4rem 0' }}>
         <div className="container" style={{ maxWidth: '640px' }}>
-          <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '0.75rem' }}>Personal gesucht?</h2>
+          <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '0.75rem' }}>{s.need}</h2>
           <p style={{ color: '#444', fontSize: '0.93rem', lineHeight: 1.75, marginBottom: '1.75rem' }}>
-            Sie haben bereits eine Yacht und suchen einen Skipper oder anderweitiges Personal? Wir freuen uns auf Ihre Anfrage!
+            {s.needSub}
           </p>
           {sent ? (
             <div style={{ background: '#ecfdf5', border: '1px solid #10b981', borderRadius: '6px', padding: '2rem', textAlign: 'center' }}>
               <p style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>✅</p>
-              <p style={{ color: 'var(--gray)', fontSize: '0.92rem' }}>Vielen Dank! Ihre Anfrage wurde übermittelt.</p>
+              <p style={{ color: 'var(--gray)', fontSize: '0.92rem' }}>{s.thanks}</p>
             </div>
           ) : (
             <form name="crew-anfrage" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>
@@ -177,24 +230,24 @@ export default function CrewPage() {
               <p style={{ display: 'none' }}><input name="bot-field" /></p>
               <div className="crew-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>Name *</label>
+                  <label style={labelStyle}>{s.name}</label>
                   <input required name="name" value={form.name} onChange={e => set('name', e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>E-Mail *</label>
+                  <label style={labelStyle}>{s.mail}</label>
                   <input required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
                 </div>
               </div>
               <div style={{ marginBottom: '1rem' }}>
-                <label style={labelStyle}>Telefonnummer</label>
+                <label style={labelStyle}>{s.tel}</label>
                 <input type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
               </div>
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={labelStyle}>Nachricht *</label>
+                <label style={labelStyle}>{s.msg}</label>
                 <textarea required name="nachricht" rows={5} value={form.nachricht} onChange={e => set('nachricht', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
               </div>
               <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '13px 36px', opacity: sending ? 0.6 : 1 }}>
-                {sending ? 'wird gesendet …' : 'Senden'}
+                {sending ? s.sending : s.send}
               </button>
             </form>
           )}

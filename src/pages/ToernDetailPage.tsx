@@ -2,6 +2,11 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { packages } from '../components/Packages'
+import { packagesEn } from '../data/packagesEn'
+import { cruisesEn } from '../data/cruisesEn'
+import { useLang, enPkgSlugs } from '../i18n'
+
+const enPkgPath: Record<string, string> = Object.fromEntries(Object.entries(enPkgSlugs).map(([slug, id]) => [id, slug]))
 
 type Section = {
   heading?: string
@@ -231,14 +236,31 @@ const LUXURY_IMPRESSIONEN = [
   '/images/luxury/nikita_int-1.png',
 ]
 
+const tdl = {
+  de: { home: 'Start', toerns: 'Törns', toernsHref: '/toerns', all: '← Alle Törns', offer: '▶ ZUM ANGEBOT',
+    book: 'Jetzt buchen', planer: 'Urlaubsplanung starten', buchHref: '/buchen', planHref: '/urlaubsplaner',
+    highlights: 'Die Highlights unserer Luxury-Packages', prices: 'Preise', off: 'Nebensaison / Woche',
+    peak: 'Hauptsaison / Woche', impr: 'Impressionen', luxCta: 'Zur Luxury-Yachtreise Buchung',
+    luxBtn: 'URLAUBSPLANUNG STARTEN', sailaway: 'Die Party-Flottille für alle zwischen 21 und 35.' },
+  en: { home: 'Home', toerns: 'Cruises', toernsHref: '/en/cruises', all: '← All cruises', offer: '▶ OUR OFFER',
+    book: 'Book now', planer: 'Start your holiday planning', buchHref: '/en/book-now', planHref: '/en/holiday-planner',
+    highlights: 'The highlights of our luxury packages', prices: 'Prices', off: 'Off-season / week',
+    peak: 'Peak-season / week', impr: 'Impressions', luxCta: 'Book your luxury yacht trip',
+    luxBtn: 'START YOUR HOLIDAY PLANNING', sailaway: 'The party flotilla for everyone between 21 and 35.' },
+}
+
 export default function ToernDetailPage() {
   const { id } = useParams<{ id: string }>()
-  const data = id ? toernData[id] : null
+  const lang = useLang()
+  const s = tdl[lang]
+  const data = id ? (lang === 'en' ? (cruisesEn[id] as unknown as ToernPage) : toernData[id]) : null
 
-  if (!data) return <Navigate to="/toerns" replace />
+  if (!data) return <Navigate to={s.toernsHref} replace />
 
+  const pkgList = lang === 'en' ? packagesEn : packages
+  const pkgHref = (pid: string) => lang === 'en' ? `/en/cruises/book-now/${enPkgPath[pid] ?? pid}` : `/packages/${pid}`
   const teaserPackages = data.packageTeasers
-    .map(pid => packages.find(p => p.id === pid))
+    .map(pid => pkgList.find(p => p.id === pid))
     .filter((p): p is NonNullable<typeof p> => !!p)
 
   return (
@@ -261,9 +283,9 @@ export default function ToernDetailPage() {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(15,35,56,0.88) 0%, rgba(15,35,56,0.45) 60%, transparent 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <motion.nav initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '1rem', fontSize: '0.78rem', color: 'rgba(255,255,255,0.6)' }}>
-            <Link to="/" style={{ color: 'rgba(255,255,255,0.6)' }}>Start</Link>
+            <Link to={lang === 'en' ? '/en' : '/'} style={{ color: 'rgba(255,255,255,0.6)' }}>{s.home}</Link>
             <span>›</span>
-            <Link to="/toerns" style={{ color: 'rgba(255,255,255,0.6)' }}>Törns</Link>
+            <Link to={s.toernsHref} style={{ color: 'rgba(255,255,255,0.6)' }}>{s.toerns}</Link>
             <span>›</span>
             <span style={{ color: '#fff' }}>{data.breadcrumb}</span>
           </motion.nav>
@@ -272,10 +294,10 @@ export default function ToernDetailPage() {
             {data.h1}
           </motion.h1>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
-            <Link to={data.luxury ? '/urlaubsplaner' : '/buchen'} className="btn btn-primary" style={{ marginRight: '1rem' }}>
-              {data.luxury ? 'Urlaubsplanung starten' : 'Jetzt buchen'}
+            <Link to={data.luxury ? s.planHref : s.buchHref} className="btn btn-primary" style={{ marginRight: '1rem' }}>
+              {data.luxury ? s.planer : s.book}
             </Link>
-            <Link to="/toerns" style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>← Alle Törns</Link>
+            <Link to={s.toernsHref} style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>{s.all}</Link>
           </motion.div>
         </div>
       </div>
@@ -296,8 +318,8 @@ export default function ToernDetailPage() {
                       {pkg.title}
                     </h3>
                     <p style={{ color: '#555', fontSize: '0.8rem', lineHeight: 1.55, flex: 1, marginBottom: '1rem' }}>{pkg.subtitle}</p>
-                    <Link to={`/packages/${pkg.id}`} className="btn btn-primary" style={{ fontSize: '0.72rem', padding: '9px 16px', alignSelf: 'flex-start' }}>
-                      ▶ ZUM ANGEBOT
+                    <Link to={pkgHref(pkg.id)} className="btn btn-primary" style={{ fontSize: '0.72rem', padding: '9px 16px', alignSelf: 'flex-start' }}>
+                      {s.offer}
                     </Link>
                   </div>
                 </div>
@@ -313,7 +335,7 @@ export default function ToernDetailPage() {
                       {data.extraTeaser.title}
                     </h3>
                     <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.8rem', lineHeight: 1.55, flex: 1, marginBottom: '1rem' }}>
-                      Die Party-Flottille für alle zwischen 21 und 35.
+                      {s.sailaway}
                     </p>
                     <Link to={data.extraTeaser.to} className="btn btn-gold" style={{ fontSize: '0.72rem', padding: '9px 16px', alignSelf: 'flex-start' }}>
                       {data.extraTeaser.label}
@@ -430,7 +452,7 @@ export default function ToernDetailPage() {
           <section className="section" style={{ background: 'var(--gray-light)' }}>
             <div className="container">
               <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: 'var(--navy)', marginBottom: '2rem', textAlign: 'center' }}>
-                Die Highlights unserer Luxury-Packages
+                {s.highlights}
               </h2>
               <div className="luxury-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
                 {LUXURY_HIGHLIGHTS.map(img => (
@@ -461,15 +483,15 @@ export default function ToernDetailPage() {
                   onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
               </div>
 
-              <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.5rem', marginBottom: '1.5rem' }}>Preise</h3>
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.5rem', marginBottom: '1.5rem' }}>{s.prices}</h3>
               <div className="luxury-prices" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', maxWidth: '720px', margin: '0 auto' }}>
                 <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '6px', padding: '1.75rem' }}>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '0.5rem' }}>Nebensaison / Woche</p>
+                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '0.5rem' }}>{s.off}</p>
                   <p style={{ color: '#fff', fontSize: '0.82rem', marginBottom: '0.75rem' }}>01.06. – 22.06. &amp; 07.09. – 21.09.</p>
                   <p style={{ color: 'var(--gold)', fontFamily: 'DM Sans, sans-serif', fontSize: '1.8rem', fontWeight: 700 }}>€ 100 000,-</p>
                 </div>
                 <div style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '6px', padding: '1.75rem' }}>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '0.5rem' }}>Hauptsaison / Woche</p>
+                  <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '0.5rem' }}>{s.peak}</p>
                   <p style={{ color: '#fff', fontSize: '0.82rem', marginBottom: '0.75rem' }}>22.06. – 07.09.</p>
                   <p style={{ color: 'var(--gold)', fontFamily: 'DM Sans, sans-serif', fontSize: '1.8rem', fontWeight: 700 }}>€ 110 000,-</p>
                 </div>
@@ -491,9 +513,9 @@ export default function ToernDetailPage() {
                 ))}
               </div>
               <div style={{ textAlign: 'center', marginTop: '3rem' }}>
-                <p style={{ color: 'var(--gray)', fontSize: '0.95rem', marginBottom: '1rem' }}>Zur Luxury-Yachtreise Buchung</p>
-                <Link to="/urlaubsplaner" className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 36px' }}>
-                  URLAUBSPLANUNG STARTEN
+                <p style={{ color: 'var(--gray)', fontSize: '0.95rem', marginBottom: '1rem' }}>{s.luxCta}</p>
+                <Link to={s.planHref} className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 36px' }}>
+                  {s.luxBtn}
                 </Link>
               </div>
             </div>
