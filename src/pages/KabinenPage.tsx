@@ -1,11 +1,14 @@
+import { useState } from 'react'
+import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 
+// Angebote 1:1 von der Originalseite (yacht-urlaub.net/kabinenangebote)
 const angebote = [
   {
     id: 'kornaten-juni',
     title: 'Segelurlaub in die Kornaten',
-    destination: 'Kroatien · Kornaten',
+    reiseOption: '06.06. - 13.06.2026 ab Zadar',
     abfahrt: 'Zadar',
     datum: '06.06. – 13.06.2026',
     preis: '€ 720,–',
@@ -13,20 +16,13 @@ const angebote = [
     plaetze: '4 Plätze noch übrig!',
     plaetzeColor: '#16a34a',
     bord: false,
-    desc: 'Eine unvergessliche Woche auf einer gemütlichen Einrumpf-Segelyacht durch den Nationalpark Kornaten. Perfekt für Meeresliebhaber, die die ursprünglichste Inselwelt Kroatiens erleben möchten.',
+    desc: 'Erlebe eine unvergessliche Woche auf einer gemütlichen Einrumpf-Segelyacht! Perfekt für Meeresliebhaber.',
     img: '/images/packages/Kornaten/gallery/Telascica.webp',
-    included: [
-      'Übernachtung in der Doppelkabine',
-      'Skipper inklusive',
-      'Endstrandreinigung',
-      'Nationalparkgebühren',
-      'Hafen- und Bojengebühren laut Route',
-    ],
   },
   {
     id: 'kornaten-august',
     title: 'Segelurlaub in die Kornaten',
-    destination: 'Kroatien · Kornaten',
+    reiseOption: '22.08. - 29.08.2026 ab Zadar',
     abfahrt: 'Zadar',
     datum: '22.08. – 29.08.2026',
     preis: '€ 1.210,–',
@@ -34,27 +30,52 @@ const angebote = [
     plaetze: 'Nur noch 2 Plätze übrig!',
     plaetzeColor: '#dc2626',
     bord: true,
-    bordNote: 'Bord-Service inklusive (Frühstück & Mittagssnack)',
-    desc: 'Das Rundum-Sorglos-Paket in den Kornaten: Mit Bord-Service für Frühstück und Mittagssnack an Bord — Sie müssen sich um nichts kümmern. Einfach genießen.',
+    desc: 'Erlebe eine unvergessliche Woche auf einer gemütlichen Einrumpf-Segelyacht! Perfekt für Meeresliebhaber. Inklusive: Bord-Service (Frühstück, Mittagssnack).',
     img: '/images/packages/Kornaten/gallery/Mono Kornaten.webp',
-    included: [
-      'Übernachtung in der Doppelkabine',
-      'Skipper inklusive',
-      'Bord-Service: Frühstück & Mittagssnack',
-      'Endstrandreinigung',
-      'Nationalparkgebühren',
-      'Hafen- und Bojengebühren laut Route',
-    ],
   },
 ]
 
+const reiseOptionen = [
+  '06.06. - 13.06.2026 ab Zadar',
+  '22.08. - 29.08.2026 ab Zadar',
+  "WhatsApp Community Törn in Thailand Februar'27",
+]
+
 export default function KabinenPage() {
+  const [form, setForm] = useState({
+    reise: '', personen: '1',
+    vorname: '', nachname: '', adresse: '', plz: '', ort: '',
+    telefon: '', email: '', anmerkungen: '',
+    zahlungsart: 'Überweisung', modus: 'buchen',
+  })
+  const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+
+  const set = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }))
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault()
+    setSending(true)
+    const body = new URLSearchParams({ 'form-name': 'kabinen-buchung', ...form })
+    try {
+      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
+      setSent(true)
+    } finally {
+      setSending(false)
+    }
+  }
+
+  const inputStyle = {
+    width: '100%', padding: '11px 14px', borderRadius: '4px',
+    border: '1px solid var(--gray-mid)', fontSize: '0.9rem', background: '#fff',
+  } as const
+  const labelStyle = { fontSize: '0.78rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '5px', display: 'block' } as const
 
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title="Kabinen-Angebote – Einzelne Kabine buchen"
-        description="Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für Kroatien (Kornaten, Dalmatien) und weitere Destinationen. Ideal für Alleinreisende und Paare."
+        description="Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für Kroatien (Kornaten) und Thailand. Ideal für Alleinreisende und Paare."
         canonical="/kabinen"
         image="/images/packages/Kornaten/gallery/Telascica.webp"
       />
@@ -72,7 +93,7 @@ export default function KabinenPage() {
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
             style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3.2rem)', color: '#fff', marginBottom: '1rem', fontWeight: 700 }}>
-            Kabinen-Angebote
+            Kabinen Angebote
           </motion.h1>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
             style={{ color: 'rgba(255,255,255,0.82)', fontSize: '1rem', maxWidth: '480px', lineHeight: 1.8 }}>
@@ -80,24 +101,6 @@ export default function KabinenPage() {
           </motion.p>
         </div>
       </div>
-
-      {/* Intro */}
-      <section style={{ background: '#fff', padding: '3.5rem 0' }}>
-        <div className="container" style={{ maxWidth: '780px' }}>
-          <p style={{ color: 'var(--blue)', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-            Was ist ein Kabinentörn?
-          </p>
-          <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', color: 'var(--navy)', marginBottom: '1.25rem', fontWeight: 700 }}>
-            Segelurlaub — auch alleine oder zu zweit
-          </h2>
-          <p style={{ color: 'var(--gray)', lineHeight: 1.9, fontSize: '0.95rem', marginBottom: '1rem' }}>
-            Beim Kabinentörn buchen Sie nicht die gesamte Yacht, sondern nur eine oder zwei Kabinen. Sie segeln gemeinsam mit anderen Gästen — und unserem erfahrenen Skipper, der die Navigation übernimmt. Eine hervorragende Möglichkeit, den Segelurlaub auch als Einzelperson, Paar oder kleine Gruppe zu erleben — ohne eine ganze Yacht chartern zu müssen.
-          </p>
-          <p style={{ color: 'var(--gray)', lineHeight: 1.9, fontSize: '0.95rem' }}>
-            Segelerfahrung ist nicht erforderlich. Der Skipper übernimmt die gesamte Navigation — Sie genießen einfach.
-          </p>
-        </div>
-      </section>
 
       {/* Angebote */}
       <section style={{ background: 'var(--gray-light)', padding: '4rem 0' }}>
@@ -135,19 +138,10 @@ export default function KabinenPage() {
 
                 <div style={{ padding: '1.75rem' }}>
                   <p style={{ color: 'var(--blue)', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-                    {a.destination} · Abfahrt: {a.abfahrt}
+                    Abfahrt: {a.abfahrt}
                   </p>
                   <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '0.75rem', fontWeight: 700 }}>{a.title}</h3>
                   <p style={{ color: 'var(--gray)', fontSize: '0.88rem', lineHeight: 1.75, marginBottom: '1.25rem' }}>{a.desc}</p>
-
-                  {/* Included */}
-                  <ul style={{ listStyle: 'none', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                    {a.included.map(item => (
-                      <li key={item} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start', fontSize: '0.84rem', color: 'var(--text)' }}>
-                        <span style={{ color: 'var(--blue)', fontWeight: 700, flexShrink: 0 }}>✓</span> {item}
-                      </li>
-                    ))}
-                  </ul>
 
                   {/* Price + Availability */}
                   <div style={{ borderTop: '1px solid var(--gray-mid)', paddingTop: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '1rem', flexWrap: 'wrap' }}>
@@ -157,8 +151,9 @@ export default function KabinenPage() {
                     </div>
                     <div style={{ textAlign: 'right' }}>
                       <p style={{ fontSize: '0.78rem', fontWeight: 700, color: a.plaetzeColor, marginBottom: '0.5rem' }}>{a.plaetze}</p>
-                      <a href="#kontakt" className="btn btn-primary" style={{ fontSize: '0.82rem', padding: '10px 20px' }}>
-                        Jetzt anfragen →
+                      <a href="#buchungsformular" className="btn btn-primary" style={{ fontSize: '0.82rem', padding: '10px 20px' }}
+                        onClick={() => set('reise', a.reiseOption)}>
+                        JETZT BUCHEN →
                       </a>
                     </div>
                   </div>
@@ -169,26 +164,116 @@ export default function KabinenPage() {
         </div>
       </section>
 
-      {/* Info boxes */}
-      <section style={{ background: '#fff', padding: '4rem 0' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
-            {[
-              { icon: '👥', title: 'Gemeinschaft an Bord', text: 'Sie segeln mit anderen Gästen und lernen neue Menschen kennen — oft entstehen so lebenslange Freundschaften.' },
-              { icon: '⛵', title: 'Kein Segelschein nötig', text: 'Unser erfahrener Skipper übernimmt die Navigation. Sie müssen nur genießen — Vorkenntnisse sind kein Muss.' },
-              { icon: '💶', title: 'Günstigere Alternative', text: 'Die geteilten Kosten machen den Segelurlaub erschwinglich — ohne auf Komfort oder Erlebnis verzichten zu müssen.' },
-            ].map(box => (
-              <motion.div key={box.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                style={{ textAlign: 'center', padding: '2rem 1.5rem' }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{box.icon}</div>
-                <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.75rem' }}>{box.title}</h3>
-                <p style={{ color: 'var(--gray)', fontSize: '0.88rem', lineHeight: 1.8 }}>{box.text}</p>
-              </motion.div>
-            ))}
-          </div>
+      {/* Buchungsformular (wie auf der Originalseite) */}
+      <section id="buchungsformular" style={{ background: '#fff', padding: '4.5rem 0' }}>
+        <div className="container" style={{ maxWidth: '720px' }}>
+          <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', color: 'var(--navy)', marginBottom: '2rem', fontWeight: 700 }}>
+            Buchungsformular
+          </h2>
+
+          {sent ? (
+            <div style={{ background: '#ecfdf5', border: '1px solid #10b981', borderRadius: '6px', padding: '2rem', textAlign: 'center' }}>
+              <p style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>✅</p>
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', marginBottom: '0.5rem' }}>Vielen Dank!</h3>
+              <p style={{ color: 'var(--gray)', fontSize: '0.92rem' }}>
+                Ihre {form.modus === 'buchen' ? 'Buchung' : 'Anfrage'} wurde erfolgreich übermittelt. Wir melden uns schnellstmöglich bei Ihnen.
+              </p>
+            </div>
+          ) : (
+            <form name="kabinen-buchung" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>
+              <input type="hidden" name="form-name" value="kabinen-buchung" />
+              <p style={{ display: 'none' }}><input name="bot-field" /></p>
+
+              {/* Reise + Personen */}
+              <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                <div>
+                  <label style={labelStyle}>Wählen Sie Ihre Reise *</label>
+                  <select required name="reise" value={form.reise} onChange={e => set('reise', e.target.value)} style={inputStyle}>
+                    <option value="">Bitte wählen …</option>
+                    {reiseOptionen.map(o => <option key={o} value={o}>{o}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label style={labelStyle}>Personen *</label>
+                  <select required name="personen" value={form.personen} onChange={e => set('personen', e.target.value)} style={inputStyle}>
+                    {['1', '2', '3', '4'].map(n => <option key={n} value={n}>{n}</option>)}
+                  </select>
+                </div>
+              </div>
+
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.05rem', fontWeight: 700, margin: '1.5rem 0 1rem' }}>Kontaktdaten</h3>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                <div>
+                  <label style={labelStyle}>Vorname *</label>
+                  <input required name="vorname" value={form.vorname} onChange={e => set('vorname', e.target.value)} style={inputStyle} />
+                </div>
+                <div>
+                  <label style={labelStyle}>Nachname *</label>
+                  <input required name="nachname" value={form.nachname} onChange={e => set('nachname', e.target.value)} style={inputStyle} />
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '1rem' }}>
+                <label style={labelStyle}>Adresse *</label>
+                <input required name="adresse" value={form.adresse} onChange={e => set('adresse', e.target.value)} style={inputStyle} />
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '1rem', marginBottom: '1rem' }}>
+                <div>
+                  <label style={labelStyle}>PLZ *</label>
+                  <input required name="plz" value={form.plz} onChange={e => set('plz', e.target.value)} style={inputStyle} />
+                </div>
+                <div>
+                  <label style={labelStyle}>Ort *</label>
+                  <input required name="ort" value={form.ort} onChange={e => set('ort', e.target.value)} style={inputStyle} />
+                </div>
+              </div>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                <div>
+                  <label style={labelStyle}>Telefon/Handy * <span style={{ fontWeight: 400, color: 'var(--gray)' }}>(+43, +49, ..)</span></label>
+                  <input required type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
+                </div>
+                <div>
+                  <label style={labelStyle}>E-Mail *</label>
+                  <input required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '1.25rem' }}>
+                <label style={labelStyle}>Anmerkungen</label>
+                <textarea name="anmerkungen" rows={4} value={form.anmerkungen} onChange={e => set('anmerkungen', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
+              </div>
+
+              <div style={{ marginBottom: '1.25rem' }}>
+                <label style={labelStyle}>Zahlungsart *</label>
+                <div style={{ display: 'flex', gap: '1.5rem' }}>
+                  {['Überweisung', 'Kreditkarte'].map(z => (
+                    <label key={z} style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', fontSize: '0.9rem', color: '#444', cursor: 'pointer' }}>
+                      <input type="radio" name="zahlungsart" value={z} checked={form.zahlungsart === z} onChange={e => set('zahlungsart', e.target.value)} />
+                      {z}
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div style={{ background: 'var(--gray-light)', borderRadius: '6px', padding: '1.25rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.87rem', color: '#444', cursor: 'pointer', lineHeight: 1.5 }}>
+                  <input type="radio" name="modus" value="buchen" checked={form.modus === 'buchen'} onChange={e => set('modus', e.target.value)} style={{ marginTop: '3px' }} />
+                  <span>Ich habe die <a href="/agb" style={{ color: 'var(--blue)', fontWeight: 600 }}>AGB</a> gelesen und buche verbindlich zu oben angegebenen Wunschdaten!</span>
+                </label>
+                <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.87rem', color: '#444', cursor: 'pointer', lineHeight: 1.5 }}>
+                  <input type="radio" name="modus" value="anfrage" checked={form.modus === 'anfrage'} onChange={e => set('modus', e.target.value)} style={{ marginTop: '3px' }} />
+                  <span>Ich frage nur an und benötige mehr Infos</span>
+                </label>
+              </div>
+
+              <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '14px 40px', opacity: sending ? 0.6 : 1 }}>
+                {sending ? 'wird gesendet …' : 'Senden'}
+              </button>
+            </form>
+          )}
         </div>
       </section>
 
@@ -204,16 +289,15 @@ export default function KabinenPage() {
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="tel:+43199715820" className="btn btn-outline">+43 1 997 15 82</a>
-              <a href="#kontakt" className="btn btn-primary">Anfrage starten →</a>
+              <a href="#buchungsformular" className="btn btn-primary">Anfrage starten →</a>
             </div>
           </motion.div>
         </div>
       </section>
 
       <style>{`
-        @media (max-width: 768px) {
-          .container > div[style*="repeat(3, 1fr)"] { grid-template-columns: 1fr !important; }
-          .container > div[style*="repeat(auto-fit"] { grid-template-columns: 1fr !important; }
+        @media (max-width: 640px) {
+          #buchungsformular form > div[style*="grid"] { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </main>

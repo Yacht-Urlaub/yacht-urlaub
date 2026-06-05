@@ -3,6 +3,80 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { packages } from '../components/Packages'
+import type { PriceBlock, Addon } from '../components/Packages'
+
+const h2Style = { fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', marginBottom: '1.25rem' } as const
+const h3Style = { fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.5rem' } as const
+const pStyle = { color: '#444', fontSize: '0.93rem', lineHeight: 1.75, whiteSpace: 'pre-line' } as const
+
+function AddonCard({ addon }: { addon: Addon }) {
+  return (
+    <div style={{ background: '#fff', borderRadius: '6px', padding: '1.5rem', textAlign: 'center', boxShadow: '0 2px 10px rgba(0,0,0,0.07)', display: 'flex', flexDirection: 'column' }}>
+      <h4 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.4rem' }}>{addon.name}</h4>
+      <p style={{ color: 'var(--blue)', fontFamily: 'DM Sans, sans-serif', fontSize: '1.45rem', fontWeight: 700, marginBottom: '0.15rem' }}>zzgl. € {addon.price},-</p>
+      <p style={{ color: 'var(--gray)', fontSize: '0.75rem', marginBottom: '0.85rem' }}>pro Person</p>
+      <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.3rem', marginTop: 'auto' }}>
+        {addon.details.map(d => (
+          <li key={d} style={{ color: '#555', fontSize: '0.8rem', lineHeight: 1.45 }}>{d}</li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+function PriceBlockSection({ block }: { block: PriceBlock }) {
+  return (
+    <div style={{ marginBottom: '3rem' }}>
+      <h2 style={{ ...h2Style, marginBottom: '0.25rem' }}>Preise</h2>
+      {block.label && <p style={{ color: 'var(--gray)', fontSize: '0.95rem', fontWeight: 600, marginBottom: '1.25rem' }}>{block.label}</p>}
+
+      {/* Basis-Preis */}
+      <div style={{ background: 'var(--navy)', color: '#fff', borderRadius: '6px', padding: '2rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2rem', marginTop: '1rem', marginBottom: '1rem' }}>
+        <div>
+          <p style={{ fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.8, marginBottom: '0.2rem' }}>Basis-Preis</p>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '2.6rem', fontWeight: 700, lineHeight: 1 }}>ab € {block.base},-</p>
+          <p style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: '0.3rem' }}>pro Person*</p>
+        </div>
+        <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+          {block.baseIncludes.map(b => (
+            <li key={b} style={{ fontSize: '0.9rem', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+              <span style={{ color: '#7fc4ff' }}>✔</span> {b}
+            </li>
+          ))}
+        </ul>
+        <Link to="/buchen" className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }}>▶ Jetzt buchen!</Link>
+      </div>
+
+      {block.notes.map(n => (
+        <p key={n} style={{ color: 'var(--gray)', fontSize: '0.78rem', lineHeight: 1.6, marginBottom: '0.35rem' }}>{n}</p>
+      ))}
+
+      {/* ZUSATZpakete */}
+      {block.zusatz.length > 0 && (
+        <>
+          <p style={{ color: 'var(--navy)', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.06em', margin: '1.75rem 0 1rem' }}>
+            Diese ZUSATZpakete sind optional bei Buchung wählbar
+          </p>
+          <div className="pkg-addon-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
+            {block.zusatz.map(a => <AddonCard key={a.name} addon={a} />)}
+          </div>
+        </>
+      )}
+
+      {/* PREMIUMpakete */}
+      {block.premium.length > 0 && (
+        <>
+          <p style={{ color: 'var(--navy)', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.06em', margin: '1.75rem 0 1rem' }}>
+            Diese PREMIUMpakete sind optional bei Buchung wählbar
+          </p>
+          <div className="pkg-addon-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
+            {block.premium.map(a => <AddonCard key={a.name} addon={a} />)}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
 
 export default function PackageDetailPage() {
   const { id } = useParams<{ id: string }>()
@@ -31,7 +105,7 @@ export default function PackageDetailPage() {
       {/* Hero */}
       <div style={{ position: 'relative', height: '380px', overflow: 'hidden', background: 'var(--navy)' }}>
         <img
-          src={pkg.cardImg}
+          src={pkg.heroImg}
           alt={pkg.title}
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
           onError={e => { (e.target as HTMLImageElement).style.opacity = '0' }}
@@ -56,6 +130,10 @@ export default function PackageDetailPage() {
 
       {/* Main content */}
       <div className="container" style={{ padding: '4rem 20px' }}>
+        {pkg.heroIntro && (
+          <p style={{ ...pStyle, fontSize: '1.02rem', marginBottom: '2.5rem', maxWidth: '860px' }}>{pkg.heroIntro}</p>
+        )}
+
         <div className="pkg-main-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '4rem', marginBottom: '4rem' }}>
 
           {/* Left */}
@@ -64,7 +142,7 @@ export default function PackageDetailPage() {
 
             {/* Inkludiert */}
             <div style={{ marginBottom: '2rem' }}>
-              <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', color: 'var(--navy)', fontStyle: 'italic', marginBottom: '1rem' }}>inkludiert:</h2>
+              <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', color: 'var(--navy)', fontStyle: 'italic', marginBottom: '1rem' }}>inkludiert sind:</h2>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                 {pkg.included.map(item => (
                   <li key={item} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.9rem', lineHeight: 1.5 }}>
@@ -111,28 +189,115 @@ export default function PackageDetailPage() {
                 Ihre Reise im Detail
               </h3>
               <p style={{ fontSize: '0.8rem', color: 'var(--gray)', fontWeight: 600, fontStyle: 'italic', marginBottom: '0.4rem' }}>Die Route</p>
-              <p style={{ fontSize: '0.85rem', color: '#444', lineHeight: 1.6 }}>{pkg.route}</p>
+              <p style={{ fontSize: '0.85rem', color: '#444', lineHeight: 1.6, whiteSpace: 'pre-line' }}>{pkg.route}</p>
             </div>
           </div>
         </div>
 
-        {/* Route map */}
+        {/* Routenkarten */}
         <div style={{ marginBottom: '4rem' }}>
-          <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Routenkarte</h2>
-          <img
-            src={pkg.routeMap}
-            alt={`Route ${pkg.title}`}
-            style={{ maxWidth: '100%', borderRadius: '4px', boxShadow: '0 2px 12px rgba(0,0,0,0.1)' }}
-            onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
-          />
+          <h2 style={h2Style}>Routenkarte{pkg.routeMaps.length > 1 ? 'n' : ''}</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            {pkg.routeMaps.map(map => (
+              <figure key={map.src}>
+                <img
+                  src={map.src}
+                  alt={map.caption}
+                  loading="lazy"
+                  style={{ maxWidth: '100%', borderRadius: '4px', boxShadow: '0 2px 12px rgba(0,0,0,0.1)' }}
+                  onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+                />
+                {pkg.routeMaps.length > 1 && (
+                  <figcaption style={{ color: 'var(--gray)', fontSize: '0.8rem', marginTop: '0.5rem' }}>{map.caption}</figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
         </div>
 
-        {/* Gallery */}
-        <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Fotogalerie</h2>
+        {/* Ihre Reise im Detail */}
+        <div style={{ marginBottom: '4rem', maxWidth: '860px' }}>
+          <h2 style={h2Style}>Ihre Reise im Detail</h2>
+          {pkg.detailSections.map((section, si) => (
+            <div key={si} style={{ marginBottom: '2.5rem' }}>
+              {section.heading && (
+                <h3 style={{ ...h3Style, fontSize: '1.15rem', fontStyle: 'italic', color: 'var(--blue)', marginBottom: '0.75rem' }}>{section.heading}</h3>
+              )}
+              {section.intro && <p style={{ ...pStyle, marginBottom: '1.5rem' }}>{section.intro}</p>}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                {section.stops.map(stop => (
+                  <div key={stop.name}>
+                    <h4 style={h3Style}>{stop.name}</h4>
+                    <p style={pStyle}>{stop.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          <Link to="/buchen" className="btn btn-primary" style={{ fontSize: '0.85rem' }}>▶ FREIE TERMINE &amp; PREISE</Link>
+        </div>
+
+        {/* Unterkunft */}
+        {pkg.accommodations.map(acc => (
+          <div key={acc.title} style={{ marginBottom: '4rem' }}>
+            <h2 style={h2Style}>{acc.title}</h2>
+            <div style={{ maxWidth: '860px' }}>
+              {acc.paragraphs.map(p => (
+                <p key={p} style={{ ...pStyle, marginBottom: '1rem' }}>{p}</p>
+              ))}
+            </div>
+            {acc.layouts.length > 0 && (
+              <div className="pkg-layout-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(acc.layouts.length, 4)}, 1fr)`, gap: '1.25rem', margin: '1.5rem 0' }}>
+                {acc.layouts.map(l => (
+                  <figure key={l.src} style={{ background: '#fff', borderRadius: '6px', padding: '0.75rem', boxShadow: '0 2px 10px rgba(0,0,0,0.07)' }}>
+                    <img src={l.src} alt={l.caption} loading="lazy" style={{ width: '100%', borderRadius: '3px' }}
+                      onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
+                    <figcaption style={{ color: 'var(--gray)', fontSize: '0.75rem', marginTop: '0.5rem', lineHeight: 1.4 }}>{l.caption}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            )}
+            {acc.link && (
+              <Link to={acc.link.to} className="btn btn-ghost" style={{ fontSize: '0.8rem', marginTop: '0.5rem', display: 'inline-block' }}>
+                {acc.link.label} →
+              </Link>
+            )}
+          </div>
+        ))}
+
+        {/* Anreise */}
+        <div style={{ marginBottom: '4rem', maxWidth: '860px' }}>
+          <h2 style={h2Style}>{pkg.arrival.heading}</h2>
+          {pkg.arrival.paragraphs.map(p => (
+            <p key={p} style={{ ...pStyle, marginBottom: '0.65rem' }}>{p}</p>
+          ))}
+        </div>
+
+        {/* Generelle Hinweise */}
+        <div style={{ marginBottom: '4rem', maxWidth: '860px', background: 'var(--gray-light)', borderRadius: '6px', padding: '2rem' }}>
+          <h2 style={{ ...h2Style, fontSize: '1.2rem' }}>Generelle Hinweise</h2>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+            {pkg.hints.map(hint => (
+              <li key={hint} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.87rem', lineHeight: 1.6 }}>
+                <span style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>•</span>
+                {hint}
+              </li>
+            ))}
+            <li style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.87rem', lineHeight: 1.6 }}>
+              <span style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>•</span>
+              <span>
+                „Was kostet mich die gesamte Reise?" – <Link to="/faq" style={{ color: 'var(--blue)', fontWeight: 600 }}>Verweis zu den FAQs »</Link>
+              </span>
+            </li>
+          </ul>
+        </div>
+
+        {/* Eindrücke (Galerie) */}
+        <h2 style={h2Style}>Eindrücke</h2>
         <div className="pkg-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px', marginBottom: '4rem' }}>
           {pkg.gallery.map((img, i) => (
             <motion.div
-              key={img}
+              key={img.src}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -145,7 +310,7 @@ export default function PackageDetailPage() {
               }}
             >
               <img
-                src={img} alt="" loading="lazy"
+                src={img.src} alt={img.alt} loading="lazy" title={img.alt}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.35s' }}
                 onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.06)')}
                 onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
@@ -155,17 +320,27 @@ export default function PackageDetailPage() {
           ))}
         </div>
 
+        {/* Preise */}
+        {pkg.priceBlocks.map((block, i) => (
+          <PriceBlockSection key={i} block={block} />
+        ))}
+
         {/* CTA */}
         <div style={{ textAlign: 'center', background: 'var(--gray-light)', borderRadius: '6px', padding: '3rem 2rem' }}>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.5rem', marginBottom: '0.75rem' }}>
-            Bereit für {pkg.title}?
+            Individueller Törn?
           </h2>
           <p style={{ color: 'var(--gray)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-            Prüfen Sie jetzt freie Termine und buchen Sie Ihren Traumurlaub direkt online.
+            Sie möchten lieber eine eigene Route, andere Termine oder ein individuelles Angebot?
           </p>
-          <Link to="/buchen" className="btn btn-primary" style={{ fontSize: '1rem', padding: '14px 36px' }}>
-            ▶ FREIE TERMINE &amp; PREISE
-          </Link>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link to="/urlaubsplaner" className="btn btn-ghost" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
+              ANFRAGE STARTEN
+            </Link>
+            <Link to="/buchen" className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
+              ▶ FREIE TERMINE &amp; PREISE
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -178,27 +353,35 @@ export default function PackageDetailPage() {
             style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.95)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <button onClick={e => { e.stopPropagation(); setLightbox(i => (i! - 1 + pkg.gallery.length) % pkg.gallery.length) }}
-              style={{ position: 'absolute', left: '1.5rem', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '2.5rem', cursor: 'pointer', padding: '8px 16px', borderRadius: '4px' }}>‹</button>
+              style={{ position: 'absolute', left: '1.5rem', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '2.5rem', cursor: 'pointer', padding: '8px 16px', borderRadius: '4px', zIndex: 1 }}>‹</button>
             <motion.img
               key={lightbox}
               initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.2 }}
-              src={pkg.gallery[lightbox]} alt=""
+              src={pkg.gallery[lightbox].src} alt={pkg.gallery[lightbox].alt}
               onClick={e => e.stopPropagation()}
-              style={{ maxWidth: '90vw', maxHeight: '88vh', objectFit: 'contain', borderRadius: '2px' }}
+              style={{ maxWidth: '90vw', maxHeight: '82vh', objectFit: 'contain', borderRadius: '2px' }}
             />
             <button onClick={e => { e.stopPropagation(); setLightbox(i => (i! + 1) % pkg.gallery.length) }}
-              style={{ position: 'absolute', right: '1.5rem', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '2.5rem', cursor: 'pointer', padding: '8px 16px', borderRadius: '4px' }}>›</button>
+              style={{ position: 'absolute', right: '1.5rem', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '2.5rem', cursor: 'pointer', padding: '8px 16px', borderRadius: '4px', zIndex: 1 }}>›</button>
             <button onClick={() => setLightbox(null)}
               style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: 'none', border: 'none', color: '#fff', fontSize: '2rem', cursor: 'pointer' }}>✕</button>
-            <p style={{ position: 'absolute', bottom: '1.5rem', color: 'rgba(255,255,255,0.4)', fontSize: '0.8rem' }}>{lightbox + 1} / {pkg.gallery.length}</p>
+            <p style={{ position: 'absolute', bottom: '1.5rem', color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', textAlign: 'center', width: '100%' }}>
+              {pkg.gallery[lightbox].alt} &nbsp;·&nbsp; {lightbox + 1} / {pkg.gallery.length}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
 
       <style>{`
-        .pkg-main-grid { }
-        @media (max-width: 900px) { .pkg-main-grid { grid-template-columns: 1fr !important; gap: 2rem !important; } }
-        @media (max-width: 600px) { .pkg-gallery-grid { grid-template-columns: 1fr 1fr !important; } }
+        @media (max-width: 900px) {
+          .pkg-main-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+          .pkg-addon-grid { grid-template-columns: 1fr 1fr !important; }
+          .pkg-layout-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 600px) {
+          .pkg-gallery-grid { grid-template-columns: 1fr 1fr !important; }
+          .pkg-addon-grid { grid-template-columns: 1fr !important; }
+        }
       `}</style>
     </main>
   )
