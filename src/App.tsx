@@ -28,6 +28,7 @@ import CrewPage from './pages/CrewPage'
 import ReisebueroPage from './pages/ReisebueroPage'
 import SkipperPage from './pages/SkipperPage'
 import SailAwayPage from './pages/SailAwayPage'
+import ToernberichtDetailPage from './pages/ToernberichtDetailPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -60,6 +61,7 @@ function AnimatedRoutes() {
           <Route path="/buchen" element={<BuchenPage />} />
           <Route path="/packages/:id" element={<PackageDetailPage />} />
           <Route path="/toernberichte" element={<ToernberichtePage />} />
+          <Route path="/toernberichte/:slug" element={<ToernberichtDetailPage />} />
           <Route path="/kabinen" element={<KabinenPage />} />
           <Route path="/urlaubsplaner" element={<UrlaubsplanerPage />} />
           <Route path="/crew" element={<CrewPage />} />
