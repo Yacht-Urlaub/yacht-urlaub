@@ -2,18 +2,16 @@ import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { destinations } from './DestinationDetail'
 
+// Einheitliches Raster: alle 8 Destinationen, beste Bilder
 const grid = [
-  { id: 'kroatien',    img: '/images/Destinationsbilder/blick-auf-den-hafen-von-hvar-bei-yacht-urlaub.png', wide: true },
-  { id: 'griechenland', img: '/images/Destinationsbilder/akropolis-von-rhodos-bei-yacht-urlaub.jpg', wide: false },
-  { id: 'balearen',   img: '/images/Destinationsbilder/blick-auf-palma-de-mallorca.jpg', wide: false },
-  { id: 'karibik-bvi',    img: '/images/Destinationsbilder/sandy-cay-mit-2-katamarane-davor-bei-yacht-urlaub.png', wide: false },
-  { id: 'seychellen', img: '/images/Destinationsbilder/Header/seychelles1.jpg', wide: false },
-  { id: 'thailand',   img: '/images/Destinationsbilder/katamaran-in-thailand.jpg', wide: false },
-]
-
-const extra = [
-  { id: 'kanaren', name: 'Kanaren', flag: '🇪🇸', time: 'Ganzjährig', img: '/images/destinationen/kanaren/header_M71_7842_.jpg' },
-  { id: 'karibik-windward-islands', name: 'Karibik - Windward Islands', flag: '🏝️', time: 'November - April', img: '/images/Destinationsbilder/grenadinen-und-st-vincent.jpg' },
+  { id: 'kroatien', img: '/images/Destinationsbilder/blick-auf-den-hafen-von-hvar-bei-yacht-urlaub.png' },
+  { id: 'griechenland', img: '/images/packages/Griechenland/gallery/Navajo Bucht - Griechenland.jpg' },
+  { id: 'balearen', img: '/images/Destinationsbilder/blick-auf-palma-de-mallorca.jpg' },
+  { id: 'kanaren', img: '/images/destinationen/kanaren/header_M71_7842_.jpg' },
+  { id: 'karibik-bvi', img: '/images/Destinationsbilder/sandy-cay-mit-2-katamarane-davor-bei-yacht-urlaub.png' },
+  { id: 'karibik-windward-islands', img: '/images/Destinationsbilder/grenadinen-und-st-vincent.jpg' },
+  { id: 'thailand', img: '/images/Destinationsbilder/katamaran-in-thailand.jpg' },
+  { id: 'seychellen', img: '/images/Destinationsbilder/Header/seychelles1.jpg' },
 ]
 
 export default function DestinationenOverview({ standalone = false }: { standalone?: boolean }) {
@@ -40,82 +38,136 @@ export default function DestinationenOverview({ standalone = false }: { standalo
           </p>
         </motion.div>
 
-        {/* Mosaic grid */}
-        <div className="dest-mosaic" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+        {/* Einheitliches Raster */}
+        <div className="dest-grid">
           {grid.map((item, i) => {
-            const d = destinations.find(x => x.id === item.id)!
+            const d = destinations.find(x => x.id === item.id)
+            if (!d) return null
             return (
-              <motion.div
+              <motion.button
                 key={item.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 28 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
+                transition={{ duration: 0.5, delay: (i % 4) * 0.08 }}
                 onClick={() => navigate(`/destinationen/${item.id}`)}
-                className={item.wide ? 'dest-wide' : ''}
-                style={{
-                  position: 'relative', overflow: 'hidden',
-                  gridColumn: item.wide ? 'span 2' : 'span 1',
-                  aspectRatio: item.wide ? '2/1' : '4/3',
-                  borderRadius: '3px', cursor: 'pointer',
-                }}
+                className="dest-card"
+                aria-label={`Destination ${d.name}`}
               >
                 <img
                   src={item.img} alt={d.name} loading="lazy"
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
-                  onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.06)')}
-                  onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                   onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }}
                 />
-                <div style={{
-                  position: 'absolute', inset: 0,
-                  background: 'linear-gradient(to top, rgba(18,43,64,0.85) 0%, rgba(18,43,64,0.1) 55%, transparent 100%)',
-                  transition: 'background 0.3s',
-                }}
-                  onMouseEnter={e => (e.currentTarget.style.background = 'linear-gradient(to top, rgba(18,43,64,0.92) 0%, rgba(18,43,64,0.3) 70%, transparent 100%)')}
-                  onMouseLeave={e => (e.currentTarget.style.background = 'linear-gradient(to top, rgba(18,43,64,0.85) 0%, rgba(18,43,64,0.1) 55%, transparent 100%)')}
-                />
-                <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '1.25rem' }}>
-                  <h3 style={{ color: '#fff', fontSize: item.wide ? '1.3rem' : '1rem', fontWeight: 700, marginBottom: '2px', fontFamily: 'DM Sans, sans-serif' }}>{d.name}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.72rem' }}>{d.country} · {d.bestTime}</p>
-                  <span style={{ display: 'inline-block', marginTop: '0.5rem', color: 'var(--blue-light)', fontSize: '0.72rem', fontWeight: 600 }}>Mehr erfahren →</span>
-                </div>
-              </motion.div>
+                <span className="dest-card-shade" aria-hidden />
+                <span className="dest-card-season">{d.country} {d.bestTime}</span>
+                <span className="dest-card-bottom">
+                  <span className="dest-card-name">{d.name}</span>
+                  <span className="dest-card-cta">Mehr erfahren <span className="dest-card-arrow">→</span></span>
+                </span>
+              </motion.button>
             )
           })}
-        </div>
-
-        {/* Extra row */}
-        <div className="dest-extra-row" style={{ display: 'flex', gap: '8px', marginTop: '8px' }}>
-          {extra.map(item => (
-            <div
-              key={item.id}
-              onClick={() => navigate(`/destinationen/${item.id}`)}
-              style={{ flex: 1, position: 'relative', overflow: 'hidden', minHeight: '80px', borderRadius: '3px', cursor: 'pointer', background: 'rgba(255,255,255,0.05)' }}
-            >
-              <img src={item.img} alt={item.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }} onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
-              <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', padding: '1.5rem', gap: '1rem' }}>
-                <span style={{ fontSize: '1.5rem' }}>{item.flag}</span>
-                <div>
-                  <h3 style={{ color: '#fff', fontSize: '1rem', fontWeight: 700 }}>{item.name}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.72rem' }}>{item.time}</p>
-                </div>
-                <span style={{ color: 'var(--blue-light)', fontSize: '0.78rem', fontWeight: 600, marginLeft: 'auto' }}>Anfragen →</span>
-              </div>
-            </div>
-          ))}
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 900px) {
-          .dest-mosaic { grid-template-columns: 1fr 1fr !important; }
-          .dest-wide { grid-column: span 2 !important; }
+        .dest-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 14px;
         }
-        @media (max-width: 560px) {
-          .dest-mosaic { grid-template-columns: 1fr !important; }
-          .dest-wide { grid-column: span 1 !important; aspect-ratio: 16/9 !important; }
-          .dest-extra-row { flex-direction: column; }
+        .dest-card {
+          position: relative;
+          display: block;
+          aspect-ratio: 3 / 4;
+          border: none;
+          border-radius: 12px;
+          overflow: hidden;
+          cursor: pointer;
+          padding: 0;
+          background: rgba(255,255,255,0.04);
+          box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+          outline-offset: 3px;
+          transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+        }
+        .dest-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+        }
+        .dest-card img {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .dest-card:hover img { transform: scale(1.07); }
+        .dest-card-shade {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(10,24,38,0.92) 0%, rgba(10,24,38,0.25) 45%, rgba(10,24,38,0.08) 70%, transparent 100%);
+          transition: background 0.3s ease;
+        }
+        .dest-card:hover .dest-card-shade {
+          background: linear-gradient(to top, rgba(10,24,38,0.95) 0%, rgba(10,24,38,0.4) 55%, rgba(10,24,38,0.12) 80%, transparent 100%);
+        }
+        .dest-card-season {
+          position: absolute;
+          top: 12px;
+          left: 12px;
+          background: rgba(10,24,38,0.55);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border: 1px solid rgba(255,255,255,0.14);
+          color: rgba(255,255,255,0.9);
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.68rem;
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          padding: 5px 11px;
+          border-radius: 20px;
+          white-space: nowrap;
+        }
+        .dest-card-bottom {
+          position: absolute;
+          left: 0; right: 0; bottom: 0;
+          padding: 1.1rem 1.2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
+          text-align: left;
+        }
+        .dest-card-name {
+          color: #fff;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 1.18rem;
+          font-weight: 700;
+          line-height: 1.25;
+          text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+        }
+        .dest-card-cta {
+          color: var(--blue-light, #7fc4ff);
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.75rem;
+          font-weight: 600;
+          opacity: 0;
+          transform: translateY(6px);
+          transition: opacity 0.25s ease, transform 0.3s ease;
+        }
+        .dest-card:hover .dest-card-cta { opacity: 1; transform: translateY(0); }
+        .dest-card-arrow { display: inline-block; transition: transform 0.25s ease; }
+        .dest-card:hover .dest-card-arrow { transform: translateX(4px); }
+
+        @media (max-width: 1000px) {
+          .dest-grid { grid-template-columns: repeat(2, 1fr); }
+          .dest-card { aspect-ratio: 4 / 3; }
+          .dest-card-cta { opacity: 1; transform: none; }
+        }
+        @media (max-width: 520px) {
+          .dest-grid { grid-template-columns: 1fr; gap: 12px; }
+          .dest-card { aspect-ratio: 16 / 10; }
         }
       `}</style>
     </section>
