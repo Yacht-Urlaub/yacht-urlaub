@@ -66,7 +66,7 @@ export default function Bewertungen() {
           transition={{ duration: 0.7 }}
           style={{ textAlign: 'center', marginBottom: '2.5rem' }}
         >
-          <img src="/images/Bewertungen/Google5star.webp" alt="5 Sterne auf Google" loading="lazy" style={{ height: '28px', marginBottom: '1rem' }}
+          <img src="/images/Bewertungen/Google5star.webp" alt="5 Sterne auf Google" loading="lazy" style={{ height: 'clamp(72px, 9vw, 104px)', margin: '0 auto 1.25rem' }}
             onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '0.5rem' }}>
             Das sagen unsere Gäste ...
