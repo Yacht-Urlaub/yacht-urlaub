@@ -3,10 +3,8 @@ import Hero from '../components/Hero'
 import Zielgruppen from '../components/Zielgruppen'
 import Packages from '../components/Packages'
 import News from '../components/News'
-import DestinationenOverview from '../components/DestinationenOverview'
-import YachtenOverview from '../components/YachtenOverview'
 import Bewertungen from '../components/Bewertungen'
-import Team from '../components/Team'
+import SektionTeaser from '../components/SektionTeaser'
 
 const homeSchema = {
   '@context': 'https://schema.org',
@@ -39,9 +37,7 @@ export default function HomePage() {
       <Bewertungen />
       <Packages />
       <News />
-      <DestinationenOverview />
-      <YachtenOverview />
-      <Team />
+      <SektionTeaser />
     </main>
   )
 }
