@@ -7,15 +7,18 @@ import type { PriceBlock, Addon } from '../components/Packages'
 
 const h2Style = { fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', marginBottom: '1.25rem' } as const
 
-// Sidebar-Bild + Partnerlogo pro Land (wie auf der Originalseite)
+// Sidebar-Bild + Partnerlogo pro Package (wie auf der Originalseite)
+const KROATIEN_EXTRA = {
+  img: '/images/packages/dalmatien/gallery/Kat-Bug.webp',
+  alt: 'Sonnenuntergang am Segel-Katamaran',
+  logo: '/images/partner/yacht-urlaub-partner-kroatien.jpg',
+  logoAlt: 'Kroatien – Voller Leben',
+}
 const sidebarExtras: Record<string, { img: string; alt: string; logo: string; logoAlt: string }> = {
-  Kroatien: {
-    img: '/images/packages/dalmatien/gallery/Kat-Bug.webp',
-    alt: 'Sonnenuntergang am Segel-Katamaran',
-    logo: '/images/partner/kroatien.jpg',
-    logoAlt: 'Kroatien – Voller Leben',
-  },
-  Karibik: {
+  dalmatien: KROATIEN_EXTRA,
+  kornaten: KROATIEN_EXTRA,
+  istrien: KROATIEN_EXTRA,
+  'karibik-bvi': {
     img: '/images/packages/Karibik-BVI/gallery/Sandy Spit.jpg',
     alt: 'Sandy Spit – Britische Jungferninseln',
     logo: '/images/partner/bvi.jpg',
@@ -190,7 +193,7 @@ export default function PackageDetailPage() {
           {/* Right: Price badge + Route */}
           <div>
             {(() => {
-              const extra = sidebarExtras[pkg.country.split(' ')[0]] ?? sidebarExtras[pkg.country]
+              const extra = sidebarExtras[pkg.id]
               if (extra) {
                 return (
                   <div style={{ marginBottom: '1.5rem' }}>

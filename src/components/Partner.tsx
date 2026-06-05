@@ -7,7 +7,7 @@ const partner = [
   { id: 'rumzentrum', img: '/images/partner/rumzentrum.png', alt: 'Rumzentrum.at', href: 'https://rumzentrum.at/' },
   { id: 'italia', img: '/images/partner/italia.png', alt: 'Italia' },
   { id: 'spanien', img: '/images/partner/spanien.gif', alt: 'España – I need Spain' },
-  { id: 'kroatien', img: '/images/partner/kroatien.jpg', alt: 'Kroatien – Voller Leben' },
+  { id: 'kroatien', img: '/images/partner/yacht-urlaub-partner-kroatien.jpg', alt: 'Kroatien – Voller Leben' },
   { id: 'greece', img: '/images/partner/greece.jpg', alt: 'Griechenland' },
   { id: 'skyscanner', img: '/images/partner/skyscanner.jpg', alt: 'Skyscanner', href: 'https://skyscanner.pxf.io/c/2944578/1027991/13416?associateid=AFF_TRA_19354_00001' },
 ]
