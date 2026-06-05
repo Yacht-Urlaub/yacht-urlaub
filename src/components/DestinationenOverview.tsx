@@ -6,14 +6,14 @@ const grid = [
   { id: 'kroatien',    img: '/images/Destinationsbilder/blick-auf-den-hafen-von-hvar-bei-yacht-urlaub.png', wide: true },
   { id: 'griechenland', img: '/images/Destinationsbilder/akropolis-von-rhodos-bei-yacht-urlaub.jpg', wide: false },
   { id: 'balearen',   img: '/images/Destinationsbilder/blick-auf-palma-de-mallorca.jpg', wide: false },
-  { id: 'karibik',    img: '/images/Destinationsbilder/sandy-cay-mit-2-katamarane-davor-bei-yacht-urlaub.png', wide: false },
+  { id: 'karibik-bvi',    img: '/images/Destinationsbilder/sandy-cay-mit-2-katamarane-davor-bei-yacht-urlaub.png', wide: false },
   { id: 'seychellen', img: '/images/Destinationsbilder/Header/seychelles1.jpg', wide: false },
   { id: 'thailand',   img: '/images/Destinationsbilder/katamaran-in-thailand.jpg', wide: false },
 ]
 
 const extra = [
-  { id: 'kanaren',  name: 'Kanaren',   flag: '🇪🇸', time: 'Ganzjährig',  img: '/images/Destinationsbilder/grenadinen-und-st-vincent.jpg' },
-  { id: 'windward', name: 'Grenadinen', flag: '🏝️', time: 'Nov – Apr',   img: '/images/Destinationsbilder/grenadinen-und-st-vincent.jpg' },
+  { id: 'kanaren', name: 'Kanaren', flag: '🇪🇸', time: 'Ganzjährig', img: '/images/destinationen/kanaren/header_M71_7842_.jpg' },
+  { id: 'karibik-windward-islands', name: 'Karibik - Windward Islands', flag: '🏝️', time: 'November - April', img: '/images/Destinationsbilder/grenadinen-und-st-vincent.jpg' },
 ]
 
 export default function DestinationenOverview({ standalone = false }: { standalone?: boolean }) {
@@ -90,7 +90,7 @@ export default function DestinationenOverview({ standalone = false }: { standalo
           {extra.map(item => (
             <div
               key={item.id}
-              onClick={() => navigate('/destinationen')}
+              onClick={() => navigate(`/destinationen/${item.id}`)}
               style={{ flex: 1, position: 'relative', overflow: 'hidden', minHeight: '80px', borderRadius: '3px', cursor: 'pointer', background: 'rgba(255,255,255,0.05)' }}
             >
               <img src={item.img} alt={item.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.4 }} onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />

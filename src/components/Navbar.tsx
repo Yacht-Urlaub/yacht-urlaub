@@ -26,9 +26,11 @@ const nav = [
       { label: 'Kroatien', href: '/destinationen/kroatien' },
       { label: 'Griechenland', href: '/destinationen/griechenland' },
       { label: 'Balearen', href: '/destinationen/balearen' },
-      { label: 'Karibik-BVI', href: '/destinationen/karibik' },
-      { label: 'Seychellen', href: '/destinationen/seychellen' },
+      { label: 'Kanaren', href: '/destinationen/kanaren' },
+      { label: 'Karibik-BVI', href: '/destinationen/karibik-bvi' },
+      { label: 'Karibik-Windward Islands', href: '/destinationen/karibik-windward-islands' },
       { label: 'Thailand', href: '/destinationen/thailand' },
+      { label: 'Seychellen', href: '/destinationen/seychellen' },
     ]
   },
   {

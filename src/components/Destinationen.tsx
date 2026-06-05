@@ -6,7 +6,7 @@ const grid = [
   { id: 'kroatien', img: '/images/Destinationsbilder/blick-auf-den-hafen-von-hvar-bei-yacht-urlaub.png', wide: true },
   { id: 'griechenland', img: '/images/Destinationsbilder/akropolis-von-rhodos-bei-yacht-urlaub.jpg', wide: false },
   { id: 'balearen', img: '/images/Destinationsbilder/blick-auf-palma-de-mallorca.jpg', wide: false },
-  { id: 'karibik', img: '/images/Destinationsbilder/sandy-cay-mit-2-katamarane-davor-bei-yacht-urlaub.png', wide: false },
+  { id: 'karibik-bvi', img: '/images/Destinationsbilder/sandy-cay-mit-2-katamarane-davor-bei-yacht-urlaub.png', wide: false },
   { id: 'seychellen', img: '/images/Destinationsbilder/Header/seychelles1.jpg', wide: false },
   { id: 'thailand', img: '/images/Destinationsbilder/katamaran-in-thailand.jpg', wide: false },
 ]

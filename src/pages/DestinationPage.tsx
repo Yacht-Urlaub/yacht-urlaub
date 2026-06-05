@@ -15,9 +15,17 @@ const destMeta: Record<string, { description: string; keywords: string }> = {
     description: 'Segelurlaub Balearen: Mallorca, Ibiza, Menorca und Formentera. Mediterrane Buchten, Strandleben und Kultur – der perfekte Segeltörn im westlichen Mittelmeer.',
     keywords: 'Balearen segeln, Mallorca Yacht, Ibiza Charter, Segeln Spanien',
   },
-  karibik: {
+  kanaren: {
+    description: 'Segelurlaub Kanaren: Ganzjähriges Segelrevier im Atlantik. Teneriffa, Gran Canaria, Lanzarote und La Gomera – Passatwinde und Vulkanlandschaften.',
+    keywords: 'Kanaren segeln, Teneriffa Yacht, Gran Canaria Charter, Segeln Atlantik',
+  },
+  'karibik-bvi': {
     description: 'Segelurlaub Karibik BVI: Konstante Passatwinde, weiße Sandstrände und türkisblaues Wasser. Die Britischen Jungferninseln sind das klassische Segelparadies.',
     keywords: 'Karibik segeln, BVI Törn, British Virgin Islands, Segelurlaub Karibik',
+  },
+  'karibik-windward-islands': {
+    description: 'Segelurlaub Windward Islands: Von Grenada über St. Vincent und die Grenadinen bis Martinique – die Inseln über dem Winde sind das Traumrevier der südlichen Karibik.',
+    keywords: 'Windward Islands segeln, Grenadinen Törn, Grenada St. Vincent, Segelurlaub Karibik',
   },
   seychellen: {
     description: 'Luxury-Segelurlaub Seychellen: Granitfelsen, Palmstrände und Luxus-Katamarane. Segeln zwischen Mahé, Praslin und La Digue – das ultimative Paradieserlebnis.',
@@ -32,7 +40,9 @@ const destMeta: Record<string, { description: string; keywords: string }> = {
 export default function DestinationPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  const dest = destinations.find(d => d.id === id)
+  // Alte URL /destinationen/karibik → karibik-bvi
+  const resolvedId = id === 'karibik' ? 'karibik-bvi' : id
+  const dest = destinations.find(d => d.id === resolvedId)
 
   if (!dest) {
     return (

@@ -15,7 +15,7 @@ const packages = [
     region: 'Karibik · Britische Jungferninseln',
     text: 'Ihr Traum-Segelurlaub auf einer Segelyacht oder Katamaran in den britischen Jungferninseln.',
     img: '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg',
-    href: '/destinationen/karibik',
+    href: '/destinationen/karibik-bvi',
   },
   {
     title: 'Segeln in Griechenland',
@@ -29,7 +29,7 @@ const packages = [
     region: 'Karibik · St. Vincent & Grenadinen',
     text: 'Segelurlaub auf einer Segelyacht oder einem Katamaran in den Grenadinen.',
     img: '/images/Destinationsbilder/sonnenuntergang-grenadinen.jpg',
-    href: '/destinationen/karibik',
+    href: '/destinationen/karibik-bvi',
   },
   {
     title: 'Segeln in die Kornaten',
