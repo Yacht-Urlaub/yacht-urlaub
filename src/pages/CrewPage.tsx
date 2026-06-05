@@ -61,22 +61,30 @@ function CrewCard({ p, i }: { p: typeof skipper[number] & { motto?: string }; i:
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
-      style={{ background: '#fff', borderRadius: '6px', overflow: 'hidden', boxShadow: '0 2px 16px rgba(0,0,0,0.08)', display: 'flex', flexDirection: 'column' }}
+      style={{ background: '#fff', borderRadius: '10px', boxShadow: '0 2px 16px rgba(0,0,0,0.08)', padding: '2.25rem 2rem', display: 'flex', flexDirection: 'column' }}
     >
-      <div style={{ height: '280px', overflow: 'hidden', background: 'var(--gray-light)' }}>
-        <img src={p.img} alt={p.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-          onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
-      </div>
-      <div style={{ padding: '1.75rem', flex: 1 }}>
-        <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.2rem' }}>{p.name}</h3>
-        <p style={{ color: 'var(--blue)', fontSize: '0.8rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>{p.role}</p>
-        <p style={{ color: 'var(--gray)', fontSize: '0.78rem', marginBottom: '0.2rem' }}>Adresse: {p.adresse}</p>
-        <p style={{ color: 'var(--gray)', fontSize: '0.78rem', marginBottom: '1rem' }}>
+      {/* Runder Avatar — Gesicht bleibt immer im Bild */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', marginBottom: '1.5rem' }}>
+        <div style={{
+          width: '170px', height: '170px', borderRadius: '50%', overflow: 'hidden',
+          border: '4px solid var(--navy)', boxShadow: '0 8px 26px rgba(7,27,47,0.18)',
+          background: 'var(--gray-light)', marginBottom: '1.25rem', flexShrink: 0,
+        }}>
+          <img src={p.img} alt={p.name} loading="lazy"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 18%' }}
+            onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
+        </div>
+        <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.25rem' }}>{p.name}</h3>
+        <p style={{ color: 'var(--blue)', fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.65rem' }}>{p.role}</p>
+        <p style={{ color: 'var(--gray)', fontSize: '0.78rem' }}>Adresse: {p.adresse}</p>
+        <p style={{ color: 'var(--gray)', fontSize: '0.78rem' }}>
           Kontakt: <a href={`mailto:${p.kontakt}`} style={{ color: 'var(--blue)', fontWeight: 600 }}>{p.kontakt}</a>
         </p>
+      </div>
+      {(p.motto || p.bio) && <div style={{ borderTop: '1px solid var(--gray-mid)', paddingTop: '1.25rem' }}>
         {p.motto && <p style={{ color: 'var(--navy)', fontSize: '0.95rem', fontWeight: 700, fontStyle: 'italic', marginBottom: '0.75rem' }}>{p.motto}</p>}
         {p.bio && <p style={{ color: '#444', fontSize: '0.87rem', lineHeight: 1.75, whiteSpace: 'pre-line' }}>{p.bio}</p>}
-      </div>
+      </div>}
     </motion.div>
   )
 }
