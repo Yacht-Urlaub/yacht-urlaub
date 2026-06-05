@@ -5,6 +5,7 @@ import Packages from '../components/Packages'
 import News from '../components/News'
 import Bewertungen from '../components/Bewertungen'
 import SektionTeaser from '../components/SektionTeaser'
+import Partner from '../components/Partner'
 
 const homeSchema = {
   '@context': 'https://schema.org',
@@ -38,6 +39,7 @@ export default function HomePage() {
       <Packages />
       <News />
       <SektionTeaser />
+      <Partner />
     </main>
   )
 }
