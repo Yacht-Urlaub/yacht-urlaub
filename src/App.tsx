@@ -27,6 +27,7 @@ import UrlaubsplanerPage from './pages/UrlaubsplanerPage'
 import CrewPage from './pages/CrewPage'
 import ReisebueroPage from './pages/ReisebueroPage'
 import SkipperPage from './pages/SkipperPage'
+import SailAwayPage from './pages/SailAwayPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -64,6 +65,7 @@ function AnimatedRoutes() {
           <Route path="/crew" element={<CrewPage />} />
           <Route path="/reisebuero" element={<ReisebueroPage />} />
           <Route path="/skipper" element={<SkipperPage />} />
+          <Route path="/sailaway" element={<SailAwayPage />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/impressum" element={<ImpressumPage />} />
           <Route path="/datenschutz" element={<DatenschutzPage />} />

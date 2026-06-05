@@ -8,6 +8,7 @@ const cols = [
       { label: 'Für Freunde', href: '/toerns/freunde' },
       { label: 'Für Familien', href: '/toerns/familien' },
       { label: 'Luxury', href: '/toerns/luxury' },
+      { label: 'SailAway Partyflotte', href: '/sailaway' },
       { label: 'Kabinen-Angebote', href: '/kabinen' },
       { label: 'Törnberichte', href: '/toernberichte' },
       { label: 'Anfrage starten', href: '#kontakt' },
