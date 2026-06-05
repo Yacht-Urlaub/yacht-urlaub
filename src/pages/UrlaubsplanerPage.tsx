@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
+import { AnchorIcon } from '../components/Icons'
 
 // Optionen 1:1 vom Original-Urlaubsplaner (yacht-urlaub.net/urlaubsplaner)
 const yachtTypes = [
@@ -144,7 +145,7 @@ export default function UrlaubsplanerPage() {
 
       {sent ? (
         <div className="container" style={{ maxWidth: '640px', padding: '5rem 1.5rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>⚓</div>
+          <div style={{ marginBottom: '1.5rem', color: 'var(--blue)', display: 'flex', justifyContent: 'center' }}><AnchorIcon size={56} /></div>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '2rem', marginBottom: '1rem' }}>
             Vielen Dank, {form.vorname}!
           </h2>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { AnchorIcon, WavesIcon, ShieldIcon, SparklesIcon } from '../components/Icons'
 
 const categories = [
   {
@@ -38,10 +39,10 @@ const categories = [
 ]
 
 const highlights = [
-  { icon: '⚓', label: 'Skipper inklusive', desc: 'Erfahrene, mehrsprachige Skipper' },
-  { icon: '🌊', label: 'Alle Reviere', desc: 'Kroatien, Griechenland, Karibik, Seychellen' },
-  { icon: '🛡️', label: 'Sicher reisen', desc: 'RYA-zertifizierte Skipper, Sicherheitsbriefing' },
-  { icon: '✨', label: 'Rundum-Sorglos', desc: 'Von der Buchung bis zur Rückkehr alles geregelt' },
+  { icon: <AnchorIcon size={26} />, label: 'Skipper inklusive', desc: 'Erfahrene, mehrsprachige Skipper' },
+  { icon: <WavesIcon size={26} />, label: 'Alle Reviere', desc: 'Kroatien, Griechenland, Karibik, Seychellen' },
+  { icon: <ShieldIcon size={26} />, label: 'Sicher reisen', desc: 'RYA-zertifizierte Skipper, Sicherheitsbriefing' },
+  { icon: <SparklesIcon size={26} />, label: 'Rundum-Sorglos', desc: 'Von der Buchung bis zur Rückkehr alles geregelt' },
 ]
 
 export default function ToernsPage() {
@@ -83,7 +84,7 @@ export default function ToernsPage() {
         <div className="container toerns-highlights" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
           {highlights.map(h => (
             <div key={h.label} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <span style={{ fontSize: '1.5rem' }}>{h.icon}</span>
+              <span style={{ color: 'var(--blue-light, #7fc4ff)', display: 'flex', flexShrink: 0 }}>{h.icon}</span>
               <div>
                 <div style={{ color: '#fff', fontWeight: 700, fontSize: '0.82rem' }}>{h.label}</div>
                 <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.75rem' }}>{h.desc}</div>

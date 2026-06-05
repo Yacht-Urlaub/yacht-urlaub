@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { SparklesIcon } from '../components/Icons'
 
 // Angebote 1:1 von der Originalseite (yacht-urlaub.net/kabinenangebote)
 const angebote = [
@@ -131,7 +132,7 @@ export default function KabinenPage() {
                   </div>
                   {a.bord && (
                     <div style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'var(--gold)', color: 'var(--navy)', padding: '5px 12px', borderRadius: '3px', fontSize: '0.7rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                      ✦ Mit Bord-Service
+                      <SparklesIcon size={11} style={{ verticalAlign: '-1px', marginRight: '4px' }} />Mit Bord-Service
                     </div>
                   )}
                 </div>

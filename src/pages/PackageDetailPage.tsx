@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
+import { MapPinIcon } from '../components/Icons'
 import { packages } from '../components/Packages'
 import type { PriceBlock, Addon } from '../components/Packages'
 
@@ -138,7 +139,7 @@ export default function PackageDetailPage() {
               </span>
             ))}
             <span style={{ background: 'rgba(26,110,181,0.5)', color: '#fff', fontSize: '0.72rem', padding: '3px 10px', borderRadius: '20px', fontWeight: 600 }}>
-              📍 {pkg.country}
+              <MapPinIcon size={12} style={{ verticalAlign: '-2px', marginRight: '4px' }} />{pkg.country}
             </span>
           </div>
           <h1 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 4vw, 2.8rem)', color: '#fff', marginBottom: '0' }}>

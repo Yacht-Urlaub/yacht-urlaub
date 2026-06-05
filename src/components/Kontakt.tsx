@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
+import { PhoneIcon, MailIcon, WhatsAppIcon, MapPinIcon, CalendarIcon, SailboatIcon } from './Icons'
 
 const inputStyle = (error?: boolean): React.CSSProperties => ({
   width: '100%', padding: '11px 14px',
@@ -104,12 +105,12 @@ export default function Kontakt() {
             </p>
 
             {[
-              { icon: '📞', label: 'Telefon', val: '+43 1 997 15 82', sub: 'Mo–Fr 10:00–19:00, Sa 13:00–17:00', href: 'tel:+43199715820', bg: 'var(--navy)' },
-              { icon: '💬', label: 'WhatsApp', val: '+43 660 2652481', sub: 'Schnelle Antwort', href: 'https://wa.me/436602652481', bg: '#25d366' },
-              { icon: '✉️', label: 'E-Mail', val: 'info@yacht-urlaub.net', sub: '', href: 'mailto:info@yacht-urlaub.net', bg: 'var(--navy)' },
+              { icon: <PhoneIcon size={20} />, label: 'Telefon', val: '+43 1 997 15 82', sub: 'Mo–Fr 10:00–19:00, Sa 13:00–17:00', href: 'tel:+43199715820', bg: 'var(--navy)' },
+              { icon: <WhatsAppIcon size={20} />, label: 'WhatsApp', val: '+43 660 2652481', sub: 'Schnelle Antwort', href: 'https://wa.me/436602652481', bg: '#25d366' },
+              { icon: <MailIcon size={20} />, label: 'E-Mail', val: 'info@yacht-urlaub.net', sub: '', href: 'mailto:info@yacht-urlaub.net', bg: 'var(--navy)' },
             ].map(c => (
               <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
-                <div style={{ width: '46px', height: '46px', borderRadius: '50%', background: c.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '1.1rem' }}>
+                <div style={{ width: '46px', height: '46px', borderRadius: '50%', background: c.bg, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   {c.icon}
                 </div>
                 <div>
@@ -143,8 +144,8 @@ export default function Kontakt() {
                 <motion.div
                   initial={{ scale: 0 }} animate={{ scale: 1 }}
                   transition={{ type: 'spring', delay: 0.2 }}
-                  style={{ fontSize: '3rem', marginBottom: '1rem' }}
-                >⛵</motion.div>
+                  style={{ marginBottom: '1rem', color: 'var(--blue)', display: 'flex', justifyContent: 'center' }}
+                ><SailboatIcon size={56} /></motion.div>
                 <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.5rem', color: 'var(--navy)', marginBottom: '0.75rem' }}>Anfrage gesendet!</h3>
                 <p style={{ color: 'var(--gray)', lineHeight: 1.75, marginBottom: '1.5rem' }}>
                   Vielen Dank, <strong>{form.name}</strong>! Wir melden uns innerhalb von 24 Stunden bei Ihnen unter <strong>{form.email}</strong>.
@@ -308,10 +309,10 @@ export default function Kontakt() {
 
                       {/* Summary */}
                       <div style={{ background: 'var(--gray-light)', borderRadius: '4px', padding: '0.85rem 1rem', marginBottom: '1.5rem', fontSize: '0.8rem', color: 'var(--gray)', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                        <span>📍 {form.destination || '–'}</span>
-                        <span>📅 {form.datum_von || '–'}</span>
-                        <span>👤 {form.personen} Personen</span>
-                        {form.yacht && <span>⛵ {form.yacht}</span>}
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}><MapPinIcon size={13} /> {form.destination || '–'}</span>
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}><CalendarIcon size={13} /> {form.datum_von || '–'}</span>
+                        <span>{form.personen} Personen</span>
+                        {form.yacht && <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}><SailboatIcon size={13} /> {form.yacht}</span>}
                       </div>
 
                       <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
@@ -387,7 +388,7 @@ export default function Kontakt() {
 
                       <div style={{ display: 'flex', gap: '0.75rem' }}>
                         <button type="button" onClick={back} className="btn btn-ghost" style={{ flex: 1 }}>← Zurück</button>
-                        <button type="submit" className="btn btn-navy" style={{ flex: 2 }}>Anfrage absenden ⛵</button>
+                        <button type="submit" className="btn btn-navy" style={{ flex: 2 }}>Anfrage absenden →</button>
                       </div>
                     </motion.div>
                   )}

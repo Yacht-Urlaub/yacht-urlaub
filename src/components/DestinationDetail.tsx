@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { destinations } from '../data/destinationen'
 import type { Destination, DestBlock } from '../data/destinationen'
 import { packages } from './Packages'
+import { CalendarIcon } from './Icons'
 
 export { destinations }
 export type { Destination }
@@ -132,7 +133,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             <div style={{ background: 'var(--navy)', color: '#fff', borderRadius: '4px', padding: '2rem', marginBottom: '1.5rem' }}>
               <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', marginBottom: '1.25rem' }}>Reisedaten</h3>
               <div style={{ display: 'flex', gap: '0.75rem' }}>
-                <span style={{ fontSize: '1.1rem' }}>📅</span>
+                <span style={{ color: 'var(--blue-light, #7fc4ff)', display: 'flex' }}><CalendarIcon size={20} /></span>
                 <div>
                   <p style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Ideale Reisezeit</p>
                   <p style={{ fontSize: '0.88rem', color: '#fff', fontWeight: 600 }}>{dest.bestTime || 'auf Anfrage'}</p>

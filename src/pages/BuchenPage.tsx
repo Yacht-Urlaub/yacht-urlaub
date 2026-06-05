@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { AnchorIcon } from '../components/Icons'
 
 const packages = [
   {
@@ -195,7 +196,7 @@ export default function BuchenPage() {
                     fontSize: '0.75rem', fontWeight: 600,
                     alignSelf: 'flex-start',
                   }}>
-                    ⚓ Zum Angebot
+                    <AnchorIcon size={14} style={{ verticalAlign: '-2px', marginRight: '5px' }} />Zum Angebot
                   </Link>
                 </div>
               </motion.div>

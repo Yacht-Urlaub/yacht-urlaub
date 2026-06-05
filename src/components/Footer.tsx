@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { FacebookIcon, InstagramIcon, YouTubeIcon, LinkedInIcon, XingIcon } from './Icons'
 
 const cols = [
   {
@@ -54,11 +55,11 @@ const cols = [
 ]
 
 const socials = [
-  { icon: 'f', label: 'Facebook', href: 'https://www.facebook.com/yachturlaub/' },
-  { icon: '📸', label: 'Instagram', href: 'https://www.instagram.com/yacht.holiday/' },
-  { icon: '▶', label: 'YouTube', href: 'https://www.youtube.com/channel/UCyCd7UCoTB8TOTZFsGboTGQ' },
-  { icon: 'in', label: 'LinkedIn', href: 'https://www.linkedin.com/company/yacht-urlaub' },
-  { icon: 'X', label: 'XING', href: 'https://www.xing.com/companies/yacht-urlaub' },
+  { icon: <FacebookIcon size={15} />, label: 'Facebook', href: 'https://www.facebook.com/yachturlaub/' },
+  { icon: <InstagramIcon size={15} />, label: 'Instagram', href: 'https://www.instagram.com/yacht.holiday/' },
+  { icon: <YouTubeIcon size={15} />, label: 'YouTube', href: 'https://www.youtube.com/channel/UCyCd7UCoTB8TOTZFsGboTGQ' },
+  { icon: <LinkedInIcon size={15} />, label: 'LinkedIn', href: 'https://www.linkedin.com/company/yacht-urlaub' },
+  { icon: <XingIcon size={15} />, label: 'XING', href: 'https://www.xing.com/companies/yacht-urlaub' },
 ]
 
 export default function Footer() {

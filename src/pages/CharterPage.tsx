@@ -3,6 +3,7 @@ import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
+import { AlertIcon } from '../components/Icons'
 
 // Inhalte 1:1 von yacht-urlaub.net/charter/yacht-charter-anfragen
 const yachtTypen = ['Einrumpf-Segler', 'Katamaran', 'Motoryacht', 'Katamaran-Motoryacht', 'Trabakul']
@@ -81,7 +82,7 @@ export default function CharterPage() {
       <section style={{ background: '#fff8e6', borderBottom: '1px solid #f0e0b0', padding: '1rem 0' }}>
         <div className="container">
           <p style={{ color: '#7a5c00', fontSize: '0.88rem' }}>
-            ⚠️ Wichtiger Hinweis für Charter-Kunden: Warum Preisvergleiche oft täuschen – <Link to="/faq" style={{ color: 'var(--blue)', fontWeight: 700 }}>hier unbedingt nachlesen »</Link>
+            <AlertIcon size={15} style={{ verticalAlign: '-3px', marginRight: '6px' }} />Wichtiger Hinweis für Charter-Kunden: Warum Preisvergleiche oft täuschen – <Link to="/faq" style={{ color: 'var(--blue)', fontWeight: 700 }}>hier unbedingt nachlesen »</Link>
           </p>
         </div>
       </section>
