@@ -8,10 +8,10 @@ const grid = [
   { id: 'griechenland', img: '/images/packages/Griechenland/gallery/Navajo Bucht - Griechenland.jpg' },
   { id: 'balearen', img: '/images/Destinationsbilder/blick-auf-palma-de-mallorca.jpg' },
   { id: 'kanaren', img: '/images/destinationen/kanaren/header_M71_7842_.jpg' },
-  { id: 'karibik-bvi', img: '/images/Destinationsbilder/sandy-cay-mit-2-katamarane-davor-bei-yacht-urlaub.png' },
+  { id: 'karibik-bvi', img: '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg' },
   { id: 'karibik-windward-islands', img: '/images/Destinationsbilder/grenadinen-und-st-vincent.jpg' },
-  { id: 'thailand', img: '/images/Destinationsbilder/katamaran-in-thailand.jpg' },
-  { id: 'seychellen', img: '/images/Destinationsbilder/Header/seychelles1.jpg' },
+  { id: 'thailand', img: '/images/Destinationsbilder/schnorcheln-in-thailand.jpg' },
+  { id: 'seychellen', img: '/images/Destinationsbilder/Seychellen.webp' },
 ]
 
 export default function DestinationenOverview({ standalone = false }: { standalone?: boolean }) {
