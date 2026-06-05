@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { LanguageContext, langFromPath } from './i18n'
+import { LanguageContext, langFromPath, canonicalPath } from './i18n'
 import { useLayoutEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -38,9 +38,11 @@ function LangProvider({ children }: { children: React.ReactNode }) {
 
 function ScrollToTop() {
   const { pathname } = useLocation()
+  // Sprachwechsel = gleiche Seite ⇒ Scrollposition behalten
+  const key = canonicalPath(pathname)
   useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
-  }, [pathname])
+  }, [key])
   return null
 }
 
@@ -54,7 +56,7 @@ function AnimatedRoutes() {
   const location = useLocation()
   return (
     <AnimatePresence mode="wait">
-      <motion.div key={location.pathname} variants={pageVariants} initial="initial" animate="animate" exit="exit">
+      <motion.div key={canonicalPath(location.pathname)} variants={pageVariants} initial="initial" animate="animate" exit="exit">
         <Routes location={location}>
           <Route path="/" element={<HomePage />} />
           <Route path="/destinationen" element={<DestinationenPage />} />

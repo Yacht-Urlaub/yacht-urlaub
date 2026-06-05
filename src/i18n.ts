@@ -69,6 +69,25 @@ export const enPkgSlugs: Record<string, string> = {
   'caribbean-grenadines': 'karibik-grenadinen',
 }
 
+const enCruiseToDe: Record<string, string> = {
+  'for-beginners': 'einsteiger', 'for-friends': 'freunde', 'for-families': 'familien', luxury: 'luxury',
+}
+
+/** Normalisiert einen Pfad auf sein DE-Pendant — gleiche Seite in beiden Sprachen ⇒ gleicher Key */
+export function canonicalPath(pathname: string): string {
+  if (!pathname.startsWith('/en')) return pathname
+  for (const [de, en] of routePairs) {
+    if (pathname === en) return de
+  }
+  let m = pathname.match(/^\/en\/cruises\/book-now\/([^/]+)$/)
+  if (m) return `/packages/${enPkgSlugs[m[1]] ?? m[1]}`
+  m = pathname.match(/^\/en\/destinations\/([^/]+)$/)
+  if (m) return `/destinationen/${enDestSlugs[m[1]] ?? m[1]}`
+  m = pathname.match(/^\/en\/cruises\/([^/]+)$/)
+  if (m) return `/toerns/${enCruiseToDe[m[1]] ?? m[1]}`
+  return pathname
+}
+
 export function switchLangPath(pathname: string, target: Lang): string {
   // exakte Paare zuerst
   for (const [de, en] of routePairs) {
