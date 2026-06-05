@@ -452,7 +452,7 @@ export default function UrlaubsplanerPage() {
 
           {/* Nav Buttons */}
           {step < 4 && (
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2.5rem', maxWidth: '860px' }}>
+            <div className="planer-nav" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2.5rem', maxWidth: '860px', gap: '0.75rem', flexWrap: 'wrap' }}>
               <button
                 onClick={() => setStep(s => Math.max(0, s - 1))}
                 disabled={step === 0}
@@ -521,6 +521,7 @@ export default function UrlaubsplanerPage() {
           .form-grid-2 { grid-template-columns: 1fr !important; }
           .planer-connector { width: 14px !important; }
           .planer-stepper { margin-bottom: 2rem !important; }
+          .planer-nav .btn { white-space: normal !important; text-align: center; }
         }
       `}</style>
     </main>

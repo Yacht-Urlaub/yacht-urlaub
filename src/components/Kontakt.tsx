@@ -157,7 +157,7 @@ export default function Kontakt() {
               <div style={{ background: '#fff', borderRadius: '8px', boxShadow: '0 4px 32px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
 
                 {/* Step indicator */}
-                <div style={{ padding: '1.25rem 2rem', background: 'var(--navy)', display: 'flex', alignItems: 'center', gap: 0 }}>
+                <div className="kontakt-stepper" style={{ padding: '1.25rem 2rem', background: 'var(--navy)', display: 'flex', alignItems: 'center', gap: 0 }}>
                   {steps.map((s, i) => (
                     <div key={s} style={{ display: 'flex', alignItems: 'center', flex: i < steps.length - 1 ? 1 : 'none' }}>
                       <div style={{
@@ -169,7 +169,7 @@ export default function Kontakt() {
                       }}>
                         {i < step ? '✓' : i + 1}
                       </div>
-                      <span style={{ fontSize: '0.7rem', color: i <= step ? '#fff' : 'rgba(255,255,255,0.4)', marginLeft: '6px', fontWeight: i === step ? 700 : 400 }}>{s}</span>
+                      <span className={i === step ? 'kontakt-step-label active' : 'kontakt-step-label'} style={{ fontSize: '0.7rem', color: i <= step ? '#fff' : 'rgba(255,255,255,0.4)', marginLeft: '6px', fontWeight: i === step ? 700 : 400 }}>{s}</span>
                       {i < steps.length - 1 && <div style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.15)', margin: '0 12px' }} />}
                     </div>
                   ))}
@@ -406,6 +406,8 @@ export default function Kontakt() {
         }
         @media (max-width: 560px) {
           .form-grid-2 { grid-template-columns: 1fr !important; }
+          .kontakt-stepper { padding: 1rem 1.25rem !important; }
+          .kontakt-step-label:not(.active) { display: none; }
         }
       `}</style>
     </section>

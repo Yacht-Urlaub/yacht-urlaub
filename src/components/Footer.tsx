@@ -75,13 +75,13 @@ export default function Footer() {
             name="newsletter"
             data-netlify="true"
             onSubmit={e => e.preventDefault()}
-            style={{ display: 'flex', gap: '0.75rem', flex: '0 0 auto' }}
+            style={{ display: 'flex', gap: '0.75rem', flex: '1 1 280px', maxWidth: '420px', flexWrap: 'wrap' }}
           >
             <input type="hidden" name="form-name" value="newsletter" />
             <input
               type="email"
               placeholder="Ihre E-Mail-Adresse"
-              style={{ padding: '10px 16px', borderRadius: '3px', border: 'none', fontSize: '0.85rem', width: '240px', outline: 'none', fontFamily: 'DM Sans, sans-serif' }}
+              style={{ padding: '10px 16px', borderRadius: '3px', border: 'none', fontSize: '0.85rem', flex: '1 1 180px', minWidth: 0, outline: 'none', fontFamily: 'DM Sans, sans-serif' }}
             />
             <button type="submit" className="btn btn-navy" style={{ fontSize: '0.8rem', whiteSpace: 'nowrap' }}>
               Ich bin dabei!

@@ -80,7 +80,7 @@ export default function ToernsPage() {
 
       {/* Highlights Bar */}
       <div style={{ background: 'var(--navy)', padding: '1.5rem 0' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
+        <div className="container toerns-highlights" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
           {highlights.map(h => (
             <div key={h.label} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
               <span style={{ fontSize: '1.5rem' }}>{h.icon}</span>
@@ -93,10 +93,10 @@ export default function ToernsPage() {
         </div>
         <style>{`
           @media (max-width: 768px) {
-            .highlights-bar { grid-template-columns: 1fr 1fr !important; }
+            .toerns-highlights { grid-template-columns: 1fr 1fr !important; }
           }
           @media (max-width: 480px) {
-            .highlights-bar { grid-template-columns: 1fr !important; }
+            .toerns-highlights { grid-template-columns: 1fr !important; }
           }
         `}</style>
       </div>
