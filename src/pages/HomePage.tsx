@@ -36,11 +36,11 @@ export default function HomePage() {
       />
       <Hero />
       <Zielgruppen />
+      <Bewertungen />
       <Packages />
       <News />
       <DestinationenOverview />
       <YachtenOverview />
-      <Bewertungen />
       <Team />
     </main>
   )
