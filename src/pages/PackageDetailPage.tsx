@@ -6,6 +6,22 @@ import { packages } from '../components/Packages'
 import type { PriceBlock, Addon } from '../components/Packages'
 
 const h2Style = { fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', marginBottom: '1.25rem' } as const
+
+// Sidebar-Bild + Partnerlogo pro Land (wie auf der Originalseite)
+const sidebarExtras: Record<string, { img: string; alt: string; logo: string; logoAlt: string }> = {
+  Kroatien: {
+    img: '/images/packages/dalmatien/gallery/Kat-Bug.webp',
+    alt: 'Sonnenuntergang am Segel-Katamaran',
+    logo: '/images/partner/kroatien.jpg',
+    logoAlt: 'Kroatien – Voller Leben',
+  },
+  Karibik: {
+    img: '/images/packages/Karibik-BVI/gallery/Sandy Spit.jpg',
+    alt: 'Sandy Spit – Britische Jungferninseln',
+    logo: '/images/partner/bvi.jpg',
+    logoAlt: "The British Virgin Islands – Nature's little secrets",
+  },
+}
 const h3Style = { fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.05rem', fontWeight: 700, marginBottom: '0.5rem' } as const
 const pStyle = { color: '#444', fontSize: '0.93rem', lineHeight: 1.75, whiteSpace: 'pre-line' } as const
 
@@ -173,16 +189,59 @@ export default function PackageDetailPage() {
 
           {/* Right: Price badge + Route */}
           <div>
-            <div style={{
-              background: 'var(--blue)', color: '#fff', borderRadius: '6px',
-              padding: '2rem', textAlign: 'center', marginBottom: '1.5rem',
-            }}>
-              <p style={{ fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem', opacity: 0.85 }}>ab</p>
-              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '3rem', fontWeight: 700, lineHeight: 1, marginBottom: '0.3rem' }}>
-                € {pkg.price},-
-              </p>
-              <p style={{ fontSize: '0.85rem', opacity: 0.85 }}>pro Person{pkg.priceNote ? ` (${pkg.priceNote})` : ''}</p>
-            </div>
+            {(() => {
+              const extra = sidebarExtras[pkg.country.split(' ')[0]] ?? sidebarExtras[pkg.country]
+              if (extra) {
+                return (
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    {/* Bild mit überlappender Preis-Bubble (wie Original) */}
+                    <div style={{ position: 'relative', paddingTop: '2.25rem', paddingLeft: '2.25rem' }}>
+                      <img
+                        src={extra.img}
+                        alt={extra.alt}
+                        loading="lazy"
+                        style={{ width: '100%', borderRadius: '12px', display: 'block', boxShadow: '0 6px 24px rgba(7,27,47,0.18)' }}
+                        onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+                      />
+                      <div style={{
+                        position: 'absolute', top: 0, left: 0,
+                        width: '118px', height: '118px', borderRadius: '50%',
+                        background: 'var(--blue)', color: '#fff',
+                        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                        boxShadow: '0 6px 20px rgba(2,132,199,0.4)', textAlign: 'center', lineHeight: 1.15,
+                      }}>
+                        <span style={{ fontSize: '0.72rem', opacity: 0.9 }}>ab</span>
+                        <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.55rem', fontWeight: 700 }}>€ {pkg.price},-</span>
+                        <span style={{ fontSize: '0.7rem', opacity: 0.9 }}>pro Person</span>
+                      </div>
+                    </div>
+                    {/* Partnerlogo */}
+                    <div style={{ textAlign: 'center', marginTop: '1.25rem' }}>
+                      <img
+                        src={extra.logo}
+                        alt={extra.logoAlt}
+                        title={extra.logoAlt}
+                        loading="lazy"
+                        style={{ maxWidth: '70%', maxHeight: '120px', objectFit: 'contain' }}
+                        onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+                      />
+                    </div>
+                  </div>
+                )
+              }
+              return (
+                <div style={{
+                  background: 'var(--blue)', color: '#fff', borderRadius: '6px',
+                  padding: '2rem', textAlign: 'center', marginBottom: '1.5rem',
+                }}>
+                  <p style={{ fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem', opacity: 0.85 }}>ab</p>
+                  <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '3rem', fontWeight: 700, lineHeight: 1, marginBottom: '0.3rem' }}>
+                    € {pkg.price},-
+                  </p>
+                  <p style={{ fontSize: '0.85rem', opacity: 0.85 }}>pro Person{pkg.priceNote ? ` (${pkg.priceNote})` : ''}</p>
+                </div>
+              )
+            })()}
 
             <div style={{ background: 'var(--gray-light)', borderRadius: '6px', padding: '1.5rem' }}>
               <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '0.9rem', fontWeight: 700, marginBottom: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
