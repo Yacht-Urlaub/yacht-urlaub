@@ -343,6 +343,7 @@ export const toernberichte: Toernbericht[] = [
     title: "Die Inselwelt der Kornaten",
     teaser: "Ein Törn durch den facettenreichen Naturpark Kroatiens",
     cardImg: "/images/toernberichte/teaser/20180910_122450.jpg",
+    hero: "/images/toernberichte/die-inselwelt-der-kornaten/Kornaten.jpg",
     blocks: [
       { t: "p", x: "Unser Start- und Zielort war Biograd na Moru. Wir hatten als Reisezeit Anfang September gewählt und auf Empfehlung unseres Skippers einen Mittwoch-Mittwoch Törn gebucht. So konnten wir in aller Ruhe anreisen – keine Staus – kein hektisches Treiben in der Marina. Trotzdem war es nicht ganz einfach einen Parkplatz zu finden. Den Platz, wo unser Katamaran – eine Lagoon 400 – zu finden war, hatte uns der Skipper sehr gut beschrieben. Bevor wir nun unser Gepäck auf das Boot brachten, trafen wir bereits auf unsere Segelfreunde. Die Freude über das Wiedersehen und die Vorfreude über die gemeinsamen Tage auf dem Meer wurden noch nur vom angenehm warmen Wetter und dem blitzblauen Himmel übertroffen." },
       { t: "p", x: "Da wir mit dem Skipper insgesamt 8 Personen an Bord waren, hatten alle genug Platz für persönliche Dinge, und auch der bereits mitgebrachte Proviant konnte leicht verstaut werden. Da wir keinen Bordservice und auch keine Pauschalen gebucht hatten,  zahlten wir einen gemeinsam vereinbarten Betrag in die Bordkassa ein. Nun machten sich vier von uns auf den Weg, um vor allem Getränke, frisches Obst und Gemüse sowie weiteren Proviant einzukaufen." },
