@@ -2,28 +2,35 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 
-const destinations = [
-  { id: 'kroatien', label: 'Kroatien', sub: 'Dalmatien · Kornaten · Istrien', img: '/images/Destinationsbilder/Header/Kroatien Bucht.webp' },
-  { id: 'griechenland', label: 'Griechenland', sub: 'Ionische Inseln · Kykladen · Ägäis', img: '/images/packages/Griechenland/gallery/Navajo Bucht - Griechenland.jpg' },
-  { id: 'balearen', label: 'Balearen', sub: 'Mallorca · Ibiza · Menorca', img: '/images/Destinationsbilder/blick-auf-palma-de-mallorca.jpg' },
-  { id: 'karibik', label: 'Karibik-BVI', sub: 'Britische Jungferninseln · Grenadinen', img: '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg' },
-  { id: 'seychellen', label: 'Seychellen', sub: 'Mahé · Praslin · La Digue', img: '/images/Destinationsbilder/Seychellen.webp' },
-  { id: 'thailand', label: 'Thailand', sub: 'Phuket · Phi-Phi · Similan', img: '/images/Destinationsbilder/Thailand 1.jpg' },
-  { id: 'ueberrasch', label: 'Überrasch mich!', sub: 'Wir empfehlen das Beste für Sie', img: '/images/Front.jpg' },
+// Optionen 1:1 vom Original-Urlaubsplaner (yacht-urlaub.net/urlaubsplaner)
+const yachtTypes = [
+  { id: 'Gemütliche Segelyacht', label: 'Gemütliche Segelyacht', img: '/images/yachten/Header_Yacht.jpg' },
+  { id: 'Geräumiger Katamaran', label: 'Geräumiger Katamaran', img: '/images/yachten/Lagoon 450-4.jpg' },
+  { id: 'Luxuriöse Motoryacht', label: 'Luxuriöse Motoryacht', img: '/images/luxury/nikita-17.png' },
 ]
 
-const tripTypes = [
-  { id: 'einsteiger', label: 'Für Einsteiger', desc: 'Noch nie gesegelt? Kein Problem — unser Skipper kümmert sich um alles.', icon: '🌊' },
-  { id: 'familie', label: 'Für Familien', desc: 'Unvergessliche Abenteuer für die ganze Familie.', icon: '👨‍👩‍👧‍👦' },
-  { id: 'freunde', label: 'Für Freunde', desc: 'Gemeinsam die Freiheit auf dem Meer erleben.', icon: '🥂' },
-  { id: 'luxury', label: 'Luxury', desc: 'Exklusiv, stilsicher und unvergesslich — das beste Erlebnis.', icon: '✨' },
-  { id: 'charter', label: 'Privatyacht / Charter', desc: 'Komplette Yacht für sich allein — mit oder ohne Skipper.', icon: '⛵' },
-  { id: 'kabine', label: 'Einzelne Kabine', desc: 'Ideal für Alleinreisende und Paare.', icon: '🛏️' },
+const reviere = [
+  'Kroatien', 'Griechenland', 'Italien (Festland)', 'Sardinien', 'Sizilien', 'Karibik',
+  'Thailand', 'Seychellen', 'Balearen (Spanien)', 'Kanaren (Spanien)', 'Azoren (Portugal)', 'Südsee',
 ]
 
-const durations = ['3–4 Tage', '7 Tage (1 Woche)', '10 Tage', '14 Tage (2 Wochen)', 'Flexibel']
+const buchungsAbsichten = [
+  '... so bald wie möglich buchen.',
+  '... in den nächsten Wochen buchen.',
+  '... derzeit noch nicht buchen. Ich erkundige mich nur.',
+]
 
-const steps = ['Destination', 'Reisezeitraum', 'Art des Törns', 'Ihre Daten']
+const gruppenGroessen = [
+  '3 oder weniger - Bitte Link für WhatsApp-Info Gruppe zuschicken',
+  '4', '5', '6', '7', '8', '9', '10', '11', '12',
+  'mehr als 12, aufgeteilt auf mehrere Yachten',
+]
+
+const kommunikationsWege = ['E-Mail', 'Whatsapp', 'Facebook', 'Skype', 'Telefon/persönlich']
+
+const erfahrenOptionen = ['Freunde und Bekannte', 'Online-Suche (Website)', 'Facebook', 'Instagram', 'Ferien-Messe', 'Sonstiges']
+
+const steps = ['Yachtauswahl', 'Revierauswahl', 'Terminplanung', 'Crew & Kommunikation', 'Kontaktperson']
 
 const fadeIn = {
   initial: { opacity: 0, x: 30 },
@@ -32,51 +39,77 @@ const fadeIn = {
 }
 
 type FormData = {
-  destination: string
-  month: string
-  duration: string
-  tripType: string
-  name: string
+  yacht: string
+  reviere: string[]
+  revierSonstiges: string
+  beginn: string
+  dauer: string
+  buchung: string
+  anmerkung: string
+  personen: string
+  kommunikation: string[]
+  kommunikationSonstiges: string
+  vorname: string
+  nachname: string
+  geburtsjahr: string
   email: string
-  phone: string
-  notes: string
+  telefon: string
+  newsletter: boolean
+  erfahren: string
 }
+
+const inputStyle = {
+  width: '100%', padding: '11px 14px', border: '1.5px solid var(--gray-mid)', borderRadius: '4px',
+  fontSize: '0.9rem', fontFamily: 'DM Sans, sans-serif', outline: 'none', boxSizing: 'border-box',
+} as const
+const labelStyle = { display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' } as const
 
 export default function UrlaubsplanerPage() {
   const [step, setStep] = useState(0)
   const [sent, setSent] = useState(false)
   const [form, setForm] = useState<FormData>({
-    destination: '',
-    month: '',
-    duration: '',
-    tripType: '',
-    name: '',
-    email: '',
-    phone: '',
-    notes: '',
+    yacht: '', reviere: [], revierSonstiges: '',
+    beginn: '', dauer: '7', buchung: '', anmerkung: '',
+    personen: '', kommunikation: [], kommunikationSonstiges: '',
+    vorname: '', nachname: '', geburtsjahr: '', email: '', telefon: '',
+    newsletter: false, erfahren: '',
   })
 
-  const update = (key: keyof FormData, val: string) => setForm(prev => ({ ...prev, [key]: val }))
+  const update = <K extends keyof FormData>(key: K, val: FormData[K]) => setForm(prev => ({ ...prev, [key]: val }))
+
+  const toggleArr = (key: 'reviere' | 'kommunikation', val: string) =>
+    setForm(prev => ({
+      ...prev,
+      [key]: prev[key].includes(val) ? prev[key].filter(v => v !== val) : [...prev[key], val],
+    }))
 
   const canNext = () => {
-    if (step === 0) return !!form.destination
-    if (step === 1) return !!form.month && !!form.duration
-    if (step === 2) return !!form.tripType
-    return !!form.name && !!form.email
+    if (step === 0) return !!form.yacht
+    if (step === 1) return form.reviere.length > 0 || !!form.revierSonstiges
+    if (step === 2) return !!form.beginn && !!form.dauer && !!form.buchung
+    if (step === 3) return !!form.personen
+    return !!form.vorname && !!form.nachname && !!form.geburtsjahr && !!form.email && !!form.telefon
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const body = new URLSearchParams({
       'form-name': 'urlaubsplaner',
-      destination: form.destination,
-      month: form.month,
-      duration: form.duration,
-      tripType: form.tripType,
-      name: form.name,
+      yacht: form.yacht,
+      reviere: [...form.reviere, form.revierSonstiges && `sonstiges: ${form.revierSonstiges}`].filter(Boolean).join(', '),
+      beginn: form.beginn,
+      dauer: form.dauer,
+      buchung: form.buchung,
+      anmerkung: form.anmerkung,
+      personen: form.personen,
+      kommunikation: [...form.kommunikation, form.kommunikationSonstiges && `sonstiges: ${form.kommunikationSonstiges}`].filter(Boolean).join(', '),
+      vorname: form.vorname,
+      nachname: form.nachname,
+      geburtsjahr: form.geburtsjahr,
       email: form.email,
-      phone: form.phone,
-      notes: form.notes,
+      telefon: form.telefon,
+      newsletter: form.newsletter ? 'ja' : 'nein',
+      erfahren: form.erfahren,
     })
     try {
       await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
@@ -86,14 +119,11 @@ export default function UrlaubsplanerPage() {
     setSent(true)
   }
 
-  const selectedDest = destinations.find(d => d.id === form.destination)
-  const selectedTrip = tripTypes.find(t => t.id === form.tripType)
-
   return (
     <main style={{ paddingTop: '72px', minHeight: '100vh', background: 'var(--gray-light)' }}>
       <SEO
-        title="Urlaubsplaner – Segelurlaub planen | Yacht-Urlaub"
-        description="Planen Sie Ihren Traumurlaub in 4 einfachen Schritten: Destination wählen, Zeitraum festlegen, Art des Törns auswählen und Anfrage senden."
+        title="Urlaubsplaner – Anfrage starten | Yacht-Urlaub"
+        description="In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir!"
         canonical="/urlaubsplaner"
       />
 
@@ -101,13 +131,13 @@ export default function UrlaubsplanerPage() {
       <div style={{ background: 'var(--navy)', padding: '3.5rem 0 3rem' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-            In 4 Schritten zum Traumurlaub
+            Anfrage starten – mit dem YACHT-URLAUBsplaner
           </p>
           <h1 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#fff', marginBottom: '0.75rem' }}>
             Urlaubsplaner
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.95rem', maxWidth: '480px', margin: '0 auto' }}>
-            Sagen Sie uns, was Sie sich vorstellen — wir machen daraus Ihren perfekten Segelurlaub.
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.95rem', maxWidth: '560px', margin: '0 auto' }}>
+            In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir! Alles natürlich unverbindlich und kostenlos!
           </p>
         </div>
       </div>
@@ -116,10 +146,10 @@ export default function UrlaubsplanerPage() {
         <div className="container" style={{ maxWidth: '640px', padding: '5rem 1.5rem', textAlign: 'center' }}>
           <div style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>⚓</div>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '2rem', marginBottom: '1rem' }}>
-            Vielen Dank, {form.name}!
+            Vielen Dank, {form.vorname}!
           </h2>
           <p style={{ color: 'var(--gray)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
-            Wir haben Ihre Anfrage erhalten und melden uns innerhalb von 24 Stunden bei Ihnen — persönlich, ohne automatische Antwort.
+            Wir haben Ihre Anfrage erhalten und melden uns schnellstmöglich bei Ihnen — persönlich, ohne automatische Antwort.
           </p>
           <a href="/" className="btn btn-primary">Zurück zur Startseite</a>
         </div>
@@ -143,12 +173,12 @@ export default function UrlaubsplanerPage() {
                   }}>
                     {i < step ? '✓' : i + 1}
                   </div>
-                  <span className="planer-step-label" style={{ fontSize: '0.68rem', marginTop: '4px', color: i === step ? 'var(--navy)' : 'var(--gray)', fontWeight: i === step ? 700 : 400, whiteSpace: 'nowrap' }}>
+                  <span className="planer-step-label" style={{ fontSize: '0.66rem', marginTop: '4px', color: i === step ? 'var(--navy)' : 'var(--gray)', fontWeight: i === step ? 700 : 400, whiteSpace: 'nowrap' }}>
                     {s}
                   </span>
                 </div>
                 {i < steps.length - 1 && (
-                  <div className="planer-connector" style={{ width: '60px', height: '2px', background: i < step ? 'var(--blue)' : 'var(--gray-mid)', margin: '0 4px', marginBottom: '18px', transition: 'background 0.3s' }} />
+                  <div className="planer-connector" style={{ width: '44px', height: '2px', background: i < step ? 'var(--blue)' : 'var(--gray-mid)', margin: '0 4px', marginBottom: '18px', transition: 'background 0.3s' }} />
                 )}
               </div>
             ))}
@@ -156,41 +186,42 @@ export default function UrlaubsplanerPage() {
 
           <AnimatePresence mode="wait">
 
-            {/* Step 0: Destination */}
+            {/* Schritt 1: Yachtauswahl */}
             {step === 0 && (
               <motion.div key="step0" {...fadeIn}>
                 <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.6rem', marginBottom: '0.5rem', textAlign: 'center' }}>
-                  Wohin soll die Reise gehen?
+                  Yachtauswahl
                 </h2>
-                <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem' }}>Wählen Sie Ihr Wunschrevier</p>
+                <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem' }}>
+                  Zuerst einmal zu Ihrem Schiffstyp: Was darf's denn sein?
+                </p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }} className="planer-dest-grid">
-                  {destinations.map(d => (
+                  {yachtTypes.map(y => (
                     <button
-                      key={d.id}
-                      onClick={() => update('destination', d.id)}
+                      key={y.id}
+                      onClick={() => update('yacht', y.id)}
                       style={{
                         position: 'relative', overflow: 'hidden', border: '3px solid',
-                        borderColor: form.destination === d.id ? 'var(--blue)' : 'transparent',
+                        borderColor: form.yacht === y.id ? 'var(--blue)' : 'transparent',
                         borderRadius: '6px', cursor: 'pointer', background: 'none', padding: 0,
                         outline: 'none', aspectRatio: '4/3',
-                        boxShadow: form.destination === d.id ? '0 0 0 2px var(--blue)' : '0 2px 12px rgba(0,0,0,0.1)',
+                        boxShadow: form.yacht === y.id ? '0 0 0 2px var(--blue)' : '0 2px 12px rgba(0,0,0,0.1)',
                         transition: 'all 0.2s',
                       }}
                     >
-                      <img src={d.img} alt={d.label} loading="lazy"
+                      <img src={y.img} alt={y.label} loading="lazy"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                         onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }} />
                       <div style={{
                         position: 'absolute', inset: 0,
-                        background: form.destination === d.id
+                        background: form.yacht === y.id
                           ? 'linear-gradient(to top, rgba(2,132,199,0.85) 0%, rgba(2,132,199,0.4) 50%, transparent 100%)'
                           : 'linear-gradient(to top, rgba(7,27,47,0.85) 0%, rgba(7,27,47,0.3) 60%, transparent 100%)',
                         display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1rem',
                         transition: 'background 0.2s',
                       }}>
-                        <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', textAlign: 'left', lineHeight: 1.2 }}>{d.label}</span>
-                        <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.72rem', textAlign: 'left', marginTop: '2px' }}>{d.sub}</span>
-                        {form.destination === d.id && (
+                        <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', textAlign: 'left', lineHeight: 1.2 }}>{y.label}</span>
+                        {form.yacht === y.id && (
                           <span style={{ position: 'absolute', top: '8px', right: '8px', background: 'var(--blue)', color: '#fff', borderRadius: '50%', width: '22px', height: '22px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>✓</span>
                         )}
                       </div>
@@ -200,119 +231,151 @@ export default function UrlaubsplanerPage() {
               </motion.div>
             )}
 
-            {/* Step 1: Zeitraum */}
+            {/* Schritt 2: Revierauswahl */}
             {step === 1 && (
               <motion.div key="step1" {...fadeIn}>
                 <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.6rem', marginBottom: '0.5rem', textAlign: 'center' }}>
-                  Wann möchten Sie reisen?
+                  Wo wollen Sie den Urlaub verbringen?
                 </h2>
-                <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2.5rem', fontSize: '0.9rem' }}>Wählen Sie Ihren ungefähren Reisezeitraum</p>
+                <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem', maxWidth: '620px', marginLeft: 'auto', marginRight: 'auto' }}>
+                  Haben Sie und Ihre Crew sich schon Gedanken über eine Urlaubsdestination gemacht? Es gibt viele schöne Yacht-Urlaubsreviere auf dieser Welt. Wenn Ihre Wunschdestination nicht dabei ist, oder Ihre Crew sich einfach noch nicht sicher ist, einfach Ihre Gedanken unter Sonstiges eintragen. <strong>(Mehrfachauswahl möglich)</strong>
+                </p>
+                <div style={{ background: '#fff', borderRadius: '8px', padding: '2rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem', marginBottom: '1.5rem' }} className="planer-revier-grid">
+                    {reviere.map(r => (
+                      <button key={r} onClick={() => toggleArr('reviere', r)} style={{
+                        padding: '11px 10px', borderRadius: '4px', border: '2px solid',
+                        borderColor: form.reviere.includes(r) ? 'var(--blue)' : 'var(--gray-mid)',
+                        background: form.reviere.includes(r) ? 'var(--blue-pale)' : '#fff',
+                        color: form.reviere.includes(r) ? 'var(--blue)' : 'var(--text)',
+                        fontSize: '0.85rem', fontWeight: form.reviere.includes(r) ? 700 : 400,
+                        cursor: 'pointer', fontFamily: 'DM Sans, sans-serif',
+                        transition: 'all 0.15s',
+                      }}>
+                        {form.reviere.includes(r) ? '✓ ' : ''}{r}
+                      </button>
+                    ))}
+                  </div>
+                  <label style={labelStyle}>Sonstiges:</label>
+                  <input type="text" value={form.revierSonstiges} onChange={e => update('revierSonstiges', e.target.value)}
+                    placeholder="Ihre Wunschdestination oder Gedanken dazu …" style={inputStyle} />
+                </div>
+              </motion.div>
+            )}
+
+            {/* Schritt 3: Terminplanung */}
+            {step === 2 && (
+              <motion.div key="step2" {...fadeIn}>
+                <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.6rem', marginBottom: '0.5rem', textAlign: 'center' }}>
+                  Terminplanung
+                </h2>
+                <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem', maxWidth: '620px', marginLeft: 'auto', marginRight: 'auto' }}>
+                  Wann wollen Sie mit Ihrer Crew auf Urlaub fahren? Bitte Ihren Wunsch-Anreisetag bekanntgeben. Wenn Sie mit Ihrer Crew noch keinen konkreten Termin vereinbaren konnten, tragen Sie auch gerne einen beliebigen Tag des Wunschmonats ein und teilen Sie uns Ihre Gedanken im Feld „Anmerkung/Wünsche" mit!
+                </p>
 
                 <div style={{ background: '#fff', borderRadius: '8px', padding: '2.5rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)', maxWidth: '560px', margin: '0 auto' }}>
-                  <div style={{ marginBottom: '2rem' }}>
-                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-                      Monat / Zeitraum
-                    </label>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem' }}>
-                      {['April 2026', 'Mai 2026', 'Juni 2026', 'Juli 2026', 'August 2026', 'September 2026', 'Oktober 2026', 'November 2026', 'Flexibel'].map(m => (
-                        <button key={m} onClick={() => update('month', m)} style={{
-                          padding: '10px 8px', borderRadius: '4px', border: '2px solid',
-                          borderColor: form.month === m ? 'var(--blue)' : 'var(--gray-mid)',
-                          background: form.month === m ? 'var(--blue-pale)' : '#fff',
-                          color: form.month === m ? 'var(--blue)' : 'var(--text)',
-                          fontSize: '0.82rem', fontWeight: form.month === m ? 700 : 400,
-                          cursor: 'pointer', fontFamily: 'DM Sans, sans-serif',
-                          transition: 'all 0.15s',
-                        }}>
-                          {m}
-                        </button>
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <label style={labelStyle}>Beginn Ihres Urlaubs *</label>
+                    <input type="date" required value={form.beginn} onChange={e => update('beginn', e.target.value)} style={inputStyle} />
+                    <p style={{ color: 'var(--gray)', fontSize: '0.74rem', marginTop: '5px', lineHeight: 1.5 }}>
+                      In der Hauptsaison Juni–Sept. gilt in Europa grundsätzlich Samstag oder Mittwoch Anreise, Mindestdauer 7 Tage. Kurztrips nur in den Monaten März bis Mai bzw. Oktober möglich.
+                    </p>
+                  </div>
+
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <label style={labelStyle}>Und die Dauer in Tagen *</label>
+                    <input type="number" min={3} max={42} required value={form.dauer} onChange={e => update('dauer', e.target.value)} style={inputStyle} />
+                  </div>
+
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <label style={labelStyle}>Ich möchte meine Reise ... *</label>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {buchungsAbsichten.map(b => (
+                        <label key={b} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: '#444', cursor: 'pointer' }}>
+                          <input type="radio" name="buchung" checked={form.buchung === b} onChange={() => update('buchung', b)} />
+                          {b}
+                        </label>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-                      Reisedauer
-                    </label>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
-                      {durations.map(d => (
-                        <button key={d} onClick={() => update('duration', d)} style={{
-                          padding: '10px 18px', borderRadius: '4px', border: '2px solid',
-                          borderColor: form.duration === d ? 'var(--blue)' : 'var(--gray-mid)',
-                          background: form.duration === d ? 'var(--blue-pale)' : '#fff',
-                          color: form.duration === d ? 'var(--blue)' : 'var(--text)',
-                          fontSize: '0.85rem', fontWeight: form.duration === d ? 700 : 400,
-                          cursor: 'pointer', fontFamily: 'DM Sans, sans-serif',
-                          transition: 'all 0.15s',
-                        }}>
-                          {d}
-                        </button>
-                      ))}
-                    </div>
+                    <label style={labelStyle}>Anmerkung/Wünsche</label>
+                    <textarea rows={4} value={form.anmerkung} onChange={e => update('anmerkung', e.target.value)}
+                      placeholder="Besondere Wünsche, alternative Termine, Erfahrung, Budget …"
+                      style={{ ...inputStyle, resize: 'vertical' }} />
                   </div>
                 </div>
               </motion.div>
             )}
 
-            {/* Step 2: Art des Törns */}
-            {step === 2 && (
-              <motion.div key="step2" {...fadeIn}>
+            {/* Schritt 4: Crew & Kommunikation */}
+            {step === 3 && (
+              <motion.div key="step3" {...fadeIn}>
                 <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.6rem', marginBottom: '0.5rem', textAlign: 'center' }}>
-                  Welche Art von Törn?
+                  Crew &amp; Kommunikation
                 </h2>
-                <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem' }}>Was entspricht am besten Ihren Vorstellungen?</p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }} className="planer-trip-grid">
-                  {tripTypes.map(t => (
-                    <button
-                      key={t.id}
-                      onClick={() => update('tripType', t.id)}
-                      style={{
-                        textAlign: 'left', padding: '1.5rem', borderRadius: '6px', border: '2px solid',
-                        borderColor: form.tripType === t.id ? 'var(--blue)' : 'var(--gray-mid)',
-                        background: form.tripType === t.id ? 'var(--blue-pale)' : '#fff',
-                        cursor: 'pointer', transition: 'all 0.2s', fontFamily: 'DM Sans, sans-serif',
-                        boxShadow: form.tripType === t.id ? '0 4px 16px rgba(2,132,199,0.15)' : '0 2px 8px rgba(0,0,0,0.05)',
-                      }}
-                    >
-                      <div style={{ fontSize: '1.8rem', marginBottom: '0.5rem' }}>{t.icon}</div>
-                      <div style={{ fontWeight: 700, color: form.tripType === t.id ? 'var(--blue)' : 'var(--navy)', fontSize: '1rem', marginBottom: '0.4rem' }}>{t.label}</div>
-                      <div style={{ color: 'var(--gray)', fontSize: '0.82rem', lineHeight: 1.6 }}>{t.desc}</div>
-                    </button>
-                  ))}
+                <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem', maxWidth: '620px', marginLeft: 'auto', marginRight: 'auto' }}>
+                  Es gibt viele verschiedene Kommunikationsmöglichkeiten für die Planung. Welche Plattform verwenden Sie zur Kommunikation mit den Leuten Ihrer Crew am ehesten?
+                </p>
+
+                <div style={{ background: '#fff', borderRadius: '8px', padding: '2.5rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)', maxWidth: '560px', margin: '0 auto' }}>
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <label style={labelStyle}>Wieviele Personen umfasst Ihre Gruppe? *</label>
+                    <select required value={form.personen} onChange={e => update('personen', e.target.value)} style={inputStyle}>
+                      <option value="">Bitte wählen …</option>
+                      {gruppenGroessen.map(g => <option key={g} value={g}>{g}</option>)}
+                    </select>
+                  </div>
+
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <label style={labelStyle}>Wie bzw. wo soll die Planung Ihres Urlaubs stattfinden? (Mehrauswahl möglich)</label>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
+                      {kommunikationsWege.map(k => (
+                        <label key={k} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: '#444', cursor: 'pointer' }}>
+                          <input type="checkbox" checked={form.kommunikation.includes(k)} onChange={() => toggleArr('kommunikation', k)} />
+                          {k}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <label style={labelStyle}>Sonstiges:</label>
+                  <input type="text" value={form.kommunikationSonstiges} onChange={e => update('kommunikationSonstiges', e.target.value)} style={inputStyle} />
                 </div>
               </motion.div>
             )}
 
-            {/* Step 3: Kontaktdaten */}
-            {step === 3 && (
-              <motion.div key="step3" {...fadeIn}>
+            {/* Schritt 5: Kontaktperson */}
+            {step === 4 && (
+              <motion.div key="step4" {...fadeIn}>
                 <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.6rem', marginBottom: '0.5rem', textAlign: 'center' }}>
-                  Wie dürfen wir Sie kontaktieren?
+                  Kontaktperson
                 </h2>
-                <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem' }}>
-                  Wir melden uns persönlich innerhalb von 24 Stunden.
+                <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem', maxWidth: '620px', marginLeft: 'auto', marginRight: 'auto' }}>
+                  Sehr gut, Sie haben es fast geschafft! Last, but not least, wollen wir natürlich wissen, wer Sie sind. Sie sind unsere Referenzperson für die erste Kontaktaufnahme – natürlich alles unverbindlich und kostenlos.
                 </p>
 
-                {/* Summary */}
+                {/* Zusammenfassung */}
                 <div style={{ background: 'var(--navy)', borderRadius: '6px', padding: '1.25rem 1.75rem', marginBottom: '2rem', display: 'flex', flexWrap: 'wrap', gap: '1.5rem' }}>
-                  {selectedDest && (
-                    <div>
-                      <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Destination</span>
-                      <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{selectedDest.label}</p>
-                    </div>
-                  )}
-                  {form.month && (
-                    <div>
-                      <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Zeitraum</span>
-                      <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{form.month} · {form.duration}</p>
-                    </div>
-                  )}
-                  {selectedTrip && (
-                    <div>
-                      <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Törn-Art</span>
-                      <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{selectedTrip.label}</p>
-                    </div>
-                  )}
+                  <div>
+                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Yacht</span>
+                    <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{form.yacht}</p>
+                  </div>
+                  <div>
+                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Revier</span>
+                    <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>
+                      {[...form.reviere, form.revierSonstiges].filter(Boolean).join(', ')}
+                    </p>
+                  </div>
+                  <div>
+                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Termin</span>
+                    <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{form.beginn} · {form.dauer} Tage</p>
+                  </div>
+                  <div>
+                    <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>Gruppe</span>
+                    <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{form.personen}</p>
+                  </div>
                 </div>
 
                 <form
@@ -323,51 +386,51 @@ export default function UrlaubsplanerPage() {
                   style={{ background: '#fff', borderRadius: '8px', padding: '2.5rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)', maxWidth: '560px', margin: '0 auto' }}
                 >
                   <input type="hidden" name="form-name" value="urlaubsplaner" />
-                  <input type="hidden" name="destination" value={form.destination} />
-                  <input type="hidden" name="month" value={form.month} />
-                  <input type="hidden" name="duration" value={form.duration} />
-                  <input type="hidden" name="tripType" value={form.tripType} />
                   <p style={{ display: 'none' }}><label>Nicht ausfüllen: <input name="bot-field" /></label></p>
 
                   <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>Name *</label>
-                      <input
-                        type="text" name="name" required value={form.name}
-                        onChange={e => update('name', e.target.value)}
-                        placeholder="Ihr vollständiger Name"
-                        style={{ width: '100%', padding: '11px 14px', border: '1.5px solid var(--gray-mid)', borderRadius: '4px', fontSize: '0.9rem', fontFamily: 'DM Sans, sans-serif', outline: 'none', boxSizing: 'border-box' }}
-                      />
+                      <label style={labelStyle}>Vorname *</label>
+                      <input type="text" name="vorname" required value={form.vorname} onChange={e => update('vorname', e.target.value)} style={inputStyle} />
                     </div>
                     <div>
-                      <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>E-Mail *</label>
-                      <input
-                        type="email" name="email" required value={form.email}
-                        onChange={e => update('email', e.target.value)}
-                        placeholder="ihre@email.de"
-                        style={{ width: '100%', padding: '11px 14px', border: '1.5px solid var(--gray-mid)', borderRadius: '4px', fontSize: '0.9rem', fontFamily: 'DM Sans, sans-serif', outline: 'none', boxSizing: 'border-box' }}
-                      />
+                      <label style={labelStyle}>Nachname *</label>
+                      <input type="text" name="nachname" required value={form.nachname} onChange={e => update('nachname', e.target.value)} style={inputStyle} />
                     </div>
                   </div>
 
-                  <div style={{ marginBottom: '1rem' }}>
-                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>Telefon (optional)</label>
-                    <input
-                      type="tel" name="phone" value={form.phone}
-                      onChange={e => update('phone', e.target.value)}
-                      placeholder="+43 / +49 / +41 ..."
-                      style={{ width: '100%', padding: '11px 14px', border: '1.5px solid var(--gray-mid)', borderRadius: '4px', fontSize: '0.9rem', fontFamily: 'DM Sans, sans-serif', outline: 'none', boxSizing: 'border-box' }}
-                    />
+                  <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
+                    <div>
+                      <label style={labelStyle}>Geburtsjahr *</label>
+                      <input type="number" name="geburtsjahr" required min={1920} max={2010} placeholder="z.B. 1984" value={form.geburtsjahr} onChange={e => update('geburtsjahr', e.target.value)} style={inputStyle} />
+                    </div>
+                    <div>
+                      <label style={labelStyle}>E-Mail *</label>
+                      <input type="email" name="email" required value={form.email} onChange={e => update('email', e.target.value)} style={inputStyle} />
+                    </div>
+                  </div>
+
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <label style={labelStyle}>Telefonnummer *</label>
+                    <input type="tel" name="telefon" required placeholder="mit Ländervorwahl bitte (+49/+43/+41)" value={form.telefon} onChange={e => update('telefon', e.target.value)} style={inputStyle} />
+                  </div>
+
+                  <div style={{ marginBottom: '1.25rem' }}>
+                    <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem', fontSize: '0.85rem', color: '#444', cursor: 'pointer' }}>
+                      <input type="checkbox" checked={form.newsletter} onChange={e => update('newsletter', e.target.checked)} style={{ marginTop: '3px' }} />
+                      Zum Newsletter anmelden
+                    </label>
+                    <p style={{ color: 'var(--gray)', fontSize: '0.7rem', lineHeight: 1.5, marginTop: '0.4rem' }}>
+                      Yacht-Urlaub wird die Informationen, die Sie in diesem Formular angeben, dazu verwenden, mit Ihnen in Kontakt zu bleiben und Ihnen Updates und Marketing-Informationen per E-Mail zu übermitteln. Wir werden Ihre Informationen mit Sorgfalt und Respekt behandeln. Weitere Informationen zu unseren Datenschutzpraktiken finden Sie auf unserer <a href="/datenschutz" style={{ color: 'var(--blue)' }}>Website</a>.
+                    </p>
                   </div>
 
                   <div style={{ marginBottom: '1.75rem' }}>
-                    <label style={{ display: 'block', fontSize: '0.8rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '6px' }}>Anmerkungen / Wünsche</label>
-                    <textarea
-                      name="notes" rows={4} value={form.notes}
-                      onChange={e => update('notes', e.target.value)}
-                      placeholder="Anzahl Personen, besondere Wünsche, Erfahrung, Budget ..."
-                      style={{ width: '100%', padding: '11px 14px', border: '1.5px solid var(--gray-mid)', borderRadius: '4px', fontSize: '0.9rem', fontFamily: 'DM Sans, sans-serif', outline: 'none', resize: 'vertical', boxSizing: 'border-box' }}
-                    />
+                    <label style={labelStyle}>Wie haben Sie von uns erfahren?</label>
+                    <select value={form.erfahren} onChange={e => update('erfahren', e.target.value)} style={inputStyle}>
+                      <option value="">Bitte wählen …</option>
+                      {erfahrenOptionen.map(o => <option key={o} value={o}>{o}</option>)}
+                    </select>
                   </div>
 
                   <button
@@ -376,10 +439,10 @@ export default function UrlaubsplanerPage() {
                     className="btn btn-primary"
                     style={{ width: '100%', fontSize: '0.85rem', padding: '14px', opacity: canNext() ? 1 : 0.5, cursor: canNext() ? 'pointer' : 'not-allowed' }}
                   >
-                    Anfrage senden — kostenlos &amp; unverbindlich →
+                    Abschicken — kostenlos &amp; unverbindlich →
                   </button>
                   <p style={{ color: 'var(--gray)', fontSize: '0.75rem', marginTop: '0.75rem', textAlign: 'center' }}>
-                    Wir melden uns persönlich innerhalb von 24 Stunden. Kein Spam.
+                    Wir melden uns persönlich. Kein Spam.
                   </p>
                 </form>
               </motion.div>
@@ -388,7 +451,7 @@ export default function UrlaubsplanerPage() {
           </AnimatePresence>
 
           {/* Nav Buttons */}
-          {step < 3 && (
+          {step < 4 && (
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2.5rem', maxWidth: '860px' }}>
               <button
                 onClick={() => setStep(s => Math.max(0, s - 1))}
@@ -408,14 +471,14 @@ export default function UrlaubsplanerPage() {
                 className="btn btn-primary"
                 style={{ fontSize: '0.85rem', padding: '11px 32px', opacity: canNext() ? 1 : 0.5, cursor: canNext() ? 'pointer' : 'not-allowed' }}
               >
-                Weiter →
+                {step === 0 ? 'weiter zur Revierauswahl' : step === 1 ? 'Weiter zur Terminplanung' : step === 2 ? 'Vorletzter Schritt: Kommunikation & Crew' : 'Letzter Schritt: Ihre Kontaktdaten'} →
               </button>
             </div>
           )}
-          {step === 3 && (
+          {step === 4 && (
             <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '1rem', maxWidth: '560px', margin: '1rem auto 0' }}>
               <button
-                onClick={() => setStep(2)}
+                onClick={() => setStep(3)}
                 style={{
                   background: 'none', border: '1.5px solid var(--gray-mid)', color: 'var(--gray)',
                   padding: '11px 24px', borderRadius: '4px', cursor: 'pointer',
@@ -426,19 +489,37 @@ export default function UrlaubsplanerPage() {
               </button>
             </div>
           )}
+
+          {/* Alternativen (wie auf der Originalseite) */}
+          <div style={{ marginTop: '4rem', background: '#fff', borderRadius: '8px', padding: '2rem', boxShadow: '0 2px 14px rgba(0,0,0,0.06)', textAlign: 'center' }}>
+            <p style={{ color: '#444', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '0.5rem' }}>
+              Urlaubsplaner zu langwierig? Sie können gerne alternativ unser <a href="#kontakt" style={{ color: 'var(--blue)', fontWeight: 600 }}>kurzes Anfrage-Formular</a> verwenden!
+            </p>
+            <p style={{ color: '#444', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
+              Für BAREBOAT-CHARTER Anfragen (nur Yacht ohne Skipper) bitte <a href="/charter" style={{ color: 'var(--blue)', fontWeight: 600 }}>dieses Formular</a> verwenden.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href="/buchen" className="btn btn-navy" style={{ fontSize: '0.8rem' }}>FIXE ROUTE BUCHEN</a>
+              <a href="/charter" className="btn btn-ghost" style={{ fontSize: '0.8rem' }}>„Nur Yacht"-Anfrage</a>
+            </div>
+            <p style={{ color: 'var(--gray)', fontSize: '0.85rem', marginTop: '1.25rem' }}>
+              <a href="tel:+43199715820" style={{ color: 'var(--blue)', fontWeight: 600 }}>+43 1 997 15 82</a> · <a href="mailto:info@yacht-urlaub.net" style={{ color: 'var(--blue)', fontWeight: 600 }}>info@yacht-urlaub.net</a>
+            </p>
+          </div>
         </div>
       )}
 
       <style>{`
         @media (max-width: 768px) {
-          .planer-dest-grid { grid-template-columns: 1fr 1fr !important; }
-          .planer-trip-grid { grid-template-columns: 1fr !important; }
-          .planer-connector { width: 28px !important; }
+          .planer-dest-grid { grid-template-columns: 1fr !important; }
+          .planer-revier-grid { grid-template-columns: 1fr 1fr !important; }
+          .planer-connector { width: 20px !important; }
+          .planer-step-label { display: none !important; }
         }
         @media (max-width: 480px) {
-          .planer-dest-grid { grid-template-columns: 1fr !important; }
-          .planer-connector { width: 16px !important; }
-          .planer-step-label { display: none !important; }
+          .planer-revier-grid { grid-template-columns: 1fr !important; }
+          .form-grid-2 { grid-template-columns: 1fr !important; }
+          .planer-connector { width: 14px !important; }
           .planer-stepper { margin-bottom: 2rem !important; }
         }
       `}</style>
