@@ -482,9 +482,9 @@ export default function ToernDetailPage() {
               <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: 'var(--navy)', marginBottom: '2rem', textAlign: 'center' }}>
                 Impressionen
               </h2>
-              <div className="luxury-impressionen" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px' }}>
-                {LUXURY_IMPRESSIONEN.map((img, i) => (
-                  <div key={img} style={{ aspectRatio: i % 5 === 0 ? '16/9' : '4/3', gridColumn: i % 5 === 0 ? 'span 2' : 'span 1', overflow: 'hidden', borderRadius: '3px', background: '#eee' }}>
+              <div className="luxury-impressionen" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
+                {LUXURY_IMPRESSIONEN.map(img => (
+                  <div key={img} style={{ aspectRatio: '4/3', overflow: 'hidden', borderRadius: '6px', background: '#eee' }}>
                     <img src={img} alt="NIKITA Impressionen" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
                   </div>

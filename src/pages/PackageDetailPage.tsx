@@ -356,7 +356,7 @@ export default function PackageDetailPage() {
 
         {/* Eindrücke (Galerie) */}
         <h2 style={h2Style}>Eindrücke</h2>
-        <div className="pkg-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px', marginBottom: '4rem' }}>
+        <div className="pkg-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '4rem' }}>
           {pkg.gallery.map((img, i) => (
             <motion.div
               key={img.src}
@@ -366,9 +366,8 @@ export default function PackageDetailPage() {
               transition={{ delay: i * 0.05 }}
               onClick={() => setLightbox(i)}
               style={{
-                aspectRatio: i % 5 === 0 ? '16/9' : '4/3',
-                gridColumn: i % 5 === 0 ? 'span 2' : 'span 1',
-                overflow: 'hidden', cursor: 'pointer', borderRadius: '3px', background: '#eee',
+                aspectRatio: '4/3',
+                overflow: 'hidden', cursor: 'pointer', borderRadius: '6px', background: '#eee',
               }}
             >
               <img
