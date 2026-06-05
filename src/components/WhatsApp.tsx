@@ -7,6 +7,7 @@ export default function WhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="WhatsApp Kontakt"
+      className="whatsapp-fab"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ delay: 2, type: 'spring' }}
@@ -21,6 +22,11 @@ export default function WhatsApp() {
       }}
     >
       💬
+      <style>{`
+        @media (max-width: 768px) {
+          .whatsapp-fab { display: none !important; }
+        }
+      `}</style>
     </motion.a>
   )
 }

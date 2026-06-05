@@ -142,8 +142,32 @@ export default function SideContact() {
           opacity: 1;
           transform: translateX(0);
         }
+        /* Mobil: kompakte runde Buttons unten rechts */
         @media (max-width: 768px) {
-          .side-contact { display: none !important; }
+          .side-contact {
+            top: auto !important;
+            bottom: 1.25rem !important;
+            right: 0.85rem !important;
+            transform: none !important;
+            padding: 0 !important;
+            gap: 8px !important;
+          }
+          .side-contact-item {
+            width: 44px !important;
+            height: 44px;
+            border-radius: 50% !important;
+            border-right: 1px solid rgba(255, 255, 255, 0.12);
+            justify-content: center;
+          }
+          .side-contact-item:hover { width: 44px !important; }
+          .side-contact-label { display: none !important; }
+          .side-contact-icon { width: 44px; height: 44px; }
+          /* WhatsApp im Marken-Grün, damit er sofort erkennbar ist */
+          .side-contact-item[aria-label="WhatsApp"] {
+            background: #25d366;
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45);
+          }
         }
       `}</style>
     </>
