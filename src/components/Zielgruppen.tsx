@@ -7,7 +7,7 @@ const groups = [
   {
     title: 'Zum ersten Mal hier?',
     subtitle: 'Für Einsteiger',
-    text: 'Noch nie gesegelt? Perfekt. Spüren Sie das Kribbeln, wenn sich die Yacht in Bewegung setzt – sicher begleitet von einem erfahrenen Skipper.',
+    text: 'Noch nie gesegelt? Perfekt. Spüren Sie das Kribbeln, wenn sich die Yacht in Bewegung setzt – sicher begleitet von einem Skipper, der Sie entspannt einführt.',
     img: '/images/Zielgruppen/Einsteiger 1.jpg',
     cta: 'Einsteiger-Törns',
     href: '/toerns/einsteiger',
@@ -15,7 +15,7 @@ const groups = [
   {
     title: 'Mit Freunden',
     subtitle: 'Für Freunde',
-    text: 'Auf eurer Yacht erlebt ihr gemeinsam, was sonst nur in Filmen passiert. Sonne, Meer, Freiheit — und das gemeinsam.',
+    text: 'Ob Action oder Chillen: Auf eurer Yacht erlebt ihr gemeinsam, was sonst nur in Filmen passiert. Ein Urlaub, der für immer verbindet.',
     img: '/images/Zielgruppen/Freunde 1.jpg',
     cta: 'Freunde-Törns',
     href: '/toerns/freunde',
@@ -23,7 +23,7 @@ const groups = [
   {
     title: 'Familien-Törns',
     subtitle: 'Für Familien',
-    text: 'Ein Segelabenteuer, das Kinder staunen und Eltern durchatmen lässt. Unvergessliche Momente für die ganze Familie.',
+    text: 'Ein Segelabenteuer, das Kinder staunen und Eltern durchatmen lässt. Zeit für Entdeckungen – ganz ohne Alltagsstress.',
     img: '/images/Zielgruppen/Familie 1.jpg',
     cta: 'Familien-Törns',
     href: '/toerns/familien',
@@ -102,6 +102,30 @@ export default function Zielgruppen() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
           {groups.map((g, i) => <Card key={g.title} g={g} i={i} />)}
         </div>
+
+        {/* Urlaubsplaner-Banner (wie auf der Originalseite) */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{
+            marginTop: '2.5rem', background: 'var(--navy)', borderRadius: '6px',
+            padding: '2.25rem 2.5rem', display: 'flex', alignItems: 'center',
+            justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap',
+          }}
+        >
+          <div>
+            <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.4rem' }}>
+              Individueller Törn mit dem YACHT-URLAUB Urlaubsplaner
+            </h3>
+            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>
+              Sie wissen, was Sie möchten? Starten Sie JETZT unseren Urlaubsplaner. Unverbindlich und kostenlos!
+            </p>
+          </div>
+          <Link to="/urlaubsplaner" className="btn btn-gold" style={{ fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
+            Anfrage starten →
+          </Link>
+        </motion.div>
       </div>
 
       <style>{`

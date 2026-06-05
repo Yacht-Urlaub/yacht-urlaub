@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'
 
 const offers = [
   {
-    img: '/images/Destinationsbilder/Seychellen.webp',
-    tag: 'Angebot',
-    title: 'DEIN PLATZ AN DER SONNE',
-    text: '18.04. – 28.04.2026 ab Mahé, Seychellen inklusive Skipper, Katamaran-Komfort und unvergesslicher Momente.',
-    cta: 'Mehr erfahren',
-    href: '/destinationen/seychellen',
+    img: '/images/packages/dalmatien/gallery/Segeln in Dalmatien.png',
+    tag: 'Package',
+    title: 'SEGELN IN DALMATIEN AB SPLIT',
+    text: 'Segelurlaub in Dalmatien ab Split oder Trogir zu den Inseln Hvar, Vis, Korčula, Brač und Šolta.',
+    cta: 'Mehr Infos',
+    href: '/packages/dalmatien',
   },
   {
     img: '/images/news/Dalmatia_kat.webp',
@@ -24,9 +24,9 @@ const offers = [
     img: '/images/news/beach-bikini-jump.jpg',
     tag: 'Kabinen',
     title: 'KABINEN-ANGEBOTE',
-    text: 'Entdecken Sie exklusive Kabinenangebote für Ihren Traum-Yachturlaub – individuell und unvergesslich!',
+    text: 'Entdecken Sie exklusive Kabinenangebote für Ihren Traum-Yachturlaub – individuell und unvergesslich! Jetzt stöbern & buchen!',
     cta: 'Angebote ansehen',
-    href: '/news',
+    href: '/kabinen',
   },
 ]
 
