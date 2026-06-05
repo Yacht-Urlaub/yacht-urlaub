@@ -2,8 +2,44 @@ import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useLang } from '../i18n'
 
-const groups = [
+const groupsEn = [
+  {
+    title: 'New to sailing?',
+    subtitle: 'For beginners',
+    text: "Join our beginner's cruise and delve into everything you've ever wanted to know about life on a yacht, all while relishing a distinctive holiday experience.",
+    img: '/images/Zielgruppen/Einsteiger 1.jpg',
+    cta: 'Learn more',
+    href: '/en/cruises/for-beginners',
+  },
+  {
+    title: 'Sail with friends',
+    subtitle: 'For friends',
+    text: 'Come aboard and embark on a unique holiday adventure with your friends - perfect for special occasions or as a refreshing break from the routine of everyday life.',
+    img: '/images/Zielgruppen/Freunde 1.jpg',
+    cta: 'Learn more',
+    href: '/en/cruises/for-friends',
+  },
+  {
+    title: 'Create Family Memories',
+    subtitle: 'For families',
+    text: 'Experience a joy-filled family holiday with memorable experiences. Little pirates can take the helm and feel absolutely fantastic.',
+    img: '/images/Zielgruppen/Familie 1.jpg',
+    cta: 'Learn more',
+    href: '/en/cruises/for-families',
+  },
+  {
+    title: 'Luxury sailing',
+    subtitle: 'Luxury',
+    text: 'Experience pure luxury and timeless elegance on board our motor yachts full of unforgettable moments and exclusive experiences tailored to your desires.',
+    img: '/images/Zielgruppen/Entdecker 3.jpg',
+    cta: 'Learn more',
+    href: '/en/cruises/luxury',
+  },
+]
+
+const groupsDe = [
   {
     title: 'Zum ersten Mal hier?',
     subtitle: 'Für Einsteiger',
@@ -38,7 +74,7 @@ const groups = [
   },
 ]
 
-function Card({ g, i }: { g: typeof groups[0]; i: number }) {
+function Card({ g, i }: { g: typeof groupsDe[0]; i: number }) {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
@@ -79,6 +115,8 @@ function Card({ g, i }: { g: typeof groups[0]; i: number }) {
 }
 
 export default function Zielgruppen() {
+  const lang = useLang()
+  const groups = lang === 'en' ? groupsEn : groupsDe
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
 
@@ -95,8 +133,8 @@ export default function Zielgruppen() {
           <p style={{ color: 'var(--blue)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
             Unsere Törns
           </p>
-          <h2 className="section-title">Dein perfekter Segeltörn</h2>
-          <p className="section-subtitle">Von der ersten Segelstunde bis zum Luxuserlebnis — wir haben den passenden Törn für jeden.</p>
+          <h2 className="section-title">{lang === 'en' ? 'The right thing for everybody' : 'Dein perfekter Segeltörn'}</h2>
+          <p className="section-subtitle">{lang === 'en' ? 'From your first sailing lesson to a luxury experience — we have the right cruise for everyone.' : 'Von der ersten Segelstunde bis zum Luxuserlebnis — wir haben den passenden Törn für jeden.'}</p>
         </motion.div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
@@ -116,14 +154,14 @@ export default function Zielgruppen() {
         >
           <div>
             <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.4rem' }}>
-              Individueller Törn mit dem YACHT-URLAUB Urlaubsplaner
+              {lang === 'en' ? 'Bespoke Cruise with the YACHT-HOLIDAY planner' : 'Individueller Törn mit dem YACHT-URLAUB Urlaubsplaner'}
             </h3>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>
-              Sie wissen, was Sie möchten? Starten Sie JETZT unseren Urlaubsplaner. Unverbindlich und kostenlos!
+              {lang === 'en' ? 'You know what you want? Start NOW your holiday planning for free!' : 'Sie wissen, was Sie möchten? Starten Sie JETZT unseren Urlaubsplaner. Unverbindlich und kostenlos!'}
             </p>
           </div>
-          <Link to="/urlaubsplaner" className="btn btn-gold" style={{ fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
-            Anfrage starten →
+          <Link to={lang === 'en' ? '/en/holiday-planner' : '/urlaubsplaner'} className="btn btn-gold" style={{ fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
+            {lang === 'en' ? 'Get a quote →' : 'Anfrage starten →'}
           </Link>
         </motion.div>
       </div>

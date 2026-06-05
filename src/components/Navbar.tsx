@@ -1,7 +1,58 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLang, switchLangPath } from '../i18n'
 
-const nav = [
+const navEn = [
+  {
+    label: 'Cruises', href: '/en/cruises', items: [
+      { label: 'All cruises', href: '/en/cruises' },
+      { label: 'For beginners', href: '/en/cruises/for-beginners' },
+      { label: 'For friends', href: '/en/cruises/for-friends' },
+      { label: 'For families', href: '/en/cruises/for-families' },
+      { label: 'Luxury', href: '/en/cruises/luxury' },
+      { label: 'Cabin offers', href: '/en/cabin-offers' },
+      { label: 'Holiday planner', href: '/en/holiday-planner' },
+    ]
+  },
+  {
+    label: 'Charter', href: '/en/charter/yacht-charter', items: [
+      { label: 'Yacht charter', href: '/en/charter/yacht-charter' },
+      { label: 'Crew charter', href: '/en/charter/crew-charter' },
+    ]
+  },
+  {
+    label: 'Destinations', href: '/en/destinations', items: [
+      { label: 'All destinations', href: '/en/destinations' },
+      { label: 'Croatia', href: '/en/destinations/croatia' },
+      { label: 'Greece', href: '/en/destinations/greece' },
+      { label: 'Balearic Islands', href: '/en/destinations/balearic-islands' },
+      { label: 'Canary Islands', href: '/en/destinations/canaries' },
+      { label: 'Caribbean - BVI', href: '/en/destinations/caribbean-british-virgin-islands' },
+      { label: 'Caribbean - Windward Islands', href: '/en/destinations/caribbean-windward-islands' },
+      { label: 'Thailand', href: '/en/destinations/thailand' },
+      { label: 'Seychelles', href: '/en/destinations/seychelles' },
+    ]
+  },
+  {
+    label: 'Yachts', href: '/en/yachts', items: [
+      { label: 'All yachts', href: '/en/yachts' },
+      { label: 'Sailing yacht (monohull)', href: '/en/yachts?tab=monohull' },
+      { label: 'Sailing catamaran', href: '/en/yachts?tab=katamaran' },
+      { label: 'Motor yacht (monohull)', href: '/en/yachts?tab=motoryacht' },
+      { label: 'Power catamaran', href: '/en/yachts?tab=motorkat' },
+    ]
+  },
+  {
+    label: 'Contact', href: '#kontakt', items: [
+      { label: 'Get a quote', href: '#kontakt' },
+      { label: 'FAQ', href: '/en/faq' },
+      { label: 'Our team', href: '/en/contact/crew' },
+      { label: 'For travel agencies / affiliates', href: '/en/contact/travel-agencies' },
+    ]
+  },
+]
+
+const navDe = [
   {
     label: 'Törns', href: '/toerns', items: [
       { label: 'Alle Törns', href: '/toerns' },
@@ -55,6 +106,13 @@ const nav = [
 export default function Navbar() {
   const [open, setOpen] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const lang = useLang()
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
+  const nav = lang === 'en' ? navEn : navDe
+  const switchTo = (target: 'de' | 'en') => {
+    if (target !== lang) navigate(switchLangPath(pathname, target))
+  }
 
   return (
     <header style={{
@@ -65,7 +123,7 @@ export default function Navbar() {
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px' }}>
         {/* Logo */}
-        <Link to="/">
+        <Link to={lang === 'en' ? '/en' : '/'}>
           <img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '68px', filter: 'brightness(0) invert(1)' }} />
         </Link>
 
@@ -117,12 +175,18 @@ export default function Navbar() {
               )}
             </div>
           ))}
-          <Link to="/urlaubsplaner" className="btn btn-primary" style={{ marginLeft: '12px', fontSize: '0.75rem', padding: '9px 20px' }}>
-            Urlaub planen
+          <Link to={lang === 'en' ? '/en/holiday-planner' : '/urlaubsplaner'} className="btn btn-primary" style={{ marginLeft: '12px', fontSize: '0.75rem', padding: '9px 20px' }}>
+            {lang === 'en' ? 'Plan your holiday' : 'Urlaub planen'}
           </Link>
           <div style={{ marginLeft: '12px', display: 'flex', gap: '6px' }}>
-            <button style={{ background: 'none', border: '1px solid rgba(255,255,255,0.4)', color: '#fff', padding: '4px 10px', fontSize: '0.72rem', cursor: 'pointer', borderRadius: '2px' }}>DE</button>
-            <button style={{ background: 'none', border: '1px solid rgba(255,255,255,0.2)', color: 'rgba(255,255,255,0.5)', padding: '4px 10px', fontSize: '0.72rem', cursor: 'pointer', borderRadius: '2px' }}>EN</button>
+            {(['de', 'en'] as const).map(l => (
+              <button key={l} onClick={() => switchTo(l)} aria-label={l === 'de' ? 'Deutsch' : 'English'} style={{
+                background: lang === l ? 'rgba(255,255,255,0.12)' : 'none',
+                border: `1px solid rgba(255,255,255,${lang === l ? 0.5 : 0.2})`,
+                color: lang === l ? '#fff' : 'rgba(255,255,255,0.5)',
+                padding: '4px 10px', fontSize: '0.72rem', cursor: 'pointer', borderRadius: '2px',
+              }}>{l.toUpperCase()}</button>
+            ))}
           </div>
         </nav>
 
@@ -139,6 +203,16 @@ export default function Navbar() {
       {/* Mobile menu */}
       {mobileOpen && (
         <div style={{ background: 'var(--navy)', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+          <div style={{ display: 'flex', gap: '8px', padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+            {(['de', 'en'] as const).map(l => (
+              <button key={l} onClick={() => { switchTo(l); setMobileOpen(false) }} style={{
+                background: lang === l ? 'rgba(255,255,255,0.12)' : 'none',
+                border: `1px solid rgba(255,255,255,${lang === l ? 0.5 : 0.2})`,
+                color: lang === l ? '#fff' : 'rgba(255,255,255,0.5)',
+                padding: '6px 14px', fontSize: '0.78rem', cursor: 'pointer', borderRadius: '3px',
+              }}>{l.toUpperCase()}</button>
+            ))}
+          </div>
           {nav.map(item => (
             <div key={item.label}>
               <div style={{ padding: '12px 20px', color: 'rgba(255,255,255,0.6)', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 700 }}>

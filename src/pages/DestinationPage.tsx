@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import SEO from '../components/SEO'
 import DestinationDetail, { destinations } from '../components/DestinationDetail'
+import { destinationsEn } from '../data/destinationenEn'
+import { useLang, enDestSlugs } from '../i18n'
 
 const destMeta: Record<string, { description: string; keywords: string }> = {
   kroatien: {
@@ -40,15 +42,17 @@ const destMeta: Record<string, { description: string; keywords: string }> = {
 export default function DestinationPage() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
-  // Alte URL /destinationen/karibik → karibik-bvi
-  const resolvedId = id === 'karibik' ? 'karibik-bvi' : id
-  const dest = destinations.find(d => d.id === resolvedId)
+  const lang = useLang()
+  // Alte URL /destinationen/karibik → karibik-bvi; EN-Slugs auflösen
+  const resolvedId = lang === 'en' ? (enDestSlugs[id ?? ''] ?? id) : (id === 'karibik' ? 'karibik-bvi' : id)
+  const list = lang === 'en' ? destinationsEn : destinations
+  const dest = list.find(d => d.id === resolvedId)
 
   if (!dest) {
     return (
       <main style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1rem' }}>
         <h1 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)' }}>Destination nicht gefunden</h1>
-        <button onClick={() => navigate('/destinationen')} className="btn btn-primary">← Alle Destinationen</button>
+        <button onClick={() => navigate('/destinationen')} className="btn btn-primary">{lang === 'en' ? '← All destinations' : '← Alle Destinationen'}</button>
       </main>
     )
   }
@@ -67,13 +71,13 @@ export default function DestinationPage() {
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
-        title={`Segelurlaub ${dest.name}`}
+        title={lang === 'en' ? `Sailing holiday ${dest.name}` : `Segelurlaub ${dest.name}`}
         description={meta?.description ?? `Segelurlaub ${dest.name} mit Yacht-Urlaub. Entdecken Sie die schönsten Buchten und Reviere.`}
         canonical={`/destinationen/${dest.id}`}
         image={dest.headerImg}
         schema={schema}
       />
-      <DestinationDetail dest={dest} onBack={() => navigate('/destinationen')} />
+      <DestinationDetail dest={dest} onBack={() => navigate(lang === 'en' ? '/en/destinations' : '/destinationen')} />
     </main>
   )
 }

@@ -1,7 +1,57 @@
 import { Link } from 'react-router-dom'
 import { FacebookIcon, InstagramIcon, YouTubeIcon, LinkedInIcon, XingIcon } from './Icons'
+import { useLang } from '../i18n'
 
-const cols = [
+const colsEn = [
+  {
+    title: 'Cruises',
+    links: [
+      { label: 'For beginners', href: '/en/cruises/for-beginners' },
+      { label: 'For friends', href: '/en/cruises/for-friends' },
+      { label: 'For families', href: '/en/cruises/for-families' },
+      { label: 'Luxury', href: '/en/cruises/luxury' },
+      { label: 'Cabin offers', href: '/en/cabin-offers' },
+      { label: 'Get a quote', href: '#kontakt' },
+    ],
+  },
+  {
+    title: 'Yachts & charter',
+    links: [
+      { label: 'Sailing yacht', href: '/en/yachts?tab=monohull' },
+      { label: 'Sailing catamaran', href: '/en/yachts?tab=katamaran' },
+      { label: 'Motor yacht', href: '/en/yachts?tab=motoryacht' },
+      { label: 'Power catamaran', href: '/en/yachts?tab=motorkat' },
+      { label: 'Yacht charter', href: '/en/charter/yacht-charter' },
+      { label: 'Crew charter', href: '/en/charter/crew-charter' },
+    ],
+  },
+  {
+    title: 'Destinations',
+    links: [
+      { label: 'Croatia', href: '/en/destinations/croatia' },
+      { label: 'Greece', href: '/en/destinations/greece' },
+      { label: 'Balearic Islands', href: '/en/destinations/balearic-islands' },
+      { label: 'Canary Islands', href: '/en/destinations/canaries' },
+      { label: 'Caribbean - BVI', href: '/en/destinations/caribbean-british-virgin-islands' },
+      { label: 'Caribbean - Windward Islands', href: '/en/destinations/caribbean-windward-islands' },
+      { label: 'Seychelles', href: '/en/destinations/seychelles' },
+      { label: 'Thailand', href: '/en/destinations/thailand' },
+      { label: 'FAQ', href: '/en/faq' },
+      { label: 'Our team', href: '/en/contact/crew' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Imprint', href: '/en/imprint' },
+      { label: 'Data privacy', href: '/en/data-privacy' },
+      { label: 'Terms & conditions', href: '/en/terms' },
+      { label: 'Travel agencies & partners', href: '/en/contact/travel-agencies' },
+    ],
+  },
+]
+
+const colsDe = [
   {
     title: 'Törns',
     links: [
@@ -63,14 +113,16 @@ const socials = [
 ]
 
 export default function Footer() {
+  const lang = useLang()
+  const cols = lang === 'en' ? colsEn : colsDe
   return (
     <footer style={{ background: '#0d1e2e', color: 'rgba(255,255,255,0.65)', fontFamily: 'DM Sans, sans-serif' }}>
       {/* Newsletter bar */}
       <div style={{ background: 'var(--blue)', padding: '2.5rem 0' }}>
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
           <div>
-            <h3 style={{ color: '#fff', fontFamily: 'DM Sans, sans-serif', fontSize: '1.3rem', marginBottom: '0.3rem' }}>Newsletter — Angebote &amp; Neuigkeiten</h3>
-            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>Kein Spam. Nur echte Segelträume.</p>
+            <h3 style={{ color: '#fff', fontFamily: 'DM Sans, sans-serif', fontSize: '1.3rem', marginBottom: '0.3rem' }}>{lang === 'en' ? 'Newsletter — offers & news' : 'Newsletter — Angebote & Neuigkeiten'}</h3>
+            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>{lang === 'en' ? 'No spam. Just real sailing dreams.' : 'Kein Spam. Nur echte Segelträume.'}</p>
           </div>
           <form
             name="newsletter"
@@ -81,11 +133,11 @@ export default function Footer() {
             <input type="hidden" name="form-name" value="newsletter" />
             <input
               type="email"
-              placeholder="Ihre E-Mail-Adresse"
+              placeholder={lang === 'en' ? 'Your e-mail address' : 'Ihre E-Mail-Adresse'}
               style={{ padding: '10px 16px', borderRadius: '3px', border: 'none', fontSize: '0.85rem', flex: '1 1 180px', minWidth: 0, outline: 'none', fontFamily: 'DM Sans, sans-serif' }}
             />
             <button type="submit" className="btn btn-navy" style={{ fontSize: '0.8rem', whiteSpace: 'nowrap' }}>
-              Ich bin dabei!
+              {lang === 'en' ? 'Sign me up!' : 'Ich bin dabei!'}
             </button>
           </form>
         </div>
@@ -116,7 +168,7 @@ export default function Footer() {
         {/* Bottom */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <Link to="/"><img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '32px', filter: 'brightness(0) invert(1) opacity(0.7)' }} /></Link>
+            <Link to={lang === 'en' ? '/en' : '/'}><img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '32px', filter: 'brightness(0) invert(1) opacity(0.7)' }} /></Link>
             <p style={{ fontSize: '0.78rem' }}>© YACHT-URLAUB Ing. Manuel Göschl, MBA</p>
           </div>
 
@@ -145,7 +197,7 @@ export default function Footer() {
 
           {/* Zahlungsanbieter */}
           <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.4)', marginRight: '4px' }}>Zahlung:</span>
+            <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.4)', marginRight: '4px' }}>{lang === 'en' ? 'Payment:' : 'Zahlung:'}</span>
             {['Visa', 'MC', 'AMEX', 'Giropay'].map(p => (
               <span key={p} style={{
                 background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)',

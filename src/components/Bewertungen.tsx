@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { useLang } from '../i18n'
 
 // Google-Rezensionen — wortgenau von den Original-Screenshots übernommen
 const reviews = [
@@ -41,6 +42,7 @@ const Stars = () => (
 )
 
 export default function Bewertungen() {
+  const lang = useLang()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
   const [active, setActive] = useState(0)
@@ -69,9 +71,9 @@ export default function Bewertungen() {
           <img src="/images/Bewertungen/Google5star.webp" alt="5 Sterne auf Google" loading="lazy" style={{ height: 'clamp(72px, 9vw, 104px)', margin: '0 auto 1.25rem' }}
             onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '0.5rem' }}>
-            Das sagen unsere Gäste ...
+            {lang === 'en' ? 'What our guests say ...' : 'Das sagen unsere Gäste ...'}
           </h2>
-          <p style={{ color: 'var(--gray)', fontSize: '0.9rem' }}>Echte Google-Rezensionen — im Original-Wortlaut.</p>
+          <p style={{ color: 'var(--gray)', fontSize: '0.9rem' }}>{lang === 'en' ? 'Real Google reviews — verbatim (in German).' : 'Echte Google-Rezensionen — im Original-Wortlaut.'}</p>
         </motion.div>
 
         <div
@@ -155,7 +157,7 @@ export default function Bewertungen() {
         <div style={{ textAlign: 'center', marginTop: '2rem' }}>
           <a href="https://www.google.com/search?q=yacht-urlaub.net+bewertungen" target="_blank" rel="noopener noreferrer"
             className="btn btn-ghost" style={{ fontSize: '0.82rem' }}>
-            Alle Bewertungen auf Google lesen →
+            {lang === 'en' ? 'Read all reviews on Google →' : 'Alle Bewertungen auf Google lesen →'}
           </a>
         </div>
       </div>

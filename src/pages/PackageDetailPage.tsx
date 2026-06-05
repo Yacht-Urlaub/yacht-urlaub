@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { MapPinIcon } from '../components/Icons'
 import { packages } from '../components/Packages'
+import { packagesEn } from '../data/packagesEn'
+import { useLang, enPkgSlugs } from '../i18n'
 import type { PriceBlock, Addon } from '../components/Packages'
 
 const h2Style = { fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', marginBottom: '1.25rem' } as const
@@ -30,11 +32,13 @@ const h3Style = { fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontS
 const pStyle = { color: '#444', fontSize: '0.93rem', lineHeight: 1.75, whiteSpace: 'pre-line' } as const
 
 function AddonCard({ addon }: { addon: Addon }) {
+  const lang = useLang()
+  const s = L[lang]
   return (
     <div style={{ background: '#fff', borderRadius: '6px', padding: '1.5rem', textAlign: 'center', boxShadow: '0 2px 10px rgba(0,0,0,0.07)', display: 'flex', flexDirection: 'column' }}>
       <h4 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.4rem' }}>{addon.name}</h4>
-      <p style={{ color: 'var(--blue)', fontFamily: 'DM Sans, sans-serif', fontSize: '1.45rem', fontWeight: 700, marginBottom: '0.15rem' }}>zzgl. € {addon.price},-</p>
-      <p style={{ color: 'var(--gray)', fontSize: '0.75rem', marginBottom: '0.85rem' }}>pro Person</p>
+      <p style={{ color: 'var(--blue)', fontFamily: 'DM Sans, sans-serif', fontSize: '1.45rem', fontWeight: 700, marginBottom: '0.15rem' }}>{s.plus} € {addon.price},-</p>
+      <p style={{ color: 'var(--gray)', fontSize: '0.75rem', marginBottom: '0.85rem' }}>{s.pp}</p>
       <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.3rem', marginTop: 'auto' }}>
         {addon.details.map(d => (
           <li key={d} style={{ color: '#555', fontSize: '0.8rem', lineHeight: 1.45 }}>{d}</li>
@@ -45,17 +49,19 @@ function AddonCard({ addon }: { addon: Addon }) {
 }
 
 function PriceBlockSection({ block }: { block: PriceBlock }) {
+  const lang = useLang()
+  const s = L[lang]
   return (
     <div style={{ marginBottom: '3rem' }}>
-      <h2 style={{ ...h2Style, marginBottom: '0.25rem' }}>Preise</h2>
+      <h2 style={{ ...h2Style, marginBottom: '0.25rem' }}>{s.prices}</h2>
       {block.label && <p style={{ color: 'var(--gray)', fontSize: '0.95rem', fontWeight: 600, marginBottom: '1.25rem' }}>{block.label}</p>}
 
       {/* Basis-Preis */}
       <div style={{ background: 'var(--navy)', color: '#fff', borderRadius: '6px', padding: '2rem', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '2rem', marginTop: '1rem', marginBottom: '1rem' }}>
         <div>
-          <p style={{ fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.8, marginBottom: '0.2rem' }}>Basis-Preis</p>
-          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '2.6rem', fontWeight: 700, lineHeight: 1 }}>ab € {block.base},-</p>
-          <p style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: '0.3rem' }}>pro Person*</p>
+          <p style={{ fontSize: '0.8rem', letterSpacing: '0.12em', textTransform: 'uppercase', opacity: 0.8, marginBottom: '0.2rem' }}>{s.base}</p>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '2.6rem', fontWeight: 700, lineHeight: 1 }}>{s.from} € {block.base},-</p>
+          <p style={{ fontSize: '0.85rem', opacity: 0.85, marginTop: '0.3rem' }}>{s.pp}*</p>
         </div>
         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
           {block.baseIncludes.map(b => (
@@ -64,7 +70,7 @@ function PriceBlockSection({ block }: { block: PriceBlock }) {
             </li>
           ))}
         </ul>
-        <Link to="/buchen" className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }}>▶ Jetzt buchen!</Link>
+        <Link to={s.buchen} className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }}>{lang === 'en' ? '▶ Book now!' : '▶ Jetzt buchen!'}</Link>
       </div>
 
       {block.notes.map(n => (
@@ -75,7 +81,7 @@ function PriceBlockSection({ block }: { block: PriceBlock }) {
       {block.zusatz.length > 0 && (
         <>
           <p style={{ color: 'var(--navy)', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.06em', margin: '1.75rem 0 1rem' }}>
-            Diese ZUSATZpakete sind optional bei Buchung wählbar
+            {s.zusatz}
           </p>
           <div className="pkg-addon-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
             {block.zusatz.map(a => <AddonCard key={a.name} addon={a} />)}
@@ -87,7 +93,7 @@ function PriceBlockSection({ block }: { block: PriceBlock }) {
       {block.premium.length > 0 && (
         <>
           <p style={{ color: 'var(--navy)', fontSize: '0.85rem', fontWeight: 700, letterSpacing: '0.06em', margin: '1.75rem 0 1rem' }}>
-            Diese PREMIUMpakete sind optional bei Buchung wählbar
+            {s.premium}
           </p>
           <div className="pkg-addon-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
             {block.premium.map(a => <AddonCard key={a.name} addon={a} />)}
@@ -98,17 +104,42 @@ function PriceBlockSection({ block }: { block: PriceBlock }) {
   )
 }
 
+const L = {
+  de: { included: 'inkludiert sind:', facts: 'Reise-Facts:', route: 'Die Route', detail: 'Ihre Reise im Detail',
+    map: 'Routenkarte', maps: 'Routenkarten', impressions: 'Eindrücke', prices: 'Preise', base: 'Basis-Preis',
+    pp: 'pro Person', from: 'ab', zusatz: 'Diese ZUSATZpakete sind optional bei Buchung wählbar',
+    premium: 'Diese PREMIUMpakete sind optional bei Buchung wählbar', plus: 'zzgl.',
+    hints: 'Generelle Hinweise', faqQ: '„Was kostet mich die gesamte Reise?" –', faqL: 'Verweis zu den FAQs »',
+    book: '▶ JETZT BUCHEN!', dates: '▶ FREIE TERMINE & PREISE', indiv: 'Individueller Törn?',
+    indivSub: 'Sie möchten lieber eine eigene Route, andere Termine oder ein individuelles Angebot?',
+    start: 'ANFRAGE STARTEN', notFound: 'Package nicht gefunden', home: 'Zur Startseite',
+    buchen: '/buchen', planer: '/urlaubsplaner', faq: '/faq' },
+  en: { included: 'included:', facts: 'Facts:', route: 'The route', detail: 'Your journey details',
+    map: 'Route map', maps: 'Route maps', impressions: 'Gallery', prices: 'Prices', base: 'Base price',
+    pp: 'per person', from: 'from', zusatz: 'Following ADDITIONAL packages are available',
+    premium: 'Following PREMIUM packages are available', plus: 'plus',
+    hints: 'General information', faqQ: '"What does the whole trip cost?" –', faqL: 'see our FAQs »',
+    book: '▶ BOOK NOW!', dates: '▶ CHECK PRICE & AVAILABILITY', indiv: 'Bespoke cruise?',
+    indivSub: 'Prefer your own route, different dates or an individual quote?',
+    start: 'GET A QUOTE', notFound: 'Package not found', home: 'Back to homepage',
+    buchen: '/en/book-now', planer: '/en/holiday-planner', faq: '/en/faq' },
+}
+
 export default function PackageDetailPage() {
   const { id } = useParams<{ id: string }>()
-  const pkg = packages.find(p => p.id === id)
+  const lang = useLang()
+  const s = L[lang]
+  const list = lang === 'en' ? packagesEn : packages
+  const pid = lang === 'en' ? (enPkgSlugs[id ?? ''] ?? id) : id
+  const pkg = list.find(p => p.id === pid)
   const [lightbox, setLightbox] = useState<number | null>(null)
 
   if (!pkg) {
     return (
       <main style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ textAlign: 'center' }}>
-          <h1 style={{ color: 'var(--navy)' }}>Package nicht gefunden</h1>
-          <Link to="/" className="btn btn-primary" style={{ marginTop: '1rem', display: 'inline-block' }}>Zur Startseite</Link>
+          <h1 style={{ color: 'var(--navy)' }}>{s.notFound}</h1>
+          <Link to="/" className="btn btn-primary" style={{ marginTop: '1rem', display: 'inline-block' }}>{s.home}</Link>
         </div>
       </main>
     )
@@ -162,7 +193,7 @@ export default function PackageDetailPage() {
 
             {/* Inkludiert */}
             <div style={{ marginBottom: '2rem' }}>
-              <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', color: 'var(--navy)', fontStyle: 'italic', marginBottom: '1rem' }}>inkludiert sind:</h2>
+              <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', color: 'var(--navy)', fontStyle: 'italic', marginBottom: '1rem' }}>{s.included}</h2>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                 {pkg.included.map(item => (
                   <li key={item} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.9rem', lineHeight: 1.5 }}>
@@ -175,7 +206,7 @@ export default function PackageDetailPage() {
 
             {/* Reise-Facts */}
             <div style={{ marginBottom: '2.5rem' }}>
-              <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', color: 'var(--navy)', fontStyle: 'italic', marginBottom: '1rem' }}>Reise-Facts:</h2>
+              <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', color: 'var(--navy)', fontStyle: 'italic', marginBottom: '1rem' }}>{s.facts}</h2>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                 {pkg.facts.map(fact => (
                   <li key={fact} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.9rem', lineHeight: 1.5 }}>
@@ -186,8 +217,8 @@ export default function PackageDetailPage() {
               </ul>
             </div>
 
-            <Link to="/buchen" className="btn btn-primary" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              ▶ JETZT BUCHEN!
+            <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+              {s.book}
             </Link>
           </div>
 
@@ -214,9 +245,9 @@ export default function PackageDetailPage() {
                         display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                         boxShadow: '0 6px 20px rgba(2,132,199,0.4)', textAlign: 'center', lineHeight: 1.15,
                       }}>
-                        <span style={{ fontSize: '0.72rem', opacity: 0.9 }}>ab</span>
+                        <span style={{ fontSize: '0.72rem', opacity: 0.9 }}>{s.from}</span>
                         <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.55rem', fontWeight: 700 }}>€ {pkg.price},-</span>
-                        <span style={{ fontSize: '0.7rem', opacity: 0.9 }}>pro Person</span>
+                        <span style={{ fontSize: '0.7rem', opacity: 0.9 }}>{s.pp}</span>
                       </div>
                     </div>
                     {/* Partnerlogo */}
@@ -238,20 +269,20 @@ export default function PackageDetailPage() {
                   background: 'var(--blue)', color: '#fff', borderRadius: '6px',
                   padding: '2rem', textAlign: 'center', marginBottom: '1.5rem',
                 }}>
-                  <p style={{ fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem', opacity: 0.85 }}>ab</p>
+                  <p style={{ fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.3rem', opacity: 0.85 }}>{s.from}</p>
                   <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '3rem', fontWeight: 700, lineHeight: 1, marginBottom: '0.3rem' }}>
                     € {pkg.price},-
                   </p>
-                  <p style={{ fontSize: '0.85rem', opacity: 0.85 }}>pro Person{pkg.priceNote ? ` (${pkg.priceNote})` : ''}</p>
+                  <p style={{ fontSize: '0.85rem', opacity: 0.85 }}>{s.pp}{pkg.priceNote ? ` (${pkg.priceNote})` : ''}</p>
                 </div>
               )
             })()}
 
             <div style={{ background: 'var(--gray-light)', borderRadius: '6px', padding: '1.5rem' }}>
               <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '0.9rem', fontWeight: 700, marginBottom: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                Ihre Reise im Detail
+                {s.detail}
               </h3>
-              <p style={{ fontSize: '0.8rem', color: 'var(--gray)', fontWeight: 600, fontStyle: 'italic', marginBottom: '0.4rem' }}>Die Route</p>
+              <p style={{ fontSize: '0.8rem', color: 'var(--gray)', fontWeight: 600, fontStyle: 'italic', marginBottom: '0.4rem' }}>{s.route}</p>
               <p style={{ fontSize: '0.85rem', color: '#444', lineHeight: 1.6, whiteSpace: 'pre-line' }}>{pkg.route}</p>
             </div>
           </div>
@@ -259,7 +290,7 @@ export default function PackageDetailPage() {
 
         {/* Routenkarten */}
         <div style={{ marginBottom: '4rem' }}>
-          <h2 style={h2Style}>Routenkarte{pkg.routeMaps.length > 1 ? 'n' : ''}</h2>
+          <h2 style={h2Style}>{pkg.routeMaps.length > 1 ? s.maps : s.map}</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             {pkg.routeMaps.map(map => (
               <figure key={map.src}>
@@ -278,9 +309,9 @@ export default function PackageDetailPage() {
           </div>
         </div>
 
-        {/* Ihre Reise im Detail */}
+        {/* {s.detail} */}
         <div style={{ marginBottom: '4rem', maxWidth: '860px' }}>
-          <h2 style={h2Style}>Ihre Reise im Detail</h2>
+          <h2 style={h2Style}>{s.detail}</h2>
           {pkg.detailSections.map((section, si) => (
             <div key={si} style={{ marginBottom: '2.5rem' }}>
               {section.heading && (
@@ -297,7 +328,7 @@ export default function PackageDetailPage() {
               </div>
             </div>
           ))}
-          <Link to="/buchen" className="btn btn-primary" style={{ fontSize: '0.85rem' }}>▶ FREIE TERMINE &amp; PREISE</Link>
+          <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.85rem' }}>{s.dates}</Link>
         </div>
 
         {/* Unterkunft */}
@@ -338,7 +369,7 @@ export default function PackageDetailPage() {
 
         {/* Generelle Hinweise */}
         <div style={{ marginBottom: '4rem', maxWidth: '860px', background: 'var(--gray-light)', borderRadius: '6px', padding: '2rem' }}>
-          <h2 style={{ ...h2Style, fontSize: '1.2rem' }}>Generelle Hinweise</h2>
+          <h2 style={{ ...h2Style, fontSize: '1.2rem' }}>{s.hints}</h2>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
             {pkg.hints.map(hint => (
               <li key={hint} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.87rem', lineHeight: 1.6 }}>
@@ -349,14 +380,14 @@ export default function PackageDetailPage() {
             <li style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.87rem', lineHeight: 1.6 }}>
               <span style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>•</span>
               <span>
-                „Was kostet mich die gesamte Reise?" – <Link to="/faq" style={{ color: 'var(--blue)', fontWeight: 600 }}>Verweis zu den FAQs »</Link>
+                {s.faqQ} <Link to={s.faq} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.faqL}</Link>
               </span>
             </li>
           </ul>
         </div>
 
         {/* Eindrücke (Galerie) */}
-        <h2 style={h2Style}>Eindrücke</h2>
+        <h2 style={h2Style}>{s.impressions}</h2>
         <div className="pkg-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '4rem' }}>
           {pkg.gallery.map((img, i) => (
             <motion.div
@@ -393,14 +424,14 @@ export default function PackageDetailPage() {
             Individueller Törn?
           </h2>
           <p style={{ color: 'var(--gray)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-            Sie möchten lieber eine eigene Route, andere Termine oder ein individuelles Angebot?
+            {s.indivSub}
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/urlaubsplaner" className="btn btn-ghost" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
+            <Link to={s.planer} className="btn btn-ghost" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
               ANFRAGE STARTEN
             </Link>
-            <Link to="/buchen" className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
-              ▶ FREIE TERMINE &amp; PREISE
+            <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
+              {s.dates}
             </Link>
           </div>
         </div>

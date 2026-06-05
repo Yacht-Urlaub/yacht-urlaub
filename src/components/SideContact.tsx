@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useLang } from '../i18n'
 
 const items = [
   {
@@ -52,6 +53,10 @@ const items = [
 ]
 
 export default function SideContact() {
+  const lang = useLang()
+  const labels: Record<string, string> = lang === 'en'
+    ? { phone: '+43 1 997 15 82', mail: 'Write an e-mail', whatsapp: 'WhatsApp', anfrage: 'Get a quote' }
+    : { phone: '+43 1 997 15 82', mail: 'E-Mail schreiben', whatsapp: 'WhatsApp', anfrage: 'Anfrage starten' }
   return (
     <>
       <div className="side-contact" style={{
@@ -68,13 +73,14 @@ export default function SideContact() {
         {items.map(item => {
           const inner = (
             <>
-              <span className="side-contact-label">{item.label}</span>
+              <span className="side-contact-label">{labels[item.id] ?? item.label}</span>
               <span className="side-contact-icon">{item.icon}</span>
             </>
           )
           const style = { ['--hover-bg' as string]: item.hover }
-          return item.href.startsWith('/') ? (
-            <Link key={item.id} to={item.href} aria-label={item.label} className="side-contact-item" style={style}>
+          const target = item.id === 'anfrage' && lang === 'en' ? '/en/holiday-planner' : item.href
+          return target.startsWith('/') ? (
+            <Link key={item.id} to={target} aria-label={item.label} className="side-contact-item" style={style}>
               {inner}
             </Link>
           ) : (

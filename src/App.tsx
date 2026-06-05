@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { LanguageContext, langFromPath } from './i18n'
 import { useLayoutEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -29,6 +30,11 @@ import ReisebueroPage from './pages/ReisebueroPage'
 import SkipperPage from './pages/SkipperPage'
 import SailAwayPage from './pages/SailAwayPage'
 import ToernberichtDetailPage from './pages/ToernberichtDetailPage'
+
+function LangProvider({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation()
+  return <LanguageContext.Provider value={langFromPath(pathname)}>{children}</LanguageContext.Provider>
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -72,6 +78,25 @@ function AnimatedRoutes() {
           <Route path="/impressum" element={<ImpressumPage />} />
           <Route path="/datenschutz" element={<DatenschutzPage />} />
           <Route path="/agb" element={<AgbPage />} />
+          {/* ── Englische Routen (Slugs wie yacht-holiday.net) ── */}
+          <Route path="/en" element={<HomePage />} />
+          <Route path="/en/destinations" element={<DestinationenPage />} />
+          <Route path="/en/destinations/:id" element={<DestinationPage />} />
+          <Route path="/en/yachts" element={<YachtenPage />} />
+          <Route path="/en/cruises/book-now/:id" element={<PackageDetailPage />} />
+          <Route path="/en/faq" element={<FaqPage />} />
+          <Route path="/en/book-now" element={<BuchenPage />} />
+          <Route path="/en/cruises" element={<ToernsPage />} />
+          <Route path="/en/cruises/:id" element={<ToernDetailPage />} />
+          <Route path="/en/cabin-offers" element={<KabinenPage />} />
+          <Route path="/en/holiday-planner" element={<UrlaubsplanerPage />} />
+          <Route path="/en/charter/yacht-charter" element={<CharterPage />} />
+          <Route path="/en/charter/crew-charter" element={<SkipperPage />} />
+          <Route path="/en/contact/crew" element={<CrewPage />} />
+          <Route path="/en/contact/travel-agencies" element={<ReisebueroPage />} />
+          <Route path="/en/imprint" element={<ImpressumPage />} />
+          <Route path="/en/data-privacy" element={<DatenschutzPage />} />
+          <Route path="/en/terms" element={<AgbPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
         <Kontakt />
@@ -84,12 +109,14 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
+      <LangProvider>
       <ScrollToTop />
       <Navbar />
       <AnimatedRoutes />
       <SideContact />
       <WhatsApp />
       <CookieBanner />
+      </LangProvider>
     </BrowserRouter>
   )
 }

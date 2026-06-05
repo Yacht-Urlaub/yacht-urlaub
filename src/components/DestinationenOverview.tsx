@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import { destinations } from './DestinationDetail'
+import { destinationsEn } from '../data/destinationenEn'
+import { useLang, enDestSlugs } from '../i18n'
+
+const enDestPath: Record<string, string> = Object.fromEntries(Object.entries(enDestSlugs).map(([slug, id]) => [id, slug]))
 
 // Einheitliches Raster: alle 8 Destinationen, beste Bilder
 const grid = [
@@ -16,6 +20,9 @@ const grid = [
 
 export default function DestinationenOverview({ standalone = false }: { standalone?: boolean }) {
   const navigate = useNavigate()
+  const lang = useLang()
+  const list = lang === 'en' ? destinationsEn : destinations
+  const destHref = (id: string) => lang === 'en' ? `/en/destinations/${enDestPath[id] ?? id}` : `/destinationen/${id}`
 
   return (
     <section id="destinationen" style={{ background: 'var(--navy)', padding: standalone ? '80px 0' : '80px 0' }}>
@@ -34,14 +41,14 @@ export default function DestinationenOverview({ standalone = false }: { standalo
             Destinationen
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: '560px', margin: '0 auto', fontSize: '0.92rem', lineHeight: 1.8 }}>
-            Von der kroatischen Küste bis zu den paradiesischen Seychellen — klicken Sie auf eine Destination für alle Details.
+            {lang === 'en' ? 'From the Croatian coast to the paradise of the Seychelles — click a destination for all details.' : 'Von der kroatischen Küste bis zu den paradiesischen Seychellen — klicken Sie auf eine Destination für alle Details.'}
           </p>
         </motion.div>
 
         {/* Einheitliches Raster */}
         <div className="dest-grid">
           {grid.map((item, i) => {
-            const d = destinations.find(x => x.id === item.id)
+            const d = list.find(x => x.id === item.id)
             if (!d) return null
             return (
               <motion.button
@@ -50,7 +57,7 @@ export default function DestinationenOverview({ standalone = false }: { standalo
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: (i % 4) * 0.08 }}
-                onClick={() => navigate(`/destinationen/${item.id}`)}
+                onClick={() => navigate(destHref(item.id))}
                 className="dest-card"
                 aria-label={`Destination ${d.name}`}
               >
@@ -62,7 +69,7 @@ export default function DestinationenOverview({ standalone = false }: { standalo
                 <span className="dest-card-season">{d.country} {d.bestTime}</span>
                 <span className="dest-card-bottom">
                   <span className="dest-card-name">{d.name}</span>
-                  <span className="dest-card-cta">Mehr erfahren <span className="dest-card-arrow">→</span></span>
+                  <span className="dest-card-cta">{lang === 'en' ? 'Learn more' : 'Mehr erfahren'} <span className="dest-card-arrow">→</span></span>
                 </span>
               </motion.button>
             )

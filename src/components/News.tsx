@@ -1,9 +1,37 @@
+import { useLang } from '../i18n'
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
-const offers = [
+const offersEn = [
+  {
+    img: '/images/packages/dalmatien/gallery/Segeln in Dalmatien.png',
+    tag: 'Package',
+    title: 'SAILING IN CROATIA FROM SPLIT',
+    text: 'Sailing holiday in Croatia from Split or Trogir to the islands of Hvar, Vis, Korčula, Brač and Šolta.',
+    cta: 'Learn more',
+    href: '/en/cruises/book-now/dalmatia-croatia',
+  },
+  {
+    img: '/images/news/Dalmatia_kat.webp',
+    tag: 'Family',
+    title: 'BENEFITS FOR FAMILIES IN CROATIA',
+    text: 'Our partner MySea enables all families to sail through the Croatian islands at a lower cost.',
+    cta: 'Learn more',
+    href: '/en/cruises/for-families',
+  },
+  {
+    img: '/images/news/beach-bikini-jump.jpg',
+    tag: 'Cabins',
+    title: 'CABIN OFFERS',
+    text: 'Discover exclusive cabin offers for your dream yacht holiday – individual and unforgettable!',
+    cta: 'View offers',
+    href: '/en/cabin-offers',
+  },
+]
+
+const offersDe = [
   {
     img: '/images/packages/dalmatien/gallery/Segeln in Dalmatien.png',
     tag: 'Package',
@@ -31,6 +59,8 @@ const offers = [
 ]
 
 export default function News() {
+  const lang = useLang()
+  const offers = lang === 'en' ? offersEn : offersDe
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
 
@@ -48,9 +78,9 @@ export default function News() {
             <p style={{ color: 'var(--blue)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
               Aktuelles
             </p>
-            <h2 className="section-title">Top-News &amp; Angebote</h2>
+            <h2 className="section-title">{lang === 'en' ? 'News & offers' : 'Top-News & Angebote'}</h2>
           </div>
-          <Link to="/news" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>Alle Angebote →</Link>
+          <Link to="/news" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{lang === 'en' ? 'All offers →' : 'Alle Angebote →'}</Link>
         </motion.div>
 
         <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>

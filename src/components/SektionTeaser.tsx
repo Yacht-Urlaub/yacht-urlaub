@@ -1,8 +1,15 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useLang } from '../i18n'
 
 // Sektions-Teaser wie auf der Originalseite: 4 runde Verlinkungen
-const teasers = [
+const teasersEn = [
+  { id: 'crew', heading: 'Crew', img: '/images/teaser/crew.png', title: 'Manuel Göschl', text: 'and his team', href: '/en/contact/crew' },
+  { id: 'destinationen', heading: 'Destinations', img: '/images/teaser/destinationen.jpg', title: 'Our destinations', text: 'Learn more about Croatia, Greece and other sailing areas..', href: '/en/destinations' },
+  { id: 'yachten', heading: 'Yachts', img: '/images/teaser/yachten.jpg', title: 'Our yacht categories', text: 'Learn more about sailing monohulls, sailing catamarans, motor yachts, power catamarans ...', href: '/en/yachts' },
+]
+
+const teasersDe = [
   {
     id: 'crew',
     heading: 'Crew',
@@ -38,6 +45,8 @@ const teasers = [
 ]
 
 export default function SektionTeaser() {
+  const lang = useLang()
+  const teasers = lang === 'en' ? teasersEn : teasersDe
   return (
     <section className="section" style={{ background: 'var(--gray-light)' }}>
       <div className="container">

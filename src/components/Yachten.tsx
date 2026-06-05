@@ -2,10 +2,17 @@ import { useState, useEffect } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { yachtCards, yachtCategories } from '../data/yachten'
+import { yachtCardsEn, yachtCategoriesEn } from '../data/yachtenEn'
+import { useLang } from '../i18n'
 
 const validTabs = yachtCategories.map(c => c.id)
 
 export default function Yachten() {
+  const lang = useLang()
+  const cards = lang === 'en' ? yachtCardsEn : yachtCards
+  const cats = lang === 'en'
+    ? yachtCategories.map(c => yachtCategoriesEn.find(e => e.id === c.id) ?? c)
+    : yachtCategories
   const [searchParams] = useSearchParams()
   const tabParam = searchParams.get('tab')
   const [activeTab, setActiveTab] = useState(validTabs.includes(tabParam ?? '') ? tabParam! : 'monohull')
@@ -15,7 +22,7 @@ export default function Yachten() {
     if (tabParam && validTabs.includes(tabParam)) setActiveTab(tabParam)
   }, [tabParam])
 
-  const cat = yachtCategories.find(c => c.id === activeTab)!
+  const cat = cats.find(c => c.id === activeTab)!
 
   return (
     <div>
@@ -26,10 +33,10 @@ export default function Yachten() {
             Yacht-Kategorien
           </p>
           <h1 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.9rem, 4.5vw, 2.9rem)', color: '#fff', marginBottom: '0.75rem' }}>
-            Unsere Yachten - für jeden das Richtige
+            {lang === 'en' ? 'Our yachts - the right one for everybody' : 'Unsere Yachten - für jeden das Richtige'}
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.95rem', maxWidth: '560px', margin: '0 auto' }}>
-            Bei uns gibt es folgende Yacht-Kategorien zu buchen. Jede Art hat ihre Vorteile und Stärken. Ein Überblick:
+            {lang === 'en' ? 'You can book the following yacht categories with us. Each type has its advantages and strengths. An overview:' : 'Bei uns gibt es folgende Yacht-Kategorien zu buchen. Jede Art hat ihre Vorteile und Stärken. Ein Überblick:'}
           </p>
         </div>
       </div>
@@ -38,7 +45,7 @@ export default function Yachten() {
       <section style={{ background: 'var(--gray-light)', padding: '3.5rem 0' }}>
         <div className="container">
           <div className="yacht-card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
-            {yachtCards.map(card => (
+            {cards.map(card => (
               <div key={card.id}
                 onClick={() => { setActiveTab(card.id); document.getElementById('yacht-detail')?.scrollIntoView({ behavior: 'smooth' }) }}
                 style={{
@@ -63,7 +70,7 @@ export default function Yachten() {
                     })}
                   </ul>
                   <span className="btn btn-primary" style={{ fontSize: '0.72rem', padding: '8px 14px', alignSelf: 'flex-start' }}>
-                    Galerie &amp; Details
+                    {lang === 'en' ? 'Gallery & details' : 'Galerie & Details'}
                   </span>
                 </div>
               </div>
@@ -98,7 +105,7 @@ export default function Yachten() {
               {/* Varianten (Original-Kategorielogik statt Einzelmodelle) */}
               {cat.variants.length > 0 && (
                 <>
-                  <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Varianten</h3>
+                  <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>{lang === 'en' ? 'Types' : 'Varianten'}</h3>
                   <div className="yacht-variant-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(cat.variants.length, 4)}, 1fr)`, gap: '1.5rem', marginBottom: '3.5rem' }}>
                     {cat.variants.map(v => (
                       <div key={v.title} style={{ background: 'var(--gray-light)', borderRadius: '6px', padding: '1.5rem', display: 'flex', flexDirection: 'column' }}>
@@ -112,7 +119,7 @@ export default function Yachten() {
                             {v.caption && <figcaption style={{ color: 'var(--gray)', fontSize: '0.72rem', marginTop: '0.35rem' }}>{v.caption}</figcaption>}
                           </figure>
                         )}
-                        <p style={{ color: 'var(--navy)', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>Ausstattung</p>
+                        <p style={{ color: 'var(--navy)', fontSize: '0.8rem', fontWeight: 700, marginBottom: '0.5rem' }}>{lang === 'en' ? 'Equipment' : 'Ausstattung'}</p>
                         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
                           {v.ausstattung.map(a => (
                             <li key={a} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start', color: '#555', fontSize: '0.8rem', lineHeight: 1.5 }}>
@@ -129,7 +136,7 @@ export default function Yachten() {
               {/* Eindrücke */}
               {cat.eindruecke.length > 0 && (
                 <>
-                  <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>Eindrücke</h3>
+                  <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.4rem', marginBottom: '1.5rem' }}>{lang === 'en' ? 'Impressions' : 'Eindrücke'}</h3>
                   <div className="yacht-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '8px', marginBottom: '3.5rem' }}>
                     {cat.eindruecke.map(img => (
                       <div key={img} onClick={() => setLightbox(img)} style={{ aspectRatio: '4/3', overflow: 'hidden', cursor: 'zoom-in', borderRadius: '3px', background: '#eee' }}>
@@ -147,7 +154,7 @@ export default function Yachten() {
               {cat.logos.length > 0 && (
                 <div style={{ borderTop: '1px solid var(--gray-mid)', paddingTop: '2rem', marginBottom: '2rem' }}>
                   <p style={{ color: 'var(--gray)', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '1.25rem', textAlign: 'center' }}>
-                    Unsere Yachtbauer
+                    {lang === 'en' ? 'Our yacht builders' : 'Unsere Yachtbauer'}
                   </p>
                   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '3rem', flexWrap: 'wrap' }}>
                     {cat.logos.map(logo => (
@@ -163,11 +170,11 @@ export default function Yachten() {
 
               {/* CTAs (wie Original) */}
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
-                <Link to="/urlaubsplaner" className="btn btn-primary" style={{ fontSize: '0.85rem', padding: '13px 28px' }}>
-                  Individueller Törn — URLAUBSPLANER
+                <Link to={lang === 'en' ? '/en/holiday-planner' : '/urlaubsplaner'} className="btn btn-primary" style={{ fontSize: '0.85rem', padding: '13px 28px' }}>
+                  {lang === 'en' ? 'Bespoke cruise — HOLIDAY PLANNER' : 'Individueller Törn — URLAUBSPLANER'}
                 </Link>
-                <Link to="/charter" className="btn btn-ghost" style={{ fontSize: '0.85rem', padding: '13px 28px' }}>
-                  Yacht-Charter — ANFRAGE STARTEN
+                <Link to={lang === 'en' ? '/en/charter/yacht-charter' : '/charter'} className="btn btn-ghost" style={{ fontSize: '0.85rem', padding: '13px 28px' }}>
+                  {lang === 'en' ? 'Yacht charter — GET A QUOTE' : 'Yacht-Charter — ANFRAGE STARTEN'}
                 </Link>
               </div>
             </motion.div>

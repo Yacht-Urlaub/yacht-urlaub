@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
+import { faqsEn } from '../data/faqEn'
+import { useLang } from '../i18n'
 
 // FAQ 1:1 von yacht-urlaub.net/faq übernommen
 const faqs: { q: string; a: string }[] = [
@@ -34,11 +36,13 @@ const faqs: { q: string; a: string }[] = [
 
 export default function FaqPage() {
   const [open, setOpen] = useState<number | null>(0)
+  const lang = useLang()
+  const list = lang === 'en' ? faqsEn : faqs
 
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map(f => ({
+    mainEntity: list.map(f => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -62,7 +66,7 @@ export default function FaqPage() {
           </p>
           <h1 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#fff', marginBottom: '0.75rem' }}>FAQ</h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.95rem', maxWidth: '480px', margin: '0 auto' }}>
-            Häufig gestellte Fragen rund um Ihren Yacht-Urlaub — und unsere Antworten.
+            {lang === 'en' ? 'Frequently asked questions about your yacht holiday — and our answers.' : 'Häufig gestellte Fragen rund um Ihren Yacht-Urlaub — und unsere Antworten.'}
           </p>
         </div>
       </div>
@@ -71,7 +75,7 @@ export default function FaqPage() {
       <section style={{ background: 'var(--gray-light)', padding: '4rem 0' }}>
         <div className="container" style={{ maxWidth: '820px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            {faqs.map((f, i) => (
+            {list.map((f, i) => (
               <div key={f.q} style={{ background: '#fff', borderRadius: '6px', overflow: 'hidden', boxShadow: '0 1px 8px rgba(0,0,0,0.06)' }}>
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
@@ -107,14 +111,14 @@ export default function FaqPage() {
           {/* Noch Fragen? */}
           <div style={{ marginTop: '3rem', background: 'var(--navy)', borderRadius: '6px', padding: '2.5rem', textAlign: 'center' }}>
             <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.3rem', marginBottom: '0.5rem' }}>
-              Bei noch offenen Fragen freuen wir uns über Ihre Nachricht!
+              {lang === 'en' ? 'Still have questions? We are happy to hear from you!' : 'Bei noch offenen Fragen freuen wir uns über Ihre Nachricht!'}
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-              Rufen Sie uns an oder schreiben Sie uns — wir antworten persönlich.
+              {lang === 'en' ? 'Call us or write to us — we reply personally.' : 'Rufen Sie uns an oder schreiben Sie uns — wir antworten persönlich.'}
             </p>
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <a href="tel:+43199715820" className="btn btn-outline">+43 1 997 15 82</a>
-              <a href="#kontakt" className="btn btn-primary">Nachricht senden →</a>
+              <a href="#kontakt" className="btn btn-primary">{lang === 'en' ? 'Send a message →' : 'Nachricht senden →'}</a>
             </div>
           </div>
         </div>

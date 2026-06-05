@@ -1,7 +1,9 @@
+import { useLang } from '../i18n'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 export default function Hero() {
+  const lang = useLang()
   return (
     <section id="home" style={{ position: 'relative', height: '100vh', minHeight: '600px', overflow: 'hidden' }}>
       {/* Video Background */}
@@ -58,7 +60,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           style={{ fontSize: '0.95rem', maxWidth: '520px', lineHeight: 1.9, opacity: 0.85, marginBottom: '2.5rem' }}
         >
-          Segel- und Yachtreisen mit Qualität — von Kroatien bis Karibik, für Einsteiger bis Luxury.
+          {lang === 'en' ? 'High-quality sailing holidays with skipper — from Croatia to the Caribbean, for beginners to luxury.' : 'Segel- und Yachtreisen mit Qualität — von Kroatien bis Karibik, für Einsteiger bis Luxury.'}
         </motion.p>
 
         <motion.div
@@ -67,11 +69,11 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 1.0 }}
           style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}
         >
-          <Link to="/urlaubsplaner" className="btn btn-gold" style={{ fontSize: '0.82rem', padding: '14px 32px' }}>
-            Urlaub planen →
+          <Link to={lang === 'en' ? '/en/holiday-planner' : '/urlaubsplaner'} className="btn btn-gold" style={{ fontSize: '0.82rem', padding: '14px 32px' }}>
+            {lang === 'en' ? 'Plan your holiday →' : 'Urlaub planen →'}
           </Link>
           <a href="#toerns" className="btn btn-outline" style={{ fontSize: '0.82rem', padding: '14px 32px' }}>
-            Törns entdecken
+            {lang === 'en' ? 'Our trips' : 'Törns entdecken'}
           </a>
         </motion.div>
 

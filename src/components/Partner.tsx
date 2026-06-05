@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useLang } from '../i18n'
 
 // Partner-Logos 1:1 von der Originalseite (yacht-urlaub.net)
 const partner = [
@@ -13,6 +14,7 @@ const partner = [
 ]
 
 export default function Partner() {
+  const lang = useLang()
   return (
     <section style={{ background: '#fff', padding: '4.5rem 0' }}>
       <div className="container">
@@ -24,10 +26,10 @@ export default function Partner() {
           style={{ textAlign: 'center', marginBottom: '2.75rem' }}
         >
           <p style={{ color: 'var(--blue)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-            Gemeinsam stark
+            {lang === 'en' ? 'Strong together' : 'Gemeinsam stark'}
           </p>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.5rem, 2.8vw, 2.1rem)', color: 'var(--navy)' }}>
-            Unsere Partner
+            {lang === 'en' ? 'Our partners' : 'Unsere Partner'}
           </h2>
         </motion.div>
 

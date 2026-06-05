@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useLang, enPkgSlugs } from '../i18n'
+import { packagesEn } from '../data/packagesEn'
 
 export type Stop = { name: string; text: string }
 export type DetailSection = { heading?: string; intro?: string; stops: Stop[] }
@@ -996,7 +998,12 @@ export const packages: Package[] = [
   },
 ]
 
+const enPkgPath: Record<string, string> = Object.fromEntries(Object.entries(enPkgSlugs).map(([slug, id]) => [id, slug]))
+
 export default function Packages() {
+  const lang = useLang()
+  const list = lang === 'en' ? packagesEn : packages
+  const pkgHref = (pid: string) => lang === 'en' ? `/en/cruises/book-now/${enPkgPath[pid] ?? pid}` : `/packages/${pid}`
   return (
     <section style={{ background: '#f4f6f8', padding: '5rem 0' }}>
       <div className="container">
@@ -1005,15 +1012,15 @@ export default function Packages() {
             Direkt buchbar
           </p>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '0.75rem' }}>
-            Alle Packages auf einen Blick
+            {lang === 'en' ? 'All packages at a glance' : 'Alle Packages auf einen Blick'}
           </h2>
           <p style={{ color: 'var(--gray)', fontSize: '1rem', maxWidth: '560px', margin: '0 auto' }}>
-            Von Kroatien bis Karibik — wählen Sie Ihr Traumrevier und buchen Sie direkt online.
+            {lang === 'en' ? 'From Croatia to the Caribbean — pick your dream sailing area and book directly online.' : 'Von Kroatien bis Karibik — wählen Sie Ihr Traumrevier und buchen Sie direkt online.'}
           </p>
         </div>
 
         <div className="packages-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
-          {packages.map((pkg, i) => (
+          {list.map((pkg, i) => (
             <motion.div
               key={pkg.id}
               initial={{ opacity: 0, y: 24 }}
@@ -1041,9 +1048,9 @@ export default function Packages() {
                   fontSize: '0.62rem', fontWeight: 700, textAlign: 'center', lineHeight: 1.2,
                   boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                 }}>
-                  <span style={{ fontSize: '0.58rem' }}>ab</span>
+                  <span style={{ fontSize: '0.58rem' }}>{lang === 'en' ? 'from' : 'ab'}</span>
                   <span style={{ fontSize: '0.9rem' }}>€ {pkg.price}</span>
-                  <span style={{ fontSize: '0.56rem' }}>pro Pers.</span>
+                  <span style={{ fontSize: '0.56rem' }}>{lang === 'en' ? 'p. pers.' : 'pro Pers.'}</span>
                 </div>
               </div>
 
@@ -1059,11 +1066,11 @@ export default function Packages() {
                   {pkg.subtitle}
                 </p>
                 <Link
-                  to={`/packages/${pkg.id}`}
+                  to={pkgHref(pkg.id)}
                   className="btn btn-primary"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.8rem', alignSelf: 'flex-start' }}
                 >
-                  ▶ ZUM ANGEBOT
+                  {lang === 'en' ? '▶ TO THE OFFER' : '▶ ZUM ANGEBOT'}
                 </Link>
               </div>
             </motion.div>
