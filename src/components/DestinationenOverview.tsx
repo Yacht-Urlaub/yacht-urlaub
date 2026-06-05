@@ -38,7 +38,7 @@ export default function DestinationenOverview({ standalone = false }: { standalo
             {lang === 'en' ? 'Our sailing areas' : 'Unsere Segelgebiete'}
           </p>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', color: '#fff', marginBottom: '1rem' }}>
-            Destinationen
+            {lang === 'en' ? 'Destinations' : 'Destinationen'}
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: '560px', margin: '0 auto', fontSize: '0.92rem', lineHeight: 1.8 }}>
             {lang === 'en' ? 'From the Croatian coast to the paradise of the Seychelles — click a destination for all details.' : 'Von der kroatischen Küste bis zu den paradiesischen Seychellen — klicken Sie auf eine Destination für alle Details.'}

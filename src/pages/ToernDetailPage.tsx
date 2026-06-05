@@ -502,7 +502,7 @@ export default function ToernDetailPage() {
           <section className="section" style={{ background: '#fff' }}>
             <div className="container">
               <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.5rem, 3vw, 2.1rem)', color: 'var(--navy)', marginBottom: '2rem', textAlign: 'center' }}>
-                Impressionen
+                {s.impr}
               </h2>
               <div className="luxury-impressionen" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
                 {LUXURY_IMPRESSIONEN.map(img => (

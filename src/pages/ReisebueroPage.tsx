@@ -51,7 +51,7 @@ export default function ReisebueroPage() {
       <div style={{ background: 'var(--navy)', padding: '4.5rem 0 4rem' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-            Partner werden
+            {s.tag}
           </p>
           <h1 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 4.5vw, 2.8rem)', color: '#fff', marginBottom: '1rem' }}>
             {s.h1}
