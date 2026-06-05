@@ -30,7 +30,7 @@ export default function Yachten() {
       <div style={{ background: 'var(--navy)', padding: '4rem 0 3rem' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-            Yacht-Kategorien
+            {lang === 'en' ? 'Yacht categories' : 'Yacht-Kategorien'}
           </p>
           <h1 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.9rem, 4.5vw, 2.9rem)', color: '#fff', marginBottom: '0.75rem' }}>
             {lang === 'en' ? 'Our yachts - the right one for everybody' : 'Unsere Yachten - für jeden das Richtige'}

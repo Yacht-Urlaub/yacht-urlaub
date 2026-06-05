@@ -143,7 +143,7 @@ export default function ToernsPage() {
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <p style={{ color: 'var(--blue)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-              Für jeden der Richtige
+              {s.forAll}
             </p>
             <h2 className="section-title">{s.choose}</h2>
             <p className="section-subtitle" style={{ maxWidth: '600px', margin: '0 auto' }}>

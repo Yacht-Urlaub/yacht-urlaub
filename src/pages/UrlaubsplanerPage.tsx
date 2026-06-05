@@ -348,7 +348,7 @@ export default function UrlaubsplanerPage() {
             {step === 2 && (
               <motion.div key="step2" {...fadeIn}>
                 <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.6rem', marginBottom: '0.5rem', textAlign: 'center' }}>
-                  Terminplanung
+                  {s.s3h}
                 </h2>
                 <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem', maxWidth: '620px', marginLeft: 'auto', marginRight: 'auto' }}>
                   {s.s3sub}
@@ -431,7 +431,7 @@ export default function UrlaubsplanerPage() {
             {step === 4 && (
               <motion.div key="step4" {...fadeIn}>
                 <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.6rem', marginBottom: '0.5rem', textAlign: 'center' }}>
-                  Kontaktperson
+                  {s.s5h}
                 </h2>
                 <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem', maxWidth: '620px', marginLeft: 'auto', marginRight: 'auto' }}>
                   {s.s5sub}

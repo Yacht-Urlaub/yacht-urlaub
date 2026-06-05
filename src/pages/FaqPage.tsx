@@ -62,7 +62,7 @@ export default function FaqPage() {
       <div style={{ background: 'var(--navy)', padding: '4rem 0 3.5rem' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <p style={{ color: 'var(--blue-light)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
-            Gut zu wissen
+            {lang === 'en' ? 'Good to know' : 'Gut zu wissen'}
           </p>
           <h1 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2rem, 5vw, 3rem)', color: '#fff', marginBottom: '0.75rem' }}>FAQ</h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.95rem', maxWidth: '480px', margin: '0 auto' }}>

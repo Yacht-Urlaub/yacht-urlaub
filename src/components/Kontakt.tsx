@@ -47,11 +47,45 @@ const kf = {
   formDe: { whither: '{kfm.whither}', wahl: 'Bitte wählen', dest: 'Destination *', art: 'Art des Törns',
     pers: 'Personen *', von: 'Abreise *', bis: 'Rückkehr (ca.)', yacht: 'Yacht-Typ', weiter: 'Weiter →',
     name: 'Name *', mail: 'E-Mail *', tel: 'Telefon', nachricht: 'Nachricht', absenden: '{kfm.absenden}',
-    fast: 'Fast geschafft!', check: 'Bitte prüfen Sie Ihre Angaben und senden Sie die Anfrage ab.' },
+    fast: 'Fast geschafft!', check: 'Bitte prüfen Sie Ihre Angaben und senden Sie die Anfrage ab.',
+    errWahl: 'Bitte wählen', errDatum: 'Datum eingeben', errAnzahl: 'Anzahl eingeben', errName: 'Name eingeben', errMail: 'Gültige E-Mail eingeben',
+    grpEU: 'Europa', grpFern: 'Karibik & Fernziele', offen: 'Noch offen / beraten lassen',
+    dests: ['Kroatien – Dalmatien', 'Kroatien – Kornaten', 'Kroatien – Istrien', 'Griechenland – Ionische Inseln', 'Griechenland – Kykladen', 'Balearen – Mallorca', 'Balearen – Ibiza & Formentera', 'Kanaren'],
+    destsFern: ['Karibik – BVI', 'Karibik – Grenadinen', 'Seychellen', 'Thailand'],
+    typen: ['Skippered (mit Skipper)', 'Bareboat (selbst segeln)', 'Kabinentörn', 'Charter', 'Noch unsicher'],
+    yachten: ['Segelyacht', 'Katamaran', 'Motoryacht', 'Egal'],
+    absichten: [
+      { val: 'sofort', label: 'Ich möchte so bald wie möglich buchen.' },
+      { val: 'bald', label: 'Ich möchte in den nächsten Wochen buchen.' },
+      { val: 'info', label: 'Ich erkundige mich vorerst nur.' },
+    ],
+    reach: 'Wie können wir Sie erreichen?', namePh: 'Ihr Name', mailPh: 'ihre@email.at',
+    kontaktarten: ['Telefon', 'E-Mail', 'WhatsApp'],
+    wishes: 'Ihre Wünsche & Fragen', wishesPh: 'Was ist Ihnen besonders wichtig? Haben Sie spezielle Wünsche?',
+    found: 'Wie haben Sie von uns erfahren?',
+    foundOpts: ['Freunde & Bekannte', 'Online-Suche (Google etc.)', 'Facebook', 'Instagram', 'YouTube', 'Reisemesse', 'War bereits Gast', 'Sonstiges'],
+    nl: 'Ja, ich möchte den Newsletter mit Angeboten und Neuigkeiten erhalten.', zurueck: '← Zurück' },
   formEn: { whither: 'Where do you want to go?', wahl: 'Please choose', dest: 'Destination *', art: 'Type of cruise',
     pers: 'Persons *', von: 'Departure *', bis: 'Return (approx.)', yacht: 'Yacht type', weiter: 'Next →',
     name: 'Name *', mail: 'Email *', tel: 'Phone', nachricht: 'Message', absenden: 'Send request →',
-    fast: 'Almost done!', check: 'Please check your details and submit the request.' },
+    fast: 'Almost done!', check: 'Please check your details and submit the request.',
+    errWahl: 'Please choose', errDatum: 'Enter a date', errAnzahl: 'Enter a number', errName: 'Enter your name', errMail: 'Enter a valid email',
+    grpEU: 'Europe', grpFern: 'Caribbean & long-haul', offen: 'Still open / please advise me',
+    dests: ['Croatia – Dalmatia', 'Croatia – Kornati', 'Croatia – Istria', 'Greece – Ionian Islands', 'Greece – Cyclades', 'Balearics – Mallorca', 'Balearics – Ibiza & Formentera', 'Canary Islands'],
+    destsFern: ['Caribbean – BVI', 'Caribbean – Grenadines', 'Seychelles', 'Thailand'],
+    typen: ['Skippered (with skipper)', 'Bareboat (sail yourself)', 'Cabin cruise', 'Charter', 'Not sure yet'],
+    yachten: ['Sailing yacht', 'Catamaran', 'Motor yacht', 'No preference'],
+    absichten: [
+      { val: 'sofort', label: 'I would like to book as soon as possible.' },
+      { val: 'bald', label: 'I would like to book within the next weeks.' },
+      { val: 'info', label: 'I am just inquiring for now.' },
+    ],
+    reach: 'How can we reach you?', namePh: 'Your name', mailPh: 'your@email.com',
+    kontaktarten: ['Phone', 'Email', 'WhatsApp'],
+    wishes: 'Your wishes & questions', wishesPh: 'What matters most to you? Any special requests?',
+    found: 'How did you hear about us?',
+    foundOpts: ['Friends & family', 'Online search (Google etc.)', 'Facebook', 'Instagram', 'YouTube', 'Travel fair', 'Already been a guest', 'Other'],
+    nl: 'Yes, I would like to receive the newsletter with offers and news.', zurueck: '← Back' },
 }
 
 const kk = {
@@ -88,13 +122,13 @@ export default function Kontakt() {
   const validateStep = (s: number) => {
     const e: Partial<Form> = {}
     if (s === 0) {
-      if (!form.destination) e.destination = 'Bitte wählen'
-      if (!form.datum_von) e.datum_von = 'Datum eingeben'
-      if (!form.personen) e.personen = 'Anzahl eingeben'
+      if (!form.destination) e.destination = kfm.errWahl
+      if (!form.datum_von) e.datum_von = kfm.errDatum
+      if (!form.personen) e.personen = kfm.errAnzahl
     }
     if (s === 1) {
-      if (!form.name.trim()) e.name = 'Name eingeben'
-      if (!form.email.includes('@')) e.email = 'Gültige E-Mail eingeben'
+      if (!form.name.trim()) e.name = kfm.errName
+      if (!form.email.includes('@')) e.email = kfm.errMail
     }
     setErrors(e)
     return Object.keys(e).length === 0
@@ -219,23 +253,13 @@ export default function Kontakt() {
                         <label style={labelStyle}>{kfm.dest}</label>
                         <select value={form.destination} onChange={e => set('destination', e.target.value)} style={inputStyle(!!errors.destination)}>
                           <option value="">{kfm.wahl}</option>
-                          <optgroup label="Europa">
-                            <option>Kroatien – Dalmatien</option>
-                            <option>Kroatien – Kornaten</option>
-                            <option>Kroatien – Istrien</option>
-                            <option>Griechenland – Ionische Inseln</option>
-                            <option>Griechenland – Kykladen</option>
-                            <option>Balearen – Mallorca</option>
-                            <option>Balearen – Ibiza & Formentera</option>
-                            <option>Kanaren</option>
+                          <optgroup label={kfm.grpEU}>
+                            {kfm.dests.map(d => <option key={d}>{d}</option>)}
                           </optgroup>
-                          <optgroup label="Karibik & Fernziele">
-                            <option>Karibik – BVI</option>
-                            <option>Karibik – Grenadinen</option>
-                            <option>Seychellen</option>
-                            <option>Thailand</option>
+                          <optgroup label={kfm.grpFern}>
+                            {kfm.destsFern.map(d => <option key={d}>{d}</option>)}
                           </optgroup>
-                          <option value="offen">Noch offen / beraten lassen</option>
+                          <option value="offen">{kfm.offen}</option>
                         </select>
                         {errors.destination && <p style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.destination}</p>}
                       </div>
@@ -245,11 +269,7 @@ export default function Kontakt() {
                           <label style={labelStyle}>{kfm.art}</label>
                           <select value={form.toerntyp} onChange={e => set('toerntyp', e.target.value)} style={inputStyle()}>
                             <option value="">{kfm.wahl}</option>
-                            <option>Skippered (mit Skipper)</option>
-                            <option>Bareboat (selbst segeln)</option>
-                            <option>Kabinentörn</option>
-                            <option>Charter</option>
-                            <option>Noch unsicher</option>
+                            {kfm.typen.map(d => <option key={d}>{d}</option>)}
                           </select>
                         </div>
                         <div>
@@ -287,7 +307,7 @@ export default function Kontakt() {
                       <div style={{ marginBottom: '1.5rem' }}>
                         <label style={labelStyle}>Gewünschter Yachttyp</label>
                         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                          {['Segelyacht', 'Katamaran', 'Motoryacht', 'Egal'].map(y => (
+                          {kfm.yachten.map(y => (
                             <button key={y} type="button"
                               onClick={() => set('yacht', y)}
                               style={{
@@ -308,9 +328,7 @@ export default function Kontakt() {
                         <label style={labelStyle}>Buchungsabsicht</label>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                           {[
-                            { val: 'sofort', label: 'Ich möchte so bald wie möglich buchen.' },
-                            { val: 'bald', label: 'Ich möchte in den nächsten Wochen buchen.' },
-                            { val: 'info', label: 'Ich erkundige mich vorerst nur.' },
+                            ...kfm.absichten,
                           ].map(opt => (
                             <label key={opt.val} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer', fontSize: '0.85rem', color: '#444' }}>
                               <input type="radio" name="buchungsabsicht" value={opt.val}
@@ -333,7 +351,7 @@ export default function Kontakt() {
                   {step === 1 && (
                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
                       <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
-                        Wie können wir Sie erreichen?
+                        {kfm.reach}
                       </h3>
 
                       {/* Summary */}
@@ -348,13 +366,13 @@ export default function Kontakt() {
                         <div>
                           <label style={labelStyle}>{kfm.name}</label>
                           <input value={form.name} onChange={e => set('name', e.target.value)}
-                            placeholder="Ihr Name" style={inputStyle(!!errors.name)} />
+                            placeholder={kfm.namePh} style={inputStyle(!!errors.name)} />
                           {errors.name && <p style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.name}</p>}
                         </div>
                         <div>
                           <label style={labelStyle}>{kfm.mail}</label>
                           <input type="email" value={form.email} onChange={e => set('email', e.target.value)}
-                            placeholder="ihre@email.at" style={inputStyle(!!errors.email)} />
+                            placeholder={kfm.mailPh} style={inputStyle(!!errors.email)} />
                           {errors.email && <p style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.email}</p>}
                         </div>
                       </div>
@@ -368,7 +386,7 @@ export default function Kontakt() {
                       <div style={{ marginBottom: '1rem' }}>
                         <label style={labelStyle}>Gewünschte Kontaktart</label>
                         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                          {['Telefon', 'E-Mail', 'WhatsApp'].map(k => (
+                          {kfm.kontaktarten.map(k => (
                             <button key={k} type="button"
                               onClick={() => set('kontaktart', k)}
                               style={{
@@ -386,24 +404,17 @@ export default function Kontakt() {
                       </div>
 
                       <div style={{ marginBottom: '1.25rem' }}>
-                        <label style={labelStyle}>Ihre Wünsche & Fragen</label>
+                        <label style={labelStyle}>{kfm.wishes}</label>
                         <textarea rows={3} value={form.message} onChange={e => set('message', e.target.value)}
-                          placeholder="Was ist Ihnen besonders wichtig? Haben Sie spezielle Wünsche?"
+                          placeholder={kfm.wishesPh}
                           style={{ ...inputStyle(), resize: 'vertical' }} />
                       </div>
 
                       <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelStyle}>Wie haben Sie von uns erfahren?</label>
+                        <label style={labelStyle}>{kfm.found}</label>
                         <select value={form.gefunden} onChange={e => set('gefunden', e.target.value)} style={inputStyle()}>
                           <option value="">{kfm.wahl}</option>
-                          <option>Freunde & Bekannte</option>
-                          <option>Online-Suche (Google etc.)</option>
-                          <option>Facebook</option>
-                          <option>Instagram</option>
-                          <option>YouTube</option>
-                          <option>Reisemesse</option>
-                          <option>War bereits Gast</option>
-                          <option>Sonstiges</option>
+                          {kfm.foundOpts.map(d => <option key={d}>{d}</option>)}
                         </select>
                       </div>
 
@@ -411,12 +422,12 @@ export default function Kontakt() {
                         <input type="checkbox" checked={form.newsletter} onChange={e => set('newsletter', e.target.checked)}
                           style={{ marginTop: '3px', flexShrink: 0 }} />
                         <span style={{ fontSize: '0.78rem', color: 'var(--gray)', lineHeight: 1.5 }}>
-                          Ja, ich möchte den Newsletter mit Angeboten und Neuigkeiten erhalten.
+                          {kfm.nl}
                         </span>
                       </label>
 
                       <div style={{ display: 'flex', gap: '0.75rem' }}>
-                        <button type="button" onClick={back} className="btn btn-ghost" style={{ flex: 1 }}>← Zurück</button>
+                        <button type="button" onClick={back} className="btn btn-ghost" style={{ flex: 1 }}>{kfm.zurueck}</button>
                         <button type="submit" className="btn btn-navy" style={{ flex: 2 }}>{kfm.absenden}</button>
                       </div>
                     </motion.div>

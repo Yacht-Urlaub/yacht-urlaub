@@ -33,7 +33,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
           style={{ fontSize: '0.8rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '1.2rem', opacity: 0.8 }}
         >
-          Seit über 10 Jahren
+          {lang === 'en' ? 'For more than 10 years' : 'Seit über 10 Jahren'}
         </motion.p>
 
         <motion.h1
