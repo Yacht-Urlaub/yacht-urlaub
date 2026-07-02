@@ -137,7 +137,7 @@ export default function Zielgruppen() {
           <p className="section-subtitle">{lang === 'en' ? 'From your first sailing lesson to a luxury experience — we have the right cruise for everyone.' : 'Von der ersten Segelstunde bis zum Luxuserlebnis — wir haben den passenden Törn für jeden.'}</p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
+        <div className="zielgruppen-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
           {groups.map((g, i) => <Card key={g.title} g={g} i={i} />)}
         </div>
 
@@ -168,10 +168,10 @@ export default function Zielgruppen() {
 
       <style>{`
         @media (max-width: 900px) {
-          #toerns .container > div:last-child { grid-template-columns: 1fr 1fr !important; }
+          .zielgruppen-grid { grid-template-columns: 1fr 1fr !important; }
         }
         @media (max-width: 560px) {
-          #toerns .container > div:last-child { grid-template-columns: 1fr !important; }
+          .zielgruppen-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </section>

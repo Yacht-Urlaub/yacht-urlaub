@@ -1,18 +1,28 @@
 import { useLang } from '../i18n'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useRef, useEffect } from 'react'
 
 export default function Hero() {
   const lang = useLang()
+  const videoRef = useRef<HTMLVideoElement>(null)
+  useEffect(() => {
+    const v = videoRef.current
+    if (!v) return
+    v.muted = true
+    v.play().catch(() => {})
+  }, [])
   return (
     <section id="home" style={{ position: 'relative', height: '100vh', minHeight: '600px', overflow: 'hidden' }}>
       {/* Video Background */}
       <video
-        autoPlay muted loop playsInline
+        ref={videoRef}
+        autoPlay muted loop playsInline preload="auto"
+        poster="/header-poster.jpg"
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
       >
+        <source src="/header-opt.mp4" type="video/mp4" />
         <source src="/header.webm" type="video/webm" />
-        <source src="/header.mp4" type="video/mp4" />
       </video>
 
       {/* Overlay */}
