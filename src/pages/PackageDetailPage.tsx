@@ -154,6 +154,7 @@ export default function PackageDetailPage() {
   const pid = lang === 'en' ? (enPkgSlugs[id ?? ''] ?? id) : id
   const pkg = list.find(p => p.id === pid)
   const [lightbox, setLightbox] = useState<number | null>(null)
+  const [mapIdx, setMapIdx] = useState(0)
 
   if (!pkg) {
     return (
@@ -314,22 +315,45 @@ export default function PackageDetailPage() {
         {/* Routenkarten */}
         <div style={{ marginBottom: '4rem' }}>
           <h2 style={h2Style}>{pkg.routeMaps.length > 1 ? s.maps : s.map}</h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-            {pkg.routeMaps.map(map => (
-              <figure key={map.src} style={{ textAlign: 'center' }}>
-                <img
-                  src={map.src}
-                  alt={map.caption}
-                  loading="lazy"
-                  style={{ maxWidth: '760px', width: '100%', display: 'block', margin: '0 auto', borderRadius: '4px', boxShadow: '0 2px 12px rgba(0,0,0,0.1)' }}
-                  onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
-                />
-                {pkg.routeMaps.length > 1 && (
-                  <figcaption style={{ color: 'var(--gray)', fontSize: '0.8rem', marginTop: '0.5rem' }}>{map.caption}</figcaption>
-                )}
-              </figure>
-            ))}
-          </div>
+          {pkg.routeMaps.length > 1 ? (
+            <div style={{ maxWidth: '760px', margin: '0 auto' }}>
+              <div style={{ position: 'relative' }}>
+                <figure style={{ margin: 0, textAlign: 'center' }}>
+                  <img
+                    key={mapIdx}
+                    src={pkg.routeMaps[mapIdx % pkg.routeMaps.length].src}
+                    alt={pkg.routeMaps[mapIdx % pkg.routeMaps.length].caption}
+                    loading="lazy"
+                    style={{ width: '100%', borderRadius: '4px', boxShadow: '0 2px 12px rgba(0,0,0,0.1)' }}
+                    onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+                  />
+                  <figcaption style={{ color: 'var(--gray)', fontSize: '0.8rem', marginTop: '0.5rem' }}>
+                    {pkg.routeMaps[mapIdx % pkg.routeMaps.length].caption}
+                  </figcaption>
+                </figure>
+                <button onClick={() => setMapIdx(i => (i - 1 + pkg.routeMaps.length) % pkg.routeMaps.length)} aria-label="Vorherige Karte"
+                  style={{ position: 'absolute', left: '0.5rem', top: '45%', transform: 'translateY(-50%)', width: '40px', height: '40px', borderRadius: '50%', border: 'none', background: 'rgba(7,27,47,0.6)', color: '#fff', fontSize: '1.4rem', lineHeight: 1, cursor: 'pointer' }}>‹</button>
+                <button onClick={() => setMapIdx(i => (i + 1) % pkg.routeMaps.length)} aria-label="Nächste Karte"
+                  style={{ position: 'absolute', right: '0.5rem', top: '45%', transform: 'translateY(-50%)', width: '40px', height: '40px', borderRadius: '50%', border: 'none', background: 'rgba(7,27,47,0.6)', color: '#fff', fontSize: '1.4rem', lineHeight: 1, cursor: 'pointer' }}>›</button>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '1rem' }}>
+                {pkg.routeMaps.map((_, i) => (
+                  <button key={i} onClick={() => setMapIdx(i)} aria-label={`Karte ${i + 1}`}
+                    style={{ width: (mapIdx % pkg.routeMaps.length) === i ? '24px' : '8px', height: '8px', borderRadius: '4px', border: 'none', cursor: 'pointer', padding: 0, background: (mapIdx % pkg.routeMaps.length) === i ? 'var(--blue)' : 'var(--gray-mid)', transition: 'all 0.25s' }} />
+                ))}
+              </div>
+            </div>
+          ) : (
+            <figure style={{ textAlign: 'center', margin: 0 }}>
+              <img
+                src={pkg.routeMaps[0]?.src}
+                alt={pkg.routeMaps[0]?.caption}
+                loading="lazy"
+                style={{ maxWidth: '760px', width: '100%', display: 'block', margin: '0 auto', borderRadius: '4px', boxShadow: '0 2px 12px rgba(0,0,0,0.1)' }}
+                onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+              />
+            </figure>
+          )}
         </div>
 
         {/* {s.detail} */}
