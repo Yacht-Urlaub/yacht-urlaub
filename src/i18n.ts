@@ -46,6 +46,7 @@ export const routePairs: [de: string, en: string][] = [
   ['/impressum', '/en/imprint'],
   ['/datenschutz', '/en/data-privacy'],
   ['/agb', '/en/terms'],
+  ['/kontakt', '/en/contact'],
 ]
 
 /** EN-Destination-Slug → interne ID */

@@ -30,6 +30,7 @@ import ReisebueroPage from './pages/ReisebueroPage'
 import SkipperPage from './pages/SkipperPage'
 import SailAwayPage from './pages/SailAwayPage'
 import ToernberichtDetailPage from './pages/ToernberichtDetailPage'
+import ContactPage from './pages/ContactPage'
 
 function LangProvider({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation()
@@ -80,6 +81,7 @@ function AnimatedRoutes() {
           <Route path="/impressum" element={<ImpressumPage />} />
           <Route path="/datenschutz" element={<DatenschutzPage />} />
           <Route path="/agb" element={<AgbPage />} />
+          <Route path="/kontakt" element={<ContactPage />} />
           {/* ── Englische Routen (Slugs wie yacht-holiday.net) ── */}
           <Route path="/en" element={<HomePage />} />
           <Route path="/en/destinations" element={<DestinationenPage />} />
@@ -99,6 +101,7 @@ function AnimatedRoutes() {
           <Route path="/en/imprint" element={<ImpressumPage />} />
           <Route path="/en/data-privacy" element={<DatenschutzPage />} />
           <Route path="/en/terms" element={<AgbPage />} />
+          <Route path="/en/contact" element={<ContactPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
         <Kontakt />
