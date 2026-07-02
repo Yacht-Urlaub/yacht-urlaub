@@ -55,6 +55,8 @@ const pageVariants = {
 
 function AnimatedRoutes() {
   const location = useLocation()
+  // Globale "Anfrage starten"-Sektion auf Seiten ausblenden, die selbst ein Formular sind
+  const hideKontakt = ['/urlaubsplaner', '/en/holiday-planner', '/kontakt', '/en/contact'].includes(location.pathname)
   return (
     <AnimatePresence mode="wait">
       <motion.div key={canonicalPath(location.pathname)} variants={pageVariants} initial="initial" animate="animate" exit="exit">
@@ -104,7 +106,7 @@ function AnimatedRoutes() {
           <Route path="/en/contact" element={<ContactPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
-        <Kontakt />
+        {!hideKontakt && <Kontakt />}
         <Footer />
       </motion.div>
     </AnimatePresence>
