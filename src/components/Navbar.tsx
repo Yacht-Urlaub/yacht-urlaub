@@ -35,7 +35,6 @@ const navEn = [
   },
   {
     label: 'Yachts', href: '/en/yachts', items: [
-      { label: 'All yachts', href: '/en/yachts' },
       { label: 'Sailing yacht (monohull)', href: '/en/yachts?tab=monohull' },
       { label: 'Sailing catamaran', href: '/en/yachts?tab=katamaran' },
       { label: 'Motor yacht (monohull)', href: '/en/yachts?tab=motoryacht' },
@@ -86,7 +85,6 @@ const navDe = [
   },
   {
     label: 'Yachten', href: '/yachten', items: [
-      { label: 'Alle Yachten', href: '/yachten' },
       { label: 'Segelyacht (Monohull)', href: '/yachten?tab=monohull' },
       { label: 'Segel-Katamaran', href: '/yachten?tab=katamaran' },
       { label: 'Motoryacht (Monohull)', href: '/yachten?tab=motoryacht' },
@@ -124,7 +122,7 @@ export default function Navbar() {
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px' }}>
         {/* Logo */}
         <Link to={lang === 'en' ? '/en' : '/'}>
-          <img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '68px', filter: 'brightness(0) invert(1)' }} />
+          <img src={lang === 'en' ? '/logo-en.png' : '/logo.png'} alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'} style={{ height: '68px', filter: 'brightness(0) invert(1)' }} />
         </Link>
 
         {/* Desktop Nav */}

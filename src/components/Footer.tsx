@@ -168,7 +168,7 @@ export default function Footer() {
         {/* Bottom */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <Link to={lang === 'en' ? '/en' : '/'}><img src="/logo.png" alt="Yacht-Urlaub" style={{ height: '32px', filter: 'brightness(0) invert(1) opacity(0.7)' }} /></Link>
+            <Link to={lang === 'en' ? '/en' : '/'}><img src={lang === 'en' ? '/logo-en.png' : '/logo.png'} alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'} style={{ height: '32px', filter: 'brightness(0) invert(1) opacity(0.7)' }} /></Link>
             <p style={{ fontSize: '0.78rem' }}>© YACHT-URLAUB Ing. Manuel Göschl, MBA</p>
           </div>
 
@@ -195,15 +195,24 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Zahlungsanbieter */}
-          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.4)', marginRight: '4px' }}>{lang === 'en' ? 'Payment:' : 'Zahlung:'}</span>
-            {['Visa', 'MC', 'AMEX', 'Giropay'].map(p => (
-              <span key={p} style={{
-                background: 'rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.6)',
-                padding: '3px 8px', borderRadius: '3px', fontSize: '0.7rem', fontWeight: 600,
-              }}>{p}</span>
-            ))}
+          {/* Trust-Siegel & Zahlungsanbieter */}
+          <div style={{ display: 'flex', gap: '1.1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <img
+              src="/images/logos/trusted-shops.png"
+              alt={lang === 'en' ? 'Trusted Shops certified' : 'Trusted Shops zertifiziert'}
+              title={lang === 'en' ? 'Trusted Shops certified' : 'Trusted Shops zertifiziert'}
+              loading="lazy"
+              style={{ height: '46px', width: 'auto', flexShrink: 0 }}
+            />
+            <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.4)' }}>{lang === 'en' ? 'Payment:' : 'Zahlung:'}</span>
+              <img
+                src="/images/logos/payment-methods.png"
+                alt="Mastercard, Visa, American Express, giropay"
+                loading="lazy"
+                style={{ height: '42px', width: 'auto', background: '#fff', borderRadius: '6px', padding: '7px 12px' }}
+              />
+            </div>
           </div>
         </div>
       </div>

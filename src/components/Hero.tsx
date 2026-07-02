@@ -77,21 +77,6 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Logo unter Buttons */}
-        <motion.img
-          src="/logo.png"
-          alt="Yacht-Urlaub"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, delay: 1.3 }}
-          style={{
-            height: 'clamp(80px, 12vw, 130px)',
-            marginTop: '3rem',
-            filter: 'brightness(0) invert(1)',
-
-          }}
-        />
-
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}

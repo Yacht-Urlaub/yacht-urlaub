@@ -160,6 +160,20 @@ export default function Bewertungen() {
             {lang === 'en' ? 'Read all reviews on Google →' : 'Alle Bewertungen auf Google lesen →'}
           </a>
         </div>
+
+        {/* Trusted Shops Trust-Siegel */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.9rem', marginTop: '2.75rem' }}>
+          <img
+            src="/images/logos/trusted-shops.png"
+            alt={lang === 'en' ? 'Trusted Shops certified' : 'Trusted Shops zertifiziert'}
+            loading="lazy"
+            style={{ height: '60px', width: 'auto', flexShrink: 0 }}
+            onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+          />
+          <span style={{ color: 'var(--gray)', fontSize: '0.85rem', maxWidth: '230px', textAlign: 'left', lineHeight: 1.5 }}>
+            {lang === 'en' ? 'Trusted Shops certified — book with confidence.' : 'Trusted Shops zertifiziert — sicher & geprüft buchen.'}
+          </span>
+        </div>
       </div>
 
       <style>{`
