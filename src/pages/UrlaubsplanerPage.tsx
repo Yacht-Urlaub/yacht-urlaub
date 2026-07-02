@@ -571,22 +571,6 @@ export default function UrlaubsplanerPage() {
             </div>
           )}
 
-          {/* Alternativen (wie auf der Originalseite) */}
-          <div style={{ marginTop: '4rem', background: '#fff', borderRadius: '8px', padding: '2rem', boxShadow: '0 2px 14px rgba(0,0,0,0.06)', textAlign: 'center' }}>
-            <p style={{ color: '#444', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '0.5rem' }}>
-              {s.altText} <a href="#kontakt" style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.altForm}</a> {s.altUse}
-            </p>
-            <p style={{ color: '#444', fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
-              {s.bareboat} <a href={s.charterHref} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.bareboatForm}</a>{s.bareboatUse}
-            </p>
-            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <a href={s.buchHref} className="btn btn-navy" style={{ fontSize: '0.8rem' }}>{s.fixe}</a>
-              <a href={s.charterHref} className="btn btn-ghost" style={{ fontSize: '0.8rem' }}>{s.nurYacht}</a>
-            </div>
-            <p style={{ color: 'var(--gray)', fontSize: '0.85rem', marginTop: '1.25rem' }}>
-              <a href="tel:+43199715820" style={{ color: 'var(--blue)', fontWeight: 600 }}>+43 1 997 15 82</a> · <a href="mailto:info@yacht-urlaub.net" style={{ color: 'var(--blue)', fontWeight: 600 }}>info@yacht-urlaub.net</a>
-            </p>
-          </div>
         </div>
       )}
 

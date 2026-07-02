@@ -44,9 +44,9 @@ const initial: Form = {
 }
 
 const kf = {
-  formDe: { whither: '{kfm.whither}', wahl: 'Bitte wählen', dest: 'Destination *', art: 'Art des Törns',
+  formDe: { whither: 'Wohin soll es gehen?', wahl: 'Bitte wählen', dest: 'Destination *', art: 'Art des Törns',
     pers: 'Personen *', von: 'Abreise *', bis: 'Rückkehr (ca.)', yacht: 'Yacht-Typ', weiter: 'Weiter →',
-    name: 'Name *', mail: 'E-Mail *', tel: 'Telefon', nachricht: 'Nachricht', absenden: '{kfm.absenden}',
+    name: 'Name *', mail: 'E-Mail *', tel: 'Telefon', nachricht: 'Nachricht', absenden: 'Anfrage senden →',
     fast: 'Fast geschafft!', check: 'Bitte prüfen Sie Ihre Angaben und senden Sie die Anfrage ab.',
     errWahl: 'Bitte wählen', errDatum: 'Datum eingeben', errAnzahl: 'Anzahl eingeben', errName: 'Name eingeben', errMail: 'Gültige E-Mail eingeben',
     grpEU: 'Europa', grpFern: 'Karibik & Fernziele', offen: 'Noch offen / beraten lassen',
@@ -90,7 +90,7 @@ const kf = {
 
 const kk = {
   de: { label: 'Kontakt', h2: 'Anfrage starten',
-    sub: '{kt.sub}',
+    sub: 'Wir beraten Sie gerne persönlich. Füllen Sie das Formular aus — wir melden uns innerhalb von 24 Stunden bei Ihnen.',
     tel: 'Telefon', wa: 'WhatsApp', mail: 'E-Mail', waSub: 'Schnelle Antwort',
     badges: ['✓ Persönliche Beratung', '✓ Antwort innerhalb 24h', '✓ Kostenlose Erstberatung', '✓ Über 10 Jahre Erfahrung'],
     steps: ['Reisedaten', 'Kontakt', 'Absenden'],
