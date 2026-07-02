@@ -316,12 +316,12 @@ export default function PackageDetailPage() {
           <h2 style={h2Style}>{pkg.routeMaps.length > 1 ? s.maps : s.map}</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             {pkg.routeMaps.map(map => (
-              <figure key={map.src}>
+              <figure key={map.src} style={{ textAlign: 'center' }}>
                 <img
                   src={map.src}
                   alt={map.caption}
                   loading="lazy"
-                  style={{ maxWidth: '100%', borderRadius: '4px', boxShadow: '0 2px 12px rgba(0,0,0,0.1)' }}
+                  style={{ maxWidth: '760px', width: '100%', display: 'block', margin: '0 auto', borderRadius: '4px', boxShadow: '0 2px 12px rgba(0,0,0,0.1)' }}
                   onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
                 />
                 {pkg.routeMaps.length > 1 && (
