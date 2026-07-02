@@ -104,6 +104,7 @@ const navDe = [
 export default function Navbar() {
   const [open, setOpen] = useState<string | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileCat, setMobileCat] = useState<string | null>(null)
   const lang = useLang()
   const { pathname } = useLocation()
   const navigate = useNavigate()
@@ -211,19 +212,27 @@ export default function Navbar() {
               }}>{l.toUpperCase()}</button>
             ))}
           </div>
-          {nav.map(item => (
+          {nav.map(item => {
+            const expanded = mobileCat === item.label
+            const closeMenu = () => { setMobileOpen(false); setMobileCat(null) }
+            return (
             <div key={item.label}>
-              <div style={{ padding: '12px 20px', color: 'rgba(255,255,255,0.6)', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 700 }}>
+              <button
+                onClick={() => setMobileCat(expanded ? null : item.label)}
+                aria-expanded={expanded}
+                style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: 'none', border: 'none', borderBottom: '1px solid rgba(255,255,255,0.08)', padding: '14px 20px', color: 'rgba(255,255,255,0.75)', fontSize: '0.72rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 700, cursor: 'pointer', fontFamily: 'DM Sans, sans-serif' }}
+              >
                 {item.label}
-              </div>
-              {item.items.map(sub => {
-                const mobileStyle = { display: 'block', padding: '10px 32px', color: 'rgba(255,255,255,0.85)', fontSize: '0.85rem', borderBottom: '1px solid rgba(255,255,255,0.05)', textDecoration: 'none' }
+                <span style={{ fontSize: '0.7rem', display: 'inline-block', transition: 'transform 0.2s', transform: expanded ? 'rotate(180deg)' : 'none' }}>▾</span>
+              </button>
+              {expanded && item.items.map(sub => {
+                const mobileStyle = { display: 'block', padding: '11px 32px', color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', borderBottom: '1px solid rgba(255,255,255,0.05)', textDecoration: 'none' }
                 return sub.href.startsWith('#')
-                  ? <a key={sub.label} href={sub.href} onClick={() => setMobileOpen(false)} style={mobileStyle}>{sub.label}</a>
-                  : <Link key={sub.label} to={sub.href} onClick={() => setMobileOpen(false)} style={mobileStyle}>{sub.label}</Link>
+                  ? <a key={sub.label} href={sub.href} onClick={closeMenu} style={mobileStyle}>{sub.label}</a>
+                  : <Link key={sub.label} to={sub.href} onClick={closeMenu} style={mobileStyle}>{sub.label}</Link>
               })}
             </div>
-          ))}
+          )})}
         </div>
       )}
 
