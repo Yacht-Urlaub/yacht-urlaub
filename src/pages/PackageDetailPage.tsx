@@ -8,6 +8,25 @@ import { packagesEn } from '../data/packagesEn'
 import { useLang, enPkgSlugs } from '../i18n'
 import type { PriceBlock, Addon } from '../components/Packages'
 
+// Planyo-Blanko-Buchungslinks pro Package (wie Originalseite yacht-urlaub.net)
+const PLANYO_CAL = '46954'
+const planyoResource: Record<string, { rid: string; quantity?: number }> = {
+  dalmatien: { rid: '139297' },
+  kornaten: { rid: '140041' },
+  istrien: { rid: '139296' },
+  griechenland: { rid: '140650' },
+  'karibik-bvi': { rid: '139428', quantity: 4 },
+  'karibik-grenadinen': { rid: '140043', quantity: 4 },
+}
+function planyoBookingUrl(pid: string | undefined, lang: 'de' | 'en'): string | null {
+  const r = pid ? planyoResource[pid] : undefined
+  if (!r) return null
+  let url = `https://www.planyo.com/booking.php?mode=reserve&calendar=${PLANYO_CAL}&resource_id=${r.rid}`
+  if (lang === 'en') url += '&lang=EN'
+  if (r.quantity) url += `&quantity=${r.quantity}`
+  return url
+}
+
 const h2Style = { fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', marginBottom: '1.25rem' } as const
 
 // Sidebar-Bild + Partnerlogo pro Package (wie auf der Originalseite)
@@ -48,7 +67,7 @@ function AddonCard({ addon }: { addon: Addon }) {
   )
 }
 
-function PriceBlockSection({ block }: { block: PriceBlock }) {
+function PriceBlockSection({ block, bookingUrl }: { block: PriceBlock; bookingUrl: string | null }) {
   const lang = useLang()
   const s = L[lang]
   return (
@@ -70,7 +89,9 @@ function PriceBlockSection({ block }: { block: PriceBlock }) {
             </li>
           ))}
         </ul>
-        <Link to={s.buchen} className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }}>{lang === 'en' ? '▶ Book now!' : '▶ Jetzt buchen!'}</Link>
+        {bookingUrl
+          ? <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }}>{lang === 'en' ? '▶ Book now!' : '▶ Jetzt buchen!'}</a>
+          : <Link to={s.buchen} className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }}>{lang === 'en' ? '▶ Book now!' : '▶ Jetzt buchen!'}</Link>}
       </div>
 
       {block.notes.map(n => (
@@ -145,6 +166,8 @@ export default function PackageDetailPage() {
     )
   }
 
+  const bookingUrl = planyoBookingUrl(pkg.id, lang)
+
   return (
     <main>
       <SEO
@@ -217,9 +240,9 @@ export default function PackageDetailPage() {
               </ul>
             </div>
 
-            <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              {s.book}
-            </Link>
+            {bookingUrl
+              ? <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>{s.book}</a>
+              : <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>{s.book}</Link>}
           </div>
 
           {/* Right: Price badge + Route */}
@@ -328,7 +351,9 @@ export default function PackageDetailPage() {
               </div>
             </div>
           ))}
-          <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.85rem' }}>{s.dates}</Link>
+          {bookingUrl
+            ? <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: '0.85rem' }}>{s.dates}</a>
+            : <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.85rem' }}>{s.dates}</Link>}
         </div>
 
         {/* Unterkunft */}
@@ -415,7 +440,7 @@ export default function PackageDetailPage() {
 
         {/* Preise */}
         {pkg.priceBlocks.map((block, i) => (
-          <PriceBlockSection key={i} block={block} />
+          <PriceBlockSection key={i} block={block} bookingUrl={bookingUrl} />
         ))}
 
         {/* CTA */}
@@ -430,9 +455,9 @@ export default function PackageDetailPage() {
             <Link to={s.planer} className="btn btn-ghost" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
               ANFRAGE STARTEN
             </Link>
-            <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
-              {s.dates}
-            </Link>
+            {bookingUrl
+              ? <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>{s.dates}</a>
+              : <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>{s.dates}</Link>}
           </div>
         </div>
       </div>
