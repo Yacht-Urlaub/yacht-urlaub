@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { MapPinIcon } from '../components/Icons'
@@ -25,6 +25,60 @@ function planyoBookingUrl(pid: string | undefined, lang: 'de' | 'en'): string | 
   if (lang === 'en') url += '&lang=EN'
   if (r.quantity) url += `&quantity=${r.quantity}`
   return url
+}
+
+// Buchungs-Overlay: öffnet den Planyo-Buchungslink als Iframe statt in neuem Tab
+function BookingModal({ url, onClose }: { url: string | null; onClose: () => void }) {
+  const lang = useLang()
+  useEffect(() => {
+    if (!url) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKey)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = prev }
+  }, [url, onClose])
+  return (
+    <AnimatePresence>
+      {url && (
+        <motion.div
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+          onClick={onClose}
+          style={{ position: 'fixed', inset: 0, background: 'rgba(7,27,47,0.75)', backdropFilter: 'blur(2px)', zIndex: 2000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2vh 2vw' }}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: 20 }}
+            transition={{ duration: 0.25 }}
+            onClick={e => e.stopPropagation()}
+            style={{ position: 'relative', width: 'min(1000px, 96vw)', height: 'min(92vh, 900px)', background: '#fff', borderRadius: '10px', overflow: 'hidden', boxShadow: '0 24px 70px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column' }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '1.25rem', padding: '0.55rem 0.9rem', background: 'var(--navy)' }}>
+              <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: '#cfe4ff', fontSize: '0.78rem', textDecoration: 'none' }}>
+                {lang === 'en' ? 'Open in new tab ↗' : 'In neuem Tab öffnen ↗'}
+              </a>
+              <button type="button" onClick={onClose} aria-label={lang === 'en' ? 'Close' : 'Schließen'}
+                style={{ background: 'transparent', border: 'none', color: '#fff', fontSize: '1.6rem', lineHeight: 1, cursor: 'pointer', padding: '0 0.25rem' }}>×</button>
+            </div>
+            <iframe src={url} title={lang === 'en' ? 'Booking' : 'Buchung'} style={{ flex: 1, width: '100%', border: 'none' }} />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
+// Buchungs-Button: öffnet Planyo im Iframe-Overlay; ohne Planyo-Link Fallback auf interne Buchungsseite
+function BookNowButton({ bookingUrl, fallbackTo, label, className, style }: {
+  bookingUrl: string | null; fallbackTo: string; label: string; className: string; style?: React.CSSProperties
+}) {
+  const [open, setOpen] = useState(false)
+  if (!bookingUrl) return <Link to={fallbackTo} className={className} style={style}>{label}</Link>
+  return (
+    <>
+      <button type="button" onClick={() => setOpen(true)} className={className} style={style}>{label}</button>
+      <BookingModal url={open ? bookingUrl : null} onClose={() => setOpen(false)} />
+    </>
+  )
 }
 
 const h2Style = { fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', marginBottom: '1.25rem' } as const
@@ -89,9 +143,7 @@ function PriceBlockSection({ block, bookingUrl }: { block: PriceBlock; bookingUr
             </li>
           ))}
         </ul>
-        {bookingUrl
-          ? <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }}>{lang === 'en' ? '▶ Book now!' : '▶ Jetzt buchen!'}</a>
-          : <Link to={s.buchen} className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }}>{lang === 'en' ? '▶ Book now!' : '▶ Jetzt buchen!'}</Link>}
+        <BookNowButton bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }} label={lang === 'en' ? '▶ Book now!' : '▶ Jetzt buchen!'} />
       </div>
 
       {block.notes.map(n => (
@@ -241,9 +293,7 @@ export default function PackageDetailPage() {
               </ul>
             </div>
 
-            {bookingUrl
-              ? <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>{s.book}</a>
-              : <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>{s.book}</Link>}
+            <BookNowButton bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }} label={s.book} />
           </div>
 
           {/* Right: Price badge + Route */}
@@ -375,9 +425,7 @@ export default function PackageDetailPage() {
               </div>
             </div>
           ))}
-          {bookingUrl
-            ? <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: '0.85rem' }}>{s.dates}</a>
-            : <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.85rem' }}>{s.dates}</Link>}
+          <BookNowButton bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-primary" style={{ fontSize: '0.85rem' }} label={s.dates} />
         </div>
 
         {/* Unterkunft */}
@@ -479,9 +527,7 @@ export default function PackageDetailPage() {
             <Link to={s.planer} className="btn btn-ghost" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
               ANFRAGE STARTEN
             </Link>
-            {bookingUrl
-              ? <a href={bookingUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>{s.dates}</a>
-              : <Link to={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>{s.dates}</Link>}
+            <BookNowButton bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }} label={s.dates} />
           </div>
         </div>
       </div>
