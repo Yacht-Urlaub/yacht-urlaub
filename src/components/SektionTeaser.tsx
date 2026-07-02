@@ -50,7 +50,7 @@ export default function SektionTeaser() {
   return (
     <section className="section" style={{ background: 'var(--gray-light)' }}>
       <div className="container">
-        <div className="teaser-circle-grid">
+        <div className="teaser-circle-grid" style={{ ['--cols']: teasers.length } as React.CSSProperties}>
           {teasers.map((t, i) => (
             <motion.div
               key={t.id}
@@ -77,8 +77,9 @@ export default function SektionTeaser() {
       <style>{`
         .teaser-circle-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(var(--cols, 4), minmax(0, 260px));
           gap: 2.5rem;
+          justify-content: center;
         }
         .teaser-circle-link {
           display: flex;
