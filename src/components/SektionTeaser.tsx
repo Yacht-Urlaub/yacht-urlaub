@@ -103,7 +103,7 @@ export default function SektionTeaser() {
           height: clamp(160px, 16vw, 220px);
           border-radius: 50%;
           overflow: hidden;
-          border: 4px solid var(--navy);
+          border: 4px solid #fff;
           box-shadow: 0 8px 30px rgba(7, 27, 47, 0.18);
           margin-bottom: 1.5rem;
           transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.3s ease;
