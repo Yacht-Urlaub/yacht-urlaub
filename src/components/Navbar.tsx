@@ -43,7 +43,7 @@ const navEn = [
   },
   {
     label: 'Contact', href: '#kontakt', items: [
-      { label: 'Contact', href: '/en/contact' },
+      { label: 'Contact form', href: '/en/contact' },
       { label: 'Get a quote', href: '#kontakt' },
       { label: 'FAQ', href: '/en/faq' },
       { label: 'Our team', href: '/en/contact/crew' },
@@ -94,7 +94,7 @@ const navDe = [
   },
   {
     label: 'Kontakt', href: '#kontakt', items: [
-      { label: 'Kontakt', href: '/kontakt' },
+      { label: 'Kontaktformular', href: '/kontakt' },
       { label: 'Anfrage starten', href: '#kontakt' },
       { label: 'FAQ', href: '/faq' },
       { label: 'Unser Team', href: '/crew' },
