@@ -52,7 +52,7 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.4 }}
           style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2.4rem, 6vw, 5rem)', fontWeight: 700, lineHeight: 1.15, marginBottom: '0.5rem' }}
         >
-          Yacht-Urlaub
+          {lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}
         </motion.h1>
 
         <motion.p
