@@ -7,6 +7,7 @@ import { packages } from './Packages'
 import { packagesEn } from '../data/packagesEn'
 import { useLang, enPkgSlugs } from '../i18n'
 import { CalendarIcon } from './Icons'
+import Carousel from './Carousel'
 
 export { destinations }
 export type { Destination }
@@ -97,19 +98,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
           <div>
             {grouped.map((g, gi) => {
               if (Array.isArray(g)) {
-                return (
-                  <div key={gi} className="dest-img-grid" style={{ display: 'grid', gridTemplateColumns: g.length > 1 ? '1fr 1fr' : '1fr', gap: '1rem', margin: '1.75rem 0' }}>
-                    {g.map(img => (
-                      <figure key={img.x}>
-                        <img src={img.x} alt={img.c || dest.name} loading="lazy"
-                          onClick={() => setLightbox(img.x)}
-                          style={{ width: '100%', borderRadius: '5px', cursor: 'zoom-in', boxShadow: '0 2px 14px rgba(0,0,0,0.1)' }}
-                          onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
-                        {img.c && <figcaption style={{ color: 'var(--gray)', fontSize: '0.78rem', marginTop: '0.4rem', fontStyle: 'italic' }}>{img.c}</figcaption>}
-                      </figure>
-                    ))}
-                  </div>
-                )
+                return <Carousel key={gi} images={g} onOpen={setLightbox} />
               }
               const b = g
               const idx = dest.blocks.indexOf(b)
