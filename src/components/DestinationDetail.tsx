@@ -8,6 +8,7 @@ import { packagesEn } from '../data/packagesEn'
 import { useLang, enPkgSlugs } from '../i18n'
 import { CalendarIcon } from './Icons'
 import Carousel from './Carousel'
+import YouTubeFacade from './YouTubeFacade'
 
 export { destinations }
 export type { Destination }
@@ -117,6 +118,9 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
                     <span>{b.x}</span>
                   </div>
                 )
+              }
+              if (b.t === 'video') {
+                return <YouTubeFacade key={gi} videoId={b.x} title={b.c || ''} start={5} />
               }
               if (b.t === 'logo') {
                 return (

@@ -1,5 +1,5 @@
 // Destinationen 1:1 von yacht-urlaub.net übernommen (automatisch extrahiert)
-export type DestBlock = { t: 'h' | 'p' | 'li' | 'i' | 'logo'; x: string; c?: string }
+export type DestBlock = { t: 'h' | 'p' | 'li' | 'i' | 'logo' | 'video'; x: string; c?: string }
 export type Destination = {
   id: string; name: string; title: string; country: string
   headerImg: string; mapImg: string; bestTime: string
@@ -205,7 +205,7 @@ export const destinations: Destination[] = [
       { t: "h", x: "Geographie" },
       { t: 'i', x: "/images/destinationen/karibik-bvi/geographische-lage-der-britischen-jungferninseln.jpg", c: "Geografische Lage der britischen Jungferninseln" },
       { t: 'i', x: "/images/destinationen/karibik-bvi/Sandy_Spit.jpg", c: "Sandy Spit" },
-      { t: "h", x: "Die berühmte Foxy's Beach Bar auf Jost van Dyke" },
+      { t: "video", x: "FRG0xoSJWtk", c: "Die berühmte Foxy's Beach Bar auf Jost van Dyke" },
     ],
     info: ["Fläche: 153 mk²", "Einwohner: ca. 25.000", "Hauptstadt: Road Town, Torola", "Sprache: Englisch", "Fremdsprachen: Spanisch", "Währung: US-Dollar", "Ideale Reisezeit: November - April", "Religion: Protestanten"],
   },
@@ -277,8 +277,6 @@ export const destinations: Destination[] = [
       { t: "p", x: "Gemeinsam mit Yacht-Urlaub erleben Sie Thailand von einer Seite, die nur wenige zu sehen bekommen. Lassen Sie sich von der Eleganz des Katamarans und der natürlichen Pracht Thailands verzaubern." },
       { t: "p", x: "Buchen Sie noch heute Ihr Segelabenteuer und tauchen Sie ein in eine Welt voller Wunder, die darauf warten, von Ihnen entdeckt zu werden!" },
       { t: "p", x: "Die Anreise erfolgt in der Regel über Bangkok (BKK) oder auch direkt nach Phuket (HKT):" },
-      { t: "p", x: "Hier können Sie Ihren Thailand-Urlaub planen" },
-      { t: "p", x: "URLAUBSPLANER" },
     ],
     info: ["Fläche: 513.515 km²", "Einwohner: ca. 67 Mio.", "Hauptstadt: Bangkok (thailändisch: Krung Thep)", "Sprache: Thai", "Fremdsprachen: Englisch, uvm.", "Währung: Baht (THB)", "Ideale Reisezeit: November - April"],
   },
@@ -311,8 +309,6 @@ export const destinations: Destination[] = [
       { t: "p", x: "Das tropische Regenwaldklima herrscht über das ganze Jahr hinweg und die Temperaturen verändern sich auf den Seychellen nur minimal. Durch die Äquatornähe sind Tag & Nacht nahezu ident lang, mit bis zu 10 Sonnenstunden täglich ist auch für genug Möglichkeit gesorgt, eine Sommerbräune zu bekommen. Der tägliche Regenschauer darf meist nicht fehlen, der warme Sommerregen wird von vielen als geeignete Dusche genutzt." },
       { t: "p", x: "Die Tagestemperaturen bewegen sich meist zwischen 26 und 32°C - Tropennächte über 25°C sind keine Seltenheit. Die leichten Winde sind dabei eine willkommene Abkühlung und laue Sommernächte am Strand gehören nach einem typisch kreolischen Essen (Huhn, Fisch, Reis, Gemüse vom Grill) zur Tagesordnung. Die Wassertemperaturen rund um die Seychellen sind das ganze Jahr über angenehm warm. Im Winter liegen sie bei etwa 27-28°C, während sie im Sommer auf etwa 28-30°C steigen. Diese konstant warmen Temperaturen machen die Seychellen zu einem idealen Ort zum Segeln und Schwimmen zu jeder Jahreszeit." },
       { t: "p", x: "Genießen Sie mit Yacht-Urlaub eine unvergessliche Segelreise zu den Seychellen. Buchen Sie noch heute und tauchen Sie ein in die spektakulären Inseln, das kristallklare Wasser und die magischen Sonnenuntergänge." },
-      { t: "p", x: "Seychellen Urlaub Planung starten" },
-      { t: "p", x: "URLAUBSPLANER" },
     ],
     info: ["Fläche: 455 km²", "Einwohner: ca. 90.000", "Hauptstadt: Victoria", "Sprache: Seychellenkreol, Englisch und Französisch", "Fremdsprachen: Deutsch, Englisch", "Währung: 1 Seychellen-Rupie entspricht 0,067 Euro", "Ideale Reisezeit: Auf Anfrage", "Religion: Katholisch"],
   },
