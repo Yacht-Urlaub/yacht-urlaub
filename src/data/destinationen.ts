@@ -217,7 +217,7 @@ export const destinations: Destination[] = [
     headerImg: "/images/destinationen/karibik-windward-islands/header_header_kontakt.jpg",
     mapImg: "/images/destinationen/karibik-windward-islands/geographische-lage-von-grenada-und-st-vincent.jpg",
     bestTime: "November - April",
-    packageIds: ["karibik-bvi"],
+    packageIds: ["karibik-grenadinen"],
     blocks: [
       { t: "h", x: "Karibik - Windward Islands (Grenadinen)" },
       { t: "p", x: "Auf dem Katamaran durch das Karibische Meer segeln, vorbei an korallengesäumten Buchten und menschenleeren Sandstränden. Den weißen Sand der Grenadinen zwischen den Zehen spüren und mit einem fruchtigen Cocktail in der Hand zu Livemusik aus einer bunten Bar tanzen. Unter Palmen Schatten finden und Ruhe in den kristallklaren Lagunen. Das ist Urlaub in der Karibik mit Yacht-Urlaub." },
@@ -247,7 +247,7 @@ export const destinations: Destination[] = [
     title: "Thailand",
     country: "🇹🇭",
     headerImg: "/images/destinationen/thailand/header_pexels-tirachard-kumtanom-4.jpg",
-    mapImg: "",
+    mapImg: "/images/destinationen/thailand/thailand-karte-segelreviere.jpg",
     bestTime: "November - April",
     packageIds: [],
     blocks: [
@@ -260,7 +260,6 @@ export const destinations: Destination[] = [
       { t: "p", x: "Lassen Sie sich auf dem Meer treiben und genießen Sie die unvergleichliche Aussicht auf Thailands zauberhafte Inseln. Bei Landgängen können Sie abgelegene Tempel erkunden oder sich von der üppigen Vegetation des Regenwaldes verzaubern lassen." },
       { t: 'i', x: "/images/destinationen/thailand/koh-chang-buddha-statue-meer.jpg", c: "Buddha-Statue mit Blick aufs Meer, Koh Chang" },
       { t: "h", x: "Mögliche Startpunkte in Thailand" },
-      { t: "i", x: "/images/destinationen/thailand/thailand_bases.png", c: "Übersichtskarte der Segelreviere Koh Chang, Koh Samui und Phuket" },
       { t: "h", x: "Koh Chang" },
       { t: "p", x: "nahe der kambodschanischen Grenze, ist bekannt für seine unberührte Natur und den dichten Regenwald. Die Region bietet eine Mischung aus traditionellen Fischerdörfern, versteckten Buchten und tropischen Inseln wie Koh Mak und Koh Kood, die ideal für entspanntes Segeln und Entdeckungen abseits der Touristenströme sind." },
       { t: 'i', x: "/images/destinationen/thailand/koh-chang-salakphet-resort.jpg", c: "Salakphet Resort, Koh Chang" },

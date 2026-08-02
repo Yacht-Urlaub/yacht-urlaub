@@ -163,7 +163,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             {dest.mapImg && (
               <div style={{ marginBottom: '1.5rem' }}>
                 <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.6rem' }}>{s.geo}</h3>
-                <img src={dest.mapImg} alt={`Geografische Lage ${dest.name}`} loading="lazy" style={{ width: '100%', borderRadius: '4px', cursor: 'zoom-in' }}
+                <img src={dest.mapImg} alt={`${s.geo} ${dest.name}`} loading="lazy" style={{ width: '100%', borderRadius: '4px', cursor: 'zoom-in' }}
                   onClick={() => setLightbox(dest.mapImg)}
                   onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
               </div>
