@@ -123,9 +123,20 @@ export default function Navbar() {
       boxShadow: '0 4px 30px rgba(0,0,0,0.25)',
     }}>
       <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px' }}>
-        {/* Logo */}
-        <Link to={lang === 'en' ? '/en' : '/'}>
-          <img src={lang === 'en' ? '/logo-en.png' : '/logo.png'} alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'} style={{ height: '68px', filter: 'brightness(0) invert(1)' }} />
+        {/* Logo: volles Wort-Logo, sobald Platz da ist; kompaktes Icon im engen Zwischenbereich, damit nichts gestaucht wird */}
+        <Link to={lang === 'en' ? '/en' : '/'} style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
+          <img
+            className="logo-full"
+            src={lang === 'en' ? '/logo-en.png' : '/logo.png'}
+            alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}
+            style={{ height: '68px', filter: 'brightness(0) invert(1)' }}
+          />
+          <img
+            className="logo-compact"
+            src="/logo-icon.png"
+            alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}
+            style={{ height: '40px', display: 'none' }}
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -239,9 +250,13 @@ export default function Navbar() {
       )}
 
       <style>{`
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
           .desktop-nav { display: none !important; }
           .mobile-nav-toggle { display: block !important; }
+        }
+        @media (max-width: 1150px) and (min-width: 1025px) {
+          .logo-full { display: none !important; }
+          .logo-compact { display: block !important; }
         }
       `}</style>
     </header>

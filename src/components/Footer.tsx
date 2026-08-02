@@ -125,18 +125,26 @@ export default function Footer() {
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>{lang === 'en' ? 'No spam. Just real sailing dreams.' : 'Kein Spam. Nur echte Segelträume.'}</p>
           </div>
           <form
-            name="newsletter"
-            data-netlify="true"
-            onSubmit={e => e.preventDefault()}
+            action="https://yacht-urlaub.us10.list-manage.com/subscribe/post?u=cefebb6fcf8136469892f293c&amp;id=13f58451c3"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            target="_blank"
             style={{ display: 'flex', gap: '0.75rem', flex: '1 1 280px', maxWidth: '420px', flexWrap: 'wrap' }}
           >
-            <input type="hidden" name="form-name" value="newsletter" />
             <input
               type="email"
+              name="EMAIL"
+              id="mce-EMAIL"
+              required
               placeholder={lang === 'en' ? 'Your e-mail address' : 'Ihre E-Mail-Adresse'}
               style={{ padding: '10px 16px', borderRadius: '3px', border: 'none', fontSize: '0.85rem', flex: '1 1 180px', minWidth: 0, outline: 'none', fontFamily: 'DM Sans, sans-serif' }}
             />
-            <button type="submit" className="btn btn-navy" style={{ fontSize: '0.8rem', whiteSpace: 'nowrap' }}>
+            {/* Honeypot gegen Formular-Bots — darf nicht ausgefüllt werden */}
+            <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
+              <input type="text" name="b_cefebb6fcf8136469892f293c_13f58451c3" tabIndex={-1} defaultValue="" />
+            </div>
+            <button type="submit" id="mc-embedded-subscribe" className="btn btn-navy" style={{ fontSize: '0.8rem', whiteSpace: 'nowrap' }}>
               {lang === 'en' ? 'Sign me up!' : 'Ich bin dabei!'}
             </button>
           </form>
