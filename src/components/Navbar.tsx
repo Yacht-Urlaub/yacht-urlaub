@@ -133,7 +133,7 @@ export default function Navbar() {
           />
           <img
             className="logo-compact"
-            src="/logo-icon.svg"
+            src="/logo-icon.png"
             alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}
             style={{ height: '40px', display: 'none' }}
           />
