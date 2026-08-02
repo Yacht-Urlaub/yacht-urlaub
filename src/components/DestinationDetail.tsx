@@ -7,7 +7,7 @@ import { packages } from './Packages'
 import { packagesEn } from '../data/packagesEn'
 import { useLang, enPkgSlugs } from '../i18n'
 import { CalendarIcon } from './Icons'
-import Carousel from './Carousel'
+import YouTubeFacade from './YouTubeFacade'
 
 export { destinations }
 export type { Destination }
@@ -35,15 +35,6 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
   const pkgHref = (pid: string) => lang === 'en' ? `/en/cruises/book-now/${enPkgPath[pid] ?? pid}` : `/packages/${pid}`
   const teasers = dest.packageIds.map(pid => pkgList.find(p => p.id === pid)).filter((p): p is NonNullable<typeof p> => !!p)
   const images = dest.blocks.filter(b => b.t === 'i')
-
-  // Aufeinanderfolgende Bilder zu Gruppen zusammenfassen
-  const grouped: (DestBlock | DestBlock[])[] = []
-  for (const b of dest.blocks) {
-    const last = grouped[grouped.length - 1]
-    if (b.t === 'i' && Array.isArray(last)) last.push(b)
-    else if (b.t === 'i') grouped.push([b])
-    else grouped.push(b)
-  }
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -96,13 +87,8 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '4rem' }} className="dest-detail-grid">
           {/* Hauptinhalt (1:1 vom Original) */}
           <div>
-            {grouped.map((g, gi) => {
-              if (Array.isArray(g)) {
-                return <Carousel key={gi} images={g} onOpen={setLightbox} />
-              }
-              const b = g
-              const idx = dest.blocks.indexOf(b)
-              const next = dest.blocks[idx + 1]
+            {dest.blocks.map((b, gi) => {
+              const next = dest.blocks[gi + 1]
               if (b.t === 'h') {
                 return (
                   <h2 key={gi} style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', margin: gi === 0 ? '0 0 1.25rem' : '2.5rem 0 1.25rem', lineHeight: 1.3 }}>
@@ -115,6 +101,34 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
                   <div key={gi} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.92rem', lineHeight: 1.7, marginBottom: '0.5rem' }}>
                     <span style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>•</span>
                     <span>{b.x}</span>
+                  </div>
+                )
+              }
+              if (b.t === 'i') {
+                return (
+                  <figure key={gi} style={{ margin: '1.75rem auto', maxWidth: '640px' }}>
+                    <div style={{ aspectRatio: '3 / 2', borderRadius: '6px', overflow: 'hidden', boxShadow: '0 2px 14px rgba(0,0,0,0.1)', background: 'var(--gray-light)' }}>
+                      <img
+                        src={b.x} alt={b.c || dest.name} loading="lazy" decoding="async"
+                        onClick={() => setLightbox(b.x)}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', cursor: 'zoom-in', display: 'block' }}
+                        onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+                      />
+                    </div>
+                    {b.c && <figcaption style={{ color: 'var(--gray)', fontSize: '0.78rem', marginTop: '0.4rem', fontStyle: 'italic', textAlign: 'center' }}>{b.c}</figcaption>}
+                  </figure>
+                )
+              }
+              if (b.t === 'video') {
+                return <YouTubeFacade key={gi} videoId={b.x} title={b.c || ''} start={5} />
+              }
+              if (b.t === 'logo') {
+                return (
+                  <div key={gi} style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+                    <div style={{ background: 'var(--gray-light)', borderRadius: '8px', padding: '1.25rem 1.75rem', display: 'inline-flex' }}>
+                      <img src={b.x} alt={b.c || `Tourismus-Logo ${dest.name}`} loading="lazy"
+                        style={{ maxWidth: '180px', width: '100%', height: 'auto', display: 'block' }} />
+                    </div>
                   </div>
                 )
               }
@@ -149,7 +163,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
             {dest.mapImg && (
               <div style={{ marginBottom: '1.5rem' }}>
                 <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '0.95rem', fontWeight: 700, marginBottom: '0.6rem' }}>{s.geo}</h3>
-                <img src={dest.mapImg} alt={`Geografische Lage ${dest.name}`} loading="lazy" style={{ width: '100%', borderRadius: '4px', cursor: 'zoom-in' }}
+                <img src={dest.mapImg} alt={`${s.geo} ${dest.name}`} loading="lazy" style={{ width: '100%', borderRadius: '4px', cursor: 'zoom-in' }}
                   onClick={() => setLightbox(dest.mapImg)}
                   onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
               </div>
