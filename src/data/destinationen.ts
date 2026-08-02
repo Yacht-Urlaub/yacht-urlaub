@@ -18,6 +18,7 @@ export const destinations: Destination[] = [
     packageIds: ["dalmatien", "istrien", "kornaten"],
     blocks: [
       { t: "h", x: "Kroatien - voller Leben" },
+      { t: "logo", x: "/images/destinationen/kroatien/kroatien-logo-de.jpg", c: "Offizielles Tourismus-Logo Kroatiens: Kroatien – Voller Leben" },
       { t: "p", x: "Unweit der österreichischen bzw. deutschen Grenze offenbart sich ein Paradies für einen abwechslungsreichen Segelurlaub – an der Küste Kroatiens. An der nördlichen sowie mittleren Adria gelegen, bietet Kroatien, das seit 2013 Mitglied der Europäischen Union ist, ein Segelrevier mit über 5800 Küstenkilometern. Mehr als 4000 km entfallen dabei auf die 1244 Inseln." },
       { t: "p", x: "Der nördliche Teil der Küste Kroatiens besticht durch seine vielen Lagunen. Segelt man Richtung Süden wird die Küstenlandschaft steiler. Zahlreiche Inseln umsäumen die an der Westküste gelegene Halbinsel Istrien. Den Großteil der Westküste bildet das fruchtbare Dalmatien, welches Segelurlauber auf eine spannende Reise entlang der Küste Kroatiens einlädt." },
       { t: "p", x: "Kroatien gilt nicht umsonst als eine der attraktivsten Destinationen fürs Segeln weltweit. Das mediterrane Klima von 35°C im Sommer, das kristallklare Meereswasser und die beständigen Winde Kroatiens bereichern jeden Segelurlaub. Die Wassertemperatur liegen in der Sommerzeit bei angenehmen 22°C bis 25°C." },
