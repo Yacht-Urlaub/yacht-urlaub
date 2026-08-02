@@ -1,5 +1,5 @@
 // Destinationen 1:1 von yacht-urlaub.net übernommen (automatisch extrahiert)
-export type DestBlock = { t: 'h' | 'p' | 'li' | 'i'; x: string; c?: string }
+export type DestBlock = { t: 'h' | 'p' | 'li' | 'i' | 'logo'; x: string; c?: string }
 export type Destination = {
   id: string; name: string; title: string; country: string
   headerImg: string; mapImg: string; bestTime: string
@@ -14,7 +14,7 @@ export const destinations: Destination[] = [
     country: "🇭🇷",
     headerImg: "/images/destinationen/kroatien/header_panorma_makarska.jpg",
     mapImg: "/images/destinationen/kroatien/landkarte_europa_Kroatien_gross.jpg",
-    bestTime: "April - Oktober",
+    bestTime: "Mai - Oktober",
     packageIds: ["dalmatien", "istrien", "kornaten"],
     blocks: [
       { t: "h", x: "Kroatien - voller Leben" },
@@ -53,7 +53,7 @@ export const destinations: Destination[] = [
       { t: "li", x: "Navigation und Sicherheit: Achten Sie auf Wettervorhersagen und lokale Segelbedingungen, insbesondere auf die Winde Mistral, Jugo und Bora." },
       { t: "p", x: "Erleben Sie Kroatien mit dem exklusiven Angebot von Yacht-Urlaub und buchen Sie noch heute Ihren nächsten Segelurlaub." },
     ],
-    info: ["Fläche: 56.594 km²", "Einwohner: 4,5 Mio.", "Hauptstadt: Agram (Zagreb)", "Sprache: Kroatisch", "Fremdsprachen: Deutsch, Englisch", "Währung: 1 Kuna (HRK) = 100 Lipa | € 1,00 = HRK 7,6", "Ideale Reisezeit: April - Oktober", "Religion: katholisch. Minderheiten sind serbisch orthodoxe Christen und Moslems"],
+    info: ["Fläche: 56.594 km²", "Einwohner: 4,5 Mio.", "Hauptstadt: Agram (Zagreb)", "Sprache: Kroatisch", "Fremdsprachen: Deutsch, Englisch", "Währung: 1 Kuna (HRK) = 100 Lipa | € 1,00 = HRK 7,6", "Ideale Reisezeit: Mai - Oktober", "Religion: katholisch. Minderheiten sind serbisch orthodoxe Christen und Moslems"],
   },
   {
     id: "griechenland",
@@ -66,7 +66,7 @@ export const destinations: Destination[] = [
     packageIds: ["griechenland"],
     blocks: [
       { t: "h", x: "Griechenland" },
-      { t: "i", x: "/images/destinationen/griechenland/greece.png" },
+      { t: "logo", x: "/images/destinationen/griechenland/greece.png", c: "Offizielles Tourismus-Logo Griechenlands" },
       { t: "p", x: "Ob Sporaden, Dodekanes, Kykladen oder Ionische Inseln – Griechenland ist ein Paradies für einen traumhaften Segeltörn mit YACHT-URLAUB. Die Hellenische Republik begeistert mit einem mediterranen Klima, viel Sonnenschein, milden Temperaturen und atemberaubenden Küstenlandschaften. Ein Segelurlaub in Griechenland verspricht unvergessliche Erlebnisse – mit tausenden Kilometern Küste, die es zu entdecken gilt." },
       { t: "p", x: "Mit über 14.000 Küstenkilometer, mehreren tausend, teilweise unbewohnten Inseln und zwischen 250 bis 300 Sonnentagen im Jahr zieht das Segelparadies Griechenland viele abenteuerlustige Segelurlauber an. Griechenland liegt am östlichen Mittelmeer in Südeuropa. Ebenso werden das Ionische Meer, die Ägäis und das Kretische Meer Griechenland zugeordnet." },
       { t: 'i', x: "/images/destinationen/griechenland/Poros.png", c: "Stadt Poros" },
@@ -112,7 +112,7 @@ export const destinations: Destination[] = [
     packageIds: [],
     blocks: [
       { t: "h", x: "Balearen" },
-      { t: "i", x: "/images/destinationen/balearen/spanien.gif" },
+      { t: "logo", x: "/images/destinationen/balearen/spanien.gif", c: "Offizielles Tourismus-Logo Spaniens" },
       { t: "p", x: "Kein Segelurlaubsziel ist vielseitiger und wandlungsfähiger als die im Mittelmeer gelegenen Balearischen Inseln. Die Balearen liegen zirka drei Flugstunden von München oder Wien entfernt. Als Startpunkt bietet sich Palma de Mallorca, wo auch der internationale Flughafen liegt, an. Unweit der östlichen Küste Spaniens gelegen, setzt sich die Inselformation aus vier großen Inseln zusammen. Die vier Hauptinseln Mallorca, Menorca, Ibiza und Formentera, sowie die kleineren Inseln Cabrera, Espalmador und Isla Dragoneras liegen in diesem Gebiet." },
       { t: "p", x: "Die beste Zeit für eine Segelreise auf den Balearen ist von Mai bis September, wenn das Wetter warm und sonnig ist und die Winde moderat sind. Die Außentemperaturen liegen zwischen 25°C und 35°C, während die Wassertemperaturen zwischen 20°C und 26°C liegen. Dies bietet ideale Bedingungen für entspanntes Segeln und das Erkunden der Buchten und Strände der Balearen." },
       { t: "p", x: "Highlights einer Segelreise auf den Balearen" },
@@ -142,7 +142,7 @@ export const destinations: Destination[] = [
     country: "🇪🇸",
     headerImg: "/images/destinationen/kanaren/header_M71_7842_.jpg",
     mapImg: "",
-    bestTime: "",
+    bestTime: "Ganzjährig",
     packageIds: [],
     blocks: [
       { t: "h", x: "Kanaren" },
@@ -167,30 +167,21 @@ export const destinations: Destination[] = [
       { t: "p", x: "Naturerlebnisse: Erkunden Sie den Teide-Nationalpark auf Teneriffa oder die Vulkanlandschaften von Lanzarote. Entspannen Sie an Stränden wie Playa de Papagayo und Playa de Las Teresitas." },
       { t: 'i', x: "/images/destinationen/kanaren/Tenerife.png", c: "Tenerife" },
       { t: "p", x: "Erleben Sie mit Yacht-Urlaub Ihren nächsten Segelurlaub auf den Kanaren. Buchen Sie jetzt und entdecken Sie die faszinierenden Inseln, das kristallklare Wasser und unvergessliche Sonnenuntergänge." },
-      { t: "h", x: "Allgemeine Information" },
-      { t: "li", x: "Fläche: 7.493 km²" },
-      { t: "li", x: "Einwohner: 2.153.389" },
-      { t: "li", x: "Hauptstadt: Santa Cruz de Tenerife und Las Plamas de Gran Canaria" },
-      { t: "li", x: "Sprache: Spanisch" },
-      { t: "li", x: "Fremdsprachen: Deutsch, Englisch" },
-      { t: "li", x: "Währung: Euro" },
-      { t: "li", x: "Ideale Reisezeit: Ganzjährig" },
-      { t: "li", x: "Religion: Katholisch" },
     ],
-    info: [],
+    info: ["Fläche: 7.493 km²", "Einwohner: 2.153.389", "Hauptstadt: Santa Cruz de Tenerife und Las Palmas de Gran Canaria", "Sprache: Spanisch", "Fremdsprachen: Deutsch, Englisch", "Währung: Euro", "Ideale Reisezeit: Ganzjährig", "Religion: Katholisch"],
   },
   {
     id: "karibik-bvi",
     name: "Karibik - BVI",
     title: "Karibik - BVI",
-    country: "🏝️",
+    country: "🇻🇬",
     headerImg: "/images/packages/Karibik-BVI/karibik_header.png",
     mapImg: "",
     bestTime: "November - April",
     packageIds: ["karibik-bvi"],
     blocks: [
       { t: "h", x: "Karibik - Britische Jungferninseln" },
-      { t: "i", x: "/images/destinationen/karibik-bvi/BVI_-_ohne_URL.jpg" },
+      { t: "logo", x: "/images/destinationen/karibik-bvi/BVI_-_ohne_URL.jpg", c: "Offizielles Tourismus-Logo der Britischen Jungferninseln" },
       { t: "p", x: "Sie möchten im Paradies auf Erden, der Karibik, auf einem Katamaran die Seele baumeln lassen? Die britischen Jungferninseln gehören zu den Leeward Islands und lassen sich von Mitteleuropa bequem innerhalb von nur 9 Flugstunden erreichen. Empfehlenswert ist eine Anreise über St. Martin, Puerto Rico oder Antigua. Der Anschlussflug von St. Martin oder Puerto Rico auf die Britischen Jungferninseln dauert weniger als 45 Minuten." },
       { t: "p", x: "Hier angekommen wird Sie das karibische Lebensgefühl der Menschen in den Bann ziehen. Es gilt zwar Linksverkehr, aber von britischer Strenge werden Sie auf den Inseln der puren Lebensfreude nichts mitbekommen. Mit wachsender Entspannung werden Sie in die genussvolle Kunst des Nichtstuns der Karibik eintauchen, staunen und genießen." },
       { t: 'i', x: "/images/destinationen/karibik-bvi/Indians.jpg", c: "Schnorchelparadies bei den Indians" },
@@ -228,7 +219,6 @@ export const destinations: Destination[] = [
     packageIds: ["karibik-bvi"],
     blocks: [
       { t: "h", x: "Karibik - Windward Islands (Grenadinen)" },
-      { t: "i", x: "/images/destinationen/karibik-windward-islands/Karibik1.png" },
       { t: "p", x: "Auf dem Katamaran durch das Karibische Meer segeln, vorbei an korallengesäumten Buchten und menschenleeren Sandstränden. Den weißen Sand der Grenadinen zwischen den Zehen spüren und mit einem fruchtigen Cocktail in der Hand zu Livemusik aus einer bunten Bar tanzen. Unter Palmen Schatten finden und Ruhe in den kristallklaren Lagunen. Das ist Urlaub in der Karibik mit Yacht-Urlaub." },
       { t: "p", x: "Abgeschiedene Sandstrände und unberührte Natur prägen die zahlreichen Inselgruppen der Karibik. Die Leeward Islands bilden den nördlichen Teil der Kleinen Antillen, während die Windward Islands den südlichen Teil ausmachen. Zu den Windward Islands gehören Martinique, St. Lucia, St. Vincent und die Grenadinen. Martinique ist bequem mit Air France von Paris aus erreichbar und dient als perfekter Ausgangspunkt für weitere Entdeckungen. Von dort aus ist es nur ein kurzer Weg zu den Grenadinen, die einen Besuch absolut lohnenswert machen." },
       { t: "p", x: "Highlights einer Segelreise auf den Windward-Inseln" },
@@ -298,7 +288,7 @@ export const destinations: Destination[] = [
     country: "🇸🇨",
     headerImg: "/images/destinationen/seychellen/header_seychelles1.jpg",
     mapImg: "",
-    bestTime: "",
+    bestTime: "Auf Anfrage",
     packageIds: [],
     blocks: [
       { t: "h", x: "Die Seychellen" },
@@ -320,18 +310,9 @@ export const destinations: Destination[] = [
       { t: "p", x: "Das tropische Regenwaldklima herrscht über das ganze Jahr hinweg und die Temperaturen verändern sich auf den Seychellen nur minimal. Durch die Äquatornähe sind Tag & Nacht nahezu ident lang, mit bis zu 10 Sonnenstunden täglich ist auch für genug Möglichkeit gesorgt, eine Sommerbräune zu bekommen. Der tägliche Regenschauer darf meist nicht fehlen, der warme Sommerregen wird von vielen als geeignete Dusche genutzt." },
       { t: "p", x: "Die Tagestemperaturen bewegen sich meist zwischen 26 und 32°C - Tropennächte über 25°C sind keine Seltenheit. Die leichten Winde sind dabei eine willkommene Abkühlung und laue Sommernächte am Strand gehören nach einem typisch kreolischen Essen (Huhn, Fisch, Reis, Gemüse vom Grill) zur Tagesordnung. Die Wassertemperaturen rund um die Seychellen sind das ganze Jahr über angenehm warm. Im Winter liegen sie bei etwa 27-28°C, während sie im Sommer auf etwa 28-30°C steigen. Diese konstant warmen Temperaturen machen die Seychellen zu einem idealen Ort zum Segeln und Schwimmen zu jeder Jahreszeit." },
       { t: "p", x: "Genießen Sie mit Yacht-Urlaub eine unvergessliche Segelreise zu den Seychellen. Buchen Sie noch heute und tauchen Sie ein in die spektakulären Inseln, das kristallklare Wasser und die magischen Sonnenuntergänge." },
-      { t: "h", x: "Allgemeine Information" },
-      { t: "li", x: "Fläche: 455 km²" },
-      { t: "li", x: "Einwohner: ca. 90.000" },
-      { t: "li", x: "Hauptstadt: Victoria" },
-      { t: "li", x: "Sprache: Seychellenkreol, Englisch und Französisch" },
-      { t: "li", x: "Fremdsprachen: Deutsch, Englisch" },
-      { t: "li", x: "Währung: 1 Seychellen-Rupie entspricht 0,067 Euro" },
-      { t: "li", x: "Ideale Reisezeit: Oktober, November (evtl. Dez), Februar - Mitte April" },
-      { t: "li", x: "Religion: Katholisch" },
       { t: "p", x: "Seychellen Urlaub Planung starten" },
       { t: "p", x: "URLAUBSPLANER" },
     ],
-    info: [],
+    info: ["Fläche: 455 km²", "Einwohner: ca. 90.000", "Hauptstadt: Victoria", "Sprache: Seychellenkreol, Englisch und Französisch", "Fremdsprachen: Deutsch, Englisch", "Währung: 1 Seychellen-Rupie entspricht 0,067 Euro", "Ideale Reisezeit: Auf Anfrage", "Religion: Katholisch"],
   },
 ]

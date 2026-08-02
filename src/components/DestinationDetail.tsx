@@ -118,6 +118,16 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
                   </div>
                 )
               }
+              if (b.t === 'logo') {
+                return (
+                  <div key={gi} style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+                    <div style={{ background: 'var(--gray-light)', borderRadius: '8px', padding: '1.25rem 1.75rem', display: 'inline-flex' }}>
+                      <img src={b.x} alt={b.c || `Tourismus-Logo ${dest.name}`} loading="lazy"
+                        style={{ maxWidth: '180px', width: '100%', height: 'auto', display: 'block' }} />
+                    </div>
+                  </div>
+                )
+              }
               if (isSubheading(b, next)) {
                 return (
                   <h3 key={gi} style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.05rem', fontWeight: 700, margin: '1.5rem 0 0.5rem' }}>
