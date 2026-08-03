@@ -104,6 +104,8 @@ function AnimatedRoutes() {
           <Route path="/en/data-privacy" element={<DatenschutzPage />} />
           <Route path="/en/terms" element={<AgbPage />} />
           <Route path="/en/contact" element={<ContactPage />} />
+          <Route path="/en/trip-reports" element={<ToernberichtePage />} />
+          <Route path="/en/trip-reports/:slug" element={<ToernberichtDetailPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
         {!hideKontakt && <Kontakt />}

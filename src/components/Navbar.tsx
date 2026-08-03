@@ -12,6 +12,7 @@ const navEn = [
       { label: 'Luxury', href: '/en/cruises/luxury' },
       { label: 'Cabin offers', href: '/en/cabin-offers' },
       { label: 'Holiday planner', href: '/en/holiday-planner' },
+      { label: 'Trip reports', href: '/en/trip-reports' },
     ]
   },
   {
