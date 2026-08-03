@@ -27,7 +27,8 @@ export const routePairs: [de: string, en: string][] = [
   ['/kabinen', '/en/cabin-offers'],
   ['/urlaubsplaner', '/en/holiday-planner'],
   ['/buchen', '/en/book-now'],
-  ['/toernberichte', '/en'], // kein EN-Pendant
+  ['/toernberichte', '/en/trip-reports'],
+  ['/toernberichte/segelurlaub-in-der-karibik-a-taste-of-paradise', '/en/trip-reports/caribbean-a-taste-of-paradise'],
   ['/destinationen', '/en/destinations'],
   ['/destinationen/kroatien', '/en/destinations/croatia'],
   ['/destinationen/griechenland', '/en/destinations/greece'],

@@ -3,22 +3,44 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { toernberichte } from '../data/toernberichte'
+import { toernberichteEn } from '../data/toernberichteEn'
+import { useLang } from '../i18n'
+
+const dd = {
+  de: {
+    base: '/toernberichte', home: 'Start', list: 'Törnberichte',
+    ctaHeading: 'Lust auf Ihren eigenen Törn?',
+    ctaText: 'Starten Sie jetzt Ihre unverbindliche Anfrage — oder stöbern Sie weiter in unseren Törnberichten.',
+    ctaRequest: 'ANFRAGE STARTEN', ctaBack: '← Alle Törnberichte', planer: '/urlaubsplaner',
+    seoSuffix: 'Törnbericht',
+  },
+  en: {
+    base: '/en/trip-reports', home: 'Home', list: 'Trip Reports',
+    ctaHeading: 'Ready for your own adventure?',
+    ctaText: 'Start your no-obligation inquiry now — or keep browsing our trip reports for more inspiration.',
+    ctaRequest: 'GET A QUOTE', ctaBack: '← All Trip Reports', planer: '/en/holiday-planner',
+    seoSuffix: 'Trip Report',
+  },
+}
 
 export default function ToernberichtDetailPage() {
   const { slug } = useParams<{ slug: string }>()
-  const tb = toernberichte.find(t => t.slug === slug)
+  const lang = useLang()
+  const s = dd[lang]
+  const list = lang === 'en' ? toernberichteEn : toernberichte
+  const tb = list.find(t => t.slug === slug)
   const [lightbox, setLightbox] = useState<string | null>(null)
 
-  if (!tb) return <Navigate to="/toernberichte" replace />
+  if (!tb) return <Navigate to={s.base} replace />
 
   const images = tb.blocks.filter(b => b.t === 'i')
 
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
-        title={`${tb.title} – Törnbericht | Yacht-Urlaub`}
+        title={`${tb.title} – ${s.seoSuffix} | ${lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}`}
         description={tb.teaser}
-        canonical={`/toernberichte/${tb.slug}`}
+        canonical={`${s.base}/${tb.slug}`}
         image={tb.hero}
       />
 
@@ -33,9 +55,9 @@ export default function ToernberichtDetailPage() {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,27,47,0.92) 0%, rgba(7,27,47,0.35) 55%, rgba(7,27,47,0.25) 100%)' }} />
         <div className="container" style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: '2.5rem' }}>
           <nav style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.85rem', fontSize: '0.78rem', color: 'rgba(255,255,255,0.6)' }}>
-            <Link to="/" style={{ color: 'rgba(255,255,255,0.6)' }}>Start</Link>
+            <Link to={lang === 'en' ? '/en' : '/'} style={{ color: 'rgba(255,255,255,0.6)' }}>{s.home}</Link>
             <span>›</span>
-            <Link to="/toernberichte" style={{ color: 'rgba(255,255,255,0.6)' }}>Törnberichte</Link>
+            <Link to={s.base} style={{ color: 'rgba(255,255,255,0.6)' }}>{s.list}</Link>
           </nav>
           <motion.h1 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }}
             style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.7rem, 4vw, 2.8rem)', color: '#fff', marginBottom: '0.4rem', lineHeight: 1.2 }}>
@@ -105,17 +127,17 @@ export default function ToernberichtDetailPage() {
       <section style={{ background: 'var(--gray-light)', padding: '4rem 0', textAlign: 'center' }}>
         <div className="container">
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.5rem', marginBottom: '0.75rem' }}>
-            Lust auf Ihren eigenen Törn?
+            {s.ctaHeading}
           </h2>
           <p style={{ color: 'var(--gray)', marginBottom: '1.75rem', fontSize: '0.95rem' }}>
-            Starten Sie jetzt Ihre unverbindliche Anfrage — oder stöbern Sie weiter in unseren Törnberichten.
+            {s.ctaText}
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link to="/urlaubsplaner" className="btn btn-primary" style={{ fontSize: '0.85rem', padding: '13px 30px' }}>
-              ANFRAGE STARTEN
+            <Link to={s.planer} className="btn btn-primary" style={{ fontSize: '0.85rem', padding: '13px 30px' }}>
+              {s.ctaRequest}
             </Link>
-            <Link to="/toernberichte" className="btn btn-ghost" style={{ fontSize: '0.85rem', padding: '13px 30px' }}>
-              ← Alle Törnberichte
+            <Link to={s.base} className="btn btn-ghost" style={{ fontSize: '0.85rem', padding: '13px 30px' }}>
+              {s.ctaBack}
             </Link>
           </div>
         </div>
