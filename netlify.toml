@@ -5,6 +5,693 @@
 [functions]
   directory = "netlify/functions"
 
+# ==========================================================================
+# 301-Weiterleitungen der alten TYPO3-Seite (yacht-urlaub.net / yacht-holiday.net)
+# Quellen: dd_googlesitemap der Altseite + vollstaendiger Crawl beider Domains,
+#          Stand 08/2026 (113 Seiten, 99 Sitemap-Pfade, 25 nur verlinkte Seiten).
+# Zweck:   etablierte Rankings, Fremdlinks und bezahlte Anzeigen-Ziele erhalten.
+#
+# Reihenfolge ist bindend: exakte Pfade zuerst, dann Auffangregeln je Bereich,
+# dann der SPA-Fallback ganz am Ende.
+# ==========================================================================
+
+# --- DE: exakte Pfade der Altseite ---
+[[redirects]]
+  from = "/toerns/jetzt-buchen/"
+  to = "/buchen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/fuer-einsteiger/"
+  to = "/toerns/einsteiger"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/fuer-freunde/"
+  to = "/toerns/freunde"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/fuer-familien/"
+  to = "/toerns/familien"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/individuell-planen/"
+  to = "/urlaubsplaner"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/individuell/urlaubsplaner/"
+  to = "/urlaubsplaner"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/jetzt-buchen/dalmatien-kroatien/"
+  to = "/packages/dalmatien"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/jetzt-buchen/kornaten-kroatien/"
+  to = "/packages/kornaten"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/jetzt-buchen/griechenland/"
+  to = "/packages/griechenland"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/jetzt-buchen/karibik-bvi/"
+  to = "/packages/karibik-bvi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/jetzt-buchen/karibik-grenadinen/"
+  to = "/packages/karibik-grenadinen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toerns/jetzt-buchen/kabinen-angebote/"
+  to = "/kabinen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/charter/yacht-charter-anfragen/"
+  to = "/charter"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/charter/skipper-und-bord-service/"
+  to = "/skipper"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/charter/ergebnisse/"
+  to = "/charter"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/destinationen/toernberichte/"
+  to = "/toernberichte"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kontakt/crew/"
+  to = "/crew"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kontakt/partner/"
+  to = "/reisebuero"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kabinenangebote/"
+  to = "/kabinen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/deutsch/faq/"
+  to = "/faq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/yachten/segelyacht-monohull/"
+  to = "/yachten?tab=monohull"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/yachten/segelyacht-monohull/segelyacht-monohull/"
+  to = "/yachten?tab=monohull"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/yachten/segel-katamaran/"
+  to = "/yachten?tab=katamaran"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/yachten/motoryacht-monohull/"
+  to = "/yachten?tab=motoryacht"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/yachten/motor-katamaran/"
+  to = "/yachten?tab=motorkat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/seychellen/"
+  to = "/destinationen/seychellen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/karibik/"
+  to = "/destinationen/karibik-bvi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/grenadinen/"
+  to = "/packages/karibik-grenadinen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/yacht-holiday-bvi-landing-onlyenglisch/"
+  to = "/en/destinations/caribbean-british-virgin-islands"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/dalmatien-package/"
+  to = "/packages/dalmatien"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/istrien-package/"
+  to = "/packages/istrien"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/kornaten-package/"
+  to = "/packages/kornaten"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/griechenland-package/"
+  to = "/packages/griechenland"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/karibik-package/"
+  to = "/packages/karibik-bvi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/grenadinen-package/"
+  to = "/packages/karibik-grenadinen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/segelurlaub-in-der-karibik-a-taste-of-paradise/"
+  to = "/toernberichte/segelurlaub-in-der-karibik-a-taste-of-paradise"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/istrien-und-die-kvarner-bucht/"
+  to = "/toernberichte/istrien-und-die-kvarner-bucht"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/britische-jungferninseln/"
+  to = "/toernberichte/britische-jungferninseln"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/von-sardinien-bis-korsika/"
+  to = "/toernberichte/von-sardinien-bis-korsika"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/eine-faszinierende-reise-durch-die-inselwelt-der-dodekanes-in-der-aegaeis/"
+  to = "/toernberichte/eine-faszinierende-reise-durch-die-inselwelt-der-dodekanes-in-der-aegaeis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/sizilien/"
+  to = "/toernberichte/sizilien"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/von-split-nach-dubrovnik/"
+  to = "/toernberichte/von-split-nach-dubrovnik"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/die-inselwelt-der-kornaten/"
+  to = "/toernberichte/die-inselwelt-der-kornaten"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/kuba-eine-insel-voller-schaetze/"
+  to = "/toernberichte/kuba-eine-insel-voller-schaetze"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/pororoz-piran-novigrad/"
+  to = "/toernberichte/pororoz-piran-novigrad"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/mallorca-menorca-cabrera/"
+  to = "/toernberichte/mallorca-menorca-cabrera"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/auf-in-die-kornaten/"
+  to = "/toernberichte/auf-in-die-kornaten"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/auf-den-spuren-der-kultur-in-sueddalmatien/"
+  to = "/toernberichte/auf-den-spuren-der-kultur-in-sueddalmatien"
+  status = 301
+  force = true
+
+# --- DE: Auffangregeln fuer nicht einzeln erfasste Unterseiten ---
+[[redirects]]
+  from = "/toerns/jetzt-buchen/*"
+  to = "/buchen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/*"
+  to = "/toerns"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toernbericht/*"
+  to = "/toernberichte"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/charter/*"
+  to = "/charter"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kontakt/*"
+  to = "/kontakt"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/yachten/*"
+  to = "/yachten"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/deutsch/*"
+  to = "/"
+  status = 301
+  force = true
+
+# --- EN: alte Domain yacht-holiday.net auf die /en-Struktur ---
+[[redirects]]
+  from = "https://www.yacht-holiday.net/"
+  to = "https://www.yacht-urlaub.net/en"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/"
+  to = "https://www.yacht-urlaub.net/en/cruises"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/destinations/"
+  to = "https://www.yacht-urlaub.net/en/destinations"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/yachts/"
+  to = "https://www.yacht-urlaub.net/en/yachts"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/contact/"
+  to = "https://www.yacht-urlaub.net/en/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/faq/"
+  to = "https://www.yacht-urlaub.net/en/faq"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/"
+  to = "https://www.yacht-urlaub.net/en/book-now"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/for-beginners/"
+  to = "https://www.yacht-urlaub.net/en/cruises/for-beginners"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/for-friends/"
+  to = "https://www.yacht-urlaub.net/en/cruises/for-friends"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/for-families/"
+  to = "https://www.yacht-urlaub.net/en/cruises/for-families"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/luxury/"
+  to = "https://www.yacht-urlaub.net/en/cruises/luxury"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/luxury-sailing-trip/"
+  to = "https://www.yacht-urlaub.net/en/cruises/luxury"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/bespoke-cruise/"
+  to = "https://www.yacht-urlaub.net/en/holiday-planner"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/bespoke-cruise/holiday-planner/"
+  to = "https://www.yacht-urlaub.net/en/holiday-planner"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/kabinen-angebote/"
+  to = "https://www.yacht-urlaub.net/en/cabin-offers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cabin-offers/"
+  to = "https://www.yacht-urlaub.net/en/cabin-offers"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/charter/"
+  to = "https://www.yacht-urlaub.net/en/charter/yacht-charter"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/charter/yacht-charter/"
+  to = "https://www.yacht-urlaub.net/en/charter/yacht-charter"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/charter/crew-charter/"
+  to = "https://www.yacht-urlaub.net/en/charter/crew-charter"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/charter/results/"
+  to = "https://www.yacht-urlaub.net/en/charter/yacht-charter"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/contact/crew/"
+  to = "https://www.yacht-urlaub.net/en/contact/crew"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/contact/for-travel-agencies-affiliate-partner/"
+  to = "https://www.yacht-urlaub.net/en/contact/travel-agencies"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/data-privacy/"
+  to = "https://www.yacht-urlaub.net/en/data-privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/termsconditions/"
+  to = "https://www.yacht-urlaub.net/en/terms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/yachts/sailing-yacht-monohull/"
+  to = "https://www.yacht-urlaub.net/en/yachts?tab=monohull"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/yachts/sailing-yacht-monohull/sailing-yacht-monohull/"
+  to = "https://www.yacht-urlaub.net/en/yachts?tab=monohull"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/yachts/sailing-catamaran/"
+  to = "https://www.yacht-urlaub.net/en/yachts?tab=katamaran"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/toernbericht/british-virgin-islands/"
+  to = "https://www.yacht-urlaub.net/en/trip-reports/british-virgin-islands"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/destinations/croatia/"
+  to = "https://www.yacht-urlaub.net/en/destinations/croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/destinations/greece/"
+  to = "https://www.yacht-urlaub.net/en/destinations/greece"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/destinations/balearic-islands/"
+  to = "https://www.yacht-urlaub.net/en/destinations/balearic-islands"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/destinations/canaries/"
+  to = "https://www.yacht-urlaub.net/en/destinations/canaries"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/destinations/caribbean-british-virgin-islands/"
+  to = "https://www.yacht-urlaub.net/en/destinations/caribbean-british-virgin-islands"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/destinations/caribbean-windward-islands/"
+  to = "https://www.yacht-urlaub.net/en/destinations/caribbean-windward-islands"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/destinations/thailand/"
+  to = "https://www.yacht-urlaub.net/en/destinations/thailand"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/destinations/seychelles/"
+  to = "https://www.yacht-urlaub.net/en/destinations/seychelles"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/dalmatia-package/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/dalmatia-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/dalmatia-package-1/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/dalmatia-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/dalmatia-croatia/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/dalmatia-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/kornati-package/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/kornati-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/kornati-package-1/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/kornati-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/kornati-croatia/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/kornati-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/greece-package/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/greece"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/greece-package-1/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/greece"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/greece/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/greece"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/caribbean-package/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/caribbean-bvi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/caribbean-package-1/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/caribbean-bvi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/caribbean-bvi/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/caribbean-bvi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/grenadines-package/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/caribbean-grenadines"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/grenadines-package-1/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/caribbean-grenadines"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/caribbean-grenadines/"
+  to = "https://www.yacht-urlaub.net/en/cruises/book-now/caribbean-grenadines"
+  status = 301
+  force = true
+
+# --- EN: Auffangregeln; die letzte faengt jede sonstige URL der Alt-Domain ---
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruise/*"
+  to = "https://www.yacht-urlaub.net/en/cruises"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/*"
+  to = "https://www.yacht-urlaub.net/en/book-now"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/charter/*"
+  to = "https://www.yacht-urlaub.net/en/charter/yacht-charter"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/contact/*"
+  to = "https://www.yacht-urlaub.net/en/contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/yachts/*"
+  to = "https://www.yacht-urlaub.net/en/yachts"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/*"
+  to = "https://www.yacht-urlaub.net/en"
+  status = 301
+  force = true
+
+# --- SPA-Fallback: muss die LETZTE Regel bleiben ---
 [[redirects]]
   from = "/*"
   to = "/index.html"
