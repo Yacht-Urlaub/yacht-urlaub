@@ -305,6 +305,11 @@
   force = true
 
 # --- DE: Auffangregeln fuer nicht einzeln erfasste Unterseiten ---
+# Achtung: Das Ziel darf NICHT der eigene Elternpfad sein. Netlify laesst den
+# Splat auch leer matchen, d.h. "/charter/*" trifft auch "/charter" selbst --
+# eine Regel "/charter/* -> /charter" zeigt auf sich und endet in einem 404.
+# Aus diesem Grund gibt es hier keine Auffangregeln fuer /charter, /kontakt
+# und /yachten; deren Unterseiten sind oben einzeln erfasst.
 [[redirects]]
   from = "/toerns/jetzt-buchen/*"
   to = "/buchen"
@@ -320,24 +325,6 @@
 [[redirects]]
   from = "/toernbericht/*"
   to = "/toernberichte"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/charter/*"
-  to = "/charter"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/kontakt/*"
-  to = "/kontakt"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/yachten/*"
-  to = "/yachten"
   status = 301
   force = true
 
