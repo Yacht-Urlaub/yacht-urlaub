@@ -1,136 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/destinationen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/destinationen/kroatien</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/destinationen/griechenland</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/destinationen/balearen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/destinationen/karibik</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/destinationen/seychellen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/destinationen/thailand</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/yachten</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/charter</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/skipper</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/toerns</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/toerns/einsteiger</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/toerns/freunde</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/toerns/familien</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/toerns/luxury</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/kabinen</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/urlaubsplaner</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/crew</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.65</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/reisebuero</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/toernberichte</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://www.yacht-urlaub.net/faq</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
+  <!-- Deutsch -->
+  <url><loc>https://www.yacht-urlaub.net/</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/agb</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/buchen</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/charter</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/crew</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/datenschutz</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/destinationen</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/faq</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/impressum</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/kabinen</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/kontakt</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/news</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/reisebuero</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/sailaway</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/skipper</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toerns</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/urlaubsplaner</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/yachten</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/destinationen/balearen</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/destinationen/griechenland</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/destinationen/kanaren</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/destinationen/karibik-bvi</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/destinationen/karibik-windward-islands</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/destinationen/kroatien</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/destinationen/seychellen</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/destinationen/thailand</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/packages/dalmatien</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/packages/griechenland</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/packages/istrien</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/packages/karibik-bvi</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/packages/karibik-grenadinen</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/packages/kornaten</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/auf-den-spuren-der-kultur-in-sueddalmatien</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/auf-in-die-kornaten</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/britische-jungferninseln</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/die-inselwelt-der-kornaten</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/eine-faszinierende-reise-durch-die-inselwelt-der-dodekanes-in-der-aegaeis</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/istrien-und-die-kvarner-bucht</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/kuba-eine-insel-voller-schaetze</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/mallorca-menorca-cabrera</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/pororoz-piran-novigrad</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/segelurlaub-in-der-karibik-a-taste-of-paradise</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/sizilien</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/von-sardinien-bis-korsika</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toernberichte/von-split-nach-dubrovnik</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toerns/einsteiger</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toerns/familien</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toerns/freunde</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/toerns/luxury</loc></url>
+  <!-- English -->
+  <url><loc>https://www.yacht-urlaub.net/en</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/book-now</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cabin-offers</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/contact</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cruises</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/data-privacy</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/destinations</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/faq</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/holiday-planner</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/imprint</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/terms</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/yachts</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/charter/crew-charter</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/charter/yacht-charter</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/contact/crew</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/contact/travel-agencies</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cruises/for-beginners</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cruises/for-families</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cruises/for-friends</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cruises/luxury</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/destinations/balearic-islands</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/destinations/canaries</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/destinations/caribbean-british-virgin-islands</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/destinations/caribbean-windward-islands</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/destinations/croatia</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/destinations/greece</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/destinations/seychelles</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/destinations/thailand</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/british-virgin-islands</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/caribbean-a-taste-of-paradise</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/cuba-an-island-full-of-treasures</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/istria-and-the-kvarner-gulf</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/mallorca-menorca-cabrera</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/off-to-the-kornati-islands</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/portoroz-piran-novigrad</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/sardinia-to-corsica</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/sicily</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/southern-dalmatia</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/split-to-dubrovnik</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/the-dodecanese</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/trip-reports/the-kornati-islands</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cruises/book-now/caribbean-bvi</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cruises/book-now/caribbean-grenadines</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cruises/book-now/dalmatia-croatia</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cruises/book-now/greece</loc></url>
+  <url><loc>https://www.yacht-urlaub.net/en/cruises/book-now/kornati-croatia</loc></url>
 </urlset>
