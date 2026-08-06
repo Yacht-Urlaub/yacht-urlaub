@@ -1,4 +1,5 @@
-import { useParams, Link, Navigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { Link, Navigate } from '../router'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
@@ -40,7 +41,6 @@ export default function ToernberichtDetailPage() {
       <SEO
         title={`${tb.title} – ${s.seoSuffix} | ${lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}`}
         description={tb.teaser}
-        canonical={`${s.base}/${tb.slug}`}
         image={tb.hero}
       />
 

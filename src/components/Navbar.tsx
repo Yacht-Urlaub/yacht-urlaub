@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useLang, switchLangPath } from '../i18n'
+import { useLocation } from 'react-router-dom'
+import { Link } from '../router'
+import { useLang, switchLangUrl } from '../i18n'
 
 const navEn = [
   {
@@ -110,10 +111,11 @@ export default function Navbar() {
   const [mobileCat, setMobileCat] = useState<string | null>(null)
   const lang = useLang()
   const { pathname } = useLocation()
-  const navigate = useNavigate()
   const nav = lang === 'en' ? navEn : navDe
+  // Die Sprachen liegen auf verschiedenen Domains, der Wechsel ist also ein
+  // echter Seitenaufruf und kein Routenwechsel innerhalb der Anwendung.
   const switchTo = (target: 'de' | 'en') => {
-    if (target !== lang) navigate(switchLangPath(pathname, target))
+    if (target !== lang) window.location.assign(switchLangUrl(pathname, target))
   }
 
   return (

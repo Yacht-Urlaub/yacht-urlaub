@@ -105,7 +105,6 @@ export default function SailAwayPage() {
       <SEO
         title="sail away – die Party-Flottille für alle zw. 21 und 35 | Yacht-Urlaub"
         description="7 Tage – du und deine Freunde – auf eurer Yacht. Mit Gleichgesinnten Urlaub und Party in einer Flottille: Kroatien-Route ab Split mit Hvar, Brač und Makarska."
-        canonical="/sailaway"
         image="/images/sailaway/header.jpg"
       />
 

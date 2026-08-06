@@ -1,4 +1,5 @@
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { useNavigate } from '../navigate'
 import SEO from '../components/SEO'
 import DestinationDetail, { destinations } from '../components/DestinationDetail'
 import { destinationsEn } from '../data/destinationenEn'
@@ -73,7 +74,6 @@ export default function DestinationPage() {
       <SEO
         title={lang === 'en' ? `Sailing holiday ${dest.name}` : `Segelurlaub ${dest.name}`}
         description={meta?.description ?? `Segelurlaub ${dest.name} mit Yacht-Urlaub. Entdecken Sie die schönsten Buchten und Reviere.`}
-        canonical={`/destinationen/${dest.id}`}
         image={dest.headerImg}
         schema={schema}
       />

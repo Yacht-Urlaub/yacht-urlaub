@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../router'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 
@@ -78,7 +78,6 @@ export default function NewsPage() {
       <SEO
         title="News & Angebote – Top-Deals für Ihren Yachturlaub | Yacht-Urlaub"
         description="Aktuelle Segelurlaub-Angebote, Kabinen-Deals und Paketreisen von Yacht-Urlaub. Kroatien, Griechenland, Seychellen, Karibik und mehr."
-        canonical="/news"
         image="/images/Destinationsbilder/Seychellen.webp"
       />
 

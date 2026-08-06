@@ -32,7 +32,6 @@ export default function HomePage() {
       <SEO
         title={lang === 'en' ? "Yacht-Holiday – A Taste of Paradise | Sailing holidays" : "Yacht-Urlaub – A Taste of Paradise | Segel- & Yachtreisen"}
         description="Yacht-Urlaub: Seit über 10 Jahren Segel- und Yachtreisen mit Qualität. Von Kroatien bis Karibik, Seychellen und Thailand – für Einsteiger, Familien und Luxury-Reisende."
-        canonical="/"
         schema={homeSchema}
       />
       <Hero />

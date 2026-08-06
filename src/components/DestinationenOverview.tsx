@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from '../navigate'
 import { destinations } from './DestinationDetail'
 import { destinationsEn } from '../data/destinationenEn'
 import { useLang, enDestSlugs } from '../i18n'

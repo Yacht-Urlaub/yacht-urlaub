@@ -7,7 +7,6 @@ export default function AgbPage() {
       <SEO
         title="AGB – Allgemeine Geschäftsbedingungen"
         description="Allgemeine Geschäftsbedingungen von YACHT-URLAUB Ing. Manuel Göschl, MBA. Unsere AGB stehen als PDF zum Download bereit."
-        canonical="/agb"
       />
 
       {/* Header Banner */}

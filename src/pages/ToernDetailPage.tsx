@@ -1,4 +1,5 @@
-import { useParams, Link, Navigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { Link, Navigate } from '../router'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { packages } from '../components/Packages'
@@ -268,7 +269,6 @@ export default function ToernDetailPage() {
       <SEO
         title={data.seoTitle}
         description={data.seoDesc}
-        canonical={`/toerns/${data.id}`}
         image={data.heroImg}
       />
 

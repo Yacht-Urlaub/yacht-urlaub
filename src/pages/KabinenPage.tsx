@@ -131,7 +131,6 @@ export default function KabinenPage() {
       <SEO
         title={lang === 'en' ? "Cabin offers – book a single cabin | Yacht-Holiday" : "Kabinen-Angebote – Einzelne Kabine buchen"}
         description="Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für Kroatien (Kornaten) und Thailand. Ideal für Alleinreisende und Paare."
-        canonical="/kabinen"
         image="/images/packages/Kornaten/gallery/Telascica.webp"
       />
 

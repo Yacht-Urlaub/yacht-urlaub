@@ -2,7 +2,7 @@ import { useLang } from '../i18n'
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link } from '../router'
 
 const offersEn = [
   {

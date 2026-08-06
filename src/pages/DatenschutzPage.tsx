@@ -27,7 +27,6 @@ export default function DatenschutzPage() {
       <SEO
         title="Datenschutzerklärung"
         description="Datenschutzerklärung von Yacht-Urlaub gemäß DSGVO. Informationen zur Erhebung, Verarbeitung und Nutzung personenbezogener Daten."
-        canonical="/datenschutz"
       />
 
       {/* Header Banner */}

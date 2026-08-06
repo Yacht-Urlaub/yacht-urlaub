@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../router'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { AnchorIcon, WavesIcon, ShieldIcon, SparklesIcon } from '../components/Icons'
@@ -87,7 +87,6 @@ export default function ToernsPage() {
       <SEO
         title={en ? "Our cruises – sailing trips for everyone | Yacht-Holiday" : "Unsere Törns – Segeltörns für jeden | Yacht-Urlaub"}
         description="Von der ersten Segelstunde bis zum Luxuserlebnis: Einsteiger-Törns, Familien-Törns, Freunde-Törns und Luxury-Törns mit erfahrenen Skippern weltweit."
-        canonical="/toerns"
         image="/images/Zielgruppen/Einsteiger 1.jpg"
       />
 

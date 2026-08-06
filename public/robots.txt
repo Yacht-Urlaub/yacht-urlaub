@@ -32,4 +32,7 @@ Disallow: /
 User-agent: YandexBot
 Disallow: /
 
+# Deutsch und Englisch liegen auf getrennten Domains, beide werden von
+# derselben Anwendung ausgeliefert.
 Sitemap: https://www.yacht-urlaub.net/sitemap.xml
+Sitemap: https://www.yacht-holiday.net/sitemap-en.xml

@@ -1,4 +1,5 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import { Link } from '../router'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
@@ -226,7 +227,6 @@ export default function PackageDetailPage() {
       <SEO
         title={`${pkg.title} | ${lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}`}
         description={pkg.subtitle}
-        canonical={`/packages/${pkg.id}`}
       />
 
       {/* Hero */}

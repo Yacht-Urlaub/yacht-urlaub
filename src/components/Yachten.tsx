@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useSearchParams, Link } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
+import { Link } from '../router'
 import { motion, AnimatePresence } from 'framer-motion'
 import { yachtCards, yachtCategories } from '../data/yachten'
 import { yachtCardsEn, yachtCategoriesEn } from '../data/yachtenEn'
