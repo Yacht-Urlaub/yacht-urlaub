@@ -54,7 +54,6 @@ export default function FaqPage() {
       <SEO
         title={lang === 'en' ? "FAQ – frequently asked questions | Yacht-Holiday" : "FAQ – Häufige Fragen zum Yacht-Urlaub"}
         description="Alle Antworten rund um Ihren Segelurlaub: Buchung, Anreise, Leben an Bord, Bordkassa, Kaution, Verpflegung, Kosten und mehr."
-        canonical="/faq"
         schema={schema}
       />
 

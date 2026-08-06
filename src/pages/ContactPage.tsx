@@ -60,7 +60,6 @@ export default function ContactPage() {
       <SEO
         title={lang === 'en' ? 'Contact | Yacht-Holiday' : 'Kontakt | Yacht-Urlaub'}
         description={s.intro}
-        canonical={lang === 'en' ? '/en/contact' : '/kontakt'}
       />
 
       {/* Header */}

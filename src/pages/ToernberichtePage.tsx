@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../router'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { toernberichte } from '../data/toernberichte'
@@ -36,7 +36,6 @@ export default function ToernberichtePage() {
       <SEO
         title={s.seoTitle}
         description={s.seoDescription}
-        canonical={s.base}
       />
 
       {/* Hero */}

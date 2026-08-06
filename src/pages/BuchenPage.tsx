@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../router'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { useLang } from '../i18n'
@@ -85,7 +85,6 @@ export default function BuchenPage() {
       <SEO
         title={s.seoT}
         description="Segelurlaub direkt online buchen: Startdatum und Dauer wählen, verfügbare Yachten und Packages finden und sofort buchen."
-        canonical="/buchen"
         image="/images/Zielgruppen/Freunde 1.jpg"
       />
 

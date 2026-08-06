@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from '../router'
 import { destinations } from '../data/destinationen'
 import type { Destination, DestBlock } from '../data/destinationen'
 import { packages } from './Packages'

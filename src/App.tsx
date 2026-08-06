@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { LanguageContext, langFromPath, canonicalPath } from './i18n'
+import { LanguageContext, langFromPath, canonicalPath, isEnHost, toInternal, toHref } from './i18n'
 import { useLayoutEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -40,7 +40,7 @@ function LangProvider({ children }: { children: React.ReactNode }) {
 function ScrollToTop() {
   const { pathname } = useLocation()
   // Sprachwechsel = gleiche Seite ⇒ Scrollposition behalten
-  const key = canonicalPath(pathname)
+  const key = canonicalPath(toInternal(pathname))
   useLayoutEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
   }, [key])
@@ -55,12 +55,16 @@ const pageVariants = {
 
 function AnimatedRoutes() {
   const location = useLocation()
+  const internal = toInternal(location.pathname)
+  const enHost = isEnHost()
   // Globale "Anfrage starten"-Sektion auf Seiten ausblenden, die selbst ein Formular sind
-  const hideKontakt = ['/urlaubsplaner', '/en/holiday-planner', '/kontakt', '/en/contact'].includes(location.pathname)
+  const hideKontakt = ['/urlaubsplaner', '/en/holiday-planner', '/kontakt', '/en/contact'].includes(internal)
   return (
     <AnimatePresence mode="wait">
-      <motion.div key={canonicalPath(location.pathname)} variants={pageVariants} initial="initial" animate="animate" exit="exit">
+      <motion.div key={canonicalPath(internal)} variants={pageVariants} initial="initial" animate="animate" exit="exit">
         <Routes location={location}>
+          {/* Deutsche Routen gibt es nur auf der deutschen Domain */}
+          {!enHost && <>
           <Route path="/" element={<HomePage />} />
           <Route path="/destinationen" element={<DestinationenPage />} />
           <Route path="/destinationen/:id" element={<DestinationPage />} />
@@ -84,28 +88,32 @@ function AnimatedRoutes() {
           <Route path="/datenschutz" element={<DatenschutzPage />} />
           <Route path="/agb" element={<AgbPage />} />
           <Route path="/kontakt" element={<ContactPage />} />
-          {/* ── Englische Routen (Slugs wie yacht-holiday.net) ── */}
-          <Route path="/en" element={<HomePage />} />
-          <Route path="/en/destinations" element={<DestinationenPage />} />
-          <Route path="/en/destinations/:id" element={<DestinationPage />} />
-          <Route path="/en/yachts" element={<YachtenPage />} />
-          <Route path="/en/cruises/book-now/:id" element={<PackageDetailPage />} />
-          <Route path="/en/faq" element={<FaqPage />} />
-          <Route path="/en/book-now" element={<BuchenPage />} />
-          <Route path="/en/cruises" element={<ToernsPage />} />
-          <Route path="/en/cruises/:id" element={<ToernDetailPage />} />
-          <Route path="/en/cabin-offers" element={<KabinenPage />} />
-          <Route path="/en/holiday-planner" element={<UrlaubsplanerPage />} />
-          <Route path="/en/charter/yacht-charter" element={<CharterPage />} />
-          <Route path="/en/charter/crew-charter" element={<SkipperPage />} />
-          <Route path="/en/contact/crew" element={<CrewPage />} />
-          <Route path="/en/contact/travel-agencies" element={<ReisebueroPage />} />
-          <Route path="/en/imprint" element={<ImpressumPage />} />
-          <Route path="/en/data-privacy" element={<DatenschutzPage />} />
-          <Route path="/en/terms" element={<AgbPage />} />
-          <Route path="/en/contact" element={<ContactPage />} />
-          <Route path="/en/trip-reports" element={<ToernberichtePage />} />
-          <Route path="/en/trip-reports/:slug" element={<ToernberichtDetailPage />} />
+          </>}
+          {/* ── Englische Routen ──
+              Auf yacht-holiday.net ohne /en-Praefix registriert, damit die
+              gewachsenen Adressen (/cruises, /destinations/croatia, /yachts …)
+              unveraendert bleiben. toHref() nimmt das Praefix dort weg. */}
+          <Route path={toHref('/en')} element={<HomePage />} />
+          <Route path={toHref("/en/destinations")} element={<DestinationenPage />} />
+          <Route path={toHref("/en/destinations/:id")} element={<DestinationPage />} />
+          <Route path={toHref("/en/yachts")} element={<YachtenPage />} />
+          <Route path={toHref("/en/cruises/book-now/:id")} element={<PackageDetailPage />} />
+          <Route path={toHref("/en/faq")} element={<FaqPage />} />
+          <Route path={toHref("/en/book-now")} element={<BuchenPage />} />
+          <Route path={toHref("/en/cruises")} element={<ToernsPage />} />
+          <Route path={toHref("/en/cruises/:id")} element={<ToernDetailPage />} />
+          <Route path={toHref("/en/cabin-offers")} element={<KabinenPage />} />
+          <Route path={toHref("/en/holiday-planner")} element={<UrlaubsplanerPage />} />
+          <Route path={toHref("/en/charter/yacht-charter")} element={<CharterPage />} />
+          <Route path={toHref("/en/charter/crew-charter")} element={<SkipperPage />} />
+          <Route path={toHref("/en/contact/crew")} element={<CrewPage />} />
+          <Route path={toHref("/en/contact/travel-agencies")} element={<ReisebueroPage />} />
+          <Route path={toHref("/en/imprint")} element={<ImpressumPage />} />
+          <Route path={toHref("/en/data-privacy")} element={<DatenschutzPage />} />
+          <Route path={toHref("/en/terms")} element={<AgbPage />} />
+          <Route path={toHref("/en/contact")} element={<ContactPage />} />
+          <Route path={toHref("/en/trip-reports")} element={<ToernberichtePage />} />
+          <Route path={toHref("/en/trip-reports/:slug")} element={<ToernberichtDetailPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
         {!hideKontakt && <Kontakt />}

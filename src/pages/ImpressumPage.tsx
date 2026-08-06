@@ -27,7 +27,6 @@ export default function ImpressumPage() {
       <SEO
         title="Impressum"
         description="Impressum und rechtliche Angaben von YACHT-URLAUB Ing. Manuel Göschl, MBA"
-        canonical="/impressum"
       />
 
       {/* Header Banner */}

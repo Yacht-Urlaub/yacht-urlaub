@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../router'
 import { motion } from 'framer-motion'
 import { useLang, enPkgSlugs } from '../i18n'
 import { packagesEn } from '../data/packagesEn'

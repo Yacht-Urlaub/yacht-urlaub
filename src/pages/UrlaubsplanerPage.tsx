@@ -205,7 +205,6 @@ export default function UrlaubsplanerPage() {
       <SEO
         title={lang === 'en' ? "Holiday planner – get a quote | Yacht-Holiday" : "Urlaubsplaner – Anfrage starten | Yacht-Urlaub"}
         description="In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir!"
-        canonical="/urlaubsplaner"
       />
 
       {/* Hero */}

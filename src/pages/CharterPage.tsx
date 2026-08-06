@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link } from '../router'
 import SEO from '../components/SEO'
 import { useLang } from '../i18n'
 import { AlertIcon } from '../components/Icons'
@@ -99,7 +99,6 @@ export default function CharterPage() {
       <SEO
         title={lang === 'en' ? "Yacht charter – bareboat charter worldwide | Yacht-Holiday" : "Yacht-Charter anfragen – Bareboat-Charter weltweit | Yacht-Urlaub"}
         description="Sie wollen eine Yacht chartern? Gerne nehmen wir Ihre Anfrage für Yacht-Charter (nur Yacht ohne Skipper/Bord-Service) entgegen – weltweit, persönlich und mit Qualitätsversprechen."
-        canonical="/charter"
         image="/images/charter/header.png"
       />
 

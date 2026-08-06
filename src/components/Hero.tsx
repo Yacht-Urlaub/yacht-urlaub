@@ -1,6 +1,6 @@
 import { useLang } from '../i18n'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link } from '../router'
 import { useRef, useEffect } from 'react'
 
 export default function Hero() {

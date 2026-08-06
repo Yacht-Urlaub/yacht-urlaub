@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link } from '../router'
 import { FacebookIcon, InstagramIcon, YouTubeIcon, LinkedInIcon, XingIcon } from './Icons'
 import { useLang } from '../i18n'
 

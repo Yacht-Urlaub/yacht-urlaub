@@ -6,7 +6,67 @@ export type Lang = 'de' | 'en'
 export const LanguageContext = createContext<Lang>('de')
 export const useLang = () => useContext(LanguageContext)
 
+/* ==========================================================================
+ * Zwei Domains, eine Anwendung
+ *
+ * Deutsch laeuft auf yacht-urlaub.net, Englisch auf yacht-holiday.net.
+ * Intern behaelt die Anwendung durchgehend die Pfade mit /en-Praefix
+ * ("interner Pfad"). Auf der englischen Domain faellt dieses Praefix in der
+ * Adresszeile weg ("Href-Pfad"), damit die ueber Jahre etablierten Adressen
+ * von yacht-holiday.net unveraendert bleiben: /cruises, /destinations/croatia,
+ * /yachts und so weiter.
+ *
+ *   interner Pfad   /en/cruises   <-- Routen, routePairs, canonicalPath
+ *   Href-Pfad       /cruises      <-- Adresszeile auf der EN-Domain
+ *
+ * toInternal() und toHref() rechnen zwischen beiden um. Alles andere im
+ * Code arbeitet weiter mit internen Pfaden und muss davon nichts wissen.
+ * ========================================================================== */
+
+export const BASE_DE = 'https://www.yacht-urlaub.net'
+export const BASE_EN = 'https://www.yacht-holiday.net'
+
+/** Hosts, die den englischen Auftritt ausliefern.
+ *
+ *  en-test.yacht-urlaub.net  Testhost bei Netlify — damit laesst sich der
+ *                            englische Betrieb pruefen, bevor die echte
+ *                            Domain umgezogen ist.
+ *  en.localhost              lokal: "npm run dev" oder "vite preview" unter
+ *                            http://en.localhost:PORT aufrufen, dann laeuft
+ *                            die Anwendung im englischen Modus. */
+export const EN_HOSTS = [
+  'yacht-holiday.net',
+  'www.yacht-holiday.net',
+  'en-test.yacht-urlaub.net',
+  'en.localhost',
+]
+
+export function isEnHost(hostname?: string): boolean {
+  const h = hostname ?? (typeof window === 'undefined' ? '' : window.location.hostname)
+  return EN_HOSTS.includes(h)
+}
+
+/** Adresszeile → interner Pfad (auf der EN-Domain wird /en ergaenzt) */
+export function toInternal(pathname: string): string {
+  if (!isEnHost()) return pathname
+  if (pathname === '/' || pathname === '') return '/en'
+  return pathname.startsWith('/en/') || pathname === '/en' ? pathname : `/en${pathname}`
+}
+
+/** Interner Pfad → Adresszeile (auf der EN-Domain faellt /en weg) */
+export function toHref(pathname: string): string {
+  if (!isEnHost()) return pathname
+  return stripEn(pathname)
+}
+
+/** Entfernt das /en-Praefix unabhaengig vom aktuellen Host */
+export function stripEn(pathname: string): string {
+  if (pathname === '/en') return '/'
+  return pathname.startsWith('/en/') ? pathname.slice(3) : pathname
+}
+
 export function langFromPath(pathname: string): Lang {
+  if (isEnHost()) return 'en'
   return pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'de'
 }
 
@@ -111,6 +171,46 @@ export function switchLangPath(pathname: string, target: Lang): string {
   // dynamische Pfade (Packages/Destinationen mit Slugs) generisch
   if (target === 'en') return pathname.startsWith('/en') ? pathname : '/en'
   return pathname.startsWith('/en') ? '/' : pathname
+}
+
+/** Deutsch/englisches Gegenstueck eines internen Pfades — oder null, wenn es
+ *  fuer diese Seite kein echtes Pendant gibt. Streng, weil das Ergebnis in
+ *  hreflang-Angaben landet: eine geratene Zuordnung waere dort schlechter als
+ *  gar keine. */
+export function langPair(pathname: string): { de: string; en: string } | null {
+  const de = canonicalPath(pathname)
+  if (de === pathname && pathname.startsWith('/en')) return null // nicht aufloesbar
+  for (const [d, e] of routePairs) if (d === de) return { de: d, en: e }
+
+  let m = de.match(/^\/packages\/([^/]+)$/)
+  if (m) {
+    const en = Object.entries(enPkgSlugs).find(([, id]) => id === m![1])?.[0]
+    return en ? { de, en: `/en/cruises/book-now/${en}` } : null
+  }
+  m = de.match(/^\/destinationen\/([^/]+)$/)
+  if (m) {
+    const en = Object.entries(enDestSlugs).find(([, id]) => id === m![1])?.[0]
+    return en ? { de, en: `/en/destinations/${en}` } : null
+  }
+  m = de.match(/^\/toerns\/([^/]+)$/)
+  if (m) {
+    const en = Object.entries(enCruiseToDe).find(([, id]) => id === m![1])?.[0]
+    return en ? { de, en: `/en/cruises/${en}` } : null
+  }
+  return null
+}
+
+/** Vollstaendige Adresse einer Seite in der Zielsprache — inklusive
+ *  Domainwechsel, weil die Sprachen auf verschiedenen Domains liegen. */
+export function switchLangUrl(pathname: string, target: Lang): string {
+  const internal = toInternal(pathname)
+  const pair = langPair(internal)
+  if (target === 'en') {
+    const en = pair ? pair.en : switchLangPath(internal, 'en')
+    return `${BASE_EN}${stripEn(en)}`
+  }
+  const de = pair ? pair.de : switchLangPath(internal, 'de')
+  return `${BASE_DE}${de}`
 }
 
 /** UI-Wörterbuch für gemeinsame Komponenten */
