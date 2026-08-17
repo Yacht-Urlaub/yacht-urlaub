@@ -7,7 +7,8 @@
 // zusammengefuehrt. Alle uebrigen Felder landen unveraendert in der Mail.
 //
 // Umgebung: RESEND_API_KEY (Pflicht), CONTACT_TO, RESEND_FROM,
-//           RECAPTCHA_SECRET, RECAPTCHA_MODE, RECAPTCHA_MIN_SCORE.
+//           RECAPTCHA_SECRET, RECAPTCHA_SECRET_EN, RECAPTCHA_MODE,
+//           RECAPTCHA_MIN_SCORE.
 
 const FORM_LABELS = {
   kontakt: 'Kontaktformular',
@@ -61,8 +62,13 @@ const LABELS = {
  *
  * Ohne RECAPTCHA_SECRET passiert gar nichts; die Formulare laufen wie zuvor.
  */
-async function pruefeRecaptcha(token, remoteIp) {
-  const secret = process.env.RECAPTCHA_SECRET
+async function pruefeRecaptcha(token, remoteIp, host) {
+  // Jede Domain hat ihr eigenes Schluesselpaar im Google-Konto. Der Browser
+  // waehlt den Websiteschluessel nach Host (src/lib/recaptcha.ts), hier muss
+  // derselbe Host denselben geheimen Schluessel treffen — sonst weist Google
+  // das Token ab.
+  const istEn = /(^|\.)yacht-holiday\.net$/.test(String(host || '').toLowerCase().split(':')[0])
+  const secret = (istEn && process.env.RECAPTCHA_SECRET_EN) || process.env.RECAPTCHA_SECRET
   if (!secret) return { ok: true, grund: 'kein Schluessel hinterlegt' }
   if (!token) return { ok: false, grund: 'kein Token mitgeschickt' }
 
@@ -124,6 +130,7 @@ export default async (req) => {
   const captcha = await pruefeRecaptcha(
     data.recaptchaToken,
     req.headers.get('x-nf-client-connection-ip') || req.headers.get('x-forwarded-for')?.split(',')[0]?.trim(),
+    req.headers.get('x-forwarded-host') || req.headers.get('host'),
   )
   const enforce = (process.env.RECAPTCHA_MODE || 'monitor').toLowerCase() === 'enforce'
   if (!captcha.ok) {
