@@ -31,6 +31,7 @@ import SkipperPage from './pages/SkipperPage'
 import SailAwayPage from './pages/SailAwayPage'
 import ToernberichtDetailPage from './pages/ToernberichtDetailPage'
 import ContactPage from './pages/ContactPage'
+import YogaPage from './pages/YogaPage'
 
 function LangProvider({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation()
@@ -83,6 +84,7 @@ function AnimatedRoutes() {
           <Route path="/reisebuero" element={<ReisebueroPage />} />
           <Route path="/skipper" element={<SkipperPage />} />
           <Route path="/sailaway" element={<SailAwayPage />} />
+          <Route path="/yoga" element={<YogaPage />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/impressum" element={<ImpressumPage />} />
           <Route path="/datenschutz" element={<DatenschutzPage />} />
@@ -112,6 +114,7 @@ function AnimatedRoutes() {
           <Route path={toHref("/en/data-privacy")} element={<DatenschutzPage />} />
           <Route path={toHref("/en/terms")} element={<AgbPage />} />
           <Route path={toHref("/en/contact")} element={<ContactPage />} />
+          <Route path={toHref("/en/yoga")} element={<YogaPage />} />
           <Route path={toHref("/en/trip-reports")} element={<ToernberichtePage />} />
           <Route path={toHref("/en/trip-reports/:slug")} element={<ToernberichtDetailPage />} />
           <Route path="*" element={<HomePage />} />
