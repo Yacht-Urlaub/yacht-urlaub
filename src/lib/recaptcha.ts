@@ -6,10 +6,10 @@
  * Score zwischen 0.0 (sehr wahrscheinlich Bot) und 1.0 (sehr wahrscheinlich
  * Mensch) zurueckbekommt.
  *
- * Der Websiteschluessel ist oeffentlich — er steht im ausgelieferten
- * JavaScript und ist an die im Google-Konto hinterlegten Domains gebunden.
- * Der geheime Schluessel gehoert ausschliesslich auf den Server
- * (Netlify-Umgebungsvariable RECAPTCHA_SECRET), niemals hierher.
+ * Die Websiteschluessel sind oeffentlich — sie stehen im ausgelieferten
+ * JavaScript und sind an die im Google-Konto hinterlegten Domains gebunden.
+ * Die geheimen Schluessel gehoeren ausschliesslich auf den Server
+ * (RECAPTCHA_SECRET und RECAPTCHA_SECRET_EN bei Netlify), niemals hierher.
  *
  * Diese Datei gibt nie einen Fehler nach aussen: laesst sich das Skript
  * nicht laden — Werbeblocker, Netzausfall, nicht eingetragene Domain —,
@@ -18,7 +18,40 @@
  * dass ein echter Interessent sein Formular nicht abschicken kann.
  */
 
-export const RECAPTCHA_SITE_KEY = '6LdmwW4sAAAAAMvXNne0kjGA4LVoE3d-qg9wx8A8'
+/**
+ * Ein Schluesselpaar je Domain — so wie im Google-Konto angelegt. Getrennte
+ * Schluessel heisst getrennte Statistik: im reCAPTCHA-Konto laesst sich
+ * dadurch sehen, wie viel Bot-Verkehr auf der deutschen und wie viel auf der
+ * englischen Seite ankommt.
+ *
+ * Geprueft am 17.08.2026, welche Herkunft welcher Schluessel akzeptiert:
+ *
+ *                                  Standard   yacht-holiday
+ *   yacht-urlaub.net (+ www)          ja          nein
+ *   yacht-holiday.net (+ www)         ja           ja
+ *   en-test.yacht-urlaub.net          ja          nein
+ *   yacht-urlaub-team.netlify.app    nein         nein
+ *
+ * Der Standardschluessel deckt also auch die englische Domain ab — er ist
+ * die Rueckfalloption, falls ein Host nicht in der Tabelle steht.
+ *
+ * Der Netlify-Host ist bei keinem eingetragen: auf Deploy-Vorschauen kommt
+ * deshalb kein Token zustande. Im Beobachtungsmodus faellt das nicht auf,
+ * im Modus "enforce" waeren Formulare dort nicht absendbar. Wer das
+ * braucht, laesst die Domain im Google-Konto nachtragen.
+ */
+const SITE_KEY_STANDARD = '6LdmwW4sAAAAAMvXNne0kjGA4LVoE3d-qg9wx8A8'
+
+const SITE_KEYS: Record<string, string> = {
+  'yacht-holiday.net': '6Le71IotAAAAAJwh6lY_ehlTEAkmZrhJz7aDYV3-',
+  'www.yacht-holiday.net': '6Le71IotAAAAAJwh6lY_ehlTEAkmZrhJz7aDYV3-',
+}
+
+/** Passender Websiteschluessel zum aufgerufenen Host. */
+export function siteKeyFor(hostname?: string): string {
+  const h = (hostname ?? (typeof window === 'undefined' ? '' : window.location.hostname)).toLowerCase()
+  return SITE_KEYS[h] ?? SITE_KEY_STANDARD
+}
 
 /** Nach dieser Zeit wird ohne Token abgeschickt, statt den Nutzer warten zu lassen. */
 const TIMEOUT_MS = 5000
@@ -40,7 +73,7 @@ function loadScript(lang: string): Promise<void> {
   loader = new Promise<void>((resolve, reject) => {
     if (window.grecaptcha) return resolve()
     const el = document.createElement('script')
-    el.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}&hl=${lang}`
+    el.src = `https://www.google.com/recaptcha/api.js?render=${siteKeyFor()}&hl=${lang}`
     el.async = true
     el.defer = true
     el.onload = () => resolve()
@@ -68,7 +101,7 @@ export async function getRecaptchaToken(action: string, lang = 'de'): Promise<st
     const g = window.grecaptcha
     if (!g) return null
     await withTimeout(new Promise<void>(res => g.ready(res)), TIMEOUT_MS)
-    return await withTimeout(g.execute(RECAPTCHA_SITE_KEY, { action: safeAction }), TIMEOUT_MS)
+    return await withTimeout(g.execute(siteKeyFor(), { action: safeAction }), TIMEOUT_MS)
   } catch {
     return null
   }
