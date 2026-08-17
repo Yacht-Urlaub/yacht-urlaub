@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
-import { useLang } from '../i18n'
+import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 
 // Crew 1:1 von yacht-urlaub.net/kontakt/crew übernommen
@@ -83,7 +83,18 @@ const personal = [
     name: 'Rebecca Mistretta',
     role: 'Bord-Service und Yoga-Trainerin',
     adresse: '10000 Zagreb',
-    kontakt: 'info@yacht-urlaub.net',
+    kontakt: MAIL.de,
+    img: '/images/crew/Rebecca.jpg',
+    bio: '',
+  },
+]
+
+const personalEn = [
+  {
+    name: 'Rebecca Mistretta',
+    role: 'On-board service and yoga instructor',
+    adresse: '10000 Zagreb',
+    kontakt: MAIL.en,
     img: '/images/crew/Rebecca.jpg',
     bio: '',
   },
@@ -144,6 +155,7 @@ export default function CrewPage() {
   const lang = useLang()
   const s = crl[lang]
   const team = lang === 'en' ? skipperEn : skipper
+  const staff = lang === 'en' ? personalEn : personal
   const [form, setForm] = useState({ name: '', email: '', telefon: '', nachricht: '' })
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
@@ -197,7 +209,7 @@ export default function CrewPage() {
             {team.map((p, i) => <CrewCard key={p.name} p={p} i={i} />)}
           </div>
           <p>
-            <a href="mailto:skipper@yacht-urlaub.net?subject=Bewerbung als Profi-Skipper" style={{ color: 'var(--blue)', fontWeight: 700, fontSize: '0.95rem' }}>
+            <a href={`mailto:skipper@yacht-urlaub.net?subject=${encodeURIComponent(lang === 'en' ? 'Application as professional skipper' : 'Bewerbung als Profi-Skipper')}`} style={{ color: 'var(--blue)', fontWeight: 700, fontSize: '0.95rem' }}>
               {s.apply}
             </a>
           </p>
@@ -211,7 +223,7 @@ export default function CrewPage() {
             {s.staff}
           </h2>
           <div className="crew-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-            {personal.map((p, i) => <CrewCard key={p.name} p={p} i={i} />)}
+            {staff.map((p, i) => <CrewCard key={p.name} p={p} i={i} />)}
           </div>
         </div>
       </section>
@@ -251,7 +263,7 @@ export default function CrewPage() {
               {failed && (
                 <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>
                   {lang === 'en'
-                    ? 'Your request could not be sent. Please try again or email us at info@yacht-urlaub.net.'
+                    ? `Your request could not be sent. Please try again or email us at ${MAIL.en}.`
                     : 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@yacht-urlaub.net.'}
                 </p>
               )}

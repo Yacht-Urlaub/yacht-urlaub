@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
-import { useLang } from '../i18n'
+import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 import { SparklesIcon } from '../components/Icons'
 
@@ -330,7 +330,7 @@ export default function KabinenPage() {
 
                   {lang === 'en'
 
-                    ? 'Your request could not be sent. Please try again or email us at info@yacht-urlaub.net.'
+                    ? `Your request could not be sent. Please try again or email us at ${MAIL.en}.`
 
                     : 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@yacht-urlaub.net.'}
 

@@ -26,6 +26,16 @@ export const useLang = () => useContext(LanguageContext)
 export const BASE_DE = 'https://www.yacht-urlaub.net'
 export const BASE_EN = 'https://www.yacht-holiday.net'
 
+/** Kontaktadresse je Sprache. Der englische Auftritt nennt seit Jahren
+ *  office@yacht-holiday.net — diese Adresse steht in der alten Korrespondenz
+ *  und bleibt deshalb auf der englischen Domain stehen. Rechtstexte
+ *  (Impressum, Datenschutz, AGB) sind davon ausgenommen: sie nennen die
+ *  Adresse des Medieninhabers und laufen ohnehin nur auf Deutsch. */
+export const MAIL: Record<Lang, string> = {
+  de: 'info@yacht-urlaub.net',
+  en: 'office@yacht-holiday.net',
+}
+
 /** Hosts, die den englischen Auftritt ausliefern.
  *
  *  en-test.yacht-urlaub.net  Testhost bei Netlify — damit laesst sich der

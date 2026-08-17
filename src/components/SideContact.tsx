@@ -1,5 +1,5 @@
 import { Link } from '../router'
-import { useLang } from '../i18n'
+import { useLang, MAIL } from '../i18n'
 
 const items = [
   {
@@ -78,7 +78,9 @@ export default function SideContact() {
             </>
           )
           const style = { ['--hover-bg' as string]: item.hover }
-          const target = item.id === 'anfrage' && lang === 'en' ? '/en/holiday-planner' : item.href
+          const target = item.id === 'anfrage' && lang === 'en' ? '/en/holiday-planner'
+            : item.id === 'mail' ? `mailto:${MAIL[lang]}`
+            : item.href
           return target.startsWith('/') ? (
             <Link key={item.id} to={target} aria-label={item.label} className="side-contact-item" style={style}>
               {inner}
@@ -86,7 +88,7 @@ export default function SideContact() {
           ) : (
             <a
               key={item.id}
-              href={item.href}
+              href={target}
               target={item.external ? '_blank' : undefined}
               rel={item.external ? 'noopener noreferrer' : undefined}
               aria-label={item.label}
