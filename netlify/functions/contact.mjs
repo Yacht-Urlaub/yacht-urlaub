@@ -6,7 +6,8 @@
 // anmerkung/anmerkungen), deshalb werden die gaengigen Varianten hier
 // zusammengefuehrt. Alle uebrigen Felder landen unveraendert in der Mail.
 //
-// Umgebung: RESEND_API_KEY (Pflicht), CONTACT_TO, RESEND_FROM.
+// Umgebung: RESEND_API_KEY (Pflicht), CONTACT_TO, RESEND_FROM,
+//           RECAPTCHA_SECRET, RECAPTCHA_MODE, RECAPTCHA_MIN_SCORE.
 
 const FORM_LABELS = {
   kontakt: 'Kontaktformular',
@@ -25,7 +26,9 @@ const FORM_LABELS = {
 const NAME_KEYS = ['name', 'vorname', 'nachname']
 const PHONE_KEYS = ['phone', 'telefon']
 const MESSAGE_KEYS = ['message', 'nachricht', 'anmerkung', 'anmerkungen']
-const CONSUMED = new Set([...NAME_KEYS, ...PHONE_KEYS, ...MESSAGE_KEYS, 'email', 'formName', 'form-name'])
+const CONSUMED = new Set([...NAME_KEYS, ...PHONE_KEYS, ...MESSAGE_KEYS, 'email', 'formName', 'form-name',
+  // technisch, gehoert nicht in die Mail
+  'recaptchaToken'])
 
 const LABELS = {
   destination: 'Destination', toerntyp: 'Törn-Typ', personen: 'Personen',
@@ -39,6 +42,55 @@ const LABELS = {
   zahlungsart: 'Zahlungsart', modus: 'Modus', gruppe: 'Gruppe',
   getraenke: 'Getränke', yachtTyp: 'Yacht-Typ', kabinen: 'Kabinen',
   revier: 'Revier', alter: 'Alter', start: 'Start', ende: 'Ende',
+}
+
+/**
+ * reCAPTCHA v3 pruefen.
+ *
+ * Rueckgabe: { ok, grund, score }. ok=false heisst "sieht nach Bot aus" —
+ * ob daraus eine Ablehnung wird, entscheidet der Modus:
+ *
+ *   RECAPTCHA_MODE=monitor   (Vorgabe) nur protokollieren, nichts abweisen
+ *   RECAPTCHA_MODE=enforce   abweisen
+ *
+ * Der Umweg ueber "monitor" ist Absicht: Wenn die beiden Domains im
+ * Google-Konto nicht eingetragen sind, liefert der Browser gar kein Token
+ * — mit sofortigem Abweisen waeren dann alle Anfragen weg, und zwar
+ * unbemerkt. Erst nach dem Blick in die Funktionsprotokolle auf enforce
+ * stellen.
+ *
+ * Ohne RECAPTCHA_SECRET passiert gar nichts; die Formulare laufen wie zuvor.
+ */
+async function pruefeRecaptcha(token, remoteIp) {
+  const secret = process.env.RECAPTCHA_SECRET
+  if (!secret) return { ok: true, grund: 'kein Schluessel hinterlegt' }
+  if (!token) return { ok: false, grund: 'kein Token mitgeschickt' }
+
+  const minScore = Number(process.env.RECAPTCHA_MIN_SCORE || '0.5')
+
+  let body
+  try {
+    const params = new URLSearchParams({ secret, response: token })
+    if (remoteIp) params.set('remoteip', remoteIp)
+    const res = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params,
+    })
+    body = await res.json()
+  } catch (e) {
+    // Google nicht erreichbar — das darf keine echte Anfrage kosten
+    return { ok: true, grund: `Pruefung nicht moeglich: ${e?.message || e}` }
+  }
+
+  if (!body.success) {
+    return { ok: false, grund: `abgelehnt: ${(body['error-codes'] || []).join(', ') || 'ohne Angabe'}` }
+  }
+  const score = typeof body.score === 'number' ? body.score : null
+  if (score !== null && score < minScore) {
+    return { ok: false, grund: `Score ${score} unter ${minScore}`, score }
+  }
+  return { ok: true, grund: 'bestanden', score, hostname: body.hostname }
 }
 
 const pick = (data, keys) => {
@@ -75,6 +127,18 @@ export default async (req) => {
 
   if (!name || !email) return json({ error: 'Bitte Name und E-Mail ausfüllen.' }, 400)
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'Bitte eine gültige E-Mail angeben.' }, 400)
+
+  const captcha = await pruefeRecaptcha(
+    data.recaptchaToken,
+    req.headers.get('x-nf-client-connection-ip') || req.headers.get('x-forwarded-for')?.split(',')[0]?.trim(),
+  )
+  const enforce = (process.env.RECAPTCHA_MODE || 'monitor').toLowerCase() === 'enforce'
+  if (!captcha.ok) {
+    console.log(`[recaptcha] ${formKey}: ${captcha.grund}${enforce ? ' → abgewiesen' : ' → durchgelassen (monitor)'}`)
+    if (enforce) return json({ error: 'Ihre Anfrage konnte nicht geprüft werden. Bitte laden Sie die Seite neu und versuchen Sie es erneut.' }, 403)
+  } else if (captcha.score !== undefined && captcha.score !== null) {
+    console.log(`[recaptcha] ${formKey}: Score ${captcha.score}, Host ${captcha.hostname}`)
+  }
 
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) return json({ error: 'Server nicht konfiguriert (RESEND_API_KEY fehlt).' }, 500)

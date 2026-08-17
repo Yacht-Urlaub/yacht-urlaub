@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import SEO from '../components/SEO'
 import { useLang, MAIL } from '../i18n'
+import { sendForm } from '../lib/sendForm'
+import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
 const L = {
   de: {
@@ -43,16 +45,9 @@ export default function ContactPage() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
-    try {
-      const res = await fetch('/.netlify/functions/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      })
-      setStatus(res.ok ? 'ok' : 'error')
-    } catch {
-      setStatus('error')
-    }
+    // Wie alle anderen Formulare ueber sendForm — dort haengt der
+    // reCAPTCHA-Schutz, und der Formularname landet in der Mail.
+    setStatus(await sendForm('kontakt', form) ? 'ok' : 'error')
   }
 
   return (
@@ -109,6 +104,7 @@ export default function ContactPage() {
                   <button type="submit" disabled={status === 'sending'} className="btn btn-primary" style={{ fontSize: '0.85rem', opacity: status === 'sending' ? 0.7 : 1 }}>
                     {status === 'sending' ? s.sending : s.send}
                   </button>
+                  <RecaptchaHinweis />
                 </form>
               )}
             </div>

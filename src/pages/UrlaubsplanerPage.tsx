@@ -4,6 +4,7 @@ import SEO from '../components/SEO'
 import { AnchorIcon } from '../components/Icons'
 import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
+import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
 // Optionen 1:1 vom Original-Urlaubsplaner (yacht-urlaub.net/urlaubsplaner)
 const yachtTypes = [
@@ -525,6 +526,7 @@ export default function UrlaubsplanerPage() {
                   >
                     {sending ? '…' : s.submit}
                   </button>
+                  <RecaptchaHinweis align="center" />
                   <p style={{ color: 'var(--gray)', fontSize: '0.75rem', marginTop: '0.75rem', textAlign: 'center' }}>
                     {s.nospam}
                   </p>
