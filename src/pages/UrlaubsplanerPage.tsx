@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { AnchorIcon } from '../components/Icons'
 import { useLang } from '../i18n'
+import { sendForm } from '../lib/sendForm'
 
 // Optionen 1:1 vom Original-Urlaubsplaner (yacht-urlaub.net/urlaubsplaner)
 const yachtTypes = [
@@ -148,6 +149,8 @@ export default function UrlaubsplanerPage() {
   const s = pl[lang]
   const [step, setStep] = useState(0)
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [failed, setFailed] = useState(false)
   const [form, setForm] = useState<FormData>({
     yacht: '', reviere: [], revierSonstiges: '',
     beginn: '', dauer: '7', buchung: '', anmerkung: '',
@@ -174,8 +177,9 @@ export default function UrlaubsplanerPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const body = new URLSearchParams({
-      'form-name': 'urlaubsplaner',
+    setSending(true)
+    setFailed(false)
+    const ok = await sendForm('urlaubsplaner', {
       yacht: form.yacht,
       reviere: [...form.reviere, form.revierSonstiges && `sonstiges: ${form.revierSonstiges}`].filter(Boolean).join(', '),
       beginn: form.beginn,
@@ -192,12 +196,10 @@ export default function UrlaubsplanerPage() {
       newsletter: form.newsletter ? 'ja' : 'nein',
       erfahren: form.erfahren,
     })
-    try {
-      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
-    } catch {
-      // continue regardless
-    }
-    setSent(true)
+    setSending(false)
+    // Frueher wurde der Erfolg ungeprueft gemeldet — auch wenn nichts ankam.
+    if (ok) setSent(true)
+    else setFailed(true)
   }
 
   return (
@@ -459,14 +461,9 @@ export default function UrlaubsplanerPage() {
                 </div>
 
                 <form
-                  name="urlaubsplaner"
-                  data-netlify="true"
-                  netlify-honeypot="bot-field"
                   onSubmit={handleSubmit}
                   style={{ background: '#fff', borderRadius: '8px', padding: '2.5rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)', maxWidth: '560px', margin: '0 auto' }}
                 >
-                  <input type="hidden" name="form-name" value="urlaubsplaner" />
-                  <p style={{ display: 'none' }}><label>Nicht ausfüllen: <input name="bot-field" /></label></p>
 
                   <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
@@ -513,13 +510,20 @@ export default function UrlaubsplanerPage() {
                     </select>
                   </div>
 
+                  {failed && (
+                    <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>
+                      {lang === 'en'
+                        ? 'Your request could not be sent. Please try again or email us at info@yacht-urlaub.net.'
+                        : 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@yacht-urlaub.net.'}
+                    </p>
+                  )}
                   <button
                     type="submit"
-                    disabled={!canNext()}
+                    disabled={!canNext() || sending}
                     className="btn btn-primary"
-                    style={{ width: '100%', fontSize: '0.85rem', padding: '14px', opacity: canNext() ? 1 : 0.5, cursor: canNext() ? 'pointer' : 'not-allowed' }}
+                    style={{ width: '100%', fontSize: '0.85rem', padding: '14px', opacity: canNext() && !sending ? 1 : 0.5, cursor: canNext() && !sending ? 'pointer' : 'not-allowed' }}
                   >
-                    {s.submit}
+                    {sending ? '…' : s.submit}
                   </button>
                   <p style={{ color: 'var(--gray)', fontSize: '0.75rem', marginTop: '0.75rem', textAlign: 'center' }}>
                     {s.nospam}

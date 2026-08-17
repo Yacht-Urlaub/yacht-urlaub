@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
+import { sendForm } from '../lib/sendForm'
 
 // Inhalte 1:1 von yacht-urlaub.net/sailaway
 const fakten = [
@@ -83,18 +84,20 @@ export default function SailAwayPage() {
   })
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
+  const [failed, setFailed] = useState(false)
   const set = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }))
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setSending(true)
-    const body = new URLSearchParams({ 'form-name': 'sailaway-anfrage', ...form })
-    try {
-      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
-      setSent(true)
-    } finally {
-      setSending(false)
-    }
+    setFailed(false)
+    // Ging frueher an Netlify Forms — dort kam nichts an, weil die Formulare
+    // erst zur Laufzeit entstehen. Jetzt ueber dieselbe Function wie das
+    // Kontaktformular.
+    const ok = await sendForm('sailaway-anfrage', form)
+    setSending(false)
+    if (ok) setSent(true)
+    else setFailed(true)
   }
 
   const inputStyle = { width: '100%', padding: '11px 14px', borderRadius: '4px', border: '1px solid var(--gray-mid)', fontSize: '0.9rem', background: '#fff' } as const
@@ -267,9 +270,7 @@ export default function SailAwayPage() {
               <p style={{ color: 'var(--gray)', fontSize: '0.92rem' }}>Deine Anfrage wurde erfolgreich übermittelt. Wir melden uns schnellstmöglich!</p>
             </div>
           ) : (
-            <form name="sailaway-anfrage" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>
-              <input type="hidden" name="form-name" value="sailaway-anfrage" />
-              <p style={{ display: 'none' }}><input name="bot-field" /></p>
+            <form onSubmit={handleSubmit}>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
@@ -317,6 +318,11 @@ export default function SailAwayPage() {
                 <label style={labelStyle}>Anmerkungen</label>
                 <textarea name="anmerkungen" rows={4} value={form.anmerkungen} onChange={e => set('anmerkungen', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
               </div>
+              {failed && (
+                <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>
+                  Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@yacht-urlaub.net.
+                </p>
+              )}
               <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '14px 40px', opacity: sending ? 0.6 : 1 }}>
                 {sending ? 'wird gesendet …' : 'Anfrage senden'}
               </button>
