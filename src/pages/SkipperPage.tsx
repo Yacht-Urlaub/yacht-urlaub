@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
-import { useLang } from '../i18n'
+import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 
 // Inhalte 1:1 von yacht-urlaub.net/charter/skipper-und-bord-service
@@ -316,7 +316,7 @@ export default function SkipperPage() {
               {failed && (
                 <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>
                   {lang === 'en'
-                    ? 'Your request could not be sent. Please try again or email us at info@yacht-urlaub.net.'
+                    ? `Your request could not be sent. Please try again or email us at ${MAIL.en}.`
                     : 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@yacht-urlaub.net.'}
                 </p>
               )}

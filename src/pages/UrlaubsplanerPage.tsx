@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { AnchorIcon } from '../components/Icons'
-import { useLang } from '../i18n'
+import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 
 // Optionen 1:1 vom Original-Urlaubsplaner (yacht-urlaub.net/urlaubsplaner)
@@ -513,7 +513,7 @@ export default function UrlaubsplanerPage() {
                   {failed && (
                     <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>
                       {lang === 'en'
-                        ? 'Your request could not be sent. Please try again or email us at info@yacht-urlaub.net.'
+                        ? `Your request could not be sent. Please try again or email us at ${MAIL.en}.`
                         : 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@yacht-urlaub.net.'}
                     </p>
                   )}

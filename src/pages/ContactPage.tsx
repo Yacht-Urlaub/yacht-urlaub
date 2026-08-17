@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import SEO from '../components/SEO'
-import { useLang } from '../i18n'
+import { useLang, MAIL } from '../i18n'
 
 const L = {
   de: {
@@ -119,7 +119,7 @@ export default function ContactPage() {
               <p style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.2rem' }}>{s.phoneL}</p>
               <p style={{ marginBottom: '1.25rem' }}><a href="tel:+43199715820" style={{ color: '#fff', fontWeight: 600 }}>+43 1 997 15 82</a></p>
               <p style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.2rem' }}>{s.mailL}</p>
-              <p><a href="mailto:info@yacht-urlaub.net" style={{ color: '#fff', fontWeight: 600 }}>info@yacht-urlaub.net</a></p>
+              <p><a href={`mailto:${MAIL[lang]}`} style={{ color: '#fff', fontWeight: 600 }}>{MAIL[lang]}</a></p>
             </div>
           </div>
         </div>

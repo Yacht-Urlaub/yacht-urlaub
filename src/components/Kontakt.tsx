@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 import { PhoneIcon, MailIcon, WhatsAppIcon, MapPinIcon, CalendarIcon, SailboatIcon } from './Icons'
-import { useLang } from '../i18n'
+import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 
 const inputStyle = (error?: boolean): React.CSSProperties => ({
@@ -60,6 +60,7 @@ const kf = {
       { val: 'bald', label: 'Ich möchte in den nächsten Wochen buchen.' },
       { val: 'info', label: 'Ich erkundige mich vorerst nur.' },
     ],
+    yachtWunsch: 'Gewünschter Yachttyp', absicht: 'Buchungsabsicht', kontaktartLabel: 'Gewünschte Kontaktart',
     reach: 'Wie können wir Sie erreichen?', namePh: 'Ihr Name', mailPh: 'ihre@email.at',
     kontaktarten: ['Telefon', 'E-Mail', 'WhatsApp'],
     wishes: 'Ihre Wünsche & Fragen', wishesPh: 'Was ist Ihnen besonders wichtig? Haben Sie spezielle Wünsche?',
@@ -81,6 +82,7 @@ const kf = {
       { val: 'bald', label: 'I would like to book within the next weeks.' },
       { val: 'info', label: 'I am just inquiring for now.' },
     ],
+    yachtWunsch: 'Preferred yacht type', absicht: 'Booking intention', kontaktartLabel: 'Preferred way of contact',
     reach: 'How can we reach you?', namePh: 'Your name', mailPh: 'your@email.com',
     kontaktarten: ['Phone', 'Email', 'WhatsApp'],
     wishes: 'Your wishes & questions', wishesPh: 'What matters most to you? Any special requests?',
@@ -175,7 +177,7 @@ export default function Kontakt() {
             {[
               { icon: <PhoneIcon size={20} />, label: kt.tel, val: '+43 1 997 15 82', sub: 'Mo–Fr 10:00–19:00, Sa 13:00–17:00', href: 'tel:+43199715820', bg: 'var(--navy)' },
               { icon: <WhatsAppIcon size={20} />, label: kt.wa, val: '+43 660 2652481', sub: kt.waSub, href: 'https://wa.me/436602652481', bg: '#25d366' },
-              { icon: <MailIcon size={20} />, label: kt.mail, val: 'info@yacht-urlaub.net', sub: '', href: 'mailto:info@yacht-urlaub.net', bg: 'var(--navy)' },
+              { icon: <MailIcon size={20} />, label: kt.mail, val: MAIL[lang], sub: '', href: `mailto:${MAIL[lang]}`, bg: 'var(--navy)' },
             ].map(c => (
               <div key={c.label} style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.25rem' }}>
                 <div style={{ width: '46px', height: '46px', borderRadius: '50%', background: c.bg, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
@@ -309,7 +311,7 @@ export default function Kontakt() {
                       </div>
 
                       <div style={{ marginBottom: '1.5rem' }}>
-                        <label style={labelStyle}>Gewünschter Yachttyp</label>
+                        <label style={labelStyle}>{kfm.yachtWunsch}</label>
                         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                           {kfm.yachten.map(y => (
                             <button key={y} type="button"
@@ -329,7 +331,7 @@ export default function Kontakt() {
                       </div>
 
                       <div style={{ marginBottom: '1.5rem' }}>
-                        <label style={labelStyle}>Buchungsabsicht</label>
+                        <label style={labelStyle}>{kfm.absicht}</label>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                           {[
                             ...kfm.absichten,
@@ -346,7 +348,7 @@ export default function Kontakt() {
                       </div>
 
                       <button type="button" onClick={next} className="btn btn-primary" style={{ width: '100%' }}>
-                        Weiter →
+                        {kfm.weiter}
                       </button>
                     </motion.div>
                   )}
@@ -388,7 +390,7 @@ export default function Kontakt() {
                       </div>
 
                       <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelStyle}>Gewünschte Kontaktart</label>
+                        <label style={labelStyle}>{kfm.kontaktartLabel}</label>
                         <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                           {kfm.kontaktarten.map(k => (
                             <button key={k} type="button"
@@ -433,7 +435,7 @@ export default function Kontakt() {
                       {failed && (
                         <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>
                           {lang === 'en'
-                            ? 'Your request could not be sent. Please try again or email us at info@yacht-urlaub.net.'
+                            ? `Your request could not be sent. Please try again or email us at ${MAIL.en}.`
                             : 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@yacht-urlaub.net.'}
                         </p>
                       )}
