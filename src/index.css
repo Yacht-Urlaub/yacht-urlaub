@@ -251,3 +251,9 @@ img {
   .yachten-overview-grid { grid-template-columns: 1fr !important; }
   .dest-mosaic { grid-template-columns: 1fr !important; }
 }
+
+/* Yoga-Seite: zweispaltige Bloecke und Galerie auf schmalen Schirmen stapeln */
+@media (max-width: 768px) {
+  .yoga-split { grid-template-columns: 1fr !important; gap: 2rem !important; }
+  .yoga-gallery { grid-template-columns: 1fr 1fr !important; }
+}

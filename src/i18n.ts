@@ -120,6 +120,7 @@ export const routePairs: [de: string, en: string][] = [
   ['/datenschutz', '/en/data-privacy'],
   ['/agb', '/en/terms'],
   ['/kontakt', '/en/contact'],
+  ['/yoga', '/en/yoga'],
 ]
 
 /** EN-Destination-Slug → interne ID */
