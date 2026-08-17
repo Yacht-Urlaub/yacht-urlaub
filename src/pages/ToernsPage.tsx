@@ -150,7 +150,7 @@ export default function ToernsPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
+          <div className="toerns-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
             {categories.map((cat, i) => (
               <motion.div
                 key={cat.id}
@@ -195,6 +195,52 @@ export default function ToernsPage() {
           }
           @media (max-width: 560px) {
             .toerns-grid { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
+      </section>
+
+      {/* Yoga-Retreat — eigenes Band, weil es kein Zielgruppen-Toern ist,
+          sondern ein Toern mit eigenem Thema. Als fuenfte Kachel haette es
+          die Vierer-Reihe darueber gesprengt. */}
+      <section className="section" style={{ background: '#fff' }}>
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.7 }}
+            className="yoga-band"
+            style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}
+          >
+            <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '4px', aspectRatio: '4/3', boxShadow: '0 4px 24px rgba(0,0,0,0.12)' }}>
+              <img
+                src="/images/yoga/Yoga_in_der_Bucht.jpg"
+                alt={en ? 'Yoga on deck in a quiet bay' : 'Yoga an Deck in einer stillen Bucht'}
+                loading="lazy"
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              />
+            </div>
+            <div>
+              <p style={{ color: 'var(--blue)', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.6rem', fontWeight: 600 }}>
+                {en ? 'Body and mind' : 'Für Körper und Geist'}
+              </p>
+              <h2 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', marginBottom: '1rem', lineHeight: 1.25 }}>
+                {en ? 'Yoga retreat under sail' : 'Yoga-Retreat unter Segeln'}
+              </h2>
+              <p style={{ color: 'var(--gray)', fontSize: '0.92rem', lineHeight: 1.85, marginBottom: '1.75rem' }}>
+                {en
+                  ? 'Sunrise on deck, a quiet bay instead of a studio, mediterranean cooking on board — one week of sailing and yoga, guided by Rebecca. On a sailing yacht or a catamaran.'
+                  : 'Sonnenaufgang an Deck, eine stille Bucht statt Studio, mediterrane Küche an Bord — eine Woche Segeln und Yoga, begleitet von Rebecca. Auf Segelyacht oder Katamaran.'}
+              </p>
+              <Link to={en ? '/en/yoga' : '/yoga'} className="btn btn-primary" style={{ fontSize: '0.78rem' }}>
+                {en ? 'To the yoga retreat →' : 'Zum Yoga-Retreat →'}
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+        <style>{`
+          @media (max-width: 760px) {
+            .yoga-band { grid-template-columns: 1fr !important; gap: 1.75rem !important; }
           }
         `}</style>
       </section>
