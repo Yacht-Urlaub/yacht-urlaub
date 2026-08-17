@@ -28,9 +28,10 @@ export const BASE_EN = 'https://www.yacht-holiday.net'
 
 /** Kontaktadresse je Sprache. Der englische Auftritt nennt seit Jahren
  *  office@yacht-holiday.net — diese Adresse steht in der alten Korrespondenz
- *  und bleibt deshalb auf der englischen Domain stehen. Rechtstexte
- *  (Impressum, Datenschutz, AGB) sind davon ausgenommen: sie nennen die
- *  Adresse des Medieninhabers und laufen ohnehin nur auf Deutsch. */
+ *  und bleibt deshalb auf der englischen Domain stehen. Gilt auch fuer die
+ *  Rechtstexte: Impressum, Datenschutz und AGB nennen dieselbe Firma, und ein
+ *  englischer Leser soll nicht an eine Adresse verwiesen werden, die sonst
+ *  nirgends auf seiner Sprachfassung steht. */
 export const MAIL: Record<Lang, string> = {
   de: 'info@yacht-urlaub.net',
   en: 'office@yacht-holiday.net',
