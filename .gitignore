@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Netlify-CLI: lokaler Arbeitsstand, gehoert nicht ins Repository.
+# state.json verknuepft den Ordner mit einem Projekt — eingecheckt hat das
+# hier auf das falsche (tote) Projekt gezeigt und Deploys fehlgeleitet.
+.netlify
