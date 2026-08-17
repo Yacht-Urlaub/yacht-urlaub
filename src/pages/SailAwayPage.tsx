@@ -3,6 +3,7 @@ import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { sendForm } from '../lib/sendForm'
+import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
 // Inhalte 1:1 von yacht-urlaub.net/sailaway
 const fakten = [
@@ -326,6 +327,7 @@ export default function SailAwayPage() {
               <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '14px 40px', opacity: sending ? 0.6 : 1 }}>
                 {sending ? 'wird gesendet …' : 'Anfrage senden'}
               </button>
+              <RecaptchaHinweis align="center" />
             </form>
           )}
 

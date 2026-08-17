@@ -257,3 +257,12 @@ img {
   .yoga-split { grid-template-columns: 1fr !important; gap: 2rem !important; }
   .yoga-gallery { grid-template-columns: 1fr 1fr !important; }
 }
+
+/* reCAPTCHA v3: Badge ausblenden.
+   Unten rechts sitzen bereits der Schnellzugriff und auf dem Telefon der
+   WhatsApp-Knopf — das Badge haette sich darueber gelegt. Google erlaubt
+   das Ausblenden, verlangt dafuer aber den Hinweistext im Formular; der
+   steht in src/components/RecaptchaHinweis.tsx. */
+.grecaptcha-badge {
+  visibility: hidden;
+}

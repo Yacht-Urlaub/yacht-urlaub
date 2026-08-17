@@ -6,6 +6,7 @@ import SEO from '../components/SEO'
 import { useLang, MAIL } from '../i18n'
 import { AlertIcon } from '../components/Icons'
 import { sendForm } from '../lib/sendForm'
+import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
 // Inhalte 1:1 von yacht-urlaub.net/charter/yacht-charter-anfragen
 
@@ -231,6 +232,7 @@ export default function CharterPage() {
                   <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '13px 36px', opacity: sending ? 0.6 : 1 }}>
                     {sending ? s.sending : s.send}
                   </button>
+                  <RecaptchaHinweis />
                 </form>
               )}
             </div>

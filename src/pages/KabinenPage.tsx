@@ -5,6 +5,7 @@ import SEO from '../components/SEO'
 import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 import { SparklesIcon } from '../components/Icons'
+import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
 // Angebote 1:1 von der Originalseite (yacht-urlaub.net/kabinenangebote)
 const angebote = [
@@ -341,6 +342,7 @@ export default function KabinenPage() {
               <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '14px 40px', opacity: sending ? 0.6 : 1 }}>
                 {sending ? s.sending : s.send}
               </button>
+              <RecaptchaHinweis align="center" />
             </form>
           )}
         </div>

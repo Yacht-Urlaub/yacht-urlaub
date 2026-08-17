@@ -4,6 +4,7 @@ import { useInView } from 'framer-motion'
 import { PhoneIcon, MailIcon, WhatsAppIcon, MapPinIcon, CalendarIcon, SailboatIcon } from './Icons'
 import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
+import RecaptchaHinweis from './RecaptchaHinweis'
 
 const inputStyle = (error?: boolean): React.CSSProperties => ({
   width: '100%', padding: '11px 14px',
@@ -443,6 +444,7 @@ export default function Kontakt() {
                         <button type="button" onClick={back} className="btn btn-ghost" style={{ flex: 1 }}>{kfm.zurueck}</button>
                         <button type="submit" className="btn btn-navy" style={{ flex: 2 }} disabled={sending}>{sending ? '…' : kfm.absenden}</button>
                       </div>
+                      <RecaptchaHinweis />
                     </motion.div>
                   )}
                 </form>

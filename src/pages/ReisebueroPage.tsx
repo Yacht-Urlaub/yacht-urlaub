@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
+import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
 // Inhalte 1:1 von yacht-urlaub.net/kontakt/partner
 const inputStyle = { width: '100%', padding: '11px 14px', borderRadius: '4px', border: '1px solid var(--gray-mid)', fontSize: '0.9rem', background: '#fff', boxSizing: 'border-box' } as const
@@ -109,6 +110,7 @@ export default function ReisebueroPage() {
                 <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '13px 36px', opacity: sending ? 0.6 : 1 }}>
                   {sending ? s.sending : s.send}
                 </button>
+                <RecaptchaHinweis />
               </form>
             )}
 

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
+import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
 // Crew 1:1 von yacht-urlaub.net/kontakt/crew übernommen
 const skipperEn = [
@@ -270,6 +271,7 @@ export default function CrewPage() {
               <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '13px 36px', opacity: sending ? 0.6 : 1 }}>
                 {sending ? s.sending : s.send}
               </button>
+              <RecaptchaHinweis />
             </form>
           )}
         </div>
