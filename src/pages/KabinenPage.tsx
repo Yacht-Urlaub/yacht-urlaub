@@ -3,6 +3,7 @@ import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { useLang } from '../i18n'
+import { sendForm } from '../lib/sendForm'
 import { SparklesIcon } from '../components/Icons'
 
 // Angebote 1:1 von der Originalseite (yacht-urlaub.net/kabinenangebote)
@@ -105,19 +106,21 @@ export default function KabinenPage() {
   })
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
+  const [failed, setFailed] = useState(false)
 
   const set = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }))
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setSending(true)
-    const body = new URLSearchParams({ 'form-name': 'kabinen-buchung', ...form })
-    try {
-      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
-      setSent(true)
-    } finally {
-      setSending(false)
-    }
+    setFailed(false)
+    // Ging frueher an Netlify Forms — dort kam nichts an, weil die Formulare
+    // erst zur Laufzeit entstehen. Jetzt ueber dieselbe Function wie das
+    // Kontaktformular.
+    const ok = await sendForm('kabinen-buchung', form)
+    setSending(false)
+    if (ok) setSent(true)
+    else setFailed(true)
   }
 
   const inputStyle = {
@@ -234,9 +237,7 @@ export default function KabinenPage() {
               </p>
             </div>
           ) : (
-            <form name="kabinen-buchung" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit}>
-              <input type="hidden" name="form-name" value="kabinen-buchung" />
-              <p style={{ display: 'none' }}><input name="bot-field" /></p>
+            <form onSubmit={handleSubmit}>
 
               {/* Reise + Personen */}
               <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
@@ -322,6 +323,20 @@ export default function KabinenPage() {
                   <span>{s.ask}</span>
                 </label>
               </div>
+
+              {failed && (
+
+                <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>
+
+                  {lang === 'en'
+
+                    ? 'Your request could not be sent. Please try again or email us at info@yacht-urlaub.net.'
+
+                    : 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@yacht-urlaub.net.'}
+
+                </p>
+
+              )}
 
               <button type="submit" disabled={sending} className="btn btn-primary" style={{ fontSize: '0.95rem', padding: '14px 40px', opacity: sending ? 0.6 : 1 }}>
                 {sending ? s.sending : s.send}

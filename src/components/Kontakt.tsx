@@ -3,6 +3,7 @@ import { useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 import { PhoneIcon, MailIcon, WhatsAppIcon, MapPinIcon, CalendarIcon, SailboatIcon } from './Icons'
 import { useLang } from '../i18n'
+import { sendForm } from '../lib/sendForm'
 
 const inputStyle = (error?: boolean): React.CSSProperties => ({
   width: '100%', padding: '11px 14px',
@@ -111,6 +112,8 @@ export default function Kontakt() {
   const inView = useInView(ref, { once: true })
   const [step, setStep] = useState(0)
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [failed, setFailed] = useState(false)
   const [form, setForm] = useState<Form>(initial)
   const [errors, setErrors] = useState<Partial<Form>>({})
 
@@ -136,15 +139,17 @@ export default function Kontakt() {
 
   const next = () => { if (validateStep(step)) setStep(s => s + 1) }
   const back = () => setStep(s => s - 1)
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (validateStep(1)) {
-      const formData = new FormData()
-      formData.append('form-name', 'anfrage')
-      Object.entries(form).forEach(([k, v]) => formData.append(k, String(v)))
-      fetch('/', { method: 'POST', body: formData })
-        .finally(() => setSent(true))
-    }
+    if (!validateStep(1)) return
+    setSending(true)
+    setFailed(false)
+    const ok = await sendForm('anfrage', form)
+    setSending(false)
+    // Frueher wurde die Erfolgsmeldung ungeprueft gezeigt (.finally) — eine
+    // fehlgeschlagene Anfrage sah damit aus wie eine erfolgreiche.
+    if (ok) setSent(true)
+    else setFailed(true)
   }
 
   const today = new Date().toISOString().split('T')[0]
@@ -239,8 +244,7 @@ export default function Kontakt() {
                   ))}
                 </div>
 
-                <form name="anfrage" data-netlify="true" onSubmit={submit} style={{ padding: '2rem' }}>
-                  <input type="hidden" name="form-name" value="anfrage" />
+                <form onSubmit={submit} style={{ padding: '2rem' }}>
 
                   {/* Step 0: Reisedaten */}
                   {step === 0 && (
@@ -426,9 +430,16 @@ export default function Kontakt() {
                         </span>
                       </label>
 
+                      {failed && (
+                        <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>
+                          {lang === 'en'
+                            ? 'Your request could not be sent. Please try again or email us at info@yacht-urlaub.net.'
+                            : 'Ihre Anfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie an info@yacht-urlaub.net.'}
+                        </p>
+                      )}
                       <div style={{ display: 'flex', gap: '0.75rem' }}>
                         <button type="button" onClick={back} className="btn btn-ghost" style={{ flex: 1 }}>{kfm.zurueck}</button>
-                        <button type="submit" className="btn btn-navy" style={{ flex: 2 }}>{kfm.absenden}</button>
+                        <button type="submit" className="btn btn-navy" style={{ flex: 2 }} disabled={sending}>{sending ? '…' : kfm.absenden}</button>
                       </div>
                     </motion.div>
                   )}
