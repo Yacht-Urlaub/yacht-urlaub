@@ -27,6 +27,17 @@
 # selbst und antwortet mit 404.
 # ==========================================================================
 
+# --- 0. Englische Apex-Domain auf www ---
+#     Netlify leitet Apex->www nur fuer die Primaerdomain automatisch um;
+#     yacht-holiday.net haengt nur als Alias und lieferte sonst unter beiden
+#     Adressen aus (Doppelinhalte).
+
+[[redirects]]
+  from = "https://yacht-holiday.net/*"
+  to = "https://www.yacht-holiday.net/:splat"
+  status = 301
+  force = true
+
 # --- 1. Englische Domain: geaenderte Alt-Pfade ---
 [[redirects]]
   from = "https://www.yacht-holiday.net/charter/"
@@ -178,156 +189,6 @@
   status = 301
   force = true
 
-[[redirects]]
-  from = "https://yacht-holiday.net/charter/"
-  to = "/charter/yacht-charter"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/charter/results/"
-  to = "/charter/yacht-charter"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/contact/for-travel-agencies-affiliate-partner/"
-  to = "/contact/travel-agencies"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruises/bespoke-cruise/"
-  to = "/holiday-planner"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruises/bespoke-cruise/holiday-planner/"
-  to = "/holiday-planner"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruises/book-now/"
-  to = "/book-now"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruises/kabinen-angebote/"
-  to = "/cabin-offers"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruises/luxury-sailing-trip/"
-  to = "/cruises/luxury"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/termsconditions/"
-  to = "/terms"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/toernbericht/british-virgin-islands/"
-  to = "/trip-reports/british-virgin-islands"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/yachts/sailing-yacht-monohull/"
-  to = "/yachts?tab=monohull"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/yachts/sailing-yacht-monohull/sailing-yacht-monohull/"
-  to = "/yachts?tab=monohull"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/yachts/sailing-catamaran/"
-  to = "/yachts?tab=katamaran"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/dalmatia-package/"
-  to = "/cruises/book-now/dalmatia-croatia"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/dalmatia-package-1/"
-  to = "/cruises/book-now/dalmatia-croatia"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/kornati-package/"
-  to = "/cruises/book-now/kornati-croatia"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/kornati-package-1/"
-  to = "/cruises/book-now/kornati-croatia"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/greece-package/"
-  to = "/cruises/book-now/greece"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/greece-package-1/"
-  to = "/cruises/book-now/greece"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/caribbean-package/"
-  to = "/cruises/book-now/caribbean-bvi"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/caribbean-package-1/"
-  to = "/cruises/book-now/caribbean-bvi"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/grenadines-package/"
-  to = "/cruises/book-now/caribbean-grenadines"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/grenadines-package-1/"
-  to = "/cruises/book-now/caribbean-grenadines"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/cruise/*"
-  to = "/cruises"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://yacht-holiday.net/toernbericht/*"
-  to = "/trip-reports"
-  status = 301
-  force = true
-
 # --- 2. /en/... der deutschen Domain auf die englische Domain ---
 #     Der leere Splat deckt /en selbst mit ab.
 [[redirects]]
@@ -343,6 +204,102 @@
   force = true
 
 # --- 3. Deutsche Domain: geaenderte Alt-Pfade ---
+# Aus der Search Console nachgetragen: Paket-Adressen mit englischen Slugs,
+# die auf der deutschen Domain indexiert sind (bis 1847 Impressionen).
+# Ohne diese Regeln faengt sie zwar /toern/* ab, aber nur auf der
+# Uebersichtsseite statt auf dem jeweiligen Angebot.
+[[redirects]]
+  from = "/toern/kornati-package-1"
+  to = "/packages/kornaten"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/kornati-package"
+  to = "/packages/kornaten"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/greece-package-1"
+  to = "/packages/griechenland"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/greece-package"
+  to = "/packages/griechenland"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/dalmatia-package-1"
+  to = "/packages/dalmatien"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/dalmatia-package"
+  to = "/packages/dalmatien"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/grenadines-package-1"
+  to = "/packages/karibik-grenadinen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/grenadines-package"
+  to = "/packages/karibik-grenadinen"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/caribbean-package-1"
+  to = "/packages/karibik-bvi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/toern/caribbean-package"
+  to = "/packages/karibik-bvi"
+  status = 301
+  force = true
+
+# Sprachpraefix aus einem frueheren Relaunch
+[[redirects]]
+  from = "/english/your-skipper"
+  to = "https://www.yacht-holiday.net/charter/crew-charter"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/english/*"
+  to = "https://www.yacht-holiday.net/"
+  status = 301
+  force = true
+
+# Dokumente der Altseite auf die entsprechenden Seiten
+[[redirects]]
+  from = "/fileadmin/user_upload/AGB.pdf"
+  to = "/agb"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/fileadmin/user_upload/Terms.pdf"
+  to = "https://www.yacht-holiday.net/terms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/fileadmin/files/images/paradise/*"
+  to = "/toernberichte"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/toerns/jetzt-buchen/"
   to = "/buchen"
@@ -679,6 +636,47 @@
   from = "https://yacht-urlaub.net/deutsch/*"
   to = "/"
   status = 301
+  force = true
+
+# --- 3c. Reste des alten TYPO3: echter 404 ---
+#      Bilder und Dokumente der Altseite sind indexiert. Ohne diese Regeln
+#      liefert der SPA-Fallback HTML mit Status 200 unter einer .jpg- oder
+#      .pdf-Adresse — fuer Suchmaschinen ein falsches Signal.
+
+[[redirects]]
+  from = "/fileadmin/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/typo3/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/typo3conf/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/typo3temp/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/t3lib/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/form/*"
+  to = "/404.html"
+  status = 404
   force = true
 
 # --- 4. SPA-Fallback: muss die LETZTE Regel bleiben ---
