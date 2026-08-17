@@ -119,15 +119,8 @@ export default async (req) => {
   const formKey = pick(data, ['formName', 'form-name']) || 'kontakt'
   const formLabel = FORM_LABELS[formKey] || formKey
 
-  const name = pick(data, ['name']) ||
-    [pick(data, ['vorname']), pick(data, ['nachname'])].filter(Boolean).join(' ')
-  const email = pick(data, ['email'])
-  const phone = pick(data, PHONE_KEYS)
-  const message = pick(data, MESSAGE_KEYS)
-
-  if (!name || !email) return json({ error: 'Bitte Name und E-Mail ausfüllen.' }, 400)
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'Bitte eine gültige E-Mail angeben.' }, 400)
-
+  // Bot-Pruefung zuerst: billiger als alles Weitere, und ein Bot soll nicht
+  // aus den Feldfehlern lernen, welche Angaben das Formular erwartet.
   const captcha = await pruefeRecaptcha(
     data.recaptchaToken,
     req.headers.get('x-nf-client-connection-ip') || req.headers.get('x-forwarded-for')?.split(',')[0]?.trim(),
@@ -136,9 +129,18 @@ export default async (req) => {
   if (!captcha.ok) {
     console.log(`[recaptcha] ${formKey}: ${captcha.grund}${enforce ? ' → abgewiesen' : ' → durchgelassen (monitor)'}`)
     if (enforce) return json({ error: 'Ihre Anfrage konnte nicht geprüft werden. Bitte laden Sie die Seite neu und versuchen Sie es erneut.' }, 403)
-  } else if (captcha.score !== undefined && captcha.score !== null) {
-    console.log(`[recaptcha] ${formKey}: Score ${captcha.score}, Host ${captcha.hostname}`)
+  } else {
+    console.log(`[recaptcha] ${formKey}: ${captcha.grund}${captcha.score != null ? `, Score ${captcha.score}, Host ${captcha.hostname}` : ''}`)
   }
+
+  const name = pick(data, ['name']) ||
+    [pick(data, ['vorname']), pick(data, ['nachname'])].filter(Boolean).join(' ')
+  const email = pick(data, ['email'])
+  const phone = pick(data, PHONE_KEYS)
+  const message = pick(data, MESSAGE_KEYS)
+
+  if (!name || !email) return json({ error: 'Bitte Name und E-Mail ausfüllen.' }, 400)
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'Bitte eine gültige E-Mail angeben.' }, 400)
 
   const apiKey = process.env.RESEND_API_KEY
   if (!apiKey) return json({ error: 'Server nicht konfiguriert (RESEND_API_KEY fehlt).' }, 500)
