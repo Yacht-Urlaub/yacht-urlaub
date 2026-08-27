@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from '../router'
 import SEO from '../components/SEO'
 import { useLang, MAIL } from '../i18n'
 import { AlertIcon } from '../components/Icons'
@@ -52,7 +51,7 @@ const cl = {
     thanks: 'Vielen Dank!', thanksSub: 'Ihre Charter-Anfrage wurde übermittelt. Wir melden uns schnellstmöglich!',
     sidebar: 'Ihre Charter-Anfrage – einfach und persönlich!', sidebarSub: 'Schreiben Sie uns direkt an:',
     why: 'Warum bei uns chartern?', partner: 'Eine Auswahl unserer Partner', more: 'und viele mehr....',
-    now: 'Jetzt Anfragen:', wahl: 'Bitte wählen …', faq: '/faq',
+    now: 'Jetzt Anfragen:', wahl: 'Bitte wählen …', warnLinkHref: 'https://archive.is/3MpMo',
     typen: ['Einrumpf-Segler', 'Katamaran', 'Motoryacht', 'Katamaran-Motoryacht', 'Trabakul'],
     kabinen: ['1 Kabine', '2 Kabinen', '3 Kabinen', '4 Kabinen', '5 Kabinen', '6 Kabinen'],
     altersStufen: ['0-2 Jahre', '3-5 Jahre', '5-8 Jahre', 'älter', 'egal'],
@@ -68,7 +67,7 @@ const cl = {
     thanks: 'Thank you!', thanksSub: 'Your charter request has been sent. We will get back to you as soon as possible!',
     sidebar: 'Your charter request – simple and personal!', sidebarSub: 'Write to us directly:',
     why: 'Why choose us for your charter?', partner: 'A selection of our partners', more: 'and many more....',
-    now: 'Get a quote now:', wahl: 'Please choose …', faq: '/en/faq',
+    now: 'Get a quote now:', wahl: 'Please choose …', warnLinkHref: 'https://archive.is/JDvuA',
     typen: ['Monohull', 'Catamaran', 'Motoryacht', 'Motor catamaran', 'Trabakul'],
     kabinen: ['1 cabin', '2 cabins', '3 cabins', '4 cabins', '5 cabins', '6 cabins'],
     altersStufen: ['0-2 years', '3-5 years', '5-8 years', 'older', 'not important'],
@@ -129,7 +128,7 @@ export default function CharterPage() {
       <section style={{ background: '#fff8e6', borderBottom: '1px solid #f0e0b0', padding: '1rem 0' }}>
         <div className="container">
           <p style={{ color: '#7a5c00', fontSize: '0.88rem' }}>
-            <AlertIcon size={15} style={{ verticalAlign: '-3px', marginRight: '6px' }} />{s.warn} <Link to={s.faq} style={{ color: 'var(--blue)', fontWeight: 700 }}>{s.warnLink}</Link>
+            <AlertIcon size={15} style={{ verticalAlign: '-3px', marginRight: '6px' }} />{s.warn} <a href={s.warnLinkHref} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)', fontWeight: 700 }}>{s.warnLink}</a>
           </p>
         </div>
       </section>
