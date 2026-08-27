@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
-import { SparklesIcon } from '../components/Icons'
+import { SparklesIcon, WhatsAppIcon } from '../components/Icons'
 import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
 // Angebote 1:1 von der Originalseite (yacht-urlaub.net/kabinenangebote)
@@ -44,9 +44,8 @@ const angebote = [
 ]
 
 const reiseOptionen = [
-  '06.06. - 13.06.2026 ab Zadar',
-  '22.08. - 29.08.2026 ab Zadar',
-  "WhatsApp Community Törn in Thailand Februar'27",
+  'Kornaten (Kroatien) – Termin auf Anfrage',
+  'Sonstiges Revier / individueller Wunsch',
 ]
 
 const kl = {
@@ -64,7 +63,11 @@ const kl = {
     wahl: 'Bitte wählen …',
     noOffers: 'Gerade keine offenen Kabinenplätze',
     noOffersText: 'Unsere Kabinentörns sind derzeit ausgebucht bzw. es stehen noch keine neuen Termine fest. Werfen Sie in der Zwischenzeit gerne einen Blick auf unsere Packages — dort finden Sie garantiert die passende Segelreise für sich, buchbar für Ihre eigene Crew oder Freunde!',
-    noOffersCta: 'Zu unseren Packages →' },
+    noOffersCta: 'Zu unseren Packages →', packagesHref: '/buchen',
+    thaiTitle: 'Community-Törn Thailand (Februar \'27)',
+    thaiText: 'Kein fixes Package, sondern ein informeller Segeltörn unter Gleichgesinnten — organisiert über eine WhatsApp-Gruppe. Schreiben Sie uns kurz, dann schicken wir Ihnen den Einladungslink.',
+    thaiCta: 'Auf WhatsApp schreiben',
+    thaiMsg: "Hallo! Ich interessiere mich für den Community-Törn Thailand im Februar '27 und würde gerne der WhatsApp-Gruppe beitreten." },
   en: { tag: 'For solo travellers & small groups', h1: 'Cabin offers',
     sub: 'Book a single cabin on a shared yacht — and share the yacht with a lovely crew.',
     current: 'Current dates', avail: 'Available cabin offers', dep: 'Departure', book: 'BOOK NOW →',
@@ -79,7 +82,11 @@ const kl = {
     wahl: 'Please choose …',
     noOffers: 'No open cabin spots right now',
     noOffersText: "Our cabin cruises are fully booked at the moment, or new dates haven't been set yet. In the meantime, take a look at our packages — you're sure to find the right sailing trip, bookable for your own crew or a group of friends!",
-    noOffersCta: 'Browse our packages →' },
+    noOffersCta: 'Browse our packages →', packagesHref: '/en/book-now',
+    thaiTitle: 'Community Trip Thailand (February \'27)',
+    thaiText: "Not a fixed package, but an informal sailing trip among like-minded sailors — organised through a WhatsApp group. Drop us a quick message and we'll send you the invite link.",
+    thaiCta: 'Message us on WhatsApp',
+    thaiMsg: "Hi! I'm interested in the Thailand community trip in February '27 and would love to join the WhatsApp group." },
 }
 
 const angeboteEn = [
@@ -99,9 +106,8 @@ const angeboteEn = [
   },
 ]
 const reiseOptionenEn = [
-  '22.08. - 29.08.2026 from Zadar',
-  'Community Trip for Thailand in February 2027',
-  'on request (see notes)',
+  'Kornati Islands (Croatia) – date on request',
+  'Other region / custom request',
 ]
 
 export default function KabinenPage() {
@@ -199,8 +205,35 @@ export default function KabinenPage() {
               <p style={{ color: 'var(--gray)', fontSize: '0.92rem', lineHeight: 1.75, marginBottom: '1.75rem' }}>
                 {s.noOffersText}
               </p>
-              <a href={lang === 'en' ? '/en' : '/'} className="btn btn-primary" style={{ fontSize: '0.85rem', padding: '12px 26px' }}>
+              <a href={s.packagesHref} className="btn btn-primary" style={{ fontSize: '0.85rem', padding: '12px 26px' }}>
                 {s.noOffersCta}
+              </a>
+            </motion.div>
+          )}
+
+          {!SHOW_OFFERS && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              style={{ maxWidth: '620px', margin: '1.5rem auto 0', background: '#e9fbf1', border: '1px solid #bdf0d6', borderRadius: '8px', padding: '1.5rem 2rem', display: 'flex', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}
+            >
+              <WhatsAppIcon size={30} />
+              <div style={{ flex: 1, minWidth: '220px' }}>
+                <h4 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '0.98rem', fontWeight: 700, marginBottom: '0.3rem' }}>
+                  {s.thaiTitle}
+                </h4>
+                <p style={{ color: 'var(--gray)', fontSize: '0.85rem', lineHeight: 1.6 }}>
+                  {s.thaiText}
+                </p>
+              </div>
+              <a
+                href={`https://wa.me/436602652481?text=${encodeURIComponent(s.thaiMsg)}`}
+                target="_blank" rel="noopener noreferrer"
+                style={{ display: 'inline-block', fontSize: '0.8rem', fontWeight: 700, padding: '10px 18px', whiteSpace: 'nowrap', borderRadius: '4px', background: '#25d366', color: '#fff', boxShadow: '0 4px 16px rgba(37,211,102,0.35)' }}
+              >
+                {s.thaiCta}
               </a>
             </motion.div>
           )}
