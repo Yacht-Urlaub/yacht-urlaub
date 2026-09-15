@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { Link } from '../router'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
@@ -80,6 +81,22 @@ export default function BuchenPage() {
   const lang = useLang()
   const s = bl[lang]
   const pkgList = lang === 'en' ? packagesListEn : packagesListDe
+
+  // Der Planyo-Suchwidget (buchen-widget.html) meldet per postMessage, wie
+  // hoch er wirklich sein muss — anfangs nur die Suchleiste, erst nach dem
+  // Absenden der Suche wird auf die volle Höhe für die Ergebnisse erweitert.
+  const [widgetHeight, setWidgetHeight] = useState(260)
+  useEffect(() => {
+    function onMessage(e: MessageEvent) {
+      if (e.origin !== window.location.origin) return
+      if (e.data?.source === 'buchen-widget' && typeof e.data.height === 'number') {
+        setWidgetHeight(e.data.height)
+      }
+    }
+    window.addEventListener('message', onMessage)
+    return () => window.removeEventListener('message', onMessage)
+  }, [])
+
   return (
     <main style={{ paddingTop: '72px', minHeight: '100vh', background: 'var(--gray-light)' }}>
       <SEO
@@ -128,9 +145,10 @@ export default function BuchenPage() {
             title={lang === 'en' ? 'Book a yacht' : 'Yacht buchen'}
             style={{
               width: '100%',
-              height: '1400px',
+              height: widgetHeight + 'px',
               border: 'none',
               display: 'block',
+              transition: 'height 0.35s ease',
             }}
           />
         </motion.div>

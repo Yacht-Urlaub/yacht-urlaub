@@ -101,13 +101,16 @@
       z-index: 9999;
     }
 
-    /* Results iframe */
+    /* Results iframe — collapsed until a search is submitted, since the
+       Planyo results page loads cross-origin and its real height can't
+       be measured from here. */
     #results-frame {
       width: 100%;
       border: none;
       display: block;
-      min-height: 1200px;
-      background: #fff;
+      height: 0;
+      min-height: 0;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -174,6 +177,75 @@
   <iframe id="results-frame" name="results-frame" src="about:blank"></iframe>
 
   <script>
+    // Tell the parent page (buchen.tsx) how tall the outer iframe needs to
+    // be, so it doesn't reserve a huge empty area before anyone has searched.
+    // Kept in its own <script> tag, ahead of the Planyo widget script below:
+    // if that external script fails to load (blocked, offline, slow), this
+    // sizing logic must still run.
+    var expanded = false;
+
+    function reportHeight(h) {
+      try { window.parent.postMessage({ source: 'buchen-widget', height: h }, '*'); } catch (e) {}
+    }
+
+    function collapsedHeight() {
+      var bar = document.querySelector('.search-bar');
+      return bar ? Math.ceil(bar.getBoundingClientRect().height) : 260;
+    }
+
+    // The date picker (#box_start_datecal) pops open below the start-date
+    // field via Planyo's own script (planyo_show_calendar/planyo_close_calendar),
+    // toggling its visibility — it's not something we control directly. While
+    // collapsed, the outer iframe is only as tall as the search bar, so the
+    // open calendar would otherwise get clipped at the iframe's edge, hence
+    // the extra height below whenever it's open.
+    var picker = document.getElementById('box_start_datecal');
+    function pickerExtent() {
+      if (!picker) return 0;
+      var open = picker.getBoundingClientRect().height > 0 && getComputedStyle(picker).visibility !== 'hidden';
+      return open ? Math.ceil(picker.getBoundingClientRect().bottom) + 20 : 0;
+    }
+
+    // Single source of truth for "how tall right now" — resize and the
+    // picker toggling both funnel through this, so they can't fight each
+    // other (setting the outer iframe's height itself fires a resize event
+    // inside this frame too, which must land on the same answer).
+    function reportCollapsed() {
+      if (expanded) return;
+      reportHeight(Math.max(collapsedHeight(), pickerExtent()));
+    }
+
+    if (picker && 'MutationObserver' in window) {
+      var pickerObserver = new MutationObserver(reportCollapsed);
+      pickerObserver.observe(picker, { attributes: true, attributeFilter: ['style', 'class'] });
+    }
+
+    document.addEventListener('DOMContentLoaded', reportCollapsed);
+    window.addEventListener('load', reportCollapsed);
+    window.addEventListener('resize', reportCollapsed);
+
+    document.getElementById('search-form').addEventListener('submit', function() {
+      expanded = true;
+      document.getElementById('results-frame').style.height = '1200px';
+      reportHeight(collapsedHeight() + 1240);
+    });
+
+    // Auto-grow results iframe (best-effort — the Planyo results page is
+    // cross-origin, so this silently no-ops there; the fixed expand above
+    // on submit already covers that case).
+    document.getElementById('results-frame').addEventListener('load', function() {
+      if (!expanded) return;
+      try {
+        var h = this.contentDocument.body.scrollHeight;
+        if (h > 200) {
+          this.style.height = (h + 40) + 'px';
+          reportHeight(collapsedHeight() + h + 80);
+        }
+      } catch(e) {}
+    });
+  </script>
+
+  <script>
     // Set timezone offset
     document.getElementById('tz_offset').value = new Date().getTimezoneOffset();
 
@@ -203,14 +275,6 @@
 
     planyo_set_event(document.getElementById('box_start_datecal'), 'click', 'planyo_dummy', false);
     planyo_set_event(document, 'mousedown', 'planyo_close_calendar', false);
-
-    // Auto-grow results iframe
-    document.getElementById('results-frame').addEventListener('load', function() {
-      try {
-        var h = this.contentDocument.body.scrollHeight;
-        if (h > 200) this.style.minHeight = (h + 40) + 'px';
-      } catch(e) {}
-    });
   </script>
 </body>
 </html>
