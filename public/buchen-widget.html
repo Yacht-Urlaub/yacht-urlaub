@@ -193,8 +193,31 @@
       return bar ? Math.ceil(bar.getBoundingClientRect().height) : 260;
     }
 
+    // The date picker (#box_start_datecal) pops open below the start-date
+    // field via Planyo's own script (planyo_show_calendar/planyo_close_calendar),
+    // toggling its visibility — it's not something we control directly. While
+    // collapsed, the outer iframe is only as tall as the search bar, so the
+    // open calendar would otherwise get clipped at the iframe's edge, hence
+    // the extra height below whenever it's open.
+    var picker = document.getElementById('box_start_datecal');
+    function pickerExtent() {
+      if (!picker) return 0;
+      var open = picker.getBoundingClientRect().height > 0 && getComputedStyle(picker).visibility !== 'hidden';
+      return open ? Math.ceil(picker.getBoundingClientRect().bottom) + 20 : 0;
+    }
+
+    // Single source of truth for "how tall right now" — resize and the
+    // picker toggling both funnel through this, so they can't fight each
+    // other (setting the outer iframe's height itself fires a resize event
+    // inside this frame too, which must land on the same answer).
     function reportCollapsed() {
-      if (!expanded) reportHeight(collapsedHeight());
+      if (expanded) return;
+      reportHeight(Math.max(collapsedHeight(), pickerExtent()));
+    }
+
+    if (picker && 'MutationObserver' in window) {
+      var pickerObserver = new MutationObserver(reportCollapsed);
+      pickerObserver.observe(picker, { attributes: true, attributeFilter: ['style', 'class'] });
     }
 
     document.addEventListener('DOMContentLoaded', reportCollapsed);
