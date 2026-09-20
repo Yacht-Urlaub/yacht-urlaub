@@ -52,9 +52,9 @@ const kf = {
     fast: 'Fast geschafft!', check: 'Bitte prüfen Sie Ihre Angaben und senden Sie die Anfrage ab.',
     errWahl: 'Bitte wählen', errDatum: 'Datum eingeben', errAnzahl: 'Anzahl eingeben', errName: 'Name eingeben', errMail: 'Gültige E-Mail eingeben',
     grpEU: 'Europa', grpFern: 'Karibik & Fernziele', offen: 'Noch offen / beraten lassen',
-    dests: ['Kroatien – Dalmatien', 'Kroatien – Kornaten', 'Kroatien – Istrien', 'Griechenland – Ionische Inseln', 'Griechenland – Kykladen', 'Balearen – Mallorca', 'Balearen – Ibiza & Formentera', 'Kanaren'],
+    dests: ['Kroatien – Dalmatien', 'Kroatien – Kornaten', 'Kroatien – Istrien', 'Griechenland – Ionische Inseln', 'Griechenland – Kykladen', 'Griechenland – Athen/Peloponnes', 'Balearen – Mallorca', 'Balearen – Ibiza & Formentera', 'Kanaren'],
     destsFern: ['Karibik – BVI', 'Karibik – Grenadinen', 'Seychellen', 'Thailand'],
-    typen: ['Skippered (mit Skipper)', 'Bareboat (selbst segeln)', 'Kabinentörn', 'Charter', 'Noch unsicher'],
+    typen: ['Skippered (mit Skipper)', 'Bareboat (selbst segeln)', 'mit Crew (Captain+Host/Koch)', 'Kabinenbuchung', 'Noch unsicher'],
     yachten: ['Segelyacht', 'Katamaran', 'Motoryacht', 'Egal'],
     absichten: [
       { val: 'sofort', label: 'Ich möchte so bald wie möglich buchen.' },
@@ -74,9 +74,9 @@ const kf = {
     fast: 'Almost done!', check: 'Please check your details and submit the request.',
     errWahl: 'Please choose', errDatum: 'Enter a date', errAnzahl: 'Enter a number', errName: 'Enter your name', errMail: 'Enter a valid email',
     grpEU: 'Europe', grpFern: 'Caribbean & long-haul', offen: 'Still open / please advise me',
-    dests: ['Croatia – Dalmatia', 'Croatia – Kornati', 'Croatia – Istria', 'Greece – Ionian Islands', 'Greece – Cyclades', 'Balearics – Mallorca', 'Balearics – Ibiza & Formentera', 'Canary Islands'],
+    dests: ['Croatia – Dalmatia', 'Croatia – Kornati', 'Croatia – Istria', 'Greece – Ionian Islands', 'Greece – Cyclades', 'Greece – Athens/Peloponnese', 'Balearics – Mallorca', 'Balearics – Ibiza & Formentera', 'Canary Islands'],
     destsFern: ['Caribbean – BVI', 'Caribbean – Grenadines', 'Seychelles', 'Thailand'],
-    typen: ['Skippered (with skipper)', 'Bareboat (sail yourself)', 'Cabin cruise', 'Charter', 'Not sure yet'],
+    typen: ['Skippered (with skipper)', 'Bareboat (sail yourself)', 'Crewed (Captain+Host/Chef)', 'Cabin booking', 'Not sure yet'],
     yachten: ['Sailing yacht', 'Catamaran', 'Motor yacht', 'No preference'],
     absichten: [
       { val: 'sofort', label: 'I would like to book as soon as possible.' },
