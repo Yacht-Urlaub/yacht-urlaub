@@ -91,7 +91,9 @@ export const routePairs: [de: string, en: string][] = [
   ['/toerns/luxury', '/en/cruises/luxury'],
   ['/packages/dalmatien', '/en/cruises/book-now/dalmatia-croatia'],
   ['/packages/kornaten', '/en/cruises/book-now/kornati-croatia'],
-  ['/packages/istrien', '/en/cruises/book-now/dalmatia-croatia'], // kein EN-Pendant
+  // /packages/istrien hat kein EN-Pendant — bewusst kein Eintrag, sonst
+  // wuerde langPair()/switchLangUrl() faelschlich das Dalmatien-Package
+  // als englische Alternative ausgeben (falsches hreflang, falsches Sprachumschalt-Ziel)
   ['/packages/griechenland', '/en/cruises/book-now/greece'],
   ['/packages/karibik-bvi', '/en/cruises/book-now/caribbean-bvi'],
   ['/packages/karibik-grenadinen', '/en/cruises/book-now/caribbean-grenadines'],

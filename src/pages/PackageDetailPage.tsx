@@ -140,7 +140,7 @@ function PriceBlockSection({ block, bookingUrl }: { block: PriceBlock; bookingUr
         <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
           {block.baseIncludes.map(b => (
             <li key={b} style={{ fontSize: '0.9rem', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-              <span style={{ color: '#7fc4ff' }}>✔</span> {b}
+              <span aria-hidden="true" style={{ color: '#7fc4ff' }}>✔</span> {b}
             </li>
           ))}
         </ul>
@@ -209,6 +209,13 @@ export default function PackageDetailPage() {
   const [lightbox, setLightbox] = useState<number | null>(null)
   const [mapIdx, setMapIdx] = useState(0)
 
+  useEffect(() => {
+    if (lightbox === null) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null) }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [lightbox])
+
   if (!pkg) {
     return (
       <main style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -273,7 +280,7 @@ export default function PackageDetailPage() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                 {pkg.included.map(item => (
                   <li key={item} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.9rem', lineHeight: 1.5 }}>
-                    <span style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>✔</span>
+                    <span aria-hidden="true" style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>✔</span>
                     {item}
                   </li>
                 ))}
@@ -286,7 +293,7 @@ export default function PackageDetailPage() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
                 {pkg.facts.map(fact => (
                   <li key={fact} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.9rem', lineHeight: 1.5 }}>
-                    <span style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>✔</span>
+                    <span aria-hidden="true" style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>✔</span>
                     {fact}
                   </li>
                 ))}
@@ -470,12 +477,12 @@ export default function PackageDetailPage() {
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
             {pkg.hints.map(hint => (
               <li key={hint} style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.87rem', lineHeight: 1.6 }}>
-                <span style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>•</span>
+                <span aria-hidden="true" style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>•</span>
                 {hint}
               </li>
             ))}
             <li style={{ display: 'flex', gap: '0.6rem', alignItems: 'flex-start', color: '#444', fontSize: '0.87rem', lineHeight: 1.6 }}>
-              <span style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>•</span>
+              <span aria-hidden="true" style={{ color: 'var(--blue)', marginTop: '2px', flexShrink: 0 }}>•</span>
               <span>
                 {s.faqQ} <Link to={s.faq} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.faqL}</Link>
               </span>
@@ -487,26 +494,29 @@ export default function PackageDetailPage() {
         <h2 style={h2Style}>{s.impressions}</h2>
         <div className="pkg-gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '4rem' }}>
           {pkg.gallery.map((img, i) => (
-            <motion.div
+            <motion.button
               key={img.src}
+              type="button"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
               onClick={() => setLightbox(i)}
+              aria-label={`${lang === 'en' ? 'View image' : 'Bild ansehen'}: ${img.alt}`}
               style={{
                 aspectRatio: '4/3',
                 overflow: 'hidden', cursor: 'pointer', borderRadius: '6px', background: '#eee',
+                border: 'none', padding: 0, font: 'inherit',
               }}
             >
               <img
-                src={img.src} alt={img.alt} loading="lazy" title={img.alt}
+                src={img.src} alt="" loading="lazy"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.35s' }}
                 onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.06)')}
                 onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                 onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }}
               />
-            </motion.div>
+            </motion.button>
           ))}
         </div>
 
@@ -536,11 +546,13 @@ export default function PackageDetailPage() {
       <AnimatePresence>
         {lightbox !== null && (
           <motion.div
+            role="dialog" aria-modal="true" aria-label={s.impressions}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             onClick={() => setLightbox(null)}
             style={{ position: 'fixed', inset: 0, zIndex: 9999, background: 'rgba(0,0,0,0.95)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
           >
             <button onClick={e => { e.stopPropagation(); setLightbox(i => (i! - 1 + pkg.gallery.length) % pkg.gallery.length) }}
+              aria-label={lang === 'en' ? 'Previous image' : 'Vorheriges Bild'}
               style={{ position: 'absolute', left: '1.5rem', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '2.5rem', cursor: 'pointer', padding: '8px 16px', borderRadius: '4px', zIndex: 1 }}>‹</button>
             <motion.img
               key={lightbox}
@@ -550,8 +562,10 @@ export default function PackageDetailPage() {
               style={{ maxWidth: '90vw', maxHeight: '82vh', objectFit: 'contain', borderRadius: '2px' }}
             />
             <button onClick={e => { e.stopPropagation(); setLightbox(i => (i! + 1) % pkg.gallery.length) }}
+              aria-label={lang === 'en' ? 'Next image' : 'Nächstes Bild'}
               style={{ position: 'absolute', right: '1.5rem', top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', fontSize: '2.5rem', cursor: 'pointer', padding: '8px 16px', borderRadius: '4px', zIndex: 1 }}>›</button>
             <button onClick={() => setLightbox(null)}
+              aria-label={lang === 'en' ? 'Close' : 'Schließen'}
               style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', background: 'none', border: 'none', color: '#fff', fontSize: '2rem', cursor: 'pointer' }}>✕</button>
             <p style={{ position: 'absolute', bottom: '1.5rem', color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', textAlign: 'center', width: '100%' }}>
               {pkg.gallery[lightbox].alt} &nbsp;·&nbsp; {lightbox + 1} / {pkg.gallery.length}
