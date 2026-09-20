@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { AnchorIcon, WavesIcon, ShieldIcon, SparklesIcon } from '../components/Icons'
 import { useLang } from '../i18n'
+import PackagesGrid from '../components/PackagesGrid'
 
 const categories = [
   {
@@ -199,9 +200,30 @@ export default function ToernsPage() {
         `}</style>
       </section>
 
+      <PackagesGrid />
+
+      {/* CTA */}
+      <section className="section" style={{ background: 'var(--navy)', textAlign: 'center' }}>
+        <div className="container" style={{ maxWidth: '700px' }}>
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+            <p style={{ color: 'var(--gold)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 600 }}>
+              {en ? 'No suitable cruise for you?' : 'Kein passender Törn dabei?'}
+            </p>
+            <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: '#fff', marginBottom: '1.25rem' }}>
+              {en ? 'Your bespoke cruise, tailor-made' : 'Dein individueller Törn nach Maß'}
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
+              {en ? 'We plan your dream cruise entirely to your wishes — travel time, destination, yacht and crew. Contact us for a personal quote.' : 'Wir planen deinen Traumtörn ganz nach deinen Wünschen — Reisezeit, Zielgebiet, Yacht und Crew. Kontaktiere uns für ein persönliches Angebot.'}
+            </p>
+            <a href="#kontakt" className="btn btn-primary">{en ? 'Get a quote' : 'Jetzt anfragen'}</a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Yoga-Retreat — eigenes Band, weil es kein Zielgruppen-Toern ist,
-          sondern ein Toern mit eigenem Thema. Als fuenfte Kachel haette es
-          die Vierer-Reihe darueber gesprengt. */}
+          sondern ein Toern mit eigenem Thema. Nach der CTA und vor dem
+          (global gerenderten) Kontaktformular platziert, damit es nicht
+          zwischen den vier Zielgruppen-Kacheln und den Packages auffaellt. */}
       <section className="section" style={{ background: '#fff' }}>
         <div className="container">
           <motion.div
@@ -243,24 +265,6 @@ export default function ToernsPage() {
             .yoga-band { grid-template-columns: 1fr !important; gap: 1.75rem !important; }
           }
         `}</style>
-      </section>
-
-      {/* CTA */}
-      <section className="section" style={{ background: 'var(--navy)', textAlign: 'center' }}>
-        <div className="container" style={{ maxWidth: '700px' }}>
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-            <p style={{ color: 'var(--gold)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '1rem', fontWeight: 600 }}>
-              {en ? 'No suitable cruise for you?' : 'Kein passender Törn dabei?'}
-            </p>
-            <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: '#fff', marginBottom: '1.25rem' }}>
-              {en ? 'Your bespoke cruise, tailor-made' : 'Dein individueller Törn nach Maß'}
-            </h2>
-            <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
-              {en ? 'We plan your dream cruise entirely to your wishes — travel time, destination, yacht and crew. Contact us for a personal quote.' : 'Wir planen deinen Traumtörn ganz nach deinen Wünschen — Reisezeit, Zielgebiet, Yacht und Crew. Kontaktiere uns für ein persönliches Angebot.'}
-            </p>
-            <a href="#kontakt" className="btn btn-primary">{en ? 'Get a quote' : 'Jetzt anfragen'}</a>
-          </motion.div>
-        </div>
       </section>
     </main>
   )
