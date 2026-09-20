@@ -67,15 +67,27 @@ const eigenleistung = [
 ]
 
 const gallery = [
-  '/images/sailaway/party1.jpeg', '/images/sailaway/sailing.jpg', '/images/sailaway/party2.jpeg',
-  '/images/sailaway/party3.jpeg', '/images/sailaway/party4.jpeg', '/images/sailaway/party5.jpeg',
-  '/images/sailaway/segeln.jpg', '/images/sailaway/party6.jpeg', '/images/sailaway/party7.jpeg',
-  '/images/sailaway/party8.jpeg', '/images/sailaway/party9.jpeg', '/images/sailaway/party10.jpeg',
-  '/images/sailaway/party11.jpeg', '/images/sailaway/party12.jpeg',
+  { src: '/images/sailaway/party1.jpeg', alt: 'Gruppe springt gemeinsam von einem Katamaran ins türkisblaue Wasser' },
+  { src: '/images/sailaway/sailing.jpg', alt: 'Crew-Mitglied steuert die Yacht, im Hintergrund ein weiterer Katamaran' },
+  { src: '/images/sailaway/party2.jpeg', alt: 'Silhouette einer Beachvolleyball-Gruppe am Strand bei Sonnenuntergang' },
+  { src: '/images/sailaway/party3.jpeg', alt: 'Gruppe fährt lachend auf einem Bananenboot durch die Wellen' },
+  { src: '/images/sailaway/party4.jpeg', alt: 'Junge Frau beim Wakeboarden auf dem Wasser' },
+  { src: '/images/sailaway/party5.jpeg', alt: 'Freunde springen bei Sonnenuntergang von der Yacht ins Wasser' },
+  { src: '/images/sailaway/segeln.jpg', alt: 'Gruppe sitzt jubelnd mit erhobenen Armen am Bug der Segelyacht' },
+  { src: '/images/sailaway/party6.jpeg', alt: 'Ausgelassene Partystimmung in einem Club mit Biergläsern' },
+  { src: '/images/sailaway/party7.jpeg', alt: 'Freunde stoßen mit Weingläsern am Steuerrad der Yacht an' },
+  { src: '/images/sailaway/party8.jpeg', alt: 'Gruppe spielt Fußball am Sandstrand' },
+  { src: '/images/sailaway/party9.jpeg', alt: 'Freunde sitzen lachend am Heck der Yacht mit den Füßen im Wasser' },
+  { src: '/images/sailaway/party10.jpeg', alt: 'Blick von oben: Crew springt nacheinander von der Yacht ins Meer' },
+  { src: '/images/sailaway/party11.jpeg', alt: 'Zwei Freunde stoßen bei Sonnenuntergang mit Bierflaschen an' },
+  { src: '/images/sailaway/party12.jpeg', alt: 'Gruppe feiert an Deck des Katamarans mit Wassermelone und Sekt' },
+  { src: '/images/sailaway/party13.webp', alt: 'Gruppe steht winkend am Bug zweier zusammengebundener Katamarane in einer türkisblauen Bucht' },
 ]
 const yachtImgs = [
-  '/images/sailaway/c46-7.jpg', '/images/sailaway/badeplattform.jpg',
-  '/images/sailaway/45Cr.jpg', '/images/sailaway/CR50-inside.jpg',
+  { src: '/images/sailaway/c46-7.jpg', alt: 'Segelyacht mit gesetztem Gennaker unter vollen Segeln auf See' },
+  { src: '/images/sailaway/badeplattform.jpg', alt: 'Paar entspannt auf der Badeplattform am Heck der Yacht' },
+  { src: '/images/sailaway/45Cr.jpg', alt: 'Segelyacht mit Spinnaker unter Segeln, Crew an Bord' },
+  { src: '/images/sailaway/CR50-inside.jpg', alt: 'Heller Innenraum der Yacht mit Sitzgruppe und Pantry' },
 ]
 
 export default function SailAwayPage() {
@@ -114,7 +126,7 @@ export default function SailAwayPage() {
 
       {/* Hero */}
       <div style={{ position: 'relative', height: '440px', overflow: 'hidden' }}>
-        <img src="/images/sailaway/header.jpg" alt="sail away Party-Flottille"
+        <img src="/images/sailaway/header.jpg" alt="Freunde springen und plantschen auf einem aufblasbaren Flamingo vom Boot ins Wasser"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(7,27,47,0.88) 0%, rgba(7,27,47,0.4) 60%, transparent 100%)' }} />
@@ -159,8 +171,8 @@ export default function SailAwayPage() {
         <div className="container">
           <div className="sa-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
             {gallery.map(img => (
-              <div key={img} style={{ aspectRatio: '4/3', overflow: 'hidden', borderRadius: '6px', background: '#eee' }}>
-                <img src={img} alt="sail away" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              <div key={img.src} style={{ aspectRatio: '4/3', overflow: 'hidden', borderRadius: '6px', background: '#eee' }}>
+                <img src={img.src} alt={img.alt} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                   onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
               </div>
             ))}
@@ -181,7 +193,7 @@ export default function SailAwayPage() {
                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                   {f.items.map(item => (
                     <li key={item} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start', color: '#444', fontSize: '0.84rem', lineHeight: 1.55 }}>
-                      <span style={{ color: 'var(--blue)', flexShrink: 0 }}>✔</span> {item}
+                      <span aria-hidden="true" style={{ color: 'var(--blue)', flexShrink: 0 }}>✔</span> {item}
                     </li>
                   ))}
                 </ul>
@@ -206,7 +218,7 @@ export default function SailAwayPage() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 {imPreis.map(i => (
                   <li key={i} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start', color: 'rgba(255,255,255,0.85)', fontSize: '0.86rem', lineHeight: 1.55 }}>
-                    <span style={{ color: 'var(--gold)', flexShrink: 0 }}>✔</span> {i}
+                    <span aria-hidden="true" style={{ color: 'var(--gold)', flexShrink: 0 }}>✔</span> {i}
                   </li>
                 ))}
               </ul>
@@ -216,7 +228,7 @@ export default function SailAwayPage() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 {eigenleistung.map(i => (
                   <li key={i} style={{ display: 'flex', gap: '0.5rem', alignItems: 'flex-start', color: 'rgba(255,255,255,0.85)', fontSize: '0.86rem', lineHeight: 1.55 }}>
-                    <span style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0 }}>•</span> {i}
+                    <span aria-hidden="true" style={{ color: 'rgba(255,255,255,0.4)', flexShrink: 0 }}>•</span> {i}
                   </li>
                 ))}
               </ul>
@@ -233,8 +245,8 @@ export default function SailAwayPage() {
           </h2>
           <div className="sa-yacht" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }}>
             {yachtImgs.map(img => (
-              <div key={img} style={{ borderRadius: '6px', overflow: 'hidden', boxShadow: '0 2px 14px rgba(0,0,0,0.1)' }}>
-                <img src={img} alt="Eure Yacht" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
+              <div key={img.src} style={{ borderRadius: '6px', overflow: 'hidden', boxShadow: '0 2px 14px rgba(0,0,0,0.1)' }}>
+                <img src={img.src} alt={img.alt} loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }}
                   onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
               </div>
             ))}
@@ -266,7 +278,7 @@ export default function SailAwayPage() {
 
           {sent ? (
             <div style={{ background: '#ecfdf5', border: '1px solid #10b981', borderRadius: '6px', padding: '2rem', textAlign: 'center' }}>
-              <p style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>✅</p>
+              <p aria-hidden="true" style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>✅</p>
               <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', marginBottom: '0.5rem' }}>Vielen Dank!</h3>
               <p style={{ color: 'var(--gray)', fontSize: '0.92rem' }}>Deine Anfrage wurde erfolgreich übermittelt. Wir melden uns schnellstmöglich!</p>
             </div>
@@ -275,32 +287,32 @@ export default function SailAwayPage() {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>Vorname *</label>
-                  <input required name="vorname" value={form.vorname} onChange={e => set('vorname', e.target.value)} style={inputStyle} />
+                  <label htmlFor="sa-vorname" style={labelStyle}>Vorname *</label>
+                  <input required id="sa-vorname" name="vorname" autoComplete="given-name" value={form.vorname} onChange={e => set('vorname', e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>Nachname *</label>
-                  <input required name="nachname" value={form.nachname} onChange={e => set('nachname', e.target.value)} style={inputStyle} />
+                  <label htmlFor="sa-nachname" style={labelStyle}>Nachname *</label>
+                  <input required id="sa-nachname" name="nachname" autoComplete="family-name" value={form.nachname} onChange={e => set('nachname', e.target.value)} style={inputStyle} />
                 </div>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>PLZ *</label>
-                  <input required name="plz" value={form.plz} onChange={e => set('plz', e.target.value)} style={inputStyle} />
+                  <label htmlFor="sa-plz" style={labelStyle}>PLZ *</label>
+                  <input required id="sa-plz" name="plz" autoComplete="postal-code" value={form.plz} onChange={e => set('plz', e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>Ort *</label>
-                  <input required name="ort" value={form.ort} onChange={e => set('ort', e.target.value)} style={inputStyle} />
+                  <label htmlFor="sa-ort" style={labelStyle}>Ort *</label>
+                  <input required id="sa-ort" name="ort" autoComplete="address-level2" value={form.ort} onChange={e => set('ort', e.target.value)} style={inputStyle} />
                 </div>
               </div>
               <div style={{ marginBottom: '1rem' }}>
-                <label style={labelStyle}>E-Mail *</label>
-                <input required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
+                <label htmlFor="sa-email" style={labelStyle}>E-Mail *</label>
+                <input required type="email" id="sa-email" name="email" autoComplete="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>Gruppengröße *</label>
-                  <select required name="gruppe" value={form.gruppe} onChange={e => set('gruppe', e.target.value)} style={inputStyle}>
+                  <label htmlFor="sa-gruppe" style={labelStyle}>Gruppengröße *</label>
+                  <select required id="sa-gruppe" name="gruppe" value={form.gruppe} onChange={e => set('gruppe', e.target.value)} style={inputStyle}>
                     <option value="">Wieviele Personen sind in deiner Gruppe?</option>
                     {['1 Person', '2 Personen', '3 Personen', '4 Personen', '5 Personen', '6 Personen', '7 Personen', '8 Personen', 'mehr (siehe Anmerkungen)'].map(o => (
                       <option key={o} value={o}>{o}</option>
@@ -308,16 +320,16 @@ export default function SailAwayPage() {
                   </select>
                 </div>
                 <div>
-                  <label style={labelStyle}>Getränke-Package</label>
-                  <select name="getraenke" value={form.getraenke} onChange={e => set('getraenke', e.target.value)} style={inputStyle}>
+                  <label htmlFor="sa-getraenke" style={labelStyle}>Getränke-Package</label>
+                  <select id="sa-getraenke" name="getraenke" value={form.getraenke} onChange={e => set('getraenke', e.target.value)} style={inputStyle}>
                     <option value="Bier">Bier</option>
                     <option value="Wein">Wein</option>
                   </select>
                 </div>
               </div>
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={labelStyle}>Anmerkungen</label>
-                <textarea name="anmerkungen" rows={4} value={form.anmerkungen} onChange={e => set('anmerkungen', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
+                <label htmlFor="sa-anmerkungen" style={labelStyle}>Anmerkungen</label>
+                <textarea id="sa-anmerkungen" name="anmerkungen" rows={4} value={form.anmerkungen} onChange={e => set('anmerkungen', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
               </div>
               {failed && (
                 <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>
