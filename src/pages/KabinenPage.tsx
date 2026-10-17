@@ -6,6 +6,7 @@ import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 import { SparklesIcon, WhatsAppIcon } from '../components/Icons'
 import RecaptchaHinweis from '../components/RecaptchaHinweis'
+import KohChangOffer from '../components/KohChangOffer'
 
 // Angebote 1:1 von der Originalseite (yacht-urlaub.net/kabinenangebote)
 // Aktuell keine gültigen Angebote — Karten bleiben im Code erhalten (Design/Struktur),
@@ -44,6 +45,7 @@ const angebote = [
 ]
 
 const reiseOptionen = [
+  'Koh Chang Thailand - 09.-20.12.2026',
   'Dalmatien ab Split - Termin Anfrage',
   "WhatsApp Community Törn in Thailand Februar'27",
 ]
@@ -175,6 +177,15 @@ export default function KabinenPage() {
           </motion.p>
         </div>
       </div>
+
+      {/* Koh Chang Kabinen-Angebot (Dezember 2026) */}
+      {lang === 'de' && (
+        <section style={{ background: '#fff', padding: '3.5rem 0 0' }}>
+          <div className="container">
+            <KohChangOffer onRequest={() => set('reise', 'Koh Chang Thailand - 09.-20.12.2026')} />
+          </div>
+        </section>
+      )}
 
       {/* Angebote */}
       <section style={{ background: 'var(--gray-light)', padding: '4rem 0' }}>
