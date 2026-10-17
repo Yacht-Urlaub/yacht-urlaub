@@ -1,13 +1,15 @@
 import { motion } from 'framer-motion'
+import { useLang } from '../i18n'
 import { WhatsAppIcon } from './Icons'
 
 export default function WhatsApp() {
+  const lang = useLang()
   return (
     <motion.a
       href="https://wa.me/436602652481"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="WhatsApp Kontakt"
+      aria-label={lang === 'en' ? 'WhatsApp contact' : 'WhatsApp Kontakt'}
       className="whatsapp-fab"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}

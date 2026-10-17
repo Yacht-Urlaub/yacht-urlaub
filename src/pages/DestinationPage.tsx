@@ -52,7 +52,7 @@ export default function DestinationPage() {
   if (!dest) {
     return (
       <main style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1rem' }}>
-        <h1 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)' }}>Destination nicht gefunden</h1>
+        <h1 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)' }}>{lang === 'en' ? 'Destination not found' : 'Destination nicht gefunden'}</h1>
         <button onClick={() => navigate('/destinationen')} className="btn btn-primary">{lang === 'en' ? '← All destinations' : '← Alle Destinationen'}</button>
       </main>
     )

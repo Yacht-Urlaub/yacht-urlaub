@@ -1009,7 +1009,7 @@ export default function Packages() {
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
           <p style={{ color: 'var(--blue)', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-            Direkt buchbar
+            {lang === 'en' ? 'Book directly' : 'Direkt buchbar'}
           </p>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '0.75rem' }}>
             {lang === 'en' ? 'All packages at a glance' : 'Alle Packages auf einen Blick'}

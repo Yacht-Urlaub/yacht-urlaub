@@ -77,7 +77,7 @@ export default function BuchenPage() {
           }}
         >
           <iframe
-            src="/buchen-widget.html"
+            src={`/buchen-widget.html?lang=${lang}`}
             title={lang === 'en' ? 'Book a yacht' : 'Yacht buchen'}
             style={{
               width: '100%',
