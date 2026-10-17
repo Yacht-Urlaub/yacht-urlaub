@@ -98,13 +98,17 @@ const kk = {
     tel: 'Telefon', wa: 'WhatsApp', mail: 'E-Mail', waSub: 'Schnelle Antwort',
     badges: ['✓ Persönliche Beratung', '✓ Antwort innerhalb 24h', '✓ Kostenlose Erstberatung', '✓ Über 10 Jahre Erfahrung'],
     steps: ['Reisedaten', 'Kontakt', 'Absenden'],
-    sentH: 'Anfrage gesendet!', new: 'Neue Anfrage' },
+    sentH: 'Anfrage gesendet!', new: 'Neue Anfrage',
+    thanksPre: 'Vielen Dank, ', thanksMid: '! Wir melden uns innerhalb von 24 Stunden bei Ihnen unter ', thanksPost: '.',
+    personen: 'Personen' },
   en: { label: 'Contact', h2: 'Get a quote',
     sub: 'We are happy to advise you personally. Fill in the form — we will get back to you within 24 hours.',
     tel: 'Phone', wa: 'WhatsApp', mail: 'Email', waSub: 'Quick reply',
     badges: ['✓ Personal consultation', '✓ Reply within 24h', '✓ Free initial consultation', '✓ More than 10 years of experience'],
     steps: ['Travel data', 'Contact', 'Submit'],
-    sentH: 'Request sent!', new: 'New request' },
+    sentH: 'Request sent!', new: 'New request',
+    thanksPre: 'Thank you, ', thanksMid: "! We'll get back to you within 24 hours at ", thanksPost: '.',
+    personen: 'people' },
 }
 
 export default function Kontakt() {
@@ -219,7 +223,7 @@ export default function Kontakt() {
                 ><SailboatIcon size={56} /></motion.div>
                 <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.5rem', color: 'var(--navy)', marginBottom: '0.75rem' }}>{kt.sentH}</h3>
                 <p style={{ color: 'var(--gray)', lineHeight: 1.75, marginBottom: '1.5rem' }}>
-                  Vielen Dank, <strong>{form.name}</strong>! Wir melden uns innerhalb von 24 Stunden bei Ihnen unter <strong>{form.email}</strong>.
+                  {kt.thanksPre}<strong>{form.name}</strong>{kt.thanksMid}<strong>{form.email}</strong>{kt.thanksPost}
                 </p>
                 <button onClick={() => { setSent(false); setStep(0); setForm(initial) }} className="btn btn-primary" style={{ fontSize: '0.8rem' }}>
                   {kt.new}
@@ -365,7 +369,7 @@ export default function Kontakt() {
                       <div style={{ background: 'var(--gray-light)', borderRadius: '4px', padding: '0.85rem 1rem', marginBottom: '1.5rem', fontSize: '0.8rem', color: 'var(--gray)', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}><MapPinIcon size={13} /> {form.destination || '–'}</span>
                         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}><CalendarIcon size={13} /> {form.datum_von || '–'}</span>
-                        <span>{form.personen} Personen</span>
+                        <span>{form.personen} {kt.personen}</span>
                         {form.yacht && <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}><SailboatIcon size={13} /> {form.yacht}</span>}
                       </div>
 

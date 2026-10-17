@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yacht buchen</title>
+  <title id="page-title">Yacht buchen</title>
   <script type="text/javascript" src="https://www.planyo.com/utils.js"></script>
   <link rel="stylesheet" href="https://www.planyo.com/Plugins/PlanyoFiles/bootstrap-planyo.min.css" type="text/css" />
   <link rel="stylesheet" href="https://www.planyo.com/schemes/?calendar=46954&detect_mobile=auto&sel=scheme_css" type="text/css" />
@@ -117,7 +117,7 @@
 <body>
 
   <div class="search-bar">
-    <h3>Verfügbare Packages zum Wunschtermin finden</h3>
+    <h3 id="t-heading">Verfügbare Packages zum Wunschtermin finden</h3>
 
     <!-- Calendar picker (hidden, positioned by JS) -->
     <div class="picker_dropdown" id="box_start_datecal"
@@ -131,13 +131,13 @@
       <input type="hidden" name="is_night" value="1" />
       <input type="hidden" name="granulation" value="1440" />
       <input type="hidden" name="mode" value="search" />
-      <input type="hidden" name="custom-language" value="DE" />
+      <input type="hidden" name="custom-language" id="custom-language" value="DE" />
       <input type="hidden" name="tz_offset" id="tz_offset" value="" />
       <input type="hidden" name="submitted" value="true" />
 
       <div class="form-row">
         <div class="form-group">
-          <label for="box_start_date">Startdatum *</label>
+          <label for="box_start_date" id="t-startdate-label">Startdatum *</label>
           <div class="input-group" style="display:flex;">
             <input class="with-status-border form-control" type="text" id="box_start_date" name="box_start_date"
               autocomplete="off" placeholder="TT.MM.JJJJ"
@@ -155,23 +155,68 @@
         </div>
 
         <div class="form-group">
-          <label for="box_rental_time_value">Dauer</label>
+          <label for="box_rental_time_value" id="t-duration-label">Dauer</label>
           <select name="rental_time_value" id="box_rental_time_value">
-            <option selected value="168">7 Tage</option>
-            <option value="336">14 Tage</option>
-            <option value="240">10 Tage</option>
+            <option selected value="168" id="t-opt-7">7 Tage</option>
+            <option value="336" id="t-opt-14">14 Tage</option>
+            <option value="240" id="t-opt-10">10 Tage</option>
           </select>
         </div>
 
         <div class="form-group">
           <label>&nbsp;</label>
-          <button type="submit" class="btn-search">Suche</button>
+          <button type="submit" class="btn-search" id="t-search-btn">Suche</button>
         </div>
       </div>
     </form>
 
-    <p class="search-hint">ℹ Für Mai – Oktober als Startdatum bitte Mittwoch oder Samstag wählen!</p>
+    <p class="search-hint" id="t-hint">ℹ Für Mai – Oktober als Startdatum bitte Mittwoch oder Samstag wählen!</p>
   </div>
+
+  <script>
+    // Sprache kommt per ?lang=en|de von der einbettenden Seite (BuchenPage.tsx,
+    // die useLang() kennt) — dieses Fragment laeuft als statisches HTML ausserhalb
+    // von React und hat sonst keine Moeglichkeit, die Sprache zu erfahren.
+    // Faellt mangels Parameter auf Deutsch zurueck.
+    (function () {
+      var lang = (new URLSearchParams(window.location.search).get('lang') === 'en') ? 'en' : 'de';
+      document.documentElement.lang = lang;
+
+      var T = {
+        de: {
+          title: 'Yacht buchen', heading: 'Verfügbare Packages zum Wunschtermin finden',
+          startdate: 'Startdatum *', duration: 'Dauer',
+          d7: '7 Tage', d14: '14 Tage', d10: '10 Tage', search: 'Suche',
+          hint: 'ℹ Für Mai – Oktober als Startdatum bitte Mittwoch oder Samstag wählen!',
+        },
+        en: {
+          title: 'Book a yacht', heading: 'Find available packages for your preferred dates',
+          startdate: 'Start date *', duration: 'Duration',
+          d7: '7 days', d14: '14 days', d10: '10 days', search: 'Search',
+          hint: 'ℹ For May – October as a start date, please choose a Wednesday or Saturday!',
+        },
+      }[lang];
+
+      document.getElementById('page-title').textContent = T.title;
+      document.getElementById('t-heading').textContent = T.heading;
+      document.getElementById('t-startdate-label').textContent = T.startdate;
+      document.getElementById('t-duration-label').textContent = T.duration;
+      document.getElementById('t-opt-7').textContent = T.d7;
+      document.getElementById('t-opt-14').textContent = T.d14;
+      document.getElementById('t-opt-10').textContent = T.d10;
+      document.getElementById('t-search-btn').textContent = T.search;
+      document.getElementById('t-hint').textContent = T.hint;
+      document.getElementById('custom-language').value = lang === 'en' ? 'EN' : 'DE';
+
+      // Placeholder nur an die Sprache angepasst, nicht an die Reihenfolge —
+      // document.date_format bleibt unten "d.m.Y" (DD.MM.YYYY), der Kalender
+      // liefert also immer in dieser Reihenfolge; ein US-Format MM/DD/YYYY
+      // waere hier irrefuehrend, da es nicht dem tatsaechlichen Ergebnis entspricht.
+      if (lang === 'en') document.getElementById('box_start_date').placeholder = 'DD.MM.YYYY';
+
+      window.__widgetLang = lang;
+    })();
+  </script>
 
   <!-- Results load here directly, no lightbox -->
   <iframe id="results-frame" name="results-frame" src="about:blank"></iframe>
@@ -249,29 +294,52 @@
     // Set timezone offset
     document.getElementById('tz_offset').value = new Date().getTimezoneOffset();
 
-    // Planyo calendar globals
+    // Planyo calendar globals — englische Strings fuer den Kalender-Picker
+    // und die Suchergebnisse, wenn ?lang=en gesetzt ist (siehe Skript weiter oben).
     document.date_format = "d.m.Y";
     document.first_weekday = 1;
     document.new_scheme = 1;
-    document.s_prev = "Vorherige";
-    document.s_next = "Nächste";
-    document.s_today = "Heute";
-    document.s_day = "Tag"; document.s_days = "Tage";
-    document.s_week = "Woche"; document.s_weeks = "Wochen";
-    document.s_weekday = "Wochentag"; document.s_month = "Monat";
-    document.s_single_res = "Einzelne Ressource";
-    document.s_weekdays_short = ["M","D","M","D","F","S","S"];
-    document.s_weekdays_med = ["Mo","Di","Mi","Do","Fr","Sa","So"];
-    document.s_weekdays_long = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"];
-    document.s_months_short = ["Jan","Feb","Mrz","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
-    document.s_months_long = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
-    document.s_all = "Alle"; document.s_showall = "Alle zeigen";
-    document.s_areav = "sind verfügbar.";
-    document.s_clickres = "Klicken Sie hier, um eine Buchung vorzunehmen.";
-    document.s_partav = "Nur für einen Teil des Tages verfügbar.";
-    document.s_outof = "von"; document.s_unav = "Nicht verfügbar"; document.s_av = "Verfügbar";
-    document.s_vacation = "Ferien"; document.s_allday = "Ganzer Tag";
-    document.s_day_view = "Tag zeigen"; document.s_month_view = "Monat zeigen"; document.s_more = "mehr";
+    if (window.__widgetLang === 'en') {
+      document.s_prev = "Previous";
+      document.s_next = "Next";
+      document.s_today = "Today";
+      document.s_day = "Day"; document.s_days = "Days";
+      document.s_week = "Week"; document.s_weeks = "Weeks";
+      document.s_weekday = "Weekday"; document.s_month = "Month";
+      document.s_single_res = "Single resource";
+      document.s_weekdays_short = ["M","T","W","T","F","S","S"];
+      document.s_weekdays_med = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+      document.s_weekdays_long = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+      document.s_months_short = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      document.s_months_long = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+      document.s_all = "All"; document.s_showall = "Show all";
+      document.s_areav = "are available.";
+      document.s_clickres = "Click here to make a booking.";
+      document.s_partav = "Only available for part of the day.";
+      document.s_outof = "of"; document.s_unav = "Not available"; document.s_av = "Available";
+      document.s_vacation = "Vacation"; document.s_allday = "All day";
+      document.s_day_view = "Show day"; document.s_month_view = "Show month"; document.s_more = "more";
+    } else {
+      document.s_prev = "Vorherige";
+      document.s_next = "Nächste";
+      document.s_today = "Heute";
+      document.s_day = "Tag"; document.s_days = "Tage";
+      document.s_week = "Woche"; document.s_weeks = "Wochen";
+      document.s_weekday = "Wochentag"; document.s_month = "Monat";
+      document.s_single_res = "Einzelne Ressource";
+      document.s_weekdays_short = ["M","D","M","D","F","S","S"];
+      document.s_weekdays_med = ["Mo","Di","Mi","Do","Fr","Sa","So"];
+      document.s_weekdays_long = ["Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag","Sonntag"];
+      document.s_months_short = ["Jan","Feb","Mrz","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"];
+      document.s_months_long = ["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"];
+      document.s_all = "Alle"; document.s_showall = "Alle zeigen";
+      document.s_areav = "sind verfügbar.";
+      document.s_clickres = "Klicken Sie hier, um eine Buchung vorzunehmen.";
+      document.s_partav = "Nur für einen Teil des Tages verfügbar.";
+      document.s_outof = "von"; document.s_unav = "Nicht verfügbar"; document.s_av = "Verfügbar";
+      document.s_vacation = "Ferien"; document.s_allday = "Ganzer Tag";
+      document.s_day_view = "Tag zeigen"; document.s_month_view = "Monat zeigen"; document.s_more = "mehr";
+    }
 
     planyo_set_event(document.getElementById('box_start_datecal'), 'click', 'planyo_dummy', false);
     planyo_set_event(document, 'mousedown', 'planyo_close_calendar', false);
