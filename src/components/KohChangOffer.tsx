@@ -118,9 +118,6 @@ const t = {
     a3t: '3 · Check-in', a3pre: 'Ab 15:00 an Bord. Flüge und Transfers organisieren Sie individuell. Wir empfehlen, ', a3bold: 'mind.', a3post: ' 1 Tag früher anzureisen.',
     goodToKnow: 'Gut zu wissen',
     ctaTitle: 'Nur 3 Doppelkabinen verfügbar', ctaSub: '09.–20.12.2026 · € 3.550,– pro Kabine',
-    waFooterPre: "Dieser Termin passt nicht? Für den Community-Törn Thailand im Februar '27 schreiben Sie uns gerne ",
-    waFooterLink: 'auf WhatsApp', waFooterPost: '.',
-    waCommunityMsg: "Hallo! Ich interessiere mich für den Community-Törn Thailand im Februar '27 und würde gerne der WhatsApp-Gruppe beitreten.",
   },
   en: {
     tag: 'Cabin offer · Thailand',
@@ -156,9 +153,6 @@ const t = {
     a3t: '3 · Check-in', a3pre: 'On board from 15:00. You organise flights and transfers yourself. We recommend arriving ', a3bold: 'at least', a3post: ' 1 day early.',
     goodToKnow: 'Good to know',
     ctaTitle: 'Only 3 double cabins available', ctaSub: '09–20 Dec 2026 · € 3,550.– per cabin',
-    waFooterPre: "This date doesn't suit you? For the Thailand community trip in February '27, feel free to message us ",
-    waFooterLink: 'on WhatsApp', waFooterPost: '.',
-    waCommunityMsg: "Hi! I'm interested in the Thailand community trip in February '27 and would love to join the WhatsApp group.",
   },
 }
 
@@ -393,14 +387,6 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
         </div>
       )}
     </div>
-
-      <p style={{ textAlign: 'center', fontSize: '0.82rem', color: 'var(--gray)', margin: '0.85rem 0 0' }}>
-        {s.waFooterPre}
-        <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(s.waCommunityMsg)}`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)', fontWeight: 600 }}>
-          {s.waFooterLink}
-        </a>
-        {s.waFooterPost}
-      </p>
 
       <style>{`
         @media (max-width: 640px) {
