@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from '../router'
 import SEO from '../components/SEO'
 import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
@@ -98,6 +99,7 @@ const angeboteEn = [
   },
 ]
 const reiseOptionenEn = [
+  'Koh Chang Thailand - 09-20 Dec 2026',
   'Dalmatia from Split - date on request',
   'Community Trip for Thailand in February 2027',
 ]
@@ -169,13 +171,11 @@ export default function KabinenPage() {
       </div>
 
       {/* Koh Chang Kabinen-Angebot (Dezember 2026) */}
-      {lang === 'de' && (
-        <section style={{ background: '#fff', padding: '3.5rem 0 0' }}>
-          <div className="container">
-            <KohChangOffer onRequest={() => set('reise', 'Koh Chang Thailand - 09.-20.12.2026')} />
-          </div>
-        </section>
-      )}
+      <section style={{ background: '#fff', padding: '3.5rem 0 0' }}>
+        <div className="container">
+          <KohChangOffer onRequest={() => set('reise', lang === 'en' ? 'Koh Chang Thailand - 09-20 Dec 2026' : 'Koh Chang Thailand - 09.-20.12.2026')} />
+        </div>
+      </section>
 
       {/* Angebote */}
       <section style={{ background: 'var(--gray-light)', padding: '4rem 0' }}>
@@ -200,7 +200,7 @@ export default function KabinenPage() {
               style={{ textAlign: 'center', color: 'var(--gray)', fontSize: '0.88rem' }}
             >
               {s.altHint}{' '}
-              <a href={s.packagesHref} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.noOffersCta}</a>
+              <Link to={s.packagesHref} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.noOffersCta}</Link>
             </motion.p>
           )}
 
@@ -353,7 +353,7 @@ export default function KabinenPage() {
               <div style={{ background: 'var(--gray-light)', borderRadius: '6px', padding: '1.25rem', marginBottom: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.87rem', color: '#444', cursor: 'pointer', lineHeight: 1.5 }}>
                   <input type="radio" name="modus" value="buchen" checked={form.modus === 'buchen'} onChange={e => set('modus', e.target.value)} style={{ marginTop: '3px' }} />
-                  <span>{s.agbPre} <a href={lang === 'en' ? '/en/terms' : '/agb'} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.agb}</a> {s.bind}</span>
+                  <span>{s.agbPre} <Link to={lang === 'en' ? '/en/terms' : '/agb'} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.agb}</Link> {s.bind}</span>
                 </label>
                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '0.55rem', fontSize: '0.87rem', color: '#444', cursor: 'pointer', lineHeight: 1.5 }}>
                   <input type="radio" name="modus" value="anfrage" checked={form.modus === 'anfrage'} onChange={e => set('modus', e.target.value)} style={{ marginTop: '3px' }} />
