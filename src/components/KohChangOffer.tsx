@@ -9,6 +9,7 @@ import { WhatsAppIcon } from './Icons'
 
 const WHATSAPP_NUMBER = '436602652481'
 const WHATSAPP_MSG = 'Hallo! Ich interessiere mich für das Kabinen-Angebot Koh Chang (09.–20.12.2026) und hätte dazu noch eine Frage.'
+const WHATSAPP_COMMUNITY_MSG = "Hallo! Ich interessiere mich für den Community-Törn Thailand im Februar '27 und würde gerne der WhatsApp-Gruppe beitreten."
 
 const days: { date: string; place: string; text: string }[] = [
   { date: 'Mi 09.12.', place: 'Koh Chang Marina', text: 'Check-in ab 15:00. Kabine beziehen, Einkauf für die ersten Tage und erstes Abendessen am Hafen.' },
@@ -46,7 +47,8 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
   const [open, setOpen] = useState(false)
 
   return (
-    <div style={{ maxWidth: '980px', margin: '0 auto 3rem', background: '#fff', border: '1px solid var(--gray-mid)', borderRadius: '10px', overflow: 'hidden' }}>
+    <div style={{ maxWidth: '980px', margin: '0 auto 3rem' }}>
+    <div style={{ background: '#fff', border: '1px solid var(--gray-mid)', borderRadius: '10px', overflow: 'hidden' }}>
 
       {/* Kopfzeile — immer sichtbar, Klick klappt auf/zu */}
       <button
@@ -274,6 +276,14 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
 
         </div>
       )}
+    </div>
+
+      <p style={{ textAlign: 'center', fontSize: '0.82rem', color: 'var(--gray)', margin: '0.85rem 0 0' }}>
+        Dieser Termin passt nicht? Für den Community-Törn Thailand im Februar &apos;27 schreiben Sie uns gerne{' '}
+        <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_COMMUNITY_MSG)}`} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)', fontWeight: 600 }}>
+          auf WhatsApp
+        </a>.
+      </p>
 
       <style>{`
         @media (max-width: 640px) {
