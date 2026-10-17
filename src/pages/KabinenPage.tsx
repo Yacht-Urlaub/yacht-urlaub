@@ -8,6 +8,7 @@ import { sendForm } from '../lib/sendForm'
 import { SparklesIcon } from '../components/Icons'
 import RecaptchaHinweis from '../components/RecaptchaHinweis'
 import KohChangOffer from '../components/KohChangOffer'
+import PhuketOffer from '../components/PhuketOffer'
 
 // Angebote 1:1 von der Originalseite (yacht-urlaub.net/kabinenangebote)
 // Aktuell keine gültigen Angebote — Karten bleiben im Code erhalten (Design/Struktur),
@@ -47,6 +48,7 @@ const angebote = [
 
 const reiseOptionen = [
   'Koh Chang Thailand - 09.-20.12.2026',
+  'Phuket Thailand - 02.-13.02.2027',
   'Dalmatien ab Split - Termin Anfrage',
   "WhatsApp Community Törn in Thailand Februar'27",
 ]
@@ -100,6 +102,7 @@ const angeboteEn = [
 ]
 const reiseOptionenEn = [
   'Koh Chang Thailand - 09-20 Dec 2026',
+  'Phuket Thailand - 02-13 Feb 2027',
   'Dalmatia from Split - date on request',
   'Community Trip for Thailand in February 2027',
 ]
@@ -174,6 +177,13 @@ export default function KabinenPage() {
       <section style={{ background: '#fff', padding: '3.5rem 0 0' }}>
         <div className="container">
           <KohChangOffer onRequest={() => set('reise', lang === 'en' ? 'Koh Chang Thailand - 09-20 Dec 2026' : 'Koh Chang Thailand - 09.-20.12.2026')} />
+        </div>
+      </section>
+
+      {/* Phuket Kabinen-Angebot (Februar 2027) */}
+      <section style={{ background: '#fff', padding: '0' }}>
+        <div className="container">
+          <PhuketOffer onRequest={() => set('reise', lang === 'en' ? 'Phuket Thailand - 02-13 Feb 2027' : 'Phuket Thailand - 02.-13.02.2027')} />
         </div>
       </section>
 
