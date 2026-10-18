@@ -213,8 +213,11 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
         </div>
       </button>
 
-      {open && (
-        <div style={{ borderTop: '1px solid var(--gray-mid)', padding: 'clamp(1.25rem, 4vw, 2.5rem)', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+      {/* Inhalt bleibt immer im DOM — nur per CSS versteckt, nicht per {open && ...}
+          aus dem Baum entfernt. Suchmaschinen und KI-Crawler klicken nie auf
+          "Details anzeigen"; ohne das waeren Route, Preise und Leistungen fuer
+          sie unsichtbar. */}
+      <div style={{ display: open ? 'flex' : 'none', borderTop: '1px solid var(--gray-mid)', padding: 'clamp(1.25rem, 4vw, 2.5rem)', flexDirection: 'column', gap: '3rem' }}>
 
           {/* Intro */}
           <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: '2rem', alignItems: 'start' }}>
@@ -384,8 +387,7 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
             </div>
           </section>
 
-        </div>
-      )}
+      </div>
     </div>
 
       <style>{`

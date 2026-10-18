@@ -3,7 +3,7 @@ import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from '../router'
 import SEO from '../components/SEO'
-import { useLang, MAIL } from '../i18n'
+import { useLang, MAIL, isEnHost, BASE_DE, BASE_EN } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 import { SparklesIcon } from '../components/Icons'
 import RecaptchaHinweis from '../components/RecaptchaHinweis'
@@ -143,12 +143,37 @@ export default function KabinenPage() {
   } as const
   const labelStyle = { fontSize: '0.78rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '5px', display: 'block' } as const
 
+  const base = isEnHost() ? BASE_EN : BASE_DE
+  const kabinenUrl = `${base}${lang === 'en' ? '/cabin-offers' : '/kabinen'}`
+  const brand = lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'
+  const schema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: lang === 'en' ? 'Koh Chang: 11 nights island-hopping in the Gulf of Thailand' : 'Koh Chang: 11 Nächte Inselhüpfen im Golf von Thailand',
+      image: `${base}/images/kabinen/koh-chang/island-spirit-410.webp`,
+      url: kabinenUrl,
+      brand: { '@type': 'Brand', name: brand },
+      offers: { '@type': 'Offer', price: '3550', priceCurrency: 'EUR', availability: 'https://schema.org/LimitedAvailability', url: kabinenUrl },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: lang === 'en' ? 'Phuket: 11 nights island-hopping in Phang Nga Bay' : 'Phuket: 11 Nächte Inselhüpfen in der Phang-Nga-Bucht',
+      image: `${base}/images/kabinen/phuket/hero.webp`,
+      url: kabinenUrl,
+      brand: { '@type': 'Brand', name: brand },
+      offers: { '@type': 'Offer', price: '5600', priceCurrency: 'EUR', availability: 'https://schema.org/LimitedAvailability', url: kabinenUrl },
+    },
+  ]
+
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={lang === 'en' ? "Cabin offers – book a single cabin | Yacht-Holiday" : "Kabinen-Angebote – Einzelne Kabine buchen"}
         description="Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für Kroatien (Kornaten) und Thailand. Ideal für Alleinreisende und Paare."
         image="/images/packages/Kornaten/gallery/Telascica.webp"
+        schema={schema}
       />
 
       {/* Hero */}

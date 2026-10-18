@@ -264,12 +264,23 @@ export default function ToernDetailPage() {
     .map(pid => pkgList.find(p => p.id === pid))
     .filter((p): p is NonNullable<typeof p> => !!p)
 
+  const schema = data.faq && data.faq.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: data.faq.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  } : undefined
+
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={data.seoTitle}
         description={data.seoDesc}
         image={data.heroImg}
+        schema={schema}
       />
 
       {/* Hero */}

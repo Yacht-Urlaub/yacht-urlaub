@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { toernberichte } from '../data/toernberichte'
 import { toernberichteEn } from '../data/toernberichteEn'
-import { useLang } from '../i18n'
+import { useLang, isEnHost, BASE_DE, BASE_EN } from '../i18n'
 
 const dd = {
   de: {
@@ -36,12 +36,24 @@ export default function ToernberichtDetailPage() {
 
   const images = tb.blocks.filter(b => b.t === 'i')
 
+  const base = isEnHost() ? BASE_EN : BASE_DE
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: tb.title,
+    description: tb.teaser,
+    image: `${base}${tb.hero}`,
+    author: { '@type': 'Organization', name: lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub' },
+    publisher: { '@type': 'Organization', name: lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub' },
+  }
+
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={`${tb.title} – ${s.seoSuffix} | ${lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}`}
         description={tb.teaser}
         image={tb.hero}
+        schema={schema}
       />
 
       {/* Hero */}
