@@ -237,7 +237,7 @@ export default function PackageDetailPage() {
     '@type': 'Product',
     name: pkg.title,
     description: pkg.subtitle,
-    image: `${base}${pkg.heroImg}`,
+    image: `${base}${pkg.heroImg.replace(/\.webp$/i, '.jpg')}`,
     url: pkgUrl,
     brand: { '@type': 'Brand', name: lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub' },
     offers: {

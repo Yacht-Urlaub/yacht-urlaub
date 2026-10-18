@@ -57,13 +57,25 @@ const MIME = {
   '.ico': 'image/x-icon',
 }
 
+// Reihenfolge wie bei jedem echten Static-Host: exakte Datei, dann
+// <pfad>/index.html (Verzeichnis-Aufruf), erst dann der SPA-Fallback auf
+// die Root-index.html. Ohne den mittleren Schritt wuerde JEDE Unterseite
+// hier beim Rendern faelschlich die Root-Seite bekommen, sobald dort schon
+// ein vorab eingefrorener Snapshot liegt (siehe apply-prerendered-home.cjs)
+// statt der von Vite frisch gebauten, bootfaehigen App-Huelle.
+async function resolveFile(urlPath) {
+  const direct = path.join(DIST, urlPath)
+  if (existsSync(direct) && (await stat(direct)).isFile()) return direct
+  const asIndex = path.join(DIST, urlPath, 'index.html')
+  if (existsSync(asIndex) && (await stat(asIndex)).isFile()) return asIndex
+  return path.join(DIST, 'index.html')
+}
+
 async function serveStatic() {
   const server = createServer(async (req, res) => {
     try {
       const urlPath = decodeURIComponent((req.url ?? '/').split('?')[0])
-      let filePath = path.join(DIST, urlPath)
-      const isFile = existsSync(filePath) && (await stat(filePath)).isFile()
-      if (!isFile) filePath = path.join(DIST, 'index.html')
+      const filePath = await resolveFile(urlPath)
       const ext = path.extname(filePath)
       const data = await readFile(filePath)
       res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' })
