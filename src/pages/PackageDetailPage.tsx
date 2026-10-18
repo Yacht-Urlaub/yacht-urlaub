@@ -6,7 +6,7 @@ import SEO from '../components/SEO'
 import { MapPinIcon } from '../components/Icons'
 import { packages } from '../components/Packages'
 import { packagesEn } from '../data/packagesEn'
-import { useLang, enPkgSlugs } from '../i18n'
+import { useLang, enPkgSlugs, isEnHost, BASE_DE, BASE_EN } from '../i18n'
 import type { PriceBlock, Addon } from '../components/Packages'
 
 // Planyo-Blanko-Buchungslinks pro Package (wie Originalseite yacht-urlaub.net)
@@ -229,11 +229,33 @@ export default function PackageDetailPage() {
 
   const bookingUrl = planyoBookingUrl(pkg.id, lang)
 
+  const base = isEnHost() ? BASE_EN : BASE_DE
+  const pkgPath = lang === 'en' ? `/cruises/book-now/${pkg.id}` : `/packages/${pkg.id}`
+  const pkgUrl = `${base}${pkgPath}`
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: pkg.title,
+    description: pkg.subtitle,
+    image: `${base}${pkg.heroImg.replace(/\.webp$/i, '.jpg')}`,
+    url: pkgUrl,
+    brand: { '@type': 'Brand', name: lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub' },
+    offers: {
+      '@type': 'Offer',
+      price: pkg.price,
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+      url: pkgUrl,
+    },
+  }
+
   return (
     <main>
       <SEO
         title={`${pkg.title} | ${lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}`}
         description={pkg.subtitle}
+        image={pkg.heroImg}
+        schema={schema}
       />
 
       {/* Hero */}

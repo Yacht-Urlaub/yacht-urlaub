@@ -189,6 +189,38 @@
   status = 301
   force = true
 
+# --- 1b. Englische Domain: vorgerenderte Snapshots fuer Pfade, die es auf
+#     beiden Domains gibt ---
+#     scripts/prerender.cjs erzeugt pro Seite ein statisches HTML mit den
+#     korrekten Title-/Description-/OG-Tags, fuer Crawler ohne JavaScript
+#     (WhatsApp, GPTBot, ...). Normalerweise landet das einfach unter dem
+#     Pfad selbst in public/ (z. B. public/cabin-offers/index.html) — beide
+#     Domains teilen sich denselben Deploy, aber die Pfade heissen auf
+#     Englisch anders als auf Deutsch, also keine Kollision.
+#     Nur "/", "/faq" und "/yoga" heissen auf beiden Domains gleich. Die
+#     englische Fassung liegt deshalb unter einem eigenen Namespace
+#     (public/__en/..., die Startseite in prerendered/ -> dist/__en/, siehe
+#     scripts/apply-prerendered-home.cjs) und wird hier host-gebunden
+#     dorthin umgeschrieben — force=true, weil die deutsche Fassung sonst
+#     als Datei am selben Pfad zuerst greifen wuerde.
+[[redirects]]
+  from = "https://www.yacht-holiday.net/"
+  to = "/__en/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/faq"
+  to = "/__en/faq"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/yoga"
+  to = "/__en/yoga"
+  status = 200
+  force = true
+
 # --- 2. /en/... der deutschen Domain auf die englische Domain ---
 #     Der leere Splat deckt /en selbst mit ab.
 [[redirects]]

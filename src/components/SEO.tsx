@@ -29,8 +29,15 @@ export default function SEO({ title, description, image, schema }: Props) {
   // hreflang: nur setzen, wenn es fuer diese Seite wirklich ein Gegenstueck gibt
   const pair = langPair(toInternal(pathname))
 
+  // WhatsApp, iMessage und einige aeltere Social-Crawler zeigen WebP-
+  // Vorschaubilder oft gar nicht an. og:image/twitter:image deshalb immer
+  // auf ein gleichnamiges .jpg umbiegen — das muss als Datei existieren
+  // (bei jedem neuen .webp-Bild, das als `image`-Prop verwendet wird, eine
+  // .jpg-Fassung danebenlegen, z. B. per Pillow). Die Seite selbst darf
+  // weiterhin ganz normal .webp anzeigen, nur dieser eine Verweis nicht.
   const rawImage = image ?? DEFAULT_IMAGE
-  const fullImage = rawImage.startsWith('http') ? rawImage : `${base}${rawImage}`
+  const ogSafeImage = rawImage.replace(/\.webp$/i, '.jpg')
+  const fullImage = ogSafeImage.startsWith('http') ? ogSafeImage : `${base}${ogSafeImage}`
 
   return (
     <Helmet>
