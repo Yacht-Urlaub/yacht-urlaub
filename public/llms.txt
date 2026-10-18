@@ -1,0 +1,31 @@
+# Yacht-Urlaub
+
+> Segel- und Yachtreisen mit Skipper seit 2013 — von Kroatien bis in die Karibik, Seychellen und Thailand. Trusted-Shops-zertifiziert, Mitgründer der European Yachting Alliance.
+
+Yacht-Urlaub (yacht-urlaub.net, englischsprachig: yacht-holiday.net) vermittelt geführte Segeltörns mit Skipper sowie Yachtcharter in mehreren Revieren. Gäste buchen entweder eine ganze Yacht über ein fertiges Reise-Package, eine einzelne Kabine auf einer Gemeinschaftsyacht, oder stellen sich über den Urlaubsplaner eine individuelle Reise zusammen. Gegründet von Manuel Göschl.
+
+## Angebote
+
+- [Reise-Packages](https://www.yacht-urlaub.net/toerns): fertige, buchbare Segeltörns mit festem Preis, nach Zielgruppe sortiert (Einsteiger, Familien, Freunde, Luxury)
+- [Kabinen-Angebote](https://www.yacht-urlaub.net/kabinen): einzelne Kabine auf einer Gemeinschaftsyacht buchen, ideal für Alleinreisende und kleine Gruppen
+- [Destinationen](https://www.yacht-urlaub.net/destinationen): Kroatien, Griechenland, Balearen, Kanaren, Karibik (BVI und Windward Islands), Seychellen, Thailand
+- [Urlaubsplaner](https://www.yacht-urlaub.net/urlaubsplaner): individuelle Reise nach eigenen Wünschen zusammenstellen
+- [Yachtcharter](https://www.yacht-urlaub.net/charter): Yacht ohne Skipper chartern
+- [Skipper & Bordservice](https://www.yacht-urlaub.net/skipper): Crew-Charter, Skipper und Bordservice dazubuchen
+- [Yoga-Retreat](https://www.yacht-urlaub.net/yoga): Segeltörn mit Yoga an Bord
+
+## Hintergrund & Vertrauen
+
+- [FAQ](https://www.yacht-urlaub.net/faq): Antworten zu Buchung, Leben an Bord, Kosten, Bordkassa, Kaution
+- [Törnberichte](https://www.yacht-urlaub.net/toernberichte): Erfahrungsberichte früherer Gäste aus verschiedenen Revieren
+- [Reisebüro-Partner](https://www.yacht-urlaub.net/reisebuero): Informationen für Reisebüros und Vertriebspartner
+
+## Englische Fassung
+
+Die englischsprachige Version läuft unter einer eigenen Domain: https://www.yacht-holiday.net
+
+## Optional
+
+- [Impressum](https://www.yacht-urlaub.net/impressum)
+- [AGB](https://www.yacht-urlaub.net/agb)
+- Sitemaps: https://www.yacht-urlaub.net/sitemap.xml (Deutsch), https://www.yacht-holiday.net/sitemap-en.xml (Englisch)

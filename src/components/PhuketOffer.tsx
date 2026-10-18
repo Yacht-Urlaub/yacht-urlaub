@@ -204,7 +204,7 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
         }}
       >
         <img src="/images/kabinen/phuket/hero.webp" alt="Saona 47 Maravelle vor Anker" loading="lazy"
-          style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '6px', display: 'block' }} />
+          style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '6px', display: 'block' }} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', minWidth: 0, textAlign: 'left' }}>
           <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--blue)' }}>
             {s.tag}
@@ -234,14 +234,17 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
         </div>
       </button>
 
-      {open && (
-        <div style={{ borderTop: '1px solid var(--gray-mid)', padding: 'clamp(1.25rem, 4vw, 2.5rem)', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+      {/* Inhalt bleibt immer im DOM — nur per CSS versteckt, nicht per {open && ...}
+          aus dem Baum entfernt. Suchmaschinen und KI-Crawler klicken nie auf
+          "Details anzeigen"; ohne das waeren Route, Preise und Leistungen fuer
+          sie unsichtbar. */}
+      <div style={{ display: open ? 'flex' : 'none', borderTop: '1px solid var(--gray-mid)', padding: 'clamp(1.25rem, 4vw, 2.5rem)', flexDirection: 'column', gap: '3rem' }}>
 
           {/* Intro */}
           <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: '2rem', alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
               <img src="/images/kabinen/phuket/hero.webp" alt="Saona 47 Maravelle vor Anker" loading="lazy"
-                style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '8px', display: 'block' }} />
+                style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '8px', display: 'block' }} />
               <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.75, color: 'var(--gray)' }}>
                 {s.intro}
               </p>
@@ -427,8 +430,7 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
             </div>
           </section>
 
-        </div>
-      )}
+      </div>
     </div>
 
       <p style={{ textAlign: 'center', fontSize: '0.82rem', color: 'var(--gray)', margin: '0.85rem 0 0' }}>

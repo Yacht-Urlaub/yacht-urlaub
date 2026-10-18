@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
-import { useLang } from '../i18n'
+import { useLang, isEnHost, BASE_DE, BASE_EN } from '../i18n'
 import { Link } from '../router'
 
 // Inhalte der Altseite yacht-holiday.net/yoga bzw. yacht-urlaub.net/yoga.
@@ -115,12 +115,33 @@ export default function YogaPage() {
       attr: s.catAttr, best: s.catBest, people: s.catPeople, fuel: s.boatFuel },
   ]
 
+  const base = isEnHost() ? BASE_EN : BASE_DE
+  const yogaUrl = `${base}/yoga`
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: lang === 'en' ? 'Yoga retreat with Yacht-Holiday' : 'Yoga-Retreat mit Yacht-Urlaub',
+    description: s.sub,
+    image: `${base}${HERO}`,
+    url: yogaUrl,
+    brand: { '@type': 'Brand', name: lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub' },
+    offers: {
+      '@type': 'AggregateOffer',
+      lowPrice: '1850',
+      highPrice: '2950',
+      priceCurrency: 'EUR',
+      offerCount: '2',
+      url: yogaUrl,
+    },
+  }
+
   return (
     <main style={{ paddingTop: '80px' }}>
       <SEO
         title={lang === 'en' ? 'Yoga retreat with Yacht-Holiday' : 'Yoga-Retreat mit Yacht-Urlaub'}
         description={s.sub}
         image={HERO}
+        schema={schema}
       />
 
       {/* Hero */}
