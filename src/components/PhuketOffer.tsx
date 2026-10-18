@@ -204,7 +204,7 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
         }}
       >
         <img src="/images/kabinen/phuket/hero.webp" alt="Saona 47 Maravelle vor Anker" loading="lazy"
-          style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '6px', display: 'block' }} />
+          style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '6px', display: 'block' }} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', minWidth: 0, textAlign: 'left' }}>
           <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--blue)' }}>
             {s.tag}
@@ -244,7 +244,7 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
           <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: '2rem', alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
               <img src="/images/kabinen/phuket/hero.webp" alt="Saona 47 Maravelle vor Anker" loading="lazy"
-                style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '8px', display: 'block' }} />
+                style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '8px', display: 'block' }} />
               <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.75, color: 'var(--gray)' }}>
                 {s.intro}
               </p>
