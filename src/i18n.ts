@@ -57,11 +57,16 @@ export function isEnHost(hostname?: string): boolean {
   return EN_HOSTS.includes(h)
 }
 
-/** Adresszeile → interner Pfad (auf der EN-Domain wird /en ergaenzt) */
+/** Adresszeile → interner Pfad (auf der EN-Domain wird /en ergaenzt).
+ *  Schrägstrich am Ende zuerst entfernen — sonst matcht z. B. "/kabinen/"
+ *  keinen Eintrag in routePairs (die alle ohne abschließenden Slash
+ *  gespeichert sind), und die Sprachumschaltung landet faelschlich auf
+ *  der Startseite statt auf dem Gegenstueck der aktuellen Seite. */
 export function toInternal(pathname: string): string {
-  if (!isEnHost()) return pathname
-  if (pathname === '/' || pathname === '') return '/en'
-  return pathname.startsWith('/en/') || pathname === '/en' ? pathname : `/en${pathname}`
+  const path = pathname.length > 1 ? pathname.replace(/\/+$/, '') : pathname
+  if (!isEnHost()) return path
+  if (path === '/' || path === '') return '/en'
+  return path.startsWith('/en/') || path === '/en' ? path : `/en${path}`
 }
 
 /** Interner Pfad → Adresszeile (auf der EN-Domain faellt /en weg) */
