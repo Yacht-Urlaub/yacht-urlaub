@@ -44,7 +44,6 @@ const gallery = {
     { type: 'img' as const, src: '/images/kabinen/dubrovnik/gallery/g-korcula-oben.webp', alt: 'Altstadt von Korčula von oben' },
     { type: 'img' as const, src: '/images/kabinen/dubrovnik/gallery/g-mljet-klosterinsel.webp', alt: 'Klosterinsel St. Maria im Großen See, Nationalpark Mljet' },
     { type: 'img' as const, src: '/images/kabinen/dubrovnik/gallery/g-ston-festung.webp', alt: 'Festung Veliki Kaštio in Ston mit den Stadtmauern im Hintergrund' },
-    { type: 'img' as const, src: '/images/kabinen/dubrovnik/gallery/g-dubrovnik-lovrijenac.webp', alt: 'Festung Lovrijenac und die Bucht unter den Stadtmauern von Dubrovnik' },
     { type: 'video' as const, src: '/images/kabinen/dubrovnik/gallery/g-video-korcula.mp4', poster: '/images/kabinen/dubrovnik/gallery/g-video-poster.webp', alt: 'Abendspaziergang durch die Altstadt von Korčula' },
   ],
   en: [
@@ -52,19 +51,20 @@ const gallery = {
     { type: 'img' as const, src: '/images/kabinen/dubrovnik/gallery/g-korcula-oben.webp', alt: 'Old town of Korčula from above' },
     { type: 'img' as const, src: '/images/kabinen/dubrovnik/gallery/g-mljet-klosterinsel.webp', alt: "Monastery island of St. Mary in the Great Lake, Mljet National Park" },
     { type: 'img' as const, src: '/images/kabinen/dubrovnik/gallery/g-ston-festung.webp', alt: 'Veliki Kaštio fortress in Ston with the city walls in the background' },
-    { type: 'img' as const, src: '/images/kabinen/dubrovnik/gallery/g-dubrovnik-lovrijenac.webp', alt: "Lovrijenac Fortress and the bay beneath Dubrovnik's city walls" },
     { type: 'video' as const, src: '/images/kabinen/dubrovnik/gallery/g-video-korcula.mp4', poster: '/images/kabinen/dubrovnik/gallery/g-video-poster.webp', alt: 'Evening stroll through the old town of Korčula' },
   ],
 }
 
 const yachtDetails = {
   de: [
+    { src: '/images/kabinen/dubrovnik/hero.webp', alt: 'Katamaran Bali 4.1 vor Anker', caption: 'Bali 4.1 vor Anker' },
     { src: '/images/kabinen/dubrovnik/flybridge.webp', alt: 'Flybridge mit Sonnenliegefläche', caption: 'Flybridge mit Liegefläche' },
     { src: '/images/kabinen/dubrovnik/cockpit.webp', alt: 'Vorderes Cockpit mit Sonnenpolstern', caption: 'Vorderes Cockpit & Sonnenpolster' },
     { src: '/images/kabinen/dubrovnik/salon.webp', alt: 'Salon mit Esstisch', caption: 'Salon & Pantry' },
     { src: '/images/kabinen/dubrovnik/doppelkabine.webp', alt: 'Doppelkabine', caption: 'Doppelkabine' },
   ],
   en: [
+    { src: '/images/kabinen/dubrovnik/hero.webp', alt: 'Catamaran Bali 4.1 at anchor', caption: 'Bali 4.1 at anchor' },
     { src: '/images/kabinen/dubrovnik/flybridge.webp', alt: 'Flybridge with sun deck', caption: 'Flybridge with sun deck' },
     { src: '/images/kabinen/dubrovnik/cockpit.webp', alt: 'Front cockpit with sun pads', caption: 'Foredeck & sun pads' },
     { src: '/images/kabinen/dubrovnik/salon.webp', alt: 'Salon with dining table', caption: 'Salon & galley' },
@@ -93,6 +93,7 @@ const t = {
   de: {
     tag: 'Kojen-Angebot · Kroatien',
     title: 'Dubrovnik: 7 Nächte zwischen Elaphiten, Korčula und Mljet',
+    heroAlt: 'Festung Lovrijenac und die Bucht unter den Stadtmauern von Dubrovnik',
     badgeDate: '12.–19.06.2027', badgeCabins: '4 Doppelkabinen',
     close: 'Details schließen', show: 'Details anzeigen',
     perCabin: 'pro Koje (pro Person)',
@@ -136,6 +137,7 @@ const t = {
   en: {
     tag: 'Berth offer · Croatia',
     title: 'Dubrovnik: 7 nights between the Elaphiti Islands, Korčula and Mljet',
+    heroAlt: "Lovrijenac Fortress and the bay beneath Dubrovnik's city walls",
     badgeDate: '12–19 Jun 2027', badgeCabins: '4 double cabins',
     close: 'Close details', show: 'Show details',
     perCabin: 'per berth (per person)',
@@ -204,8 +206,13 @@ export default function DubrovnikOffer({ onRequest }: { onRequest: () => void })
           gap: '1.5rem', alignItems: 'center', padding: '1.25rem 1.5rem',
         }}
       >
-        <img src="/images/kabinen/dubrovnik/hero.webp" alt="Katamaran Bali 4.1 vor Anker" loading="lazy"
-          style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '6px', display: 'block' }} />
+        <div style={{ position: 'relative' }}>
+          <img src="/images/kabinen/dubrovnik/gallery/g-dubrovnik-lovrijenac.webp" alt={s.heroAlt} loading="lazy"
+            style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '6px', display: 'block' }} />
+          <img src={lang === 'en' ? '/images/logos/croatia-full-of-life.webp' : '/images/logos/kroatien-voller-leben.webp'}
+            alt="" aria-hidden="true" loading="lazy"
+            style={{ position: 'absolute', bottom: '6px', left: '6px', height: '24px', width: 'auto', display: 'block', borderRadius: '3px', background: 'rgba(255,255,255,0.8)', padding: '2px 5px', boxShadow: '0 1px 3px rgba(0,0,0,0.25)' }} />
+        </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', minWidth: 0, textAlign: 'left' }}>
           <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--blue)' }}>
             {s.tag}
@@ -244,7 +251,7 @@ export default function DubrovnikOffer({ onRequest }: { onRequest: () => void })
           {/* Intro */}
           <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: '2rem', alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
-              <img src="/images/kabinen/dubrovnik/hero.webp" alt="Katamaran Bali 4.1 vor Anker" loading="lazy"
+              <img src="/images/kabinen/dubrovnik/gallery/g-dubrovnik-lovrijenac.webp" alt={s.heroAlt} loading="lazy"
                 style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '8px', display: 'block' }} />
               <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.75, color: 'var(--gray)' }}>
                 {s.intro}
