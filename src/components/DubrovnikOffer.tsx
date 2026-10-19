@@ -185,10 +185,21 @@ const factLabel = { fontSize: '0.72rem', color: 'var(--gray)', textTransform: 'u
 const factValue = { fontSize: '1rem', fontWeight: 700, color: 'var(--navy)' }
 const h2Style = { fontFamily: 'DM Sans, sans-serif', fontSize: '1.4rem', fontWeight: 700, color: 'var(--navy)', margin: 0 }
 
+const PLAETZE = 6 // Gästeplätze (Skipper hat eigene Kabine)
+const GEBUCHT = 3 // Buchungsstand: Anzahl gebuchter Plätze
+const MIN_TEILNEHMER = 5 // Reise findet ab dieser Teilnehmerzahl fix statt
+
 export default function DubrovnikOffer({ onRequest }: { onRequest: () => void }) {
   const lang = useLang()
   const s = t[lang]
   const [open, setOpen] = useState(() => typeof window !== 'undefined' && window.location.hash === '#dubrovnik')
+  const bookedPct = (GEBUCHT / PLAETZE) * 100
+  const minMarkerPct = (MIN_TEILNEHMER / PLAETZE) * 100
+  const bookedLabel = lang === 'en' ? `${GEBUCHT}/${PLAETZE} booked` : `${GEBUCHT}/${PLAETZE} gebucht`
+  const freeLabel = GEBUCHT >= PLAETZE
+    ? (lang === 'en' ? 'fully booked' : 'ausgebucht')
+    : (lang === 'en' ? `${PLAETZE - GEBUCHT} spots left` : `noch ${PLAETZE - GEBUCHT} frei`)
+  const minMarkerLabel = lang === 'en' ? `guaranteed from ${MIN_TEILNEHMER}` : `ab ${MIN_TEILNEHMER} fix`
 
   return (
     <div style={{ maxWidth: '980px', margin: '0 auto 3rem' }}>
@@ -219,6 +230,18 @@ export default function DubrovnikOffer({ onRequest }: { onRequest: () => void })
             <span style={{ padding: '4px 11px', borderRadius: '999px', background: 'var(--gray-light)' }}>{s.badgeDate}</span>
             <span style={{ padding: '4px 11px', borderRadius: '999px', background: 'var(--gray-light)' }}>Katamaran Bali 4.1</span>
             <span style={{ padding: '4px 11px', borderRadius: '999px', background: 'var(--gray-light)' }}>{s.badgeCabins}</span>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.5rem 0.9rem', marginTop: '1.25rem' }}>
+            <div style={{ position: 'relative', width: '240px', maxWidth: '100%', height: '10px', borderRadius: '999px', background: '#e8ecf3' }}>
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: `${bookedPct}%`, borderRadius: '999px', background: 'var(--blue)' }} />
+              <div style={{ position: 'absolute', left: `${minMarkerPct}%`, top: '-5px', bottom: '-5px', width: '2px', background: '#e7c23e' }} />
+              <span style={{ position: 'absolute', left: `${minMarkerPct}%`, top: '-19px', transform: 'translateX(-50%)', fontSize: '0.69rem', fontWeight: 700, color: '#8a6d00', whiteSpace: 'nowrap' }}>
+                {minMarkerLabel}
+              </span>
+            </div>
+            <span style={{ fontSize: '0.85rem', fontWeight: 600, color: '#3d4a5c' }}>
+              <strong style={{ color: 'var(--blue)' }}>{bookedLabel}</strong> · {freeLabel}
+            </span>
           </div>
         </div>
         <div className="db-header-price" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.5rem', textAlign: 'right' }}>
