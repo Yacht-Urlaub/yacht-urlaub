@@ -182,12 +182,8 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
           gap: '1.5rem', alignItems: 'center', padding: '1.25rem 1.5rem',
         }}
       >
-        <div style={{ position: 'relative' }}>
-          <img src="/images/kabinen/koh-chang/island-spirit-410.webp" alt="Island Spirit 410 unter Segeln" loading="lazy"
-            style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '6px', display: 'block' }} />
-          <img src="/images/logos/amazing-thailand.webp" alt="" aria-hidden="true" loading="lazy"
-            style={{ position: 'absolute', bottom: '6px', left: '6px', height: '24px', width: 'auto', display: 'block', borderRadius: '3px', background: 'rgba(255,255,255,0.8)', padding: '2px 5px', boxShadow: '0 1px 3px rgba(0,0,0,0.25)' }} />
-        </div>
+        <img src="/images/kabinen/koh-chang/island-spirit-410.webp" alt="Island Spirit 410 unter Segeln" loading="lazy"
+          style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '6px', display: 'block' }} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', minWidth: 0, textAlign: 'left' }}>
           <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--blue)' }}>
             {s.tag}
