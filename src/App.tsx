@@ -39,12 +39,19 @@ function LangProvider({ children }: { children: React.ReactNode }) {
 }
 
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   // Sprachwechsel = gleiche Seite ⇒ Scrollposition behalten
   const key = canonicalPath(toInternal(pathname))
   useLayoutEffect(() => {
+    if (hash) {
+      const el = document.getElementById(hash.slice(1))
+      if (el) {
+        el.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
+        return
+      }
+    }
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
-  }, [key])
+  }, [key, hash])
   return null
 }
 
