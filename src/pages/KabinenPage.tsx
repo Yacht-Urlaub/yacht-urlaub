@@ -225,7 +225,7 @@ export default function KabinenPage() {
       </section>
 
       {/* Dubrovnik Kojen-Angebot (Juni 2027) */}
-      <section id="dubrovnik" style={{ background: '#fff', padding: '0' }}>
+      <section id="dubrovnik" style={{ background: '#fff', padding: '0', scrollMarginTop: '96px' }}>
         <div className="container">
           <DubrovnikOffer onRequest={() => set('reise', lang === 'en' ? 'Dubrovnik Croatia - 12-19 Jun 2027' : 'Dubrovnik Kroatien - 12.-19.06.2027')} />
         </div>
