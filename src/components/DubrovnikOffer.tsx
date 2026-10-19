@@ -188,7 +188,7 @@ const h2Style = { fontFamily: 'DM Sans, sans-serif', fontSize: '1.4rem', fontWei
 export default function DubrovnikOffer({ onRequest }: { onRequest: () => void }) {
   const lang = useLang()
   const s = t[lang]
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(() => typeof window !== 'undefined' && window.location.hash === '#dubrovnik')
 
   return (
     <div style={{ maxWidth: '980px', margin: '0 auto 3rem' }}>
