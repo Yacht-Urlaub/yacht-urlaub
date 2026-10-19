@@ -9,6 +9,7 @@ import { SparklesIcon } from '../components/Icons'
 import RecaptchaHinweis from '../components/RecaptchaHinweis'
 import KohChangOffer from '../components/KohChangOffer'
 import PhuketOffer from '../components/PhuketOffer'
+import DubrovnikOffer from '../components/DubrovnikOffer'
 
 // Angebote 1:1 von der Originalseite (yacht-urlaub.net/kabinenangebote)
 // Aktuell keine gültigen Angebote — Karten bleiben im Code erhalten (Design/Struktur),
@@ -49,6 +50,7 @@ const angebote = [
 const reiseOptionen = [
   'Koh Chang Thailand - 09.-20.12.2026',
   'Phuket Thailand - 02.-13.02.2027',
+  'Dubrovnik Kroatien - 12.-19.06.2027',
   'Dalmatien ab Split - Termin Anfrage',
   "WhatsApp Community Törn in Thailand Februar'27",
 ]
@@ -103,6 +105,7 @@ const angeboteEn = [
 const reiseOptionenEn = [
   'Koh Chang Thailand - 09-20 Dec 2026',
   'Phuket Thailand - 02-13 Feb 2027',
+  'Dubrovnik Croatia - 12-19 Jun 2027',
   'Dalmatia from Split - date on request',
   'Community Trip for Thailand in February 2027',
 ]
@@ -165,6 +168,15 @@ export default function KabinenPage() {
       brand: { '@type': 'Brand', name: brand },
       offers: { '@type': 'Offer', price: '5600', priceCurrency: 'EUR', availability: 'https://schema.org/LimitedAvailability', url: kabinenUrl },
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: lang === 'en' ? 'Dubrovnik: 7 nights between the Elaphiti Islands, Korčula and Mljet' : 'Dubrovnik: 7 Nächte zwischen Elaphiten, Korčula und Mljet',
+      image: `${base}/images/kabinen/dubrovnik/hero.webp`,
+      url: kabinenUrl,
+      brand: { '@type': 'Brand', name: brand },
+      offers: { '@type': 'Offer', price: '1390', priceCurrency: 'EUR', availability: 'https://schema.org/LimitedAvailability', url: kabinenUrl },
+    },
   ]
 
   return (
@@ -209,6 +221,13 @@ export default function KabinenPage() {
       <section style={{ background: '#fff', padding: '0' }}>
         <div className="container">
           <PhuketOffer onRequest={() => set('reise', lang === 'en' ? 'Phuket Thailand - 02-13 Feb 2027' : 'Phuket Thailand - 02.-13.02.2027')} />
+        </div>
+      </section>
+
+      {/* Dubrovnik Kojen-Angebot (Juni 2027) */}
+      <section id="dubrovnik" style={{ background: '#fff', padding: '0' }}>
+        <div className="container">
+          <DubrovnikOffer onRequest={() => set('reise', lang === 'en' ? 'Dubrovnik Croatia - 12-19 Jun 2027' : 'Dubrovnik Kroatien - 12.-19.06.2027')} />
         </div>
       </section>
 
