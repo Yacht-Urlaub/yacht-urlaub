@@ -183,7 +183,9 @@ export default function KabinenPage() {
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={lang === 'en' ? "Cabin offers – book a single cabin | Yacht-Holiday" : "Kabinen-Angebote – Einzelne Kabine buchen"}
-        description="Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für Kroatien (Kornaten) und Thailand. Ideal für Alleinreisende und Paare."
+        description={lang === 'en'
+          ? 'Book a single cabin on a shared yacht. Current cabin offers for Dubrovnik (Croatia), Phuket and Koh Chang (Thailand). Ideal for solo travellers and couples.'
+          : 'Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für Dubrovnik (Kroatien), Phuket und Koh Chang (Thailand). Ideal für Alleinreisende und Paare.'}
         image="/images/packages/Kornaten/gallery/Telascica.webp"
         schema={schema}
       />

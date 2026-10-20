@@ -87,7 +87,9 @@ export default function ToernsPage() {
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={en ? "Our cruises – sailing trips for everyone | Yacht-Holiday" : "Unsere Törns – Segeltörns für jeden | Yacht-Urlaub"}
-        description="Von der ersten Segelstunde bis zum Luxuserlebnis: Einsteiger-Törns, Familien-Törns, Freunde-Törns und Luxury-Törns mit erfahrenen Skippern weltweit."
+        description={en
+          ? 'From your first sailing lesson to a luxury experience: beginner cruises, family cruises, cruises for friends and luxury cruises with experienced skippers worldwide.'
+          : 'Von der ersten Segelstunde bis zum Luxuserlebnis: Einsteiger-Törns, Familien-Törns, Freunde-Törns und Luxury-Törns mit erfahrenen Skippern weltweit.'}
         image="/images/Zielgruppen/Einsteiger 1.jpg"
       />
 

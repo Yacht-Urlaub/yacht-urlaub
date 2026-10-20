@@ -103,7 +103,9 @@ export default function CharterPage() {
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={lang === 'en' ? "Yacht charter – bareboat charter worldwide | Yacht-Holiday" : "Yacht-Charter anfragen – Bareboat-Charter weltweit | Yacht-Urlaub"}
-        description="Sie wollen eine Yacht chartern? Gerne nehmen wir Ihre Anfrage für Yacht-Charter (nur Yacht ohne Skipper/Bord-Service) entgegen – weltweit, persönlich und mit Qualitätsversprechen."
+        description={lang === 'en'
+          ? "Looking to charter a yacht? We're happy to take your bareboat charter request (yacht only, no skipper or board service) — worldwide, personal, and with a quality promise."
+          : 'Sie wollen eine Yacht chartern? Gerne nehmen wir Ihre Anfrage für Yacht-Charter (nur Yacht ohne Skipper/Bord-Service) entgegen – weltweit, persönlich und mit Qualitätsversprechen.'}
         image="/images/charter/header.png"
       />
 

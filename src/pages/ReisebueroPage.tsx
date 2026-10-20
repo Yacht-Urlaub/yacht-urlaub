@@ -49,7 +49,9 @@ export default function ReisebueroPage() {
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={lang === 'en' ? "For travel agencies / affiliate partners | Yacht-Holiday" : "Für Reisebüros / Affiliate-Partner | Yacht-Urlaub"}
-        description="Partner werden: Sie sind von unseren Produkten begeistert und möchten diese auch Ihren Kunden anbieten? Wir bieten attraktive Konditionen und automatisierte Buchungsprozesse."
+        description={lang === 'en'
+          ? 'Become a partner: love our products and want to offer them to your own customers too? We offer attractive terms and automated booking processes.'
+          : 'Partner werden: Sie sind von unseren Produkten begeistert und möchten diese auch Ihren Kunden anbieten? Wir bieten attraktive Konditionen und automatisierte Buchungsprozesse.'}
       />
 
       {/* Hero */}

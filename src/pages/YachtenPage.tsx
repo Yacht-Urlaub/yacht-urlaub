@@ -8,7 +8,9 @@ export default function YachtenPage() {
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={lang === 'en' ? "Sailing yachts, catamarans & motor yachts | Yacht-Holiday" : "Segelyachten, Katamarane & Motoryachten"}
-        description="Unsere Flotte: Segelyachten (Monohull), Segel-Katamarane, Motoryachten und Motor-Katamarane von 35 bis 55 Fuß. Dufour, Bavaria, Lagoon, Bali und mehr – weltweit verfügbar."
+        description={lang === 'en'
+          ? 'Our fleet: sailing yachts (monohulls), sailing catamarans, motor yachts and motor catamarans from 35 to 55 feet. Dufour, Bavaria, Lagoon, Bali and more — available worldwide.'
+          : 'Unsere Flotte: Segelyachten (Monohull), Segel-Katamarane, Motoryachten und Motor-Katamarane von 35 bis 55 Fuß. Dufour, Bavaria, Lagoon, Bali und mehr – weltweit verfügbar.'}
         image="/images/yachten/monohull.jpg"
       />
       <Yachten />

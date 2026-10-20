@@ -180,7 +180,9 @@ export default function CrewPage() {
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={lang === 'en' ? "Crew – our skippers & staff | Yacht-Holiday" : "Crew – Unsere Stamm-Skipper & unser Personal | Yacht-Urlaub"}
-        description="Die Crew von Yacht-Urlaub: 7 Stamm-Skipper und weitere Profis. Lernen Sie Manuel, Toni, Freddie, Tharuka und unser Bord-Personal kennen."
+        description={lang === 'en'
+          ? 'The Yacht-Holiday crew: 7 regular skippers and more professionals. Meet Manuel, Toni, Freddie, Tharuka and our onboard staff.'
+          : 'Die Crew von Yacht-Urlaub: 7 Stamm-Skipper und weitere Profis. Lernen Sie Manuel, Toni, Freddie, Tharuka und unser Bord-Personal kennen.'}
         image="/images/crew/Team Ferien-Messe.jpg"
       />
 
