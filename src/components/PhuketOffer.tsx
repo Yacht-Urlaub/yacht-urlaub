@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLang } from '../i18n'
 import { WhatsAppIcon } from './Icons'
+import Lightbox, { type LightboxState } from './Lightbox'
 
 // Kabinen-Angebot Phuket, Thailand — Februar 2027. Einmaliges Termin-
 // Angebot, daher (anders als die Packages) nicht in components/Packages.tsx
@@ -186,6 +187,10 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
   const lang = useLang()
   const s = t[lang]
   const [open, setOpen] = useState(false)
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null)
+  const openLightbox = (images: LightboxState['images'], index: number) => setLightbox({ images, index })
+  const lightboxPrev = () => setLightbox(s => s && { ...s, index: (s.index - 1 + s.images.length) % s.images.length })
+  const lightboxNext = () => setLightbox(s => s && { ...s, index: (s.index + 1) % s.images.length })
 
   return (
     <div style={{ maxWidth: '980px', margin: '0 auto 3rem' }}>
@@ -244,13 +249,15 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
           <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: '2rem', alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
               <img src="/images/kabinen/phuket/hero.webp" alt="Fountaine Pajot Saona 47 vor Anker" loading="lazy"
-                style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '8px', display: 'block' }} />
+                onClick={() => openLightbox([{ src: '/images/kabinen/phuket/hero.webp', alt: 'Fountaine Pajot Saona 47 vor Anker' }], 0)}
+                style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '8px', display: 'block', cursor: 'zoom-in' }} />
               <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.75, color: 'var(--gray)' }}>
                 {s.intro}
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                 <img src="/images/kabinen/phuket/skipper-philip.webp" alt="Skipper Philip" loading="lazy"
-                  style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: '50% 30%', flexShrink: 0 }} />
+                  onClick={() => openLightbox([{ src: '/images/kabinen/phuket/skipper-philip.webp', alt: 'Skipper Philip' }], 0)}
+                  style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: '50% 30%', flexShrink: 0, cursor: 'zoom-in' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '0.9rem' }}>
                   <span style={{ fontWeight: 700, color: 'var(--navy)' }}>{s.skipperName}</span>
                   <span style={{ color: 'var(--gray)' }}>{s.skipperText}</span>
@@ -290,9 +297,10 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
           <section style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <h2 style={h2Style}>{s.gallery}</h2>
             <div style={{ columns: '3 220px', columnGap: '10px' }}>
-              {gallery[lang].map(img => (
+              {gallery[lang].map((img, i) => (
                 <img key={img.src} src={img.src} alt={img.alt} loading="lazy"
-                  style={{ width: '100%', display: 'block', borderRadius: '8px', margin: '0 0 10px', breakInside: 'avoid' }}
+                  onClick={() => openLightbox(gallery[lang], i)}
+                  style={{ width: '100%', display: 'block', borderRadius: '8px', margin: '0 0 10px', breakInside: 'avoid', cursor: 'zoom-in' }}
                   onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
               ))}
             </div>
@@ -310,10 +318,11 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
               <div style={factStyle}><span style={factLabel}>{s.wc}</span><span style={factValue}>{s.wcVal}</span></div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: '0.75rem' }}>
-              {yachtDetails[lang].map(img => (
+              {yachtDetails[lang].map((img, i) => (
                 <figure key={img.src} style={{ margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   <img src={img.src} alt={img.alt} loading="lazy"
-                    style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', borderRadius: '8px' }} />
+                    onClick={() => openLightbox(yachtDetails[lang], i)}
+                    style={{ width: '100%', aspectRatio: '4/3', objectFit: 'cover', display: 'block', borderRadius: '8px', cursor: 'zoom-in' }} />
                   <figcaption style={{ fontSize: '0.75rem', color: 'var(--gray)' }}>{img.caption}</figcaption>
                 </figure>
               ))}
@@ -332,7 +341,8 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
               </div>
               <figure style={{ margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <img src="/images/kabinen/phuket/grundriss.webp" alt={s.layoutCaption} loading="lazy"
-                  style={{ width: '100%', display: 'block', borderRadius: '6px', border: '1px solid var(--gray-mid)' }} />
+                  onClick={() => openLightbox([{ src: '/images/kabinen/phuket/grundriss.webp', alt: s.layoutCaption }], 0)}
+                  style={{ width: '100%', display: 'block', borderRadius: '6px', border: '1px solid var(--gray-mid)', cursor: 'zoom-in' }} />
                 <figcaption style={{ fontSize: '0.75rem', color: 'var(--gray)' }}>{s.layoutCaption}</figcaption>
               </figure>
             </div>
@@ -345,7 +355,9 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
               <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--gray)' }}>{s.routeText}</p>
             </div>
             <div style={{ borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--gray-mid)' }}>
-              <img src="/images/kabinen/phuket/routenkarte.svg" alt={s.routeMapAlt} loading="lazy" style={{ display: 'block', width: '100%', height: 'auto' }} />
+              <img src="/images/kabinen/phuket/routenkarte.svg" alt={s.routeMapAlt} loading="lazy"
+                onClick={() => openLightbox([{ src: '/images/kabinen/phuket/routenkarte.svg', alt: s.routeMapAlt }], 0)}
+                style={{ display: 'block', width: '100%', height: 'auto', cursor: 'zoom-in' }} />
             </div>
             <ol style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column' }}>
               {days[lang].map(d => (
@@ -440,6 +452,8 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
         </a>
         {s.waFooterPost}
       </p>
+
+      <Lightbox state={lightbox} onClose={() => setLightbox(null)} onPrev={lightboxPrev} onNext={lightboxNext} label={s.gallery} />
 
       <style>{`
         @media (max-width: 640px) {
