@@ -6,6 +6,17 @@ import { useLang, MAIL } from '../i18n'
 import { AlertIcon } from '../components/Icons'
 import { sendForm } from '../lib/sendForm'
 import RecaptchaHinweis from '../components/RecaptchaHinweis'
+import DualRangeSlider from '../components/DualRangeSlider'
+
+// Regler-Werte 1 bis 21 bilden das reale Baujahr-Fenster ab (Alter 0 bis 20
+// Jahre, Wert v -> Baujahr = aktuelles Jahr - (v-1)). Je ein zusaetzlicher
+// Wert an beiden Enden (0 links, 22 rechts) ist ein Sentinel fuer "keine
+// Einschraenkung in diese Richtung" — erst wenn ein Griff von seinem
+// Sentinel wegbewegt wird, beginnt die Jahresberechnung.
+const AGE_SENTINEL_LEFT = 0
+const AGE_SENTINEL_RIGHT = 22
+const CURRENT_YEAR = new Date().getFullYear()
+const yearFromAgeValue = (v: number) => CURRENT_YEAR - (v - 1)
 
 // Inhalte 1:1 von yacht-urlaub.net/charter/yacht-charter-anfragen
 
@@ -44,7 +55,11 @@ const cl = {
     h1: 'Yacht-Charter', sub: 'Sie wollen eine Yacht chartern? Gerne nehmen wir Ihre Anfrage für Yacht-Charter (nur Yacht ohne Skipper/Bord-Service) entgegen!',
     warn: 'Wichtiger Hinweis für Charter-Kunden: Warum Preisvergleiche oft täuschen –', warnLink: 'hier unbedingt nachlesen »',
     start: 'Anfrage starten', typ: 'Yacht-Typ *', kab: 'Anzahl Kabinen *', revier: 'Revier / Wunschhäfen *',
-    revierPh: '(z.B. Dalmatien / Split / ACI Split) Mehrfachnennungen möglich!', alter: 'Alter der Yacht *',
+    revierPh: '(z.B. Dalmatien / Split / ACI Split) Mehrfachnennungen möglich!', alter: 'Alter der Yacht',
+    baujahr: (from: number, to: number) => `Baujahr ${from} - ${to}`,
+    baujahrAb: (from: number) => `ab Baujahr ${from}`,
+    baujahrBis: (to: number) => `bis Baujahr ${to}`,
+    baujahrEgal: 'egal',
     sd: 'Startdatum (Check-In Tag)', ed: 'Enddatum (Check-Out Tag)', kontakt: 'Kontaktdaten',
     name: 'Vor- und Nachname *', tel: 'Telefonnummer für Rückfragen *', notes: 'Anmerkungen/Wünsche',
     notesPh: 'Länge/Ausstattung/sonstiges Wissenswertes', send: 'Anfrage senden', sending: 'wird gesendet …',
@@ -54,13 +69,16 @@ const cl = {
     now: 'Jetzt Anfragen:', wahl: 'Bitte wählen …', warnLinkHref: 'https://archive.is/3MpMo',
     typen: ['Einrumpf-Segler', 'Katamaran', 'Motoryacht', 'Katamaran-Motoryacht', 'Trabakul'],
     kabinen: ['1 Kabine', '2 Kabinen', '3 Kabinen', '4 Kabinen', '5 Kabinen', '6 Kabinen'],
-    altersStufen: ['0-2 Jahre', '3-5 Jahre', '5-8 Jahre', 'älter', 'egal'],
   },
   en: {
     h1: 'Yacht Charter', sub: "Do you plan to charter a yacht? Give us a call! We can chat about what you're looking for and help you find the perfect yacht and deals.",
     warn: 'Important note for charter customers: Why price comparisons can be misleading –', warnLink: 'make sure to read this »',
     start: 'Get a quote', typ: 'Yacht type *', kab: 'Number of cabins *', revier: 'Region you want to travel *',
-    revierPh: '(e.g. Dalmatia / Split / ACI Split) Multiple entries possible!', alter: 'Age of the yacht *',
+    revierPh: '(e.g. Dalmatia / Split / ACI Split) Multiple entries possible!', alter: 'Age of the yacht',
+    baujahr: (from: number, to: number) => `Year built ${from} - ${to}`,
+    baujahrAb: (from: number) => `Year built ${from} or newer`,
+    baujahrBis: (to: number) => `Year built ${to} or older`,
+    baujahrEgal: 'any',
     sd: 'Start date (check-in day)', ed: 'End date (check-out day)', kontakt: 'Contact details',
     name: 'First and last name *', tel: 'Telephone number *', notes: 'Notes',
     notesPh: 'Length/equipment/other useful information', send: 'Send request', sending: 'sending …',
@@ -70,7 +88,6 @@ const cl = {
     now: 'Get a quote now:', wahl: 'Please choose …', warnLinkHref: 'https://archive.is/JDvuA',
     typen: ['Monohull', 'Catamaran', 'Motoryacht', 'Motor catamaran', 'Trabakul'],
     kabinen: ['1 cabin', '2 cabins', '3 cabins', '4 cabins', '5 cabins', '6 cabins'],
-    altersStufen: ['0-2 years', '3-5 years', '5-8 years', 'older', 'not important'],
   },
 }
 
@@ -78,9 +95,19 @@ export default function CharterPage() {
   const lang = useLang()
   const s = cl[lang]
   const [form, setForm] = useState({
-    yachtTyp: '', kabinen: '', revier: '', alter: '', start: '', ende: '',
+    yachtTyp: '', kabinen: '', revier: '', start: '', ende: '',
     name: '', email: '', telefon: '', anmerkungen: '',
   })
+  const [ageRange, setAgeRange] = useState<[number, number]>([AGE_SENTINEL_LEFT, AGE_SENTINEL_RIGHT])
+  const ageLabel = (() => {
+    const [lo, hi] = ageRange
+    const loSet = lo !== AGE_SENTINEL_LEFT
+    const hiSet = hi !== AGE_SENTINEL_RIGHT
+    if (!loSet && !hiSet) return s.baujahrEgal
+    if (!loSet) return s.baujahrAb(yearFromAgeValue(hi))
+    if (!hiSet) return s.baujahrBis(yearFromAgeValue(lo))
+    return s.baujahr(yearFromAgeValue(lo), yearFromAgeValue(hi))
+  })()
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
   const [failed, setFailed] = useState(false)
@@ -93,7 +120,7 @@ export default function CharterPage() {
     // Ging frueher an Netlify Forms — dort kam nichts an, weil die Formulare
     // erst zur Laufzeit entstehen. Jetzt ueber dieselbe Function wie das
     // Kontaktformular.
-    const ok = await sendForm('charter-anfrage', form)
+    const ok = await sendForm('charter-anfrage', { ...form, alter: ageLabel })
     setSending(false)
     if (ok) setSent(true)
     else setFailed(true)
@@ -177,10 +204,13 @@ export default function CharterPage() {
                   <div className="charter-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
                       <label style={labelStyle}>{s.alter}</label>
-                      <select required name="alter" value={form.alter} onChange={e => set('alter', e.target.value)} style={inputStyle}>
-                        <option value="">{s.wahl}</option>
-                        {s.altersStufen.map(a => <option key={a} value={a}>{a}</option>)}
-                      </select>
+                      <div style={{ padding: '11px 14px', borderRadius: '4px', border: '1px solid var(--gray-mid)', background: '#fff', boxSizing: 'border-box' }}>
+                        <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--navy)', marginBottom: '6px', textAlign: 'center' }}>
+                          {ageLabel}
+                        </div>
+                        <DualRangeSlider min={AGE_SENTINEL_LEFT} max={AGE_SENTINEL_RIGHT} value={ageRange} onChange={setAgeRange}
+                          minLabel={lang === 'en' ? 'Minimum age' : 'Mindestalter'} maxLabel={lang === 'en' ? 'Maximum age' : 'Höchstalter'} />
+                      </div>
                     </div>
                     <div>
                       <label style={labelStyle}>{s.sd}</label>
