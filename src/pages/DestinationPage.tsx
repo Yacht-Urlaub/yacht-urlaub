@@ -3,40 +3,42 @@ import { useNavigate } from '../navigate'
 import SEO from '../components/SEO'
 import DestinationDetail, { destinations } from '../components/DestinationDetail'
 import { destinationsEn } from '../data/destinationenEn'
-import { useLang, enDestSlugs } from '../i18n'
+import { useLang, enDestSlugs, isEnHost, BASE_DE, BASE_EN } from '../i18n'
 
-const destMeta: Record<string, { description: string; keywords: string }> = {
+const enDestPath: Record<string, string> = Object.fromEntries(Object.entries(enDestSlugs).map(([slug, id]) => [id, slug]))
+
+const destMeta: Record<string, { de: string; en: string }> = {
   kroatien: {
-    description: 'Segelurlaub Kroatien: Über 1.200 Inseln, türkisblaues Wasser und historische Städte. Törns in Dalmatien, Istrien und den Kornaten – für Einsteiger und Profis.',
-    keywords: 'Kroatien segeln, Segelurlaub Kroatien, Dalmatien Törn, Kornaten, Segelyacht Kroatien',
+    de: 'Segelurlaub Kroatien: Über 1.200 Inseln, türkisblaues Wasser und historische Städte. Törns in Dalmatien, Istrien und den Kornaten – für Einsteiger und Profis.',
+    en: 'Sailing holiday in Croatia: over 1,200 islands, turquoise water and historic towns. Cruises in Dalmatia, Istria and the Kornati Islands – for beginners and experts alike.',
   },
   griechenland: {
-    description: 'Segelurlaub Griechenland: Ionische Inseln, Kykladen und Dodekanes. Erleben Sie Mykonos, Santorini und Korfu vom Wasser aus – mit oder ohne Skipper.',
-    keywords: 'Griechenland segeln, Kykladen Törn, Ionische Inseln, Segelurlaub Griechenland',
+    de: 'Segelurlaub Griechenland: Ionische Inseln, Kykladen und Dodekanes. Erleben Sie Mykonos, Santorini und Korfu vom Wasser aus – mit oder ohne Skipper.',
+    en: 'Sailing holiday in Greece: the Ionian Islands, the Cyclades and the Dodecanese. Experience Mykonos, Santorini and Corfu from the water – with or without a skipper.',
   },
   balearen: {
-    description: 'Segelurlaub Balearen: Mallorca, Ibiza, Menorca und Formentera. Mediterrane Buchten, Strandleben und Kultur – der perfekte Segeltörn im westlichen Mittelmeer.',
-    keywords: 'Balearen segeln, Mallorca Yacht, Ibiza Charter, Segeln Spanien',
+    de: 'Segelurlaub Balearen: Mallorca, Ibiza, Menorca und Formentera. Mediterrane Buchten, Strandleben und Kultur – der perfekte Segeltörn im westlichen Mittelmeer.',
+    en: 'Sailing holiday in the Balearic Islands: Mallorca, Ibiza, Menorca and Formentera. Mediterranean bays, beach life and culture – the perfect cruise in the western Mediterranean.',
   },
   kanaren: {
-    description: 'Segelurlaub Kanaren: Ganzjähriges Segelrevier im Atlantik. Teneriffa, Gran Canaria, Lanzarote und La Gomera – Passatwinde und Vulkanlandschaften.',
-    keywords: 'Kanaren segeln, Teneriffa Yacht, Gran Canaria Charter, Segeln Atlantik',
+    de: 'Segelurlaub Kanaren: Ganzjähriges Segelrevier im Atlantik. Teneriffa, Gran Canaria, Lanzarote und La Gomera – Passatwinde und Vulkanlandschaften.',
+    en: 'Sailing holiday in the Canary Islands: a year-round sailing area in the Atlantic. Tenerife, Gran Canaria, Lanzarote and La Gomera – trade winds and volcanic landscapes.',
   },
   'karibik-bvi': {
-    description: 'Segelurlaub Karibik BVI: Konstante Passatwinde, weiße Sandstrände und türkisblaues Wasser. Die Britischen Jungferninseln sind das klassische Segelparadies.',
-    keywords: 'Karibik segeln, BVI Törn, British Virgin Islands, Segelurlaub Karibik',
+    de: 'Segelurlaub Karibik BVI: Konstante Passatwinde, weiße Sandstrände und türkisblaues Wasser. Die Britischen Jungferninseln sind das klassische Segelparadies.',
+    en: 'Sailing holiday in the Caribbean BVI: steady trade winds, white sandy beaches and turquoise water. The British Virgin Islands are the classic sailing paradise.',
   },
   'karibik-windward-islands': {
-    description: 'Segelurlaub Windward Islands: Von Grenada über St. Vincent und die Grenadinen bis Martinique – die Inseln über dem Winde sind das Traumrevier der südlichen Karibik.',
-    keywords: 'Windward Islands segeln, Grenadinen Törn, Grenada St. Vincent, Segelurlaub Karibik',
+    de: 'Segelurlaub Windward Islands: Von Grenada über St. Vincent und die Grenadinen bis Martinique – die Inseln über dem Winde sind das Traumrevier der südlichen Karibik.',
+    en: 'Sailing holiday in the Windward Islands: from Grenada via St. Vincent and the Grenadines to Martinique – the dream cruising area of the southern Caribbean.',
   },
   seychellen: {
-    description: 'Luxury-Segelurlaub Seychellen: Granitfelsen, Palmstrände und Luxus-Katamarane. Segeln zwischen Mahé, Praslin und La Digue – das ultimative Paradieserlebnis.',
-    keywords: 'Seychellen segeln, Katamaran Seychellen, Luxury Yachtreise, Mahé Praslin',
+    de: 'Luxury-Segelurlaub Seychellen: Granitfelsen, Palmstrände und Luxus-Katamarane. Segeln zwischen Mahé, Praslin und La Digue – das ultimative Paradieserlebnis.',
+    en: 'Luxury sailing holiday in the Seychelles: granite boulders, palm-fringed beaches and luxury catamarans. Sail between Mahé, Praslin and La Digue – the ultimate paradise experience.',
   },
   thailand: {
-    description: 'Segelurlaub Thailand: Kalksteinfelsen, türkisblaue Lagunen und exotisches Flair. Segeln ab Phuket zu den Phi-Phi-Inseln und Similan-Inseln.',
-    keywords: 'Thailand segeln, Phuket Charter, Phi Phi Inseln, Segeln Südostasien',
+    de: 'Segelurlaub Thailand: Kalksteinfelsen, türkisblaue Lagunen und exotisches Flair. Segeln ab Phuket zu den Phi-Phi-Inseln und Similan-Inseln.',
+    en: 'Sailing holiday in Thailand: limestone karsts, turquoise lagoons and an exotic atmosphere. Sail from Phuket to the Phi Phi Islands and the Similan Islands.',
   },
 }
 
@@ -59,21 +61,25 @@ export default function DestinationPage() {
   }
 
   const meta = destMeta[dest.id]
+  const description = meta?.[lang] ?? (lang === 'en'
+    ? `Sailing holiday ${dest.name} with Yacht-Holiday. Discover the most beautiful bays and cruising areas.`
+    : `Segelurlaub ${dest.name} mit Yacht-Urlaub. Entdecken Sie die schönsten Buchten und Reviere.`)
+  const base = isEnHost() ? BASE_EN : BASE_DE
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'TouristDestination',
     name: dest.name,
-    description: meta?.description,
-    url: `https://www.yacht-urlaub.net/destinationen/${dest.id}`,
-    image: `https://www.yacht-urlaub.net${dest.headerImg}`,
-    touristType: ['Segeltourismus', 'Yachtcharter', 'Wassersport'],
+    description,
+    url: lang === 'en' ? `${base}/en/destinations/${enDestPath[dest.id] ?? dest.id}` : `${base}/destinationen/${dest.id}`,
+    image: `${base}${dest.headerImg}`,
+    touristType: lang === 'en' ? ['Sailing tourism', 'Yacht charter', 'Water sports'] : ['Segeltourismus', 'Yachtcharter', 'Wassersport'],
   }
 
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={lang === 'en' ? `Sailing holiday ${dest.name}` : `Segelurlaub ${dest.name}`}
-        description={meta?.description ?? `Segelurlaub ${dest.name} mit Yacht-Urlaub. Entdecken Sie die schönsten Buchten und Reviere.`}
+        description={description}
         image={dest.headerImg}
         schema={schema}
       />
