@@ -235,8 +235,7 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                 <img src="/images/kabinen/koh-chang/skipper-manuel.webp" alt="Skipper Manuel" loading="lazy"
-                  onClick={() => openLightbox([{ src: '/images/kabinen/koh-chang/skipper-manuel.webp', alt: 'Skipper Manuel' }], 0)}
-                  style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: '50% 20%', flexShrink: 0, cursor: 'zoom-in' }} />
+                  style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: '50% 20%', flexShrink: 0 }} />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '0.9rem' }}>
                   <span style={{ fontWeight: 700, color: 'var(--navy)' }}>{s.skipperName}</span>
                   <span style={{ color: 'var(--gray)' }}>{s.skipperText}</span>
