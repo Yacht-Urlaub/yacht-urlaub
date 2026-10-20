@@ -21,6 +21,22 @@ Browser". Das umfasst mindestens:
 - Für beide Sprachen prüfen (`useLang()`/`isEnHost()`) — ein Fix nur auf der
   deutschen Seite reicht nicht, siehe das Muster `dict = { de: {...}, en:
   {...} }`.
+- **Preview-Infos aktiv gegenprüfen, nicht nur den Code lesen:** Ein
+  `title`-Prop, der korrekt zweisprachig ist, heißt nicht, dass
+  `description` (oder `schema`) es auch sind — genau das ist schon einmal
+  seitenweise übersehen worden (12 Seiten + alle Destinationen-Detailseiten
+  hatten eine englische `title` aber eine fest deutsche `description`, die
+  unverändert auch auf yacht-holiday.net auftauchte, inkl. in
+  WhatsApp-Link-Vorschauen). Bei jeder Änderung an einer Seite mit
+  `<SEO>`-Komponente deshalb den tatsächlich gerenderten
+  `<meta name="description">`/`og:description` für **beide** Domains
+  prüfen (z. B. per Playwright `document.querySelector('meta[name=
+  "description"]').content` auf `localhost` und `en.localhost`), nicht nur
+  den JSX-Code überfliegen. Dasselbe gilt für Inhalte in `schema` (JSON-LD):
+  auch dort auf hartcodierte deutsche Strings, hartcodierte
+  `yacht-urlaub.net`-URLs/Bildpfade auf englischen Seiten sowie auf
+  inhaltlich veraltete Beschreibungen (z. B. ein Angebot, das es nicht mehr
+  gibt) achten.
 
 ## Snapshot nach jeder Content-Änderung neu erzeugen
 
