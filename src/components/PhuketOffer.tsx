@@ -110,7 +110,7 @@ const t = {
     gallery: 'Eindrücke',
     yacht: 'Die Yacht', model: 'Modell', year: 'Baujahr', length: 'Länge', lengthVal: '13,94 m',
     cabins: 'Kabinen', cabinsVal: '5 + 1 Vorpiek', berths: 'Kojen', berthsVal: '10 + 2', wc: 'WC', wcVal: '5',
-    yachtText: 'Der Fountaine Pajot Saona 47 „Maravelle“ ist die Quintet-Version mit fünf Doppelkabinen, fünf WCs und einer Skipper-Vorpiek mit eigener Toilette. Für diesen Törn sind 4 Doppelkabinen buchbar. Viel Platz an Deck mit Cockpit, Flybridge und Trampolin, dazu nur 1,30 m Tiefgang für die flachen Buchten der Phang-Nga-Bucht.',
+    yachtText: 'Der Fountaine Pajot Saona 47 ist die Quintet-Version mit fünf Doppelkabinen, fünf WCs und einer Skipper-Vorpiek mit eigener Toilette. Für diesen Törn sind 4 Doppelkabinen buchbar. Viel Platz an Deck mit Cockpit, Flybridge und Trampolin, dazu nur 1,30 m Tiefgang für die flachen Buchten der Phang-Nga-Bucht.',
     equipment: 'Ausstattung',
     equipmentList: ['Klimaanlage, Generator und Wassermacher', 'Elektrische WCs, Bugstrahlruder, Autopilot', 'Beiboot mit Außenborder und hydraulischem Lift, Schnorchelausrüstung', 'Flybridge, Bimini, Cockpit-Kühlschrank, Bluetooth-Soundsystem'],
     layoutCaption: 'Grundriss Saona 47 Quintet',
@@ -118,7 +118,7 @@ const t = {
     routeMapAlt: 'Routenkarte (Abstecher James Bond Island und Koh Panyee gestrichelt): Ao Po – Koh Phanak – Koh Roi – Koh Hong – Railay – Koh Poda – Koh Phi Phi – Koh Rang Yai – Koh Yao Noi – Koh Naka Yai – Ao Po',
     routeNote: 'Routenänderungen je nach Wind und Wetter vorbehalten. Die Entscheidung trifft der Skipper vor Ort.',
     included: 'Im Kabinenpreis enthalten',
-    includedList: ['Doppelkabine für 11 Nächte (1 oder 2 Personen)', 'Skipper Philip an Bord', 'Katamaran Saona 47 „Maravelle“ für die gesamte Reise'],
+    includedList: ['Doppelkabine für 11 Nächte (1 oder 2 Personen)', 'Skipper Philip an Bord', 'Katamaran Fountaine Pajot Saona 47 für die gesamte Reise'],
     notIncluded: 'Nicht enthalten',
     notIncludedList: ['An- und Abreise', 'Bordkasse: Verpflegung, Diesel, Liege- und Nationalparkgebühren (z. B. Phi Phi, Phang-Nga-Bucht)', 'Kaution € 2.000,– (wird nach der Reise rückerstattet)'],
     optional: 'Optional zubuchbar (pro Yacht)',
@@ -152,7 +152,7 @@ const t = {
     gallery: 'Gallery',
     yacht: 'The yacht', model: 'Model', year: 'Year built', length: 'Length', lengthVal: '13.94 m',
     cabins: 'Cabins', cabinsVal: '5 + 1 forepeak', berths: 'Berths', berthsVal: '10 + 2', wc: 'Heads', wcVal: '5',
-    yachtText: "The Fountaine Pajot Saona 47 'Maravelle' is the Quintet version with five double cabins, five heads and a skipper's forepeak with its own toilet. 4 double cabins are bookable for this trip. Plenty of space on deck with a cockpit, flybridge and trampoline, plus a shallow draft of just 1.30 m for the shallow bays of Phang Nga Bay.",
+    yachtText: "The Fountaine Pajot Saona 47 is the Quintet version with five double cabins, five heads and a skipper's forepeak with its own toilet. 4 double cabins are bookable for this trip. Plenty of space on deck with a cockpit, flybridge and trampoline, plus a shallow draft of just 1.30 m for the shallow bays of Phang Nga Bay.",
     equipment: 'Equipment',
     equipmentList: ['Air conditioning, generator and water maker', 'Electric toilets, bow thruster, autopilot', 'Dinghy with outboard and hydraulic lift, snorkelling gear', 'Flybridge, bimini, cockpit fridge, Bluetooth sound system'],
     layoutCaption: 'Layout Saona 47 Quintet',
@@ -160,7 +160,7 @@ const t = {
     routeMapAlt: 'Route map (detour to James Bond Island and Koh Panyee dashed): Ao Po – Koh Phanak – Koh Roi – Koh Hong – Railay – Koh Poda – Koh Phi Phi – Koh Rang Yai – Koh Yao Noi – Koh Naka Yai – Ao Po',
     routeNote: 'Route subject to change depending on wind and weather. The skipper decides on site.',
     included: 'Included in the cabin price',
-    includedList: ['Double cabin for 11 nights (1 or 2 people)', 'Skipper Philip on board', "Catamaran Saona 47 'Maravelle' for the whole trip"],
+    includedList: ['Double cabin for 11 nights (1 or 2 people)', 'Skipper Philip on board', 'Catamaran Fountaine Pajot Saona 47 for the whole trip'],
     notIncluded: 'Not included',
     notIncludedList: ['Travel to/from the marina', "Ship's kitty: food, diesel, mooring and national park fees (e.g. Phi Phi, Phang Nga Bay)", 'Deposit € 2,000.– (refunded after the trip)'],
     optional: 'Optional add-ons (per yacht)',
@@ -203,7 +203,7 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
           gap: '1.5rem', alignItems: 'center', padding: '1.25rem 1.5rem',
         }}
       >
-        <img src="/images/kabinen/phuket/hero.webp" alt="Saona 47 Maravelle vor Anker" loading="lazy"
+        <img src="/images/kabinen/phuket/hero.webp" alt="Fountaine Pajot Saona 47 vor Anker" loading="lazy"
           style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '6px', display: 'block' }} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', minWidth: 0, textAlign: 'left' }}>
           <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--blue)' }}>
@@ -214,7 +214,7 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
           </span>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.82rem', fontWeight: 600, color: '#3d4a5c' }}>
             <span style={{ padding: '4px 11px', borderRadius: '999px', background: 'var(--gray-light)' }}>{s.badgeDate}</span>
-            <span style={{ padding: '4px 11px', borderRadius: '999px', background: 'var(--gray-light)' }}>Saona 47 „Maravelle“</span>
+            <span style={{ padding: '4px 11px', borderRadius: '999px', background: 'var(--gray-light)' }}>Fountaine Pajot Saona 47</span>
             <span style={{ padding: '4px 11px', borderRadius: '999px', background: 'var(--gray-light)' }}>{s.badgeCabins}</span>
           </div>
         </div>
@@ -243,7 +243,7 @@ export default function PhuketOffer({ onRequest }: { onRequest: () => void }) {
           {/* Intro */}
           <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: '2rem', alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
-              <img src="/images/kabinen/phuket/hero.webp" alt="Saona 47 Maravelle vor Anker" loading="lazy"
+              <img src="/images/kabinen/phuket/hero.webp" alt="Fountaine Pajot Saona 47 vor Anker" loading="lazy"
                 style={{ width: '100%', aspectRatio: '1/1', objectFit: 'cover', borderRadius: '8px', display: 'block' }} />
               <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.75, color: 'var(--gray)' }}>
                 {s.intro}
