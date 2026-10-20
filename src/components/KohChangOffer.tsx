@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLang } from '../i18n'
 import { WhatsAppIcon } from './Icons'
+import Lightbox, { type LightboxState } from './Lightbox'
 
 // Kabinen-Angebot Koh Chang, Thailand — Dezember 2026. Einmaliges Termin-
 // Angebot, daher (anders als die Packages) nicht in components/Packages.tsx
@@ -165,6 +166,10 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
   const lang = useLang()
   const s = t[lang]
   const [open, setOpen] = useState(false)
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null)
+  const openLightbox = (images: LightboxState['images'], index: number) => setLightbox({ images, index })
+  const lightboxPrev = () => setLightbox(s => s && { ...s, index: (s.index - 1 + s.images.length) % s.images.length })
+  const lightboxNext = () => setLightbox(s => s && { ...s, index: (s.index + 1) % s.images.length })
 
   return (
     <div style={{ maxWidth: '980px', margin: '0 auto 3rem' }}>
@@ -223,13 +228,15 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
           <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))', gap: '2rem', alignItems: 'start' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
               <img src="/images/kabinen/koh-chang/island-spirit-410.webp" alt="Island Spirit 410 Katamaran" loading="lazy"
-                style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '8px', display: 'block' }} />
+                onClick={() => openLightbox([{ src: '/images/kabinen/koh-chang/island-spirit-410.webp', alt: 'Island Spirit 410 Katamaran' }], 0)}
+                style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '8px', display: 'block', cursor: 'zoom-in' }} />
               <p style={{ margin: 0, fontSize: '1rem', lineHeight: 1.75, color: 'var(--gray)' }}>
                 {s.intro}
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                 <img src="/images/kabinen/koh-chang/skipper-manuel.webp" alt="Skipper Manuel" loading="lazy"
-                  style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: '50% 20%', flexShrink: 0 }} />
+                  onClick={() => openLightbox([{ src: '/images/kabinen/koh-chang/skipper-manuel.webp', alt: 'Skipper Manuel' }], 0)}
+                  style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', objectPosition: '50% 20%', flexShrink: 0, cursor: 'zoom-in' }} />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2px', fontSize: '0.9rem' }}>
                   <span style={{ fontWeight: 700, color: 'var(--navy)' }}>{s.skipperName}</span>
                   <span style={{ color: 'var(--gray)' }}>{s.skipperText}</span>
@@ -269,9 +276,10 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
           <section style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <h2 style={h2Style}>{s.gallery}</h2>
             <div style={{ columns: '3 220px', columnGap: '10px' }}>
-              {gallery[lang].map(img => (
+              {gallery[lang].map((img, i) => (
                 <img key={img.src} src={img.src} alt={img.alt} loading="lazy"
-                  style={{ width: '100%', display: 'block', borderRadius: '8px', margin: '0 0 10px', breakInside: 'avoid' }}
+                  onClick={() => openLightbox(gallery[lang], i)}
+                  style={{ width: '100%', display: 'block', borderRadius: '8px', margin: '0 0 10px', breakInside: 'avoid', cursor: 'zoom-in' }}
                   onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
               ))}
             </div>
@@ -294,7 +302,8 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
               </p>
               <figure style={{ margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <img src="/images/kabinen/koh-chang/grundriss.webp" alt={s.layoutCaption} loading="lazy"
-                  style={{ width: '100%', display: 'block', borderRadius: '6px', border: '1px solid var(--gray-mid)' }} />
+                  onClick={() => openLightbox([{ src: '/images/kabinen/koh-chang/grundriss.webp', alt: s.layoutCaption }], 0)}
+                  style={{ width: '100%', display: 'block', borderRadius: '6px', border: '1px solid var(--gray-mid)', cursor: 'zoom-in' }} />
                 <figcaption style={{ fontSize: '0.75rem', color: 'var(--gray)' }}>{s.layoutCaption}</figcaption>
               </figure>
             </div>
@@ -307,8 +316,12 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
               <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--gray)' }}>{s.routeText}</p>
             </div>
             <div style={{ borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--gray-mid)' }}>
-              <img src="/images/kabinen/koh-chang/routenkarte-koh-chang.webp" alt={s.routeMapAlt} loading="lazy" style={{ display: 'block', width: '100%', height: 'auto' }} />
-              <img src="/images/kabinen/koh-chang/routenkarte-legende.webp" alt={s.legendAlt} loading="lazy" style={{ display: 'block', width: '100%', height: 'auto' }} />
+              <img src="/images/kabinen/koh-chang/routenkarte-koh-chang.webp" alt={s.routeMapAlt} loading="lazy"
+                onClick={() => openLightbox([{ src: '/images/kabinen/koh-chang/routenkarte-koh-chang.webp', alt: s.routeMapAlt }, { src: '/images/kabinen/koh-chang/routenkarte-legende.webp', alt: s.legendAlt }], 0)}
+                style={{ display: 'block', width: '100%', height: 'auto', cursor: 'zoom-in' }} />
+              <img src="/images/kabinen/koh-chang/routenkarte-legende.webp" alt={s.legendAlt} loading="lazy"
+                onClick={() => openLightbox([{ src: '/images/kabinen/koh-chang/routenkarte-koh-chang.webp', alt: s.routeMapAlt }, { src: '/images/kabinen/koh-chang/routenkarte-legende.webp', alt: s.legendAlt }], 1)}
+                style={{ display: 'block', width: '100%', height: 'auto', cursor: 'zoom-in' }} />
             </div>
             <ol style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column' }}>
               {days[lang].map(d => (
@@ -389,6 +402,8 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
 
       </div>
     </div>
+
+      <Lightbox state={lightbox} onClose={() => setLightbox(null)} onPrev={lightboxPrev} onNext={lightboxNext} label={s.gallery} />
 
       <style>{`
         @media (max-width: 640px) {
