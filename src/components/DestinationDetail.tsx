@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from '../router'
 import { destinations } from '../data/destinationen'
 import type { Destination, DestBlock } from '../data/destinationen'
@@ -35,6 +35,13 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
   const pkgHref = (pid: string) => lang === 'en' ? `/en/cruises/book-now/${enPkgPath[pid] ?? pid}` : `/packages/${pid}`
   const teasers = dest.packageIds.map(pid => pkgList.find(p => p.id === pid)).filter((p): p is NonNullable<typeof p> => !!p)
   const images = dest.blocks.filter(b => b.t === 'i')
+
+  useEffect(() => {
+    if (!lightbox) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null) }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [lightbox])
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>

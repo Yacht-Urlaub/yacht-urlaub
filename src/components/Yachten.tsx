@@ -23,6 +23,13 @@ export default function Yachten() {
     if (tabParam && validTabs.includes(tabParam)) setActiveTab(tabParam)
   }, [tabParam])
 
+  useEffect(() => {
+    if (!lightbox) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null) }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [lightbox])
+
   const cat = cats.find(c => c.id === activeTab)!
 
   return (

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { Link, Navigate } from '../router'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { toernberichte } from '../data/toernberichte'
@@ -31,6 +31,13 @@ export default function ToernberichtDetailPage() {
   const list = lang === 'en' ? toernberichteEn : toernberichte
   const tb = list.find(t => t.slug === slug)
   const [lightbox, setLightbox] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!lightbox) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLightbox(null) }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [lightbox])
 
   if (!tb) return <Navigate to={s.base} replace />
 
