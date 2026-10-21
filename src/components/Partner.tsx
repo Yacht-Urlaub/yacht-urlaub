@@ -3,7 +3,7 @@ import { useLang } from '../i18n'
 
 // Partner-Logos 1:1 von der Originalseite (yacht-urlaub.net)
 const partner = [
-  { id: 'bvi', img: '/images/partner/bvi.jpg', alt: 'The British Virgin Islands – Nature\'s little secrets' },
+  { id: 'bvi', img: '/images/partner/bvi.webp', alt: 'The British Virgin Islands – Nature\'s little secrets' },
   { id: 'jam', img: '/images/partner/jamyachtsupply.png', alt: 'JAM Yacht Supply – Supplies & Provisions for Yacht in Croatia', href: 'http://www.jamyachtsupply.com/?af=YachtUrlaub' },
   { id: 'rumzentrum', img: '/images/partner/rumzentrum.png', alt: 'Rumzentrum.at', href: 'https://rumzentrum.at/' },
   { id: 'italia', img: '/images/partner/italia.png', alt: 'Italia' },

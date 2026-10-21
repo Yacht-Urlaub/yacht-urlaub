@@ -132,10 +132,8 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
               if (b.t === 'logo') {
                 return (
                   <div key={gi} style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-                    <div style={{ background: 'var(--gray-light)', borderRadius: '8px', padding: '1.25rem 1.75rem', display: 'inline-flex' }}>
-                      <img src={b.x} alt={b.c || `Tourismus-Logo ${dest.name}`} loading="lazy"
-                        style={{ maxWidth: '180px', width: '100%', height: 'auto', display: 'block' }} />
-                    </div>
+                    <img src={b.x} alt={b.c || `Tourismus-Logo ${dest.name}`} loading="lazy"
+                      style={{ maxWidth: '180px', width: '100%', height: 'auto', display: 'block' }} />
                   </div>
                 )
               }

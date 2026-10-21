@@ -98,7 +98,7 @@ const sidebarExtras: Record<string, { img: string; alt: string; logo: string; lo
   'karibik-bvi': {
     img: '/images/packages/Karibik-BVI/gallery/Sandy Spit.jpg',
     alt: 'Sandy Spit – Britische Jungferninseln',
-    logo: '/images/partner/bvi.jpg',
+    logo: '/images/partner/bvi.webp',
     logoAlt: "The British Virgin Islands – Nature's little secrets",
   },
 }
