@@ -182,7 +182,7 @@ export const destinations: Destination[] = [
     packageIds: ["karibik-bvi"],
     blocks: [
       { t: "h", x: "Karibik - Britische Jungferninseln" },
-      { t: "logo", x: "/images/destinationen/karibik-bvi/BVI_-_ohne_URL.jpg", c: "Offizielles Tourismus-Logo der Britischen Jungferninseln" },
+      { t: "logo", x: "/images/destinationen/karibik-bvi/bvi-logo.webp", c: "Offizielles Tourismus-Logo der Britischen Jungferninseln" },
       { t: "p", x: "Sie möchten im Paradies auf Erden, der Karibik, auf einem Katamaran die Seele baumeln lassen? Die britischen Jungferninseln gehören zu den Leeward Islands und lassen sich von Mitteleuropa bequem innerhalb von nur 9 Flugstunden erreichen. Empfehlenswert ist eine Anreise über St. Martin, Puerto Rico oder Antigua. Der Anschlussflug von St. Martin oder Puerto Rico auf die Britischen Jungferninseln dauert weniger als 45 Minuten." },
       { t: "p", x: "Hier angekommen wird Sie das karibische Lebensgefühl der Menschen in den Bann ziehen. Es gilt zwar Linksverkehr, aber von britischer Strenge werden Sie auf den Inseln der puren Lebensfreude nichts mitbekommen. Mit wachsender Entspannung werden Sie in die genussvolle Kunst des Nichtstuns der Karibik eintauchen, staunen und genießen." },
       { t: 'i', x: "/images/destinationen/karibik-bvi/Indians.jpg", c: "Schnorchelparadies bei den Indians" },
