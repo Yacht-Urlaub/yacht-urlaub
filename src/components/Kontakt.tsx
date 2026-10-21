@@ -115,7 +115,7 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
   const lang = useLang()
   const kt = kk[lang]
   const kfm = lang === 'en' ? kf.formEn : kf.formDe
-  const typen = showYoga ? [...kfm.typen, lang === 'en' ? 'Yoga cruise' : 'Yoga-Törn'] : kfm.typen
+  const typen = showYoga ? [lang === 'en' ? 'Yoga cruise' : 'Yoga-Törn', ...kfm.typen] : kfm.typen
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
   const [step, setStep] = useState(0)

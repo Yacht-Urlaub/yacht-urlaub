@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { useLang, isEnHost, BASE_DE, BASE_EN } from '../i18n'
-import { Link } from '../router'
 
 // Inhalte der Altseite yacht-holiday.net/yoga bzw. yacht-urlaub.net/yoga.
 // Die englische Fassung trug den Text; die deutsche war dort nur ein Stummel
@@ -10,6 +9,7 @@ const yl = {
   de: {
     label: 'Yoga & Segeln',
     h1: 'Yoga-Retreat mit Yacht-Urlaub',
+    heroAlt: 'Yoga-Einheit an Deck in einer ruhigen Bucht vor der kroatischen Küste',
     sub: 'Segeln Sie über das türkisfarbene Wasser der Adria und verbinden Sie es mit Yoga, Meditation und mediterraner Küche — während Sie die Buchten, Inseln und Küsten Kroatiens erkunden.',
     introH: 'Körper, Geist und Meer',
     intro: 'Yoga und Segeln zusammen ergeben einen Urlaub, wie es ihn an Land nicht gibt. Kräftigende, zugleich sanfte Übungsfolgen, Atemarbeit und geführte Meditation lassen Sie inmitten der Natur zur Ruhe kommen. Kroatien bietet dafür den passenden Rahmen: über 1200 Inseln, Naturschutzgebiete und eine Küstenlandschaft aus Bergen und stillen Buchten.',
@@ -39,13 +39,11 @@ const yl = {
     ctaH: 'Worauf warten Sie noch?',
     ctaP: 'Schreiben Sie uns — wir stellen Ihren Törn zusammen.',
     ctaBtn: 'Anfrage starten',
-    ctaHref: '/kontakt',
-    planner: 'Oder nutzen Sie den Urlaubsplaner »',
-    plannerHref: '/urlaubsplaner',
   },
   en: {
     label: 'Yoga & sailing',
     h1: 'Yoga retreat with Yacht-Holiday',
+    heroAlt: 'Yoga session on deck in a quiet bay off the Croatian coast',
     sub: 'Sail the turquoise waters of the Adriatic Sea and indulge in yoga, meditation and delicious Mediterranean meals — all while exploring the beautiful bays, islands and coasts of Croatia.',
     introH: 'Body, mind and sea',
     intro: 'Combining yoga and sailing allows you to take a unique holiday by sea, connecting mind, body and spirit back to nature. Through a combination of strengthening but gentle yoga poses and sequences, breathing practices and guided meditation, you can rejuvenate yourself in natural surroundings. Croatia has so much to offer — over 1200 islands, nature reserves and landscapes full of mountains and quiet bays.',
@@ -75,9 +73,6 @@ const yl = {
     ctaH: 'So what are you waiting for?',
     ctaP: 'Contact us today and we will start organising your next holiday.',
     ctaBtn: 'Start a quote',
-    ctaHref: '/en/contact',
-    planner: 'Or use our holiday planner »',
-    plannerHref: '/en/holiday-planner',
   },
 } as const
 
@@ -146,7 +141,7 @@ export default function YogaPage() {
 
       {/* Hero */}
       <div style={{ position: 'relative', height: '420px', overflow: 'hidden' }}>
-        <img src={HERO} alt={s.h1} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img src={HERO} alt={s.heroAlt} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(7,27,47,0.9) 0%, rgba(7,27,47,0.45) 60%, transparent 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
@@ -180,7 +175,7 @@ export default function YogaPage() {
               <h2 style={sectionTitle}>{s.hostH}</h2>
               <p style={bodyText}>{s.host}</p>
             </div>
-            <img src="/images/yoga/Instructor_Rebecca.jpg" alt={lang === 'en' ? 'Yoga instructor Rebecca' : 'Yoga-Lehrerin Rebecca'}
+            <img src="/images/yoga/Instructor_Rebecca.jpg" alt={lang === 'en' ? 'Yoga instructor Rebecca' : 'Yoga-Lehrerin Rebecca'} loading="lazy"
               style={{ width: '100%', borderRadius: '8px', boxShadow: '0 4px 24px rgba(0,0,0,0.12)' }} />
           </div>
         </div>
@@ -274,10 +269,10 @@ export default function YogaPage() {
         <div className="container" style={{ maxWidth: '640px' }}>
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.4rem, 3vw, 2rem)', marginBottom: '1rem' }}>{s.ctaH}</h2>
           <p style={{ color: 'rgba(255,255,255,0.78)', fontSize: '0.97rem', lineHeight: 1.8, marginBottom: '2rem' }}>{s.ctaP}</p>
-          <Link to={s.ctaHref} className="btn btn-primary" style={{ fontSize: '0.82rem' }}>{s.ctaBtn}</Link>
-          <p style={{ marginTop: '1.25rem' }}>
-            <Link to={s.plannerHref} style={{ color: 'var(--blue-light)', fontSize: '0.85rem' }}>{s.planner}</Link>
-          </p>
+          <button type="button" onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+            className="btn btn-primary" style={{ fontSize: '0.82rem' }}>
+            {s.ctaBtn}
+          </button>
         </div>
       </section>
     </main>
