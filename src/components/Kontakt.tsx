@@ -111,10 +111,11 @@ const kk = {
     personen: 'people' },
 }
 
-export default function Kontakt() {
+export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
   const lang = useLang()
   const kt = kk[lang]
   const kfm = lang === 'en' ? kf.formEn : kf.formDe
+  const typen = showYoga ? [...kfm.typen, lang === 'en' ? 'Yoga cruise' : 'Yoga-Törn'] : kfm.typen
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
   const [step, setStep] = useState(0)
@@ -280,7 +281,7 @@ export default function Kontakt() {
                           <label style={labelStyle}>{kfm.art}</label>
                           <select value={form.toerntyp} onChange={e => set('toerntyp', e.target.value)} style={inputStyle()}>
                             <option value="">{kfm.wahl}</option>
-                            {kfm.typen.map(d => <option key={d}>{d}</option>)}
+                            {typen.map(d => <option key={d}>{d}</option>)}
                           </select>
                         </div>
                         <div>

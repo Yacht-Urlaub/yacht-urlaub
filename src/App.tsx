@@ -67,6 +67,7 @@ function AnimatedRoutes() {
   const enHost = isEnHost()
   // Globale "Anfrage starten"-Sektion auf Seiten ausblenden, die selbst ein Formular sind
   const hideKontakt = ['/urlaubsplaner', '/en/holiday-planner', '/kontakt', '/en/contact'].includes(internal)
+  const isYogaPage = internal === '/yoga' || internal === '/en/yoga'
   return (
     <AnimatePresence mode="wait">
       <motion.div key={canonicalPath(internal)} variants={pageVariants} initial="initial" animate="animate" exit="exit">
@@ -126,7 +127,7 @@ function AnimatedRoutes() {
           <Route path={toHref("/en/trip-reports/:slug")} element={<ToernberichtDetailPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
-        {!hideKontakt && <Kontakt />}
+        {!hideKontakt && <Kontakt showYoga={isYogaPage} />}
         <Footer />
       </motion.div>
     </AnimatePresence>
