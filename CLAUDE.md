@@ -78,3 +78,12 @@ Sonderfälle (siehe Kopfkommentare in den Skripten für Details):
 Wenn unklar ist, ob eine Änderung einen Snapshot ungültig macht: lieber
 einmal zu oft neu generieren. Der Lauf dauert für alle ~99 Seiten rund
 3–4 Minuten.
+
+# PR- und Preview-Link immer im Chat durchgeben
+
+Änderungen nie nur stillschweigend committen/pushen und als "fertig"
+melden. Sobald ein Pull Request erstellt wird, den PR-Link **immer**
+direkt im Chat mitteilen — ebenso den Netlify-Deploy-Preview-Link,
+sobald er verfügbar ist (Status-Check `netlify/.../deploy-preview` am
+PR, braucht nach dem Erstellen ein paar Minuten). Nichts als "live"
+bezeichnen, solange es nicht tatsächlich nach `main` gemergt ist.
