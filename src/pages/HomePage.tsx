@@ -46,7 +46,7 @@ export default function HomePage() {
       <News />
       <SektionTeaser />
       <Partner />
-      <EventPopup />
+      {!isEnHost() && <EventPopup />}
     </main>
   )
 }

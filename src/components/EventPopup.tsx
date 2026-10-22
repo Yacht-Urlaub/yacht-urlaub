@@ -1,36 +1,25 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useLang } from '../i18n'
 
-// Zeitlich begrenztes Ankündigungs-Popup für ein einzelnes Event.
+// Zeitlich begrenztes Ankündigungs-Popup für ein einzelnes Event. Nur auf
+// der deutschen Startseite eingebunden (siehe HomePage.tsx) — das Event
+// richtet sich ausschließlich an den deutschsprachigen Markt.
 // Erscheint einmal pro Browser-Session (sessionStorage) und nur bis zum
 // Anmeldeschluss. Für ein neues Event: STORAGE_KEY, ANMELDESCHLUSS und
 // den Inhalt unten anpassen (oder die Komponente duplizieren).
 const STORAGE_KEY = 'yu_event_popup_seen_sail-into-the-seasons-2026'
 const ANMELDESCHLUSS = new Date('2026-11-07T23:59:59')
 
-const ep = {
-  de: {
-    bildAlt: "Einladung zum Event „Sail into the Seasons – Vienna Edition“: Segelfeeling mitten in Wien am 14. November 2026, Einlass 13:30 Uhr, im District Living Vienna, Donau-City-Straße 3, 1220 Wien. Mit Tombola und Rum-Verkostung von Rumzentrum.at, Teilnahme kostenlos, Anmeldung bis 7. November 2026 erforderlich.",
-    titel: 'Jetzt Platz sichern – Teilnahme gratis',
-    frist: 'Anmeldung bitte bis 7.11.2026',
-    button: 'Zur Anmeldung',
-    schliessen: 'Popup schließen',
-    label: 'Sail into the Seasons – Vienna Edition',
-  },
-  en: {
-    bildAlt: "Invitation to the 'Sail into the Seasons – Vienna Edition' event: sailing feeling in the heart of Vienna on 14 November 2026, doors open 1:30 pm, at District Living Vienna, Donau-City-Straße 3, 1220 Vienna. Includes a raffle and rum tasting by Rumzentrum.at, free admission, registration required by 7 November 2026.",
-    titel: 'Reserve your spot now – free to attend',
-    frist: 'Please register by 7 Nov 2026',
-    button: 'Register now',
-    schliessen: 'Close popup',
-    label: 'Sail into the Seasons – Vienna Edition',
-  },
+const t = {
+  bildAlt: "Einladung zum Event „Sail into the Seasons – Vienna Edition“: Segelfeeling mitten in Wien am 14. November 2026, Einlass 13:30 Uhr, im District Living Vienna, Donau-City-Straße 3, 1220 Wien. Mit Tombola und Rum-Verkostung von Rumzentrum.at, Teilnahme kostenlos, Anmeldung bis 7. November 2026 erforderlich.",
+  titel: 'Jetzt Platz sichern – Teilnahme gratis',
+  frist: 'Anmeldung bitte bis 7.11.2026',
+  button: 'Zur Anmeldung',
+  schliessen: 'Popup schließen',
+  label: 'Sail into the Seasons – Vienna Edition',
 }
 
 export default function EventPopup() {
-  const lang = useLang()
-  const t = ep[lang]
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
