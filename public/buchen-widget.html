@@ -87,6 +87,8 @@
 
     .btn-search:hover { background: #155a94; }
 
+    .yu-cal-trigger:hover { background: #dceefb !important; border-color: #0284c7 !important; }
+
     .search-hint {
       font-size: 0.78rem;
       color: #888;
@@ -182,11 +184,19 @@
               onmousedown="var e=arguments[0]||window.event;e.stopPropagation();"
               onclick="var e=arguments[0]||window.event;e.stopPropagation();"
               style="border-radius:4px 0 0 4px;" />
-            <span class="input-group-addon" onclick="planyo_close_calendar();planyo_show_calendar('box_start_date',null);"
-              style="cursor:pointer;background:#e9ecef;border:1px solid #ccc;border-left:none;border-radius:0 4px 4px 0;padding:0 10px;display:flex;align-items:center;">
+            <span class="input-group-addon yu-cal-trigger" onclick="planyo_close_calendar();planyo_show_calendar('box_start_date',null);"
+              style="cursor:pointer;background:#f0f7fc;border:1px solid #ccc;border-left:none;border-radius:0 4px 4px 0;padding:0 10px;display:flex;align-items:center;transition:background 0.15s;">
               <a class="planyo-cal-icon" id="box_start_datecalref"
                 onclick="planyo_show_calendar('box_start_date',null);"
-                style="display:block;width:18px;height:18px;text-decoration:none;">&#160;</a>
+                style="display:flex;width:18px;height:18px;text-decoration:none;color:#0284c7;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="5" width="18" height="16" rx="2"/>
+                  <line x1="16" y1="3" x2="16" y2="7"/>
+                  <line x1="8" y1="3" x2="8" y2="7"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                  <circle cx="12" cy="15" r="1.6" fill="currentColor" stroke="none"/>
+                </svg>
+              </a>
             </span>
           </div>
         </div>
