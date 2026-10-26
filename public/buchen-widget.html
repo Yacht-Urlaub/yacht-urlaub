@@ -101,6 +101,43 @@
       z-index: 9999;
     }
 
+    /* Vergangene Tage: komplett ausgegraut und nicht anklickbar (Planyo
+       selbst markiert sie nicht anders als zukuenftige Tage im selben
+       Monat — ohne das wirkt ein bereits verstrichener Tag genauso
+       einladend wie ein verfuegbarer, was zu Frust fuehrt). */
+    #box_start_datecal td.yu-past {
+      color: #ccc !important;
+      cursor: not-allowed !important;
+      pointer-events: none;
+    }
+
+    /* Samstage: bevorzugter Starttag, soll zum Anklicken einladen */
+    #box_start_datecal td.yu-saturday:not(.yu-past) {
+      background: #e0f2fe;
+      color: #0284c7;
+      font-weight: 700;
+      border-radius: 4px;
+    }
+    #box_start_datecal td.yu-saturday:not(.yu-past):hover {
+      background: #0284c7;
+      color: #fff;
+    }
+
+    /* Premium-/Hochsaison-Termine (Weihnachten/Neujahr, erste zwei
+       August-Wochen): dezentes Kronensymbol als Hinweis */
+    #box_start_datecal td.yu-premium:not(.yu-past) {
+      position: relative;
+      background: #fff7e6;
+    }
+    #box_start_datecal td.yu-premium:not(.yu-past)::after {
+      content: "👑";
+      position: absolute;
+      top: -3px;
+      right: 0;
+      font-size: 9px;
+      line-height: 1;
+    }
+
     /* Results iframe — collapsed until a search is submitted, since the
        Planyo results page loads cross-origin and its real height can't
        be measured from here. */
@@ -264,6 +301,50 @@
       var pickerObserver = new MutationObserver(reportCollapsed);
       pickerObserver.observe(picker, { attributes: true, attributeFilter: ['style', 'class'] });
     }
+
+    // Kalender-Tage markieren: vergangene Tage ausgrauen/deaktivieren,
+    // Samstage hervorheben, Premium-/Hochsaison-Zeitraeume mit Krone
+    // versehen. Planyo verbaut Jahr/Monat/Tag direkt als Klassen pro Zelle
+    // (z. B. "cur_month_day wd5 yr2026 mo12 md26") und baut bei jeder
+    // Monatsnavigation die komplette Tabelle neu (innerHTML) — deshalb bei
+    // jeder Kindknoten-Aenderung erneut anwenden statt nur einmal beim
+    // Oeffnen. childList+subtree (nicht attributes), damit das eigene
+    // Setzen von Klassen hier keine Beobachtungs-Endlosschleife ausloest.
+    function isPremiumDate(month, day) {
+      if (month === 12 && day >= 24) return true;
+      if (month === 1 && day <= 6) return true;
+      if (month === 8 && day <= 15) return true;
+      return false;
+    }
+
+    function enhanceCalendarDays() {
+      if (!picker) return;
+      var today = new Date();
+      today.setHours(0, 0, 0, 0);
+      var cells = picker.querySelectorAll('td[class*="yr"]');
+      for (var i = 0; i < cells.length; i++) {
+        var td = cells[i];
+        var yr = td.className.match(/\byr(\d+)\b/);
+        var mo = td.className.match(/\bmo(\d+)\b/);
+        var md = td.className.match(/\bmd(\d+)\b/);
+        if (!yr || !mo || !md) continue;
+        var year = parseInt(yr[1], 10), month = parseInt(mo[1], 10), day = parseInt(md[1], 10);
+        var cellDate = new Date(year, month - 1, day);
+        var premium = isPremiumDate(month, day);
+
+        td.classList.toggle('yu-past', cellDate < today);
+        td.classList.toggle('yu-saturday', cellDate.getDay() === 6);
+        td.classList.toggle('yu-premium', premium);
+        td.title = premium
+          ? (window.__widgetLang === 'en' ? 'Premium date (high season)' : 'Premium-Termin (Hochsaison)')
+          : '';
+      }
+    }
+
+    if (picker && 'MutationObserver' in window) {
+      new MutationObserver(enhanceCalendarDays).observe(picker, { childList: true, subtree: true });
+    }
+    enhanceCalendarDays();
 
     document.addEventListener('DOMContentLoaded', reportCollapsed);
     window.addEventListener('load', reportCollapsed);
