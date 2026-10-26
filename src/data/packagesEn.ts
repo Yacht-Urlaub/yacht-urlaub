@@ -16,7 +16,7 @@ export const packagesEn: Package[] = [
     facts: ["Duration: 7, 10 or 14 days", "Group size: 4-10 pax.", "Checkin-day is saturday in pre- and post-season also wednesday possible"],
     route: "Port of departure Split (or nearby) – Brac – Hvar – Korčula – Vis – Solta – Split (or nearby)",
     routeMaps: [
-      { src: "/images/packages/dalmatien/dalmatien_route.png", caption: "Dalmatia route from Trogir/Split" },
+      { src: "/images/packages/dalmatien/Dalmatien_Karte_v4.2_EN_mit_Legende.png", caption: "Dalmatia route from Trogir/Split" },
     ],
     detailSections: [
       {
@@ -81,7 +81,7 @@ export const packagesEn: Package[] = [
     facts: ["Duration: 7 - 21 days", "Flexible booking (daily check-In / check-Out possible)", "minimum: 4 pax", "Book additional extras like WIFI or board-service"],
     route: "Road Town - Bitter End Club/Saba Rock (Virgin Gorda) - The Baths (Virgin Gorda) - Jost van Dyke - Anegada - Spanish Town - Pusser's Marina Cay - Peter Island - Cooper/Salt Island - Road Town",
     routeMaps: [
-      { src: "/images/packages/Karibik-BVI/Karibik_mit Legende.jpg", caption: "Caribbean route (BVI)" },
+      { src: "/images/packages/Karibik-BVI/Karibik_Karte_v2.4_EN_mit_Legende.png", caption: "Caribbean route (BVI)" },
     ],
     detailSections: [
       {
@@ -160,9 +160,8 @@ export const packagesEn: Package[] = [
     facts: ["Duration: 7, 10 or 14 days", "Group size: 4-10 pax.", "Checkin-day is saturday in pre- and post-season also wednesday possible"],
     route: "",
     routeMaps: [
-      { src: "/images/packages/Griechenland/Griechenland_Route_A_v3.4_mit_Legende.png", caption: "Route A (Cyclades / Saronic Gulf)" },
-      { src: "/images/packages/Griechenland/Griechenland_Route_B_v3.3_mit_Legende.png", caption: "Route B (Dodecanese)" },
-      { src: "/images/packages/Griechenland/Griechenland_RouteC_v1.3_mit Legende.png", caption: "Route C (Ionian Sea)" },
+      { src: "/images/packages/Griechenland/Griechenland_Karte_v3.3_EN_mit_Legende.png", caption: "Routes A & B (Cyclades & Dodecanese)" },
+      { src: "/images/packages/Griechenland/Griechenland_RouteC_v1.3_EN_mit_Legende.webp", caption: "Route C (Ionian Sea)" },
     ],
     detailSections: [
       {
@@ -256,7 +255,7 @@ export const packagesEn: Package[] = [
     facts: ["Duration: 7 - 21 days", "flexible booking (daily check-In / check-out possible)", "minimum: 4 pax", "book additional extras like WIFI or board-service"],
     route: "St. George's / St.Vincent - Carriacou - Union Island - Mayreau - Bequia - St. Vincent - Mustique - Tobago Cays - Petite St. Vincent - St. George's / St. Vincent\nDETAILS",
     routeMaps: [
-      { src: "/images/packages/Karibik-Grenadinen/Grenadinen_Route_v1.3_mit Legende.png", caption: "Grenadines route" },
+      { src: "/images/packages/Karibik-Grenadinen/Grenadinen_Route_v1.2_EN_mit_Legende.png", caption: "Grenadines route" },
     ],
     detailSections: [
       {
@@ -333,7 +332,7 @@ export const packagesEn: Package[] = [
     facts: ["Duration: 7, 10 or 14 days", "Group size: 4-10 pax.", "Checkin-day is saturday in pre- and post-season also wednesday possible"],
     route: "Port of departure Zadar (or nearby) – Murter – Kornati – Dugi Otok – Žirje / Kaprije – Skradin (National park Krka) – Vodice – Zadar (or nearby)",
     routeMaps: [
-      { src: "/images/packages/Kornaten/Kornaten mit Legende.png", caption: "Kornati route" },
+      { src: "/images/packages/Kornaten/Kornaten_Karte_v2.4_EN_mit_Legende.png", caption: "Kornati route" },
     ],
     detailSections: [
       {
