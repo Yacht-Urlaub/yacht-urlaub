@@ -24,6 +24,7 @@
          SEO.tsx (react-helmet-async) gesetzt und fuer die Startseite sowie
          alle Unterseiten zusaetzlich von scripts/prerender.cjs als
          statisches HTML eingefroren (public/<pfad>/index.html). -->
+
     <script type="text/javascript" charset="utf-8" async="" src="https://widgets.trustedshops.com/js/X8C58FF076608DD16CD36F796D67C0862.js"></script><script type="module" crossorigin="" src="/assets/index-D6cJ-aMJ.js"></script>
     <link rel="stylesheet" crossorigin="" href="/assets/index-CP-JBUAe.css">
   <meta name="description" content="In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir!"><meta property="og:title" content="Urlaubsplaner – Anfrage starten | Yacht-Urlaub"><meta property="og:description" content="In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir!"><meta property="og:url" content="https://www.yacht-urlaub.net/urlaubsplaner"><meta property="og:image" content="https://www.yacht-urlaub.net/images/Destinationsbilder/Header/seychelles1.jpg"><meta property="og:type" content="website"><meta property="og:locale" content="de_DE"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Urlaubsplaner – Anfrage starten | Yacht-Urlaub"><meta name="twitter:description" content="In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir!"><meta name="twitter:image" content="https://www.yacht-urlaub.net/images/Destinationsbilder/Header/seychelles1.jpg"><link rel="canonical" href="https://www.yacht-urlaub.net/urlaubsplaner"><link rel="alternate" hreflang="de" href="https://www.yacht-urlaub.net/urlaubsplaner"><link rel="alternate" hreflang="en" href="https://www.yacht-holiday.net/holiday-planner"><link rel="alternate" hreflang="x-default" href="https://www.yacht-urlaub.net/urlaubsplaner"></head>
@@ -163,6 +164,72 @@
         _ts.src = 'https://widgets.trustedshops.com/js/' + _tsid + '.js';
         var __ts = document.getElementsByTagName('script')[0];
         __ts.parentNode.insertBefore(_ts, __ts);
+      })();
+    </script>
+
+    <!-- Trusted Shops rendert sein Badge trotz #MyCustomTrustbadge (oben,
+         links positioniert) rechts unten, direkt über dem WhatsApp-Button
+         — per DevTools geprüft: nicht per Stylesheet, sondern per
+         Inline-Style mit !important auf jeder einzelnen Eigenschaft. Eine
+         externe CSS-Regel kann Inline-!important grundsätzlich nicht
+         schlagen (das ist die höchste Prioritätsstufe der CSS-Kaskade) —
+         nur direktes Ueberschreiben per JS mit derselben Prioritaet
+         gewinnt. ID-Praefix statt exakter ID, da die Instanz-ID pro
+         Seitenaufruf wechselt. MutationObserver, weil das Widget erst
+         asynchron nachlaedt und seine Inline-Styles auch danach noch
+         neu setzen kann (z. B. responsive bei Resize).
+
+         Wichtig: #trustbadge-container-<hash> (Grosseltern-Container der
+         Buttons) UND mindestens ein dazwischenliegender Wrapper-Div
+         (Trusted-Shops-interne, buildspezifisch gehashte CSS-Modul-
+         Klassen wie "_uuhri8"/"_1y0juye", nicht stabil über Updates des
+         Fremdskripts hinweg) tragen jeweils eigene position:fixed/
+         absolute mit eigenem rechts-Offset per externer CSS-Regel.
+         left/right nur auf Container ODER nur auf den Buttons reicht
+         daher nicht — es muss auf JEDEM positionierten Vorfahren
+         zwischen Button und <body> erzwungen werden. Statt die
+         Hash-Klassen hart zu codieren (koennten sich mit jedem
+         Trusted-Shops-Update aendern), daher generischer Ansatz:
+         von jedem Treffer aus die Elternkette hochlaufen und auf
+         jedem Element mit computed position fixed/absolute/sticky
+         ebenfalls left/right per Inline-!important erzwingen. -->
+    <script type="text/javascript">
+      (function () {
+        var SELECTOR = '[id^="minimized-trustbadge-"], [id^="trustbadge-minimized-menu-button-"], [id^="trustbadge-container-"]';
+        function forceLeft(el) {
+          el.style.setProperty('left', '20px', 'important');
+          el.style.setProperty('right', 'auto', 'important');
+        }
+        function forceLeftChain(el) {
+          var node = el;
+          while (node && node.nodeType === 1 && node !== document.body) {
+            var pos = window.getComputedStyle(node).position;
+            if (pos === 'fixed' || pos === 'absolute' || pos === 'sticky') {
+              forceLeft(node);
+            }
+            node = node.parentElement;
+          }
+        }
+        function fixAll(root) {
+          if (root.matches && root.matches(SELECTOR)) forceLeftChain(root);
+          if (root.querySelectorAll) {
+            root.querySelectorAll(SELECTOR).forEach(forceLeftChain);
+          }
+        }
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (m) {
+            if (m.type === 'attributes') {
+              document.querySelectorAll(SELECTOR).forEach(forceLeftChain);
+            }
+            m.addedNodes && m.addedNodes.forEach(function (n) {
+              if (n.nodeType === 1) fixAll(n);
+            });
+          });
+        });
+        observer.observe(document.documentElement, {
+          childList: true, subtree: true, attributes: true, attributeFilter: ['style'],
+        });
+        fixAll(document.documentElement);
       })();
     </script>
 
