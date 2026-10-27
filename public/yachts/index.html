@@ -184,15 +184,20 @@ The most common type with the largest selection, which is also the cheapest form
          asynchron nachlaedt und seine Inline-Styles auch danach noch
          neu setzen kann (z. B. responsive bei Resize).
 
-         Wichtig: Der eigentliche position:fixed-Layer ist
-         #trustbadge-container-<hash> (der GROSSELTERN-Container der
-         Buttons) — NICHT die Buttons selbst. Die Buttons sitzen
-         unpositioniert (position:static) in einem Flex-Wrapper, daher
-         hat left/right auf ihnen allein keine sichtbare Wirkung; die
-         rechts-Platzierung kommt von einer externen (nicht-inline)
-         CSS-Regel auf dem Container. Deshalb muss der Container
-         ebenfalls erfasst und per Inline-!important nach links
-         gezwungen werden. -->
+         Wichtig: #trustbadge-container-<hash> (Grosseltern-Container der
+         Buttons) UND mindestens ein dazwischenliegender Wrapper-Div
+         (Trusted-Shops-interne, buildspezifisch gehashte CSS-Modul-
+         Klassen wie "_uuhri8"/"_1y0juye", nicht stabil über Updates des
+         Fremdskripts hinweg) tragen jeweils eigene position:fixed/
+         absolute mit eigenem rechts-Offset per externer CSS-Regel.
+         left/right nur auf Container ODER nur auf den Buttons reicht
+         daher nicht — es muss auf JEDEM positionierten Vorfahren
+         zwischen Button und <body> erzwungen werden. Statt die
+         Hash-Klassen hart zu codieren (koennten sich mit jedem
+         Trusted-Shops-Update aendern), daher generischer Ansatz:
+         von jedem Treffer aus die Elternkette hochlaufen und auf
+         jedem Element mit computed position fixed/absolute/sticky
+         ebenfalls left/right per Inline-!important erzwingen. -->
     <script type="text/javascript">
       (function () {
         var SELECTOR = '[id^="minimized-trustbadge-"], [id^="trustbadge-minimized-menu-button-"], [id^="trustbadge-container-"]';
@@ -200,16 +205,26 @@ The most common type with the largest selection, which is also the cheapest form
           el.style.setProperty('left', '20px', 'important');
           el.style.setProperty('right', 'auto', 'important');
         }
+        function forceLeftChain(el) {
+          var node = el;
+          while (node && node.nodeType === 1 && node !== document.body) {
+            var pos = window.getComputedStyle(node).position;
+            if (pos === 'fixed' || pos === 'absolute' || pos === 'sticky') {
+              forceLeft(node);
+            }
+            node = node.parentElement;
+          }
+        }
         function fixAll(root) {
-          if (root.matches && root.matches(SELECTOR)) forceLeft(root);
+          if (root.matches && root.matches(SELECTOR)) forceLeftChain(root);
           if (root.querySelectorAll) {
-            root.querySelectorAll(SELECTOR).forEach(forceLeft);
+            root.querySelectorAll(SELECTOR).forEach(forceLeftChain);
           }
         }
         var observer = new MutationObserver(function (mutations) {
           mutations.forEach(function (m) {
-            if (m.type === 'attributes' && m.target.matches && m.target.matches(SELECTOR)) {
-              forceLeft(m.target);
+            if (m.type === 'attributes') {
+              document.querySelectorAll(SELECTOR).forEach(forceLeftChain);
             }
             m.addedNodes && m.addedNodes.forEach(function (n) {
               if (n.nodeType === 1) fixAll(n);
