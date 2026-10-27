@@ -139,6 +139,7 @@ export const routePairs: [de: string, en: string][] = [
   ['/agb', '/en/terms'],
   ['/kontakt', '/en/contact'],
   ['/yoga', '/en/yoga'],
+  ['/news/charter-modelle-2027', '/en/news/charter-models-2027'],
 ]
 
 /** EN-Destination-Slug → interne ID */
