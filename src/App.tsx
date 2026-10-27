@@ -21,6 +21,7 @@ import AgbPage from './pages/AgbPage'
 import ToernsPage from './pages/ToernsPage'
 import ToernDetailPage from './pages/ToernDetailPage'
 import NewsPage from './pages/NewsPage'
+import NewsCharterModelle2027Page from './pages/NewsCharterModelle2027Page'
 import BuchenPage from './pages/BuchenPage'
 import PackageDetailPage from './pages/PackageDetailPage'
 import KabinenPage from './pages/KabinenPage'
@@ -82,6 +83,7 @@ function AnimatedRoutes() {
           <Route path="/toerns" element={<ToernsPage />} />
           <Route path="/toerns/:id" element={<ToernDetailPage />} />
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/charter-modelle-2027" element={<NewsCharterModelle2027Page />} />
           <Route path="/buchen" element={<BuchenPage />} />
           <Route path="/packages/:id" element={<PackageDetailPage />} />
           <Route path="/toernberichte" element={<ToernberichtePage />} />
@@ -125,6 +127,7 @@ function AnimatedRoutes() {
           <Route path={toHref("/en/yoga")} element={<YogaPage />} />
           <Route path={toHref("/en/trip-reports")} element={<ToernberichtePage />} />
           <Route path={toHref("/en/trip-reports/:slug")} element={<ToernberichtDetailPage />} />
+          <Route path={toHref("/en/news/charter-models-2027")} element={<NewsCharterModelle2027Page />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
         {!hideKontakt && <Kontakt showYoga={isYogaPage} />}

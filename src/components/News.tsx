@@ -6,20 +6,12 @@ import { Link } from '../router'
 
 const offersEn = [
   {
-    img: '/images/packages/dalmatien/gallery/Segeln in Dalmatien.png',
-    tag: 'Package',
-    title: 'SAILING IN CROATIA FROM SPLIT',
-    text: 'Sailing holiday in Croatia from Split or Trogir to the islands of Hvar, Vis, Korčula, Brač and Šolta.',
+    img: '/images/news/charter-modelle-2027.webp',
+    tag: 'New 2027',
+    title: 'SAILING ON YOUR SCHEDULE: NEW START DAYS FOR 2027',
+    text: 'Alongside the classic Saturday charter, now also Wednesday starts and extended 10-day cruises. More weekends at sea, less hustle in the marina.',
     cta: 'Learn more',
-    href: '/en/cruises/book-now/dalmatia-croatia',
-  },
-  {
-    img: '/images/news/Dalmatia_kat.webp',
-    tag: 'Family',
-    title: 'BENEFITS FOR FAMILIES IN CROATIA',
-    text: 'Our partner MySea enables all families to sail through the Croatian islands at a lower cost.',
-    cta: 'Learn more',
-    href: '/en/cruises/for-families',
+    href: '/en/news/charter-models-2027',
   },
   {
     img: '/images/news/beach-bikini-jump.jpg',
@@ -29,24 +21,24 @@ const offersEn = [
     cta: 'View offers',
     href: '/en/cabin-offers',
   },
+  {
+    img: '/images/news/Dalmatia_kat.webp',
+    tag: 'Family',
+    title: 'BENEFITS FOR FAMILIES IN CROATIA',
+    text: 'Our partner MySea enables all families to sail through the Croatian islands at a lower cost.',
+    cta: 'Learn more',
+    href: '/en/cruises/for-families',
+  },
 ]
 
 const offersDe = [
   {
-    img: '/images/packages/dalmatien/gallery/Segeln in Dalmatien.png',
-    tag: 'Package',
-    title: 'SEGELN IN DALMATIEN AB SPLIT',
-    text: 'Segelurlaub in Dalmatien ab Split oder Trogir zu den Inseln Hvar, Vis, Korčula, Brač und Šolta.',
-    cta: 'Mehr Infos',
-    href: '/packages/dalmatien',
-  },
-  {
-    img: '/images/news/Dalmatia_kat.webp',
-    tag: 'Familie',
-    title: 'VORTEILE FÜR FAMILIEN IN KROATIEN',
-    text: 'Unser Partner MySea ermöglicht allen Familien günstiger durch die Inselwelt Kroatiens zu segeln.',
+    img: '/images/news/charter-modelle-2027.webp',
+    tag: 'Neu 2027',
+    title: 'SEGELN, WANN ES IHNEN PASST: NEUE STARTTAGE 2027',
+    text: 'Neben dem klassischen Samstags-Charter jetzt auch Start am Mittwoch und verlängerte Törns mit 10 Tagen. Mehr Wochenende auf See, weniger Trubel in der Marina.',
     cta: 'Mehr erfahren',
-    href: '/toerns/familien',
+    href: '/news/charter-modelle-2027',
   },
   {
     img: '/images/news/beach-bikini-jump.jpg',
@@ -55,6 +47,14 @@ const offersDe = [
     text: 'Entdecken Sie exklusive Kabinenangebote für Ihren Traum-Yachturlaub – individuell und unvergesslich! Jetzt stöbern & buchen!',
     cta: 'Angebote ansehen',
     href: '/kabinen',
+  },
+  {
+    img: '/images/news/Dalmatia_kat.webp',
+    tag: 'Familie',
+    title: 'VORTEILE FÜR FAMILIEN IN KROATIEN',
+    text: 'Unser Partner MySea ermöglicht allen Familien günstiger durch die Inselwelt Kroatiens zu segeln.',
+    cta: 'Mehr erfahren',
+    href: '/toerns/familien',
   },
 ]
 
