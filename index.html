@@ -26,19 +26,6 @@
          alle Unterseiten zusaetzlich von scripts/prerender.cjs als
          statisches HTML eingefroren (public/<pfad>/index.html). -->
 
-    <!-- Trusted Shops rendert sein Badge trotz #MyCustomTrustbadge (unten,
-         links positioniert) mit eigenem CSS rechts unten, direkt über dem
-         WhatsApp-Button. data-testid ist der einzige stabile Haken (die
-         CSS-Klassen sind pro Build gehasht) — Position hier erzwingen,
-         Instanz-ID (nach dem Bindestrich) wechselt pro Seitenaufruf, daher
-         Attribut-Selektor mit Praefix statt exakter ID. -->
-    <style>
-      [id^="minimized-trustbadge-"],
-      [id^="trustbadge-minimized-menu-button-"] {
-        right: auto !important;
-        left: 20px !important;
-      }
-    </style>
   </head>
   <body>
     <div id="root"></div>
@@ -67,6 +54,47 @@
         _ts.src = 'https://widgets.trustedshops.com/js/' + _tsid + '.js';
         var __ts = document.getElementsByTagName('script')[0];
         __ts.parentNode.insertBefore(_ts, __ts);
+      })();
+    </script>
+
+    <!-- Trusted Shops rendert sein Badge trotz #MyCustomTrustbadge (oben,
+         links positioniert) rechts unten, direkt über dem WhatsApp-Button
+         — per DevTools geprüft: nicht per Stylesheet, sondern per
+         Inline-Style mit !important auf jeder einzelnen Eigenschaft. Eine
+         externe CSS-Regel kann Inline-!important grundsätzlich nicht
+         schlagen (das ist die höchste Prioritätsstufe der CSS-Kaskade) —
+         nur direktes Ueberschreiben per JS mit derselben Prioritaet
+         gewinnt. ID-Praefix statt exakter ID, da die Instanz-ID pro
+         Seitenaufruf wechselt. MutationObserver, weil das Widget erst
+         asynchron nachlaedt und seine Inline-Styles auch danach noch
+         neu setzen kann (z. B. responsive bei Resize). -->
+    <script type="text/javascript">
+      (function () {
+        var SELECTOR = '[id^="minimized-trustbadge-"], [id^="trustbadge-minimized-menu-button-"]';
+        function forceLeft(el) {
+          el.style.setProperty('left', '20px', 'important');
+          el.style.setProperty('right', 'auto', 'important');
+        }
+        function fixAll(root) {
+          if (root.matches && root.matches(SELECTOR)) forceLeft(root);
+          if (root.querySelectorAll) {
+            root.querySelectorAll(SELECTOR).forEach(forceLeft);
+          }
+        }
+        var observer = new MutationObserver(function (mutations) {
+          mutations.forEach(function (m) {
+            if (m.type === 'attributes' && m.target.matches && m.target.matches(SELECTOR)) {
+              forceLeft(m.target);
+            }
+            m.addedNodes && m.addedNodes.forEach(function (n) {
+              if (n.nodeType === 1) fixAll(n);
+            });
+          });
+        });
+        observer.observe(document.documentElement, {
+          childList: true, subtree: true, attributes: true, attributeFilter: ['style'],
+        });
+        fixAll(document.documentElement);
       })();
     </script>
 
