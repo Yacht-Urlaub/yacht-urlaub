@@ -67,10 +67,20 @@
          gewinnt. ID-Praefix statt exakter ID, da die Instanz-ID pro
          Seitenaufruf wechselt. MutationObserver, weil das Widget erst
          asynchron nachlaedt und seine Inline-Styles auch danach noch
-         neu setzen kann (z. B. responsive bei Resize). -->
+         neu setzen kann (z. B. responsive bei Resize).
+
+         Wichtig: Der eigentliche position:fixed-Layer ist
+         #trustbadge-container-<hash> (der GROSSELTERN-Container der
+         Buttons) — NICHT die Buttons selbst. Die Buttons sitzen
+         unpositioniert (position:static) in einem Flex-Wrapper, daher
+         hat left/right auf ihnen allein keine sichtbare Wirkung; die
+         rechts-Platzierung kommt von einer externen (nicht-inline)
+         CSS-Regel auf dem Container. Deshalb muss der Container
+         ebenfalls erfasst und per Inline-!important nach links
+         gezwungen werden. -->
     <script type="text/javascript">
       (function () {
-        var SELECTOR = '[id^="minimized-trustbadge-"], [id^="trustbadge-minimized-menu-button-"]';
+        var SELECTOR = '[id^="minimized-trustbadge-"], [id^="trustbadge-minimized-menu-button-"], [id^="trustbadge-container-"]';
         function forceLeft(el) {
           el.style.setProperty('left', '20px', 'important');
           el.style.setProperty('right', 'auto', 'important');
