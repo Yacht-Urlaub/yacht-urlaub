@@ -24,6 +24,20 @@
          SEO.tsx (react-helmet-async) gesetzt und fuer die Startseite sowie
          alle Unterseiten zusaetzlich von scripts/prerender.cjs als
          statisches HTML eingefroren (public/<pfad>/index.html). -->
+
+    <!-- Trusted Shops rendert sein Badge trotz #MyCustomTrustbadge (unten,
+         links positioniert) mit eigenem CSS rechts unten, direkt über dem
+         WhatsApp-Button. data-testid ist der einzige stabile Haken (die
+         CSS-Klassen sind pro Build gehasht) — Position hier erzwingen,
+         Instanz-ID (nach dem Bindestrich) wechselt pro Seitenaufruf, daher
+         Attribut-Selektor mit Praefix statt exakter ID. -->
+    <style>
+      [id^="minimized-trustbadge-"],
+      [id^="trustbadge-minimized-menu-button-"] {
+        right: auto !important;
+        left: 20px !important;
+      }
+    </style>
     <script type="text/javascript" charset="utf-8" async="" src="https://widgets.trustedshops.com/js/X8C58FF076608DD16CD36F796D67C0862.js"></script><script type="module" crossorigin="" src="/assets/index-D6cJ-aMJ.js"></script>
     <link rel="stylesheet" crossorigin="" href="/assets/index-CP-JBUAe.css">
   <meta name="description" content="Family sailing trips: little pirates get to stand at the helm and feel like real captains. Safety, fun and shared experiences at sea."><meta property="og:title" content="Cruise for families – holidays for the whole family | Yacht-Holiday"><meta property="og:description" content="Family sailing trips: little pirates get to stand at the helm and feel like real captains. Safety, fun and shared experiences at sea."><meta property="og:url" content="https://www.yacht-holiday.net/cruises/for-families"><meta property="og:image" content="https://www.yacht-holiday.net/images/Zielgruppen/familie.jpeg"><meta property="og:type" content="website"><meta property="og:locale" content="en_GB"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Cruise for families – holidays for the whole family | Yacht-Holiday"><meta name="twitter:description" content="Family sailing trips: little pirates get to stand at the helm and feel like real captains. Safety, fun and shared experiences at sea."><meta name="twitter:image" content="https://www.yacht-holiday.net/images/Zielgruppen/familie.jpeg"><link rel="canonical" href="https://www.yacht-holiday.net/cruises/for-families"><link rel="alternate" hreflang="de" href="https://www.yacht-urlaub.net/toerns/familien"><link rel="alternate" hreflang="en" href="https://www.yacht-holiday.net/cruises/for-families"><link rel="alternate" hreflang="x-default" href="https://www.yacht-urlaub.net/toerns/familien"></head>

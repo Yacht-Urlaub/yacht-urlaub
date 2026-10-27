@@ -24,6 +24,20 @@
          SEO.tsx (react-helmet-async) gesetzt und fuer die Startseite sowie
          alle Unterseiten zusaetzlich von scripts/prerender.cjs als
          statisches HTML eingefroren (public/<pfad>/index.html). -->
+
+    <!-- Trusted Shops rendert sein Badge trotz #MyCustomTrustbadge (unten,
+         links positioniert) mit eigenem CSS rechts unten, direkt über dem
+         WhatsApp-Button. data-testid ist der einzige stabile Haken (die
+         CSS-Klassen sind pro Build gehasht) — Position hier erzwingen,
+         Instanz-ID (nach dem Bindestrich) wechselt pro Seitenaufruf, daher
+         Attribut-Selektor mit Praefix statt exakter ID. -->
+    <style>
+      [id^="minimized-trustbadge-"],
+      [id^="trustbadge-minimized-menu-button-"] {
+        right: auto !important;
+        left: 20px !important;
+      }
+    </style>
     <script type="text/javascript" charset="utf-8" async="" src="https://widgets.trustedshops.com/js/X8C58FF076608DD16CD36F796D67C0862.js"></script><script type="module" crossorigin="" src="/assets/index-D6cJ-aMJ.js"></script>
     <link rel="stylesheet" crossorigin="" href="/assets/index-CP-JBUAe.css">
   <meta name="description" content="Segelurlaub Kroatien: Über 1.200 Inseln, türkisblaues Wasser und historische Städte. Törns in Dalmatien, Istrien und den Kornaten – für Einsteiger und Profis."><meta property="og:title" content="Segelurlaub Kroatien | Yacht-Urlaub"><meta property="og:description" content="Segelurlaub Kroatien: Über 1.200 Inseln, türkisblaues Wasser und historische Städte. Törns in Dalmatien, Istrien und den Kornaten – für Einsteiger und Profis."><meta property="og:url" content="https://www.yacht-urlaub.net/destinationen/kroatien"><meta property="og:image" content="https://www.yacht-urlaub.net/images/destinationen/kroatien/header_panorma_makarska.jpg"><meta property="og:type" content="website"><meta property="og:locale" content="de_DE"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Segelurlaub Kroatien | Yacht-Urlaub"><meta name="twitter:description" content="Segelurlaub Kroatien: Über 1.200 Inseln, türkisblaues Wasser und historische Städte. Törns in Dalmatien, Istrien und den Kornaten – für Einsteiger und Profis."><meta name="twitter:image" content="https://www.yacht-urlaub.net/images/destinationen/kroatien/header_panorma_makarska.jpg"><link rel="canonical" href="https://www.yacht-urlaub.net/destinationen/kroatien"><link rel="alternate" hreflang="de" href="https://www.yacht-urlaub.net/destinationen/kroatien"><link rel="alternate" hreflang="en" href="https://www.yacht-holiday.net/destinations/croatia"><link rel="alternate" hreflang="x-default" href="https://www.yacht-urlaub.net/destinationen/kroatien"></head>

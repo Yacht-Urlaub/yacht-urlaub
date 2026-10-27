@@ -25,6 +25,20 @@
          SEO.tsx (react-helmet-async) gesetzt und fuer die Startseite sowie
          alle Unterseiten zusaetzlich von scripts/prerender.cjs als
          statisches HTML eingefroren (public/<pfad>/index.html). -->
+
+    <!-- Trusted Shops rendert sein Badge trotz #MyCustomTrustbadge (unten,
+         links positioniert) mit eigenem CSS rechts unten, direkt über dem
+         WhatsApp-Button. data-testid ist der einzige stabile Haken (die
+         CSS-Klassen sind pro Build gehasht) — Position hier erzwingen,
+         Instanz-ID (nach dem Bindestrich) wechselt pro Seitenaufruf, daher
+         Attribut-Selektor mit Praefix statt exakter ID. -->
+    <style>
+      [id^="minimized-trustbadge-"],
+      [id^="trustbadge-minimized-menu-button-"] {
+        right: auto !important;
+        left: 20px !important;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
