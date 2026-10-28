@@ -11,8 +11,6 @@ type Offer = {
   text: string
   cta: string
   href: string
-  imgZoom?: string
-  imgPosition?: string
 }
 
 // Das Event "Sail into the Seasons – Vienna Edition" (siehe EventPopup.tsx)
@@ -39,9 +37,7 @@ const offersEn: Offer[] = [
 
 const offersDe: Offer[] = [
   {
-    img: '/images/events/sail-into-the-seasons-2026/event-hochformat.webp',
-    imgZoom: 'auto 270%',
-    imgPosition: 'center bottom',
+    img: '/images/events/sail-into-the-seasons-2026/praesentation.webp',
     tag: 'Event',
     title: 'SAIL INTO THE SEASONS – VIENNA EDITION',
     text: 'Segelfeeling mitten in Wien: 14. November 2026, Einlass 13:30 Uhr. Mit Tombola und Rum-Verkostung von Rumzentrum.at. Teilnahme gratis, Anmeldung bis 7.11.2026 erforderlich.',
@@ -110,16 +106,16 @@ export default function News() {
                 display: 'flex', flexDirection: 'column',
               }}
             >
-              <div
-                role="img" aria-label={o.title}
-                style={{
-                  position: 'relative', aspectRatio: '16/10', overflow: 'hidden',
-                  backgroundImage: `url(${o.img})`,
-                  backgroundSize: o.imgZoom ?? 'cover',
-                  backgroundPosition: o.imgPosition ?? 'center',
-                  backgroundRepeat: 'no-repeat',
-                }}
-              >
+              <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
+                <img
+                  src={o.img}
+                  alt={o.title}
+                  loading="lazy"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s' }}
+                  onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+                  onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                  onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }}
+                />
                 <span style={{
                   position: 'absolute', top: '1rem', left: '1rem',
                   background: 'var(--blue)', color: '#fff',
