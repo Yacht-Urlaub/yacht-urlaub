@@ -87,3 +87,47 @@ direkt im Chat mitteilen — ebenso den Netlify-Deploy-Preview-Link,
 sobald er verfügbar ist (Status-Check `netlify/.../deploy-preview` am
 PR, braucht nach dem Erstellen ein paar Minuten). Nichts als "live"
 bezeichnen, solange es nicht tatsächlich nach `main` gemergt ist.
+
+# Planyo: Änderungen nur mit größter Sorgfalt
+
+Planyo (Buchungssystem, Site-ID 46954) ist mächtig, aber komplex. Ein
+unbedachter API-Aufruf kann Kalender, Preise oder Buchungen für alle
+Packages lahmlegen. Das ist schon passiert: Ein „harmloser“ Test, der
+alle API-Methoden ohne Parameter aufrief, um die Rechte eines Keys zu
+ermitteln, hat per `set_weekly_schedule` den gesamten Sandbox-Kalender
+gesperrt. Deshalb gilt verbindlich:
+
+- **Erst Sandbox, dann Live.** Alles wird zuerst gegen
+  `sandbox.planyo.com` gebaut und getestet (Kopie der Echtdaten, wird
+  jede Nacht überschrieben). Live (`www.planyo.com`) erst, wenn es dort
+  nachweislich funktioniert und der User zugestimmt hat.
+- **Keine „ich probier mal“-Aufrufe.** Schreibende Methoden (`set_*`,
+  `add_*`, `modify_*`, `remove_*`, `delete_*`, `make_reservation`,
+  `do_reservation_action`, …) nur gezielt aufrufen: vorher die Doku der
+  Methode lesen (`https://www.planyo.com/api.php?topic=<methode>`),
+  alle Parameter vollständig und bewusst setzen, Wirkung vorher dem
+  User beschreiben. Nie Methoden „durchprobieren“, nie mit Platzhalter-
+  IDs wie 0 (manche Methoden gelten dann für die ganze Site).
+- **Rechte eines Keys nur mit lesenden Methoden prüfen**, oder den User
+  fragen.
+- **Kein `admin_mode=true`** bei Buchungen: Er umgeht Verfügbarkeit und
+  Regeln und erzeugt Konflikt-Buchungen.
+- **Testbuchungen** nur in der Sandbox, mit erkennbarem Testnamen,
+  `@example.com`-Adresse und `send_notifications=false`, danach sofort
+  stornieren (`do_reservation_action`, `action=Cancel`, `is_quiet=true`).
+- **Rate-Limits:** max. 30 Aufrufe in 3 s, 300/min, 3600/h, 12000/Tag
+  (sonst Fehlercode 5). Massenabfragen bündeln, z. B. `get_rental_price`
+  mit `start_time_2…_50`.
+- **Nach jedem schreibenden Test** lesend prüfen, dass nichts anderes
+  verändert wurde (Verfügbarkeit, Preise), und Auffälligkeiten sofort
+  melden statt weiter zu probieren.
+- **Keys nie ins Repo.** Sie gehören in Netlify-Umgebungsvariablen
+  (`PLANYO_API_KEY`, ggf. `PLANYO_SANDBOX=1`) bzw. in die Einstellungen
+  der Cloud-Umgebung.
+- Die öffentliche Netlify-Function `netlify/functions/planyo.mjs` lässt
+  nur die Methoden der Buchungsstrecke durch (Freigabeliste). Verwaltungs-
+  Methoden wie `list_reservations` würden Kundendaten öffentlich machen
+  und kommen dort nie hinein.
+
+Gesammeltes Wissen zur Planyo-Einrichtung (Ressourcen, Formularfelder,
+Preislogik, Trusted Shops, offene Punkte): `docs/planyo.md`.
