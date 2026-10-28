@@ -14,12 +14,15 @@
 //                    NICHT der MCP-Key — das sind zwei verschiedene Schlüssel.
 //   PLANYO_HASH_KEY  Nur nötig, wenn in Planyo "Hash-Key verwenden" an ist.
 //   PLANYO_SITE_ID   Vorgabe 46954.
+//   PLANYO_SANDBOX   "1" = gegen sandbox.planyo.com statt www.planyo.com.
+//                    Dann auch PLANYO_API_KEY (und ggf. PLANYO_SITE_ID) der
+//                    Sandbox eintragen. In Netlify am besten nur für den
+//                    Kontext "Deploy Previews" setzen, nie für Production.
 //
 // Doku der API-Methoden: https://www.planyo.com/api.php
 
 import { createHash } from 'node:crypto'
 
-const ENDPOINT = 'https://www.planyo.com/rest/'
 
 const DATUM = /^\d{4}-\d{2}-\d{2}( \d{2}:\d{2}(:\d{2})?)?$/
 const ZAHL = /^\d{1,10}$/
@@ -58,6 +61,10 @@ export default async (req) => {
     return json({ ok: false, error: 'Planyo ist nicht konfiguriert' }, 500)
   }
 
+  const endpoint = process.env.PLANYO_SANDBOX === '1'
+    ? 'https://sandbox.planyo.com/rest/'
+    : 'https://www.planyo.com/rest/'
+
   const url = new URL(req.url)
   const method = url.searchParams.get('method') || ''
   const erlaubt = METHODEN[method]
@@ -84,7 +91,7 @@ export default async (req) => {
 
   let antwort
   try {
-    const res = await fetch(ENDPOINT, {
+    const res = await fetch(endpoint, {
       method: 'POST',
       headers: { 'content-type': 'application/x-www-form-urlencoded' },
       body: params,
