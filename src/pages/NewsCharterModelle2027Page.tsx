@@ -45,6 +45,15 @@ const kl = {
     modelNote: 'Die neuen Starttage gelten für ausgewählte Yachten. Wir prüfen die Verfügbarkeit für Ihren Wunschtermin.',
     checkinLabel: 'Check-in', rueckkehrLabel: 'Rückkehr', neuTag: 'Neu',
     modelCta: 'Dieses Modell anfragen ↓',
+    midweekKicker: 'Nur beim Mittwochs-Wechsel',
+    midweekH2: 'Warum der Wechsel unter der Woche so entspannt ist',
+    midweekIntro: 'Beim Mittwochs-Charter und beim verlängerten Törn ab Samstag profitieren Sie zusätzlich von einem Wechseltag abseits des Wochenend-Trubels.',
+    midweek: [
+      { title: 'Entspanntes Einkaufen', text: 'Die meisten Crews kaufen samstags vormittags ein — bei einem Start unter der Woche sind die Supermärkte in der Marina deutlich leerer.' },
+      { title: 'Entspannter Check-in', text: 'Nicht alle Yachten wechseln gleichzeitig: weniger Gedränge bei der Übernahme, mehr Zeit für Einweisung und Übergabe.' },
+      { title: 'Antizyklisch unterwegs', text: 'Während die meisten Crews noch zu den beliebten Buchten unterwegs sind, haben Sie die Hotspots oft fast für sich allein.' },
+      { title: 'Keine Wartezeit an der Tankstelle', text: 'Am Ende des Törns reihen Sie sich nicht in die Warteschlange der Samstags-Rückkehrer beim Auftanken ein.' },
+    ],
     whyKicker: 'Ihr Vorteil',
     whyH2: 'Warum über Yacht-Urlaub buchen?',
     whyIntro: 'Wir kennen die Flotten und wissen, welche Yacht an welchem Tag starten kann. Sie sagen uns Ihre Wunschtermine, wir finden die passende Kombination.',
@@ -102,6 +111,15 @@ const kl = {
     modelNote: 'The new start days apply to selected yachts. We check availability for your preferred dates.',
     checkinLabel: 'Check-in', rueckkehrLabel: 'Return', neuTag: 'New',
     modelCta: 'Request this model ↓',
+    midweekKicker: 'Only with the midweek changeover',
+    midweekH2: 'Why a midweek changeover is so relaxed',
+    midweekIntro: 'With the Wednesday charter and the extended cruise from Saturday, you also benefit from a changeover day away from the weekend rush.',
+    midweek: [
+      { title: 'Relaxed shopping', text: 'Most crews stock up on Saturday mornings — starting mid-week means noticeably quieter supermarkets in the marina.' },
+      { title: 'Relaxed check-in', text: 'Not every yacht changes over at the same time: less crowding at handover, more time for the briefing.' },
+      { title: 'Travelling against the crowd', text: 'While most crews are still heading to the popular bays, you often have the hotspots almost to yourself.' },
+      { title: 'No queue at the fuel dock', text: "At the end of your cruise, you won't be stuck in the Saturday-return queue to refuel." },
+    ],
     whyKicker: 'Your benefit',
     whyH2: 'Why book through Yacht-Urlaub?',
     whyIntro: 'We know the fleets and which yacht can start on which day. Tell us your preferred dates and we will find the right combination.',
@@ -269,7 +287,33 @@ export default function NewsCharterModelle2027Page() {
               </motion.article>
             ))}
           </div>
-          <p style={{ fontSize: '0.8rem', color: 'var(--gray)', marginTop: '1.75rem' }}>{s.modelNote}</p>
+          <p style={{ fontSize: '0.8rem', color: 'var(--gray)', marginTop: '1.75rem', marginBottom: '2.5rem' }}>{s.modelNote}</p>
+
+          {/* Zusaetzliche Vorteile des Mittwoch-Wechsels */}
+          <div style={{ background: '#fff', border: '1px solid #eee', borderRadius: '4px', boxShadow: '0 2px 16px rgba(0,0,0,0.06)', padding: '1.75rem 2rem' }}>
+            <p style={{ color: 'var(--blue)', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 600, marginBottom: '0.4rem' }}>
+              {s.midweekKicker}
+            </p>
+            <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.2rem', color: 'var(--navy)', lineHeight: 1.3, marginBottom: '0.5rem', fontWeight: 700 }}>
+              {s.midweekH2}
+            </h3>
+            <p style={{ maxWidth: '64ch', color: 'var(--text)', fontSize: '0.92rem', marginBottom: '1.5rem' }}>{s.midweekIntro}</p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1.25rem 2rem' }} className="charter-midweek-grid">
+              {s.midweek.map(w => (
+                <div key={w.title} style={{ display: 'flex', gap: '0.9rem', alignItems: 'flex-start' }}>
+                  <span style={{ width: '32px', height: '32px', flexShrink: 0, borderRadius: '50%', background: 'var(--blue-pale, #e0f2fe)', color: 'var(--blue)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M20 6 9 17l-5-5" />
+                    </svg>
+                  </span>
+                  <div>
+                    <b style={{ color: 'var(--navy)', fontSize: '0.95rem' }}>{w.title}</b>
+                    <p style={{ fontSize: '0.88rem', color: 'var(--gray)', lineHeight: 1.6, marginTop: '0.2rem' }}>{w.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -331,6 +375,7 @@ export default function NewsCharterModelle2027Page() {
         @media (max-width: 640px) {
           .charter-models-grid { grid-template-columns: 1fr !important; }
           .charter-why-grid { grid-template-columns: 1fr !important; }
+          .charter-midweek-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </main>
