@@ -4,10 +4,21 @@ import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import { Link } from '../router'
 
+type Offer = {
+  img: string
+  tag: string
+  title: string
+  text: string
+  cta: string
+  href: string
+  imgZoom?: string
+  imgPosition?: string
+}
+
 // Das Event "Sail into the Seasons – Vienna Edition" (siehe EventPopup.tsx)
 // richtet sich nur an den deutschsprachigen Markt (Event in Wien) — deshalb
 // nur in offersDe, kein Pendant in offersEn.
-const offersEn = [
+const offersEn: Offer[] = [
   {
     img: '/images/news/charter-modelle-2027.webp',
     tag: 'New 2027',
@@ -26,7 +37,7 @@ const offersEn = [
   },
 ]
 
-const offersDe = [
+const offersDe: Offer[] = [
   {
     img: '/images/events/sail-into-the-seasons-2026/event-hochformat.webp',
     imgZoom: 'auto 270%',
