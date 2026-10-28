@@ -4,7 +4,19 @@ import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import { Link } from '../router'
 
-const offersEn = [
+type Offer = {
+  img: string
+  tag: string
+  title: string
+  text: string
+  cta: string
+  href: string
+}
+
+// Das Event "Sail into the Seasons – Vienna Edition" (siehe EventPopup.tsx)
+// richtet sich nur an den deutschsprachigen Markt (Event in Wien) — deshalb
+// nur in offersDe, kein Pendant in offersEn.
+const offersEn: Offer[] = [
   {
     img: '/images/news/charter-modelle-2027.webp',
     tag: 'New 2027',
@@ -21,17 +33,17 @@ const offersEn = [
     cta: 'View offers',
     href: '/en/cabin-offers',
   },
-  {
-    img: '/images/news/Dalmatia_kat.webp',
-    tag: 'Family',
-    title: 'BENEFITS FOR FAMILIES IN CROATIA',
-    text: 'Our partner MySea enables all families to sail through the Croatian islands at a lower cost.',
-    cta: 'Learn more',
-    href: '/en/cruises/for-families',
-  },
 ]
 
-const offersDe = [
+const offersDe: Offer[] = [
+  {
+    img: '/images/events/sail-into-the-seasons-2026/praesentation.webp',
+    tag: 'Event',
+    title: 'SAIL INTO THE SEASONS – VIENNA EDITION',
+    text: 'Segelfeeling mitten in Wien: 14. November 2026, Einlass 13:30 Uhr. Mit Tombola und Rum-Verkostung von Rumzentrum.at. Teilnahme gratis, Anmeldung bis 7.11.2026 erforderlich.',
+    cta: 'Jetzt anmelden',
+    href: 'https://form.jotform.com/262641756081055',
+  },
   {
     img: '/images/news/charter-modelle-2027.webp',
     tag: 'Neu 2027',
@@ -47,14 +59,6 @@ const offersDe = [
     text: 'Entdecken Sie exklusive Kabinenangebote für Ihren Traum-Yachturlaub – individuell und unvergesslich! Jetzt stöbern & buchen!',
     cta: 'Angebote ansehen',
     href: '/kabinen',
-  },
-  {
-    img: '/images/news/Dalmatia_kat.webp',
-    tag: 'Familie',
-    title: 'VORTEILE FÜR FAMILIEN IN KROATIEN',
-    text: 'Unser Partner MySea ermöglicht allen Familien günstiger durch die Inselwelt Kroatiens zu segeln.',
-    cta: 'Mehr erfahren',
-    href: '/toerns/familien',
   },
 ]
 
@@ -83,8 +87,10 @@ export default function News() {
           <Link to="/news" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{lang === 'en' ? 'All offers →' : 'Alle Angebote →'}</Link>
         </motion.div>
 
-        <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
-          {offers.map((o, i) => (
+        <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(offers.length, 3)}, 1fr)`, gap: '2rem' }}>
+          {offers.map((o, i) => {
+            const external = o.href.startsWith('http')
+            return (
             <motion.article
               key={o.title}
               initial={{ opacity: 0, y: 30 }}
@@ -124,10 +130,14 @@ export default function News() {
                   {o.title}
                 </h3>
                 <p style={{ color: 'var(--gray)', fontSize: '0.85rem', lineHeight: 1.75, flex: 1, marginBottom: '1.25rem' }}>{o.text}</p>
-                <Link to={o.href} style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{o.cta} →</Link>
+                {external ? (
+                  <a href={o.href} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{o.cta} →</a>
+                ) : (
+                  <Link to={o.href} style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{o.cta} →</Link>
+                )}
               </div>
             </motion.article>
-          ))}
+          )})}
         </div>
       </div>
 
