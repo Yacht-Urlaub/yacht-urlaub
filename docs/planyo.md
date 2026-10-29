@@ -43,6 +43,28 @@ Dauer 7/10/14 Tage (`rental_time_value` 168/240/336), Übernachtungs-
 Ressource, Anzahlung 25 %, Grundpreis 690 EUR p.P. (wird von Saisonregeln
 überschrieben).
 
+## Preis-Manager per API
+
+Eine Regel hat zwei Teile: die **Bedingung** (site-weit, z. B.
+„Comfort-Package = yes“;  mit ,
+) und den **Betrag je Package**
+(, ).
+
+ nimmt  und
+ (z. B. , , ).
+Preistypen: 1 = p.P. einmalig, 4 = %, 5 = Sperre mit Meldung, 8 = pro
+Woche, 9 = pro Woche und Person, 11 = Info. Die Doku sagt nicht, ob nicht
+mitgeschickte Regeln erhalten bleiben. Deshalb immer **alle** bestehenden
+Regeln des Packages mit aktuellem Wert mitschicken und nur die Zielregeln
+ändern, vorher/nachher jede Regel aller Packages vergleichen (so am
+29.10.2026 gemacht, ohne Nebenwirkungen).
+
+Formulare ließen sich theoretisch mit  () und
+ ändern. Achtung: Das macht aus dem globalen
+Formular ein eigenes Formular für dieses Package. Mit dem eigenen
+Buchungsmodul der Website wird das Planyo-Formular aber nicht mehr
+gebraucht.
+
 ## Saisonen und Starttage (Site-weit, `get_resource_seasons`)
 
 `start_weekday_flags`: Bitmaske So=1, Mo=2, Di=4, Mi=8, Do=16, Fr=32,
@@ -75,8 +97,13 @@ Als `rental_prop_<name>` an `get_rental_price` / `make_reservation`:
 
 Checkboxen wirken nur mit `yes` (oder `on`), **nicht** mit `true` oder `1`.
 
-Comfort-Package und Spritpauschale sollen künftig zusammengelegt werden
-(Prototyp: 100 EUR p.P. und Woche), in Planyo noch zwei Felder.
+Comfort-Package und Spritpauschale werden zusammengelegt: Comfort-Package
+120 EUR p.P. und Woche inkl. Sprit, Spritpauschale als Sperre
+(„NICHT VERFÜGBAR“, Preistyp 5). Istrien war live schon so eingestellt.
+Am 29.10.2026 in der Sandbox für Dalmatien, Kornaten, Griechenland,
+Kabinen-Angebot, Karibik-BVI und Karibik-Grenadinen umgestellt und
+geprüft. **Live noch nicht umgestellt.** Achtung Karibik-BVI: Comfort
+war dort vorher einmalig 150 EUR p.P., Sprit 50/Woche minus einmalig 20.
 
 Standardfelder, Pflicht: `first_name`, `last_name`, `email`, `address`,
 `city`, `zip`, `country` (ISO-2), Telefon (`phone_prefix`,
