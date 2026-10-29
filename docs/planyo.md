@@ -1,6 +1,6 @@
 # Planyo-Anbindung: Wissensstand
 
-Stand: 28.10.2026. Ermittelt in der Sandbox (`sandbox.planyo.com`, Kopie
+Stand: 29.10.2026. Ermittelt in der Sandbox (`sandbox.planyo.com`, Kopie
 der Echtdaten). Sicherheitsregeln für API-Aufrufe stehen in `CLAUDE.md`.
 
 ## Ziel
@@ -94,22 +94,59 @@ Buchung mit `set_reservation_products` (`product_<id>=<anzahl>`,
 
 ## Verfügbarkeit
 
-- `is_resource_available` meldete freie Plätze, obwohl `make_reservation`
-  wegen einer Sperre ablehnte. Für die echte Buchbarkeit vor dem Absenden
-  `can_make_reservation` verwenden.
-- `get_resource_usage` braucht andere Parameter als vermutet,
-  `get_resource_usage_for_month` (`year`, `month`) funktioniert.
+- Vor dem Absenden `can_make_reservation` aufrufen. Liefert verständliche
+  Gründe auf DE/EN (`language=EN`), z. B. falscher Starttag („kann nur
+  beginnen am: Mittwoch, Samstag“), zu viele Personen („Nur 13 Einheiten“),
+  Mindestdauer, Vergangenheit, max. 548 Tage im Voraus.
+- `is_resource_available` liefert `quantity_available` (freie Plätze),
+  übersah am 28.10. aber eine (von uns verursachte) Sperre. Für die
+  Anzeige im Kalender ok, für die Entscheidung „buchbar“ nicht.
+- `get_resource_usage_for_month` (`year`, `month`) funktioniert,
+  `get_resource_usage` braucht andere Parameter.
 
-## Buchung
+## Buchung (am 29.10.2026 komplett in der Sandbox getestet)
 
-- `make_reservation` mit allen Pflichtfeldern, `send_notifications`
-  bewusst setzen, `refcode` für die Herkunft (z. B. `website-dalmatien`).
-  Antwort enthält `reservation_id`, `total_price` und in `user_text` die
-  Planyo-Bestätigungsseite als HTML.
-- Status (Bitmaske, beobachtet): 1 = reserviert, +128 = Konflikt,
-  +8 = vom Admin storniert. Bedeutung von 4 noch offen.
-- `get_reservation_data` liefert u. a. `ppp_rs` (Token, vermutlich für den
-  Zahlungslink, noch zu klären).
+1. `make_reservation` ohne `admin_mode`, mit allen Pflichtfeldern,
+   `rental_prop_agreement=yes`, `rental_prop_captcha=<beliebig>`
+   (Planyo prüft den Wert per API nicht), `send_notifications` bewusst
+   setzen, `refcode` für die Herkunft. Antwort: `reservation_id`,
+   `status`, `total_price` (stimmte exakt mit unserer Berechnung) und in
+   `user_text` die komplette Planyo-Bestätigungsseite als HTML.
+2. Zusatzprodukte: `set_reservation_products` mit `product_<id>=<n>`,
+   `recalculate_price=true`. Antwort `new_price`.
+3. Freie Plätze sinken sofort (13 → 7 bei 6 Personen).
+4. `get_reservation_data`: Status, Preis, Produkte, `ppp_rs`-Token.
+5. Links und Beträge über `process_template` mit `reservation_id`
+   (Tags aus https://www.planyo.com/faq.php?q=204):
+   - `$(online_payment_amount)` Anzahlung (25 %)
+   - `$(payment_form_url:$(online_payment_amount))` Link zur Planyo-
+     Zahlungsseite für die Anzahlung, `$(payment_form_url_outstanding)`
+     für den Restbetrag
+   - `$(details_url)`, `$(cancel_url)`, `$(amount_outstanding)`
+6. Bestätigen/Stornieren: `do_reservation_action` mit `action=Confirm`
+   bzw. `Cancel`, `is_quiet=true` unterdrückt Mails.
+
+`get_reservation_payment_amount` meldete „Reservation not found“,
+`list_reservation_payments` funktioniert.
+
+Status-Bits (`$(status_code)`, prüfen mit `$(has_status:x)`):
+1 = reserviert, 2 = (gesetzt mit der Bestätigung), 4 = bestätigt,
+8 = vom Admin storniert, 128 = Konflikt. Beobachtet: neu 1, bestätigt 7,
+storniert 11.
+
+## Bezahlung
+
+Stripe Checkout über Planyo (`payment-stripe-checkout-init.php`).
+Planyo schlägt 2 % für Online-Zahlung auf (`online_payment_surcharge`).
+Nach der Zahlung führt Stripe auf eine Planyo-Seite zurück
+(`success_url` ist signiert, nicht änderbar). Alternativ Überweisung
+nach Rechnung.
+
+## Gutscheine
+
+`rental_prop_Voucher=<code>` in `get_rental_price` prüft den Code sofort
+(ungültig: Fehlercode 3 mit Klartextmeldung). Gutscheine verwalten:
+`list_vouchers`.
 
 ## Trusted Shops
 
@@ -128,14 +165,17 @@ oder 4 einen versteckten Block für die Bewertungseinladung:
 </div>
 ```
 
-Für die neue Bestätigungsseite übernehmen. Offene Punkte: Das Trustbadge-
-Skript ist in der SPA schon geladen und muss den Block nach der Buchung
-neu erkennen. Das Reiseende muss im Format `YYYY-MM-DD` übergeben werden,
-Planyos `$(end_date)` liefert vermutlich `TT.MM.JJJJ`.
+Für die neue Bestätigungsseite übernehmen. Im Test bestätigt:
+
+- Planyo füllt `EstDeliveryDate` mit `12.06.2027`. Trusted Shops erwartet
+  `YYYY-MM-DD`; auf unserer Seite korrekt formatieren.
+- `OrderAmount` ist der Preis vor Zusatzprodukten (5590 statt 5840).
+  Auf unserer Seite den Endpreis nach `set_reservation_products` nehmen.
+- Die Bedingung „Status genau 1 oder 4“ trifft nur direkt nach der
+  Buchung zu (Status 1); bestätigte Buchungen haben 7.
+- Das Trustbadge-Skript ist in der SPA schon geladen und muss den Block
+  nach der Buchung neu erkennen (in der Umsetzung lösen).
 
 ## Offen
 
-- Kompletter Buchungstest in der Sandbox (Buchung, Produkte, Zahlungslink,
-  Status nach Bestätigung, Storno).
-- Zahlungsanbieter und Zahlungslink für die Anzahlung.
 - Webhooks (`add_notification_callback`) für Mail ans Büro und Tracking.
