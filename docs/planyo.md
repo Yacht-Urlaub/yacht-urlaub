@@ -46,12 +46,12 @@ Ressource, Anzahlung 25 %, Grundpreis 690 EUR p.P. (wird von Saisonregeln
 ## Preis-Manager per API
 
 Eine Regel hat zwei Teile: die **Bedingung** (site-weit, z. B.
-„Comfort-Package = yes“;  mit ,
-) und den **Betrag je Package**
-(, ).
+„Comfort-Package = yes“; `get_pricing_manager_rules` mit `site_id`,
+`add_/remove_pricing_manager_rule`) und den **Betrag je Package**
+(`get_resource_pricing`, `set_resource_pricing`).
 
- nimmt  und
- (z. B. , , ).
+`set_resource_pricing` nimmt `rule_price_type_<id>` und
+`rule_price_value_<id>` (z. B. `+120`, `-15`, `NICHT VERFÜGBAR`).
 Preistypen: 1 = p.P. einmalig, 4 = %, 5 = Sperre mit Meldung, 8 = pro
 Woche, 9 = pro Woche und Person, 11 = Info. Die Doku sagt nicht, ob nicht
 mitgeschickte Regeln erhalten bleiben. Deshalb immer **alle** bestehenden
@@ -59,8 +59,8 @@ Regeln des Packages mit aktuellem Wert mitschicken und nur die Zielregeln
 ändern, vorher/nachher jede Regel aller Packages vergleichen (so am
 29.10.2026 gemacht, ohne Nebenwirkungen).
 
-Formulare ließen sich theoretisch mit  () und
- ändern. Achtung: Das macht aus dem globalen
+Formulare ließen sich theoretisch mit `get_form_items` (`format=csv`) und
+`set_form_items_from_csv` ändern. Achtung: Das macht aus dem globalen
 Formular ein eigenes Formular für dieses Package. Mit dem eigenen
 Buchungsmodul der Website wird das Planyo-Formular aber nicht mehr
 gebraucht.
