@@ -7,10 +7,12 @@ import { sendForm } from '../lib/sendForm'
 import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
 // Optionen 1:1 vom Original-Urlaubsplaner (yacht-urlaub.net/urlaubsplaner)
+// imgInnen: Innenansicht, blendet beim Hover/Fokus über die Außenansicht
+// (siehe .yacht-card-Regeln im <style>-Block am Ende der Datei)
 const yachtTypes = [
-  { id: 'Gemütliche Segelyacht', label: 'Gemütliche Segelyacht', img: '/images/yachten/Header_Yacht.jpg' },
-  { id: 'Geräumiger Katamaran', label: 'Geräumiger Katamaran', img: '/images/yachten/Lagoon 450-4.jpg' },
-  { id: 'Luxuriöse Motoryacht', label: 'Luxuriöse Motoryacht', img: '/images/luxury/nikita-17.png' },
+  { id: 'Gemütliche Segelyacht', label: 'Gemütliche Segelyacht', img: '/images/urlaubsplaner/segelyacht-aussen.jpg', imgInnen: '/images/urlaubsplaner/segelyacht-innen.jpg' },
+  { id: 'Geräumiger Katamaran', label: 'Geräumiger Katamaran', img: '/images/urlaubsplaner/katamaran-aussen.jpg', imgInnen: '/images/urlaubsplaner/katamaran-innen.jpg' },
+  { id: 'Luxuriöse Motoryacht', label: 'Luxuriöse Motoryacht', img: '/images/urlaubsplaner/motoryacht-aussen.jpg', imgInnen: '/images/urlaubsplaner/motoryacht-innen.jpg' },
 ]
 
 const reviere = [
@@ -284,6 +286,8 @@ export default function UrlaubsplanerPage() {
                   {yachtTypes.map(y => (
                     <button
                       key={y.id}
+                      className="yacht-card"
+                      aria-pressed={form.yacht === y.id}
                       onClick={() => update('yacht', y.id)}
                       style={{
                         position: 'relative', overflow: 'hidden', border: '3px solid',
@@ -297,6 +301,9 @@ export default function UrlaubsplanerPage() {
                       <img src={y.img} alt={y.label} loading="lazy"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                         onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }} />
+                      <img src={y.imgInnen} alt="" aria-hidden="true" loading="lazy" className="yacht-card-innen"
+                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
+                        onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
                       <div style={{
                         position: 'absolute', inset: 0,
                         background: form.yacht === y.id
@@ -582,11 +589,16 @@ export default function UrlaubsplanerPage() {
       )}
 
       <style>{`
+        .yacht-card-innen { opacity: 0; transition: opacity 0.35s ease; }
+        .yacht-card:hover .yacht-card-innen, .yacht-card:focus-visible .yacht-card-innen { opacity: 1; }
+        .yacht-card:focus-visible { outline: 3px solid var(--blue-light); outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) { .yacht-card-innen { transition: none; } }
         @media (max-width: 768px) {
           .planer-dest-grid { grid-template-columns: 1fr !important; }
           .planer-revier-grid { grid-template-columns: 1fr 1fr !important; }
           .planer-connector { width: 20px !important; }
           .planer-step-label { display: none !important; }
+          .yacht-card-innen { display: none !important; }
         }
         @media (max-width: 480px) {
           .planer-revier-grid { grid-template-columns: 1fr !important; }
