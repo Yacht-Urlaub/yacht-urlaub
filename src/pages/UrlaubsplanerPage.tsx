@@ -76,7 +76,6 @@ const pl = {
     sub: 'In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir! Alles natürlich unverbindlich und kostenlos!',
     steps: ['Yachtauswahl', 'Revierauswahl', 'Terminplanung', 'Crew & Kommunikation', 'Kontaktperson'],
     s1h: 'Yachtauswahl', s1sub: "Zuerst einmal zu Ihrem Schiffstyp: Was darf's denn sein?",
-    s1hint: 'Vorschau: Mit der Maus über eine Karte fahren, um die Innenansicht zu sehen.',
     yachts: ['Gemütliche Segelyacht', 'Geräumiger Katamaran', 'Luxuriöse Motoryacht'],
     s2h: 'Wo wollen Sie den Urlaub verbringen?',
     s2sub: 'Haben Sie und Ihre Crew sich schon Gedanken über eine Urlaubsdestination gemacht? Es gibt viele schöne Yacht-Urlaubsreviere auf dieser Welt. Wenn Ihre Wunschdestination nicht dabei ist, einfach Ihre Gedanken unter Sonstiges eintragen.',
@@ -114,7 +113,6 @@ const pl = {
     sub: 'In 5 short steps we clarify the most important questions about your holiday. Then you can sit back and relax – we take care of the rest of the organisation! All non-binding and free of charge!',
     steps: ['Choice of yacht', 'Sailing area', 'Schedule', 'Crew & communication', 'Contact person'],
     s1h: 'Choice of yacht', s1sub: 'First of all, your type of boat: what shall it be?',
-    s1hint: 'Preview: hover over a card with your mouse to see the interior view.',
     yachts: ['Comfortable sailing yacht', 'Spacious catamaran', 'Luxurious motor yacht'],
     s2h: 'Where do you want to spend your holiday?',
     s2sub: 'Have you and your crew already thought about a destination? There are many beautiful yacht sailing areas in this world. If your dream destination is not listed, just enter your thoughts under Other.',
@@ -322,9 +320,6 @@ export default function UrlaubsplanerPage() {
                     </button>
                   ))}
                 </div>
-                <p style={{ margin: '1.5rem 0 0', fontSize: '0.8rem', color: 'var(--gray)', textAlign: 'center' }}>
-                  {s.s1hint}
-                </p>
               </motion.div>
             )}
 
@@ -603,6 +598,7 @@ export default function UrlaubsplanerPage() {
           .planer-revier-grid { grid-template-columns: 1fr 1fr !important; }
           .planer-connector { width: 20px !important; }
           .planer-step-label { display: none !important; }
+          .yacht-card-innen { display: none !important; }
         }
         @media (max-width: 480px) {
           .planer-revier-grid { grid-template-columns: 1fr !important; }
