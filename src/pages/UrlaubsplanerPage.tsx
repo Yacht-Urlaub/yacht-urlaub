@@ -10,9 +10,9 @@ import RecaptchaHinweis from '../components/RecaptchaHinweis'
 // imgInnen: Innenansicht, blendet beim Hover/Fokus über die Außenansicht
 // (siehe .yacht-card-Regeln im <style>-Block am Ende der Datei)
 const yachtTypes = [
-  { id: 'Gemütliche Segelyacht', label: 'Gemütliche Segelyacht', img: '/images/yachten/Header_Yacht.jpg', imgInnen: '/images/yachten/bavaria-sy-cruiserline-c46-slider1-c46-interior-01.jpg' },
-  { id: 'Geräumiger Katamaran', label: 'Geräumiger Katamaran', img: '/images/yachten/Kat gallery/Lagoon 52.jpg', imgInnen: '/images/yachten/Kat gallery/Lagoon 400 S2 3.png' },
-  { id: 'Luxuriöse Motoryacht', label: 'Luxuriöse Motoryacht', img: '/images/luxury/nikita-17.png', imgInnen: '/images/luxury/nikita_int-6.png' },
+  { id: 'Gemütliche Segelyacht', label: 'Gemütliche Segelyacht', img: '/images/urlaubsplaner/segelyacht-aussen.jpg', imgInnen: '/images/urlaubsplaner/segelyacht-innen.jpg' },
+  { id: 'Geräumiger Katamaran', label: 'Geräumiger Katamaran', img: '/images/urlaubsplaner/katamaran-aussen.jpg', imgInnen: '/images/urlaubsplaner/katamaran-innen.jpg' },
+  { id: 'Luxuriöse Motoryacht', label: 'Luxuriöse Motoryacht', img: '/images/urlaubsplaner/motoryacht-aussen.jpg', imgInnen: '/images/urlaubsplaner/motoryacht-innen.jpg' },
 ]
 
 const reviere = [
