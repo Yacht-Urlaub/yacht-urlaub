@@ -50,7 +50,7 @@ const angebote = [
 const reiseOptionen = [
   'Koh Chang Thailand - 09.-20.12.2026',
   'Phuket Thailand - 02.-13.02.2027',
-  'Dubrovnik Kroatien - 12.-19.06.2027',
+  'Dubrovnik Kroatien - 05.-12.06.2027',
   'Dalmatien ab Split - Termin Anfrage',
   "WhatsApp Community Törn in Thailand Februar'27",
 ]
@@ -105,7 +105,7 @@ const angeboteEn = [
 const reiseOptionenEn = [
   'Koh Chang Thailand - 09-20 Dec 2026',
   'Phuket Thailand - 02-13 Feb 2027',
-  'Dubrovnik Croatia - 12-19 Jun 2027',
+  'Dubrovnik Croatia - 5-12 Jun 2027',
   'Dalmatia from Split - date on request',
   'Community Trip for Thailand in February 2027',
 ]
@@ -229,7 +229,7 @@ export default function KabinenPage() {
       {/* Dubrovnik Kojen-Angebot (Juni 2027) */}
       <section id="dubrovnik" style={{ background: '#fff', padding: '0', scrollMarginTop: '96px' }}>
         <div className="container">
-          <DubrovnikOffer onRequest={() => set('reise', lang === 'en' ? 'Dubrovnik Croatia - 12-19 Jun 2027' : 'Dubrovnik Kroatien - 12.-19.06.2027')} />
+          <DubrovnikOffer onRequest={() => set('reise', lang === 'en' ? 'Dubrovnik Croatia - 5-12 Jun 2027' : 'Dubrovnik Kroatien - 05.-12.06.2027')} />
         </div>
       </section>
 
