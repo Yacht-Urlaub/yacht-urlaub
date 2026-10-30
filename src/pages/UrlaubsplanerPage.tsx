@@ -7,10 +7,12 @@ import { sendForm } from '../lib/sendForm'
 import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
 // Optionen 1:1 vom Original-Urlaubsplaner (yacht-urlaub.net/urlaubsplaner)
+// imgInnen: Innenansicht, blendet beim Hover/Fokus über die Außenansicht
+// (siehe .yacht-card-Regeln im <style>-Block am Ende der Datei)
 const yachtTypes = [
-  { id: 'Gemütliche Segelyacht', label: 'Gemütliche Segelyacht', img: '/images/yachten/Header_Yacht.jpg' },
-  { id: 'Geräumiger Katamaran', label: 'Geräumiger Katamaran', img: '/images/yachten/Lagoon 450-4.jpg' },
-  { id: 'Luxuriöse Motoryacht', label: 'Luxuriöse Motoryacht', img: '/images/luxury/nikita-17.png' },
+  { id: 'Gemütliche Segelyacht', label: 'Gemütliche Segelyacht', img: '/images/yachten/Header_Yacht.jpg', imgInnen: '/images/yachten/bavaria-sy-cruiserline-c46-slider1-c46-interior-01.jpg' },
+  { id: 'Geräumiger Katamaran', label: 'Geräumiger Katamaran', img: '/images/yachten/Kat gallery/Lagoon 52.jpg', imgInnen: '/images/yachten/Kat gallery/Lagoon 400 S2 3.png' },
+  { id: 'Luxuriöse Motoryacht', label: 'Luxuriöse Motoryacht', img: '/images/luxury/nikita-17.png', imgInnen: '/images/luxury/nikita_int-6.png' },
 ]
 
 const reviere = [
@@ -74,6 +76,7 @@ const pl = {
     sub: 'In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir! Alles natürlich unverbindlich und kostenlos!',
     steps: ['Yachtauswahl', 'Revierauswahl', 'Terminplanung', 'Crew & Kommunikation', 'Kontaktperson'],
     s1h: 'Yachtauswahl', s1sub: "Zuerst einmal zu Ihrem Schiffstyp: Was darf's denn sein?",
+    s1hint: 'Vorschau: Mit der Maus über eine Karte fahren, um die Innenansicht zu sehen.',
     yachts: ['Gemütliche Segelyacht', 'Geräumiger Katamaran', 'Luxuriöse Motoryacht'],
     s2h: 'Wo wollen Sie den Urlaub verbringen?',
     s2sub: 'Haben Sie und Ihre Crew sich schon Gedanken über eine Urlaubsdestination gemacht? Es gibt viele schöne Yacht-Urlaubsreviere auf dieser Welt. Wenn Ihre Wunschdestination nicht dabei ist, einfach Ihre Gedanken unter Sonstiges eintragen.',
@@ -111,6 +114,7 @@ const pl = {
     sub: 'In 5 short steps we clarify the most important questions about your holiday. Then you can sit back and relax – we take care of the rest of the organisation! All non-binding and free of charge!',
     steps: ['Choice of yacht', 'Sailing area', 'Schedule', 'Crew & communication', 'Contact person'],
     s1h: 'Choice of yacht', s1sub: 'First of all, your type of boat: what shall it be?',
+    s1hint: 'Preview: hover over a card with your mouse to see the interior view.',
     yachts: ['Comfortable sailing yacht', 'Spacious catamaran', 'Luxurious motor yacht'],
     s2h: 'Where do you want to spend your holiday?',
     s2sub: 'Have you and your crew already thought about a destination? There are many beautiful yacht sailing areas in this world. If your dream destination is not listed, just enter your thoughts under Other.',
@@ -284,6 +288,8 @@ export default function UrlaubsplanerPage() {
                   {yachtTypes.map(y => (
                     <button
                       key={y.id}
+                      className="yacht-card"
+                      aria-pressed={form.yacht === y.id}
                       onClick={() => update('yacht', y.id)}
                       style={{
                         position: 'relative', overflow: 'hidden', border: '3px solid',
@@ -297,6 +303,9 @@ export default function UrlaubsplanerPage() {
                       <img src={y.img} alt={y.label} loading="lazy"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                         onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }} />
+                      <img src={y.imgInnen} alt="" aria-hidden="true" loading="lazy" className="yacht-card-innen"
+                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
+                        onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
                       <div style={{
                         position: 'absolute', inset: 0,
                         background: form.yacht === y.id
@@ -313,6 +322,9 @@ export default function UrlaubsplanerPage() {
                     </button>
                   ))}
                 </div>
+                <p style={{ margin: '1.5rem 0 0', fontSize: '0.8rem', color: 'var(--gray)', textAlign: 'center' }}>
+                  {s.s1hint}
+                </p>
               </motion.div>
             )}
 
@@ -582,6 +594,10 @@ export default function UrlaubsplanerPage() {
       )}
 
       <style>{`
+        .yacht-card-innen { opacity: 0; transition: opacity 0.35s ease; }
+        .yacht-card:hover .yacht-card-innen, .yacht-card:focus-visible .yacht-card-innen { opacity: 1; }
+        .yacht-card:focus-visible { outline: 3px solid var(--blue-light); outline-offset: 2px; }
+        @media (prefers-reduced-motion: reduce) { .yacht-card-innen { transition: none; } }
         @media (max-width: 768px) {
           .planer-dest-grid { grid-template-columns: 1fr !important; }
           .planer-revier-grid { grid-template-columns: 1fr 1fr !important; }
