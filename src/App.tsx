@@ -8,6 +8,7 @@ import Kontakt from './components/Kontakt'
 import WhatsApp from './components/WhatsApp'
 import CookieBanner from './components/CookieBanner'
 import SideContact from './components/SideContact'
+import PageLoader from './components/PageLoader'
 
 // Jede Unterseite ein eigenes, erst bei Bedarf geladenes JS-Chunk statt
 // eines einzigen ~1,4-MB-Bundles fuer die gesamte Seite (siehe
@@ -78,7 +79,7 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <motion.div key={canonicalPath(internal)} variants={pageVariants} initial="initial" animate="animate" exit="exit">
-        <Suspense fallback={null}>
+        <Suspense fallback={<PageLoader />}>
         <Routes location={location}>
           {/* Deutsche Routen gibt es nur auf der deutschen Domain */}
           {!enHost && <>
