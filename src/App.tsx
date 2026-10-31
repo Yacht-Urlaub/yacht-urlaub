@@ -77,9 +77,15 @@ function AnimatedRoutes() {
   const hideKontakt = ['/urlaubsplaner', '/en/holiday-planner', '/kontakt', '/en/contact'].includes(internal)
   const isYogaPage = internal === '/yoga' || internal === '/en/yoga'
   return (
+    // Suspense bewusst AUSSERHALB von AnimatePresence/motion.div: haengt es
+    // innen (pro Seite neu gemountet), spielt beim Seitenwechsel zuerst die
+    // Exit-Animation der ALTEN Seite ab, bevor der Fallback ueberhaupt
+    // erscheint — man sieht kurz noch die alte Seite, dann erst das
+    // Ladesymbol. Aussen ersetzt ein Chunk-Wechsel sofort den gesamten
+    // Baum durch den Fallback, ohne Zwischenzustand.
+    <Suspense fallback={<PageLoader />}>
     <AnimatePresence mode="wait">
       <motion.div key={canonicalPath(internal)} variants={pageVariants} initial="initial" animate="animate" exit="exit">
-        <Suspense fallback={<PageLoader />}>
         <Routes location={location}>
           {/* Deutsche Routen gibt es nur auf der deutschen Domain */}
           {!enHost && <>
@@ -138,11 +144,11 @@ function AnimatedRoutes() {
           <Route path={toHref("/en/news/charter-models-2027")} element={<NewsCharterModelle2027Page />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
-        </Suspense>
         {!hideKontakt && <Kontakt showYoga={isYogaPage} />}
         <Footer />
       </motion.div>
     </AnimatePresence>
+    </Suspense>
   )
 }
 
