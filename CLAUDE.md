@@ -55,9 +55,23 @@ betrifft — neue Seite, neues Angebot, geänderter SEO-Text — muss der
 betroffene Snapshot neu erzeugt und mit committet werden:**
 
 ```
+rm -rf dist
 npm run build
 GLOBAL_NM=$(npm root -g) NODE_PATH="$GLOBAL_NM" node scripts/prerender.cjs
 ```
+
+Das `rm -rf dist` vorneweg ist seit dem Umstieg auf Code-Splitting
+(`React.lazy()` pro Route in `App.tsx`, siehe Kommentar dort) nicht mehr
+optional: Vite/Rolldown leert `dist/` vor einem Build nicht zuverlässig
+selbst, und ein `dist/<pfad>/index.html` aus einem fruheren Lauf bleibt
+sonst liegen. `scripts/prerender.cjs` serviert Seiten per einfachem
+Static-File-Server aus `dist/` (pfad-, nicht hostbasiert) — eine solche
+Leiche wird dann fuer JEDE Domain unter diesem Pfad ausgeliefert, auch
+wenn eigentlich die SPA-Huelle greifen sollte (identischer
+Wirkmechanismus wie der `/faq`-`/yoga`-Host-Kollisions-Bug weiter unten,
+nur diesmal durch `dist/`- statt `public/`-Reste ausgeloest). Nach jedem
+Lauf gegenpruefen, dass `public/__en/faq/index.html` und
+`public/__en/yoga/index.html` wirklich `lang="en"` tragen.
 
 Das Skript liest die Routenliste aus `public/sitemap.xml` /
 `public/sitemap-en.xml` — eine komplett neue Route (nicht nur neuer Inhalt
