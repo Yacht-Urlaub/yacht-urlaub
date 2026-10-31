@@ -55,9 +55,53 @@ betrifft — neue Seite, neues Angebot, geänderter SEO-Text — muss der
 betroffene Snapshot neu erzeugt und mit committet werden:**
 
 ```
+find public -name index.html -delete
+rm -rf dist
 npm run build
 GLOBAL_NM=$(npm root -g) NODE_PATH="$GLOBAL_NM" node scripts/prerender.cjs
 ```
+
+Das `rm -rf dist` vorneweg ist seit dem Umstieg auf Code-Splitting
+(`React.lazy()` pro Route in `App.tsx`, siehe Kommentar dort) nicht mehr
+optional: Vite/Rolldown leert `dist/` vor einem Build nicht zuverlässig
+selbst, und ein `dist/<pfad>/index.html` aus einem fruheren Lauf bleibt
+sonst liegen. `scripts/prerender.cjs` serviert Seiten per einfachem
+Static-File-Server aus `dist/` (pfad-, nicht hostbasiert) — eine solche
+Leiche wird dann fuer JEDE Domain unter diesem Pfad ausgeliefert, auch
+wenn eigentlich die SPA-Huelle greifen sollte (identischer
+Wirkmechanismus wie der `/faq`-`/yoga`-Host-Kollisions-Bug weiter unten,
+nur diesmal durch `dist/`- statt `public/`-Reste ausgeloest). Nach jedem
+Lauf gegenpruefen, dass `public/__en/faq/index.html` und
+`public/__en/yoga/index.html` wirklich `lang="en"` tragen.
+
+**Zweiter, davon unabhaengiger Mechanismus fuer denselben Bug:** Auch
+mit korrekt geleertem `dist/` kann `/faq`/`/yoga` auf Englisch wieder
+Deutsch anzeigen, wenn sich zwischen zwei Regenerierungen die
+JS-Asset-Hashes geaendert haben (jede Aenderung an einer `.tsx`-Datei
+aendert den Hash ihres Chunks). Ursache: `public/faq/index.html` und
+`public/yoga/index.html` sind selbst committete, fertig gerenderte
+Snapshots mit eingebetteten `<script>`-Tags auf die zum Zeitpunkt
+ihrer letzten Erzeugung aktuellen Hashes. `vite build` kopiert sie wie
+jede andere Datei aus `public/` unveraendert nach `dist/faq/index.html`
+bzw. `dist/yoga/index.html` (normales, korrektes `publicDir`-Verhalten
+— kein Bug fuer sich). Zeigt das darin eingebettete `<script>`-Tag auf
+einen Hash, den es im frischen `dist/assets/` nicht mehr gibt, 404et
+der Ladevorgang, React mountet nie, und die alte (deutsche) Snapshot-
+Fassung bleibt unveraendert stehen — auch wenn `prerender.cjs` sie
+anschliessend unter `en.localhost` abruft, denn sein Static-Server ist
+pfad-, nicht hostbasiert und liefert fuer `/faq` auf jedem Host dasselbe
+`dist/faq/index.html` aus. Betrifft nur `/faq` und `/yoga`, weil nur
+dort DE und EN denselben URL-Pfad teilen; alle anderen Seiten haben pro
+Sprache einen eigenen Pfad, sodass ihr jeweiliger stehengebliebener
+Snapshot zufaellig ohnehin zur richtigen Sprache gehoert.
+**Fix:** vor jedem Build zusaetzlich alle vorhandenen
+`public/**/index.html` loeschen (`find public -name index.html
+-delete`), damit `dist/` an diesen Pfaden auf die SPA-Huelle +
+aktuelle Chunks faellt statt auf einen alten Snapshot, dann erst
+`rm -rf dist`, bauen, neu prerendern. Das `rm -rf dist` allein (siehe
+oben) reicht bei diesem Mechanismus nicht, weil `dist/` ja korrekt leer
+war — das Problem liegt in den committeten `public/`-Dateien, nicht in
+`dist/`-Resten.
 
 Das Skript liest die Routenliste aus `public/sitemap.xml` /
 `public/sitemap-en.xml` — eine komplett neue Route (nicht nur neuer Inhalt
