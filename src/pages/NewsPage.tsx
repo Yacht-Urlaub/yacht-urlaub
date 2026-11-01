@@ -87,7 +87,7 @@ export default function NewsPage() {
           src="/images/Destinationsbilder/Seychellen.webp"
           alt="News & Angebote"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }}
+          onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(15,35,56,0.88) 0%, rgba(15,35,56,0.45) 60%, transparent 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -159,7 +159,7 @@ export default function NewsPage() {
                     style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s' }}
                     onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
                     onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
-                    onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }}
+                    onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }}
                   />
                   <span style={{
                     position: 'absolute', top: '1rem', left: '1rem',

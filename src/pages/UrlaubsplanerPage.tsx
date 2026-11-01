@@ -300,7 +300,7 @@ export default function UrlaubsplanerPage() {
                     >
                       <img src={y.img} alt={y.label} loading="lazy"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                        onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }} />
+                        onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }} />
                       <img src={y.imgInnen} alt="" aria-hidden="true" loading="lazy" className="yacht-card-innen"
                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
                         onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />

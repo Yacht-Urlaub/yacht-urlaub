@@ -187,7 +187,7 @@ export default function SkipperPage() {
       {/* Hero */}
       <div style={{ position: 'relative', height: '380px', overflow: 'hidden' }}>
         <img src="/images/charter/skipper.jpg" alt="Skipper- und Bord-Service" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }} />
+          onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(7,27,47,0.88) 0%, rgba(7,27,47,0.4) 60%, transparent 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
