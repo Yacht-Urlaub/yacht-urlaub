@@ -189,7 +189,7 @@ export default function CrewPage() {
       {/* Hero */}
       <div style={{ position: 'relative', height: '400px', overflow: 'hidden' }}>
         <img src="/images/crew/Team Ferien-Messe.jpg" alt="Die Crew von Yacht-Urlaub" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }} />
+          onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,27,47,0.9) 0%, rgba(7,27,47,0.35) 60%, rgba(7,27,47,0.25) 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: '2.5rem' }}>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}

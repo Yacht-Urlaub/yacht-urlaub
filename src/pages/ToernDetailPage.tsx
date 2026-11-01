@@ -110,7 +110,7 @@ const toernData: Record<string, ToernPage> = {
     id: 'freunde',
     breadcrumb: 'für Freunde',
     h1: 'Segeltörn für Freunde',
-    heroImg: '/images/Zielgruppen/Freunde Snap.png',
+    heroImg: '/images/Zielgruppen/Freunde Snap.jpg',
     seoTitle: 'Segeltörn für Freunde – Mit Freunden segeln und feiern | Yacht-Urlaub',
     seoDesc: 'Segeltörns für Freundesgruppen: Geburtstag, Junggesellenabschied oder einfach Urlaub mit Freunden. Kommt an Bord einer unserer modernen Yachten!',
     packageTeasers: ['dalmatien', 'karibik-bvi', 'griechenland'],
@@ -158,7 +158,7 @@ const toernData: Record<string, ToernPage> = {
     seoDesc: 'Familienfreundliche Segeltörns: Kleine Piraten dürfen das Steuer übernehmen, während die Eltern die Seele baumeln lassen. Sicherheit, Spaß und gemeinsame Erlebnisse.',
     packageTeasers: ['griechenland', 'kornaten', 'istrien'],
     banner: {
-      img: '/images/partner/Club15.png',
+      img: '/images/partner/Club15.webp',
       title: 'Entdecken Sie den Club der 15 % – Exklusive Vorteile für Familien!',
       text: 'Segeln Sie durch Kroatien und genießen Sie 15 % Rabatt auf zahlreiche Yachthäfen, Bojenfelder, Restaurants, Nationalparks und mehr. Diese exklusive mySea-Initiative wurde gemeinsam mit kroatischen Liegeplatzpartnern ins Leben gerufen, um Familien den Traum vom Segelurlaub noch erschwinglicher zu machen. Wir als Yacht-Urlaub machen Ihnen den Zugang zu der Aktion ohne weiteren Aufwand möglich.',
       footer: 'Weil unvergessliche Abenteuer auf dem Wasser für alle leistbar bleiben sollten!',
@@ -173,7 +173,7 @@ const toernData: Record<string, ToernPage> = {
           'Yachturlaub - ist mit Kindern der perfekte Urlaub! Spaß, Abenteuer, Erholung und Genuß inklusive!',
           'Jetzt Familien-Segeltörn planen und einzigartige Erinnerungen schaffen!',
         ],
-        img: '/images/Zielgruppen/familie_bug kl.png',
+        img: '/images/Zielgruppen/familie_bug kl.webp',
         imgAlt: 'Familie am Bug der Yacht',
       },
       {
@@ -197,7 +197,7 @@ const toernData: Record<string, ToernPage> = {
     id: 'luxury',
     breadcrumb: 'Luxury',
     h1: 'Luxus-Yachttrip',
-    heroImg: '/images/luxury/header.png',
+    heroImg: '/images/luxury/header.jpg',
     seoTitle: 'Luxus-Yachttrip – Luxury Yachtreise für Genießer | Yacht-Urlaub',
     seoDesc: 'Erleben Sie die unberührte Schönheit der adriatischen Küste mit unserem exklusiven Motoryachtcharter. Luxus-Motoryacht «NIKITA» – Riva 100 Corsaro.',
     packageTeasers: [],
@@ -223,18 +223,18 @@ const toernData: Record<string, ToernPage> = {
 }
 
 const LUXURY_HIGHLIGHTS = [
-  '/images/luxury/nikita-17.png',
-  '/images/luxury/nikita_int-6.png',
-  '/images/luxury/nikita-8-1.png',
+  '/images/luxury/nikita-17.webp',
+  '/images/luxury/nikita_int-6.webp',
+  '/images/luxury/nikita-8-1.webp',
 ]
 const LUXURY_IMPRESSIONEN = [
-  '/images/luxury/nikita-5.png',
-  '/images/luxury/nikita-4.png',
-  '/images/luxury/nikita-2.png',
-  '/images/luxury/nikita-14.png',
-  '/images/luxury/nikita-10.png',
-  '/images/luxury/nikita_int-10.png',
-  '/images/luxury/nikita_int-1.png',
+  '/images/luxury/nikita-5.webp',
+  '/images/luxury/nikita-4.webp',
+  '/images/luxury/nikita-2.webp',
+  '/images/luxury/nikita-14.webp',
+  '/images/luxury/nikita-10.webp',
+  '/images/luxury/nikita_int-10.webp',
+  '/images/luxury/nikita_int-1.webp',
 ]
 
 const tdl = {
@@ -289,7 +289,7 @@ export default function ToernDetailPage() {
           src={data.heroImg}
           alt={data.h1}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-          onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }}
+          onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(15,35,56,0.88) 0%, rgba(15,35,56,0.45) 60%, transparent 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -428,7 +428,7 @@ export default function ToernDetailPage() {
                     alt={section.imgAlt || ''}
                     loading="lazy"
                     style={{ width: '100%', height: '380px', objectFit: 'cover', display: 'block' }}
-                    onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }}
+                    onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }}
                   />
                 </div>
               )}
@@ -484,7 +484,7 @@ export default function ToernDetailPage() {
               <p style={{ color: 'var(--gold)', fontSize: '1.1rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '2.5rem' }}>
                 RIVA 100 CORSARO
               </p>
-              <img src="/images/luxury/bilder_nikita.png" alt="NIKITA – Riva 100 Corsaro" loading="lazy"
+              <img src="/images/luxury/bilder_nikita.webp" alt="NIKITA – Riva 100 Corsaro" loading="lazy"
                 style={{ maxWidth: '100%', borderRadius: '6px', marginBottom: '1.5rem' }}
                 onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
               <div className="luxury-facts" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '2.5rem' }}>

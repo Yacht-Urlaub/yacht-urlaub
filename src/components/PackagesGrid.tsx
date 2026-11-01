@@ -115,7 +115,7 @@ export default function PackagesGrid() {
                   style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s' }}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
-                  onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }}
+                  onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }}
                 />
                 <div style={{
                   position: 'absolute', inset: 0,

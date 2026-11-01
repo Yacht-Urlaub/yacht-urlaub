@@ -114,7 +114,7 @@ export default function News() {
                   style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s' }}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
-                  onError={e => { (e.target as HTMLImageElement).src = '/images/slider/Front.jpg' }}
+                  onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }}
                 />
                 <span style={{
                   position: 'absolute', top: '1rem', left: '1rem',
