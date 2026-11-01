@@ -23,6 +23,9 @@ const logoBrands: Record<string, string> = {
   'lagoon-logo.jpg': 'Lagoon',
   'leopard-catamarans-logo.jpg': 'Leopard Catamarans',
   'azimut.jpg': 'Azimut Yachts',
+  'ferretti-yachts-logo.jpg': 'Ferretti Yachts',
+  'princess-yachts-logo.jpg': 'Princess Yachts',
+  'galeon-yachts-logo.png': 'Galeon Yachts',
 }
 function logoAlt(src: string, lang: 'de' | 'en') {
   const file = src.split('/').pop() ?? ''

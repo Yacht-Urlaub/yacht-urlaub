@@ -254,9 +254,12 @@ export const yachtCategories: YachtCategory[] = [
       "/images/yachten-original/motoryacht/71_20170119055526_50_running_1_mid_res.jpg"
     ],
     "logos": [
-      "/images/yachten-original/motoryacht/elan.jpg",
       "/images/yachten-original/motoryacht/Bavaria-Yachtbau-Logo.jpg",
-      "/images/yachten-original/motoryacht/azimut.jpg"
+      "/images/yachten-original/motoryacht/azimut.jpg",
+      "/images/yachten/yachtbauer/ferretti-yachts-logo.jpg",
+      "/images/yachten/yachtbauer/logo-jeanneau-yachts.jpg",
+      "/images/yachten/yachtbauer/princess-yachts-logo.jpg",
+      "/images/yachten/yachtbauer/galeon-yachts-logo.png"
     ]
   },
   {
