@@ -132,7 +132,8 @@ export const yachtCategories: YachtCategory[] = [
       "/images/yachten-original/monohull/elan.jpg",
       "/images/yachten-original/monohull/DUFOUR-YACHTS-NB.jpg",
       "/images/yachten-original/monohull/Bavaria-Yachtbau-Logo.jpg",
-      "/images/yachten-original/monohull/Beneteau.jpg"
+      "/images/yachten-original/monohull/Beneteau.jpg",
+      "/images/yachten/yachtbauer/logo-jeanneau-yachts.jpg"
     ]
   },
   {
@@ -223,7 +224,10 @@ export const yachtCategories: YachtCategory[] = [
       "/images/yachten-original/katamaran/kabine.jpg"
     ],
     "logos": [
-      "/images/yachten-original/katamaran/bali-catamarans-2018.jpg"
+      "/images/yachten-original/katamaran/bali-catamarans-2018.jpg",
+      "/images/yachten/yachtbauer/nautitech-news-logo.jpg",
+      "/images/yachten/yachtbauer/lagoon-logo.jpg",
+      "/images/yachten/yachtbauer/leopard-catamarans-logo.jpg"
     ]
   },
   {
