@@ -6,16 +6,20 @@ import { useLang, enDestSlugs } from '../i18n'
 
 const enDestPath: Record<string, string> = Object.fromEntries(Object.entries(enDestSlugs).map(([slug, id]) => [id, slug]))
 
-// Einheitliches Raster: alle 8 Destinationen, beste Bilder
+// Einheitliches Raster: alle 8 Destinationen, beste Bilder.
+// Eigene, auf die Kartengroesse (max. ~280px Desktop / ~340px mobil, siehe
+// .dest-card) verkleinerte WebP-Thumbnails statt der Originaldateien — die
+// werden an anderer Stelle (Headerbilder, Packages-Karten) in voller
+// Aufloesung weiterverwendet und bleiben deshalb unveraendert.
 const grid = [
-  { id: 'kroatien', img: '/images/Destinationsbilder/blick-auf-den-hafen-von-hvar-bei-yacht-urlaub.png' },
-  { id: 'griechenland', img: '/images/packages/Griechenland/gallery/Navajo Bucht - Griechenland.jpg' },
-  { id: 'balearen', img: '/images/Destinationsbilder/blick-auf-palma-de-mallorca.jpg' },
-  { id: 'kanaren', img: '/images/destinationen/kanaren/header_M71_7842_.jpg' },
-  { id: 'karibik-bvi', img: '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg' },
-  { id: 'karibik-windward-islands', img: '/images/Destinationsbilder/grenadinen-und-st-vincent.jpg' },
-  { id: 'thailand', img: '/images/Destinationsbilder/schnorcheln-in-thailand.jpg' },
-  { id: 'seychellen', img: '/images/Destinationsbilder/Seychellen.webp' },
+  { id: 'kroatien', img: '/images/Destinationsbilder/grid/kroatien.webp' },
+  { id: 'griechenland', img: '/images/Destinationsbilder/grid/griechenland.webp' },
+  { id: 'balearen', img: '/images/Destinationsbilder/grid/balearen.webp' },
+  { id: 'kanaren', img: '/images/Destinationsbilder/grid/kanaren.webp' },
+  { id: 'karibik-bvi', img: '/images/Destinationsbilder/grid/karibik-bvi.webp' },
+  { id: 'karibik-windward-islands', img: '/images/Destinationsbilder/grid/karibik-windward-islands.webp' },
+  { id: 'thailand', img: '/images/Destinationsbilder/grid/thailand.webp' },
+  { id: 'seychellen', img: '/images/Destinationsbilder/grid/seychellen.webp' },
 ]
 
 export default function DestinationenOverview({ standalone = false }: { standalone?: boolean }) {

@@ -72,7 +72,7 @@ export const packagesEn: Package[] = [
     title: "Caribbean package (BVI)",
     subtitle: "Sailing vacation in the British Virgin Islands",
     cardImg: "/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg",
-    heroImg: "/images/packages/Karibik-BVI/karibik_header.png",
+    heroImg: "/images/packages/Karibik-BVI/karibik_header.webp",
     price: "950",
     priceNote: "7 days",
     tags: ["Friends", "Explorer"],

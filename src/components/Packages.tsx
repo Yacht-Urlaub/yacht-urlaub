@@ -199,7 +199,7 @@ export const packages: Package[] = [
     title: 'Karibik-Package (BVI)',
     subtitle: 'Segelurlaub in der Karibik auf einer Segelyacht oder einem Katamaran in den britischen Jungferninseln',
     cardImg: '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg',
-    heroImg: '/images/packages/Karibik-BVI/karibik_header.png',
+    heroImg: '/images/packages/Karibik-BVI/karibik_header.webp',
     heroIntro:
       'Stellen Sie sich vor: Sie stehen barfuß am Deck einer Segelyacht, der warme Passatwind streicht durch Ihr Haar, während die Sonne langsam hinter den palmengesäumten Inseln untergeht. Der Duft von frisch gegrilltem Hummer liegt in der Luft, und das türkisfarbene Wasser glitzert im letzten Licht des Tages. Willkommen in Ihrem Karibik-Abenteuer!',
     price: '950',

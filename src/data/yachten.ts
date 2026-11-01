@@ -162,7 +162,7 @@ export const yachtCategories: YachtCategory[] = [
       },
       {
         "title": "Mittelklasse",
-        "img": "/images/yachten-original/katamaran/Lagoon_400_S2_skizze.png",
+        "img": "/images/yachten-original/katamaran/Lagoon_400_S2_skizze.webp",
         "caption": "Interieur Mittelklasse Katamaran",
         "ausstattung": [
           "8 Schlafplätze in 4 Doppelbett-Kabinen",
@@ -209,7 +209,7 @@ export const yachtCategories: YachtCategory[] = [
       "/images/yachten-original/katamaran/bali-4.5-30-.jpg",
       "/images/yachten-original/katamaran/bali-4.5-2-.jpg",
       "/images/yachten-original/katamaran/Lagoon_400_1.jpg",
-      "/images/yachten-original/katamaran/Lagoon_400_S2_6.png",
+      "/images/yachten-original/katamaran/Lagoon_400_S2_6.webp",
       "/images/yachten-original/katamaran/Lagoon_400.jpg",
       "/images/yachten-original/katamaran/1.jpg",
       "/images/yachten-original/katamaran/2.jpg",
