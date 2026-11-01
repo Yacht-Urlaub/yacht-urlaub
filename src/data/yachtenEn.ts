@@ -155,7 +155,7 @@ export const yachtCategoriesEn: YachtCategory[] = [
    },
    {
     "title": "Middle class",
-    "img": "/images/yachten-original/katamaran/Lagoon_400_S2_skizze.png",
+    "img": "/images/yachten-original/katamaran/Lagoon_400_S2_skizze.webp",
     "caption": "Interior mid-range catamaran",
     "ausstattung": []
    },
@@ -208,7 +208,7 @@ export const yachtCategoriesEn: YachtCategory[] = [
    "/images/yachten/Kat gallery/bali-4.5-30-.jpg",
    "/images/yachten/Kat gallery/bali-4.5-2-.jpg",
    "/images/yachten-original/katamaran/Lagoon_400_1.jpg",
-   "/images/yachten-original/katamaran/Lagoon_400_S2_6.png",
+   "/images/yachten-original/katamaran/Lagoon_400_S2_6.webp",
    "/images/yachten-original/katamaran/Lagoon_400.jpg",
    "/images/yachten/Kat gallery/52/1.jpg",
    "/images/yachten/Kat gallery/52/2.jpg",
