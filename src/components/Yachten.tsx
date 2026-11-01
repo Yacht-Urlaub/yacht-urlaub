@@ -8,6 +8,31 @@ import { useLang } from '../i18n'
 
 const validTabs = yachtCategories.map(c => c.id)
 
+// Markenname je Logo-Datei fuer ein aussagekraeftiges, individuelles alt-Attribut
+// statt des bisher generischen "Yachtbauer" auf allen Bildern — wichtig fuer
+// Barrierefreiheit und Bild-SEO (Google Images, KI-Crawler).
+const logoBrands: Record<string, string> = {
+  'hanse.jpg': 'Hanse Yachts',
+  'elan.jpg': 'Elan Yachts',
+  'DUFOUR-YACHTS-NB.jpg': 'Dufour Yachts',
+  'Bavaria-Yachtbau-Logo.jpg': 'Bavaria Yachtbau',
+  'Beneteau.jpg': 'Bénéteau',
+  'logo-jeanneau-yachts.jpg': 'Jeanneau Yachts',
+  'bali-catamarans-2018.jpg': 'Bali Catamarans',
+  'nautitech-news-logo.jpg': 'Nautitech Catamarans',
+  'lagoon-logo.jpg': 'Lagoon',
+  'leopard-catamarans-logo.jpg': 'Leopard Catamarans',
+  'azimut.jpg': 'Azimut Yachts',
+  'ferretti-yachts-logo.jpg': 'Ferretti Yachts',
+  'princess-yachts-logo.jpg': 'Princess Yachts',
+  'galeon-yachts-logo.png': 'Galeon Yachts',
+}
+function logoAlt(src: string, lang: 'de' | 'en') {
+  const file = src.split('/').pop() ?? ''
+  const brand = logoBrands[file] ?? file.replace(/\.(jpg|jpeg|png|webp)$/i, '')
+  return lang === 'en' ? `${brand} logo` : `${brand} Logo`
+}
+
 export default function Yachten() {
   const lang = useLang()
   const cards = lang === 'en' ? yachtCardsEn : yachtCards
@@ -166,7 +191,7 @@ export default function Yachten() {
                   </p>
                   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '3rem', flexWrap: 'wrap' }}>
                     {cat.logos.map(logo => (
-                      <img key={logo} src={logo} alt="Yachtbauer" loading="lazy"
+                      <img key={logo} src={logo} alt={logoAlt(logo, lang)} loading="lazy"
                         style={{ height: '40px', objectFit: 'contain', filter: 'grayscale(1) opacity(0.55)', transition: 'filter 0.2s' }}
                         onMouseEnter={e => (e.currentTarget.style.filter = 'grayscale(0) opacity(1)')}
                         onMouseLeave={e => (e.currentTarget.style.filter = 'grayscale(1) opacity(0.55)')}
