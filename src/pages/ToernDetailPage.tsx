@@ -239,12 +239,12 @@ const LUXURY_IMPRESSIONEN = [
 
 const tdl = {
   de: { home: 'Start', toerns: 'Törns', toernsHref: '/toerns', all: '← Alle Törns', offer: '▶ ZUM ANGEBOT',
-    book: 'Jetzt buchen', planer: 'Urlaubsplanung starten', buchHref: '/buchen', planHref: '/urlaubsplaner',
+    book: 'Anfrage starten', planer: 'Urlaubsplanung starten', buchHref: '/buchen', planHref: '/urlaubsplaner',
     highlights: 'Die Highlights unserer Luxury-Packages', prices: 'Preise', off: 'Nebensaison / Woche',
     peak: 'Hauptsaison / Woche', impr: 'Impressionen', luxCta: 'Zur Luxury-Yachtreise Buchung',
     luxBtn: 'URLAUBSPLANUNG STARTEN', sailaway: 'Die Party-Flottille für alle zwischen 21 und 35.' },
   en: { home: 'Home', toerns: 'Cruises', toernsHref: '/en/cruises', all: '← All cruises', offer: '▶ OUR OFFER',
-    book: 'Book now', planer: 'Start your holiday planning', buchHref: '/en/book-now', planHref: '/en/holiday-planner',
+    book: 'Start your inquiry', planer: 'Start your holiday planning', buchHref: '/en/book-now', planHref: '/en/holiday-planner',
     highlights: 'The highlights of our luxury packages', prices: 'Prices', off: 'Off-season / week',
     peak: 'Peak-season / week', impr: 'Impressions', luxCta: 'Book your luxury yacht trip',
     luxBtn: 'START YOUR HOLIDAY PLANNING', sailaway: 'The party flotilla for everyone between 21 and 35.' },
