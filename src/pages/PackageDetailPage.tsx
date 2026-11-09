@@ -51,7 +51,7 @@ function BookingModal({ url, onClose }: { url: string | null; onClose: () => voi
             initial={{ opacity: 0, scale: 0.96, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.96, y: 20 }}
             transition={{ duration: 0.25 }}
             onClick={e => e.stopPropagation()}
-            style={{ position: 'relative', width: 'min(1000px, 96vw)', height: 'min(92vh, 900px)', background: '#fff', borderRadius: '10px', overflow: 'hidden', boxShadow: '0 24px 70px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column' }}
+            style={{ position: 'relative', width: 'min(1400px, 94vw)', height: 'min(92vh, 900px)', background: '#fff', borderRadius: '10px', overflow: 'hidden', boxShadow: '0 24px 70px rgba(0,0,0,0.4)', display: 'flex', flexDirection: 'column' }}
           >
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '1.25rem', padding: '0.55rem 0.9rem', background: 'var(--navy)' }}>
               <a href={url} target="_blank" rel="noopener noreferrer" style={{ color: '#cfe4ff', fontSize: '0.78rem', textDecoration: 'none' }}>
