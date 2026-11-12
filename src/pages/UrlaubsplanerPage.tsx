@@ -38,6 +38,8 @@ const erfahrenOptionen = ['Freunde und Bekannte', 'Online-Suche (Website)', 'Fac
 
 const steps = ['Yachtauswahl', 'Revierauswahl', 'Terminplanung', 'Crew & Kommunikation', 'Kontaktperson']
 
+const WHATSAPP_NUMBER = '436602652481'
+
 const fadeIn = {
   initial: { opacity: 0, x: 30 },
   animate: { opacity: 1, x: 0, transition: { duration: 0.35 } },
@@ -77,6 +79,8 @@ const pl = {
     steps: ['Yachtauswahl', 'Revierauswahl', 'Terminplanung', 'Crew & Kommunikation', 'Kontaktperson'],
     s1h: 'Yachtauswahl', s1sub: "Zuerst einmal zu Ihrem Schiffstyp: Was darf's denn sein?",
     yachts: ['Gemütliche Segelyacht', 'Geräumiger Katamaran', 'Luxuriöse Motoryacht'],
+    beraten: 'Beraten lassen', beratenSub: 'Wir helfen bei der Wahl',
+    waBeratenMsg: 'Hallo! Ich bin mir noch unsicher, welcher Yacht-Typ am besten zu uns passt, und hätte dazu gerne eine kurze Beratung.',
     s2h: 'Wo wollen Sie den Urlaub verbringen?',
     s2sub: 'Haben Sie und Ihre Crew sich schon Gedanken über eine Urlaubsdestination gemacht? Es gibt viele schöne Yacht-Urlaubsreviere auf dieser Welt. Wenn Ihre Wunschdestination nicht dabei ist, einfach Ihre Gedanken unter Sonstiges eintragen.',
     multi: '(Mehrfachauswahl möglich)', other: 'Sonstiges:', otherPh: 'Ihre Wunschdestination oder Gedanken dazu …',
@@ -114,6 +118,8 @@ const pl = {
     steps: ['Choice of yacht', 'Sailing area', 'Schedule', 'Crew & communication', 'Contact person'],
     s1h: 'Choice of yacht', s1sub: 'First of all, your type of boat: what shall it be?',
     yachts: ['Comfortable sailing yacht', 'Spacious catamaran', 'Luxurious motor yacht'],
+    beraten: 'Get advice', beratenSub: "We'll help you choose",
+    waBeratenMsg: "Hi! I'm still not sure which type of yacht would suit us best and would love some quick advice.",
     s2h: 'Where do you want to spend your holiday?',
     s2sub: 'Have you and your crew already thought about a destination? There are many beautiful yacht sailing areas in this world. If your dream destination is not listed, just enter your thoughts under Other.',
     multi: '(multiple selection possible)', other: 'Other:', otherPh: 'Your dream destination or thoughts …',
@@ -282,7 +288,7 @@ export default function UrlaubsplanerPage() {
                 <p style={{ color: 'var(--gray)', textAlign: 'center', marginBottom: '2rem', fontSize: '0.9rem' }}>
                   {s.s1sub}
                 </p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem' }} className="planer-dest-grid">
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1rem' }} className="planer-dest-grid">
                   {yachtTypes.map(y => (
                     <button
                       key={y.id}
@@ -319,6 +325,30 @@ export default function UrlaubsplanerPage() {
                       </div>
                     </button>
                   ))}
+                  <a
+                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(s.waBeratenMsg)}`}
+                    target="_blank" rel="noopener noreferrer"
+                    className="yacht-beraten-card"
+                    style={{
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                      gap: '0.85rem', aspectRatio: '4/3', borderRadius: '6px', padding: '1.5rem 1rem',
+                      background: 'var(--navy)', boxShadow: '0 2px 12px rgba(7,27,47,0.18)',
+                      textDecoration: 'none', textAlign: 'center',
+                    }}
+                  >
+                    <span style={{
+                      width: '52px', height: '52px', borderRadius: '50%', background: '#0f2d47',
+                      border: '1px solid rgba(14,165,233,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                    }}>
+                      <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--blue-light)" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 3h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-9l-4 3.5V17H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" />
+                        <path d="M10 7.8a2 2 0 1 1 2.8 1.8c-.5.3-.8.7-.8 1.2v.6" />
+                        <circle cx="12" cy="13.9" r="0.6" fill="var(--blue-light)" stroke="none" />
+                      </svg>
+                    </span>
+                    <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', lineHeight: 1.2 }}>{s.beraten}</span>
+                    <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.78rem', lineHeight: 1.4 }}>{s.beratenSub}</span>
+                  </a>
                 </div>
               </motion.div>
             )}
@@ -593,14 +623,17 @@ export default function UrlaubsplanerPage() {
         .yacht-card:hover .yacht-card-innen, .yacht-card:focus-visible .yacht-card-innen { opacity: 1; }
         .yacht-card:focus-visible { outline: 3px solid var(--blue-light); outline-offset: 2px; }
         @media (prefers-reduced-motion: reduce) { .yacht-card-innen { transition: none; } }
+        @media (max-width: 900px) {
+          .planer-dest-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
         @media (max-width: 768px) {
-          .planer-dest-grid { grid-template-columns: 1fr !important; }
           .planer-revier-grid { grid-template-columns: 1fr 1fr !important; }
           .planer-connector { width: 20px !important; }
           .planer-step-label { display: none !important; }
           .yacht-card-innen { display: none !important; }
         }
         @media (max-width: 480px) {
+          .planer-dest-grid { grid-template-columns: 1fr !important; }
           .planer-revier-grid { grid-template-columns: 1fr !important; }
           .form-grid-2 { grid-template-columns: 1fr !important; }
           .planer-connector { width: 14px !important; }
