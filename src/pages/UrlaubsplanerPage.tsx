@@ -38,7 +38,10 @@ const erfahrenOptionen = ['Freunde und Bekannte', 'Online-Suche (Website)', 'Fac
 
 const steps = ['Yachtauswahl', 'Revierauswahl', 'Terminplanung', 'Crew & Kommunikation', 'Kontaktperson']
 
-const WHATSAPP_NUMBER = '436602652481'
+// Wert fuer form.yacht, wenn die "Beraten lassen"-Kachel gewaehlt wird (wie
+// yachtTypes[].id immer auf Deutsch, unabhaengig von der Anzeigesprache —
+// das Formular geht intern ans deutschsprachige Team).
+const BERATEN_ID = 'Beratung gewünscht'
 
 const fadeIn = {
   initial: { opacity: 0, x: 30 },
@@ -80,7 +83,6 @@ const pl = {
     s1h: 'Yachtauswahl', s1sub: "Zuerst einmal zu Ihrem Schiffstyp: Was darf's denn sein?",
     yachts: ['Gemütliche Segelyacht', 'Geräumiger Katamaran', 'Luxuriöse Motoryacht'],
     beraten: 'Beraten lassen', beratenSub: 'Wir helfen bei der Wahl',
-    waBeratenMsg: 'Hallo! Ich bin mir noch unsicher, welcher Yacht-Typ am besten zu uns passt, und hätte dazu gerne eine kurze Beratung.',
     s2h: 'Wo wollen Sie den Urlaub verbringen?',
     s2sub: 'Haben Sie und Ihre Crew sich schon Gedanken über eine Urlaubsdestination gemacht? Es gibt viele schöne Yacht-Urlaubsreviere auf dieser Welt. Wenn Ihre Wunschdestination nicht dabei ist, einfach Ihre Gedanken unter Sonstiges eintragen.',
     multi: '(Mehrfachauswahl möglich)', other: 'Sonstiges:', otherPh: 'Ihre Wunschdestination oder Gedanken dazu …',
@@ -119,7 +121,6 @@ const pl = {
     s1h: 'Choice of yacht', s1sub: 'First of all, your type of boat: what shall it be?',
     yachts: ['Comfortable sailing yacht', 'Spacious catamaran', 'Luxurious motor yacht'],
     beraten: 'Get advice', beratenSub: "We'll help you choose",
-    waBeratenMsg: "Hi! I'm still not sure which type of yacht would suit us best and would love some quick advice.",
     s2h: 'Where do you want to spend your holiday?',
     s2sub: 'Have you and your crew already thought about a destination? There are many beautiful yacht sailing areas in this world. If your dream destination is not listed, just enter your thoughts under Other.',
     multi: '(multiple selection possible)', other: 'Other:', otherPh: 'Your dream destination or thoughts …',
@@ -247,7 +248,7 @@ export default function UrlaubsplanerPage() {
           <a href={s.homeHref} className="btn btn-primary">{s.home}</a>
         </div>
       ) : (
-        <div className="container" style={{ maxWidth: '860px', padding: '3rem 1.5rem 5rem' }}>
+        <div className="container" style={{ maxWidth: step === 0 ? '1136px' : '860px', padding: '3rem 1.5rem 5rem', transition: 'max-width 0.3s' }}>
 
           {/* Progress */}
           <div className="planer-stepper" style={{ display: 'flex', justifyContent: 'center', gap: 0, marginBottom: '3rem' }}>
@@ -325,15 +326,18 @@ export default function UrlaubsplanerPage() {
                       </div>
                     </button>
                   ))}
-                  <a
-                    href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(s.waBeratenMsg)}`}
-                    target="_blank" rel="noopener noreferrer"
-                    className="yacht-beraten-card"
+                  <button
+                    type="button"
+                    className="yacht-card"
+                    aria-pressed={form.yacht === BERATEN_ID}
+                    onClick={() => update('yacht', BERATEN_ID)}
                     style={{
-                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                      position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
                       gap: '0.85rem', aspectRatio: '4/3', borderRadius: '6px', padding: '1.5rem 1rem',
-                      background: 'var(--navy)', boxShadow: '0 2px 12px rgba(7,27,47,0.18)',
-                      textDecoration: 'none', textAlign: 'center',
+                      border: '3px solid', borderColor: form.yacht === BERATEN_ID ? 'var(--blue)' : 'transparent',
+                      background: 'var(--navy)', cursor: 'pointer', outline: 'none',
+                      boxShadow: form.yacht === BERATEN_ID ? '0 0 0 2px var(--blue)' : '0 2px 12px rgba(7,27,47,0.18)',
+                      transition: 'all 0.2s', textAlign: 'center',
                     }}
                   >
                     <span style={{
@@ -346,9 +350,12 @@ export default function UrlaubsplanerPage() {
                         <circle cx="12" cy="13.9" r="0.6" fill="var(--blue-light)" stroke="none" />
                       </svg>
                     </span>
-                    <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', lineHeight: 1.2 }}>{s.beraten}</span>
+                    <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', lineHeight: 1.2, fontFamily: 'inherit' }}>{s.beraten}</span>
                     <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.78rem', lineHeight: 1.4 }}>{s.beratenSub}</span>
-                  </a>
+                    {form.yacht === BERATEN_ID && (
+                      <span style={{ position: 'absolute', top: '8px', right: '8px', background: 'var(--blue)', color: '#fff', borderRadius: '50%', width: '22px', height: '22px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>✓</span>
+                    )}
+                  </button>
                 </div>
               </motion.div>
             )}
@@ -577,7 +584,7 @@ export default function UrlaubsplanerPage() {
 
           {/* Nav Buttons */}
           {step < 4 && (
-            <div className="planer-nav" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2.5rem', maxWidth: '860px', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <div className="planer-nav" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2.5rem', maxWidth: step === 0 ? '1136px' : '860px', gap: '0.75rem', flexWrap: 'wrap' }}>
               <button
                 onClick={() => setStep(s => Math.max(0, s - 1))}
                 disabled={step === 0}
