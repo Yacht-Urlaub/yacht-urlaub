@@ -245,7 +245,7 @@ export const packages: Package[] = [
           },
           {
             name: 'Spanish Town – Das Tor zu Virgin Gorda',
-            text: 'Die zweitgrößte Stadt der Britischen Jungferninseln bietet eine moderne Marina mit zahlreichen Einkaufsmöglichkeiten. Von hier aus starten Touren über Virgin Gorda, sei es zu Fuß oder mit dem Fahrrad.',
+            text: 'Die zweitgrößte Stadt der Britischen Jungferninseln bietet eine moderne Marina mit zahlreichen Einkaufsmöglichkeiten. Von hier aus starten Touren über Virgin Gorda – am komfortabelsten mit einem kleinen Mietwagen bzw. Jeep, den Sie unkompliziert vor Ort mieten können.',
           },
           {
             name: 'The Baths – Ein Naturwunder der Karibik',
@@ -260,12 +260,12 @@ export const packages: Package[] = [
             text: 'Anegada ist die einzige Insel des Archipels mit korallinem Ursprung und begeistert mit einzigartiger Flora und Fauna. Im Anegada Reef Resort werden fangfrische Hummer-Spezialitäten serviert. Ein weiteres Highlight ist die hier ansässige Flamingo-Population, die sich bei einer Inseltour beobachten lässt.',
           },
           {
-            name: 'Cane Garden Bay – Das Surferparadies von Tortola',
-            text: 'Diese Bucht ist bekannt für ihre perfekten Surfbedingungen. Selbst wer nicht selbst auf das Brett steigt, wird von den spektakulären Wellen und den Surfern in Aktion begeistert sein. Der flach abfallende Sandstrand lädt zum Entspannen ein, während karibische Strandbars für kühle Getränke sorgen.',
+            name: 'Cane Garden Bay – Ursprüngliches Karibik-Flair auf Tortola',
+            text: 'Diese malerische, noch sehr ursprüngliche Bucht besticht mit feinem Sandstrand sowie gemütlichen Strandbars und Restaurants direkt am Wasser – ein perfekter Ort zum Entspannen und Eintauchen in echtes karibisches Lebensgefühl. Die besten Wellen zum Surfen finden Sie übrigens in der Apple Bay (saisonabhängig) oder der Josiah’s Bay auf der anderen Seite Tortolas.',
           },
           {
             name: 'Jost Van Dyke – Die Partyinsel der Karibik',
-            text: 'Diese Insel ist berühmt für ihre legendären Strandpartys. Besonders bekannt sind die Bars Soggy Dollar und Foxy’s, die rund um die Uhr für ausgelassene Stimmung sorgen. Beim Soggy Dollar bestellen Gäste traditionell ihren Painkiller-Cocktail mit nassen Dollarscheinen, die sie zuvor im Meer getragen haben.',
+            text: 'Diese Insel ist berühmt für ihre legendären Strandpartys. Besonders bekannt sind die Bars Soggy Dollar und Foxy’s – in der Saison ist hier immer etwas los, rund um die Uhr gefeiert wird vor allem an Silvester. Beim Soggy Dollar bestellen Gäste traditionell ihren Painkiller-Cocktail mit nassen Dollarscheinen, die sie zuvor im Meer getragen haben.',
           },
           {
             name: 'Sandy Cay & Sandy Spit – Postkartenmotive zum Greifen nah',
@@ -291,11 +291,13 @@ export const packages: Package[] = [
       ],
     },
     hints: [
-      'Die Währung in den britischen Jungferninseln ist US-Dollar: €1 ~ $1,1. Heben Sie das Geld am Besten vor Ort ab. Es gibt ausreichend Geldautomaten.',
+      'Die Währung in den britischen Jungferninseln ist US-Dollar: €1 ~ $1,1. Für laufende Ausgaben heben Sie das Geld am besten vor Ort ab (ausreichend Geldautomaten vorhanden) – bringen Sie aber schon ein paar US-Dollar in kleinen Scheinen von zuhause mit, da die Umweltabgabe bei der Einreise (siehe unten) direkt im Ankunftsbereich bar zu bezahlen ist.',
+      'Bei der Einreise ist eine einmalige Umweltabgabe („Environmental Tax“) von $10 pro Person in bar direkt im Ankunftsbereich zu bezahlen – das Geld kommt dem Naturschutz vor Ort zugute.',
+      'Ab 72 Stunden vor der Einreise muss online ein Einreiseformular ausgefüllt werden – bitte ausschließlich über das offizielle, kostenlose BVI Online Immigration & Customs Portal (bviedcard.gov.vg), nicht über kommerzielle Drittanbieter. Die Bestätigung bitte ausdrucken und mitnehmen.',
+      'Ihr Reisepass muss als EU-Bürger noch mindestens 6 Monate über das Ende Ihrer Reise hinaus gültig sein.',
       'Nicht im Basispreis inkludiert sind Endreinigung (ab €200,- pro Yacht), Spritverbrauch, fakultative Ausflüge, Anlegegebühren außerhalb des Heimathafens, persönliche Ausgaben und Reiseversicherungen, lokale Touristentaxen sowie Trinkgelder jeglicher Art.',
       'Skipper wird von der Bordkassa mitverpflegt.',
       'Für das Einkaufen stehen ausgezeichnet ausgestattete Supermärkte zur Verfügung.',
-      'Sie benötigen als EU-Bürger einen noch 6 Monate gültigen Reisepass bei der Ausreise.',
       'Änderungen vorbehalten',
     ],
     priceBlocks: [
