@@ -245,7 +245,7 @@ export const packages: Package[] = [
           },
           {
             name: 'Spanish Town – Das Tor zu Virgin Gorda',
-            text: 'Die zweitgrößte Stadt der Britischen Jungferninseln bietet eine moderne Marina mit zahlreichen Einkaufsmöglichkeiten. Von hier aus starten Touren über Virgin Gorda zu Fuß oder – deutlich unkomplizierter – mit einem kleinen Mietwagen bzw. Jeep. Für Radtouren ist die Insel kaum geeignet, einen klassischen Fahrradverleih gibt es nicht; manche Hotels wie das Little Dix Bay Resort haben zwar Räder, diese sind aber nur für Hausgäste gedacht.',
+            text: 'Die zweitgrößte Stadt der Britischen Jungferninseln bietet eine moderne Marina mit zahlreichen Einkaufsmöglichkeiten. Von hier aus starten Touren über Virgin Gorda – am komfortabelsten mit einem kleinen Mietwagen bzw. Jeep, den Sie unkompliziert vor Ort mieten können.',
           },
           {
             name: 'The Baths – Ein Naturwunder der Karibik',
@@ -261,7 +261,7 @@ export const packages: Package[] = [
           },
           {
             name: 'Cane Garden Bay – Ursprüngliches Karibik-Flair auf Tortola',
-            text: 'Diese malerische, noch sehr ursprüngliche Bucht besticht mit feinem Sandstrand sowie gemütlichen Strandbars und Restaurants direkt am Wasser – ein perfekter Ort zum Entspannen und Eintauchen in echtes karibisches Lebensgefühl. Wer tatsächlich surfen möchte, findet die besseren Wellen in der Apple Bay (saisonabhängig) oder der Josiah’s Bay auf der anderen Seite Tortolas.',
+            text: 'Diese malerische, noch sehr ursprüngliche Bucht besticht mit feinem Sandstrand sowie gemütlichen Strandbars und Restaurants direkt am Wasser – ein perfekter Ort zum Entspannen und Eintauchen in echtes karibisches Lebensgefühl. Die besten Wellen zum Surfen finden Sie übrigens in der Apple Bay (saisonabhängig) oder der Josiah’s Bay auf der anderen Seite Tortolas.',
           },
           {
             name: 'Jost Van Dyke – Die Partyinsel der Karibik',
