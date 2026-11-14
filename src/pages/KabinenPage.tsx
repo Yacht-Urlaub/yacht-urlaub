@@ -10,6 +10,7 @@ import RecaptchaHinweis from '../components/RecaptchaHinweis'
 import KohChangOffer from '../components/KohChangOffer'
 import PhuketOffer from '../components/PhuketOffer'
 import DubrovnikOffer from '../components/DubrovnikOffer'
+import BviOffer from '../components/BviOffer'
 
 // Angebote 1:1 von der Originalseite (yacht-urlaub.net/kabinenangebote)
 // Aktuell keine gültigen Angebote — Karten bleiben im Code erhalten (Design/Struktur),
@@ -51,6 +52,7 @@ const reiseOptionen = [
   'Koh Chang Thailand - 09.-20.12.2026',
   'Phuket Thailand - 02.-13.02.2027',
   'Dubrovnik Kroatien - 05.-12.06.2027',
+  'British Virgin Islands Karibik - 27.02.-09.03.2027',
   'Dalmatien ab Split - Termin Anfrage',
   "WhatsApp Community Törn in Thailand Februar'27",
 ]
@@ -106,6 +108,7 @@ const reiseOptionenEn = [
   'Koh Chang Thailand - 09-20 Dec 2026',
   'Phuket Thailand - 02-13 Feb 2027',
   'Dubrovnik Croatia - 5-12 Jun 2027',
+  'British Virgin Islands Caribbean - 27 Feb-9 Mar 2027',
   'Dalmatia from Split - date on request',
   'Community Trip for Thailand in February 2027',
 ]
@@ -177,6 +180,15 @@ export default function KabinenPage() {
       brand: { '@type': 'Brand', name: brand },
       offers: { '@type': 'Offer', price: '1390', priceCurrency: 'EUR', availability: 'https://schema.org/LimitedAvailability', url: kabinenUrl },
     },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: lang === 'en' ? 'British Virgin Islands: 10 nights between Tortola, Jost Van Dyke, Anegada and Virgin Gorda' : 'British Virgin Islands: 10 Nächte zwischen Tortola, Jost Van Dyke, Anegada und Virgin Gorda',
+      image: `${base}/images/kabinen/karibik-bvi/hero.webp`,
+      url: kabinenUrl,
+      brand: { '@type': 'Brand', name: brand },
+      offers: { '@type': 'Offer', price: '2330', priceCurrency: 'EUR', availability: 'https://schema.org/LimitedAvailability', url: kabinenUrl },
+    },
   ]
 
   return (
@@ -184,8 +196,8 @@ export default function KabinenPage() {
       <SEO
         title={lang === 'en' ? "Cabin offers – book a single cabin | Yacht-Holiday" : "Kabinen-Angebote – Einzelne Kabine buchen"}
         description={lang === 'en'
-          ? 'Book a single cabin on a shared yacht. Current cabin offers for Dubrovnik (Croatia), Phuket and Koh Chang (Thailand). Ideal for solo travellers and couples.'
-          : 'Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für Dubrovnik (Kroatien), Phuket und Koh Chang (Thailand). Ideal für Alleinreisende und Paare.'}
+          ? 'Book a single cabin on a shared yacht. Current cabin offers for the British Virgin Islands (Caribbean), Dubrovnik (Croatia), Phuket and Koh Chang (Thailand). Ideal for solo travellers and couples.'
+          : 'Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für die British Virgin Islands (Karibik), Dubrovnik (Kroatien), Phuket und Koh Chang (Thailand). Ideal für Alleinreisende und Paare.'}
         image="/images/packages/Kornaten/gallery/Telascica.webp"
         schema={schema}
       />
@@ -230,6 +242,13 @@ export default function KabinenPage() {
       <section id="dubrovnik" style={{ background: '#fff', padding: '0', scrollMarginTop: '96px' }}>
         <div className="container">
           <DubrovnikOffer onRequest={() => set('reise', lang === 'en' ? 'Dubrovnik Croatia - 5-12 Jun 2027' : 'Dubrovnik Kroatien - 05.-12.06.2027')} />
+        </div>
+      </section>
+
+      {/* British Virgin Islands Kojen-Angebot (Februar/März 2027) */}
+      <section id="karibik-bvi" style={{ background: '#fff', padding: '0', scrollMarginTop: '96px' }}>
+        <div className="container">
+          <BviOffer onRequest={() => set('reise', lang === 'en' ? 'British Virgin Islands Caribbean - 27 Feb-9 Mar 2027' : 'British Virgin Islands Karibik - 27.02.-09.03.2027')} />
         </div>
       </section>
 
