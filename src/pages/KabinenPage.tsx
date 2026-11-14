@@ -51,10 +51,9 @@ const angebote = [
 const reiseOptionen = [
   'Koh Chang Thailand - 09.-20.12.2026',
   'Phuket Thailand - 02.-13.02.2027',
-  'Dubrovnik Kroatien - 05.-12.06.2027',
   'British Virgin Islands Karibik - 27.02.-09.03.2027',
+  'Dubrovnik Kroatien - 05.-12.06.2027',
   'Dalmatien ab Split - Termin Anfrage',
-  "WhatsApp Community Törn in Thailand Februar'27",
 ]
 
 const kl = {
@@ -107,10 +106,9 @@ const angeboteEn = [
 const reiseOptionenEn = [
   'Koh Chang Thailand - 09-20 Dec 2026',
   'Phuket Thailand - 02-13 Feb 2027',
-  'Dubrovnik Croatia - 5-12 Jun 2027',
   'British Virgin Islands Caribbean - 27 Feb-9 Mar 2027',
+  'Dubrovnik Croatia - 5-12 Jun 2027',
   'Dalmatia from Split - date on request',
-  'Community Trip for Thailand in February 2027',
 ]
 
 export default function KabinenPage() {
@@ -174,20 +172,20 @@ export default function KabinenPage() {
     {
       '@context': 'https://schema.org',
       '@type': 'Product',
-      name: lang === 'en' ? 'Dubrovnik: 7 nights between the Elaphiti Islands, Korčula and Mljet' : 'Dubrovnik: 7 Nächte zwischen Elaphiten, Korčula und Mljet',
-      image: `${base}/images/kabinen/dubrovnik/hero.webp`,
-      url: kabinenUrl,
-      brand: { '@type': 'Brand', name: brand },
-      offers: { '@type': 'Offer', price: '1390', priceCurrency: 'EUR', availability: 'https://schema.org/LimitedAvailability', url: kabinenUrl },
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Product',
       name: lang === 'en' ? 'British Virgin Islands: 10 nights between Tortola, Jost Van Dyke, Anegada and Virgin Gorda' : 'British Virgin Islands: 10 Nächte zwischen Tortola, Jost Van Dyke, Anegada und Virgin Gorda',
       image: `${base}/images/kabinen/karibik-bvi/hero.webp`,
       url: kabinenUrl,
       brand: { '@type': 'Brand', name: brand },
       offers: { '@type': 'Offer', price: '2330', priceCurrency: 'EUR', availability: 'https://schema.org/LimitedAvailability', url: kabinenUrl },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: lang === 'en' ? 'Dubrovnik: 7 nights between the Elaphiti Islands, Korčula and Mljet' : 'Dubrovnik: 7 Nächte zwischen Elaphiten, Korčula und Mljet',
+      image: `${base}/images/kabinen/dubrovnik/hero.webp`,
+      url: kabinenUrl,
+      brand: { '@type': 'Brand', name: brand },
+      offers: { '@type': 'Offer', price: '1390', priceCurrency: 'EUR', availability: 'https://schema.org/LimitedAvailability', url: kabinenUrl },
     },
   ]
 
@@ -238,17 +236,17 @@ export default function KabinenPage() {
         </div>
       </section>
 
+      {/* British Virgin Islands Kojen-Angebot (Februar/März 2027) */}
+      <section id="bvi" style={{ background: '#fff', padding: '0', scrollMarginTop: '96px' }}>
+        <div className="container">
+          <BviOffer onRequest={() => set('reise', lang === 'en' ? 'British Virgin Islands Caribbean - 27 Feb-9 Mar 2027' : 'British Virgin Islands Karibik - 27.02.-09.03.2027')} />
+        </div>
+      </section>
+
       {/* Dubrovnik Kojen-Angebot (Juni 2027) */}
       <section id="dubrovnik" style={{ background: '#fff', padding: '0', scrollMarginTop: '96px' }}>
         <div className="container">
           <DubrovnikOffer onRequest={() => set('reise', lang === 'en' ? 'Dubrovnik Croatia - 5-12 Jun 2027' : 'Dubrovnik Kroatien - 05.-12.06.2027')} />
-        </div>
-      </section>
-
-      {/* British Virgin Islands Kojen-Angebot (Februar/März 2027) */}
-      <section id="karibik-bvi" style={{ background: '#fff', padding: '0', scrollMarginTop: '96px' }}>
-        <div className="container">
-          <BviOffer onRequest={() => set('reise', lang === 'en' ? 'British Virgin Islands Caribbean - 27 Feb-9 Mar 2027' : 'British Virgin Islands Karibik - 27.02.-09.03.2027')} />
         </div>
       </section>
 

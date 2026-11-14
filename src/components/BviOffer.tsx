@@ -134,11 +134,9 @@ const t = {
     routeMapAlt: 'Routenkarte British Virgin Islands: Tortola – Peter Island – Salt Island – Cooper Island – The Baths – Spanish Town – Bitter End – Anegada – Marina Cay – Cane Garden Bay – Jost Van Dyke – Tortola',
     routeNote: 'Routenänderungen je nach Wind und Wetter vorbehalten. Die Entscheidung trifft der Skipper vor Ort.',
     included: 'Im Kojenpreis enthalten',
-    includedList: ['Koje in einer Doppelkabine für 10 Nächte', 'Skipper Manuel an Bord, inkl. Anreise', 'Katamaran Bali 4.2 für die gesamte Reise', 'Nationalpark-Gebühr, BVI Cruising Tax und Seenotrettung (VISAR)', 'Bettwäsche, Handtücher, Endreinigung, Beiboot mit Außenborder'],
+    includedList: ['Koje in einer Doppelkabine für 10 Nächte', 'Skipper Manuel an Bord', 'Katamaran Bali 4.2 für die gesamte Reise', 'Nationalpark-Gebühr, BVI Cruising Tax und Seenotrettung (VISAR)', 'Bettwäsche, Handtücher, Endreinigung, Beiboot mit Außenborder'],
     notIncluded: 'Nicht enthalten',
     notIncludedList: ['An- und Abreise (Flug nach Tortola)', 'Bordkasse: Verpflegung, Diesel, Moorings und Liegegebühren in Fremdhäfen', 'Kaution € 1.000,– (wird nach der Reise rückerstattet)'],
-    optional: 'Optional zubuchbar (pro Yacht)',
-    optionalList: ['Stand-up-Paddle (SUP) € 15,– / Tag', 'WLAN an Bord € 15,– / Nacht', 'Relingsnetz € 155,–', 'Koch an Bord € 230,– / Nacht'],
     arrival: 'Anreise',
     a1t: 'Fliegen', a1: 'Von Wien und Deutschland mit Umstieg, zum Beispiel über Antigua, St. Maarten oder San Juan, weiter mit einem Regionalflug nach Tortola (EIS). Vom Flughafen auf Beef Island sind es mit dem Taxi rund 15 Minuten bis zur Hodge’s Creek Marina.',
     a2t: 'Fähre', a2: 'Alternativ über St. Thomas (US Virgin Islands) und weiter mit der Fähre nach Road Town auf Tortola. Für die Einreise über die USA ist eine ESTA-Genehmigung nötig. Transfer zur Marina optional zubuchbar.',
@@ -179,11 +177,9 @@ const t = {
     routeMapAlt: 'Route map of the British Virgin Islands: Tortola – Peter Island – Salt Island – Cooper Island – The Baths – Spanish Town – Bitter End – Anegada – Marina Cay – Cane Garden Bay – Jost Van Dyke – Tortola',
     routeNote: 'Route subject to change depending on wind and weather. The skipper decides on site.',
     included: 'Included in the berth price',
-    includedList: ['Berth in a double cabin for 10 nights', "Skipper Manuel on board, including his travel costs", 'Catamaran Bali 4.2 for the whole trip', 'National park fee, BVI cruising tax and sea rescue cover (VISAR)', 'Bed linen, towels, final cleaning, dinghy with outboard'],
+    includedList: ['Berth in a double cabin for 10 nights', 'Skipper Manuel on board', 'Catamaran Bali 4.2 for the whole trip', 'National park fee, BVI cruising tax and sea rescue cover (VISAR)', 'Bed linen, towels, final cleaning, dinghy with outboard'],
     notIncluded: 'Not included',
     notIncludedList: ['Travel to/from Tortola (flights)', "Ship's kitty: food, diesel, moorings and mooring fees in other harbours", 'Deposit € 1,000.– (refunded after the trip)'],
-    optional: 'Optional add-ons (per yacht)',
-    optionalList: ['Stand-up paddleboard (SUP) € 15.– / day', 'WiFi on board € 15.– / night', 'Guard rail netting € 155.–', 'Cook on board € 230.– / night'],
     arrival: 'Getting there',
     a1t: 'Flying', a1: "From Vienna and Germany with a connection, for example via Antigua, St. Maarten or San Juan, then on by regional flight to Tortola (EIS). From the airport on Beef Island it's about 15 minutes by taxi to Hodge’s Creek Marina.",
     a2t: 'Ferry', a2: 'Alternatively via St. Thomas (US Virgin Islands) and then on by ferry to Road Town on Tortola. Entering via the US requires an ESTA authorisation. Transfer to the marina optionally bookable.',
@@ -209,7 +205,7 @@ const MIN_TEILNEHMER = 6 // Reise findet ab dieser Teilnehmerzahl fix statt
 export default function BviOffer({ onRequest }: { onRequest: () => void }) {
   const lang = useLang()
   const s = t[lang]
-  const [open, setOpen] = useState(() => typeof window !== 'undefined' && window.location.hash === '#karibik-bvi')
+  const [open, setOpen] = useState(() => typeof window !== 'undefined' && window.location.hash === '#bvi')
   const [lightbox, setLightbox] = useState<LightboxState | null>(null)
   const openLightbox = (images: LightboxState['images'], index: number) => setLightbox({ images, index })
   const lightboxPrev = () => setLightbox(s => s && { ...s, index: (s.index - 1 + s.images.length) % s.images.length })
@@ -442,12 +438,6 @@ export default function BviOffer({ onRequest }: { onRequest: () => void }) {
               <h3 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 700, color: 'var(--navy)' }}>{s.notIncluded}</h3>
               <ul style={{ margin: 0, paddingLeft: '1.1rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.88rem', lineHeight: 1.5, color: '#444' }}>
                 {s.notIncludedList.map(item => <li key={item}>{item}</li>)}
-              </ul>
-            </div>
-            <div style={{ background: 'var(--gray-light)', border: '1px solid var(--gray-mid)', borderRadius: '8px', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <h3 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 700, color: 'var(--navy)' }}>{s.optional}</h3>
-              <ul style={{ margin: 0, paddingLeft: '1.1rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.88rem', lineHeight: 1.5, color: '#444' }}>
-                {s.optionalList.map(item => <li key={item}>{item}</li>)}
               </ul>
             </div>
           </section>
