@@ -89,14 +89,27 @@ Ergebnis identisch):
   zeigen, nicht nur „Sa/Mi“.
 - Der **Preis hängt nur an der Saison des Starttags** (Regeltyp 24).
   14 Tage ab Sa 26.6. kosten durchgehend den Juni-Preis.
-- **10 Tage = 10/7 des Wochenpreises.** Die Regel „Gewählte Mietdauer:
-  10 Tage, −15 %“ (97463) greift über die API nicht (auch nicht mit
-  `rental_time_value=240`). Offen: Was kostet es im Planyo-Formular?
+- **10 Tage = 10/7 des Wochenpreises minus 15 %** (Regel 97463 „Gewählte
+  Mietdauer: 10 Tage“, gewollt). Die Regel greift über die API **nur**,
+  wenn die gewählte Dauer mitgeschickt wird: `rental_duration_text=10 Tage`
+  (so macht es auch das Planyo-Formular; `rental_time_value=240` allein
+  reicht nicht). Deshalb bei `get_rental_price` und `make_reservation`
+  **immer** `rental_duration_text=<7|10|14> Tage` mitgeben. Gilt auch für
+  alle Termine eines Sammelaufrufs (`start_time_2…`). Der Abzug wirkt nur
+  auf den Reisepreis, Extras werden danach anteilig addiert. Am 16.11.2026
+  mit Extras, Katamaran und einer Testbuchung geprüft (identisch mit dem
+  Formular).
 - April ist buchbar (Mindestdauer real 7 Tage): Dalmatien 550, Griechenland
   620 p.P./Woche.
 - Info-Regeln (Preistyp 11) sperren nicht: 1–3 Personen (`S_CUS_LIMIT`)
   und Katamaran mit 1–5 Personen (`S_CUS_CATLIMIT`) sind buchbar, Planyo
   zeigt nur einen Hinweistext. Das Modul darf dort nicht blockieren.
+  Texte: „Die Durchführung des Törns wird bestätigt, sobald mindestens
+  4 (Katamaran: 6) Personen gebucht haben.“ / „The trip will be confirmed
+  once at least 4 (6) people have booked.“
+- Was das Planyo-Formular anzeigt, lässt sich lesend nachstellen:
+  POST `…/Plugins/PlanyoFiles/non-planyo-ulap.php` mit `mode=fetch_price`
+  (gleiche Felder wie das Formular). Nützlich zum Abgleich API ↔ Formular.
 
 ## Griechenland (Ressource 140650)
 
@@ -110,20 +123,22 @@ p.P./Woche; der Umlaut wird im Parameternamen zu `__`). Bord-Service 399,
 Sprit 50. BBQ-Grill ist für Griechenland nicht buchbar.
 Abweichungen Website zu Planyo: Comfort 50 zu 60, Premium 250 zu 350.
 
-## Preis übersteuern (`custom_price`)
+## Grundsatz: keine eigenen Preisregeln
 
-`make_reservation` nimmt `custom_price`; Planyo rechnet dann nicht selbst.
-Geplant (Variante B): Grundpreis weiter per `get_rental_price`, Aktionen/
-Rabatte als Liste auf der Website, Abzug in der Netlify-Function (nie im
-Browser), Ergebnis als `custom_price`. Laut Doku nicht mit
-`rental_prop_voucher` kombinierbar. **Noch nicht getestet**, auch nicht,
-ob `set_reservation_products` mit `recalculate_price` den Rabatt verwirft.
+Entscheidung des Users (16.11.2026): Die Website erfindet **keine**
+Preisregeln außerhalb von Planyo. Alle Preise, Abzüge und Rabatte kommen
+aus dem Preis-Manager bzw. über Planyo-Gutscheine; gebucht wird zu dem
+Preis, den Planyo berechnet. `custom_price` in `make_reservation` wird
+bewusst nicht verwendet. Der Preis hängt an der Saison des Starttags
+(gewollt). Jede Abweichung zwischen Modul und Planyo-Formular ist ein
+Fehler im Modul.
 
 ## Preise Dalmatien 2027 (p.P., 7 Tage, gemessen mit `get_rental_price`)
 
 Mai 620 · Juni 740 · Juli 840 · 31.7.–14.8. 870 · 21.8.–4.9. 840 ·
 Anfang Sept. 780 · ab 22.9. 690. 10 und 14 Tage anteilig (×10/7, ×2).
-Preis ist linear in der Personenzahl.
+Mit `rental_duration_text=10 Tage` zusätzlich −15 % (siehe oben). Preis ist
+linear in der Personenzahl.
 
 ## Formularfelder (`get_form_items`, resource_id 139297)
 

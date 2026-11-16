@@ -124,6 +124,13 @@ gesperrt. Deshalb gilt verbindlich:
 - **Keys nie ins Repo.** Sie gehören in Netlify-Umgebungsvariablen
   (`PLANYO_API_KEY`, ggf. `PLANYO_SANDBOX=1`) bzw. in die Einstellungen
   der Cloud-Umgebung.
+- **Keine eigenen Preisregeln außerhalb von Planyo.** Preise, Abzüge
+  und Rabatte kommen ausschließlich aus Planyo (Preis-Manager,
+  Gutscheine); die Website rechnet nichts Eigenes und übersteuert keinen
+  Preis (`custom_price` nicht verwenden). Zeigt das Modul einen anderen
+  Preis als das Planyo-Formular, ist das ein Fehler im Modul: Ursache
+  suchen (z. B. fehlender Parameter wie `rental_duration_text`), nicht
+  beim User nachfragen, ob die Planyo-Regel „gewollt“ ist.
 - Die öffentliche Netlify-Function `netlify/functions/planyo.mjs` lässt
   nur die Methoden der Buchungsstrecke durch (Freigabeliste). Verwaltungs-
   Methoden wie `list_reservations` würden Kundendaten öffentlich machen
