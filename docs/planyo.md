@@ -1,6 +1,6 @@
 # Planyo-Anbindung: Wissensstand
 
-Stand: 29.10.2026. Ermittelt in der Sandbox (`sandbox.planyo.com`, Kopie
+Stand: 16.11.2026. Ermittelt in der Sandbox (`sandbox.planyo.com`, Kopie
 der Echtdaten). Sicherheitsregeln für API-Aufrufe stehen in `CLAUDE.md`.
 
 ## Ziel
@@ -65,13 +65,59 @@ Formular ein eigenes Formular für dieses Package. Mit dem eigenen
 Buchungsmodul der Website wird das Planyo-Formular aber nicht mehr
 gebraucht.
 
-## Saisonen und Starttage (Site-weit, `get_resource_seasons`)
+## Saisonen, An- und Abreisetage (site-weit, `get_resource_seasons`)
 
-`start_weekday_flags`: Bitmaske So=1, Mo=2, Di=4, Mi=8, Do=16, Fr=32,
-Sa=64. 72 = Sa+Mi, 64 = nur Sa.
+`start_weekday_flags` / `end_weekday_flags`: Bitmaske So=1, Mo=2, Di=4,
+Mi=8, Do=16, Fr=32, Sa=64. 72 = Sa+Mi, 76 = Sa+Mi+Di, 64 = nur Sa.
 
-- 30.4.–26.6. und 6.9.–31.10.: Start Sa oder Mi
-- 27.6.–5.9.: Start nur Sa
+| Zeitraum | Anreise | Abreise |
+|---|---|---|
+| 1.4.–26.6. | Sa, Mi | Sa, Mi, Di |
+| 27.6.–5.9. | nur Sa | nur Sa |
+| 6.9.–31.10. | Sa, Mi | Sa, Mi, Di |
+
+Am 16.11.2026 für alle Mi/Sa von April bis Oktober 2027 und jede Dauer
+einzeln mit `can_make_reservation` geprüft (Dalmatien und Griechenland,
+Ergebnis identisch):
+
+- Die **Abreise zählt mit**: Maßgeblich ist auch die Saison des
+  Abreisetags. Start Mi 23.6. geht nur mit 10 Tagen (Abreise Sa 3.7.),
+  Start Sa 19.6. nur mit 7 und 14. In der Hauptsaison sind 10 Tage nie
+  möglich (Abreise fiele auf Dienstag).
+- Letzte mögliche Abreise 30.10., ab 1.11. meldet Planyo „besetzt“.
+- Der Kalender im Modul muss deshalb pro Dauer die buchbaren Starttage
+  zeigen, nicht nur „Sa/Mi“.
+- Der **Preis hängt nur an der Saison des Starttags** (Regeltyp 24).
+  14 Tage ab Sa 26.6. kosten durchgehend den Juni-Preis.
+- **10 Tage = 10/7 des Wochenpreises.** Die Regel „Gewählte Mietdauer:
+  10 Tage, −15 %“ (97463) greift über die API nicht (auch nicht mit
+  `rental_time_value=240`). Offen: Was kostet es im Planyo-Formular?
+- April ist buchbar (Mindestdauer real 7 Tage): Dalmatien 550, Griechenland
+  620 p.P./Woche.
+- Info-Regeln (Preistyp 11) sperren nicht: 1–3 Personen (`S_CUS_LIMIT`)
+  und Katamaran mit 1–5 Personen (`S_CUS_CATLIMIT`) sind buchbar, Planyo
+  zeigt nur einen Hinweistext. Das Modul darf dort nicht blockieren.
+
+## Griechenland (Ressource 140650)
+
+Preise 2027 p.P./Woche: April 620, Mai 690, Juni 850, Juli 890,
+Hochsaison 940, Ende August 890, Anfang September 790, Herbst 750.
+Zusätzliche Felder: `rental_prop_Route` (Pflicht; Werte „A1 (ab
+Athen/Lavrion in die Kykladen)“, „A2 (ab Athen Richtung Peleponnes)“,
+„B (ab Kos in den Dodekanes)“, „C (Ab Corfu/Lefkas in das ionische
+Meer)“) und `rental_prop_Geb__hren_Package` (Gebühren-Package, +100
+p.P./Woche; der Umlaut wird im Parameternamen zu `__`). Bord-Service 399,
+Sprit 50. BBQ-Grill ist für Griechenland nicht buchbar.
+Abweichungen Website zu Planyo: Comfort 50 zu 60, Premium 250 zu 350.
+
+## Preis übersteuern (`custom_price`)
+
+`make_reservation` nimmt `custom_price`; Planyo rechnet dann nicht selbst.
+Geplant (Variante B): Grundpreis weiter per `get_rental_price`, Aktionen/
+Rabatte als Liste auf der Website, Abzug in der Netlify-Function (nie im
+Browser), Ergebnis als `custom_price`. Laut Doku nicht mit
+`rental_prop_voucher` kombinierbar. **Noch nicht getestet**, auch nicht,
+ob `set_reservation_products` mit `recalculate_price` den Rabatt verwirft.
 
 ## Preise Dalmatien 2027 (p.P., 7 Tage, gemessen mit `get_rental_price`)
 
