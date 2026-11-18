@@ -17,19 +17,19 @@ import { AnchorIcon } from './Icons'
 const packagesListEn = [
   { title: 'Sailing in Croatia from Split', region: 'Croatia · Dalmatia',
     text: 'Sailing vacations from Split or Trogir to Hvar, Vis, Korcula, Brac and Solta.',
-    img: '/images/packages/dalmatien/gallery/Split 1.jpg', href: '/en/cruises/book-now/dalmatia-croatia' },
+    img: '/images/packages-grid/dalmatien.webp', alt: 'Palm-lined waterfront and harbour of Split in Dalmatia', href: '/en/cruises/book-now/dalmatia-croatia' },
   { title: 'Caribbean package (BVI)', region: 'Caribbean · British Virgin Islands',
     text: 'Your sailing holidays on a monohull or catamaran in the British Virgin Islands.',
-    img: '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg', href: '/en/cruises/book-now/caribbean-bvi' },
+    img: '/images/packages-grid/karibik-bvi.webp', alt: 'Catamaran off a sandy cay with turquoise water in the British Virgin Islands', href: '/en/cruises/book-now/caribbean-bvi' },
   { title: 'Sailing in Greece', region: 'Greece · Aegean & Ionian Sea',
     text: 'Sailing holiday in the Aegean or the Ionian sea — choice of 4 routes.',
-    img: '/images/packages/Griechenland/gallery/Navajo Bucht - Griechenland.jpg', href: '/en/cruises/book-now/greece' },
+    img: '/images/packages-grid/griechenland.webp', alt: 'Navagio Bay with white cliffs and turquoise water in Greece', href: '/en/cruises/book-now/greece' },
   { title: 'Grenadines-Package', region: 'Caribbean · St. Vincent & Grenadines',
     text: 'Sailing vacation on a monohull or catamaran in the Grenadines.',
-    img: '/images/Destinationsbilder/sonnenuntergang-grenadinen.jpg', href: '/en/cruises/book-now/caribbean-grenadines' },
+    img: '/images/packages-grid/grenadinen.webp', alt: 'Sunset over sailing yachts at anchor in the Grenadines', href: '/en/cruises/book-now/caribbean-grenadines' },
   { title: 'Sailing into the Kornati islands', region: 'Croatia · Kornati',
     text: 'Sailing holiday in the Kornati islands from Zadar.',
-    img: '/images/Destinationsbilder/Header/Kroatien Bucht.webp', href: '/en/cruises/book-now/kornati-croatia' },
+    img: '/images/packages-grid/kornaten.webp', alt: 'Sailing yacht in a quiet bay on the Croatian coast', href: '/en/cruises/book-now/kornati-croatia' },
 ]
 
 const packagesListDe = [
@@ -37,42 +37,48 @@ const packagesListDe = [
     title: 'Segeln in Dalmatien ab Split',
     region: 'Kroatien · Dalmatien',
     text: 'Segelurlaub in Dalmatien ab Split oder Trogir zu den Inseln Hvar, Vis, Korčula, Brač und Šolta.',
-    img: '/images/packages/dalmatien/gallery/Split 1.jpg',
+    img: '/images/packages-grid/dalmatien.webp',
+    alt: 'Palmenpromenade und Hafen von Split in Dalmatien',
     href: '/packages/dalmatien',
   },
   {
     title: 'Karibik-Package (BVI)',
     region: 'Karibik · Britische Jungferninseln',
     text: 'Ihr Traum-Segelurlaub auf einer Segelyacht oder Katamaran in den britischen Jungferninseln.',
-    img: '/images/packages/Karibik-BVI/gallery/Sandy Cay.jpg',
+    img: '/images/packages-grid/karibik-bvi.webp',
+    alt: 'Katamaran vor einer Sandinsel mit türkisem Wasser in den Britischen Jungferninseln',
     href: '/packages/karibik-bvi',
   },
   {
     title: 'Segeln in Griechenland',
     region: 'Griechenland · Ägäis & Ionische Inseln',
     text: 'Auswahl aus 4 Routen für einen Segelurlaub in der Ägäis oder den Ionischen Inseln.',
-    img: '/images/packages/Griechenland/gallery/Navajo Bucht - Griechenland.jpg',
+    img: '/images/packages-grid/griechenland.webp',
+    alt: 'Navagio-Bucht mit weißen Klippen und türkisem Wasser in Griechenland',
     href: '/packages/griechenland',
   },
   {
     title: 'Grenadinen-Package',
     region: 'Karibik · St. Vincent & Grenadinen',
     text: 'Segelurlaub auf einer Segelyacht oder einem Katamaran in den Grenadinen.',
-    img: '/images/Destinationsbilder/sonnenuntergang-grenadinen.jpg',
+    img: '/images/packages-grid/grenadinen.webp',
+    alt: 'Sonnenuntergang über Segelyachten vor Anker in den Grenadinen',
     href: '/packages/karibik-grenadinen',
   },
   {
     title: 'Segeln in die Kornaten',
     region: 'Kroatien · Kornaten',
     text: 'Segelurlaub ab Zadar, Biograd oder Šibenik in die traumhafte Inselwelt der Kornaten.',
-    img: '/images/Destinationsbilder/Header/Kroatien Bucht.webp',
+    img: '/images/packages-grid/kornaten.webp',
+    alt: 'Segelyacht in einer ruhigen Bucht an der kroatischen Küste',
     href: '/packages/kornaten',
   },
   {
     title: 'Segeln ab Pula oder Krk',
     region: 'Kroatien · Istrien',
     text: 'Segelurlaub in Istrien und in der Marina Punat ab Pula oder Punat auf Krk.',
-    img: '/images/Destinationsbilder/bucht-in-den-dodekanes-bei-yacht-urlaub.jpg',
+    img: '/images/packages-grid/istrien.webp',
+    alt: 'Badespaß im tiefblauen Meer vor Istrien',
     href: '/packages/istrien',
   },
 ]
@@ -110,8 +116,9 @@ export default function PackagesGrid() {
               <div style={{ position: 'relative', height: '180px', overflow: 'hidden' }}>
                 <img
                   src={pkg.img}
-                  alt={pkg.title}
+                  alt={pkg.alt}
                   loading="lazy"
+                  decoding="async"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.4s' }}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
