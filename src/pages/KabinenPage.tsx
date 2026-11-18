@@ -202,7 +202,7 @@ export default function KabinenPage() {
 
       {/* Hero */}
       <div style={{ position: 'relative', height: '380px', overflow: 'hidden' }}>
-        <img src="/images/packages/Kornaten/gallery/Telascica.webp" alt="Kabinen-Angebote"
+        <img src="/images/packages/Kornaten/gallery/Telascica.webp" alt={lang === 'en' ? 'Cabin offers aboard a sailing yacht in the Kornati islands' : 'Kabinen-Angebote auf einer Segelyacht in den Kornaten'}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           onError={e => { (e.target as HTMLImageElement).src = '/images/yachten/katamaran.jpg' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(7,27,47,0.88) 0%, rgba(7,27,47,0.4) 60%, transparent 100%)' }} />

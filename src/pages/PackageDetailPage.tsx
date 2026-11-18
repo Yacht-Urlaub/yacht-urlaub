@@ -410,14 +410,14 @@ export default function PackageDetailPage() {
                     {pkg.routeMaps[mapIdx % pkg.routeMaps.length].caption}
                   </figcaption>
                 </figure>
-                <button onClick={() => setMapIdx(i => (i - 1 + pkg.routeMaps.length) % pkg.routeMaps.length)} aria-label="Vorherige Karte"
+                <button onClick={() => setMapIdx(i => (i - 1 + pkg.routeMaps.length) % pkg.routeMaps.length)} aria-label={lang === 'en' ? 'Previous map' : 'Vorherige Karte'}
                   style={{ position: 'absolute', left: '0.5rem', top: '45%', transform: 'translateY(-50%)', width: '40px', height: '40px', borderRadius: '50%', border: 'none', background: 'rgba(7,27,47,0.6)', color: '#fff', fontSize: '1.4rem', lineHeight: 1, cursor: 'pointer' }}>‹</button>
-                <button onClick={() => setMapIdx(i => (i + 1) % pkg.routeMaps.length)} aria-label="Nächste Karte"
+                <button onClick={() => setMapIdx(i => (i + 1) % pkg.routeMaps.length)} aria-label={lang === 'en' ? 'Next map' : 'Nächste Karte'}
                   style={{ position: 'absolute', right: '0.5rem', top: '45%', transform: 'translateY(-50%)', width: '40px', height: '40px', borderRadius: '50%', border: 'none', background: 'rgba(7,27,47,0.6)', color: '#fff', fontSize: '1.4rem', lineHeight: 1, cursor: 'pointer' }}>›</button>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '1rem' }}>
                 {pkg.routeMaps.map((_, i) => (
-                  <button key={i} onClick={() => setMapIdx(i)} aria-label={`Karte ${i + 1}`}
+                  <button key={i} onClick={() => setMapIdx(i)} aria-label={`${lang === 'en' ? 'Map' : 'Karte'} ${i + 1}`}
                     style={{ width: (mapIdx % pkg.routeMaps.length) === i ? '24px' : '8px', height: '8px', borderRadius: '4px', border: 'none', cursor: 'pointer', padding: 0, background: (mapIdx % pkg.routeMaps.length) === i ? 'var(--blue)' : 'var(--gray-mid)', transition: 'all 0.25s' }} />
                 ))}
               </div>
@@ -557,7 +557,7 @@ export default function PackageDetailPage() {
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to={s.planer} className="btn btn-ghost" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
-              ANFRAGE STARTEN
+              {s.start}
             </Link>
             <BookNowButton bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }} label={s.dates} />
           </div>

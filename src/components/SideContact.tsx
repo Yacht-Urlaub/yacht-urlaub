@@ -82,7 +82,7 @@ export default function SideContact() {
             : item.id === 'mail' ? `mailto:${MAIL[lang]}`
             : item.href
           return target.startsWith('/') ? (
-            <Link key={item.id} to={target} aria-label={item.label} className="side-contact-item" style={style}>
+            <Link key={item.id} to={target} aria-label={labels[item.id] ?? item.label} className="side-contact-item" style={style}>
               {inner}
             </Link>
           ) : (
@@ -91,7 +91,7 @@ export default function SideContact() {
               href={target}
               target={item.external ? '_blank' : undefined}
               rel={item.external ? 'noopener noreferrer' : undefined}
-              aria-label={item.label}
+              aria-label={labels[item.id] ?? item.label}
               className="side-contact-item"
               style={style}
             >

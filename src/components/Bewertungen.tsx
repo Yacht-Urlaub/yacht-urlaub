@@ -2,32 +2,41 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { useLang } from '../i18n'
 
-// Google-Rezensionen — wortgenau von den Original-Screenshots übernommen
+// Google-Rezensionen — die deutschen Texte sind wortgenau von den Original-
+// Screenshots übernommen; die englische Fassung (textEn) ist eine Übersetzung
+// derselben Rezensionen und wird auf der englischen Seite ausdrücklich als
+// solche gekennzeichnet.
 const reviews = [
   {
     name: 'Gloria',
     color: '#d6336c',
     text: 'Wir wollten schon lange mal einen Segelurlaub machen, bisher scheiterte es aber immer an der Organisation. Bis ich auf Yacht-Urlaub gestoßen bin. Eine kurze E-Mail genügte und prompt wurden mir mehrere Törnvorschläge angeboten. Das Spezielle dabei war allerdings, dass wir zwei Taucher mit von der Partie hatten und das war bei einigen Anbietern bereits ein No-Go. Nicht so für Yacht-Urlaub und Manuel Göschl. Er hat uns gleich entsprechende Boote und das passende Reviere angeboten und war selbst von der Idee recht angetan. Dem entsprechend war es dann auch ein perfekter Urlaub für uns alle. Unsere Segelyacht war in einem Top-Zustand, alles war super organisiert und Manuel, der selbst unser Skipper war, immer bester Laune. Ich kann Yacht-Urlaub nur weiterempfehlen. Ihr habt die 5 Sterne voll verdient!',
+    textEn: "We had wanted to go on a sailing holiday for a long time, but it always fell through because of the organisation. Until I came across Yacht-Urlaub. A short e-mail was enough and I promptly received several cruise suggestions. The special thing was that we had two divers with us, and that was already a no-go for some providers. Not so for Yacht-Urlaub and Manuel Göschl. He immediately offered us suitable boats and the right sailing areas and was quite taken with the idea himself. Accordingly, it was a perfect holiday for all of us. Our sailing yacht was in top condition, everything was superbly organised and Manuel, who was our skipper himself, was always in the best of moods. I can only recommend Yacht-Urlaub. You have fully earned your 5 stars!",
   },
   {
     name: 'Markus und Alexandra',
+    nameEn: 'Markus and Alexandra',
     color: '#6741d9',
     text: "Es war ein super Segeltörn in Kroatien (Region Split-Dubrovnik). Einen besseren Skipper als Manuel G. kann man gar nicht bekommen. Sehr zuvorkommend, hilfsbereit und für jeden Scherz zu haben. Von der fachlichen Kompentenz und den lokalen örtlichen Kenntnissen, brauche ich gar nicht erst anfangen zu schreiben.... Einfach Perfekt! Wir freuen uns schon auf's nächste mal :-) Lg Markus",
+    textEn: "It was a superb sailing trip in Croatia (Split–Dubrovnik region). You simply can't get a better skipper than Manuel G. Very attentive, helpful and always up for a joke. I don't even need to start on his professional competence and local knowledge.... Simply perfect! We're already looking forward to the next time :-) Best wishes, Markus",
   },
   {
     name: 'Reinhard',
     color: '#e8590c',
     text: 'Familientörn Kroatien Ende August haben wir eine Woche unter Manuels kompetenter Leitung auf See verbracht. Gestartet in Trogir steuerten wir zuerst den nördlichsten Punkt unserer Reise an (Sali), um dann über die großartigen Kornaten wieder zu unserem Ausgangspunkt zurückzukehren. Für uns als Familientörn war es die erste Reise dieser Art, und wir können es nur wärmstens weiterempfehlen. Besondere Highlights für uns: flexible Planung der Reiseroute, tolle Buchten, gutes Essen, gute Stimmung an Board, Einblicke ins Segeln. Danke Manuel, liebe Grüße, deine Bohnencrew ;)',
+    textEn: "Family cruise in Croatia at the end of August: we spent a week at sea under Manuel's competent leadership. Starting in Trogir, we first headed for the northernmost point of our trip (Sali) and then returned to our starting point via the magnificent Kornati islands. It was our first trip of this kind as a family, and we can only recommend it warmly. Special highlights for us: flexible route planning, lovely bays, good food, a great atmosphere on board, insights into sailing. Thank you Manuel, best wishes, your Bean Crew ;)",
   },
   {
     name: 'Stefanie',
     color: '#0c8599',
     text: 'Wir hatten eine super Zeit bei unserem Kroatien Trip. Manuel war ein toller Skipper und hat auch im Vorfeld Spitzenarbeit geleistet und unseren Trip komplett organisiert. Wir waren alle Neulinge auf dem Gebiet und zum ersten Mal auf einem Segelboot unterwegs, aber selbst das war kein Problem und wir hatten eine supercoole Kroatien-Segel-Woche.',
+    textEn: "We had a great time on our Croatia trip. Manuel was a wonderful skipper and also did outstanding work beforehand, organising our whole trip. We were all newcomers and on a sailing boat for the first time, but even that was no problem and we had a super cool Croatia sailing week.",
   },
   {
     name: 'Alexandra',
     color: '#795548',
     text: 'Der Segeltörn in den Kornaten war ein wunderschöner Urlaub, weit ab vom Massentourismus! Unser Skipper Manuel ist sehr kompetent und ging auf unsere Wünsche bzgl. Ankerplätze wunderbar ein! Das war sicher nicht unser letzter Segeltörn und ich würde jederzeit wieder mit Manuel segeln. Hab mich gut betreut und jederzeit sicher gefühlt!',
+    textEn: "The sailing trip in the Kornati islands was a beautiful holiday, far away from mass tourism! Our skipper Manuel is very competent and responded wonderfully to our wishes regarding anchorages! This was certainly not our last sailing trip and I would sail with Manuel again at any time. I felt well looked after and safe at all times!",
   },
 ]
 
@@ -76,7 +85,7 @@ export default function Bewertungen() {
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '0.5rem' }}>
             {lang === 'en' ? 'What our guests say ...' : 'Das sagen unsere Gäste ...'}
           </h2>
-          <p style={{ color: 'var(--gray)', fontSize: '0.9rem' }}>{lang === 'en' ? 'Real Google reviews — verbatim (in German).' : 'Echte Google-Rezensionen — im Original-Wortlaut.'}</p>
+          <p style={{ color: 'var(--gray)', fontSize: '0.9rem' }}>{lang === 'en' ? 'Real Google reviews — translated from the German originals.' : 'Echte Google-Rezensionen — im Original-Wortlaut.'}</p>
         </motion.div>
 
         <div
@@ -87,7 +96,7 @@ export default function Bewertungen() {
           {/* Zurück */}
           <button
             onClick={() => setActive(a => (a - 1 + reviews.length) % reviews.length)}
-            aria-label="Vorherige Bewertung"
+            aria-label={lang === 'en' ? 'Previous review' : 'Vorherige Bewertung'}
             className="review-arrow"
           >‹</button>
 
@@ -115,7 +124,7 @@ export default function Bewertungen() {
                     fontFamily: 'DM Sans, sans-serif', fontWeight: 700, fontSize: '1.15rem',
                   }}>{initials}</span>
                   <span>
-                    <span style={{ display: 'block', fontFamily: 'DM Sans, sans-serif', fontWeight: 700, color: 'var(--navy)', fontSize: '1rem' }}>{r.name}</span>
+                    <span style={{ display: 'block', fontFamily: 'DM Sans, sans-serif', fontWeight: 700, color: 'var(--navy)', fontSize: '1rem' }}>{lang === 'en' ? (r.nameEn ?? r.name) : r.name}</span>
                     <Stars />
                   </span>
                   <svg aria-label="Google" width="22" height="22" viewBox="0 0 24 24" style={{ marginLeft: 'auto', flexShrink: 0, opacity: 0.85 }}>
@@ -125,8 +134,8 @@ export default function Bewertungen() {
                     <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15A11 11 0 0 0 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
                   </svg>
                 </figcaption>
-                <blockquote style={{ margin: 0, color: '#444', fontSize: '0.95rem', lineHeight: 1.85 }}>
-                  {r.text}
+                <blockquote lang={lang === 'en' ? 'en' : 'de'} style={{ margin: 0, color: '#444', fontSize: '0.95rem', lineHeight: 1.85 }}>
+                  {lang === 'en' ? r.textEn : r.text}
                 </blockquote>
               </motion.figure>
             </AnimatePresence>
@@ -135,7 +144,7 @@ export default function Bewertungen() {
           {/* Weiter */}
           <button
             onClick={() => setActive(a => (a + 1) % reviews.length)}
-            aria-label="Nächste Bewertung"
+            aria-label={lang === 'en' ? 'Next review' : 'Nächste Bewertung'}
             className="review-arrow"
           >›</button>
         </div>
@@ -146,7 +155,7 @@ export default function Bewertungen() {
             <button
               key={rev.name + i}
               onClick={() => setActive(i)}
-              aria-label={`Bewertung ${i + 1} anzeigen`}
+              aria-label={lang === 'en' ? `Show review ${i + 1}` : `Bewertung ${i + 1} anzeigen`}
               aria-current={i === active}
               style={{
                 width: i === active ? '40px' : '24px', height: '24px', padding: 0,
