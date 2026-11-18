@@ -52,11 +52,30 @@ function ScrollToTop() {
   const key = canonicalPath(toInternal(pathname))
   useLayoutEffect(() => {
     if (hash) {
-      const el = document.getElementById(hash.slice(1))
-      if (el) {
-        el.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
-        return
+      const id = hash.slice(1)
+      // Die Zielseite ist seit dem Code-Splitting (React.lazy() pro Route,
+      // siehe Kommentar in AnimatedRoutes) beim ersten Durchlauf oft noch
+      // nicht gemountet — das Ankerelement existiert dann noch nicht im
+      // DOM. Deshalb mehrfach per rAF nachschauen, statt nur einmal, sonst
+      // landet man (wie zuvor beobachtet bei z. B. #dubrovnik/#bvi auf
+      // /kabinen) am Seitenanfang statt beim Anker.
+      let cancelled = false
+      let raf = 0
+      const tryScroll = (attemptsLeft: number) => {
+        if (cancelled) return
+        const el = document.getElementById(id)
+        if (el) {
+          el.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
+          return
+        }
+        if (attemptsLeft > 0) {
+          raf = requestAnimationFrame(() => tryScroll(attemptsLeft - 1))
+        } else {
+          window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+        }
       }
+      tryScroll(180) // ~3s bei 60fps — reicht für jeden Lazy-Chunk-Ladevorgang
+      return () => { cancelled = true; if (raf) cancelAnimationFrame(raf) }
     }
     window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
   }, [key, hash])
