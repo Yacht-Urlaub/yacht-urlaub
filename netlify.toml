@@ -716,3 +716,66 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# ==========================================================================
+# Cache-Header
+#
+# Netlify liefert ohne eigene Header ueberall "max-age=0, must-revalidate"
+# aus — jeder Seitenaufruf prueft jede Datei neu (Lighthouse: "Use efficient
+# cache lifetimes", rund 800 KiB). HTML bleibt bewusst bei dieser Vorgabe,
+# damit neue Inhalte sofort sichtbar sind.
+#
+# /assets/*  : von Vite mit Hash im Dateinamen erzeugt, aendert sich der
+#              Inhalt, aendert sich der Name => 1 Jahr, immutable.
+# /fonts/*   : selbst gehostetes DM Sans, Dateinamen aendern sich nicht
+#              (nur durch Austausch der Schrift) => 1 Jahr, immutable.
+# /images/*  : keine Hashes im Namen. 30 Tage statt 1 Jahr, damit ein
+#              unter gleichem Namen ersetztes Bild spaetestens nach einem
+#              Monat auch bei wiederkehrenden Besuchern ankommt. Wer ein
+#              Bild ersetzt und es sofort sehen muss: unter neuem Namen
+#              ablegen.
+# ==========================================================================
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/logo.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/logo-en.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/logo-icon.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/header-poster*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/header-opt.mp4"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/header.webm"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"

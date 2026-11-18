@@ -262,8 +262,8 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
                       </h3>
 
                       <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelStyle}>{kfm.dest}</label>
-                        <select value={form.destination} onChange={e => set('destination', e.target.value)} style={inputStyle(!!errors.destination)}>
+                        <label htmlFor="kf-destination" style={labelStyle}>{kfm.dest}</label>
+                        <select id="kf-destination" value={form.destination} onChange={e => set('destination', e.target.value)} style={inputStyle(!!errors.destination)}>
                           <option value="">{kfm.wahl}</option>
                           <optgroup label={kfm.grpEU}>
                             {kfm.dests.map(d => <option key={d}>{d}</option>)}
@@ -278,19 +278,19 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
 
                       <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                         <div>
-                          <label style={labelStyle}>{kfm.art}</label>
-                          <select value={form.toerntyp} onChange={e => set('toerntyp', e.target.value)} style={inputStyle()}>
+                          <label htmlFor="kf-toerntyp" style={labelStyle}>{kfm.art}</label>
+                          <select id="kf-toerntyp" value={form.toerntyp} onChange={e => set('toerntyp', e.target.value)} style={inputStyle()}>
                             <option value="">{kfm.wahl}</option>
                             {typen.map(d => <option key={d}>{d}</option>)}
                           </select>
                         </div>
                         <div>
-                          <label style={labelStyle}>{kfm.pers}</label>
+                          <label htmlFor="kf-personen" style={labelStyle}>{kfm.pers}</label>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <button type="button"
                               onClick={() => set('personen', String(Math.max(1, parseInt(form.personen) - 1)))}
                               style={{ width: '36px', height: '36px', border: '1.5px solid #e2e8f0', borderRadius: '4px', background: '#fff', fontSize: '1.1rem', cursor: 'pointer', flexShrink: 0 }}>−</button>
-                            <input type="number" min="1" max="20" value={form.personen}
+                            <input id="kf-personen" type="number" min="1" max="20" value={form.personen}
                               onChange={e => set('personen', e.target.value)}
                               style={{ ...inputStyle(!!errors.personen), textAlign: 'center', flex: 1 }} />
                             <button type="button"
@@ -302,25 +302,25 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
 
                       <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                         <div>
-                          <label style={labelStyle}>{kfm.von}</label>
-                          <input type="date" value={form.datum_von} min={today}
+                          <label htmlFor="kf-datum_von" style={labelStyle}>{kfm.von}</label>
+                          <input id="kf-datum_von" type="date" value={form.datum_von} min={today}
                             onChange={e => set('datum_von', e.target.value)}
                             style={inputStyle(!!errors.datum_von)} />
                           {errors.datum_von && <p style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.datum_von}</p>}
                         </div>
                         <div>
-                          <label style={labelStyle}>{kfm.bis}</label>
-                          <input type="date" value={form.datum_bis} min={form.datum_von || today}
+                          <label htmlFor="kf-datum_bis" style={labelStyle}>{kfm.bis}</label>
+                          <input id="kf-datum_bis" type="date" value={form.datum_bis} min={form.datum_von || today}
                             onChange={e => set('datum_bis', e.target.value)}
                             style={inputStyle()} />
                         </div>
                       </div>
 
                       <div style={{ marginBottom: '1.5rem' }}>
-                        <label style={labelStyle}>{kfm.yachtWunsch}</label>
-                        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                        <span id="kf-yacht-label" style={labelStyle}>{kfm.yachtWunsch}</span>
+                        <div role="group" aria-labelledby="kf-yacht-label" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                           {kfm.yachten.map(y => (
-                            <button key={y} type="button"
+                            <button key={y} type="button" aria-pressed={form.yacht === y}
                               onClick={() => set('yacht', y)}
                               style={{
                                 padding: '7px 14px', borderRadius: '20px', fontSize: '0.78rem', cursor: 'pointer',
@@ -337,8 +337,8 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
                       </div>
 
                       <div style={{ marginBottom: '1.5rem' }}>
-                        <label style={labelStyle}>{kfm.absicht}</label>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        <span id="kf-absicht-label" style={labelStyle}>{kfm.absicht}</span>
+                        <div role="radiogroup" aria-labelledby="kf-absicht-label" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                           {[
                             ...kfm.absichten,
                           ].map(opt => (
@@ -376,30 +376,30 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
 
                       <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                         <div>
-                          <label style={labelStyle}>{kfm.name}</label>
-                          <input value={form.name} onChange={e => set('name', e.target.value)}
+                          <label htmlFor="kf-name" style={labelStyle}>{kfm.name}</label>
+                          <input id="kf-name" value={form.name} onChange={e => set('name', e.target.value)}
                             placeholder={kfm.namePh} style={inputStyle(!!errors.name)} />
                           {errors.name && <p style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.name}</p>}
                         </div>
                         <div>
-                          <label style={labelStyle}>{kfm.mail}</label>
-                          <input type="email" value={form.email} onChange={e => set('email', e.target.value)}
+                          <label htmlFor="kf-email" style={labelStyle}>{kfm.mail}</label>
+                          <input id="kf-email" type="email" value={form.email} onChange={e => set('email', e.target.value)}
                             placeholder={kfm.mailPh} style={inputStyle(!!errors.email)} />
                           {errors.email && <p style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.email}</p>}
                         </div>
                       </div>
 
                       <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelStyle}>{kfm.tel}</label>
-                        <input value={form.phone} onChange={e => set('phone', e.target.value)}
+                        <label htmlFor="kf-phone" style={labelStyle}>{kfm.tel}</label>
+                        <input id="kf-phone" value={form.phone} onChange={e => set('phone', e.target.value)}
                           placeholder="+43 ..." style={inputStyle()} />
                       </div>
 
                       <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelStyle}>{kfm.kontaktartLabel}</label>
-                        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                        <span id="kf-kontaktart-label" style={labelStyle}>{kfm.kontaktartLabel}</span>
+                        <div role="group" aria-labelledby="kf-kontaktart-label" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                           {kfm.kontaktarten.map(k => (
-                            <button key={k} type="button"
+                            <button key={k} type="button" aria-pressed={form.kontaktart === k}
                               onClick={() => set('kontaktart', k)}
                               style={{
                                 padding: '7px 14px', borderRadius: '20px', fontSize: '0.78rem', cursor: 'pointer',
@@ -416,15 +416,15 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
                       </div>
 
                       <div style={{ marginBottom: '1.25rem' }}>
-                        <label style={labelStyle}>{kfm.wishes}</label>
-                        <textarea rows={3} value={form.message} onChange={e => set('message', e.target.value)}
+                        <label htmlFor="kf-message" style={labelStyle}>{kfm.wishes}</label>
+                        <textarea id="kf-message" rows={3} value={form.message} onChange={e => set('message', e.target.value)}
                           placeholder={kfm.wishesPh}
                           style={{ ...inputStyle(), resize: 'vertical' }} />
                       </div>
 
                       <div style={{ marginBottom: '1rem' }}>
-                        <label style={labelStyle}>{kfm.found}</label>
-                        <select value={form.gefunden} onChange={e => set('gefunden', e.target.value)} style={inputStyle()}>
+                        <label htmlFor="kf-gefunden" style={labelStyle}>{kfm.found}</label>
+                        <select id="kf-gefunden" value={form.gefunden} onChange={e => set('gefunden', e.target.value)} style={inputStyle()}>
                           <option value="">{kfm.wahl}</option>
                           {kfm.foundOpts.map(d => <option key={d}>{d}</option>)}
                         </select>

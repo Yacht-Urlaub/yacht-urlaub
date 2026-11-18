@@ -122,7 +122,12 @@ async function main() {
     const page = await browser.newPage()
     await page.goto(`http://${host}:${PORT}${urlPath}`, { waitUntil: 'load', timeout: 20000 })
     await page.waitForTimeout(700)
-    const html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML)
+    let html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML)
+    // Das vom Loader in index.html eingefuegte Trusted-Shops-Skript nicht als
+    // festes <script async src> einfrieren — sonst laedt es auf jeder Seite
+    // sofort beim Parsen, obwohl der Loader es absichtlich erst nach dem
+    // Laden/im Leerlauf nachlaedt.
+    html = html.replace(/<script[^>]*src="https:\/\/widgets\.trustedshops\.com\/[^"]*"[^>]*><\/script>/g, '')
     await page.close()
     await mkdir(path.dirname(outPath), { recursive: true })
     await writeFile(outPath, html, 'utf-8')

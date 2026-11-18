@@ -1,28 +1,60 @@
 import { useLang } from '../i18n'
 import { motion } from 'framer-motion'
 import { Link } from '../router'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
+import { hadPrerender } from '../prerendered'
+
+// Bereits sichtbarer Snapshot-Inhalt wird nicht erneut von opacity 0 eingeblendet.
+const enter = <T extends object>(from: T): T | false => (hadPrerender ? false : from)
 
 export default function Hero() {
   const lang = useLang()
   const videoRef = useRef<HTMLVideoElement>(null)
+  // Das Hintergrundvideo (~3 MB) nur auf breiten Bildschirmen, ohne
+  // Datensparmodus/reduzierte Bewegung und erst nach dem Laden der Seite —
+  // sonst konkurriert es auf Mobilgeraeten mit allem anderen um die
+  // Bandbreite. Bis dahin (und dauerhaft auf Mobil) steht das Poster-Bild.
+  const [videoOn, setVideoOn] = useState(false)
   useEffect(() => {
+    const wide = window.matchMedia('(min-width: 768px)').matches
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const saveData = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData
+    if (!wide || reduce || saveData) return
+    const start = () => setVideoOn(true)
+    if (document.readyState === 'complete') { start(); return }
+    window.addEventListener('load', start, { once: true })
+    return () => window.removeEventListener('load', start)
+  }, [])
+  useEffect(() => {
+    if (!videoOn) return
     const v = videoRef.current
     if (!v) return
     v.muted = true
+    v.load()
     v.play().catch(() => {})
-  }, [])
+  }, [videoOn])
   return (
     <section id="home" style={{ position: 'relative', height: '100vh', minHeight: '600px', overflow: 'hidden' }}>
-      {/* Video Background */}
+      {/* Hintergrund: Poster-Bild (LCP, frueh geladen) + Video darueber */}
+      <picture>
+        <source media="(max-width: 767px)" srcSet="/images/hero/hero-poster-mobile.webp" />
+        <img
+          src="/images/hero/hero-poster-1600.webp"
+          alt=""
+          width={1600}
+          height={900}
+          fetchPriority="high"
+          decoding="async"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      </picture>
       <video
         ref={videoRef}
-        autoPlay muted loop playsInline preload="auto"
-        poster="/header-poster.jpg"
+        muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1}
         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}
       >
-        <source src="/header-opt.mp4" type="video/mp4" />
-        <source src="/header.webm" type="video/webm" />
+        {videoOn && <source src="/header-opt.mp4" type="video/mp4" />}
+        {videoOn && <source src="/header.webm" type="video/webm" />}
       </video>
 
       {/* Overlay */}
@@ -38,7 +70,7 @@ export default function Hero() {
         textAlign: 'center', color: '#fff',
       }}>
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={enter({ opacity: 0, y: 20 })}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           style={{ fontSize: '0.8rem', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '1.2rem', opacity: 0.8 }}
@@ -47,7 +79,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={enter({ opacity: 0, y: 30 })}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
           style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(2.4rem, 6vw, 5rem)', fontWeight: 700, lineHeight: 1.15, marginBottom: '0.5rem' }}
@@ -56,7 +88,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={enter({ opacity: 0, y: 20 })}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.6 }}
           style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.1rem, 3vw, 1.8rem)', fontStyle: 'italic', marginBottom: '2.5rem', opacity: 0.9 }}
@@ -65,7 +97,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={enter({ opacity: 0 })}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           style={{ fontSize: '0.95rem', maxWidth: '520px', lineHeight: 1.9, opacity: 0.85, marginBottom: '2.5rem' }}
@@ -74,7 +106,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={enter({ opacity: 0, y: 20 })}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.0 }}
           style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}
@@ -89,7 +121,7 @@ export default function Hero() {
 
         {/* Scroll indicator */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={enter({ opacity: 0 })}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
           style={{ position: 'absolute', bottom: '2.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', opacity: 0.6 }}

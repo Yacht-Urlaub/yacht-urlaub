@@ -352,15 +352,15 @@ export default function KabinenPage() {
               {/* Reise + Personen */}
               <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>{s.choose}</label>
-                  <select required name="reise" value={form.reise} onChange={e => set('reise', e.target.value)} style={inputStyle}>
+                  <label htmlFor="kab-reise" style={labelStyle}>{s.choose}</label>
+                  <select id="kab-reise" required name="reise" value={form.reise} onChange={e => set('reise', e.target.value)} style={inputStyle}>
                     <option value="">{s.wahl}</option>
                     {optionen.map(o => <option key={o} value={o}>{o}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label style={labelStyle}>{s.pax}</label>
-                  <select required name="personen" value={form.personen} onChange={e => set('personen', e.target.value)} style={inputStyle}>
+                  <label htmlFor="kab-personen" style={labelStyle}>{s.pax}</label>
+                  <select id="kab-personen" required name="personen" value={form.personen} onChange={e => set('personen', e.target.value)} style={inputStyle}>
                     {['1', '2', '3', '4'].map(n => <option key={n} value={n}>{n}</option>)}
                   </select>
                 </div>
@@ -370,45 +370,45 @@ export default function KabinenPage() {
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>{s.vn}</label>
-                  <input required name="vorname" value={form.vorname} onChange={e => set('vorname', e.target.value)} style={inputStyle} />
+                  <label htmlFor="kab-vorname" style={labelStyle}>{s.vn}</label>
+                  <input id="kab-vorname" required name="vorname" value={form.vorname} onChange={e => set('vorname', e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>{s.nn}</label>
-                  <input required name="nachname" value={form.nachname} onChange={e => set('nachname', e.target.value)} style={inputStyle} />
+                  <label htmlFor="kab-nachname" style={labelStyle}>{s.nn}</label>
+                  <input id="kab-nachname" required name="nachname" value={form.nachname} onChange={e => set('nachname', e.target.value)} style={inputStyle} />
                 </div>
               </div>
 
               <div style={{ marginBottom: '1rem' }}>
-                <label style={labelStyle}>{s.adr}</label>
-                <input required name="adresse" value={form.adresse} onChange={e => set('adresse', e.target.value)} style={inputStyle} />
+                <label htmlFor="kab-adresse" style={labelStyle}>{s.adr}</label>
+                <input id="kab-adresse" required name="adresse" value={form.adresse} onChange={e => set('adresse', e.target.value)} style={inputStyle} />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>{s.plz}</label>
-                  <input required name="plz" value={form.plz} onChange={e => set('plz', e.target.value)} style={inputStyle} />
+                  <label htmlFor="kab-plz" style={labelStyle}>{s.plz}</label>
+                  <input id="kab-plz" required name="plz" value={form.plz} onChange={e => set('plz', e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>{s.ort}</label>
-                  <input required name="ort" value={form.ort} onChange={e => set('ort', e.target.value)} style={inputStyle} />
+                  <label htmlFor="kab-ort" style={labelStyle}>{s.ort}</label>
+                  <input id="kab-ort" required name="ort" value={form.ort} onChange={e => set('ort', e.target.value)} style={inputStyle} />
                 </div>
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>{s.tel} <span style={{ fontWeight: 400, color: 'var(--gray)' }}>{s.telHint}</span></label>
-                  <input required type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
+                  <label htmlFor="kab-telefon" style={labelStyle}>{s.tel} <span style={{ fontWeight: 400, color: 'var(--gray)' }}>{s.telHint}</span></label>
+                  <input id="kab-telefon" required type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>{s.mail}</label>
-                  <input required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
+                  <label htmlFor="kab-email" style={labelStyle}>{s.mail}</label>
+                  <input id="kab-email" required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
                 </div>
               </div>
 
               <div style={{ marginBottom: '1.25rem' }}>
-                <label style={labelStyle}>{s.notes}</label>
-                <textarea name="anmerkungen" rows={4} value={form.anmerkungen} onChange={e => set('anmerkungen', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
+                <label htmlFor="kab-anmerkungen" style={labelStyle}>{s.notes}</label>
+                <textarea id="kab-anmerkungen" name="anmerkungen" rows={4} value={form.anmerkungen} onChange={e => set('anmerkungen', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
               </div>
 
               <div style={{ marginBottom: '1.25rem' }}>

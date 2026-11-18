@@ -300,21 +300,21 @@ export default function SkipperPage() {
             <form onSubmit={handleSubmit}>
               <div className="skipper-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                 <div>
-                  <label style={labelStyle}>{s.name}</label>
-                  <input required name="name" value={form.name} onChange={e => set('name', e.target.value)} style={inputStyle} />
+                  <label htmlFor="skp-name" style={labelStyle}>{s.name}</label>
+                  <input id="skp-name" required name="name" value={form.name} onChange={e => set('name', e.target.value)} style={inputStyle} />
                 </div>
                 <div>
-                  <label style={labelStyle}>{s.mail}</label>
-                  <input required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
+                  <label htmlFor="skp-email" style={labelStyle}>{s.mail}</label>
+                  <input id="skp-email" required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
                 </div>
               </div>
               <div style={{ marginBottom: '1rem' }}>
-                <label style={labelStyle}>{s.tel}</label>
-                <input type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
+                <label htmlFor="skp-telefon" style={labelStyle}>{s.tel}</label>
+                <input id="skp-telefon" type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
               </div>
               <div style={{ marginBottom: '1.5rem' }}>
-                <label style={labelStyle}>{s.msg}</label>
-                <textarea required name="nachricht" rows={5} value={form.nachricht} onChange={e => set('nachricht', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
+                <label htmlFor="skp-nachricht" style={labelStyle}>{s.msg}</label>
+                <textarea id="skp-nachricht" required name="nachricht" rows={5} value={form.nachricht} onChange={e => set('nachricht', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
               </div>
               {failed && (
                 <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>
