@@ -13,7 +13,7 @@ type Offer = {
   href: string
 }
 
-// Das Event "Sail into the Seasons – Vienna Edition" (siehe EventPopup.tsx)
+// Das Event "Sail into the Seasons – Vienna Edition"
 // richtet sich nur an den deutschsprachigen Markt (Event in Wien) — deshalb
 // nur in offersDe, kein Pendant in offersEn.
 const offersEn: Offer[] = [

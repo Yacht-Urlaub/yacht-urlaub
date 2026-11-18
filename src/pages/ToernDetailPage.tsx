@@ -1,11 +1,11 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import { Link, Navigate } from '../router'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { packages } from '../components/Packages'
 import { packagesEn } from '../data/packagesEn'
 import { cruisesEn } from '../data/cruisesEn'
-import { useLang, enPkgSlugs } from '../i18n'
+import { useLang, enPkgSlugs, isEnHost, BASE_DE, BASE_EN } from '../i18n'
 
 const enPkgPath: Record<string, string> = Object.fromEntries(Object.entries(enPkgSlugs).map(([slug, id]) => [id, slug]))
 
@@ -26,6 +26,10 @@ type ToernPage = {
   breadcrumb: string
   h1: string
   heroImg: string
+  heroSet?: string // srcset fuer das Hero-Bild (responsive Varianten)
+  heroPos?: string // object-position, damit das Motiv im 440-px-Band sitzt
+  ogImg?: string // eigenes Vorschaubild (JPG) statt heroImg
+  faqHeading?: string
   seoTitle: string
   seoDesc: string
   packageTeasers: string[] // Package-IDs → echte Angebote
@@ -197,11 +201,21 @@ const toernData: Record<string, ToernPage> = {
     id: 'luxury',
     breadcrumb: 'Luxury',
     h1: 'Luxus-Yachttrip',
-    heroImg: '/images/luxury/header.jpg',
+    heroImg: '/images/luxury/hero-luxury-1600.webp',
+    heroSet: '/images/luxury/hero-luxury-800.webp 800w, /images/luxury/hero-luxury-1600.webp 1600w, /images/luxury/hero-luxury-2000.webp 2000w',
+    heroPos: '50% 58%',
+    ogImg: '/images/luxury/og-luxury.jpg',
     seoTitle: 'Luxus-Yachttrip – Luxury Yachtreise für Genießer | Yacht-Urlaub',
-    seoDesc: 'Erleben Sie die unberührte Schönheit der adriatischen Küste mit unserem exklusiven Motoryachtcharter. Luxus-Motoryacht «NIKITA» – Riva 100 Corsaro.',
+    seoDesc: 'Luxus-Motoryacht NIKITA (Riva 100 Corsaro, 29,90 m) chartern: 5 Kabinen für 10 Gäste, 5 Crew, Watertoys inklusive – ab € 100.000 pro Woche.',
     packageTeasers: [],
     luxury: true,
+    faqHeading: 'Häufige Fragen zur NIKITA',
+    faq: [
+      { q: 'Was kostet die Charter der Luxus-Motoryacht NIKITA?', a: 'In der Nebensaison (01.06. – 22.06. und 07.09. – 21.09.) kostet die Charter € 100.000 pro Woche, in der Hauptsaison (22.06. – 07.09.) € 110.000 pro Woche.' },
+      { q: 'Für wie viele Gäste ist die NIKITA ausgelegt?', a: 'Die NIKITA bietet Platz für 10 Gäste in 5 Kabinen mit 5 Bädern. Dazu kommen 5 Crewmitglieder: Kapitän, Techniker, Hostess, Koch und Deckhand.' },
+      { q: 'Welche technischen Daten hat die Riva 100 Corsaro?', a: 'Länge 29,90 m, Breite 6,70 m, Tiefgang 2,26 m, Antrieb 2 x MAN R V12 1900 mHP, Höchstgeschwindigkeit 28 Knoten. Die NIKITA ist seit 2022 in Charter.' },
+      { q: 'Welche Watertoys sind an Bord?', a: 'Inklusive an Bord sind ein Chase Boat Sacs Strider 10M mit 2x Mercury 350, ein Waydoo Flyer eFoil, ein Seabob F5 rs, ein SUP Paddle Board, ein Wakeboard und Schnorchel-Ausrüstung.' },
+    ],
     sections: [
       {
         heading: 'Luxury Yachtreise für Genießer',
@@ -209,11 +223,19 @@ const toernData: Record<string, ToernPage> = {
           'Willkommen bei Ihrem Luxury Yachting Partner!',
           'Erleben Sie die unberührte Schönheit der adriatischen Küste mit unserem exklusiven Motoryachtcharter. Entdecken Sie malerische Buchten, erleben Sie die vielfältige Kulinarik und entspannen Sie am Strand oder an Bord während Sie die atemberaubende Natur Kroatiens genießen.',
           'Mit mehr als 1.200 Inseln vor der Küste Kroatiens zählt dieses Gebiet zu den schönsten und attraktivsten in ganz Europa. Tauchen Sie ein in azurblaues Meer, das zum Schnorcheln einlädt und erkunden Sie malerische Riffe sowie eine Vielzahl an traumhaften Buchten.',
-          'Erstklassige Motoryachtvermietung',
+        ],
+      },
+      {
+        heading: 'Erstklassige Motoryachtvermietung',
+        paragraphs: [
           'Bei uns können Sie eine Luxus-Motoryacht chartern, die keinerlei Wünsche offen lässt, um die beeindruckende Küstenlandschaft und unvergleichliche Schönheit Kroatiens in vollen Zügen genießen.',
           'Unsere Yachtvermietung bietet Ihnen exklusiven Luxus und Komfort, um ein individuell zugeschnittenes Chartererlebnis zu ermöglichen.',
           'Lehnen Sie sich entspannt zurück und genießen Sie die atemberaubende Natur, die kulturellen Highlights, das pulsierende Nachtleben und die unzähligen kulinarischen Delikatessen Kroatiens.',
-          'Einzigartige Urlaubsstimmung',
+        ],
+      },
+      {
+        heading: 'Einzigartige Urlaubsstimmung',
+        paragraphs: [
           'Genießen Sie Luxus und Komfort auf einer unserer erstklassigen Motoryachten. Unsere erfahrene Crew kümmert sich um Ihr Wohlergehen und Ihr Captain führt Sie zu den verborgenen Schätzen Kroatiens, während Sie sich an Bord in exklusiver Atmosphäre entspannen.',
           'Buchen Sie noch heute Ihren nächsten Urlaub voller Entspannung, Abenteuer und Kulinarik umgeben von einem luxuriösen Ambiente. Ein Urlaubserlebnis ganz nach Ihren Wünschen wartet auf Sie!',
         ],
@@ -237,17 +259,96 @@ const LUXURY_IMPRESSIONEN = [
   '/images/luxury/nikita_int-1.webp',
 ]
 
+// Alt-Texte je Sprache fuer die NIKITA-Bilder
+const LUX_ALT: Record<'de' | 'en', Record<string, string>> = {
+  de: {
+    '/images/luxury/nikita-17.webp': 'Salon der Motoryacht NIKITA mit großer Sitzlandschaft und Panoramafenstern',
+    '/images/luxury/nikita_int-6.webp': 'Doppelkabine an Bord der NIKITA mit Panoramafenster',
+    '/images/luxury/nikita-8-1.webp': 'Riva 100 Corsaro NIKITA in voller Fahrt auf dem Meer',
+    '/images/luxury/bilder_nikita.webp': 'NIKITA – Riva 100 Corsaro: absolute Privatsphäre, fangfrische Köstlichkeiten und aufregende Watertoys',
+    '/images/luxury/nikita-5.webp': 'Heck der NIKITA mit Badeplattform, auf der sich eine Frau sonnt',
+    '/images/luxury/nikita-4.webp': 'Entspannen auf der Badeplattform der NIKITA mit Blick auf eine grüne Küste',
+    '/images/luxury/nikita-2.webp': 'Sonnenliegen und Sitzbereich auf dem Vordeck der NIKITA',
+    '/images/luxury/nikita-14.webp': 'Flybridge der NIKITA mit Sitzgruppe und Bar',
+    '/images/luxury/nikita-10.webp': 'Außensteuerstand der NIKITA unter dem Hardtop',
+    '/images/luxury/nikita_int-10.webp': 'Bad mit Marmor und Doppelwaschbecken an Bord der NIKITA',
+    '/images/luxury/nikita_int-1.webp': 'Fitnessbereich mit Hanteln an Bord der NIKITA',
+  },
+  en: {
+    '/images/luxury/nikita-17.webp': 'Salon of the motor yacht NIKITA with a large lounge area and panoramic windows',
+    '/images/luxury/nikita_int-6.webp': 'Double cabin aboard NIKITA with a panoramic window',
+    '/images/luxury/nikita-8-1.webp': 'Riva 100 Corsaro NIKITA at speed on the open sea',
+    '/images/luxury/bilder_nikita.webp': 'NIKITA – Riva 100 Corsaro: absolute privacy, freshly caught delicacies and exciting water toys',
+    '/images/luxury/nikita-5.webp': 'Stern of NIKITA with the swim platform and a woman sunbathing',
+    '/images/luxury/nikita-4.webp': 'Relaxing on the swim platform of NIKITA with a view of a green coastline',
+    '/images/luxury/nikita-2.webp': 'Sun loungers and seating area on the foredeck of NIKITA',
+    '/images/luxury/nikita-14.webp': 'Flybridge of NIKITA with seating area and bar',
+    '/images/luxury/nikita-10.webp': 'Outdoor helm station of NIKITA under the hardtop',
+    '/images/luxury/nikita_int-10.webp': 'Marble bathroom with double basin aboard NIKITA',
+    '/images/luxury/nikita_int-1.webp': 'Gym area with dumbbells aboard NIKITA',
+  },
+}
+
+// Technische Daten der NIKITA — fruehere Bilder (NikitaFacts.png), jetzt als
+// Text, damit Suchmaschinen und KI sie lesen koennen.
+const LUX_SPECS: Record<'de' | 'en', [string, string][]> = {
+  de: [
+    ['Belegung', '10 Gäste + 5 Crew'],
+    ['Crew an Bord', 'Kapitän, Techniker, Hostess, Koch & Deckhand'],
+    ['Kojen', '10'],
+    ['Unterbringung', '5 Kabinen, 5 Bäder, 1 Skipper-Kabine'],
+    ['In Charter seit', '2022'],
+    ['Länge', '29,90 m'],
+    ['Breite', '6,70 m'],
+    ['Tiefgang', '2,26 m'],
+    ['Verdrängung', '99.000 kg'],
+    ['Motor', '2 x MAN R V12 1900 mHP'],
+    ['Dieseltank', '9.500 l'],
+    ['Wassertank', '2.000 l'],
+    ['Max. Geschwindigkeit', '28 Knoten'],
+    ['Beiboot', 'Chase Boat Sacs Strider 10M'],
+    ['Entertainment', 'Fusion & Sonos Hi-End in Salon, Cockpit und Fly · TV in Salon und allen Kabinen inkl. Apple TV · Hi-Speed Internet Netzwerk'],
+  ],
+  en: [
+    ['Occupancy', '10 guests + 5 crew'],
+    ['Crew on board', 'Captain, engineer, hostess, chef & deckhand'],
+    ['Berths', '10'],
+    ['Accommodation', '5 cabins, 5 bathrooms, 1 skipper’s cabin'],
+    ['In charter since', '2022'],
+    ['Length', '29.90 m'],
+    ['Beam', '6.70 m'],
+    ['Draught', '2.26 m'],
+    ['Displacement', '99,000 kg'],
+    ['Engines', '2 x MAN R V12 1900 mHP'],
+    ['Diesel tank', '9,500 l'],
+    ['Water tank', '2,000 l'],
+    ['Max. speed', '28 knots'],
+    ['Tender', 'Chase Boat Sacs Strider 10M'],
+    ['Entertainment', 'Fusion & Sonos hi-end in salon, cockpit and flybridge · TV in the salon and all cabins incl. Apple TV · high-speed internet network'],
+  ],
+}
+const LUX_TOYS: Record<'de' | 'en', string[]> = {
+  de: ['Chase Boat Sacs Strider 10M mit 2x Mercury 350', 'Waydoo Flyer eFoil', 'Seabob F5 rs', 'SUP Paddle Board', 'Wakeboard', 'Schnorchel-Ausrüstung'],
+  en: ['Chase Boat Sacs Strider 10M with 2x Mercury 350', 'Waydoo Flyer eFoil', 'Seabob F5 rs', 'SUP paddle board', 'Wakeboard', 'Snorkelling equipment'],
+}
+
 const tdl = {
   de: { home: 'Start', toerns: 'Törns', toernsHref: '/toerns', all: '← Alle Törns', offer: '▶ ZUM ANGEBOT',
     book: 'Anfrage starten', planer: 'Urlaubsplanung starten', buchHref: '/buchen', planHref: '/urlaubsplaner',
     highlights: 'Die Highlights unserer Luxury-Packages', prices: 'Preise', off: 'Nebensaison / Woche',
     peak: 'Hauptsaison / Woche', impr: 'Impressionen', luxCta: 'Zur Luxury-Yachtreise Buchung',
-    luxBtn: 'URLAUBSPLANUNG STARTEN', sailaway: 'Die Party-Flottille für alle zwischen 21 und 35.' },
+    luxBtn: 'URLAUBSPLANUNG STARTEN', sailaway: 'Die Party-Flottille für alle zwischen 21 und 35.',
+    faqH: 'Häufige Einsteiger Fragen:', faqAll: 'zu den FAQs »', faqHref: '/faq',
+    specs: 'Technische Daten', toys: 'Watertoys inklusive an Bord', more: 'Mehr entdecken',
+    moreMotor: 'Motoryachten im Überblick', moreHr: 'Segeln in Kroatien' },
   en: { home: 'Home', toerns: 'Cruises', toernsHref: '/en/cruises', all: '← All cruises', offer: '▶ OUR OFFER',
     book: 'Start your inquiry', planer: 'Start your holiday planning', buchHref: '/en/book-now', planHref: '/en/holiday-planner',
     highlights: 'The highlights of our luxury packages', prices: 'Prices', off: 'Off-season / week',
     peak: 'Peak-season / week', impr: 'Impressions', luxCta: 'Book your luxury yacht trip',
-    luxBtn: 'START YOUR HOLIDAY PLANNING', sailaway: 'The party flotilla for everyone between 21 and 35.' },
+    luxBtn: 'START YOUR HOLIDAY PLANNING', sailaway: 'The party flotilla for everyone between 21 and 35.',
+    faqH: 'Frequently asked beginner questions:', faqAll: 'to the FAQs »', faqHref: '/en/faq',
+    specs: 'Specifications', toys: 'Water toys on board (included)', more: 'Discover more',
+    moreMotor: 'Motor yachts at a glance', moreHr: 'Sailing in Croatia' },
 }
 
 export default function ToernDetailPage() {
@@ -264,22 +365,84 @@ export default function ToernDetailPage() {
     .map(pid => pkgList.find(p => p.id === pid))
     .filter((p): p is NonNullable<typeof p> => !!p)
 
-  const schema = data.faq && data.faq.length > 0 ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: data.faq.map(f => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  } : undefined
+  const { pathname } = useLocation()
+  const base = isEnHost() ? BASE_EN : BASE_DE
+  const pageUrl = `${base}${pathname.replace(/\/+$/, '') || '/'}`
+  const en = lang === 'en'
+  const schema: object[] = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: s.home, item: `${base}/` },
+        { '@type': 'ListItem', position: 2, name: s.toerns, item: `${base}${en ? '/cruises' : '/toerns'}` },
+        { '@type': 'ListItem', position: 3, name: data.breadcrumb, item: pageUrl },
+      ],
+    },
+  ]
+  if (data.faq && data.faq.length > 0) {
+    schema.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: data.faq.map(f => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    })
+  }
+  if (data.luxury) {
+    schema.push({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: en ? 'Luxury motor yacht NIKITA (Riva 100 Corsaro) – yacht charter' : 'Luxus-Motoryacht NIKITA (Riva 100 Corsaro) – Yachtcharter',
+      description: data.seoDesc,
+      image: [`${base}/images/luxury/og-luxury.jpg`, `${base}/images/luxury/nikita-17.webp`],
+      url: pageUrl,
+      brand: { '@type': 'Brand', name: 'Riva' },
+      additionalProperty: [
+        { '@type': 'PropertyValue', name: en ? 'Length' : 'Länge', value: en ? '29.90 m' : '29,90 m' },
+        { '@type': 'PropertyValue', name: en ? 'Guests' : 'Gäste', value: '10' },
+        { '@type': 'PropertyValue', name: en ? 'Crew' : 'Crew', value: '5' },
+        { '@type': 'PropertyValue', name: en ? 'Top speed' : 'Höchstgeschwindigkeit', value: en ? '28 knots' : '28 Knoten' },
+      ],
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'EUR',
+        lowPrice: '100000',
+        highPrice: '110000',
+        offerCount: 2,
+        url: pageUrl,
+        availability: 'https://schema.org/InStock',
+      },
+    })
+  }
+
+  const faqBlock = data.faq && (
+        <section className="section" style={{ background: 'var(--gray-light)' }}>
+          <div className="container" style={{ maxWidth: '760px' }}>
+            <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.4rem', color: 'var(--navy)', marginBottom: '1.5rem' }}>
+              {data.faqHeading ?? s.faqH}
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
+              {data.faq.map(f => (
+                <div key={f.q} style={{ background: '#fff', borderRadius: '6px', padding: '1.25rem 1.5rem' }}>
+                  <p style={{ color: 'var(--navy)', fontWeight: 700, fontSize: '0.95rem', marginBottom: '0.35rem' }}>{f.q}</p>
+                  <p style={{ color: 'var(--gray)', fontSize: '0.9rem', lineHeight: 1.6 }}>{f.a}</p>
+                </div>
+              ))}
+            </div>
+            <Link to={s.faqHref} style={{ color: 'var(--blue)', fontWeight: 700, fontSize: '0.9rem' }}>{s.faqAll}</Link>
+          </div>
+        </section>
+  )
 
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={data.seoTitle}
         description={data.seoDesc}
-        image={data.heroImg}
+        image={data.ogImg ?? data.heroImg}
         schema={schema}
       />
 
@@ -287,8 +450,12 @@ export default function ToernDetailPage() {
       <div style={{ position: 'relative', height: '440px', overflow: 'hidden' }}>
         <img
           src={data.heroImg}
+          srcSet={data.heroSet}
+          sizes={data.heroSet ? '100vw' : undefined}
           alt={data.h1}
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          fetchPriority="high"
+          decoding="async"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: data.heroPos }}
           onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(15,35,56,0.88) 0%, rgba(15,35,56,0.45) 60%, transparent 100%)' }} />
@@ -437,25 +604,8 @@ export default function ToernDetailPage() {
         </section>
       ))}
 
-      {/* FAQ (Einsteiger) */}
-      {data.faq && (
-        <section className="section" style={{ background: 'var(--gray-light)' }}>
-          <div className="container" style={{ maxWidth: '760px' }}>
-            <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.4rem', color: 'var(--navy)', marginBottom: '1.5rem' }}>
-              Häufige Einsteiger Fragen:
-            </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
-              {data.faq.map(f => (
-                <div key={f.q} style={{ background: '#fff', borderRadius: '6px', padding: '1.25rem 1.5rem' }}>
-                  <p style={{ color: 'var(--navy)', fontWeight: 700, fontSize: '0.95rem', marginBottom: '0.35rem' }}>{f.q}</p>
-                  <p style={{ color: 'var(--gray)', fontSize: '0.9rem', lineHeight: 1.6 }}>{f.a}</p>
-                </div>
-              ))}
-            </div>
-            <Link to="/faq" style={{ color: 'var(--blue)', fontWeight: 700, fontSize: '0.9rem' }}>zu den FAQs »</Link>
-          </div>
-        </section>
-      )}
+      {/* FAQ (Einsteiger; bei Luxury hinter den Daten, siehe unten) */}
+      {!data.luxury && faqBlock}
 
       {/* Luxury: Highlights, NIKITA, Preise, Impressionen */}
       {data.luxury && (
@@ -468,7 +618,7 @@ export default function ToernDetailPage() {
               <div className="luxury-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.25rem' }}>
                 {LUXURY_HIGHLIGHTS.map(img => (
                   <div key={img} style={{ borderRadius: '6px', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
-                    <img src={img} alt="Luxury Yacht NIKITA" loading="lazy" style={{ width: '100%', height: '260px', objectFit: 'cover', display: 'block' }}
+                    <img src={img} alt={LUX_ALT[lang][img]} width={1140} height={749} loading="lazy" decoding="async" style={{ width: '100%', height: '260px', objectFit: 'cover', display: 'block' }}
                       onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
                   </div>
                 ))}
@@ -484,14 +634,23 @@ export default function ToernDetailPage() {
               <p style={{ color: 'var(--gold)', fontSize: '1.1rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '2.5rem' }}>
                 RIVA 100 CORSARO
               </p>
-              <img src="/images/luxury/bilder_nikita.webp" alt="NIKITA – Riva 100 Corsaro" loading="lazy"
+              <img src="/images/luxury/bilder_nikita.webp" alt={LUX_ALT[lang]['/images/luxury/bilder_nikita.webp']} width={1140} height={528} loading="lazy" decoding="async"
                 style={{ maxWidth: '100%', borderRadius: '6px', marginBottom: '1.5rem' }}
                 onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
-              <div className="luxury-facts" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '2.5rem' }}>
-                <img src="/images/luxury/NikitaFacts.png" alt="NIKITA Facts" loading="lazy" style={{ width: '100%', borderRadius: '6px' }}
-                  onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
-                <img src="/images/luxury/NikitaFacts-2.png" alt="NIKITA Facts" loading="lazy" style={{ width: '100%', borderRadius: '6px' }}
-                  onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.5rem', marginBottom: '1.5rem' }}>{s.specs}</h3>
+              <dl className="luxury-facts" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.75rem 2rem', textAlign: 'left', maxWidth: '980px', margin: '0 auto 2rem' }}>
+                {LUX_SPECS[lang].map(([k, v]) => (
+                  <div key={k} style={{ borderBottom: '1px solid rgba(255,255,255,0.12)', paddingBottom: '0.6rem' }}>
+                    <dt style={{ color: 'var(--gold)', fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '0.2rem' }}>{k}</dt>
+                    <dd style={{ margin: 0, color: '#fff', fontSize: '0.92rem', lineHeight: 1.55 }}>{v}</dd>
+                  </div>
+                ))}
+              </dl>
+              <div style={{ maxWidth: '980px', margin: '0 auto 2.5rem', textAlign: 'left', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '6px', padding: '1.25rem 1.5rem' }}>
+                <p style={{ color: 'var(--gold)', fontSize: '0.72rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 700, marginBottom: '0.6rem' }}>{s.toys}</p>
+                <ul style={{ margin: 0, paddingLeft: '1.1rem', color: '#fff', fontSize: '0.92rem', lineHeight: 1.7, columns: '2 260px' }}>
+                  {LUX_TOYS[lang].map(t => <li key={t}>{t}</li>)}
+                </ul>
               </div>
 
               <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.5rem', marginBottom: '1.5rem' }}>{s.prices}</h3>
@@ -518,7 +677,7 @@ export default function ToernDetailPage() {
               <div className="luxury-impressionen" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px' }}>
                 {LUXURY_IMPRESSIONEN.map(img => (
                   <div key={img} style={{ aspectRatio: '4/3', overflow: 'hidden', borderRadius: '6px', background: '#eee' }}>
-                    <img src={img} alt="NIKITA Impressionen" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    <img src={img} alt={LUX_ALT[lang][img]} width={900} height={601} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
                   </div>
                 ))}
@@ -529,10 +688,18 @@ export default function ToernDetailPage() {
                   {s.luxBtn}
                 </Link>
               </div>
+              <p style={{ textAlign: 'center', marginTop: '2rem', color: 'var(--gray)', fontSize: '0.9rem' }}>
+                {s.more}:{' '}
+                <Link to={en ? '/en/yachts?tab=motoryacht' : '/yachten?tab=motoryacht'} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.moreMotor}</Link>
+                {' · '}
+                <Link to={en ? '/en/destinations/croatia' : '/destinationen/kroatien'} style={{ color: 'var(--blue)', fontWeight: 600 }}>{s.moreHr}</Link>
+              </p>
             </div>
           </section>
         </>
       )}
+
+      {data.luxury && faqBlock}
 
       <style>{`
         @media (max-width: 1000px) { .teaser-grid { grid-template-columns: 1fr 1fr !important; } }

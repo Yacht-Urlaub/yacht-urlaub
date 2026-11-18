@@ -7,7 +7,6 @@ import News from '../components/News'
 import Bewertungen from '../components/Bewertungen'
 import SektionTeaser from '../components/SektionTeaser'
 import Partner from '../components/Partner'
-import EventPopup from '../components/EventPopup'
 
 export default function HomePage() {
   const lang = useLang()
@@ -46,7 +45,6 @@ export default function HomePage() {
       <News />
       <SektionTeaser />
       <Partner />
-      {!isEnHost() && <EventPopup />}
     </main>
   )
 }

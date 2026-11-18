@@ -6,6 +6,7 @@ const colsEn = [
   {
     title: 'Cruises',
     links: [
+      { label: 'All cruises', href: '/en/cruises' },
       { label: 'For beginners', href: '/en/cruises/for-beginners' },
       { label: 'For friends', href: '/en/cruises/for-friends' },
       { label: 'For families', href: '/en/cruises/for-families' },
@@ -58,6 +59,7 @@ const colsDe = [
   {
     title: 'Törns',
     links: [
+      { label: 'Alle Törns', href: '/toerns' },
       { label: 'Für Einsteiger', href: '/toerns/einsteiger' },
       { label: 'Für Freunde', href: '/toerns/freunde' },
       { label: 'Für Familien', href: '/toerns/familien' },
