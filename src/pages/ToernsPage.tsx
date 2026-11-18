@@ -2,7 +2,7 @@ import { Link } from '../router'
 import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { AnchorIcon, WavesIcon, ShieldIcon, SparklesIcon } from '../components/Icons'
-import { useLang } from '../i18n'
+import { useLang, isEnHost, BASE_DE, BASE_EN } from '../i18n'
 import PackagesGrid from '../components/PackagesGrid'
 
 const categories = [
@@ -11,7 +11,7 @@ const categories = [
     subtitle: 'Für Einsteiger',
     title: 'Zum ersten Mal hier?',
     text: 'Noch nie gesegelt? Perfekt. Spüren Sie das Kribbeln, wenn sich die Yacht in Bewegung setzt – sicher begleitet von einem erfahrenen Skipper.',
-    img: '/images/Zielgruppen/Einsteiger 1.jpg',
+    img: '/images/toerns/card-einsteiger.webp',
     cta: 'Einsteiger-Törns',
   },
   {
@@ -19,7 +19,7 @@ const categories = [
     subtitle: 'Für Freunde',
     title: 'Mit Freunden',
     text: 'Auf eurer Yacht erlebt ihr gemeinsam, was sonst nur in Filmen passiert. Sonne, Meer, Freiheit — und das gemeinsam.',
-    img: '/images/Zielgruppen/Freunde 1.jpg',
+    img: '/images/toerns/card-freunde.webp',
     cta: 'Freunde-Törns',
   },
   {
@@ -27,7 +27,7 @@ const categories = [
     subtitle: 'Für Familien',
     title: 'Familien-Törns',
     text: 'Ein Segelabenteuer, das Kinder staunen und Eltern durchatmen lässt. Unvergessliche Momente für die ganze Familie.',
-    img: '/images/Zielgruppen/Familie 1.jpg',
+    img: '/images/toerns/card-familien.webp',
     cta: 'Familien-Törns',
   },
   {
@@ -35,7 +35,7 @@ const categories = [
     subtitle: 'Für Anspruchsvolle',
     title: 'Luxury',
     text: 'Gönnen Sie sich Meer mit Stil. An Bord unserer Luxusyachten wird jeder Sonnenuntergang zur Privataufführung.',
-    img: '/images/Zielgruppen/Entdecker 3.jpg',
+    img: '/images/toerns/card-luxury.webp',
     cta: 'Luxury-Törns',
   },
 ]
@@ -59,7 +59,7 @@ const tol = {
       { label: 'Rundum-Sorglos', desc: 'Von der Buchung bis zur Rückkehr alles geregelt' },
     ],
     base: '/toerns' },
-  en: { tag: 'Holiday-Trips', h1: 'The right thing for everybody',
+  en: { tag: 'Our cruises', h1: 'Your perfect sailing cruise',
     sub: 'From your first sailing lesson to a luxury experience — we have the right cruise for everyone.',
     forAll: 'The right one for everyone', choose: 'Choose your cruise',
     chooseSub: 'Whether you are going to sea for the first time or are an experienced sailor — with us you will find the cruise that fits you perfectly.',
@@ -73,32 +73,116 @@ const tol = {
 }
 const enCruiseIds: Record<string, string> = { einsteiger: 'for-beginners', freunde: 'for-friends', familien: 'for-families', luxury: 'luxury' }
 const catTitlesEn: Record<string, { subtitle: string; title: string; text: string; cta: string }> = {
-  einsteiger: { subtitle: 'For beginners', title: 'New to sailing?', text: "Join our beginner's cruise and delve into everything you've ever wanted to know about life on a yacht.", cta: 'Learn more' },
-  freunde: { subtitle: 'For friends', title: 'Sail with friends', text: 'Come aboard and embark on a unique holiday adventure with your friends.', cta: 'Learn more' },
-  familien: { subtitle: 'For families', title: 'Create Family Memories', text: 'Experience a joy-filled family holiday with memorable experiences. Little pirates can take the helm.', cta: 'Learn more' },
-  luxury: { subtitle: 'Luxury', title: 'Luxury sailing', text: 'Experience pure luxury and timeless elegance on board our motor yachts.', cta: 'Learn more' },
+  einsteiger: { subtitle: 'For beginners', title: 'New to sailing?', text: "Join our beginner's cruise and delve into everything you've ever wanted to know about life on a yacht.", cta: 'Beginner cruises' },
+  freunde: { subtitle: 'For friends', title: 'Sail with friends', text: 'Come aboard and embark on a unique holiday adventure with your friends.', cta: 'Cruises for friends' },
+  familien: { subtitle: 'For families', title: 'Create Family Memories', text: 'Experience a joy-filled family holiday with memorable experiences. Little pirates can take the helm.', cta: 'Family cruises' },
+  luxury: { subtitle: 'Luxury', title: 'Luxury sailing', text: 'Experience pure luxury and timeless elegance on board our motor yachts.', cta: 'Luxury cruises' },
+}
+
+const catAlt: Record<'de' | 'en', Record<string, string>> = {
+  de: {
+    einsteiger: 'Paar am Steuerrad einer Segelyacht blickt aufs türkisfarbene Meer',
+    freunde: 'Vier lachende Freunde an Bord einer Segelyacht',
+    familien: 'Vater und zwei Kinder am Steuerrad einer Segelyacht',
+    luxury: 'Luxus-Motoryacht in schneller Fahrt auf offenem Meer',
+  },
+  en: {
+    einsteiger: 'Couple at the helm of a sailing yacht looking out over turquoise water',
+    freunde: 'Four friends laughing together on board a sailing yacht',
+    familien: 'Father and two children at the wheel of a sailing yacht',
+    luxury: 'Luxury motor yacht cruising at speed on open water',
+  },
+}
+
+// Kurzfassung der Antworten aus der FAQ-Seite (pages/FaqPage.tsx bzw.
+// data/faqEn.ts) — bei inhaltlichen Aenderungen dort hier nachziehen.
+const hubFaq: Record<'de' | 'en', { q: string; a: string }[]> = {
+  de: [
+    { q: 'Brauche ich Segelerfahrung für einen Törn?', a: 'Nein, es werden keine Vorkenntnisse im Segeln vorausgesetzt. Wer möchte, kann jederzeit selbst das Steuer übernehmen und die Segel trimmen – es besteht aber keine Verpflichtung dazu.' },
+    { q: 'Benötige ich einen Bootsführerschein?', a: 'Nein. Für unsere Segeltörns mit Skipper ist kein Bootsführerschein erforderlich – der Skipper übernimmt die gesamte Navigation und Verantwortung an Bord.' },
+    { q: 'Wer begleitet uns an Bord?', a: 'An Bord sind die mitreisenden Personen laut Buchung sowie der Skipper, der für Ihre Sicherheit und das Wohl aller Gäste verantwortlich ist und Ihnen rund um die Uhr zur Verfügung steht.' },
+    { q: 'Können Kinder mitreisen?', a: 'Ja, Kinder sind herzlich willkommen. Ein festes Mindestalter gibt es nicht – die Einschätzung, ob die Reise für das jeweilige Kind passt, liegt bei den Eltern. Bei Fragen zur passenden Route und Reisezeit für Familien beraten wir Sie gerne.' },
+    { q: 'Wie buche ich einen Törn?', a: 'Entweder buchen Sie ein Törn-Package direkt online, oder Sie nutzen den Urlaubsplaner bzw. das Anfrageformular für einen individuellen Törn. Bei einer Anfrage erhalten Sie ein Angebot und können Ihre Wunschyacht sieben Tage lang unverbindlich reservieren (Option).' },
+  ],
+  en: [
+    { q: 'Do I need sailing experience for a cruise?', a: 'No, no prior sailing experience is required. If you like, you can take the helm and trim the sails yourself at any time – but there is no obligation to do so.' },
+    { q: 'Do I need a boating licence?', a: "No. A boating licence isn't required for our skippered sailing cruises – the skipper handles all navigation and responsibility on board." },
+    { q: 'Who is on board with us?', a: 'On board are the travellers listed in your booking plus the skipper, who is responsible for your safety and the wellbeing of all guests and is available to you around the clock.' },
+    { q: 'Can children come along?', a: "Yes, children are very welcome. There is no fixed minimum age – it's up to you as parents to judge what suits your child. If you have questions about the right route or travel time for families, we're happy to advise you." },
+    { q: 'How do I book a cruise?', a: 'You can either book a cruise package directly online, or use the holiday planner or the enquiry form for an individual cruise. After an enquiry you receive an offer and can reserve your preferred yacht without obligation for seven days (option).' },
+  ],
 }
 
 export default function ToernsPage() {
   const lang = useLang()
   const s = tol[lang]
   const en = lang === 'en'
+  const base = isEnHost() ? BASE_EN : BASE_DE
+  const brand = en ? 'Yacht-Holiday' : 'Yacht-Urlaub'
+  const hubUrl = `${base}${en ? '/cruises' : '/toerns'}`
+  const catUrl = (id: string) => `${hubUrl}/${en ? enCruiseIds[id] : id}`
+  const metaDescription = en
+    ? 'Skippered sailing cruises for everyone: beginner, friends, family and luxury cruises in Croatia, Greece, the Caribbean and beyond – no sailing experience needed.'
+    : 'Segeltörns mit Skipper für jeden: Einsteiger-, Freunde-, Familien- und Luxury-Törns in Kroatien, Griechenland, der Karibik und mehr – ohne Vorkenntnisse buchbar.'
+  const schema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      name: en ? 'Our cruises – sailing trips for everyone' : 'Unsere Törns – Segeltörns für jeden',
+      description: metaDescription,
+      url: hubUrl,
+      inLanguage: en ? 'en' : 'de',
+      image: `${base}/images/toerns/og-toerns.jpg`,
+      isPartOf: { '@type': 'WebSite', name: brand, url: `${base}/` },
+      mainEntity: {
+        '@type': 'ItemList',
+        itemListElement: categories.map((c, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: en ? catTitlesEn[c.id].title : c.title,
+          url: catUrl(c.id),
+        })),
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: en ? 'Home' : 'Startseite', item: `${base}/` },
+        { '@type': 'ListItem', position: 2, name: en ? 'Cruises' : 'Törns', item: hubUrl },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: hubFaq[lang].map(f => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    },
+  ]
   return (
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title={en ? "Our cruises – sailing trips for everyone | Yacht-Holiday" : "Unsere Törns – Segeltörns für jeden | Yacht-Urlaub"}
-        description={en
-          ? 'From your first sailing lesson to a luxury experience: beginner cruises, family cruises, cruises for friends and luxury cruises with experienced skippers worldwide.'
-          : 'Von der ersten Segelstunde bis zum Luxuserlebnis: Einsteiger-Törns, Familien-Törns, Freunde-Törns und Luxury-Törns mit erfahrenen Skippern weltweit.'}
-        image="/images/Zielgruppen/Einsteiger 1.jpg"
+        description={metaDescription}
+        image="/images/toerns/og-toerns.jpg"
+        schema={schema}
       />
 
       {/* Hero */}
-      <div style={{ position: 'relative', height: '420px', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', height: 'clamp(420px, 30vw, 580px)', overflow: 'hidden' }}>
         <img
-          src="/images/Zielgruppen/Freunde 1.jpg"
-          alt="Unsere Törns"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          src="/images/toerns/hero-toerns-1600.webp"
+          srcSet="/images/toerns/hero-toerns-800.webp 800w, /images/toerns/hero-toerns-1600.webp 1600w, /images/toerns/hero-toerns-2400.webp 2400w"
+          sizes="100vw"
+          width={2400}
+          height={1300}
+          alt={en ? 'Woman on the bow of a sailing yacht looking out over the sea to the horizon' : 'Frau am Bug einer Segelyacht blickt über das Meer zum Horizont'}
+          fetchPriority="high"
+          decoding="async"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: '72% 32%' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(15,35,56,0.85) 0%, rgba(15,35,56,0.4) 60%, transparent 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -170,8 +254,9 @@ export default function ToernsPage() {
               >
                 <img
                   src={cat.img}
-                  alt={cat.title}
+                  alt={catAlt[lang][cat.id]}
                   loading="lazy"
+                  decoding="async"
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.5s' }}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
@@ -203,6 +288,32 @@ export default function ToernsPage() {
       </section>
 
       <PackagesGrid />
+
+      {/* Haeufige Fragen — sichtbar im DOM (details/summary, kein JS noetig),
+          dieselben Fragen stehen auch im FAQPage-Schema oben. */}
+      <section className="section" style={{ background: '#fff' }}>
+        <div className="container" style={{ maxWidth: '820px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <p style={{ color: 'var(--blue)', fontSize: '0.75rem', letterSpacing: '0.25em', textTransform: 'uppercase', marginBottom: '0.75rem', fontWeight: 600 }}>
+              FAQ
+            </p>
+            <h2 className="section-title">{en ? 'Frequently asked questions about our cruises' : 'Häufige Fragen zu unseren Törns'}</h2>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+            {hubFaq[lang].map(f => (
+              <details key={f.q} className="toerns-faq" style={{ border: '1px solid var(--gray-mid)', borderRadius: '6px', padding: '1rem 1.25rem', background: '#fff' }}>
+                <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--navy)', fontSize: '1rem', lineHeight: 1.4 }}>{f.q}</summary>
+                <p style={{ margin: '0.75rem 0 0', color: 'var(--gray)', fontSize: '0.92rem', lineHeight: 1.75 }}>{f.a}</p>
+              </details>
+            ))}
+          </div>
+          <p style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.9rem' }}>
+            <Link to={en ? '/en/faq' : '/faq'} style={{ color: 'var(--blue)', fontWeight: 600 }}>
+              {en ? 'All questions and answers →' : 'Alle Fragen und Antworten →'}
+            </Link>
+          </p>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="section" style={{ background: 'var(--navy)', textAlign: 'center' }}>
