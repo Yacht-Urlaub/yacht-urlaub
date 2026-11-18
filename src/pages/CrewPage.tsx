@@ -105,6 +105,7 @@ const inputStyle = { width: '100%', padding: '11px 14px', borderRadius: '4px', b
 const labelStyle = { fontSize: '0.78rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '5px', display: 'block' } as const
 
 function CrewCard({ p, i }: { p: typeof skipper[number] & { motto?: string }; i: number }) {
+  const en = useLang() === 'en'
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -126,9 +127,9 @@ function CrewCard({ p, i }: { p: typeof skipper[number] & { motto?: string }; i:
         </div>
         <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.25rem' }}>{p.name}</h3>
         <p style={{ color: 'var(--blue)', fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.65rem' }}>{p.role}</p>
-        <p style={{ color: 'var(--gray)', fontSize: '0.78rem' }}>Adresse: {p.adresse}</p>
+        <p style={{ color: 'var(--gray)', fontSize: '0.78rem' }}>{en ? 'Address' : 'Adresse'}: {p.adresse}</p>
         <p style={{ color: 'var(--gray)', fontSize: '0.78rem' }}>
-          Kontakt: <a href={`mailto:${p.kontakt}`} style={{ color: 'var(--blue)', fontWeight: 600 }}>{p.kontakt}</a>
+          {en ? 'Contact' : 'Kontakt'}: <a href={`mailto:${p.kontakt}`} style={{ color: 'var(--blue)', fontWeight: 600 }}>{p.kontakt}</a>
         </p>
       </div>
       {(p.motto || p.bio) && <div style={{ borderTop: '1px solid var(--gray-mid)', paddingTop: '1.25rem' }}>
@@ -188,7 +189,7 @@ export default function CrewPage() {
 
       {/* Hero */}
       <div style={{ position: 'relative', height: '400px', overflow: 'hidden' }}>
-        <img src="/images/crew/Team Ferien-Messe.jpg" alt="Die Crew von Yacht-Urlaub" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        <img src="/images/crew/Team Ferien-Messe.jpg" alt={lang === 'en' ? 'The Yacht-Urlaub crew at a trade fair' : 'Die Crew von Yacht-Urlaub auf der Ferien-Messe'} style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,27,47,0.9) 0%, rgba(7,27,47,0.35) 60%, rgba(7,27,47,0.25) 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', paddingBottom: '2.5rem' }}>

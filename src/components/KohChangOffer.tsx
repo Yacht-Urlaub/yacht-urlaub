@@ -187,7 +187,7 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
           gap: '1.5rem', alignItems: 'center', padding: '1.25rem 1.5rem',
         }}
       >
-        <img src="/images/kabinen/koh-chang/island-spirit-410.webp" alt="Island Spirit 410 unter Segeln" loading="lazy"
+        <img src="/images/kabinen/koh-chang/island-spirit-410.webp" alt={lang === 'en' ? 'Island Spirit 410 catamaran under sail' : 'Island Spirit 410 unter Segeln'} loading="lazy"
           style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '6px', display: 'block' }} />
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', minWidth: 0, textAlign: 'left' }}>
           <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--blue)' }}>

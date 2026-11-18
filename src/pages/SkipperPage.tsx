@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from '../router'
 import SEO from '../components/SEO'
 import { useLang, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
@@ -111,11 +112,11 @@ const serviceMachtNicht = [
 ]
 
 const bordBilder = [
-  { src: '/images/charter/Tacos.jpg', caption: 'Typisches Essen an Bord - Tacos' },
-  { src: '/images/charter/fruehstueck-an-bord.jpg', caption: 'Frühstück an Bord' },
-  { src: '/images/charter/essen-an-bord.png', caption: 'Essen an Bord' },
-  { src: '/images/charter/bordservice.jpg', caption: 'Unser Bordservice' },
-  { src: '/images/charter/typisches-fruehstueck.jpg', caption: 'Typisches Frühstück an Bord' },
+  { src: '/images/charter/Tacos.jpg', de: 'Typisches Essen an Bord - Tacos', en: 'Typical food on board – tacos' },
+  { src: '/images/charter/fruehstueck-an-bord.jpg', de: 'Frühstück an Bord', en: 'Breakfast on board' },
+  { src: '/images/charter/essen-an-bord.png', de: 'Essen an Bord', en: 'Meal on board' },
+  { src: '/images/charter/bordservice.jpg', de: 'Unser Bordservice', en: 'Our board service' },
+  { src: '/images/charter/typisches-fruehstueck.jpg', de: 'Typisches Frühstück an Bord', en: 'Typical breakfast on board' },
 ]
 
 const inputStyle = { width: '100%', padding: '11px 14px', borderRadius: '4px', border: '1px solid var(--gray-mid)', fontSize: '0.9rem', background: '#fff', boxSizing: 'border-box' } as const
@@ -186,7 +187,7 @@ export default function SkipperPage() {
 
       {/* Hero */}
       <div style={{ position: 'relative', height: '380px', overflow: 'hidden' }}>
-        <img src="/images/charter/skipper.jpg" alt="Skipper- und Bord-Service" style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        <img src="/images/charter/skipper.jpg" alt={en ? 'Crew charter – skipper and board service' : 'Skipper- und Bord-Service'} style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(7,27,47,0.88) 0%, rgba(7,27,47,0.4) 60%, transparent 100%)' }} />
         <div className="container" style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
@@ -232,10 +233,10 @@ export default function SkipperPage() {
           </p>
           </>}
           <figure style={{ margin: '1.75rem 0' }}>
-            <img src="/images/charter/skipper.jpg" alt="Professionelle Yacht-Urlaub Skipper" loading="lazy"
+            <img src="/images/charter/skipper.jpg" alt={en ? 'Professional Yacht-Urlaub skippers on board' : 'Professionelle Yacht-Urlaub Skipper'} loading="lazy"
               style={{ width: '100%', borderRadius: '6px', boxShadow: '0 2px 16px rgba(0,0,0,0.1)' }}
               onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
-            <figcaption style={{ color: 'var(--gray)', fontSize: '0.78rem', marginTop: '0.45rem', fontStyle: 'italic' }}>Professionelle Yacht-Urlaub Skipper</figcaption>
+            <figcaption style={{ color: 'var(--gray)', fontSize: '0.78rem', marginTop: '0.45rem', fontStyle: 'italic' }}>{en ? 'Professional Yacht-Urlaub skippers' : 'Professionelle Yacht-Urlaub Skipper'}</figcaption>
           </figure>
           {!en && <>
           <p style={{ color: '#444', fontSize: '0.95rem', lineHeight: 1.85, marginBottom: '1rem' }}>
@@ -252,7 +253,7 @@ export default function SkipperPage() {
           <DoDont title={s.qS} doTitle={s.doS} doItems={en ? skipperWirdEn : skipperWird} dontTitle={s.dontS} dontItems={en ? skipperWirdNichtEn : skipperWirdNicht} />
 
           <p style={{ marginBottom: '1rem' }}>
-            <a href="/crew" style={{ color: 'var(--blue)', fontWeight: 700, fontSize: '0.92rem' }}>unser Stamm-Personal »</a>
+            <Link to={s.crewHref} style={{ color: 'var(--blue)', fontWeight: 700, fontSize: '0.92rem' }}>{s.staff}</Link>
           </p>
         </div>
       </section>
@@ -274,9 +275,9 @@ export default function SkipperPage() {
           <div className="bord-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '2.5rem' }}>
             {bordBilder.map(b => (
               <figure key={b.src}>
-                <img src={b.src} alt={b.caption} loading="lazy" style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '5px', boxShadow: '0 2px 12px rgba(0,0,0,0.1)' }}
+                <img src={b.src} alt={en ? b.en : b.de} loading="lazy" style={{ width: '100%', height: '180px', objectFit: 'cover', borderRadius: '5px', boxShadow: '0 2px 12px rgba(0,0,0,0.1)' }}
                   onError={e => { (e.target as HTMLImageElement).parentElement!.style.display = 'none' }} />
-                <figcaption style={{ color: 'var(--gray)', fontSize: '0.74rem', marginTop: '0.35rem' }}>{b.caption}</figcaption>
+                <figcaption style={{ color: 'var(--gray)', fontSize: '0.74rem', marginTop: '0.35rem' }}>{en ? b.en : b.de}</figcaption>
               </figure>
             ))}
           </div>

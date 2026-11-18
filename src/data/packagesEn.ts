@@ -386,7 +386,7 @@ export const packagesEn: Package[] = [
         zusatz: [
           { name: "Fuel flate rate", price: "40", details: ["includes fuel"] },
           { name: "Comfort-Package", price: "60", details: ["Dinghy-engine", "WIFI on board", "final cleaning, bedlinen, base fees"] },
-          { name: "Diving-Package", price: "100", details: ["beinhaltet 2 Tauchgänge mit Ausrüstung und Instruktor"] },
+          { name: "Diving-Package", price: "100", details: ["includes 2 dives with equipment and instructor"] },
         ],
         premium: [
           { name: "Premium-Yacht-Upgrade", price: "250", details: ["Neuwertige Yacht garantiert\n (max. 3 Jahre)"] },
