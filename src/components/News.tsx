@@ -9,13 +9,14 @@ type Offer = {
   tag: string
   title: string
   text: string
-  cta: string
-  href: string
+  cta?: string
+  href?: string
 }
 
 // Das Event "Sail into the Seasons – Vienna Edition" (siehe EventPopup.tsx)
 // richtet sich nur an den deutschsprachigen Markt (Event in Wien) — deshalb
-// nur in offersDe, kein Pendant in offersEn.
+// nur in offersDe, kein Pendant in offersEn. Es fand am 14.11.2026 statt;
+// die Karte ist jetzt ein Dankeschoen ohne Anmelde-Link (cta/href optional).
 const offersEn: Offer[] = [
   {
     img: '/images/news/charter-modelle-2027.webp',
@@ -38,11 +39,9 @@ const offersEn: Offer[] = [
 const offersDe: Offer[] = [
   {
     img: '/images/events/sail-into-the-seasons-2026/praesentation.webp',
-    tag: 'Event',
+    tag: 'Rückblick',
     title: 'SAIL INTO THE SEASONS – VIENNA EDITION',
-    text: 'Segelfeeling mitten in Wien: 14. November 2026, Einlass 13:30 Uhr. Mit Tombola und Rum-Verkostung von Rumzentrum.at. Teilnahme gratis, Anmeldung bis 7.11.2026 erforderlich.',
-    cta: 'Jetzt anmelden',
-    href: 'https://form.jotform.com/262641756081055',
+    text: 'Vielen Dank an alle, die am 14. November in Wien mit uns Segelfeeling erlebt haben – und an Rumzentrum.at für die Rum-Verkostung! Die Fotos vom Event folgen in Kürze.',
   },
   {
     img: '/images/news/charter-modelle-2027.webp',
@@ -89,7 +88,7 @@ export default function News() {
 
         <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(offers.length, 3)}, 1fr)`, gap: '2rem' }}>
           {offers.map((o, i) => {
-            const external = o.href.startsWith('http')
+            const external = !!o.href && o.href.startsWith('http')
             return (
             <motion.article
               key={o.title}
@@ -129,12 +128,12 @@ export default function News() {
                 <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', color: 'var(--navy)', marginBottom: '0.75rem', lineHeight: 1.3 }}>
                   {o.title}
                 </h3>
-                <p style={{ color: 'var(--gray)', fontSize: '0.85rem', lineHeight: 1.75, flex: 1, marginBottom: '1.25rem' }}>{o.text}</p>
-                {external ? (
+                <p style={{ color: 'var(--gray)', fontSize: '0.85rem', lineHeight: 1.75, flex: 1, marginBottom: o.href ? '1.25rem' : 0 }}>{o.text}</p>
+                {o.href && o.cta && (external ? (
                   <a href={o.href} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{o.cta} →</a>
                 ) : (
                   <Link to={o.href} style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{o.cta} →</Link>
-                )}
+                ))}
               </div>
             </motion.article>
           )})}
