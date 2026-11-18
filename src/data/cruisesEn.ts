@@ -18,6 +18,11 @@ export type CruisePage = {
   packageTeasers: string[]
   sections: CruiseSection[]
   luxury?: boolean
+  heroSet?: string
+  heroPos?: string
+  ogImg?: string
+  faqHeading?: string
+  faq?: { q: string; a: string }[]
 }
 
 export const cruisesEn: Record<string, CruisePage> = {
