@@ -54,7 +54,7 @@ export const destinations: Destination[] = [
       { t: "li", x: "Navigation und Sicherheit: Achten Sie auf Wettervorhersagen und lokale Segelbedingungen, insbesondere auf die Winde Mistral, Jugo und Bora." },
       { t: "p", x: "Erleben Sie Kroatien mit dem exklusiven Angebot von Yacht-Urlaub und buchen Sie noch heute Ihren nächsten Segelurlaub." },
     ],
-    info: ["Fläche: 56.594 km²", "Einwohner: 4,5 Mio.", "Hauptstadt: Agram (Zagreb)", "Sprache: Kroatisch", "Fremdsprachen: Deutsch, Englisch", "Währung: 1 Kuna (HRK) = 100 Lipa | € 1,00 = HRK 7,6", "Ideale Reisezeit: Mai - Oktober", "Religion: katholisch. Minderheiten sind serbisch orthodoxe Christen und Moslems"],
+    info: ["Fläche: 56.594 km²", "Einwohner: 4,5 Mio.", "Hauptstadt: Agram (Zagreb)", "Sprache: Kroatisch", "Fremdsprachen: Deutsch, Englisch", "Währung: Euro (€), seit 1. Jänner 2023", "Ideale Reisezeit: Mai - Oktober", "Religion: katholisch. Minderheiten sind serbisch orthodoxe Christen und Moslems"],
   },
   {
     id: "griechenland",
