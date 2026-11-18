@@ -18,6 +18,11 @@ export type CruisePage = {
   packageTeasers: string[]
   sections: CruiseSection[]
   luxury?: boolean
+  heroSet?: string
+  heroPos?: string
+  ogImg?: string
+  faqHeading?: string
+  faq?: { q: string; a: string }[]
 }
 
 export const cruisesEn: Record<string, CruisePage> = {
@@ -117,11 +122,21 @@ export const cruisesEn: Record<string, CruisePage> = {
     id: 'luxury',
     breadcrumb: 'Luxury',
     h1: 'Luxury yacht trip',
-    heroImg: '/images/luxury/header.jpg',
+    heroImg: '/images/luxury/hero-luxury-1600.webp',
+    heroSet: '/images/luxury/hero-luxury-800.webp 800w, /images/luxury/hero-luxury-1600.webp 1600w, /images/luxury/hero-luxury-2000.webp 2000w',
+    heroPos: '50% 58%',
+    ogImg: '/images/luxury/og-luxury.jpg',
     seoTitle: 'Luxury yacht trip – luxury yacht trips for connoisseurs | Yacht-Holiday',
-    seoDesc: "Experience the pristine beauty of the Adriatic coast with our exclusive motor yacht charter. Luxury motor yacht «NIKITA» – Riva 100 Corsaro.",
+    seoDesc: 'Charter the luxury motor yacht NIKITA (Riva 100 Corsaro, 29.90 m): 5 cabins for 10 guests, 5 crew, water toys on board – from € 100,000 per week.',
     packageTeasers: [],
     luxury: true,
+    faqHeading: 'Frequently asked questions about NIKITA',
+    faq: [
+      { q: 'How much does it cost to charter the luxury motor yacht NIKITA?', a: 'In the off-season (1 June – 22 June and 7 September – 21 September) the charter costs € 100,000 per week, in the peak season (22 June – 7 September) € 110,000 per week.' },
+      { q: 'How many guests does NIKITA accommodate?', a: 'NIKITA offers space for 10 guests in 5 cabins with 5 bathrooms. In addition there are 5 crew members: captain, engineer, hostess, chef and deckhand.' },
+      { q: 'What are the technical specifications of the Riva 100 Corsaro?', a: 'Length 29.90 m, beam 6.70 m, draught 2.26 m, engines 2 x MAN R V12 1900 mHP, top speed 28 knots. NIKITA has been in charter since 2022.' },
+      { q: 'Which water toys are on board?', a: 'On board and included are a Chase Boat Sacs Strider 10M with 2x Mercury 350, a Waydoo Flyer eFoil, a Seabob F5 rs, a SUP paddle board, a wakeboard and snorkelling equipment.' },
+    ],
     sections: [
       {
         heading: 'Luxury yacht trips for Connoisseurs',
@@ -129,11 +144,19 @@ export const cruisesEn: Record<string, CruisePage> = {
           'Welcome to your Luxury Yachting Partner!',
           'Experience the pristine beauty of the Adriatic coast with our exclusive motor yacht charter. Immerse yourself in turquoise waters, discover picturesque coves, and explore culinary delicacies while enjoying the breathtaking nature of Croatia.',
           'With over 1.200 islands off the coast of Croatia, this area is among the most beautiful and attractive in all of Europe. Experience azure seas inviting for fishing and snorkeling, picturesque reefs, as well as a variety of dreamy coves and anchorages.',
-          'First-class motor yacht rental',
+        ],
+      },
+      {
+        heading: 'First-class motor yacht rental',
+        paragraphs: [
           'Experience the incomparable beauty of the Adriatic coast with our motor yacht charter, leaving nothing to be desired. With us, you can charter a luxury motor yacht and fully enjoy the impressive coastal landscape of Croatia.',
           'Our yacht rental offers you exclusive luxury and comfort to enable a tailor-made charter experience.',
           'Sit back and relax, enjoying the breathtaking nature, cultural highlights, vibrant nightlife, and countless culinary delights of Croatia.',
-          'Unique holiday atmosphere',
+        ],
+      },
+      {
+        heading: 'Unique holiday atmosphere',
+        paragraphs: [
           "Enjoy luxury and comfort on one of our first-class motor yachts. Our experienced crew will take care of your well-being and your personal captain will guide you to Croatia's hidden treasures while you relax on board in an exclusive atmosphere.",
           'Book your next vacation today, full of relaxation, adventure, and culinary delights surrounded by luxurious ambiance and a vacation experience tailored to your desires.',
         ],

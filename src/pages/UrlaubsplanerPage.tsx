@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { AnchorIcon } from '../components/Icons'
-import { useLang, MAIL } from '../i18n'
+import { useLang, MAIL, isEnHost, BASE_DE, BASE_EN } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 import RecaptchaHinweis from '../components/RecaptchaHinweis'
 
@@ -10,9 +10,9 @@ import RecaptchaHinweis from '../components/RecaptchaHinweis'
 // imgInnen: Innenansicht, blendet beim Hover/Fokus über die Außenansicht
 // (siehe .yacht-card-Regeln im <style>-Block am Ende der Datei)
 const yachtTypes = [
-  { id: 'Gemütliche Segelyacht', label: 'Gemütliche Segelyacht', img: '/images/urlaubsplaner/segelyacht-aussen.jpg', imgInnen: '/images/urlaubsplaner/segelyacht-innen.jpg' },
-  { id: 'Geräumiger Katamaran', label: 'Geräumiger Katamaran', img: '/images/urlaubsplaner/katamaran-aussen.jpg', imgInnen: '/images/urlaubsplaner/katamaran-innen.jpg' },
-  { id: 'Luxuriöse Motoryacht', label: 'Luxuriöse Motoryacht', img: '/images/urlaubsplaner/motoryacht-aussen.jpg', imgInnen: '/images/urlaubsplaner/motoryacht-innen.jpg' },
+  { id: 'Gemütliche Segelyacht', label: 'Gemütliche Segelyacht', img: '/images/urlaubsplaner/segelyacht-aussen.webp', imgInnen: '/images/urlaubsplaner/segelyacht-innen.webp' },
+  { id: 'Geräumiger Katamaran', label: 'Geräumiger Katamaran', img: '/images/urlaubsplaner/katamaran-aussen.webp', imgInnen: '/images/urlaubsplaner/katamaran-innen.webp' },
+  { id: 'Luxuriöse Motoryacht', label: 'Luxuriöse Motoryacht', img: '/images/urlaubsplaner/motoryacht-aussen.webp', imgInnen: '/images/urlaubsplaner/motoryacht-innen.webp' },
 ]
 
 const reviere = [
@@ -47,6 +47,58 @@ const fadeIn = {
   initial: { opacity: 0, x: 30 },
   animate: { opacity: 1, x: 0, transition: { duration: 0.35 } },
   exit: { opacity: 0, x: -20, transition: { duration: 0.2 } },
+}
+
+// Alt-Texte je Sprache, gleiche Reihenfolge wie yachtTypes
+const yachtAlt = {
+  de: [
+    'Segelyacht von oben auf tiefblauem Meer mit Crew auf der Badeplattform',
+    'Segel-Katamaran mit großem Segel vor einer Küste bei Abendlicht',
+    'Motoryacht mit Flybridge in voller Fahrt auf dem Meer',
+  ],
+  en: [
+    'Sailing yacht seen from above on deep blue water with crew on the swim platform',
+    'Sailing catamaran with a large sail off a coastline in evening light',
+    'Flybridge motor yacht at speed on the open sea',
+  ],
+}
+
+// Kurzfassung der Schiffstyp-Beschreibungen aus /yachten (data/yachten.ts,
+// data/yachtenEn.ts) und der FAQ (pages/FaqPage.tsx, data/faqEn.ts) — bei
+// inhaltlichen Aenderungen dort hier nachziehen.
+const planerInfo = {
+  de: {
+    guideH: 'Welcher Schiffstyp passt zu mir?',
+    guide: [
+      ['Segelyacht (Monohull)', 'Die häufigste Bauart mit der größten Auswahl – und zugleich die günstigste Form.'],
+      ['Katamaran', 'Sehr viel Platz und Komfort, gemütlich während der Fahrt.'],
+      ['Motoryacht', 'Die luxuriöse Art: schnell von A nach B, mit exklusiverer Ausstattung und kraftvollen Motoren (bis zu 1000 PS und mehr).'],
+    ],
+    guideNote: 'Noch unsicher? Wählen Sie „Beraten lassen“ – wir helfen bei der Wahl.',
+    faqH: 'Häufige Fragen zum Urlaubsplaner',
+    faq: [
+      { q: 'Was kostet der Urlaubsplaner?', a: 'Nichts: Der Urlaubsplaner ist kostenlos und unverbindlich. Nach Ihrer Anfrage erhalten Sie ein Angebot und können Ihre Wunschyacht sieben Tage lang unverbindlich reservieren (Option).' },
+      { q: 'Wie lange dauert der Urlaubsplaner?', a: 'Es sind nur 5 kurze Schritte: Yachtauswahl, Revierauswahl, Terminplanung, Crew & Kommunikation und Ihre Kontaktdaten. Danach melden wir uns persönlich bei Ihnen.' },
+      { q: 'Brauche ich Segelerfahrung oder einen Bootsführerschein?', a: 'Nein. Es werden keine Vorkenntnisse im Segeln vorausgesetzt, und für unsere Segeltörns mit Skipper ist kein Bootsführerschein erforderlich – der Skipper übernimmt die gesamte Navigation und Verantwortung an Bord.' },
+      { q: 'Was unterscheidet eine Segelyacht von einer Motoryacht?', a: 'Beide Yachtarten sind motorisiert. Motoryachten bieten mehr Platz und stärkere Motoren (Geschwindigkeiten von bis zu 40 Knoten und mehr). Segelyachten sind etwas leiser während der Fahrt, günstiger und nutzen Windkraft.' },
+    ],
+  },
+  en: {
+    guideH: 'Which type of boat suits me?',
+    guide: [
+      ['Sailing yacht (monohull)', 'The most common type with by far the widest choice – and also the most affordable.'],
+      ['Catamaran', 'Plenty of space and comfort, and pleasantly steady while underway.'],
+      ['Motor yacht', 'The luxurious option: get from A to B quickly, with more exclusive fittings and powerful engines (up to 1,000 hp and more).'],
+    ],
+    guideNote: 'Not sure yet? Choose “Get advice” – we will help you decide.',
+    faqH: 'Frequently asked questions about the holiday planner',
+    faq: [
+      { q: 'How much does the holiday planner cost?', a: 'Nothing: the holiday planner is free and non-binding. After your enquiry you receive an offer and can reserve your preferred yacht without obligation for seven days (option).' },
+      { q: 'How long does the holiday planner take?', a: 'Just 5 short steps: choice of yacht, sailing area, schedule, crew & communication and your contact details. After that we get in touch with you personally.' },
+      { q: 'Do I need sailing experience or a boating licence?', a: "No. No prior sailing experience is required, and a boating licence isn't needed for our skippered sailing trips – the skipper handles all navigation and responsibility on board." },
+      { q: 'What is the difference between a sailing yacht and a motor yacht?', a: 'Both types are motorised. Motor yachts offer more space and more powerful engines (speeds of up to 40 knots and more). Sailing yachts are a little quieter underway, more affordable and use wind power.' },
+    ],
+  },
 }
 
 type FormData = {
@@ -212,13 +264,55 @@ export default function UrlaubsplanerPage() {
     else setFailed(true)
   }
 
+  const info = planerInfo[lang]
+  const en = lang === 'en'
+  const base = isEnHost() ? BASE_EN : BASE_DE
+  const pageUrl = `${base}${en ? '/holiday-planner' : '/urlaubsplaner'}`
+  const metaTitle = en ? 'Holiday planner – request your sailing holiday | Yacht-Holiday' : 'Urlaubsplaner – Segelurlaub unverbindlich anfragen | Yacht-Urlaub'
+  const metaDesc = en
+    ? 'Request your sailing holiday in 5 steps: choose sailing yacht, catamaran or motor yacht, sailing area, dates and crew – free, non-binding and with personal advice.'
+    : 'Segelurlaub in 5 Schritten anfragen: Segelyacht, Katamaran oder Motoryacht, Revier, Termin und Crew wählen – kostenlos, unverbindlich und mit persönlicher Beratung.'
+  const schema = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: metaTitle,
+      description: metaDesc,
+      url: pageUrl,
+      inLanguage: lang,
+      image: `${base}/images/urlaubsplaner/og-urlaubsplaner.jpg`,
+      isPartOf: { '@type': 'WebSite', name: en ? 'Yacht-Holiday' : 'Yacht-Urlaub', url: `${base}/` },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: en ? 'Home' : 'Startseite', item: `${base}/` },
+        { '@type': 'ListItem', position: 2, name: s.h1, item: pageUrl },
+      ],
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: en ? 'Request a sailing holiday with the holiday planner' : 'Segelurlaub mit dem Urlaubsplaner anfragen',
+      description: metaDesc,
+      totalTime: 'PT5M',
+      step: s.steps.map((st, i) => ({ '@type': 'HowToStep', position: i + 1, name: st })),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: info.faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
+  ]
+
   return (
     <main style={{ paddingTop: '72px', minHeight: '100vh', background: 'var(--gray-light)' }}>
       <SEO
-        title={lang === 'en' ? "Holiday planner – get a quote | Yacht-Holiday" : "Urlaubsplaner – Anfrage starten | Yacht-Urlaub"}
-        description={lang === 'en'
-          ? 'In 5 short steps, we clarify the key questions about your holiday. Then you can sit back and relax — we take care of the rest of the planning!'
-          : 'In 5 kurzen Schritten klären wir die wichtigsten Fragen zu Ihrem Urlaub ab. Danach können Sie sich gemütlich zurücklehnen – den Rest der Organisation übernehmen wir!'}
+        title={metaTitle}
+        description={metaDesc}
+        image="/images/urlaubsplaner/og-urlaubsplaner.jpg"
+        schema={schema}
       />
 
       {/* Hero */}
@@ -305,21 +399,21 @@ export default function UrlaubsplanerPage() {
                         transition: 'all 0.2s',
                       }}
                     >
-                      <img src={y.img} alt={y.label} loading="lazy"
+                      <img src={y.img} alt={yachtAlt[lang][yachtTypes.indexOf(y)]} width={800} height={600} decoding="async"
                         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                         onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }} />
-                      <img src={y.imgInnen} alt="" aria-hidden="true" loading="lazy" className="yacht-card-innen"
+                      <img src={y.imgInnen} alt="" aria-hidden="true" width={800} height={600} loading="lazy" decoding="async" className="yacht-card-innen"
                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
                         onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
                       <div style={{
                         position: 'absolute', inset: 0,
-                        background: form.yacht === y.id
-                          ? 'linear-gradient(to top, rgba(2,132,199,0.85) 0%, rgba(2,132,199,0.4) 50%, transparent 100%)'
-                          : 'linear-gradient(to top, rgba(7,27,47,0.85) 0%, rgba(7,27,47,0.3) 60%, transparent 100%)',
+                        // Nur ein schmaler, neutraler Verlauf hinter der Beschriftung — kein
+                        // blauer Schleier ueber dem Foto (Auswahl zeigt Rahmen + Haken).
+                        background: 'linear-gradient(to top, rgba(7,27,47,0.72) 0%, rgba(7,27,47,0) 42%)',
                         display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '1rem',
                         transition: 'background 0.2s',
                       }}>
-                        <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', textAlign: 'left', lineHeight: 1.2 }}>{s.yachts[yachtTypes.indexOf(y)]}</span>
+                        <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', textAlign: 'left', lineHeight: 1.2, textShadow: '0 1px 6px rgba(0,0,0,0.55)' }}>{s.yachts[yachtTypes.indexOf(y)]}</span>
                         {form.yacht === y.id && (
                           <span style={{ position: 'absolute', top: '8px', right: '8px', background: 'var(--blue)', color: '#fff', borderRadius: '50%', width: '22px', height: '22px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>✓</span>
                         )}
@@ -357,6 +451,33 @@ export default function UrlaubsplanerPage() {
                     )}
                   </button>
                 </div>
+
+                {/* Entscheidungshilfe + FAQ: sichtbar im DOM (details/summary), dieselben Fragen
+                    stehen im FAQPage-Schema (siehe schema oben). */}
+                <section aria-labelledby="urp-typen" style={{ marginTop: '3rem' }}>
+                  <h3 id="urp-typen" style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '1rem', textAlign: 'center' }}>{info.guideH}</h3>
+                  <dl style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', margin: 0 }}>
+                    {info.guide.map(([term, text]) => (
+                      <div key={term} style={{ background: '#fff', borderRadius: '6px', padding: '1.1rem 1.25rem', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+                        <dt style={{ fontWeight: 700, color: 'var(--navy)', marginBottom: '0.3rem' }}>{term}</dt>
+                        <dd style={{ margin: 0, color: 'var(--gray)', fontSize: '0.88rem', lineHeight: 1.65 }}>{text}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <p style={{ textAlign: 'center', color: 'var(--gray)', fontSize: '0.88rem', marginTop: '1rem' }}>{info.guideNote}</p>
+                </section>
+
+                <section aria-labelledby="urp-faq" style={{ marginTop: '2.5rem' }}>
+                  <h3 id="urp-faq" style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '1rem', textAlign: 'center' }}>{info.faqH}</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', maxWidth: '760px', margin: '0 auto' }}>
+                    {info.faq.map(f => (
+                      <details key={f.q} style={{ background: '#fff', border: '1px solid var(--gray-mid)', borderRadius: '6px', padding: '0.9rem 1.1rem' }}>
+                        <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.4 }}>{f.q}</summary>
+                        <p style={{ margin: '0.6rem 0 0', color: 'var(--gray)', fontSize: '0.9rem', lineHeight: 1.7 }}>{f.a}</p>
+                      </details>
+                    ))}
+                  </div>
+                </section>
               </motion.div>
             )}
 

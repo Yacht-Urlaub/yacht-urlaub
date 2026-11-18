@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Kontakt from './components/Kontakt'
 import WhatsApp from './components/WhatsApp'
 import CookieBanner from './components/CookieBanner'
+import BlackFridayPopup from './components/BlackFridayPopup'
 import SideContact from './components/SideContact'
 import PageLoader from './components/PageLoader'
 
@@ -181,6 +182,7 @@ export default function App() {
       <SideContact />
       <WhatsApp />
       <CookieBanner />
+      <BlackFridayPopup />
       </LangProvider>
     </BrowserRouter>
   )

@@ -3,19 +3,22 @@ import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import { Link } from '../router'
+import { bfActive, bfText } from '../blackFriday'
 
 type Offer = {
-  img: string
+  img?: string
+  visual?: 'bf'
   tag: string
   title: string
   text: string
-  cta: string
-  href: string
+  cta?: string
+  href?: string
 }
 
-// Das Event "Sail into the Seasons – Vienna Edition" (siehe EventPopup.tsx)
+// Das Event "Sail into the Seasons – Vienna Edition"
 // richtet sich nur an den deutschsprachigen Markt (Event in Wien) — deshalb
-// nur in offersDe, kein Pendant in offersEn.
+// nur in offersDe, kein Pendant in offersEn. Es fand am 14.11.2026 statt;
+// die Karte ist jetzt ein Dankeschoen ohne Anmelde-Link (cta/href optional).
 const offersEn: Offer[] = [
   {
     img: '/images/news/charter-modelle-2027.webp',
@@ -25,24 +28,14 @@ const offersEn: Offer[] = [
     cta: 'Learn more',
     href: '/en/news/charter-models-2027',
   },
-  {
-    img: '/images/news/beach-bikini-jump.jpg',
-    tag: 'Cabins',
-    title: 'CABIN OFFERS',
-    text: 'Discover exclusive cabin offers for your dream yacht holiday – individual and unforgettable!',
-    cta: 'View offers',
-    href: '/en/cabin-offers',
-  },
 ]
 
 const offersDe: Offer[] = [
   {
     img: '/images/events/sail-into-the-seasons-2026/praesentation.webp',
-    tag: 'Event',
+    tag: 'Rückblick',
     title: 'SAIL INTO THE SEASONS – VIENNA EDITION',
-    text: 'Segelfeeling mitten in Wien: 14. November 2026, Einlass 13:30 Uhr. Mit Tombola und Rum-Verkostung von Rumzentrum.at. Teilnahme gratis, Anmeldung bis 7.11.2026 erforderlich.',
-    cta: 'Jetzt anmelden',
-    href: 'https://form.jotform.com/262641756081055',
+    text: 'Vielen Dank an alle, die am 14. November in Wien mit uns Segelfeeling erlebt haben – und an Rumzentrum.at für die Rum-Verkostung! Die Fotos vom Event folgen in Kürze.',
   },
   {
     img: '/images/news/charter-modelle-2027.webp',
@@ -52,19 +45,15 @@ const offersDe: Offer[] = [
     cta: 'Mehr erfahren',
     href: '/news/charter-modelle-2027',
   },
-  {
-    img: '/images/news/beach-bikini-jump.jpg',
-    tag: 'Kabinen',
-    title: 'KABINEN-ANGEBOTE',
-    text: 'Entdecken Sie exklusive Kabinenangebote für Ihren Traum-Yachturlaub – individuell und unvergesslich! Jetzt stöbern & buchen!',
-    cta: 'Angebote ansehen',
-    href: '/kabinen',
-  },
 ]
 
 export default function News() {
   const lang = useLang()
-  const offers = lang === 'en' ? offersEn : offersDe
+  const t = bfText[lang]
+  // Black-Friday-Karte ganz links, bis zum Ablauf der Aktion (27.11.2026)
+  const bfCard: Offer = { visual: 'bf', tag: t.newsTag, title: t.newsTitle, text: t.newsText, cta: t.newsCta, href: t.pkHref }
+  const base = lang === 'en' ? offersEn : offersDe
+  const offers = bfActive() ? [bfCard, ...base] : base
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
 
@@ -89,7 +78,7 @@ export default function News() {
 
         <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(offers.length, 3)}, 1fr)`, gap: '2rem' }}>
           {offers.map((o, i) => {
-            const external = o.href.startsWith('http')
+            const external = !!o.href && o.href.startsWith('http')
             return (
             <motion.article
               key={o.title}
@@ -107,6 +96,20 @@ export default function News() {
               }}
             >
               <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
+                {o.visual === 'bf' ? (
+                  <div aria-hidden="true" className="bf-visual">
+                    <svg viewBox="0 0 600 120" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0, width: '100%', height: '38%' }}>
+                      <path d="M0 70 Q75 40 150 70 T300 70 T450 70 T600 70 V120 H0Z" fill="#77B7E5" opacity=".10" />
+                      <path d="M0 85 Q75 60 150 85 T300 85 T450 85 T600 85 V120 H0Z" fill="#3061AC" opacity=".35" />
+                    </svg>
+                    <img src="/images/events/black-friday-2026/segel.webp" alt="" width={72} height={152} loading="lazy" decoding="async"
+                      style={{ position: 'absolute', right: '9%', bottom: '14%', height: '46%', width: 'auto', filter: 'drop-shadow(0 0 18px rgba(119,183,229,.35))' }} />
+                    <div style={{ position: 'absolute', left: '8%', top: '50%', transform: 'translateY(-50%)', color: '#fff' }}>
+                      <div style={{ fontSize: 'clamp(1.6rem, 4.2vw, 2.4rem)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '0.02em' }}>BLACK<br />FRIDAY</div>
+                      <div style={{ marginTop: '0.55rem', color: '#77B7E5', fontWeight: 800, fontSize: 'clamp(1.2rem, 3vw, 1.7rem)' }}>{t.off}</div>
+                    </div>
+                  </div>
+                ) : (
                 <img
                   src={o.img}
                   alt={o.title}
@@ -116,6 +119,7 @@ export default function News() {
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                   onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }}
                 />
+                )}
                 <span style={{
                   position: 'absolute', top: '1rem', left: '1rem',
                   background: 'var(--blue)', color: '#fff',
@@ -129,12 +133,12 @@ export default function News() {
                 <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.1rem', color: 'var(--navy)', marginBottom: '0.75rem', lineHeight: 1.3 }}>
                   {o.title}
                 </h3>
-                <p style={{ color: 'var(--gray)', fontSize: '0.85rem', lineHeight: 1.75, flex: 1, marginBottom: '1.25rem' }}>{o.text}</p>
-                {external ? (
+                <p style={{ color: 'var(--gray)', fontSize: '0.85rem', lineHeight: 1.75, flex: 1, marginBottom: o.href ? '1.25rem' : 0 }}>{o.text}</p>
+                {o.href && o.cta && (external ? (
                   <a href={o.href} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{o.cta} →</a>
                 ) : (
                   <Link to={o.href} style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{o.cta} →</Link>
-                )}
+                ))}
               </div>
             </motion.article>
           )})}
@@ -142,6 +146,7 @@ export default function News() {
       </div>
 
       <style>{`
+        .bf-visual { position: absolute; inset: 0; background: radial-gradient(circle at 85% 20%, #173564 0, #0a1424 50%, #04080f 100%); font-family: 'DM Sans', sans-serif; }
         @media (max-width: 900px) {
           .news-grid { grid-template-columns: 1fr 1fr !important; }
         }

@@ -6,7 +6,7 @@ import { useLang, switchLangUrl } from '../i18n'
 const navEn = [
   {
     label: 'Cruises', href: '/en/cruises', items: [
-      { label: 'All cruises', href: '/en/cruises' },
+      { label: 'Book now', href: '/en/book-now' },
       { label: 'For beginners', href: '/en/cruises/for-beginners' },
       { label: 'For friends', href: '/en/cruises/for-friends' },
       { label: 'For families', href: '/en/cruises/for-families' },
@@ -58,7 +58,7 @@ const navEn = [
 const navDe = [
   {
     label: 'Törns', href: '/toerns', items: [
-      { label: 'Alle Törns', href: '/toerns' },
+      { label: 'Jetzt Buchen', href: '/buchen' },
       { label: 'Für Einsteiger', href: '/toerns/einsteiger' },
       { label: 'Für Freunde', href: '/toerns/freunde' },
       { label: 'Für Familien', href: '/toerns/familien' },
