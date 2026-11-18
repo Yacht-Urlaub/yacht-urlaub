@@ -1,27 +1,29 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Link } from '../router'
-import { useLang, isEnHost, toInternal } from '../i18n'
+import { useLang, toInternal } from '../i18n'
+import { BF_END as END, BF_CODE as CODE, bfText } from '../blackFriday'
 
 // Black-Friday-Popup 2026 (ersetzt das Event-Popup "Sail into the Seasons").
 // - erscheint 4 Sekunden nach dem Seitenaufruf, einmal pro Besucher (bis zum
 //   Schliessen, localStorage)
 // - blendet sich nach dem 27.11.2026, 23:59 (MEZ) automatisch aus
-// - nur deutsche Seiten (das Angebot wurde nur auf Deutsch geliefert), nicht
-//   auf den Seiten, die selbst Ziel der Buttons sind, und nicht auf den
-//   Rechtstexten
+// - deutsch und englisch; nicht auf den Seiten, die selbst Ziel der Buttons
+//   sind, und nicht auf den Rechtstexten
 // Wird erst nach dem Timer ins DOM gehaengt — damit landet es nie im
 // statischen Snapshot (scripts/prerender.cjs).
-const END = new Date('2026-11-27T23:59:59+01:00')
 const KEY = 'bf26_closed'
-const CODE = 'BF2026'
-const EXCLUDED = ['/buchen', '/urlaubsplaner', '/impressum', '/datenschutz', '/agb']
+const EXCLUDED = [
+  '/buchen', '/urlaubsplaner', '/impressum', '/datenschutz', '/agb',
+  '/en/book-now', '/en/holiday-planner', '/en/imprint', '/en/data-privacy', '/en/terms',
+]
 
 export default function BlackFridayPopup() {
   const lang = useLang()
   const { pathname } = useLocation()
   const internal = toInternal(pathname)
-  const allowed = lang === 'de' && !isEnHost() && !EXCLUDED.includes(internal)
+  const t = bfText[lang]
+  const allowed = !EXCLUDED.includes(internal)
 
   const [open, setOpen] = useState(false)
   const [copied, setCopied] = useState(false)
@@ -68,7 +70,7 @@ export default function BlackFridayPopup() {
       onClick={e => { if (e.target === e.currentTarget) close() }}
     >
       <div id="bf26-box">
-        <button ref={closeRef} id="bf26-close" type="button" aria-label="Schließen" onClick={close}>&times;</button>
+        <button ref={closeRef} id="bf26-close" type="button" aria-label={t.close} onClick={close}>&times;</button>
 
         <div className="bf26-sujet">
           <svg className="bf26-waves" viewBox="0 0 600 120" preserveAspectRatio="none" aria-hidden="true">
@@ -76,21 +78,21 @@ export default function BlackFridayPopup() {
             <path d="M0 85 Q75 60 150 85 T300 85 T450 85 T600 85 V120 H0Z" fill="#3061AC" opacity=".35" />
           </svg>
           <img className="bf26-sail" src="/images/events/black-friday-2026/segel.webp" alt="" aria-hidden="true" width={72} height={152} decoding="async" />
-          <div className="bf26-kicker">Nur bis 27. November</div>
+          <div className="bf26-kicker">{t.kicker}</div>
           <div id="bf26-title" className="bf26-head">BLACK<br />FRIDAY</div>
-          <div className="bf26-sub">Segelurlaub 2027 zum Bestpreis</div>
+          <div className="bf26-sub">{t.sub}</div>
         </div>
 
         <div className="bf26-body">
           <div className="bf26-offer">
-            <div className="bf26-big">-5&nbsp;%</div>
+            <div className="bf26-big">{t.off}</div>
             <div>
-              <strong>auf alle Package-Buchungen</strong><br />
-              mit Code{' '}
-              <button type="button" className="bf26-code" onClick={copyCode} title="Klicken zum Kopieren">
-                {copied ? 'Kopiert ✓' : CODE}
+              <strong>{t.allPkgs}</strong><br />
+              {t.withCode}{' '}
+              <button type="button" className="bf26-code" onClick={copyCode} title={t.copy}>
+                {copied ? t.copied : CODE}
               </button>
-              <small>gültig bis 27.11.2026</small>
+              <small>{t.valid}</small>
             </div>
           </div>
           <div className="bf26-offer">
@@ -100,16 +102,16 @@ export default function BlackFridayPopup() {
               </svg>
             </div>
             <div>
-              <strong>Black-Friday-Angebote</strong><br />
-              für deine individuelle Yachtanfrage über den Urlaubsplaner
+              <strong>{t.dealsH}</strong><br />
+              {t.dealsT}
             </div>
           </div>
 
           <div className="bf26-ctas">
-            <Link to="/buchen" className="bf26-btn bf26-btn-main" onClick={close}>Zu den Packages</Link>
-            <Link to="/urlaubsplaner" className="bf26-btn bf26-btn-line" onClick={close}>Zum Urlaubsplaner</Link>
+            <Link to={t.pkHref} className="bf26-btn bf26-btn-main" onClick={close}>{t.ctaPk}</Link>
+            <Link to={t.planHref} className="bf26-btn bf26-btn-line" onClick={close}>{t.ctaPlan}</Link>
           </div>
-          <span className="bf26-sr" role="status" aria-live="polite">{copied ? 'Code BF2026 kopiert' : ''}</span>
+          <span className="bf26-sr" role="status" aria-live="polite">{copied ? t.srCopied : ''}</span>
         </div>
       </div>
 
