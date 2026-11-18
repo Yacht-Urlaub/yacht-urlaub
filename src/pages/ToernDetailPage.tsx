@@ -635,7 +635,7 @@ export default function ToernDetailPage() {
                 RIVA 100 CORSARO
               </p>
               <img src="/images/luxury/bilder_nikita.webp" alt={LUX_ALT[lang]['/images/luxury/bilder_nikita.webp']} width={1140} height={528} loading="lazy" decoding="async"
-                style={{ maxWidth: '100%', borderRadius: '6px', marginBottom: '1.5rem' }}
+                style={{ maxWidth: '100%', height: 'auto', borderRadius: '6px', marginBottom: '1.5rem' }}
                 onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
               <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: '#fff', fontSize: '1.5rem', marginBottom: '1.5rem' }}>{s.specs}</h3>
               <dl className="luxury-facts" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '0.75rem 2rem', textAlign: 'left', maxWidth: '980px', margin: '0 auto 2rem' }}>
