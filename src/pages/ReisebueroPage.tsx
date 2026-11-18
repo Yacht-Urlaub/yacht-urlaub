@@ -86,21 +86,21 @@ export default function ReisebueroPage() {
                 style={{ background: '#fff', borderRadius: '8px', padding: '2rem', boxShadow: '0 2px 14px rgba(0,0,0,0.07)' }}>
                 <div className="partner-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                   <div>
-                    <label style={labelStyle}>{s.name}</label>
-                    <input required name="name" value={form.name} onChange={e => set('name', e.target.value)} style={inputStyle} />
+                    <label htmlFor="rbp-name" style={labelStyle}>{s.name}</label>
+                    <input id="rbp-name" required name="name" value={form.name} onChange={e => set('name', e.target.value)} style={inputStyle} />
                   </div>
                   <div>
-                    <label style={labelStyle}>{s.mail}</label>
-                    <input required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
+                    <label htmlFor="rbp-email" style={labelStyle}>{s.mail}</label>
+                    <input id="rbp-email" required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
                   </div>
                 </div>
                 <div style={{ marginBottom: '1rem' }}>
-                  <label style={labelStyle}>{s.tel}</label>
-                  <input type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
+                  <label htmlFor="rbp-telefon" style={labelStyle}>{s.tel}</label>
+                  <input id="rbp-telefon" type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
                 </div>
                 <div style={{ marginBottom: '1.5rem' }}>
-                  <label style={labelStyle}>{s.msg}</label>
-                  <textarea required name="nachricht" rows={5} value={form.nachricht} onChange={e => set('nachricht', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
+                  <label htmlFor="rbp-nachricht" style={labelStyle}>{s.msg}</label>
+                  <textarea id="rbp-nachricht" required name="nachricht" rows={5} value={form.nachricht} onChange={e => set('nachricht', e.target.value)} style={{ ...inputStyle, resize: 'vertical' }} />
                 </div>
                 {failed && (
                   <p style={{ fontSize: '0.82rem', color: '#e53e3e', marginBottom: '0.75rem', lineHeight: 1.5 }}>

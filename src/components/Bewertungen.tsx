@@ -31,15 +31,18 @@ const reviews = [
   },
 ]
 
-const Stars = () => (
-  <div style={{ display: 'flex', gap: '2px', marginTop: '2px' }} aria-label="5 von 5 Sternen">
-    {[...Array(5)].map((_, i) => (
-      <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#fbbc04">
-        <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-      </svg>
-    ))}
-  </div>
-)
+const Stars = () => {
+  const lang = useLang()
+  return (
+    <div role="img" style={{ display: 'flex', gap: '2px', marginTop: '2px' }} aria-label={lang === 'en' ? '5 out of 5 stars' : '5 von 5 Sternen'}>
+      {[...Array(5)].map((_, i) => (
+        <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#fbbc04" aria-hidden="true">
+          <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+        </svg>
+      ))}
+    </div>
+  )
+}
 
 export default function Bewertungen() {
   const lang = useLang()
@@ -68,7 +71,7 @@ export default function Bewertungen() {
           transition={{ duration: 0.7 }}
           style={{ textAlign: 'center', marginBottom: '2.5rem' }}
         >
-          <img src="/images/Bewertungen/Google5star.webp" alt="5 Sterne auf Google" loading="lazy" style={{ height: 'clamp(72px, 9vw, 104px)', margin: '0 auto 1.25rem' }}
+          <img src="/images/Bewertungen/Google5star.webp" alt={lang === 'en' ? '5 stars on Google' : '5 Sterne auf Google'} width={432} height={216} loading="lazy" style={{ height: 'clamp(72px, 9vw, 104px)', width: 'auto', margin: '0 auto 1.25rem' }}
             onError={e => { (e.target as HTMLImageElement).style.display = 'none' }} />
           <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--navy)', marginBottom: '0.5rem' }}>
             {lang === 'en' ? 'What our guests say ...' : 'Das sagen unsere Gäste ...'}
@@ -137,20 +140,27 @@ export default function Bewertungen() {
           >›</button>
         </div>
 
-        {/* Dots */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '1.5rem' }}>
+        {/* Dots — sichtbarer Punkt 8px, Trefferflaeche mind. 24x24px (WCAG 2.5.8) */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 0, marginTop: '1rem' }}>
           {reviews.map((rev, i) => (
             <button
               key={rev.name + i}
               onClick={() => setActive(i)}
               aria-label={`Bewertung ${i + 1} anzeigen`}
+              aria-current={i === active}
               style={{
-                width: i === active ? '24px' : '8px', height: '8px', borderRadius: '4px',
-                border: 'none', cursor: 'pointer', padding: 0,
+                width: i === active ? '40px' : '24px', height: '24px', padding: 0,
+                border: 'none', background: 'none', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'width 0.25s',
+              }}
+            >
+              <span aria-hidden="true" style={{
+                display: 'block', width: i === active ? '24px' : '8px', height: '8px', borderRadius: '4px',
                 background: i === active ? 'var(--blue)' : 'var(--gray-mid)',
                 transition: 'all 0.25s',
-              }}
-            />
+              }} />
+            </button>
           ))}
         </div>
 

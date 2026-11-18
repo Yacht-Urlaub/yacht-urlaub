@@ -180,15 +180,15 @@ export default function CharterPage() {
 
                   <div className="charter-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
-                      <label style={labelStyle}>{s.typ}</label>
-                      <select required name="yachtTyp" value={form.yachtTyp} onChange={e => set('yachtTyp', e.target.value)} style={inputStyle}>
+                      <label htmlFor="chr-yachtTyp" style={labelStyle}>{s.typ}</label>
+                      <select id="chr-yachtTyp" required name="yachtTyp" value={form.yachtTyp} onChange={e => set('yachtTyp', e.target.value)} style={inputStyle}>
                         <option value="">{s.wahl}</option>
                         {s.typen.map(t => <option key={t} value={t}>{t}</option>)}
                       </select>
                     </div>
                     <div>
-                      <label style={labelStyle}>{s.kab}</label>
-                      <select required name="kabinen" value={form.kabinen} onChange={e => set('kabinen', e.target.value)} style={inputStyle}>
+                      <label htmlFor="chr-kabinen" style={labelStyle}>{s.kab}</label>
+                      <select id="chr-kabinen" required name="kabinen" value={form.kabinen} onChange={e => set('kabinen', e.target.value)} style={inputStyle}>
                         <option value="">{s.wahl}</option>
                         {s.kabinen.map(k => <option key={k} value={k}>{k}</option>)}
                       </select>
@@ -196,14 +196,14 @@ export default function CharterPage() {
                   </div>
 
                   <div style={{ marginBottom: '1rem' }}>
-                    <label style={labelStyle}>{s.revier}</label>
-                    <input required name="revier" value={form.revier} onChange={e => set('revier', e.target.value)}
+                    <label htmlFor="chr-revier" style={labelStyle}>{s.revier}</label>
+                    <input id="chr-revier" required name="revier" value={form.revier} onChange={e => set('revier', e.target.value)}
                       placeholder={s.revierPh} style={inputStyle} />
                   </div>
 
                   <div className="charter-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
-                      <label style={labelStyle}>{s.alter}</label>
+                      <label htmlFor="chr-start" style={labelStyle}>{s.alter}</label>
                       <div style={{ padding: '11px 14px', borderRadius: '4px', border: '1px solid var(--gray-mid)', background: '#fff', boxSizing: 'border-box' }}>
                         <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--navy)', marginBottom: '6px', textAlign: 'center' }}>
                           {ageLabel}
@@ -214,11 +214,11 @@ export default function CharterPage() {
                     </div>
                     <div>
                       <label style={labelStyle}>{s.sd}</label>
-                      <input type="date" name="start" value={form.start} onChange={e => set('start', e.target.value)} style={inputStyle} />
+                      <input id="chr-start" type="date" name="start" value={form.start} onChange={e => set('start', e.target.value)} style={inputStyle} />
                     </div>
                     <div>
-                      <label style={labelStyle}>{s.ed}</label>
-                      <input type="date" name="ende" value={form.ende} onChange={e => set('ende', e.target.value)} style={inputStyle} />
+                      <label htmlFor="chr-ende" style={labelStyle}>{s.ed}</label>
+                      <input id="chr-ende" type="date" name="ende" value={form.ende} onChange={e => set('ende', e.target.value)} style={inputStyle} />
                     </div>
                   </div>
 
@@ -226,23 +226,23 @@ export default function CharterPage() {
 
                   <div className="charter-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
-                      <label style={labelStyle}>{s.name}</label>
-                      <input required name="name" value={form.name} onChange={e => set('name', e.target.value)} style={inputStyle} />
+                      <label htmlFor="chr-name" style={labelStyle}>{s.name}</label>
+                      <input id="chr-name" required name="name" value={form.name} onChange={e => set('name', e.target.value)} style={inputStyle} />
                     </div>
                     <div>
-                      <label style={labelStyle}>E-Mail *</label>
-                      <input required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
+                      <label htmlFor="chr-email" style={labelStyle}>E-Mail *</label>
+                      <input id="chr-email" required type="email" name="email" value={form.email} onChange={e => set('email', e.target.value)} style={inputStyle} />
                     </div>
                   </div>
 
                   <div style={{ marginBottom: '1rem' }}>
-                    <label style={labelStyle}>{s.tel}</label>
-                    <input required type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
+                    <label htmlFor="chr-telefon" style={labelStyle}>{s.tel}</label>
+                    <input id="chr-telefon" required type="tel" name="telefon" value={form.telefon} onChange={e => set('telefon', e.target.value)} style={inputStyle} />
                   </div>
 
                   <div style={{ marginBottom: '1.5rem' }}>
-                    <label style={labelStyle}>{s.notes}</label>
-                    <textarea name="anmerkungen" rows={4} value={form.anmerkungen} onChange={e => set('anmerkungen', e.target.value)}
+                    <label htmlFor="chr-anmerkungen" style={labelStyle}>{s.notes}</label>
+                    <textarea id="chr-anmerkungen" name="anmerkungen" rows={4} value={form.anmerkungen} onChange={e => set('anmerkungen', e.target.value)}
                       placeholder={s.notesPh} style={{ ...inputStyle, resize: 'vertical' }} />
                   </div>
 

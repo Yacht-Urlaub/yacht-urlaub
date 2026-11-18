@@ -82,21 +82,21 @@ export default function ContactPage() {
                 <form onSubmit={submit}>
                   <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.25rem', marginBottom: '1.25rem' }}>
                     <div>
-                      <label style={labelStyle}>{s.name}</label>
-                      <input required value={form.name} onChange={set('name')} style={inputStyle} />
+                      <label htmlFor="cpg-name" style={labelStyle}>{s.name}</label>
+                      <input id="cpg-name" required value={form.name} onChange={set('name')} style={inputStyle} />
                     </div>
                     <div>
-                      <label style={labelStyle}>{s.phone}</label>
-                      <input value={form.phone} onChange={set('phone')} style={inputStyle} />
+                      <label htmlFor="cpg-phone" style={labelStyle}>{s.phone}</label>
+                      <input id="cpg-phone" value={form.phone} onChange={set('phone')} style={inputStyle} />
                     </div>
                   </div>
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>{s.email}</label>
-                    <input required type="email" value={form.email} onChange={set('email')} style={inputStyle} />
+                    <label htmlFor="cpg-email" style={labelStyle}>{s.email}</label>
+                    <input id="cpg-email" required type="email" value={form.email} onChange={set('email')} style={inputStyle} />
                   </div>
                   <div style={{ marginBottom: '1.5rem' }}>
-                    <label style={labelStyle}>{s.message}</label>
-                    <textarea required value={form.message} onChange={set('message')} placeholder={s.messagePh} rows={6} style={{ ...inputStyle, resize: 'vertical' }} />
+                    <label htmlFor="cpg-message" style={labelStyle}>{s.message}</label>
+                    <textarea id="cpg-message" required value={form.message} onChange={set('message')} placeholder={s.messagePh} rows={6} style={{ ...inputStyle, resize: 'vertical' }} />
                   </div>
                   {status === 'error' && (
                     <p style={{ color: '#c0392b', fontSize: '0.85rem', marginBottom: '1rem' }}>{s.err}</p>

@@ -26,6 +26,7 @@
          alle Unterseiten zusaetzlich von scripts/prerender.cjs als
          statisches HTML eingefroren (public/<pfad>/index.html). -->
 
+    <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   </head>
   <body>
     <div id="root"></div>
@@ -36,6 +37,11 @@
     <script type="text/javascript">
       (function () {
         var _tsid = 'X8C58FF076608DD16CD36F796D67C0862';
+        // Erst nach dem Laden der Seite und im Leerlauf nachladen: das
+        // Drittanbieter-Skript konkurriert sonst mit LCP und dem eigenen JS
+        // (Lighthouse: Drittanbieter-Code + Main-Thread-Arbeit). Das Badge
+        // erscheint dadurch einen Moment spaeter, funktional aendert sich nichts.
+        function loadTrustedShops() {
         if (document.querySelector('script[src*="' + _tsid + '"]')) return;
         _tsConfig = {
           'yOffset': '5',
@@ -54,6 +60,13 @@
         _ts.src = 'https://widgets.trustedshops.com/js/' + _tsid + '.js';
         var __ts = document.getElementsByTagName('script')[0];
         __ts.parentNode.insertBefore(_ts, __ts);
+        }
+        function schedule() {
+          if (window.requestIdleCallback) window.requestIdleCallback(loadTrustedShops, { timeout: 4000 });
+          else setTimeout(loadTrustedShops, 2000);
+        }
+        if (document.readyState === 'complete') schedule();
+        else window.addEventListener('load', schedule);
       })();
     </script>
 

@@ -126,7 +126,7 @@ export default function Footer() {
         <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', flexWrap: 'wrap' }}>
           <div>
             <h3 style={{ color: '#fff', fontFamily: 'DM Sans, sans-serif', fontSize: '1.3rem', marginBottom: '0.3rem' }}>{lang === 'en' ? 'Newsletter — offers & news' : 'Newsletter — Angebote & Neuigkeiten'}</h3>
-            <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>{lang === 'en' ? 'No spam. Just real sailing dreams.' : 'Kein Spam. Nur echte Segelträume.'}</p>
+            <p style={{ color: '#fff', fontSize: '0.85rem' }}>{lang === 'en' ? 'No spam. Just real sailing dreams.' : 'Kein Spam. Nur echte Segelträume.'}</p>
           </div>
           <form
             action="https://yacht-urlaub.us10.list-manage.com/subscribe/post?u=cefebb6fcf8136469892f293c&amp;id=13f58451c3"
@@ -180,7 +180,7 @@ export default function Footer() {
         {/* Bottom */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-            <Link to={lang === 'en' ? '/en' : '/'}><img src={lang === 'en' ? '/logo-en.png' : '/logo.png'} alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'} style={{ height: '32px', filter: 'brightness(0) invert(1) opacity(0.7)' }} /></Link>
+            <Link to={lang === 'en' ? '/en' : '/'}><img src={lang === 'en' ? '/logo-en.webp' : '/logo.webp'} width={lang === 'en' ? 490 : 481} height={136} loading="lazy" alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'} style={{ height: '32px', width: 'auto', filter: 'brightness(0) invert(1) opacity(0.7)' }} /></Link>
             <p style={{ fontSize: '0.78rem' }}>© YACHT-URLAUB Ing. Manuel Göschl, MBA</p>
           </div>
 
@@ -217,7 +217,7 @@ export default function Footer() {
               style={{ height: '46px', width: 'auto', flexShrink: 0 }}
             />
             <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
-              <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.4)' }}>{lang === 'en' ? 'Payment:' : 'Zahlung:'}</span>
+              <span style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.62)' }}>{lang === 'en' ? 'Payment:' : 'Zahlung:'}</span>
               <img
                 src="/images/logos/payment-methods.png"
                 alt="Mastercard, Visa, American Express, giropay"

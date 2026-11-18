@@ -132,15 +132,19 @@ export default function Navbar() {
         <Link to={lang === 'en' ? '/en' : '/'} style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
           <img
             className="logo-full"
-            src={lang === 'en' ? '/logo-en.png' : '/logo.png'}
+            src={lang === 'en' ? '/logo-en.webp' : '/logo.webp'}
+            width={lang === 'en' ? 490 : 481}
+            height={136}
             alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}
-            style={{ height: '68px', filter: 'brightness(0) invert(1)' }}
+            style={{ height: '68px', width: 'auto', filter: 'brightness(0) invert(1)' }}
           />
           <img
             className="logo-compact"
             src="/logo-icon.png"
+            width={19}
+            height={40}
             alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'}
-            style={{ height: '40px', display: 'none' }}
+            style={{ height: '40px', width: 'auto', display: 'none' }}
           />
         </Link>
 

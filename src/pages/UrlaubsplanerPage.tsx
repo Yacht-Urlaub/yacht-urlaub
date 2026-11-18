@@ -385,8 +385,8 @@ export default function UrlaubsplanerPage() {
                       </button>
                     ))}
                   </div>
-                  <label style={labelStyle}>{s.other}</label>
-                  <input type="text" value={form.revierSonstiges} onChange={e => update('revierSonstiges', e.target.value)}
+                  <label htmlFor="urp-revierSonstiges" style={labelStyle}>{s.other}</label>
+                  <input id="urp-revierSonstiges" type="text" value={form.revierSonstiges} onChange={e => update('revierSonstiges', e.target.value)}
                     placeholder={s.otherPh} style={inputStyle} />
                 </div>
               </motion.div>
@@ -404,20 +404,20 @@ export default function UrlaubsplanerPage() {
 
                 <div style={{ background: '#fff', borderRadius: '8px', padding: '2.5rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)', maxWidth: '560px', margin: '0 auto' }}>
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>{s.begin}</label>
-                    <input type="date" required value={form.beginn} onChange={e => update('beginn', e.target.value)} style={inputStyle} />
+                    <label htmlFor="urp-beginn" style={labelStyle}>{s.begin}</label>
+                    <input id="urp-beginn" type="date" required value={form.beginn} onChange={e => update('beginn', e.target.value)} style={inputStyle} />
                     <p style={{ color: 'var(--gray)', fontSize: '0.74rem', marginTop: '5px', lineHeight: 1.5 }}>
                       {s.beginHint}
                     </p>
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>{s.dauer}</label>
-                    <input type="number" min={3} max={42} required value={form.dauer} onChange={e => update('dauer', e.target.value)} style={inputStyle} />
+                    <label htmlFor="urp-dauer" style={labelStyle}>{s.dauer}</label>
+                    <input id="urp-dauer" type="number" min={3} max={42} required value={form.dauer} onChange={e => update('dauer', e.target.value)} style={inputStyle} />
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>{s.wish}</label>
+                    <label htmlFor="urp-anmerkung" style={labelStyle}>{s.wish}</label>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                       {(lang === 'en' ? s.wishes : buchungsAbsichten).map(b => (
                         <label key={b} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: '#444', cursor: 'pointer' }}>
@@ -430,7 +430,7 @@ export default function UrlaubsplanerPage() {
 
                   <div>
                     <label style={labelStyle}>{s.notes}</label>
-                    <textarea rows={4} value={form.anmerkung} onChange={e => update('anmerkung', e.target.value)}
+                    <textarea id="urp-anmerkung" rows={4} value={form.anmerkung} onChange={e => update('anmerkung', e.target.value)}
                       placeholder={s.notesPh}
                       style={{ ...inputStyle, resize: 'vertical' }} />
                   </div>
@@ -450,15 +450,15 @@ export default function UrlaubsplanerPage() {
 
                 <div style={{ background: '#fff', borderRadius: '8px', padding: '2.5rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)', maxWidth: '560px', margin: '0 auto' }}>
                   <div style={{ marginBottom: '1.5rem' }}>
-                    <label style={labelStyle}>{s.group}</label>
-                    <select required value={form.personen} onChange={e => update('personen', e.target.value)} style={inputStyle}>
+                    <label htmlFor="urp-personen" style={labelStyle}>{s.group}</label>
+                    <select id="urp-personen" required value={form.personen} onChange={e => update('personen', e.target.value)} style={inputStyle}>
                       <option value="">{s.wahl}</option>
                       {gruppenGroessen.map(g => <option key={g} value={g}>{g}</option>)}
                     </select>
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>{s.komm}</label>
+                    <label htmlFor="urp-kommunikationSonstiges" style={labelStyle}>{s.komm}</label>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
                       {kommunikationsWege.map(k => (
                         <label key={k} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: '#444', cursor: 'pointer' }}>
@@ -470,7 +470,7 @@ export default function UrlaubsplanerPage() {
                   </div>
 
                   <label style={labelStyle}>{s.other}</label>
-                  <input type="text" value={form.kommunikationSonstiges} onChange={e => update('kommunikationSonstiges', e.target.value)} style={inputStyle} />
+                  <input id="urp-kommunikationSonstiges" type="text" value={form.kommunikationSonstiges} onChange={e => update('kommunikationSonstiges', e.target.value)} style={inputStyle} />
                 </div>
               </motion.div>
             )}
@@ -514,29 +514,29 @@ export default function UrlaubsplanerPage() {
 
                   <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
-                      <label style={labelStyle}>{s.vn}</label>
-                      <input type="text" name="vorname" required value={form.vorname} onChange={e => update('vorname', e.target.value)} style={inputStyle} />
+                      <label htmlFor="urp-vorname" style={labelStyle}>{s.vn}</label>
+                      <input id="urp-vorname" type="text" name="vorname" required value={form.vorname} onChange={e => update('vorname', e.target.value)} style={inputStyle} />
                     </div>
                     <div>
-                      <label style={labelStyle}>{s.nn}</label>
-                      <input type="text" name="nachname" required value={form.nachname} onChange={e => update('nachname', e.target.value)} style={inputStyle} />
+                      <label htmlFor="urp-nachname" style={labelStyle}>{s.nn}</label>
+                      <input id="urp-nachname" type="text" name="nachname" required value={form.nachname} onChange={e => update('nachname', e.target.value)} style={inputStyle} />
                     </div>
                   </div>
 
                   <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
-                      <label style={labelStyle}>{s.geb}</label>
-                      <input type="number" name="geburtsjahr" required min={1920} max={2010} placeholder={s.gebPh} value={form.geburtsjahr} onChange={e => update('geburtsjahr', e.target.value)} style={inputStyle} />
+                      <label htmlFor="urp-geburtsjahr" style={labelStyle}>{s.geb}</label>
+                      <input id="urp-geburtsjahr" type="number" name="geburtsjahr" required min={1920} max={2010} placeholder={s.gebPh} value={form.geburtsjahr} onChange={e => update('geburtsjahr', e.target.value)} style={inputStyle} />
                     </div>
                     <div>
-                      <label style={labelStyle}>{s.mail}</label>
-                      <input type="email" name="email" required value={form.email} onChange={e => update('email', e.target.value)} style={inputStyle} />
+                      <label htmlFor="urp-email" style={labelStyle}>{s.mail}</label>
+                      <input id="urp-email" type="email" name="email" required value={form.email} onChange={e => update('email', e.target.value)} style={inputStyle} />
                     </div>
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
-                    <label style={labelStyle}>{s.tel}</label>
-                    <input type="tel" name="telefon" required placeholder={s.telPh} value={form.telefon} onChange={e => update('telefon', e.target.value)} style={inputStyle} />
+                    <label htmlFor="urp-telefon" style={labelStyle}>{s.tel}</label>
+                    <input id="urp-telefon" type="tel" name="telefon" required placeholder={s.telPh} value={form.telefon} onChange={e => update('telefon', e.target.value)} style={inputStyle} />
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
@@ -550,8 +550,8 @@ export default function UrlaubsplanerPage() {
                   </div>
 
                   <div style={{ marginBottom: '1.75rem' }}>
-                    <label style={labelStyle}>{s.found}</label>
-                    <select value={form.erfahren} onChange={e => update('erfahren', e.target.value)} style={inputStyle}>
+                    <label htmlFor="urp-erfahren" style={labelStyle}>{s.found}</label>
+                    <select id="urp-erfahren" value={form.erfahren} onChange={e => update('erfahren', e.target.value)} style={inputStyle}>
                       <option value="">{s.wahl}</option>
                       {erfahrenOptionen.map(o => <option key={o} value={o}>{o}</option>)}
                     </select>
