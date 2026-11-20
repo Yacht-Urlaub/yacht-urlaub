@@ -334,7 +334,7 @@ const LUX_TOYS: Record<'de' | 'en', string[]> = {
 
 const tdl = {
   de: { home: 'Start', toerns: 'Törns', toernsHref: '/toerns', all: '← Alle Törns', offer: '▶ ZUM ANGEBOT',
-    book: 'Anfrage starten', planer: 'Urlaubsplanung starten', buchHref: '/buchen', planHref: '/urlaubsplaner',
+    book: 'Anfrage starten', planer: 'Urlaubsplanung starten', planHref: '/urlaubsplaner',
     highlights: 'Die Highlights unserer Luxury-Packages', prices: 'Preise', off: 'Nebensaison / Woche',
     peak: 'Hauptsaison / Woche', impr: 'Impressionen', luxCta: 'Zur Luxury-Yachtreise Buchung',
     luxBtn: 'URLAUBSPLANUNG STARTEN', sailaway: 'Die Party-Flottille für alle zwischen 21 und 35.',
@@ -342,7 +342,7 @@ const tdl = {
     specs: 'Technische Daten', toys: 'Watertoys inklusive an Bord', more: 'Mehr entdecken',
     moreMotor: 'Motoryachten im Überblick', moreHr: 'Segeln in Kroatien' },
   en: { home: 'Home', toerns: 'Cruises', toernsHref: '/en/cruises', all: '← All cruises', offer: '▶ OUR OFFER',
-    book: 'Start your inquiry', planer: 'Start your holiday planning', buchHref: '/en/book-now', planHref: '/en/holiday-planner',
+    book: 'Start your inquiry', planer: 'Start your holiday planning', planHref: '/en/holiday-planner',
     highlights: 'The highlights of our luxury packages', prices: 'Prices', off: 'Off-season / week',
     peak: 'Peak-season / week', impr: 'Impressions', luxCta: 'Book your luxury yacht trip',
     luxBtn: 'START YOUR HOLIDAY PLANNING', sailaway: 'The party flotilla for everyone between 21 and 35.',
@@ -472,9 +472,13 @@ export default function ToernDetailPage() {
             {data.h1}
           </motion.h1>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}>
-            <Link to={data.luxury ? s.planHref : s.buchHref} className="btn btn-primary" style={{ marginRight: '1rem' }}>
-              {data.luxury ? s.planer : s.book}
-            </Link>
+            {data.luxury ? (
+              <Link to={s.planHref} className="btn btn-primary" style={{ marginRight: '1rem' }}>{s.planer}</Link>
+            ) : (
+              // "Anfrage starten" scrollt zum Anfrageformular am Seitenende (#kontakt),
+              // nicht auf die Buchen-Seite — gleiches Muster wie Navbar/Footer.
+              <a href="#kontakt" className="btn btn-primary" style={{ marginRight: '1rem' }}>{s.book}</a>
+            )}
             <Link to={s.toernsHref} style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.85rem' }}>{s.all}</Link>
           </motion.div>
         </div>
