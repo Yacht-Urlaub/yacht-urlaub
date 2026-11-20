@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import SEO from '../components/SEO'
 import { AnchorIcon } from '../components/Icons'
@@ -42,6 +42,31 @@ const steps = ['Yachtauswahl', 'Revierauswahl', 'Terminplanung', 'Crew & Kommuni
 // yachtTypes[].id immer auf Deutsch, unabhaengig von der Anzeigesprache —
 // das Formular geht intern ans deutschsprachige Team).
 const BERATEN_ID = 'Beratung gewünscht'
+
+// Anzeigetexte fuer die englische Seite. Die gespeicherten Werte (value) bleiben
+// deutsch — das Formular geht ans deutschsprachige Team —, nur die Beschriftung
+// wird uebersetzt (Schritte 2-5 und Zusammenfassung waren auf Englisch deutsch).
+const optEn: Record<string, Record<string, string>> = {
+  yachts: {
+    'Gemütliche Segelyacht': 'Comfortable sailing yacht', 'Geräumiger Katamaran': 'Spacious catamaran',
+    'Luxuriöse Motoryacht': 'Luxurious motor yacht', [BERATEN_ID]: 'Advice wanted',
+  },
+  reviere: {
+    Kroatien: 'Croatia', Griechenland: 'Greece', 'Italien (Festland)': 'Italy (mainland)', Sardinien: 'Sardinia',
+    Sizilien: 'Sicily', Karibik: 'Caribbean', Thailand: 'Thailand', Seychellen: 'Seychelles',
+    'Balearen (Spanien)': 'Balearic Islands (Spain)', 'Kanaren (Spanien)': 'Canary Islands (Spain)',
+    'Azoren (Portugal)': 'Azores (Portugal)', Südsee: 'South Seas',
+  },
+  gruppen: {
+    '3 oder weniger - Bitte Link für WhatsApp-Info Gruppe zuschicken': '3 or fewer – please send me the link to the WhatsApp info group',
+    'mehr als 12, aufgeteilt auf mehrere Yachten': 'more than 12, split across several yachts',
+  },
+  komm: { 'E-Mail': 'Email', Whatsapp: 'WhatsApp', 'Telefon/persönlich': 'Phone / in person' },
+  erfahren: {
+    'Freunde und Bekannte': 'Friends and acquaintances', 'Online-Suche (Website)': 'Online search (website)',
+    'Ferien-Messe': 'Holiday fair', Sonstiges: 'Other',
+  },
+}
 
 const fadeIn = {
   initial: { opacity: 0, x: 30 },
@@ -160,7 +185,8 @@ const pl = {
     thanks: (n: string) => `Vielen Dank, ${n}!`,
     thanksSub: 'Wir haben Ihre Anfrage erhalten und melden uns schnellstmöglich bei Ihnen — persönlich, ohne automatische Antwort.',
     back: '← Zurück', home: 'Zurück zur Startseite', homeHref: '/',
-    nav: ['weiter zur Revierauswahl', 'Weiter zur Terminplanung', 'Vorletzter Schritt: Kommunikation & Crew', 'Letzter Schritt: Ihre Kontaktdaten'],
+    dauerErr: 'Bitte eine Dauer zwischen 3 und 42 Tagen angeben.', datumErr: 'Bitte ein Datum in der Zukunft wählen.',
+    nav: ['Weiter zur Revierauswahl', 'Weiter zur Terminplanung', 'Vorletzter Schritt: Kommunikation & Crew', 'Letzter Schritt: Ihre Kontaktdaten'],
     altText: 'Urlaubsplaner zu langwierig? Sie können gerne alternativ unser', altForm: 'kurzes Anfrage-Formular', altUse: 'verwenden!',
     bareboat: 'Für BAREBOAT-CHARTER Anfragen (nur Yacht ohne Skipper) bitte', bareboatForm: 'dieses Formular', bareboatUse: 'verwenden.',
     fixe: 'FIXE ROUTE BUCHEN', nurYacht: '„Nur Yacht"-Anfrage', buchHref: '/buchen', charterHref: '/charter',
@@ -198,7 +224,8 @@ const pl = {
     thanks: (n: string) => `Thank you, ${n}!`,
     thanksSub: 'We have received your request and will get back to you as soon as possible — personally, without an automatic reply.',
     back: '← Back', home: 'Back to homepage', homeHref: '/en',
-    nav: ['continue to sailing area', 'Continue to schedule', 'Second to last step: communication & crew', 'Last step: your contact details'],
+    dauerErr: 'Please enter a duration between 3 and 42 days.', datumErr: 'Please choose a date in the future.',
+    nav: ['Continue to sailing area', 'Continue to schedule', 'Second to last step: communication & crew', 'Last step: your contact details'],
     altText: 'Holiday planner too lengthy? You are welcome to use our', altForm: 'short inquiry form', altUse: 'instead!',
     bareboat: 'For BAREBOAT charter requests (yacht only, without skipper) please use', bareboatForm: 'this form', bareboatUse: '.',
     fixe: 'BOOK A FIXED ROUTE', nurYacht: '"Yacht only" request', buchHref: '/en/book-now', charterHref: '/en/charter/yacht-charter',
@@ -221,6 +248,20 @@ export default function UrlaubsplanerPage() {
     newsletter: false, erfahren: '',
   })
 
+  // Beim Schrittwechsel zurueck an den Anfang des Formulars (Fortschrittsanzeige) —
+  // sonst bleibt man auf Mobilgeraeten mitten/unten auf der Folgeseite stehen.
+  const formTopRef = useRef<HTMLDivElement>(null)
+  const prevStep = useRef(step)
+  useEffect(() => {
+    if (prevStep.current === step) return
+    prevStep.current = step
+    formTopRef.current?.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
+  }, [step])
+  // Nach dem Absenden steht die Danke-Meldung oben — dorthin springen.
+  useEffect(() => {
+    if (sent) window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+  }, [sent])
+
   const update = <K extends keyof FormData>(key: K, val: FormData[K]) => setForm(prev => ({ ...prev, [key]: val }))
 
   const toggleArr = (key: 'reviere' | 'kommunikation', val: string) =>
@@ -229,10 +270,16 @@ export default function UrlaubsplanerPage() {
       [key]: prev[key].includes(val) ? prev[key].filter(v => v !== val) : [...prev[key], val],
     }))
 
+  const now = new Date()
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`
+  const dauerNum = Number(form.dauer)
+  const dauerOk = Number.isInteger(dauerNum) && dauerNum >= 3 && dauerNum <= 42
+  const beginnOk = !!form.beginn && form.beginn >= today
+
   const canNext = () => {
     if (step === 0) return !!form.yacht
     if (step === 1) return form.reviere.length > 0 || !!form.revierSonstiges
-    if (step === 2) return !!form.beginn && !!form.dauer && !!form.buchung
+    if (step === 2) return beginnOk && dauerOk && !!form.buchung
     if (step === 3) return !!form.personen
     return !!form.vorname && !!form.nachname && !!form.geburtsjahr && !!form.email && !!form.telefon
   }
@@ -266,6 +313,8 @@ export default function UrlaubsplanerPage() {
 
   const info = planerInfo[lang]
   const en = lang === 'en'
+  const loc = (group: keyof typeof optEn, v: string) => (en ? optEn[group][v] ?? v : v)
+  const stepNow = en ? `Step ${step + 1} of ${s.steps.length}: ${s.steps[step]}` : `Schritt ${step + 1} von ${s.steps.length}: ${s.steps[step]}`
   const base = isEnHost() ? BASE_EN : BASE_DE
   const pageUrl = `${base}${en ? '/holiday-planner' : '/urlaubsplaner'}`
   const metaTitle = en ? 'Holiday planner – request your sailing holiday | Yacht-Holiday' : 'Urlaubsplaner – Segelurlaub unverbindlich anfragen | Yacht-Urlaub'
@@ -345,32 +394,50 @@ export default function UrlaubsplanerPage() {
         <div className="container" style={{ maxWidth: step === 0 ? '1136px' : '860px', padding: '3rem 1.5rem 5rem', transition: 'max-width 0.3s' }}>
 
           {/* Progress */}
-          <div className="planer-stepper" style={{ display: 'flex', justifyContent: 'center', gap: 0, marginBottom: '3rem' }}>
+          <div ref={formTopRef} className="planer-stepper" style={{ display: 'flex', justifyContent: 'center', gap: 0, marginBottom: '3rem', scrollMarginTop: '96px' }}>
             {s.steps.map((st, i) => (
               <div key={st} style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', cursor: i < step ? 'pointer' : 'default' }}
-                  onClick={() => i < step && setStep(i)}>
-                  <div style={{
-                    width: '36px', height: '36px', borderRadius: '50%',
-                    background: i < step ? 'var(--blue)' : i === step ? 'var(--navy)' : 'var(--gray-mid)',
-                    color: i <= step ? '#fff' : 'var(--gray)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontWeight: 700, fontSize: '0.85rem',
-                    transition: 'all 0.3s',
-                    boxShadow: i === step ? '0 0 0 3px rgba(2,132,199,0.25)' : 'none',
-                  }}>
-                    {i < step ? '✓' : i + 1}
-                  </div>
-                  <span className="planer-step-label" style={{ fontSize: '0.66rem', marginTop: '4px', color: i === step ? 'var(--navy)' : 'var(--gray)', fontWeight: i === step ? 700 : 400, whiteSpace: 'nowrap' }}>
-                    {st}
-                  </span>
-                </div>
+                {(() => {
+                  const dot = (
+                    <>
+                      <div style={{
+                        width: '36px', height: '36px', borderRadius: '50%',
+                        background: i < step ? 'var(--blue)' : i === step ? 'var(--navy)' : 'var(--gray-mid)',
+                        color: i <= step ? '#fff' : 'var(--gray)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontWeight: 700, fontSize: '0.85rem',
+                        transition: 'all 0.3s',
+                        boxShadow: i === step ? '0 0 0 3px rgba(2,132,199,0.25)' : 'none',
+                      }}>
+                        {i < step ? '✓' : i + 1}
+                      </div>
+                      <span className="planer-step-label" style={{ fontSize: '0.66rem', marginTop: '4px', color: i === step ? 'var(--navy)' : 'var(--gray)', fontWeight: i === step ? 700 : 400, whiteSpace: 'nowrap' }}>
+                        {st}
+                      </span>
+                    </>
+                  )
+                  // Bereits abgeschlossene Schritte sind per Tastatur/Screenreader anspringbar
+                  return i < step ? (
+                    <button type="button" className="planer-step-btn" onClick={() => setStep(i)}
+                      aria-label={en ? `Back to step ${i + 1}: ${st}` : `Zurück zu Schritt ${i + 1}: ${st}`}>
+                      {dot}
+                    </button>
+                  ) : (
+                    <div aria-current={i === step ? 'step' : undefined} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      {dot}
+                    </div>
+                  )
+                })()}
                 {i < steps.length - 1 && (
                   <div className="planer-connector" style={{ width: '44px', height: '2px', background: i < step ? 'var(--blue)' : 'var(--gray-mid)', margin: '0 4px', marginBottom: '18px', transition: 'background 0.3s' }} />
                 )}
               </div>
             ))}
           </div>
+
+          {/* Aktueller Schritt als Text: fuer Screenreader (live) und auf Mobil sichtbar,
+              wo die Schrittnamen in der Anzeige ausgeblendet sind. */}
+          <p className="planer-step-now" role="status" aria-live="polite">{stepNow}</p>
 
           <AnimatePresence mode="wait">
 
@@ -422,7 +489,7 @@ export default function UrlaubsplanerPage() {
                   ))}
                   <button
                     type="button"
-                    className="yacht-card"
+                    className="yacht-card yacht-card-beraten"
                     aria-pressed={form.yacht === BERATEN_ID}
                     onClick={() => update('yacht', BERATEN_ID)}
                     style={{
@@ -444,40 +511,15 @@ export default function UrlaubsplanerPage() {
                         <circle cx="12" cy="13.9" r="0.6" fill="var(--blue-light)" stroke="none" />
                       </svg>
                     </span>
-                    <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', lineHeight: 1.2, fontFamily: 'inherit' }}>{s.beraten}</span>
-                    <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.78rem', lineHeight: 1.4 }}>{s.beratenSub}</span>
+                    <span className="yacht-beraten-text" style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                      <span style={{ color: '#fff', fontWeight: 700, fontSize: '0.95rem', lineHeight: 1.2, fontFamily: 'inherit' }}>{s.beraten}</span>
+                      <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.78rem', lineHeight: 1.4 }}>{s.beratenSub}</span>
+                    </span>
                     {form.yacht === BERATEN_ID && (
                       <span style={{ position: 'absolute', top: '8px', right: '8px', background: 'var(--blue)', color: '#fff', borderRadius: '50%', width: '22px', height: '22px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.8rem', fontWeight: 700 }}>✓</span>
                     )}
                   </button>
                 </div>
-
-                {/* Entscheidungshilfe + FAQ: sichtbar im DOM (details/summary), dieselben Fragen
-                    stehen im FAQPage-Schema (siehe schema oben). */}
-                <section aria-labelledby="urp-typen" style={{ marginTop: '3rem' }}>
-                  <h3 id="urp-typen" style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '1rem', textAlign: 'center' }}>{info.guideH}</h3>
-                  <dl style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', margin: 0 }}>
-                    {info.guide.map(([term, text]) => (
-                      <div key={term} style={{ background: '#fff', borderRadius: '6px', padding: '1.1rem 1.25rem', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-                        <dt style={{ fontWeight: 700, color: 'var(--navy)', marginBottom: '0.3rem' }}>{term}</dt>
-                        <dd style={{ margin: 0, color: 'var(--gray)', fontSize: '0.88rem', lineHeight: 1.65 }}>{text}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <p style={{ textAlign: 'center', color: 'var(--gray)', fontSize: '0.88rem', marginTop: '1rem' }}>{info.guideNote}</p>
-                </section>
-
-                <section aria-labelledby="urp-faq" style={{ marginTop: '2.5rem' }}>
-                  <h3 id="urp-faq" style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '1rem', textAlign: 'center' }}>{info.faqH}</h3>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', maxWidth: '760px', margin: '0 auto' }}>
-                    {info.faq.map(f => (
-                      <details key={f.q} style={{ background: '#fff', border: '1px solid var(--gray-mid)', borderRadius: '6px', padding: '0.9rem 1.1rem' }}>
-                        <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.4 }}>{f.q}</summary>
-                        <p style={{ margin: '0.6rem 0 0', color: 'var(--gray)', fontSize: '0.9rem', lineHeight: 1.7 }}>{f.a}</p>
-                      </details>
-                    ))}
-                  </div>
-                </section>
               </motion.div>
             )}
 
@@ -493,7 +535,7 @@ export default function UrlaubsplanerPage() {
                 <div style={{ background: '#fff', borderRadius: '8px', padding: '2rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)' }}>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.6rem', marginBottom: '1.5rem' }} className="planer-revier-grid">
                     {reviere.map(r => (
-                      <button key={r} onClick={() => toggleArr('reviere', r)} style={{
+                      <button key={r} type="button" aria-pressed={form.reviere.includes(r)} onClick={() => toggleArr('reviere', r)} style={{
                         padding: '11px 10px', borderRadius: '4px', border: '2px solid',
                         borderColor: form.reviere.includes(r) ? 'var(--blue)' : 'var(--gray-mid)',
                         background: form.reviere.includes(r) ? 'var(--blue-pale)' : '#fff',
@@ -502,7 +544,7 @@ export default function UrlaubsplanerPage() {
                         cursor: 'pointer', fontFamily: 'DM Sans, sans-serif',
                         transition: 'all 0.15s',
                       }}>
-                        {form.reviere.includes(r) ? '✓ ' : ''}{r}
+                        {form.reviere.includes(r) ? '✓ ' : ''}{loc('reviere', r)}
                       </button>
                     ))}
                   </div>
@@ -526,19 +568,23 @@ export default function UrlaubsplanerPage() {
                 <div style={{ background: '#fff', borderRadius: '8px', padding: '2.5rem', boxShadow: '0 2px 20px rgba(0,0,0,0.07)', maxWidth: '560px', margin: '0 auto' }}>
                   <div style={{ marginBottom: '1.25rem' }}>
                     <label htmlFor="urp-beginn" style={labelStyle}>{s.begin}</label>
-                    <input id="urp-beginn" type="date" required value={form.beginn} onChange={e => update('beginn', e.target.value)} style={inputStyle} />
-                    <p style={{ color: 'var(--gray)', fontSize: '0.74rem', marginTop: '5px', lineHeight: 1.5 }}>
+                    <input id="urp-beginn" type="date" required min={today} value={form.beginn} onChange={e => update('beginn', e.target.value)}
+                      aria-invalid={!!form.beginn && !beginnOk} aria-describedby="urp-beginn-hint" style={inputStyle} />
+                    <p id="urp-beginn-hint" style={{ color: 'var(--gray)', fontSize: '0.74rem', marginTop: '5px', lineHeight: 1.5 }}>
                       {s.beginHint}
                     </p>
+                    {!!form.beginn && !beginnOk && <p role="alert" style={{ color: '#c53030', fontSize: '0.78rem', marginTop: '4px' }}>{s.datumErr}</p>}
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
                     <label htmlFor="urp-dauer" style={labelStyle}>{s.dauer}</label>
-                    <input id="urp-dauer" type="number" min={3} max={42} required value={form.dauer} onChange={e => update('dauer', e.target.value)} style={inputStyle} />
+                    <input id="urp-dauer" type="number" inputMode="numeric" min={3} max={42} required value={form.dauer} onChange={e => update('dauer', e.target.value)}
+                      aria-invalid={!dauerOk} style={inputStyle} />
+                    {!dauerOk && <p role="alert" style={{ color: '#c53030', fontSize: '0.78rem', marginTop: '4px' }}>{s.dauerErr}</p>}
                   </div>
 
-                  <div style={{ marginBottom: '1.25rem' }}>
-                    <label htmlFor="urp-anmerkung" style={labelStyle}>{s.wish}</label>
+                  <div style={{ marginBottom: '1.25rem' }} role="radiogroup" aria-labelledby="urp-wish-label">
+                    <span id="urp-wish-label" style={labelStyle}>{s.wish}</span>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                       {(lang === 'en' ? s.wishes : buchungsAbsichten).map(b => (
                         <label key={b} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: '#444', cursor: 'pointer' }}>
@@ -550,7 +596,7 @@ export default function UrlaubsplanerPage() {
                   </div>
 
                   <div>
-                    <label style={labelStyle}>{s.notes}</label>
+                    <label htmlFor="urp-anmerkung" style={labelStyle}>{s.notes}</label>
                     <textarea id="urp-anmerkung" rows={4} value={form.anmerkung} onChange={e => update('anmerkung', e.target.value)}
                       placeholder={s.notesPh}
                       style={{ ...inputStyle, resize: 'vertical' }} />
@@ -574,23 +620,23 @@ export default function UrlaubsplanerPage() {
                     <label htmlFor="urp-personen" style={labelStyle}>{s.group}</label>
                     <select id="urp-personen" required value={form.personen} onChange={e => update('personen', e.target.value)} style={inputStyle}>
                       <option value="">{s.wahl}</option>
-                      {gruppenGroessen.map(g => <option key={g} value={g}>{g}</option>)}
+                      {gruppenGroessen.map(g => <option key={g} value={g}>{loc('gruppen', g)}</option>)}
                     </select>
                   </div>
 
-                  <div style={{ marginBottom: '1.25rem' }}>
-                    <label htmlFor="urp-kommunikationSonstiges" style={labelStyle}>{s.komm}</label>
+                  <div style={{ marginBottom: '1.25rem' }} role="group" aria-labelledby="urp-komm-label">
+                    <span id="urp-komm-label" style={labelStyle}>{s.komm}</span>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
                       {kommunikationsWege.map(k => (
                         <label key={k} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.88rem', color: '#444', cursor: 'pointer' }}>
                           <input type="checkbox" checked={form.kommunikation.includes(k)} onChange={() => toggleArr('kommunikation', k)} />
-                          {k}
+                          {loc('komm', k)}
                         </label>
                       ))}
                     </div>
                   </div>
 
-                  <label style={labelStyle}>{s.other}</label>
+ <label htmlFor="urp-kommunikationSonstiges" style={labelStyle}>{s.other}</label>
                   <input id="urp-kommunikationSonstiges" type="text" value={form.kommunikationSonstiges} onChange={e => update('kommunikationSonstiges', e.target.value)} style={inputStyle} />
                 </div>
               </motion.div>
@@ -610,12 +656,12 @@ export default function UrlaubsplanerPage() {
                 <div style={{ background: 'var(--navy)', borderRadius: '6px', padding: '1.25rem 1.75rem', marginBottom: '2rem', display: 'flex', flexWrap: 'wrap', gap: '1.5rem' }}>
                   <div>
                     <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>{s.yacht}</span>
-                    <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{form.yacht}</p>
+                    <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{loc('yachts', form.yacht)}</p>
                   </div>
                   <div>
                     <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>{s.revier}</span>
                     <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>
-                      {[...form.reviere, form.revierSonstiges].filter(Boolean).join(', ')}
+                      {[...form.reviere.map(r => loc('reviere', r)), form.revierSonstiges].filter(Boolean).join(', ')}
                     </p>
                   </div>
                   <div>
@@ -624,7 +670,7 @@ export default function UrlaubsplanerPage() {
                   </div>
                   <div>
                     <span style={{ color: 'var(--gold)', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase' }}>{s.gruppe}</span>
-                    <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{form.personen}</p>
+                    <p style={{ color: '#fff', fontWeight: 600, fontSize: '0.9rem', marginTop: '2px' }}>{loc('gruppen', form.personen)}</p>
                   </div>
                 </div>
 
@@ -636,28 +682,28 @@ export default function UrlaubsplanerPage() {
                   <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
                       <label htmlFor="urp-vorname" style={labelStyle}>{s.vn}</label>
-                      <input id="urp-vorname" type="text" name="vorname" required value={form.vorname} onChange={e => update('vorname', e.target.value)} style={inputStyle} />
+                      <input id="urp-vorname" type="text" name="vorname" autoComplete="given-name" required value={form.vorname} onChange={e => update('vorname', e.target.value)} style={inputStyle} />
                     </div>
                     <div>
                       <label htmlFor="urp-nachname" style={labelStyle}>{s.nn}</label>
-                      <input id="urp-nachname" type="text" name="nachname" required value={form.nachname} onChange={e => update('nachname', e.target.value)} style={inputStyle} />
+                      <input id="urp-nachname" type="text" name="nachname" autoComplete="family-name" required value={form.nachname} onChange={e => update('nachname', e.target.value)} style={inputStyle} />
                     </div>
                   </div>
 
                   <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                     <div>
                       <label htmlFor="urp-geburtsjahr" style={labelStyle}>{s.geb}</label>
-                      <input id="urp-geburtsjahr" type="number" name="geburtsjahr" required min={1920} max={2010} placeholder={s.gebPh} value={form.geburtsjahr} onChange={e => update('geburtsjahr', e.target.value)} style={inputStyle} />
+                      <input id="urp-geburtsjahr" type="number" name="geburtsjahr" inputMode="numeric" autoComplete="bday-year" required min={1920} max={2010} placeholder={s.gebPh} value={form.geburtsjahr} onChange={e => update('geburtsjahr', e.target.value)} style={inputStyle} />
                     </div>
                     <div>
                       <label htmlFor="urp-email" style={labelStyle}>{s.mail}</label>
-                      <input id="urp-email" type="email" name="email" required value={form.email} onChange={e => update('email', e.target.value)} style={inputStyle} />
+                      <input id="urp-email" type="email" name="email" autoComplete="email" required value={form.email} onChange={e => update('email', e.target.value)} style={inputStyle} />
                     </div>
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
                     <label htmlFor="urp-telefon" style={labelStyle}>{s.tel}</label>
-                    <input id="urp-telefon" type="tel" name="telefon" required placeholder={s.telPh} value={form.telefon} onChange={e => update('telefon', e.target.value)} style={inputStyle} />
+                    <input id="urp-telefon" type="tel" name="telefon" autoComplete="tel" required placeholder={s.telPh} value={form.telefon} onChange={e => update('telefon', e.target.value)} style={inputStyle} />
                   </div>
 
                   <div style={{ marginBottom: '1.25rem' }}>
@@ -674,7 +720,7 @@ export default function UrlaubsplanerPage() {
                     <label htmlFor="urp-erfahren" style={labelStyle}>{s.found}</label>
                     <select id="urp-erfahren" value={form.erfahren} onChange={e => update('erfahren', e.target.value)} style={inputStyle}>
                       <option value="">{s.wahl}</option>
-                      {erfahrenOptionen.map(o => <option key={o} value={o}>{o}</option>)}
+                      {erfahrenOptionen.map(o => <option key={o} value={o}>{loc('erfahren', o)}</option>)}
                     </select>
                   </div>
 
@@ -707,6 +753,7 @@ export default function UrlaubsplanerPage() {
           {step < 4 && (
             <div className="planer-nav" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '2.5rem', maxWidth: step === 0 ? '1136px' : '860px', gap: '0.75rem', flexWrap: 'wrap' }}>
               <button
+                type="button"
                 onClick={() => setStep(s => Math.max(0, s - 1))}
                 disabled={step === 0}
                 style={{
@@ -719,6 +766,7 @@ export default function UrlaubsplanerPage() {
                 {s.back}
               </button>
               <button
+                type="button"
                 onClick={() => setStep(s => s + 1)}
                 disabled={!canNext()}
                 className="btn btn-primary"
@@ -731,6 +779,7 @@ export default function UrlaubsplanerPage() {
           {step === 4 && (
             <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '1rem', maxWidth: '560px', margin: '1rem auto 0' }}>
               <button
+                type="button"
                 onClick={() => setStep(3)}
                 style={{
                   background: 'none', border: '1.5px solid var(--gray-mid)', color: 'var(--gray)',
@@ -743,10 +792,42 @@ export default function UrlaubsplanerPage() {
             </div>
           )}
 
+            {/* Entscheidungshilfe + FAQ: sichtbar im DOM (details/summary), dieselben Fragen
+          stehen im FAQPage-Schema (siehe schema oben). Bewusst UNTER der Navigation und in
+          allen Schritten sichtbar: sonst rutscht der Weiter-Button hinter die Texte, und
+          das FAQPage-Schema haette in den Folgeschritten keinen sichtbaren Inhalt. */}
+            <section aria-labelledby="urp-typen" style={{ marginTop: '3rem' }}>
+              <h2 id="urp-typen" style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '1rem', textAlign: 'center' }}>{info.guideH}</h2>
+              <dl style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', margin: 0 }}>
+                {info.guide.map(([term, text]) => (
+                  <div key={term} style={{ background: '#fff', borderRadius: '6px', padding: '1.1rem 1.25rem', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+                    <dt style={{ fontWeight: 700, color: 'var(--navy)', marginBottom: '0.3rem' }}>{term}</dt>
+                    <dd style={{ margin: 0, color: 'var(--gray)', fontSize: '0.88rem', lineHeight: 1.65 }}>{text}</dd>
+                  </div>
+                ))}
+              </dl>
+              <p style={{ textAlign: 'center', color: 'var(--gray)', fontSize: '0.88rem', marginTop: '1rem' }}>{info.guideNote}</p>
+            </section>
+
+            <section aria-labelledby="urp-faq" style={{ marginTop: '2.5rem' }}>
+              <h2 id="urp-faq" style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '1rem', textAlign: 'center' }}>{info.faqH}</h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', maxWidth: '760px', margin: '0 auto' }}>
+                {info.faq.map(f => (
+                  <details key={f.q} style={{ background: '#fff', border: '1px solid var(--gray-mid)', borderRadius: '6px', padding: '0.9rem 1.1rem' }}>
+                    <summary style={{ cursor: 'pointer', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.4 }}>{f.q}</summary>
+                    <p style={{ margin: '0.6rem 0 0', color: 'var(--gray)', fontSize: '0.9rem', lineHeight: 1.7 }}>{f.a}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+
         </div>
       )}
 
       <style>{`
+        .urp-sr, .planer-step-now { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+        .planer-step-btn { display: flex; flex-direction: column; align-items: center; background: none; border: 0; padding: 0; cursor: pointer; font: inherit; color: inherit; }
+        .planer-step-btn:focus-visible { outline: 3px solid var(--blue-light); outline-offset: 3px; border-radius: 6px; }
         .yacht-card-innen { opacity: 0; transition: opacity 0.35s ease; }
         .yacht-card:hover .yacht-card-innen, .yacht-card:focus-visible .yacht-card-innen { opacity: 1; }
         .yacht-card:focus-visible { outline: 3px solid var(--blue-light); outline-offset: 2px; }
@@ -758,10 +839,20 @@ export default function UrlaubsplanerPage() {
           .planer-revier-grid { grid-template-columns: 1fr 1fr !important; }
           .planer-connector { width: 20px !important; }
           .planer-step-label { display: none !important; }
+          .planer-step-now { position: static; width: auto; height: auto; overflow: visible; clip: auto; white-space: normal;
+            text-align: center; font-size: 0.82rem; font-weight: 600; color: var(--navy); margin: -1.25rem 0 1.5rem; }
           .yacht-card-innen { display: none !important; }
         }
         @media (max-width: 480px) {
-          .planer-dest-grid { grid-template-columns: 1fr !important; }
+          /* Zwei Kacheln pro Zeile statt einer Spalte: Auswahl und Weiter-Button bleiben
+             auf dem Handy dicht beieinander. "Beraten lassen" laeuft kompakt ueber die ganze Breite. */
+          .planer-dest-grid { grid-template-columns: 1fr 1fr !important; gap: 0.6rem !important; }
+          .yacht-card-beraten { padding: 0.6rem !important; gap: 0.4rem !important; }
+          .yacht-card-beraten > span:first-child { width: 36px !important; height: 36px !important; }
+          .yacht-card-beraten svg { width: 20px; height: 20px; }
+          .yacht-beraten-text { gap: 0.15rem !important; }
+          .yacht-beraten-text > span:first-child { font-size: 0.88rem !important; }
+          .yacht-beraten-text > span:last-child { font-size: 0.7rem !important; line-height: 1.3 !important; }
           .planer-revier-grid { grid-template-columns: 1fr !important; }
           .form-grid-2 { grid-template-columns: 1fr !important; }
           .planer-connector { width: 14px !important; }
