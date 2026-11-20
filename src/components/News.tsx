@@ -3,11 +3,11 @@ import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { useInView } from 'framer-motion'
 import { Link } from '../router'
-import { bfActive, bfText } from '../blackFriday'
+import { bfActive } from '../blackFriday'
+import BlackFridayNewsCard from './BlackFridayNewsCard'
 
 type Offer = {
-  img?: string
-  visual?: 'bf'
+  img: string
   tag: string
   title: string
   text: string
@@ -49,11 +49,9 @@ const offersDe: Offer[] = [
 
 export default function News() {
   const lang = useLang()
-  const t = bfText[lang]
+  const offers = lang === 'en' ? offersEn : offersDe
   // Black-Friday-Karte ganz links, bis zum Ablauf der Aktion (27.11.2026)
-  const bfCard: Offer = { visual: 'bf', tag: t.newsTag, title: t.newsTitle, text: t.newsText, cta: t.newsCta, href: t.pkHref }
-  const base = lang === 'en' ? offersEn : offersDe
-  const offers = bfActive() ? [bfCard, ...base] : base
+  const bf = bfActive()
   const ref = useRef(null)
   const inView = useInView(ref, { once: true })
 
@@ -76,7 +74,8 @@ export default function News() {
           <Link to="/news" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{lang === 'en' ? 'All offers →' : 'Alle Angebote →'}</Link>
         </motion.div>
 
-        <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(offers.length, 3)}, 1fr)`, gap: '2rem' }}>
+        <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(offers.length + (bf ? 1 : 0), 3)}, 1fr)`, gap: '2rem' }}>
+          {bf && <BlackFridayNewsCard index={0} />}
           {offers.map((o, i) => {
             const external = !!o.href && o.href.startsWith('http')
             return (
@@ -85,7 +84,7 @@ export default function News() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.6, delay: i * 0.12 }}
+              transition={{ duration: 0.6, delay: (i + (bf ? 1 : 0)) * 0.12 }}
               style={{
                 background: '#fff',
                 borderRadius: '4px',
@@ -96,20 +95,6 @@ export default function News() {
               }}
             >
               <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
-                {o.visual === 'bf' ? (
-                  <div aria-hidden="true" className="bf-visual">
-                    <svg viewBox="0 0 600 120" preserveAspectRatio="none" style={{ position: 'absolute', left: 0, bottom: 0, width: '100%', height: '38%' }}>
-                      <path d="M0 70 Q75 40 150 70 T300 70 T450 70 T600 70 V120 H0Z" fill="#77B7E5" opacity=".10" />
-                      <path d="M0 85 Q75 60 150 85 T300 85 T450 85 T600 85 V120 H0Z" fill="#3061AC" opacity=".35" />
-                    </svg>
-                    <img src="/images/events/black-friday-2026/segel.webp" alt="" width={72} height={152} loading="lazy" decoding="async"
-                      style={{ position: 'absolute', right: '9%', bottom: '14%', height: '46%', width: 'auto', filter: 'drop-shadow(0 0 18px rgba(119,183,229,.35))' }} />
-                    <div style={{ position: 'absolute', left: '8%', top: '50%', transform: 'translateY(-50%)', color: '#fff' }}>
-                      <div style={{ fontSize: 'clamp(1.6rem, 4.2vw, 2.4rem)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '0.02em' }}>BLACK<br />FRIDAY</div>
-                      <div style={{ marginTop: '0.55rem', color: '#77B7E5', fontWeight: 800, fontSize: 'clamp(1.2rem, 3vw, 1.7rem)' }}>{t.off}</div>
-                    </div>
-                  </div>
-                ) : (
                 <img
                   src={o.img}
                   alt={o.title}
@@ -119,7 +104,6 @@ export default function News() {
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                   onError={e => { (e.target as HTMLImageElement).src = '/images/Front.jpg' }}
                 />
-                )}
                 <span style={{
                   position: 'absolute', top: '1rem', left: '1rem',
                   background: 'var(--blue)', color: '#fff',
@@ -146,7 +130,6 @@ export default function News() {
       </div>
 
       <style>{`
-        .bf-visual { position: absolute; inset: 0; background: radial-gradient(circle at 85% 20%, #173564 0, #0a1424 50%, #04080f 100%); font-family: 'DM Sans', sans-serif; }
         @media (max-width: 900px) {
           .news-grid { grid-template-columns: 1fr 1fr !important; }
         }

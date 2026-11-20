@@ -120,6 +120,10 @@ async function main() {
   let written = 0
   async function snapshot(host, urlPath, outPath) {
     const page = await browser.newPage()
+    // Kennung fuer zeitabhaengige Komponenten (z. B. der Black-Friday-Countdown):
+    // im Snapshot soll keine eingefrorene Zahl stehen, die fuer Crawler ohne JS
+    // veraltet waere.
+    await page.addInitScript(() => { window.__PRERENDER__ = true })
     await page.goto(`http://${host}:${PORT}${urlPath}`, { waitUntil: 'load', timeout: 20000 })
     await page.waitForTimeout(700)
     let html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML)
