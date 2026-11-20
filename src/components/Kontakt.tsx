@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 import { PhoneIcon, MailIcon, WhatsAppIcon, MapPinIcon, CalendarIcon, SailboatIcon } from './Icons'
 import { useLang, MAIL } from '../i18n'
@@ -125,6 +125,30 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
   const [form, setForm] = useState<Form>(initial)
   const [errors, setErrors] = useState<Partial<Form>>({})
 
+  // Nach "Weiter"/"Zurueck" bleibt die Scrollposition sonst unten beim Button stehen:
+  // auf dem Handy landet man mitten im naechsten Schritt und muss nach oben scrollen.
+  // Deshalb zum Kartenanfang springen (Fortschrittsanzeige + Ueberschrift + erstes
+  // Feld) — nur wenn der Kartenanfang nicht ohnehin sichtbar ist (am Desktop meist der Fall).
+  const cardRef = useRef<HTMLDivElement>(null)
+  const sentRef = useRef<HTMLDivElement>(null)
+  const prevStep = useRef(step)
+  useEffect(() => {
+    if (prevStep.current === step) return
+    prevStep.current = step
+    const card = cardRef.current
+    if (!card) return
+    const top = card.getBoundingClientRect().top
+    if (top < 80 || top > window.innerHeight * 0.5) {
+      card.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'start' })
+    }
+    // Fokus auf die neue Ueberschrift (Screenreader), ohne Tastatur einzublenden/zu scrollen
+    card.querySelector<HTMLElement>('h3')?.focus({ preventScroll: true })
+  }, [step])
+  // Nach erfolgreichem Absenden steht die Danke-Meldung an Stelle des (laengeren) Formulars
+  useEffect(() => {
+    if (sent) sentRef.current?.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'center' })
+  }, [sent])
+
   const set = (k: keyof Form, v: string | boolean) => {
     setForm(f => ({ ...f, [k]: v }))
     setErrors(e => ({ ...e, [k]: '' }))
@@ -142,6 +166,15 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
       if (!form.email.includes('@')) e.email = kfm.errMail
     }
     setErrors(e)
+    // Zum ersten fehlerhaften Feld springen (sonst sieht man den Fehler auf dem Handy nicht)
+    const first = (['destination', 'personen', 'datum_von', 'name', 'email'] as const).find(k => e[k])
+    if (first) {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(`kf-${first}`)
+        el?.scrollIntoView({ behavior: 'instant' as ScrollBehavior, block: 'center' })
+        el?.focus({ preventScroll: true })
+      })
+    }
     return Object.keys(e).length === 0
   }
 
@@ -213,6 +246,7 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
           >
             {sent ? (
               <motion.div
+                ref={sentRef}
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 style={{ background: '#fff', borderRadius: '8px', padding: '3rem', textAlign: 'center', boxShadow: '0 4px 32px rgba(0,0,0,0.08)' }}
@@ -231,7 +265,7 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
                 </button>
               </motion.div>
             ) : (
-              <div style={{ background: '#fff', borderRadius: '8px', boxShadow: '0 4px 32px rgba(0,0,0,0.08)', overflow: 'hidden' }}>
+              <div ref={cardRef} style={{ background: '#fff', borderRadius: '8px', boxShadow: '0 4px 32px rgba(0,0,0,0.08)', overflow: 'hidden', scrollMarginTop: '84px' }}>
 
                 {/* Step indicator */}
                 <div className="kontakt-stepper" style={{ padding: '1.25rem 2rem', background: 'var(--navy)', display: 'flex', alignItems: 'center', gap: 0 }}>
@@ -257,13 +291,13 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
                   {/* Step 0: Reisedaten */}
                   {step === 0 && (
                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                      <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
+                      <h3 tabIndex={-1} style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem', outline: 'none' }}>
                         {kfm.whither}
                       </h3>
 
                       <div style={{ marginBottom: '1rem' }}>
                         <label htmlFor="kf-destination" style={labelStyle}>{kfm.dest}</label>
-                        <select id="kf-destination" value={form.destination} onChange={e => set('destination', e.target.value)} style={inputStyle(!!errors.destination)}>
+                        <select id="kf-destination" aria-invalid={!!errors.destination} value={form.destination} onChange={e => set('destination', e.target.value)} style={inputStyle(!!errors.destination)}>
                           <option value="">{kfm.wahl}</option>
                           <optgroup label={kfm.grpEU}>
                             {kfm.dests.map(d => <option key={d}>{d}</option>)}
@@ -273,7 +307,7 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
                           </optgroup>
                           <option value="offen">{kfm.offen}</option>
                         </select>
-                        {errors.destination && <p style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.destination}</p>}
+                        {errors.destination && <p role="alert" style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.destination}</p>}
                       </div>
 
                       <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
@@ -290,7 +324,7 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
                             <button type="button"
                               onClick={() => set('personen', String(Math.max(1, parseInt(form.personen) - 1)))}
                               style={{ width: '36px', height: '36px', border: '1.5px solid #e2e8f0', borderRadius: '4px', background: '#fff', fontSize: '1.1rem', cursor: 'pointer', flexShrink: 0 }}>−</button>
-                            <input id="kf-personen" type="number" min="1" max="20" value={form.personen}
+                            <input id="kf-personen" type="number" inputMode="numeric" aria-invalid={!!errors.personen} min="1" max="20" value={form.personen}
                               onChange={e => set('personen', e.target.value)}
                               style={{ ...inputStyle(!!errors.personen), textAlign: 'center', flex: 1 }} />
                             <button type="button"
@@ -303,10 +337,10 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
                       <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                         <div>
                           <label htmlFor="kf-datum_von" style={labelStyle}>{kfm.von}</label>
-                          <input id="kf-datum_von" type="date" value={form.datum_von} min={today}
+                          <input id="kf-datum_von" type="date" aria-invalid={!!errors.datum_von} value={form.datum_von} min={today}
                             onChange={e => set('datum_von', e.target.value)}
                             style={inputStyle(!!errors.datum_von)} />
-                          {errors.datum_von && <p style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.datum_von}</p>}
+                          {errors.datum_von && <p role="alert" style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.datum_von}</p>}
                         </div>
                         <div>
                           <label htmlFor="kf-datum_bis" style={labelStyle}>{kfm.bis}</label>
@@ -362,7 +396,7 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
                   {/* Step 1: Kontaktdaten */}
                   {step === 1 && (
                     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
-                      <h3 style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem' }}>
+                      <h3 tabIndex={-1} style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.15rem', marginBottom: '1.5rem', outline: 'none' }}>
                         {kfm.reach}
                       </h3>
 
@@ -377,21 +411,21 @@ export default function Kontakt({ showYoga = false }: { showYoga?: boolean }) {
                       <div className="form-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                         <div>
                           <label htmlFor="kf-name" style={labelStyle}>{kfm.name}</label>
-                          <input id="kf-name" value={form.name} onChange={e => set('name', e.target.value)}
+                          <input id="kf-name" autoComplete="name" aria-invalid={!!errors.name} value={form.name} onChange={e => set('name', e.target.value)}
                             placeholder={kfm.namePh} style={inputStyle(!!errors.name)} />
-                          {errors.name && <p style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.name}</p>}
+                          {errors.name && <p role="alert" style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.name}</p>}
                         </div>
                         <div>
                           <label htmlFor="kf-email" style={labelStyle}>{kfm.mail}</label>
-                          <input id="kf-email" type="email" value={form.email} onChange={e => set('email', e.target.value)}
+                          <input id="kf-email" type="email" autoComplete="email" aria-invalid={!!errors.email} value={form.email} onChange={e => set('email', e.target.value)}
                             placeholder={kfm.mailPh} style={inputStyle(!!errors.email)} />
-                          {errors.email && <p style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.email}</p>}
+                          {errors.email && <p role="alert" style={{ color: '#e53e3e', fontSize: '0.72rem', marginTop: '4px' }}>{errors.email}</p>}
                         </div>
                       </div>
 
                       <div style={{ marginBottom: '1rem' }}>
                         <label htmlFor="kf-phone" style={labelStyle}>{kfm.tel}</label>
-                        <input id="kf-phone" value={form.phone} onChange={e => set('phone', e.target.value)}
+                        <input id="kf-phone" type="tel" autoComplete="tel" value={form.phone} onChange={e => set('phone', e.target.value)}
                           placeholder="+43 ..." style={inputStyle()} />
                       </div>
 
