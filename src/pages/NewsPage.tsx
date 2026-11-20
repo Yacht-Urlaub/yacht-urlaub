@@ -7,7 +7,7 @@ const articles = [
   {
     id: 'seychellen-angebot',
     tag: 'Angebot',
-    title: 'Dein Platz an der Sonne',
+    title: 'Ihr Platz an der Sonne',
     date: '18.04. – 28.04.2026',
     text: '18.04. – 28.04.2026 ab Mahé, Seychellen inklusive Skipper, Katamaran-Komfort und unvergesslicher Momente.',
     img: '/images/Destinationsbilder/Seychellen.webp',

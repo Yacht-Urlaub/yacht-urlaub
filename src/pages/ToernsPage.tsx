@@ -48,10 +48,10 @@ const highlights = [
 ]
 
 const tol = {
-  de: { tag: 'Unsere Törns', h1: 'Dein perfekter Segeltörn',
+  de: { tag: 'Unsere Törns', h1: 'Ihr perfekter Segeltörn',
     sub: 'Von der ersten Segelstunde bis zum Luxuserlebnis — wir haben den passenden Törn für jeden.',
-    forAll: 'Für jeden der Richtige', choose: 'Wähle deinen Törn',
-    chooseSub: 'Egal ob du zum ersten Mal auf See gehst oder erfahrener Segler bist — bei uns findest du den Törn, der perfekt zu dir passt.',
+    forAll: 'Für jeden der Richtige', choose: 'Wählen Sie Ihren Törn',
+    chooseSub: 'Egal ob Sie zum ersten Mal auf See gehen oder erfahrener Segler sind — bei uns finden Sie den Törn, der perfekt zu Ihnen passt.',
     hl: [
       { label: 'Skipper inklusive', desc: 'Erfahrene, mehrsprachige Skipper' },
       { label: 'Alle Reviere', desc: 'Kroatien, Griechenland, Karibik, Seychellen' },
@@ -323,10 +323,10 @@ export default function ToernsPage() {
               {en ? 'No suitable cruise for you?' : 'Kein passender Törn dabei?'}
             </p>
             <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: '#fff', marginBottom: '1.25rem' }}>
-              {en ? 'Your bespoke cruise, tailor-made' : 'Dein individueller Törn nach Maß'}
+              {en ? 'Your bespoke cruise, tailor-made' : 'Ihr individueller Törn nach Maß'}
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
-              {en ? 'We plan your dream cruise entirely to your wishes — travel time, destination, yacht and crew. Contact us for a personal quote.' : 'Wir planen deinen Traumtörn ganz nach deinen Wünschen — Reisezeit, Zielgebiet, Yacht und Crew. Kontaktiere uns für ein persönliches Angebot.'}
+              {en ? 'We plan your dream cruise entirely to your wishes — travel time, destination, yacht and crew. Contact us for a personal quote.' : 'Wir planen Ihren Traumtörn ganz nach Ihren Wünschen — Reisezeit, Zielgebiet, Yacht und Crew. Kontaktieren Sie uns für ein persönliches Angebot.'}
             </p>
             <a href="#kontakt" className="btn btn-primary">{en ? 'Get a quote' : 'Jetzt anfragen'}</a>
           </motion.div>

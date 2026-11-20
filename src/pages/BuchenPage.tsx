@@ -9,7 +9,7 @@ const bl = {
   de: { seoT: 'Jetzt buchen – Verfügbare Packages finden | Yacht-Urlaub',
     seoDesc: 'Segelurlaub direkt online buchen: Startdatum und Dauer wählen, verfügbare Yachten und Packages finden und sofort buchen.',
     tag: 'Jetzt buchen', h1: 'Verfügbare Packages zum Wunschtermin finden',
-    sub: 'Wähle Startdatum und Reisedauer — wir zeigen dir alle verfügbaren Yachten und Packages.' },
+    sub: 'Wählen Sie Startdatum und Reisedauer — wir zeigen Ihnen alle verfügbaren Yachten und Packages.' },
   en: { seoT: 'Book now – find available packages | Yacht-Holiday',
     seoDesc: 'Book your sailing holiday online: choose a start date and duration, find available yachts and packages, and book instantly.',
     tag: 'Book now', h1: 'Find available packages for your preferred dates',

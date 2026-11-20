@@ -29,7 +29,7 @@ const angebote = [
     plaetze: '4 Plätze noch übrig!',
     plaetzeColor: '#16a34a',
     bord: false,
-    desc: 'Erlebe eine unvergessliche Woche auf einer gemütlichen Einrumpf-Segelyacht! Perfekt für Meeresliebhaber.',
+    desc: 'Erleben Sie eine unvergessliche Woche auf einer gemütlichen Einrumpf-Segelyacht! Perfekt für Meeresliebhaber.',
     img: '/images/packages/Kornaten/gallery/Telascica.webp',
   },
   {
@@ -43,7 +43,7 @@ const angebote = [
     plaetze: 'Nur noch 2 Plätze übrig!',
     plaetzeColor: '#dc2626',
     bord: true,
-    desc: 'Erlebe eine unvergessliche Woche auf einer gemütlichen Einrumpf-Segelyacht! Perfekt für Meeresliebhaber. Inklusive: Bord-Service (Frühstück, Mittagssnack).',
+    desc: 'Erleben Sie eine unvergessliche Woche auf einer gemütlichen Einrumpf-Segelyacht! Perfekt für Meeresliebhaber. Inklusive: Bord-Service (Frühstück, Mittagssnack).',
     img: '/images/packages/Kornaten/gallery/Mono Kornaten.webp',
   },
 ]
