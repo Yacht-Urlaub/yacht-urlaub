@@ -74,7 +74,7 @@ export default function News() {
           <Link to="/news" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{lang === 'en' ? 'All offers →' : 'Alle Angebote →'}</Link>
         </motion.div>
 
-        <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(offers.length + (bf ? 1 : 0), 3)}, 1fr)`, gap: '2rem', alignItems: bf ? 'start' : 'stretch' }}>
+        <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(offers.length + (bf ? 1 : 0), 3)}, 1fr)`, gap: '2rem' }}>
           {bf && <BlackFridayNewsCard index={0} />}
           {offers.map((o, i) => {
             const external = !!o.href && o.href.startsWith('http')

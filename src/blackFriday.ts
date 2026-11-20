@@ -12,7 +12,7 @@ export const bfText: Record<Lang, {
   newsCta: string
   card: {
     kicker: string; head: string; sub: string; badge: string; text: string; codeLabel: string
-    days: string; hours: string; minutes: string; left: string; imgAlt: string
+    cd: (d: number, h: number, m: number) => string; imgAlt: string
   }
   pkHref: string; planHref: string
 }> = {
@@ -25,8 +25,9 @@ export const bfText: Record<Lang, {
     newsCta: 'Zu den Packages', pkHref: '/buchen', planHref: '/urlaubsplaner',
     card: {
       kicker: 'Nur bis 27. November', head: 'BLACK FRIDAY', sub: 'Segelurlaub 2027 zum Bestpreis', badge: 'PACKAGES',
-      text: '5 % Rabatt auf alle Package-Buchungen – und Black-Friday-Angebote für deine individuelle Yachtanfrage.',
-      codeLabel: 'Dein Code', days: 'Tage', hours: 'Std.', minutes: 'Min.', left: 'Noch',
+      text: '5 % Rabatt auf alle Package-Buchungen. Black-Friday-Angebote gibt es auch für deine Yachtanfrage.',
+      codeLabel: 'Dein Code',
+      cd: (d, h, m) => `Noch ${d} ${d === 1 ? 'Tag' : 'Tage'} ${h} Std. ${m} Min.`,
       imgAlt: 'Freunde baden im Meer vor einer Segelyacht',
     },
   },
@@ -39,8 +40,9 @@ export const bfText: Record<Lang, {
     newsCta: 'View packages', pkHref: '/en/book-now', planHref: '/en/holiday-planner',
     card: {
       kicker: 'Until 27 November only', head: 'BLACK FRIDAY', sub: 'Sailing holidays 2027 at the best price', badge: 'PACKAGES',
-      text: '5% off all package bookings – plus Black Friday deals for your individual yacht enquiry.',
-      codeLabel: 'Your code', days: 'Days', hours: 'Hrs', minutes: 'Min', left: 'Time left:',
+      text: '5% off all package bookings. Black Friday deals are also available for your yacht enquiry.',
+      codeLabel: 'Your code',
+      cd: (d, h, m) => `${d} ${d === 1 ? 'day' : 'days'} ${h} hrs ${m} min left`,
       imgAlt: 'Friends swimming in the sea in front of a sailing yacht',
     },
   },
