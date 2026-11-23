@@ -12,7 +12,20 @@ import SEO from '../components/SEO'
 const DIR = '/images/events/sail-into-the-seasons-2026'
 
 // Fotos vom Event. Leeres Array → Galerie-Abschnitt wird ausgeblendet.
-const GALLERY: { src: string; alt: string }[] = []
+const GALLERY: { src: string; alt: string }[] = [
+  { src: `${DIR}/gallery/01.webp`, alt: 'Voller Saal: Gäste hören beim Vortrag im District Living Vienna zu' },
+  { src: `${DIR}/gallery/02.webp`, alt: 'Begrüßung der Gäste am Mikrofon vor der Yacht-Urlaub-Leinwand' },
+  { src: `${DIR}/gallery/03.webp`, alt: 'Rum-Flaschen und eine Kokosnuss auf dem Verkostungstisch von Rumzentrum.at' },
+  { src: `${DIR}/gallery/04.webp`, alt: 'Fragerunde zu den British Virgin Islands mit Mikrofon vor dem Yacht-Urlaub-Roll-up' },
+  { src: `${DIR}/gallery/05.webp`, alt: 'BVI-Corner mit Roll-up der British Virgin Islands, Tablet und Prospekten' },
+  { src: `${DIR}/gallery/06.webp`, alt: 'Rum-Verkostungsglas des Vienna Rum Festival vor den Gästen im Saal' },
+  { src: `${DIR}/gallery/07.webp`, alt: 'Weintisch von Weingut Mario Altan mit den Weinen DER EINZIGE' },
+  { src: `${DIR}/gallery/08.webp`, alt: 'Persönliche Beratung am Yacht-Urlaub-Infotisch' },
+  { src: `${DIR}/gallery/09.webp`, alt: 'Gäste in den Sitzreihen während des Vortrags' },
+  { src: `${DIR}/gallery/10.webp`, alt: 'Tombola-Gewinner mit seinem Preis am Yacht-Urlaub-Stand' },
+  { src: `${DIR}/gallery/11.webp`, alt: 'Sonnenuntergang über Wien von der Terrasse des District Living' },
+  { src: `${DIR}/gallery/12.webp`, alt: 'Gruppenfoto des Yacht-Urlaub-Teams mit Gästen zum Abschluss' },
+]
 
 const programm = [
   { time: '13:30', title: 'Einlass & Ankommen', text: 'Erste Gespräche, Flyer, Törn-Fotos – und die Stationen im Raum: Rum, Wein, BVI-Corner und unsere zwei Infotische.' },
@@ -25,8 +38,8 @@ const programm = [
 
 const angebote = [
   {
-    img: '/images/kabinen/dubrovnik/hero.webp',
-    alt: 'Katamaran vor der Altstadt von Dubrovnik',
+    img: '/images/kabinen/dubrovnik/gallery/g-dubrovnik-lovrijenac.webp',
+    alt: 'Blick auf die Festung Lovrijenac und die Altstadtmauern von Dubrovnik',
     region: 'Kroatien · Sommer',
     title: 'Dubrovnik: 7 Nächte zwischen Elaphiten, Korčula und Mljet',
     date: '05.–12.06.2027',
@@ -36,8 +49,8 @@ const angebote = [
     href: '/kabinen#dubrovnik',
   },
   {
-    img: '/images/kabinen/karibik-bvi/hero.webp',
-    alt: 'Katamaran in einer türkisen Bucht der British Virgin Islands',
+    img: '/images/kabinen/karibik-bvi/gallery/g-baths-strand-yacht.webp',
+    alt: 'Granitfelsen und Sandstrand von The Baths auf Virgin Gorda, im Hintergrund eine Yacht',
     region: 'Karibik · Winter',
     title: 'British Virgin Islands: 10 Nächte zwischen Tortola, Jost Van Dyke, Anegada und Virgin Gorda',
     date: '27.02.–09.03.2027',
@@ -51,7 +64,7 @@ const angebote = [
 const partner = [
   { name: 'BVI Tourism', text: 'Das offizielle Tourismusboard der Britischen Jungferninseln – mit Insider-Wissen aus erster Hand.' },
   { name: 'Rumzentrum.at', text: 'Für die Verkostung internationaler Rumsorten – der perfekte Vorgeschmack auf die Karibik.' },
-  { name: 'DER EINZIGE', text: 'Für die Weine des Abends.' },
+  { name: 'DER EINZIGE', text: 'Für die Weine des Abends vom Weingut Mario Altan.' },
   { name: 'District Living Vienna', text: 'Für die Location in der Donau City.' },
 ]
 
@@ -179,7 +192,7 @@ export default function NewsSailIntoTheSeasons2026Page() {
           <div className="container" style={{ maxWidth: '1100px' }}>
             <p style={kicker}>Galerie</p>
             <h2 style={h2}>Die schönsten Momente</h2>
-            <p style={{ maxWidth: '64ch', color: 'var(--text)', marginBottom: '2rem' }}>Klicken Sie auf ein Foto, um es groß anzusehen.</p>
+            <p style={{ maxWidth: '64ch', color: 'var(--text)', marginBottom: '2rem' }}>Klicken Sie auf ein Foto, um es groß anzusehen. Fotos: Lukas Fuchs sowie Lisa & Enya.</p>
             <div className="sits-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gridAutoRows: '190px', gap: '10px' }}>
               {GALLERY.map((g, i) => (
                 <button key={g.src} onClick={() => setOpen(i)} aria-label={`Foto vergrößern: ${g.alt}`}
@@ -241,7 +254,7 @@ export default function NewsSailIntoTheSeasons2026Page() {
             ))}
           </div>
           <p style={{ fontSize: '0.8rem', color: 'var(--gray)', marginTop: '1.5rem' }}>
-            Preise pro Person in der Doppelkabine, An- und Abreise sowie Bordkasse nicht inkludiert. Alle Details auf der Seite <Link to="/kabinen" style={{ color: 'var(--blue)' }}>Kabinen-Angebote</Link>.
+            Preise pro Koje (pro Person). An- und Abreise sowie Bordkasse sind nicht inkludiert. Alle Details auf der Seite <Link to="/kabinen" style={{ color: 'var(--blue)' }}>Kabinen-Angebote</Link>.
           </p>
         </div>
       </section>
