@@ -13,12 +13,12 @@ const DIR = '/images/events/sail-into-the-seasons-2026'
 
 // Fotos vom Event. Leeres Array → Galerie-Abschnitt wird ausgeblendet.
 const GALLERY: { src: string; alt: string }[] = [
-  { src: `${DIR}/gallery/rueckblick-01.webp`, alt: 'Gäste verfolgen den Vortrag aufmerksam aus den Sitzreihen' },
+  { src: `${DIR}/gallery/rueckblick-01b.webp`, alt: 'Gespannte Gesichter im Publikum während des Vortrags' },
   { src: `${DIR}/gallery/rueckblick-02.webp`, alt: 'Begrüßung der Gäste am Mikrofon vor der Yacht-Urlaub-Leinwand' },
   { src: `${DIR}/gallery/rueckblick-03.webp`, alt: 'Rum-Flaschen und eine Kokosnuss auf dem Verkostungstisch von Rumzentrum.at' },
   { src: `${DIR}/gallery/rueckblick-04.webp`, alt: 'Fragerunde zu den British Virgin Islands mit Mikrofon vor dem Yacht-Urlaub-Roll-up' },
   { src: `${DIR}/gallery/rueckblick-05.webp`, alt: 'BVI-Corner mit Roll-up der British Virgin Islands, Tablet und Prospekten' },
-  { src: `${DIR}/gallery/rueckblick-06.webp`, alt: 'Einsteiger-Vortrag „Mein erster Törn“ vor vollem Saal' },
+  { src: `${DIR}/gallery/rueckblick-06b.webp`, alt: 'Vortrag zu Yacht-Typen vor dem Publikum im District Living' },
   { src: `${DIR}/gallery/rueckblick-07.webp`, alt: 'Weintisch von Weingut Mario Altan mit den Weinen DER EINZIGE' },
   { src: `${DIR}/gallery/rueckblick-08.webp`, alt: 'Persönliche Beratung am Yacht-Urlaub-Infotisch' },
   { src: `${DIR}/gallery/rueckblick-09.webp`, alt: 'Gäste in den Sitzreihen während des Vortrags' },
@@ -97,7 +97,7 @@ export default function NewsSailIntoTheSeasons2026Page() {
         '@type': 'NewsArticle',
         headline: h1,
         description: lead,
-        image: `${BASE_DE}${DIR}/rueckblick-titel.jpg`,
+        image: `${BASE_DE}${DIR}/rueckblick-titel-2.jpg`,
         datePublished: '2026-11-23',
         dateModified: '2026-11-23',
         author: { '@type': 'Organization', name: 'Yacht-Urlaub' },
@@ -114,7 +114,7 @@ export default function NewsSailIntoTheSeasons2026Page() {
         eventStatus: 'https://schema.org/EventScheduled',
         eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
         isAccessibleForFree: true,
-        image: `${BASE_DE}${DIR}/rueckblick-titel.jpg`,
+        image: `${BASE_DE}${DIR}/rueckblick-titel-2.jpg`,
         location: {
           '@type': 'Place',
           name: 'District Living Vienna',
@@ -130,15 +130,15 @@ export default function NewsSailIntoTheSeasons2026Page() {
       <SEO
         title="Rückblick: Sail into the Seasons 2026 in Wien"
         description="Fotos und Highlights vom Yacht-Urlaub-Event am 14.11.2026 in Wien: Einsteiger-Vortrag, British Virgin Islands, Sail-Off mit Dubrovnik oder Karibik, Rum-Verkostung und die Kojen-Angebote 2027."
-        image={`${DIR}/rueckblick-titel.webp`}
+        image={`${DIR}/rueckblick-titel-2.webp`}
         schema={schema}
       />
 
       {/* Hero */}
       <div style={{ position: 'relative', minHeight: '400px', overflow: 'hidden' }}>
         <img
-          src={`${DIR}/rueckblick-titel.webp`}
-          alt="Voller Saal: Gäste hören beim Event Sail into the Seasons im District Living Vienna zu"
+          src={`${DIR}/rueckblick-titel-2.webp`}
+          alt="Einsteiger-Vortrag „Mein erster Törn“ vor vollem Saal im District Living Vienna"
           style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(15,35,56,0.9) 0%, rgba(15,35,56,0.55) 60%, rgba(15,35,56,0.15) 100%)' }} />
