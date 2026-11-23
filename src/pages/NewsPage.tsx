@@ -10,7 +10,7 @@ const articles = [
     title: 'Sail into the Seasons – Vienna Edition',
     date: '14.11.2026',
     text: 'Fotos und Highlights von unserem Segel-Nachmittag in Wien – mit den British Virgin Islands, dem Sail-Off-Duell und den Kojen-Angeboten 2027.',
-    img: '/images/events/sail-into-the-seasons-2026/praesentation.webp',
+    img: '/images/events/sail-into-the-seasons-2026/rueckblick-hero.webp',
     href: '/news/sail-into-the-seasons-2026',
     cta: 'Zum Rückblick',
   },

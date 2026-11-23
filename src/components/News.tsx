@@ -32,7 +32,7 @@ const offersEn: Offer[] = [
 
 const offersDe: Offer[] = [
   {
-    img: '/images/events/sail-into-the-seasons-2026/praesentation.webp',
+    img: '/images/events/sail-into-the-seasons-2026/rueckblick-hero.webp',
     tag: 'Rückblick',
     title: 'SAIL INTO THE SEASONS – VIENNA EDITION',
     text: 'Vielen Dank an alle, die am 14. November in Wien mit uns Segelfeeling erlebt haben! Hier gibt es die Fotos, die Highlights des Nachmittags und die Kojen-Angebote vom Sail-Off-Duell.',

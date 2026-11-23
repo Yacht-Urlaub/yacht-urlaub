@@ -13,7 +13,7 @@ const DIR = '/images/events/sail-into-the-seasons-2026'
 
 // Fotos vom Event. Leeres Array → Galerie-Abschnitt wird ausgeblendet.
 const GALLERY: { src: string; alt: string }[] = [
-  { src: `${DIR}/gallery/01.webp`, alt: 'Voller Saal: Gäste hören beim Vortrag im District Living Vienna zu' },
+  { src: `${DIR}/gallery/01.webp`, alt: 'Gäste verfolgen den Vortrag aufmerksam aus den Sitzreihen' },
   { src: `${DIR}/gallery/02.webp`, alt: 'Begrüßung der Gäste am Mikrofon vor der Yacht-Urlaub-Leinwand' },
   { src: `${DIR}/gallery/03.webp`, alt: 'Rum-Flaschen und eine Kokosnuss auf dem Verkostungstisch von Rumzentrum.at' },
   { src: `${DIR}/gallery/04.webp`, alt: 'Fragerunde zu den British Virgin Islands mit Mikrofon vor dem Yacht-Urlaub-Roll-up' },
@@ -97,7 +97,7 @@ export default function NewsSailIntoTheSeasons2026Page() {
         '@type': 'NewsArticle',
         headline: h1,
         description: lead,
-        image: `${BASE_DE}${DIR}/praesentation.jpg`,
+        image: `${BASE_DE}${DIR}/rueckblick-hero.jpg`,
         datePublished: '2026-11-23',
         dateModified: '2026-11-23',
         author: { '@type': 'Organization', name: 'Yacht-Urlaub' },
@@ -114,7 +114,7 @@ export default function NewsSailIntoTheSeasons2026Page() {
         eventStatus: 'https://schema.org/EventScheduled',
         eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
         isAccessibleForFree: true,
-        image: `${BASE_DE}${DIR}/praesentation.jpg`,
+        image: `${BASE_DE}${DIR}/rueckblick-hero.jpg`,
         location: {
           '@type': 'Place',
           name: 'District Living Vienna',
@@ -130,15 +130,15 @@ export default function NewsSailIntoTheSeasons2026Page() {
       <SEO
         title="Rückblick: Sail into the Seasons 2026 in Wien"
         description="Fotos und Highlights vom Yacht-Urlaub-Event am 14.11.2026 in Wien: Einsteiger-Vortrag, British Virgin Islands, Sail-Off-Duell, Rum-Verkostung und die Kojen-Angebote 2027."
-        image={`${DIR}/praesentation.webp`}
+        image={`${DIR}/rueckblick-hero.webp`}
         schema={schema}
       />
 
       {/* Hero */}
       <div style={{ position: 'relative', minHeight: '400px', overflow: 'hidden' }}>
         <img
-          src={`${DIR}/praesentation.webp`}
-          alt="Manuel Göschl präsentiert vor Publikum beim Event Sail into the Seasons in Wien"
+          src={`${DIR}/rueckblick-hero.webp`}
+          alt="Voller Saal: Gäste hören beim Event Sail into the Seasons im District Living Vienna zu"
           style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', inset: 0 }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(15,35,56,0.9) 0%, rgba(15,35,56,0.55) 60%, rgba(15,35,56,0.15) 100%)' }} />
