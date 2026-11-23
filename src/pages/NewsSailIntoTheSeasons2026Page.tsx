@@ -24,15 +24,15 @@ const GALLERY: { src: string; alt: string }[] = [
   { src: `${DIR}/gallery/09.webp`, alt: 'Gäste in den Sitzreihen während des Vortrags' },
   { src: `${DIR}/gallery/10.webp`, alt: 'Tombola-Gewinner mit seinem Preis am Yacht-Urlaub-Stand' },
   { src: `${DIR}/gallery/11.webp`, alt: 'Sonnenuntergang über Wien von der Terrasse des District Living' },
-  { src: `${DIR}/gallery/12.webp`, alt: 'Gruppenfoto des Yacht-Urlaub-Teams mit Gästen zum Abschluss' },
+  { src: `${DIR}/gallery/12.webp`, alt: 'Crew-Foto: das Yacht-Urlaub-Team mit Partnern vor der Leinwand' },
 ]
 
 const programm = [
-  { time: '13:30', title: 'Einlass & Ankommen', text: 'Erste Gespräche, Flyer, Törn-Fotos – und die Stationen im Raum: Rum, Wein, BVI-Corner und unsere zwei Infotische.' },
+  { time: '13:30', title: 'Einlass & Ankommen', text: 'Erste Gespräche, Flyer und Törn-Fotos an unseren zwei Infotischen und in der BVI-Corner.' },
   { time: '14:00', title: 'Ihr erster Yacht-Urlaub', text: 'Manuel Göschl, Inhaber von Yacht-Urlaub, erklärte Einsteigern, wie ein Segelurlaub mit Skipper abläuft – ganz ohne Vorkenntnisse.' },
   { time: '15:00', title: 'British Virgin Islands hautnah', text: 'Fragerunde und persönlicher Austausch mit dem offiziellen Tourismusboard der Britischen Jungferninseln.' },
-  { time: '16:00', title: 'Das Sail-Off-Duell 2027', text: 'Zwei Reviere, zwei Arten zu segeln: Dubrovnik & Montenegro gegen die British Virgin Islands – mit Abstimmung im Saal.' },
-  { time: '17:00', title: 'Rum & Wein', text: 'Internationale Rumsorten von Rumzentrum.at und Weine von DER EINZIGE.' },
+  { time: 'ab 15:00', title: 'Rum & Wein', text: 'Internationale Rumsorten von Rumzentrum.at und Weine von DER EINZIGE.' },
+  { time: '16:00', title: 'Sail-Off 2027: Adria oder Karibik?', text: 'Zwei Reviere, zwei Arten zu segeln: Dubrovnik & Montenegro oder die British Virgin Islands – mit je einem Kojen-Törn zum Mitsegeln.' },
   { time: '18:00', title: 'Tombola', text: 'Hauptpreis: ein Segelgutschein im Wert von € 1.250,– – dazu viele weitere Preise.' },
 ]
 
@@ -129,7 +129,7 @@ export default function NewsSailIntoTheSeasons2026Page() {
     <main style={{ paddingTop: '72px' }}>
       <SEO
         title="Rückblick: Sail into the Seasons 2026 in Wien"
-        description="Fotos und Highlights vom Yacht-Urlaub-Event am 14.11.2026 in Wien: Einsteiger-Vortrag, British Virgin Islands, Sail-Off-Duell, Rum-Verkostung und die Kojen-Angebote 2027."
+        description="Fotos und Highlights vom Yacht-Urlaub-Event am 14.11.2026 in Wien: Einsteiger-Vortrag, British Virgin Islands, Sail-Off mit Dubrovnik oder Karibik, Rum-Verkostung und die Kojen-Angebote 2027."
         image={`${DIR}/rueckblick-hero.webp`}
         schema={schema}
       />
@@ -177,7 +177,7 @@ export default function NewsSailIntoTheSeasons2026Page() {
                 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 style={{ ...card, padding: '1.4rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <span style={{ alignSelf: 'flex-start', fontSize: '0.78rem', fontWeight: 700, color: 'var(--navy)', background: 'var(--blue-pale, #e0f2fe)', borderRadius: '20px', padding: '2px 10px' }}>{p.time} Uhr</span>
+                <span style={{ alignSelf: 'flex-start', fontSize: '0.78rem', fontWeight: 700, color: 'var(--navy)', background: 'var(--blue-pale, #e0f2fe)', borderRadius: '20px', padding: '2px 10px' }}>{p.time.startsWith('ab') ? p.time : `${p.time} Uhr`}</span>
                 <b style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.05rem', lineHeight: 1.3 }}>{p.title}</b>
                 <p style={{ fontSize: '0.9rem', color: 'var(--gray)', lineHeight: 1.6 }}>{p.text}</p>
               </motion.div>
@@ -225,7 +225,7 @@ export default function NewsSailIntoTheSeasons2026Page() {
           <p style={kicker}>Die Angebote vom Abend</p>
           <h2 style={h2}>Sommer oder Winter? Am besten beides.</h2>
           <p style={{ maxWidth: '64ch', color: 'var(--text)', marginBottom: '2rem' }}>
-            Beim Sail-Off-Duell haben wir zwei Kojen-Törns 2027 vorgestellt. Sie buchen eine einzelne Koje auf einer Gemeinschaftsyacht, Skipper Manuel ist an Bord – ideal für Alleinreisende, Paare und kleine Gruppen. Keine Segelkenntnisse nötig.
+            Beim Sail-Off haben wir zwei Kojen-Törns 2027 vorgestellt. Sie buchen eine einzelne Koje auf einer Gemeinschaftsyacht, Skipper Manuel ist an Bord – ideal für Alleinreisende, Paare und kleine Gruppen. Keine Segelkenntnisse nötig.
           </p>
           <div className="sits-offer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1.5rem' }}>
             {angebote.map((a, i) => (
