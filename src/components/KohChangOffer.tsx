@@ -88,7 +88,7 @@ const t = {
   de: {
     tag: 'Kabinen-Angebot · Thailand',
     title: 'Koh Chang: 11 Nächte Inselhüpfen im Golf von Thailand',
-    badgeDate: '09.–20.12.2026', badgeCabins: '3 Doppelkabinen',
+    badgeDate: '09.–20.12.2026', badgeCabins: '3 Doppelkabinen', soldOut: 'AUSGEBUCHT',
     close: 'Details schließen', show: 'Details anzeigen',
     perCabin: 'pro Doppelkabine',
     intro: 'Mit dem Katamaran durch den Koh-Chang-Archipel: Koh Wai, Koh Mak, Koh Kut und der Meeresnationalpark Koh Rang. Kurze Etappen, ruhige Ankerbuchten und Dezember-Trockenzeit. Gebucht wird die ganze Doppelkabine, auch als Einzelperson.',
@@ -123,7 +123,7 @@ const t = {
   en: {
     tag: 'Cabin offer · Thailand',
     title: 'Koh Chang: 11 nights island-hopping in the Gulf of Thailand',
-    badgeDate: '09–20 Dec 2026', badgeCabins: '3 double cabins',
+    badgeDate: '09–20 Dec 2026', badgeCabins: '3 double cabins', soldOut: 'SOLD OUT',
     close: 'Close details', show: 'Show details',
     perCabin: 'per double cabin',
     intro: 'Sail the Koh Chang archipelago by catamaran: Koh Wai, Koh Mak, Koh Kut and the Koh Rang marine national park. Short legs, calm anchorages and the December dry season. You book the whole double cabin, even as a solo traveller.',
@@ -162,7 +162,10 @@ const factLabel = { fontSize: '0.72rem', color: 'var(--gray)', textTransform: 'u
 const factValue = { fontSize: '1rem', fontWeight: 700, color: 'var(--navy)' }
 const h2Style = { fontFamily: 'DM Sans, sans-serif', fontSize: '1.4rem', fontWeight: 700, color: 'var(--navy)', margin: 0 }
 
-export default function KohChangOffer({ onRequest }: { onRequest: () => void }) {
+// soldOut: Angebot ausgebucht — ausgegraut, nicht aufklappbar, ohne Details im DOM
+// (Preis, Verfuegbarkeit und Anfrage-Buttons wuerden sonst weiter ein buchbares
+// Angebot nahelegen, auch fuer Suchmaschinen und KI-Crawler).
+export default function KohChangOffer({ onRequest, soldOut = false }: { onRequest?: () => void; soldOut?: boolean }) {
   const lang = useLang()
   const s = t[lang]
   const [open, setOpen] = useState(false)
@@ -170,6 +173,51 @@ export default function KohChangOffer({ onRequest }: { onRequest: () => void }) 
   const openLightbox = (images: LightboxState['images'], index: number) => setLightbox({ images, index })
   const lightboxPrev = () => setLightbox(s => s && { ...s, index: (s.index - 1 + s.images.length) % s.images.length })
   const lightboxNext = () => setLightbox(s => s && { ...s, index: (s.index + 1) % s.images.length })
+
+  if (soldOut) {
+    return (
+      <div style={{ maxWidth: '980px', margin: '0 auto 3rem' }}>
+        <div
+          className="kc-header"
+          style={{
+            background: 'var(--gray-light)', border: '1px solid var(--gray-mid)', borderRadius: '10px',
+            display: 'grid', gridTemplateColumns: 'minmax(0,180px) minmax(0,1fr) auto',
+            gap: '1.5rem', alignItems: 'center', padding: '1.25rem 1.5rem',
+          }}
+        >
+          <img src="/images/kabinen/koh-chang/island-spirit-410.webp" alt={lang === 'en' ? 'Island Spirit 410 catamaran under sail' : 'Island Spirit 410 unter Segeln'} loading="lazy"
+            style={{ width: '100%', aspectRatio: '3/2', objectFit: 'cover', borderRadius: '6px', display: 'block', filter: 'grayscale(1)', opacity: 0.55 }} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', minWidth: 0, textAlign: 'left' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gray)' }}>
+              {s.tag}
+            </span>
+            <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: 'clamp(1.1rem, 2.4vw, 1.5rem)', lineHeight: 1.2, fontWeight: 800, color: 'var(--gray)' }}>
+              {s.title}
+            </span>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', fontSize: '0.82rem', fontWeight: 600, color: 'var(--gray)' }}>
+              <span style={{ padding: '4px 11px', borderRadius: '999px', background: '#e6ebf1' }}>{s.badgeDate}</span>
+              <span style={{ padding: '4px 11px', borderRadius: '999px', background: '#e6ebf1' }}>Island Spirit 410</span>
+            </div>
+          </div>
+          <div className="kc-header-price" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
+            <span style={{
+              background: '#3d4a5c', color: '#fff', padding: '10px 20px', borderRadius: '6px',
+              fontFamily: 'DM Sans, sans-serif', fontSize: '1rem', fontWeight: 800, letterSpacing: '0.14em', whiteSpace: 'nowrap',
+            }}>
+              {s.soldOut}
+            </span>
+          </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 640px) {
+            .kc-header { grid-template-columns: 1fr !important; gap: 1rem !important; }
+            .kc-header-price { justify-content: flex-start !important; }
+          }
+        `}</style>
+      </div>
+    )
+  }
 
   return (
     <div style={{ maxWidth: '980px', margin: '0 auto 3rem' }}>
