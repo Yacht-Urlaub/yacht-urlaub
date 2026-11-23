@@ -792,24 +792,27 @@ export default function UrlaubsplanerPage() {
             </div>
           )}
 
-            {/* Entscheidungshilfe + FAQ: sichtbar im DOM (details/summary), dieselben Fragen
-          stehen im FAQPage-Schema (siehe schema oben). Bewusst UNTER der Navigation und in
-          allen Schritten sichtbar: sonst rutscht der Weiter-Button hinter die Texte, und
-          das FAQPage-Schema haette in den Folgeschritten keinen sichtbaren Inhalt. */}
-            <section aria-labelledby="urp-typen" style={{ marginTop: '3rem' }}>
-              <h2 id="urp-typen" style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '1rem', textAlign: 'center' }}>{info.guideH}</h2>
-              <dl style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', margin: 0 }}>
-                {info.guide.map(([term, text]) => (
-                  <div key={term} style={{ background: '#fff', borderRadius: '6px', padding: '1.1rem 1.25rem', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
-                    <dt style={{ fontWeight: 700, color: 'var(--navy)', marginBottom: '0.3rem' }}>{term}</dt>
-                    <dd style={{ margin: 0, color: 'var(--gray)', fontSize: '0.88rem', lineHeight: 1.65 }}>{text}</dd>
-                  </div>
-                ))}
-              </dl>
-              <p style={{ textAlign: 'center', color: 'var(--gray)', fontSize: '0.88rem', marginTop: '1rem' }}>{info.guideNote}</p>
-            </section>
+            {/* Entscheidungshilfe (nur Schritt 1, passt nur zur Schiffstyp-Auswahl) + FAQ (alle
+          Schritte): sichtbar im DOM (details/summary), dieselben Fragen stehen im
+          FAQPage-Schema (siehe schema oben). Bewusst UNTER der Navigation: sonst rutscht der
+          Weiter-Button hinter die Texte; die FAQ bleibt in allen Schritten sichtbar, weil das
+          FAQPage-Schema sonst in den Folgeschritten keinen sichtbaren Inhalt haette. */}
+            {step === 0 && (
+              <section aria-labelledby="urp-typen" style={{ marginTop: '3rem' }}>
+                <h2 id="urp-typen" style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '1rem', textAlign: 'center' }}>{info.guideH}</h2>
+                <dl style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', margin: 0 }}>
+                  {info.guide.map(([term, text]) => (
+                    <div key={term} style={{ background: '#fff', borderRadius: '6px', padding: '1.1rem 1.25rem', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+                      <dt style={{ fontWeight: 700, color: 'var(--navy)', marginBottom: '0.3rem' }}>{term}</dt>
+                      <dd style={{ margin: 0, color: 'var(--gray)', fontSize: '0.88rem', lineHeight: 1.65 }}>{text}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <p style={{ textAlign: 'center', color: 'var(--gray)', fontSize: '0.88rem', marginTop: '1rem' }}>{info.guideNote}</p>
+              </section>
+            )}
 
-            <section aria-labelledby="urp-faq" style={{ marginTop: '2.5rem' }}>
+            <section aria-labelledby="urp-faq" style={{ marginTop: step === 0 ? '2.5rem' : '3rem' }}>
               <h2 id="urp-faq" style={{ fontFamily: 'DM Sans, sans-serif', color: 'var(--navy)', fontSize: '1.2rem', marginBottom: '1rem', textAlign: 'center' }}>{info.faqH}</h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', maxWidth: '760px', margin: '0 auto' }}>
                 {info.faq.map(f => (
