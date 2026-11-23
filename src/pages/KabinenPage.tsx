@@ -49,7 +49,6 @@ const angebote = [
 ]
 
 const reiseOptionen = [
-  'Koh Chang Thailand - 09.-20.12.2026',
   'Phuket Thailand - 02.-13.02.2027',
   'British Virgin Islands Karibik - 27.02.-09.03.2027',
   'Dubrovnik Kroatien - 05.-12.06.2027',
@@ -104,7 +103,6 @@ const angeboteEn = [
   },
 ]
 const reiseOptionenEn = [
-  'Koh Chang Thailand - 09-20 Dec 2026',
   'Phuket Thailand - 02-13 Feb 2027',
   'British Virgin Islands Caribbean - 27 Feb-9 Mar 2027',
   'Dubrovnik Croatia - 5-12 Jun 2027',
@@ -154,15 +152,6 @@ export default function KabinenPage() {
     {
       '@context': 'https://schema.org',
       '@type': 'Product',
-      name: lang === 'en' ? 'Koh Chang: 11 nights island-hopping in the Gulf of Thailand' : 'Koh Chang: 11 Nächte Inselhüpfen im Golf von Thailand',
-      image: `${base}/images/kabinen/koh-chang/island-spirit-410.webp`,
-      url: kabinenUrl,
-      brand: { '@type': 'Brand', name: brand },
-      offers: { '@type': 'Offer', price: '3550', priceCurrency: 'EUR', availability: 'https://schema.org/LimitedAvailability', url: kabinenUrl },
-    },
-    {
-      '@context': 'https://schema.org',
-      '@type': 'Product',
       name: lang === 'en' ? 'Phuket: 11 nights island-hopping in Phang Nga Bay' : 'Phuket: 11 Nächte Inselhüpfen in der Phang-Nga-Bucht',
       image: `${base}/images/kabinen/phuket/hero.webp`,
       url: kabinenUrl,
@@ -194,8 +183,8 @@ export default function KabinenPage() {
       <SEO
         title={lang === 'en' ? "Cabin offers – book a single cabin | Yacht-Holiday" : "Kabinen-Angebote – Einzelne Kabine buchen"}
         description={lang === 'en'
-          ? 'Book a single cabin on a shared yacht. Current cabin offers for the British Virgin Islands (Caribbean), Dubrovnik (Croatia), Phuket and Koh Chang (Thailand). Ideal for solo travellers and couples.'
-          : 'Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für die British Virgin Islands (Karibik), Dubrovnik (Kroatien), Phuket und Koh Chang (Thailand). Ideal für Alleinreisende und Paare.'}
+          ? 'Book a single cabin on a shared yacht. Current cabin offers for the British Virgin Islands (Caribbean), Dubrovnik (Croatia) and Phuket (Thailand). Ideal for solo travellers and couples.'
+          : 'Buchen Sie eine einzelne Kabine auf einer Gemeinschaftsyacht. Aktuelle Kabinen-Angebote für die British Virgin Islands (Karibik), Dubrovnik (Kroatien) und Phuket (Thailand). Ideal für Alleinreisende und Paare.'}
         image="/images/packages/Kornaten/gallery/Telascica.webp"
         schema={schema}
       />
@@ -222,10 +211,11 @@ export default function KabinenPage() {
         </div>
       </div>
 
-      {/* Koh Chang Kabinen-Angebot (Dezember 2026) */}
+      {/* Koh Chang Kabinen-Angebot (Dezember 2026) — AUSGEBUCHT: ausgegraut, nicht aufklappbar,
+          nicht mehr im Anfrageformular (reiseOptionen) und nicht mehr im Produkt-Schema */}
       <section style={{ background: '#fff', padding: '3.5rem 0 0' }}>
         <div className="container">
-          <KohChangOffer onRequest={() => set('reise', lang === 'en' ? 'Koh Chang Thailand - 09-20 Dec 2026' : 'Koh Chang Thailand - 09.-20.12.2026')} />
+          <KohChangOffer soldOut />
         </div>
       </section>
 
