@@ -18,7 +18,7 @@ type Offer = {
 // Das Event "Sail into the Seasons – Vienna Edition"
 // richtet sich nur an den deutschsprachigen Markt (Event in Wien) — deshalb
 // nur in offersDe, kein Pendant in offersEn. Es fand am 14.11.2026 statt;
-// die Karte ist jetzt ein Dankeschoen ohne Anmelde-Link (cta/href optional).
+// die Karte verlinkt jetzt auf den Rueckblick /news/sail-into-the-seasons-2026.
 const offersEn: Offer[] = [
   {
     img: '/images/news/charter-modelle-2027.webp',
@@ -35,7 +35,9 @@ const offersDe: Offer[] = [
     img: '/images/events/sail-into-the-seasons-2026/praesentation.webp',
     tag: 'Rückblick',
     title: 'SAIL INTO THE SEASONS – VIENNA EDITION',
-    text: 'Vielen Dank an alle, die am 14. November in Wien mit uns Segelfeeling erlebt haben – und an Rumzentrum.at für die Rum-Verkostung! Die Fotos vom Event folgen in Kürze.',
+    text: 'Vielen Dank an alle, die am 14. November in Wien mit uns Segelfeeling erlebt haben! Hier gibt es die Fotos, die Highlights des Nachmittags und die Kojen-Angebote vom Sail-Off-Duell.',
+    cta: 'Zum Rückblick',
+    href: '/news/sail-into-the-seasons-2026',
   },
   {
     img: '/images/news/charter-modelle-2027.webp',
