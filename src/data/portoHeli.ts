@@ -85,3 +85,10 @@ export const PH_PHOTOS: Record<string, { by: string; lic: string; url: string }>
   spe1: { by: 'Matankic', lic: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Spetses_boats.jpg' },
   ela2: { by: 'DimitrisP67', lic: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Elafonisos_island_Small_Simos_beach.jpg' },
 }
+
+/**
+ * Skyscanner-Affiliate-Link fuer "Anreise" (Fluege nach Athen).
+ * Leer = der Hinweiskasten wird nicht angezeigt. Link hier eintragen, dann
+ * erscheint er automatisch (als "Anzeige" gekennzeichnet, rel="sponsored").
+ */
+export const PH_SKYSCANNER_URL = ''

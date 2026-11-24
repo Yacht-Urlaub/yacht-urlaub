@@ -16,7 +16,7 @@ import { Link } from '../router'
 import { useLang, isEnHost, BASE_DE, BASE_EN, MAIL } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 import { trackEvent } from '../analytics'
-import { PH_CONFIG, PH_PHOTOS, PH_PRICES, PH_SEASON, PH_YACHTS, type PhYacht } from '../data/portoHeli'
+import { PH_CONFIG, PH_PHOTOS, PH_PRICES, PH_SEASON, PH_SKYSCANNER_URL, PH_YACHTS, type PhYacht } from '../data/portoHeli'
 
 type Lang = 'de' | 'en'
 
@@ -58,7 +58,7 @@ const dmy = (d: string, lang: Lang) => (lang === 'en' ? `${dm(d, lang)} ${d.slic
 const standText = (lang: Lang) => {
   const [y, m] = PH_CONFIG.stand.split('-')
   const mon = lang === 'en' ? MON_SHORT[+m - 1] : MON_SHORT_DE[+m - 1]
-  return `${mon}${lang === 'en' ? '' : '.'} ${y.slice(2)}`
+  return lang === 'en' ? `${mon} ${y.slice(2)}` : `${mon}.${y.slice(2)}`
 }
 
 // ───────────────────────── Texte ─────────────────────────
@@ -130,7 +130,7 @@ const T = {
     weekLabel: (d: string, p: string | null) => `Woche ab Freitag ${d}${p ? ', ' + p : ', belegt'}`,
     skipperTitle: 'Yacht-Urlaub-Skipper immer inklusive.',
     skipperText: 'Erfahren, deutschsprachig und revierkundig. Sie brauchen keinen Segelschein, Mitsegeln ist ausdrücklich erwünscht.',
-    fName: 'Vor- und Nachname', fMail: 'E-Mail', fTel: 'Telefon', fPax: 'Anzahl Gäste', fMsg: 'Nachricht (optional)',
+    fName: 'Vor- und Nachname', fMail: 'E-Mail', fTel: 'Telefon', fPax: 'Anzahl Gäste', fAdr: 'Adresse (Straße, Hausnummer)', fPlz: 'PLZ', fOrt: 'Ort', fMsg: 'Nachricht (optional)',
     errWeek: 'Bitte wählen Sie eine freie Woche.',
     errFields: (max: number | null) => `Bitte prüfen Sie die markierten Felder${max ? ` (maximal ${max} Gäste)` : ''}.`,
     errTerms: 'Bitte bestätigen Sie AGB und Datenschutz.',
@@ -150,6 +150,10 @@ const T = {
     doneH: (n: string, y: string) => `Danke, ${n}! Ihre ${y} ist für Sie vorgemerkt.`,
     doneText: (when: string, pax: number, p: string, mail: string) => `${when}, ${pax} Gäste, Gesamtpreis ${p} inklusive Skipper. Eine Zusammenfassung Ihrer Anfrage ist per E-Mail an ${mail} unterwegs. Die Buchungsbestätigung mit allen Zahlungsinfos folgt in Kürze, spätestens innerhalb von 24 Stunden.`,
     doneWa: 'Fragen per WhatsApp', doneAgain: 'Weitere Woche ansehen',
+    flyAd: 'Anzeige', flyH: 'Flüge nach Athen vergleichen',
+    flyP: 'Am besten landen Sie am Freitag bis mittags (Check-in ab 17 Uhr). Zurück geht es nach dem Check-out um 9 Uhr, ein Rückflug ab dem frühen Nachmittag passt gut.',
+    flyCta: 'Flüge bei Skyscanner ansehen →',
+    flyNote: 'Partnerlink: Wenn Sie darüber buchen, erhalten wir eine kleine Provision. Für Sie ändert sich der Preis nicht.',
     travKick: 'Anreise', travH2: 'Von Athen nach Porto Heli',
     travIntro: 'Fliegen Sie nach Athen. Bis zum Check-in um 17 Uhr bleibt genug Zeit, ein Flug am Vormittag oder zu Mittag ist ideal.',
     trav: [
@@ -238,7 +242,7 @@ const T = {
     weekLabel: (d: string, p: string | null) => `Week from Friday ${d}${p ? ', ' + p : ', booked'}`,
     skipperTitle: 'A Yacht-Urlaub skipper is always included.',
     skipperText: 'Experienced, German- and English-speaking and local knowledge of the area. You do not need a sailing licence, and joining in on the sailing is very welcome.',
-    fName: 'First and last name', fMail: 'E-mail', fTel: 'Phone', fPax: 'Number of guests', fMsg: 'Message (optional)',
+    fName: 'First and last name', fMail: 'E-mail', fTel: 'Phone', fPax: 'Number of guests', fAdr: 'Address (street, number)', fPlz: 'Postcode', fOrt: 'City', fMsg: 'Message (optional)',
     errWeek: 'Please choose a free week.',
     errFields: (max: number | null) => `Please check the highlighted fields${max ? ` (maximum ${max} guests)` : ''}.`,
     errTerms: 'Please confirm the terms and the privacy policy.',
@@ -258,6 +262,10 @@ const T = {
     doneH: (n: string, y: string) => `Thank you, ${n}! Your ${y} is reserved for you.`,
     doneText: (when: string, pax: number, p: string, mail: string) => `${when}, ${pax} guests, total price ${p} including skipper. A summary of your request is on its way to ${mail}. The booking confirmation with all payment details follows shortly, within 24 hours at the latest.`,
     doneWa: 'Questions via WhatsApp', doneAgain: 'View another week',
+    flyAd: 'Advertisement', flyH: 'Compare flights to Athens',
+    flyP: 'Ideally you land on Friday by lunchtime (check-in from 5 pm). The way back starts after check-out at 9 am, so a flight from early afternoon fits well.',
+    flyCta: 'View flights on Skyscanner →',
+    flyNote: 'Partner link: if you book through it we receive a small commission. The price does not change for you.',
     travKick: 'Getting there', travH2: 'From Athens to Porto Heli',
     travIntro: 'Fly to Athens. There is plenty of time before check-in at 5 pm, so a flight in the morning or around noon is ideal.',
     trav: [
@@ -295,7 +303,7 @@ export default function PortoHeliPage() {
 
   const [yachtId, setYachtId] = useState<PhYacht['id']>('L43')
   const [week, setWeek] = useState<string | null>(null)
-  const [form, setForm] = useState({ name: '', mail: '', tel: '', pax: '4', msg: '' })
+  const [form, setForm] = useState({ name: '', mail: '', tel: '', pax: '4', adresse: '', plz: '', ort: '', msg: '' })
   const [agb, setAgb] = useState(false)
   const [bad, setBad] = useState<string[]>([])
   const [msg, setMsg] = useState('')
@@ -340,6 +348,9 @@ export default function PortoHeliPage() {
     if (form.name.trim().length < 3) fails.push('name')
     if (!/^\S+@\S+\.\S+$/.test(form.mail.trim())) fails.push('mail')
     if (form.tel.replace(/\D/g, '').length < 6) fails.push('tel')
+    if (form.adresse.trim().length < 3) fails.push('adresse')
+    if (form.plz.trim().length < 3) fails.push('plz')
+    if (form.ort.trim().length < 2) fails.push('ort')
     const pax = +form.pax
     if (!pax || pax < 1 || pax > yacht.guests) fails.push('pax')
     setBad(fails)
@@ -358,6 +369,7 @@ export default function PortoHeliPage() {
     setSending(true)
     const ok = await sendForm('porto-heli-buchung', {
       name: form.name.trim(), email: form.mail.trim(), telefon: form.tel.trim(), nachricht: form.msg.trim(),
+      adresse: form.adresse.trim(), plz: form.plz.trim(), ort: form.ort.trim(),
       destination: 'Porto Heli – Peloponnes', yacht: yacht.model, yachtIntern: yacht.name, bookingManagerYachtId: yacht.bmId,
       von: week, bis: plus7(week), naechte: 7, gaeste: pax, endpreisKunde: price,
       listenpreis: v[0], rabattProzent: v[2], charterNachRabatt: v[1], operationsFee: yacht.fee,
@@ -602,6 +614,11 @@ export default function PortoHeliPage() {
                     <label className="ph-f">{t.fTel}<input id="ph-f-tel" className="ph-inp" type="tel" autoComplete="tel" required aria-invalid={bad.includes('tel') || undefined} value={form.tel} onChange={e => setForm({ ...form, tel: e.target.value })} /></label>
                     <label className="ph-f">{t.fPax}<input id="ph-f-pax" className="ph-inp" type="number" min={1} max={yacht.guests} required aria-invalid={bad.includes('pax') || undefined} value={form.pax} onChange={e => setForm({ ...form, pax: e.target.value })} /></label>
                   </div>
+                  <div className="ph-formgrid ph-adr">
+                    <label className="ph-f adr">{t.fAdr}<input id="ph-f-adresse" className="ph-inp" autoComplete="street-address" required aria-invalid={bad.includes('adresse') || undefined} value={form.adresse} onChange={e => setForm({ ...form, adresse: e.target.value })} /></label>
+                    <label className="ph-f plz">{t.fPlz}<input id="ph-f-plz" className="ph-inp" autoComplete="postal-code" required aria-invalid={bad.includes('plz') || undefined} value={form.plz} onChange={e => setForm({ ...form, plz: e.target.value })} /></label>
+                    <label className="ph-f ort">{t.fOrt}<input id="ph-f-ort" className="ph-inp" autoComplete="address-level2" required aria-invalid={bad.includes('ort') || undefined} value={form.ort} onChange={e => setForm({ ...form, ort: e.target.value })} /></label>
+                  </div>
                   <label className="ph-f" style={{ marginTop: '0.9rem' }}>{t.fMsg}<textarea className="ph-inp" rows={3} value={form.msg} onChange={e => setForm({ ...form, msg: e.target.value })} /></label>
                   <RecaptchaHinweis />
                 </div>
@@ -636,6 +653,18 @@ export default function PortoHeliPage() {
           <p className="ph-kick">{t.travKick}</p>
           <h2>{t.travH2}</h2>
           <p className="ph-intro">{t.travIntro}</p>
+          {PH_SKYSCANNER_URL && (
+            <div className="ph-fly">
+              <div>
+                <span className="ph-badge">{t.flyAd}</span>
+                <h3>{t.flyH}</h3>
+                <p>{t.flyP}</p>
+                <small>{t.flyNote}</small>
+              </div>
+              <a className="btn btn-gold" href={PH_SKYSCANNER_URL} target="_blank" rel="sponsored noopener noreferrer"
+                onClick={() => trackEvent('affiliate_click', { partner: 'skyscanner', link_location: 'anreise' })}>{t.flyCta}</a>
+            </div>
+          )}
           <div className="ph-trav">
             {t.trav.map(x => (
               <div key={x.h} className={x.top ? 'top' : ''}>
@@ -800,6 +829,8 @@ const CSS = `
 .ph-incl{display:flex;gap:12px;align-items:flex-start;background:var(--blue-pale);border-radius:3px;padding:14px 16px}
 .ph-incl svg{flex:none;width:28px;height:28px;stroke:var(--navy);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .ph-formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.ph-adr{margin-top:14px;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,2fr)}
+@media(max-width:700px){.ph-adr{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}.ph-adr .adr{grid-column:1/-1}}
 .ph-f{display:flex;flex-direction:column;gap:5px;font-size:.88rem;font-weight:600;color:var(--navy)}
 .ph-inp{font:inherit;font-size:16px;padding:12px 14px;border:1px solid #cbd5e1;border-radius:3px;color:#1e293b;background:#fff;width:100%}
 .ph-inp[aria-invalid=true]{border-color:#dc2626}
@@ -824,6 +855,10 @@ const CSS = `
 .ph-done .ph-badge{align-self:flex-start}
 .ph-done h3{font-family:'DM Sans',sans-serif;font-size:1.6rem;color:var(--navy)}
 .ph-row{display:flex;gap:12px;flex-wrap:wrap}
+.ph-fly{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;background:var(--blue-pale);border-left:4px solid var(--gold);border-radius:3px;padding:20px 24px;margin-bottom:20px}
+.ph-fly>div{flex:1 1 420px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.ph-fly h3{font-family:'DM Sans',sans-serif;font-size:1.15rem;color:var(--navy)}
+.ph-fly small{font-size:.78rem;color:var(--gray)}
 .ph-trav{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
 .ph-trav>div{background:#fff;border:1px solid var(--gray-mid);border-radius:3px;padding:22px;display:flex;flex-direction:column;gap:8px}
 .ph-trav>div.top{border:2px solid var(--blue)}
