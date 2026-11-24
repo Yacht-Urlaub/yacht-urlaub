@@ -12,12 +12,21 @@ export function getConsent(): ConsentState {
   }
 }
 
+const CHANGE_EVENT = 'yu-consent-changed'
+
 export function setConsent(value: 'accepted' | 'rejected') {
   try {
     localStorage.setItem(STORAGE_KEY, value)
   } catch {
     // localStorage gesperrt (z. B. privater Modus): Einwilligung gilt dann nur fuer diese Sitzung
   }
+  window.dispatchEvent(new Event(CHANGE_EVENT))
+}
+
+/** Wird aufgerufen, sobald im Cookie-Banner eine Wahl getroffen wurde. */
+export function onConsentChange(handler: () => void) {
+  window.addEventListener(CHANGE_EVENT, handler)
+  return () => window.removeEventListener(CHANGE_EVENT, handler)
 }
 
 const OPEN_EVENT = 'yu-open-cookie-settings'

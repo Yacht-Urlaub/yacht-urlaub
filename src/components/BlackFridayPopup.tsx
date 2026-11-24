@@ -3,10 +3,13 @@ import { useLocation } from 'react-router-dom'
 import { Link } from '../router'
 import { useLang, toInternal } from '../i18n'
 import { BF_END as END, BF_CODE as CODE, bfText } from '../blackFriday'
+import { getConsent, onConsentChange } from '../consent'
 
 // Black-Friday-Popup 2026 (ersetzt das Event-Popup "Sail into the Seasons").
 // - erscheint 4 Sekunden nach dem Seitenaufruf, einmal pro Besucher (bis zum
-//   Schliessen, localStorage)
+//   Schliessen, localStorage) — aber erst, wenn im Cookie-Banner eine Wahl
+//   getroffen wurde (sonst verdeckt es den Banner); dann zaehlen die 4 s ab
+//   der Entscheidung
 // - blendet sich nach dem 27.11.2026, 23:59 (MEZ) automatisch aus
 // - deutsch und englisch; nicht auf den Seiten, die selbst Ziel der Buttons
 //   sind, und nicht auf den Rechtstexten
@@ -26,15 +29,19 @@ export default function BlackFridayPopup() {
   const allowed = !EXCLUDED.includes(internal)
 
   const [open, setOpen] = useState(false)
+  // Cookie-Entscheidung liegt vor (gespeichert oder gerade im Banner getroffen)
+  const [decided, setDecided] = useState(() => getConsent() !== null)
   const [copied, setCopied] = useState(false)
   const closeRef = useRef<HTMLButtonElement>(null)
 
+  useEffect(() => onConsentChange(() => setDecided(true)), [])
+
   useEffect(() => {
-    if (!allowed || new Date() > END) return
+    if (!allowed || !decided || new Date() > END) return
     try { if (localStorage.getItem(KEY)) return } catch { /* Speicher gesperrt: trotzdem zeigen */ }
     const timer = setTimeout(() => setOpen(true), 4000)
     return () => clearTimeout(timer)
-  }, [allowed])
+  }, [allowed, decided])
 
   function close() {
     setOpen(false)
