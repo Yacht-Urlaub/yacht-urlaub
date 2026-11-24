@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from '../router'
 import { useLang } from '../i18n'
-
-const STORAGE_KEY = 'yu_cookie_consent'
+import { getConsent, setConsent } from '../consent'
+import { enableAnalytics } from '../analytics'
 
 const cb = {
   de: {
@@ -42,22 +42,6 @@ const cb = {
   },
 }
 
-export type ConsentState = 'accepted' | 'rejected' | null
-
-export function getConsent(): ConsentState {
-  try {
-    return (localStorage.getItem(STORAGE_KEY) as ConsentState) ?? null
-  } catch {
-    return null
-  }
-}
-
-export function setConsent(value: 'accepted' | 'rejected') {
-  try {
-    localStorage.setItem(STORAGE_KEY, value)
-  } catch {}
-}
-
 export default function CookieBanner() {
   const lang = useLang()
   const c = cb[lang]
@@ -71,8 +55,7 @@ export default function CookieBanner() {
   const accept = () => {
     setConsent('accepted')
     setVisible(false)
-    // Trigger GA load if script is deferred
-    window.dispatchEvent(new Event('cookie-consent-accepted'))
+    enableAnalytics()
   }
 
   const reject = () => {

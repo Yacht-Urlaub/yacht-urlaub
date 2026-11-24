@@ -364,6 +364,7 @@
       expanded = true;
       document.getElementById('results-frame').style.height = '1200px';
       reportHeight(collapsedHeight() + 1240);
+      try { window.parent.postMessage({ source: 'buchen-widget', event: 'search' }, '*'); } catch (e) {}
     });
 
     // Auto-grow results iframe (best-effort — the Planyo results page is

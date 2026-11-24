@@ -1,12 +1,13 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { LanguageContext, langFromPath, canonicalPath, isEnHost, toInternal, toHref } from './i18n'
-import { lazy, Suspense, useLayoutEffect } from 'react'
+import { lazy, Suspense, useEffect, useLayoutEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Kontakt from './components/Kontakt'
 import WhatsApp from './components/WhatsApp'
 import CookieBanner from './components/CookieBanner'
+import { initAnalytics, trackContactClick } from './analytics'
 import BlackFridayPopup from './components/BlackFridayPopup'
 import SideContact from './components/SideContact'
 import PageLoader from './components/PageLoader'
@@ -46,6 +47,18 @@ const YogaPage = lazy(() => import('./pages/YogaPage'))
 function LangProvider({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation()
   return <LanguageContext.Provider value={langFromPath(pathname)}>{children}</LanguageContext.Provider>
+}
+
+// Messung (GA4, nur nach Einwilligung): fruehere Zustimmung wiederherstellen
+// und Klicks auf Telefon/WhatsApp/E-Mail erfassen. Seitenaufrufe kommen aus
+// SEO.tsx. Ohne Einwilligung tut trackEvent nichts, siehe analytics.ts.
+function Analytics() {
+  useEffect(() => {
+    initAnalytics()
+    document.addEventListener('click', trackContactClick)
+    return () => document.removeEventListener('click', trackContactClick)
+  }, [])
+  return null
 }
 
 function ScrollToTop() {
@@ -179,6 +192,7 @@ export default function App() {
     <BrowserRouter>
       <LangProvider>
       <ScrollToTop />
+      <Analytics />
       <Navbar />
       <AnimatedRoutes />
       <SideContact />
