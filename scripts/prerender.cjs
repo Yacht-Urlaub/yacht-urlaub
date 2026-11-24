@@ -63,12 +63,23 @@ const MIME = {
 // hier beim Rendern faelschlich die Root-Seite bekommen, sobald dort schon
 // ein vorab eingefrorener Snapshot liegt (siehe apply-prerendered-home.cjs)
 // statt der von Vite frisch gebauten, bootfaehigen App-Huelle.
+//
+// Wichtig: dist/index.html selbst kann (nach apply-prerendered-home.cjs) schon
+// der eingefrorene Startseiten-Snapshot sein. Als Huelle zum Rendern darf aber
+// nur Vites unveraenderte index.html dienen, sonst stehen Title/Description/OG
+// der Startseite doppelt in jedem Unterseiten-Snapshot. apply-prerendered-
+// home.cjs legt sie deshalb in node_modules/.cache/ ab; hier wird sie fuer
+// jeden Treffer auf dist/index.html (Root-Aufruf und SPA-Fallback) benutzt.
+const SHELL_CACHE = path.join(ROOT, 'node_modules', '.cache', 'prerender-shell.html')
+const DIST_INDEX = path.join(DIST, 'index.html')
+const shellFile = () => (existsSync(SHELL_CACHE) ? SHELL_CACHE : DIST_INDEX)
+
 async function resolveFile(urlPath) {
   const direct = path.join(DIST, urlPath)
-  if (existsSync(direct) && (await stat(direct)).isFile()) return direct
+  if (existsSync(direct) && (await stat(direct)).isFile()) return direct === DIST_INDEX ? shellFile() : direct
   const asIndex = path.join(DIST, urlPath, 'index.html')
-  if (existsSync(asIndex) && (await stat(asIndex)).isFile()) return asIndex
-  return path.join(DIST, 'index.html')
+  if (existsSync(asIndex) && (await stat(asIndex)).isFile()) return asIndex === DIST_INDEX ? shellFile() : asIndex
+  return shellFile()
 }
 
 async function serveStatic() {

@@ -41,6 +41,20 @@ function referencedAssetsExist(html) {
   return refs.every(ref => existsSync(path.join(DIST, ref)))
 }
 
+// Vites eigene, unveraenderte dist/index.html (die leere SPA-Huelle) fuer
+// scripts/prerender.cjs sichern, BEVOR sie unten ggf. durch den
+// eingefrorenen Startseiten-Snapshot ersetzt wird. Sonst rendert der
+// Prerender jede Unterseite in einer Huelle, die schon Title/Description/
+// OG/Schema der Startseite enthaelt — react-helmet haengt seine Tags nur an,
+// das Ergebnis waeren doppelte <meta name="description"> auf jeder Seite
+// (und instabile Snapshots). Liegt in node_modules/.cache, wird also weder
+// committet noch nach dist/ (Netlify) ausgeliefert.
+const SHELL = path.join(ROOT, 'node_modules', '.cache', 'prerender-shell.html')
+if (existsSync(path.join(DIST, 'index.html'))) {
+  mkdirSync(path.dirname(SHELL), { recursive: true })
+  copyFileSync(path.join(DIST, 'index.html'), SHELL)
+}
+
 for (const { src, dest } of jobs) {
   const srcPath = path.join(PRERENDERED, src)
   const destPath = path.join(DIST, dest)
