@@ -29,7 +29,7 @@ const PHONE_KEYS = ['phone', 'telefon']
 const MESSAGE_KEYS = ['message', 'nachricht', 'anmerkung', 'anmerkungen']
 const CONSUMED = new Set([...NAME_KEYS, ...PHONE_KEYS, ...MESSAGE_KEYS, 'email', 'formName', 'form-name',
   // technisch, gehoert nicht in die Mail
-  'recaptchaToken'])
+  'recaptchaToken', 'recaptchaState'])
 
 const LABELS = {
   destination: 'Destination', toerntyp: 'Törn-Typ', personen: 'Personen',
@@ -149,12 +149,33 @@ function composeMail(formKey, data) {
  * Betreff beginnt mit "[ABGEWIESEN]" und laesst sich per Filter sortieren.
  * Fehler hier duerfen die Abweisung nicht verhindern.
  */
+const HINWEIS_MAX = 5
+const hinweise = [] // { t, email } der zuletzt gesendeten Hinweismails
+
 async function meldeAbgewiesen(formKey, data, grund) {
   try {
     const apiKey = process.env.RESEND_API_KEY
     if (!apiKey) return
     const { formLabel, name, email, lines } = composeMail(formKey, data)
     if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return
+
+    // Kein Postfach-Flut durch Bots:
+    // 1) Nur Anfragen aus unserem eigenen Formular (traegt "recaptchaState",
+    //    siehe src/lib/sendForm.ts). Direkte Aufrufe der Function bleiben stumm.
+    if (!data.recaptchaState) {
+      console.log(`[recaptcha] ${formKey}: keine Hinweismail (Aufruf nicht aus dem Formular)`)
+      return
+    }
+    // 2) Hoechstens HINWEIS_MAX Mails pro Stunde je Function-Instanz, und je
+    //    E-Mail-Adresse nur eine. (Der Zaehler lebt im Arbeitsspeicher der
+    //    Instanz — Obergrenze gegen Fluten, kein exaktes Limit.)
+    const jetzt = Date.now()
+    while (hinweise.length && jetzt - hinweise[0].t > 3600_000) hinweise.shift()
+    if (hinweise.length >= HINWEIS_MAX || hinweise.some(h => h.email === email.toLowerCase())) {
+      console.log(`[recaptcha] ${formKey}: keine Hinweismail (Limit/Duplikat)`)
+      return
+    }
+    hinweise.push({ t: jetzt, email: email.toLowerCase() })
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
