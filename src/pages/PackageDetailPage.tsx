@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import { trackEvent } from '../analytics'
 import { Link } from '../router'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -76,7 +77,7 @@ function BookNowButton({ bookingUrl, fallbackTo, label, className, style }: {
   if (!bookingUrl) return <Link to={fallbackTo} className={className} style={style}>{label}</Link>
   return (
     <>
-      <button type="button" onClick={() => setOpen(true)} className={className} style={style}>{label}</button>
+      <button type="button" onClick={() => { trackEvent('booking_start', { booking_url: bookingUrl }); setOpen(true) }} className={className} style={style}>{label}</button>
       <BookingModal url={open ? bookingUrl : null} onClose={() => setOpen(false)} />
     </>
   )

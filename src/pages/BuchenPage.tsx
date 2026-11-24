@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import SEO from '../components/SEO'
 import { useLang } from '../i18n'
 import PackagesGrid from '../components/PackagesGrid'
+import { trackEvent } from '../analytics'
 
 const bl = {
   de: { seoT: 'Jetzt buchen – Verfügbare Packages finden | Yacht-Urlaub',
@@ -29,6 +30,10 @@ export default function BuchenPage() {
       if (e.origin !== window.location.origin) return
       if (e.data?.source === 'buchen-widget' && typeof e.data.height === 'number') {
         setWidgetHeight(e.data.height)
+      }
+      // Suche im Planyo-Widget abgeschickt (Buchungsinteresse)
+      if (e.data?.source === 'buchen-widget' && e.data.event === 'search') {
+        trackEvent('booking_search')
       }
     }
     window.addEventListener('message', onMessage)

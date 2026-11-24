@@ -1,6 +1,8 @@
 import { useLang, isEnHost, toInternal, stripEn, langPair, BASE_DE, BASE_EN } from '../i18n'
 import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { trackPageView } from '../analytics'
 
 type Props = {
   title: string
@@ -25,6 +27,9 @@ export default function SEO({ title, description, image, schema }: Props) {
   // Ohne Query-String, damit z. B. /yachten?tab=katamaran auf /yachten zeigt.
   const path = pathname.replace(/\/+$/, '') || '/'
   const fullCanonical = `${base}${path}`
+
+  // GA4-Seitenaufruf pro Seitenwechsel (nur mit Einwilligung, sonst no-op)
+  useEffect(() => { trackPageView(fullTitle) }, [path, fullTitle])
 
   // hreflang: nur setzen, wenn es fuer diese Seite wirklich ein Gegenstueck gibt
   const pair = langPair(toInternal(pathname))

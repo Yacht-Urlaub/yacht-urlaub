@@ -16,6 +16,7 @@
  */
 import { getRecaptchaToken } from './recaptcha'
 import { langFromPath } from '../i18n'
+import { trackEvent } from '../analytics'
 
 export async function sendForm(
   formName: string,
@@ -30,6 +31,8 @@ export async function sendForm(
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ formName, ...fields, recaptchaToken }),
     })
+    // Schluesselereignis: erfolgreich abgesendete Anfrage (Kontakt, Kabine, Charter, ...)
+    if (res.ok) trackEvent('generate_lead', { form_name: formName })
     return res.ok
   } catch {
     return false
