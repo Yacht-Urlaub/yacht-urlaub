@@ -23,10 +23,14 @@ type Lang = 'de' | 'en'
 // ───────────────────────── Preislogik ─────────────────────────
 // Ein Preis fuer alles: Charter nach Rabatt + Nebenkosten + Skipper, aufgerundet auf ...90
 const nice = (n: number) => Math.ceil((n + 10) / 100) * 100 - 10
+// Feste Anpassungen einzelner Endpreise (Preisschwelle unter 12.000 €): gilt auch
+// nach jeder woechentlichen Aktualisierung der Daten
+const PRICE_FIX: Record<number, number> = { 12090: 11990 }
+const fixed = (n: number) => PRICE_FIX[n] ?? n
 const dates = Object.keys(PH_PRICES).filter(d => d >= PH_SEASON[0] && d <= PH_SEASON[1]).sort()
 const priceOf = (y: PhYacht, d: string | null): number | null => {
   const v = d ? PH_PRICES[d]?.[y.id] : undefined
-  return v ? nice(v[1] + y.fee + PH_CONFIG.skipper) : null
+  return v ? fixed(nice(v[1] + y.fee + PH_CONFIG.skipper)) : null
 }
 const minPrice = (y: PhYacht) => Math.min(...dates.map(d => priceOf(y, d)).filter((p): p is number => p !== null))
 const ppOf = (y: PhYacht, p: number) => Math.ceil(p / y.guests / 5) * 5
@@ -45,13 +49,16 @@ const MONTHS: Record<Lang, string[]> = {
   de: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
   en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 }
+const MON_SHORT_DE = ['Jan', 'Feb', 'März', 'Apr', 'Mai', 'Juni', 'Juli', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez']
 const MON_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const dm = (d: string, lang: Lang) =>
   lang === 'en' ? `${+d.slice(8, 10)} ${MON_SHORT[+d.slice(5, 7) - 1]}` : `${d.slice(8, 10)}.${d.slice(5, 7)}.`
 const dmy = (d: string, lang: Lang) => (lang === 'en' ? `${dm(d, lang)} ${d.slice(0, 4)}` : `${dm(d, lang)}${d.slice(0, 4)}`)
+// Preisstand nur als Monat/Jahr, z. B. "Nov. 26"
 const standText = (lang: Lang) => {
-  const [y, m, d] = PH_CONFIG.stand.split('-')
-  return lang === 'en' ? `${+d} ${MON_SHORT[+m - 1]} ${y}` : `${d}.${m}.${y}`
+  const [y, m] = PH_CONFIG.stand.split('-')
+  const mon = lang === 'en' ? MON_SHORT[+m - 1] : MON_SHORT_DE[+m - 1]
+  return `${mon}${lang === 'en' ? '' : '.'} ${y.slice(2)}`
 }
 
 // ───────────────────────── Texte ─────────────────────────
@@ -107,7 +114,7 @@ const T = {
     fleetKick: 'Die Flotte in Porto Heli', fleetH2: 'Vier Lagoon-Katamarane, zwei davon nagelneu',
     fleetIntro: 'Die Lagoon 38 und die Lagoon 43 kommen 2026 neu in die Flotte und bieten in ihrer Größe besonders viel Platz und Komfort. Alle Preise inklusive Yacht-Urlaub-Skipper.',
     catamaran: 'Katamaran', built: 'Baujahr', labCabins: 'Kabinen', labGuests: 'Gäste', labExtra: 'Extra', guestsUpTo: (n: number) => `bis ${n} + Skipper`,
-    newBadge: 'Neu 2026', weekFrom: 'Woche inkl. Skipper', from: 'ab', pp: (p: string) => `ab ${p} p. P.`, dates: 'Termine',
+    newBadge: 'Neu 2026', weekFrom: 'Woche inkl. Skipper', from: 'ab', pp: (p: string) => `${p} p. P.`, dates: 'Termine',
     yachts: {
       L38: { cabins: '3 Doppelkabinen, Owner-Version', extra: 'Klima, Generator, Wassermacher', pitch: 'Der kompakte Neuling mit großzügiger Eignerkabine. Ideal für Paare und Familien, unschlagbar im Preis.', alt: 'Lagoon 38 vor Anker' },
       L42: { cabins: '4 Doppelkabinen', extra: '5 Klimaanlagen, Espresso, Hydraulik-Gangway', pitch: 'Der bewährte Allrounder für Freundesgruppen: viel Platz zum kleinen Preis pro Person.', alt: 'Lagoon 42 vor Anker' },
@@ -131,17 +138,17 @@ const T = {
     sumH: 'Ihre Buchung', withSkipper: 'mit Skipper', noWeek: 'Noch keine Woche gewählt', nights: '7 Nächte',
     sumPick: (p: string) => `Ab ${p} pro Woche. Wählen Sie eine freie Woche, dann sehen Sie hier Ihren Endpreis.`,
     sumTotal: 'Gesamtpreis für die Yacht, alles inklusive',
-    sumPp: (p: string, g: number) => `ab ${p} p. P. bei ${g} Gästen`,
+    sumPp: (p: string, g: number) => `${p} p. P. bei ${g} Gästen`,
     incl: [
       'Inklusive: Yacht-Urlaub-Skipper, alle Charter-Nebenkosten, Dinghy mit Außenborder, Bettwäsche, Handtücher, Welcome Pack',
       'Bordkasse für Treibstoff, Häfen und Verpflegung (auch für den Skipper)',
       `Kaution ${PH_CONFIG.deposit.toLocaleString('de-DE')} €, vor Ort per Kreditkarte`,
     ],
     termsA: 'Ich akzeptiere die', terms: 'AGB', termsAnd: 'und die', privacy: 'Datenschutzbestimmungen',
-    submit: 'Verbindlich buchen', sending: 'Wird gesendet …', noPay: 'Jetzt noch keine Zahlung. Zahlungsinfos kommen mit der Bestätigung.',
+    submit: 'Verbindlich buchen', sending: 'Wird gesendet …', noPay: 'Jetzt noch keine Zahlung: 50 % mit der Buchungsbestätigung, 50 % sechs Wochen vor Reiseantritt.',
     doneBadge: 'Buchung eingegangen',
     doneH: (n: string, y: string) => `Danke, ${n}! Ihre ${y} ist für Sie vorgemerkt.`,
-    doneText: (when: string, pax: number, p: string, mail: string) => `${when}, ${pax} Gäste, Gesamtpreis ${p} inklusive Skipper. Wir prüfen die Buchung und senden Ihnen innerhalb von 24 Stunden die Bestätigung mit allen Zahlungsinfos an ${mail}.`,
+    doneText: (when: string, pax: number, p: string, mail: string) => `${when}, ${pax} Gäste, Gesamtpreis ${p} inklusive Skipper. Eine Zusammenfassung Ihrer Anfrage ist per E-Mail an ${mail} unterwegs. Die Buchungsbestätigung mit allen Zahlungsinfos folgt in Kürze, spätestens innerhalb von 24 Stunden.`,
     doneWa: 'Fragen per WhatsApp', doneAgain: 'Weitere Woche ansehen',
     travKick: 'Anreise', travH2: 'Von Athen nach Porto Heli',
     travIntro: 'Fliegen Sie nach Athen. Bis zum Check-in um 17 Uhr bleibt genug Zeit, ein Flug am Vormittag oder zu Mittag ist ideal.',
@@ -157,7 +164,7 @@ const T = {
       ['Was ist im Preis enthalten?', 'Ein Preis für alles rund um die Yacht: Katamaran für 7 Nächte, Yacht-Urlaub-Skipper, alle Charter-Nebenkosten, Dinghy mit Außenborder, Bettwäsche, Handtücher und Welcome Pack. Vor Ort zahlen Sie nur die Bordkasse (Treibstoff, Häfen, Verpflegung inkl. Skipper) und hinterlegen die Kaution.'],
       ['Wo schläft der Skipper?', 'In der Crew-Kabine. Die Gäste-Kabinen bleiben für Sie, deshalb nennen wir bei jeder Yacht die Zahl der Gäste ohne Skipper.'],
       ['Wie windig ist es im Argolischen Golf?', 'Der Golf ist gut geschützt und meist ruhiger als die Kykladen. Im Hochsommer weht nachmittags oft eine frische Brise, ideal zum Segeln.'],
-      ['Wie bezahle ich?', 'Die Zahlungsinformationen erhalten Sie mit der Buchungsbestätigung. Bei der Buchung auf dieser Seite wird noch nichts bezahlt.'],
+      ['Wie bezahle ich?', 'Die Zahlung erfolgt in zwei Raten: 50 % bei Buchung mit der Buchungsbestätigung, die Sie kurz nach Ihrer Buchungsanfrage von uns erhalten, und die restlichen 50 % sechs Wochen vor Reiseantritt. Bei der Buchung auf dieser Seite wird noch nichts bezahlt.'],
     ] as [string, string][],
     ctaKick: 'Neu in der Flotte', ctaH2: 'Brandneue Lagoon 43: Ihre Wunschwoche ist noch frei',
     ctaText: 'Unser Neuzugang 2026 ist für die Saison 2027 noch in jeder Woche verfügbar. Sichern Sie sich Ihren Termin, bevor sich das Revier herumspricht. Fragen? Wir beraten Sie kostenlos und unverbindlich.',
@@ -215,7 +222,7 @@ const T = {
     fleetKick: 'The fleet in Porto Heli', fleetH2: 'Four Lagoon catamarans, two of them brand new',
     fleetIntro: 'The Lagoon 38 and the Lagoon 43 join the fleet new in 2026 and offer particularly generous space and comfort for their size. All prices include a Yacht-Urlaub skipper.',
     catamaran: 'Catamaran', built: 'built', labCabins: 'Cabins', labGuests: 'Guests', labExtra: 'Extras', guestsUpTo: (n: number) => `up to ${n} + skipper`,
-    newBadge: 'New 2026', weekFrom: 'Week incl. skipper', from: 'from', pp: (p: string) => `from ${p} p. p.`, dates: 'Dates',
+    newBadge: 'New 2026', weekFrom: 'Week incl. skipper', from: 'from', pp: (p: string) => `${p} p. p.`, dates: 'Dates',
     yachts: {
       L38: { cabins: '3 double cabins, owner’s version', extra: 'A/C, generator, watermaker', pitch: 'The compact newcomer with a generous owner’s cabin. Ideal for couples and families, unbeatable value.', alt: 'Lagoon 38 at anchor' },
       L42: { cabins: '4 double cabins', extra: '5 air conditioners, espresso machine, hydraulic gangway', pitch: 'The proven all-rounder for groups of friends: lots of space at a low price per person.', alt: 'Lagoon 42 at anchor' },
@@ -239,17 +246,17 @@ const T = {
     sumH: 'Your booking', withSkipper: 'with skipper', noWeek: 'No week chosen yet', nights: '7 nights',
     sumPick: (p: string) => `From ${p} per week. Choose a free week and your final price appears here.`,
     sumTotal: 'Total price for the yacht, everything included',
-    sumPp: (p: string, g: number) => `from ${p} p. p. with ${g} guests`,
+    sumPp: (p: string, g: number) => `${p} p. p. with ${g} guests`,
     incl: [
       'Included: Yacht-Urlaub skipper, all charter extras, dinghy with outboard, bed linen, towels, welcome pack',
       'Kitty for fuel, harbour fees and provisions (also for the skipper)',
       `Deposit €${PH_CONFIG.deposit.toLocaleString('en-GB')}, paid on site by credit card`,
     ],
     termsA: 'I accept the', terms: 'terms and conditions', termsAnd: 'and the', privacy: 'privacy policy',
-    submit: 'Book now (binding)', sending: 'Sending …', noPay: 'No payment yet. Payment details come with the confirmation.',
+    submit: 'Book now (binding)', sending: 'Sending …', noPay: 'No payment yet: 50% with the booking confirmation, 50% six weeks before departure.',
     doneBadge: 'Booking received',
     doneH: (n: string, y: string) => `Thank you, ${n}! Your ${y} is reserved for you.`,
-    doneText: (when: string, pax: number, p: string, mail: string) => `${when}, ${pax} guests, total price ${p} including skipper. We will check the booking and send the confirmation with all payment details to ${mail} within 24 hours.`,
+    doneText: (when: string, pax: number, p: string, mail: string) => `${when}, ${pax} guests, total price ${p} including skipper. A summary of your request is on its way to ${mail}. The booking confirmation with all payment details follows shortly, within 24 hours at the latest.`,
     doneWa: 'Questions via WhatsApp', doneAgain: 'View another week',
     travKick: 'Getting there', travH2: 'From Athens to Porto Heli',
     travIntro: 'Fly to Athens. There is plenty of time before check-in at 5 pm, so a flight in the morning or around noon is ideal.',
@@ -265,7 +272,7 @@ const T = {
       ['What is included in the price?', 'One price for everything around the yacht: catamaran for 7 nights, Yacht-Urlaub skipper, all charter extras, dinghy with outboard, bed linen, towels and welcome pack. On site you only pay the kitty (fuel, harbour fees, provisions incl. the skipper) and leave the deposit.'],
       ['Where does the skipper sleep?', 'In the crew cabin. The guest cabins stay yours, which is why we state the number of guests without skipper for each yacht.'],
       ['How windy is it in the Argolic Gulf?', 'The gulf is well sheltered and usually calmer than the Cyclades. In high summer a fresh breeze often blows in the afternoon, ideal for sailing.'],
-      ['How do I pay?', 'You receive the payment information with the booking confirmation. Nothing is paid when you book on this page.'],
+      ['How do I pay?', 'Payment is made in two instalments: 50% on booking, with the booking confirmation that you receive from us shortly after your booking request, and the remaining 50% six weeks before the start of your trip. Nothing is paid when you book on this page.'],
     ] as [string, string][],
     ctaKick: 'New in the fleet', ctaH2: 'Brand-new Lagoon 43: your preferred week is still free',
     ctaText: 'Our 2026 newcomer is still available every week of the 2027 season. Secure your date before word gets around about the area. Questions? We advise you free of charge and without obligation.',
@@ -454,7 +461,10 @@ export default function PortoHeliPage() {
           <p className="ph-intro">{t.routeIntro}</p>
           <div className="ph-route">
             <figure className="ph-map">
-              <img src={`/images/porto-heli/route-map-${lang}.svg`} alt={t.mapAlt} width={840} height={1700} loading="lazy" />
+              <img src={`/images/porto-heli/route-map-${lang}.svg`} alt={t.mapAlt} width={840} height={1620} loading="lazy" />
+            </figure>
+            <div>
+              <p className="ph-rt">{t.routeDetails}</p>
               <div className="ph-legend2">
                 <span><svg viewBox="-26 -26 52 52" aria-hidden="true"><g fill="none" stroke="#2b2b2b" strokeWidth="3.2" strokeLinecap="round"><circle cx="0" cy="-17" r="6" /><path d="M0 -11V20M-11 -3H11M-19 5Q-17 21 0 21Q17 21 19 5" /></g></svg>{t.legend[0]}</span>
                 <span><i className="dot" />{t.legend[1]}</span>
@@ -462,10 +472,7 @@ export default function PortoHeliPage() {
                 <span><i className="ln" style={{ background: '#ef7b72' }} />{t.legend[3]}</span>
                 <span><i className="ln dash" />{t.legend[4]}</span>
               </div>
-              <figcaption>{t.mapCaption}</figcaption>
-            </figure>
-            <div>
-              <p className="ph-rt">{t.routeDetails}</p>
+              <p className="ph-mapcap">{t.mapCaption}</p>
               <ol className="ph-days">
                 {t.days.map((d, i) => (
                   <li key={i} className={d.hi ? 'hi' : ''}>
@@ -725,18 +732,18 @@ const CSS = `
 .ph-side .btn{width:100%;margin-top:18px}
 .ph-side .from{margin-top:16px!important;font-size:.82rem;color:rgba(255,255,255,.8)}
 .ph-side .from b{display:block;font-size:1.65rem;color:#fff;line-height:1.2}
-.ph-route{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.ph-route{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:start}
 @media(max-width:900px){.ph-route{grid-template-columns:minmax(0,1fr)}}
 .ph-map{margin:0;position:sticky;top:88px;display:flex;flex-direction:column;align-items:center}
-.ph-map>img{width:min(100%,calc((100vh - 200px) * 840 / 1700));height:auto;display:block;border-radius:4px 4px 0 0}
-.ph-legend2{width:min(100%,max(320px,calc((100vh - 200px) * 840 / 1700)));display:flex;flex-wrap:wrap;gap:6px 18px;background:#eeebe6;padding:12px 16px;border-radius:0 0 4px 4px;font-style:italic;font-size:.88rem;color:#555;box-shadow:0 2px 12px rgba(0,0,0,.1)}
+.ph-map>img{width:min(100%,calc((100vh - 108px) * 840 / 1620));height:auto;display:block;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.ph-legend2{display:flex;flex-wrap:wrap;gap:6px 18px;background:#eeebe6;padding:12px 16px;border-radius:4px;font-style:italic;font-size:.88rem;color:#555;margin-bottom:6px}
 .ph-legend2 span{display:inline-flex;align-items:center;gap:7px}
 .ph-legend2 svg{width:20px;height:20px}
 .ph-legend2 .dot{width:11px;height:11px;border-radius:50%;background:#0b5ea8;display:inline-block}
 .ph-legend2 .ln{width:30px;height:4px;border-radius:2px;display:inline-block}
 .ph-legend2 .dash{background:repeating-linear-gradient(90deg,#e3b83a 0 8px,transparent 8px 13px)}
-.ph-map figcaption{font-size:.8rem;color:var(--gray);margin-top:8px;text-align:center}
-@media(max-width:900px){.ph-map{position:static}.ph-map>img,.ph-legend2{width:100%}}
+.ph-mapcap{font-size:.8rem;color:var(--gray);margin-bottom:18px!important}
+@media(max-width:900px){.ph-map{position:static}.ph-map>img{width:100%}}
 .ph-rt{font-size:1.15rem;font-weight:700;font-style:italic;color:var(--blue);margin-bottom:16px!important}
 .ph-days{list-style:none;margin:0 0 0 14px;padding:0;border-left:3px solid #f5c330}
 .ph-days li{position:relative;padding:0 0 26px 30px}

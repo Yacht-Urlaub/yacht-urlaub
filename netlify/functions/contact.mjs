@@ -207,6 +207,94 @@ async function meldeAbgewiesen(formKey, data, grund) {
   }
 }
 
+// ── Eingangsbestaetigung an den Kunden (nur Porto-Heli-Buchung) ──
+// Kurze Mail: was wurde angefragt, und dass die Buchungsbestaetigung folgt.
+// Interne Kalkulation und Booking-Manager-ID stehen bewusst NICHT darin.
+const WOCHENTAG = { de: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'], en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] }
+const MONATE_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const datum = (iso, lang) => {
+  const d = new Date(`${iso}T12:00:00Z`)
+  if (Number.isNaN(d.getTime())) return String(iso)
+  const [y, m, t] = iso.split('-')
+  return lang === 'en' ? `${WOCHENTAG.en[d.getUTCDay()]} ${+t} ${MONATE_EN[+m - 1]} ${y}` : `${WOCHENTAG.de[d.getUTCDay()]} ${t}.${m}.${y}`
+}
+const euro = (n, lang) =>
+  Number.isFinite(Number(n)) ? (lang === 'en' ? `€${Number(n).toLocaleString('en-GB')}` : `${Number(n).toLocaleString('de-DE')} €`) : String(n)
+
+function kundenMail(data) {
+  const lang = data.sprache === 'en' ? 'en' : 'de'
+  const vorname = String(pick(data, ['name'])).split(/\s+/)[0] || ''
+  const wann = `${datum(data.von, lang)} – ${datum(data.bis, lang)}`
+  if (lang === 'en') {
+    return {
+      subject: 'Your booking request for Porto Heli – we have received it',
+      text: [
+        `Hello ${vorname},`,
+        '',
+        'thank you for your booking request. This is what we received:',
+        '',
+        'Destination: Porto Heli, Peloponnese',
+        `Yacht: ${data.yacht} (with skipper)`,
+        `Trip: ${wann} (7 nights)`,
+        `Guests: ${data.gaeste}`,
+        `Total price: ${euro(data.endpreisKunde, lang)} including skipper`,
+        '',
+        'What happens next: we check availability and send you the booking confirmation shortly, within 24 hours at the latest. It contains all payment details (50% on booking, 50% six weeks before departure). If the week has been taken after all, we will get back to you with an alternative and you pay nothing.',
+        '',
+        'Questions? Simply reply to this e-mail or call us on +43 1 997 15 82.',
+        '',
+        'Kind regards',
+        'Your Yacht-Holiday team',
+      ].join('\n'),
+    }
+  }
+  return {
+    subject: 'Ihre Buchungsanfrage für Porto Heli – wir haben sie erhalten',
+    text: [
+      `Guten Tag ${vorname},`,
+      '',
+      'vielen Dank für Ihre Buchungsanfrage. Das haben wir erhalten:',
+      '',
+      'Destination: Porto Heli, Peloponnes',
+      `Yacht: ${data.yacht} (mit Skipper)`,
+      `Reise: ${wann} (7 Nächte)`,
+      `Gäste: ${data.gaeste}`,
+      `Gesamtpreis: ${euro(data.endpreisKunde, lang)} inklusive Skipper`,
+      '',
+      'So geht es weiter: Wir prüfen die Verfügbarkeit und senden Ihnen die Buchungsbestätigung in Kürze, spätestens innerhalb von 24 Stunden. Sie enthält alle Zahlungsinfos (50 % bei Buchung, 50 % sechs Wochen vor Reiseantritt). Ist die Woche doch vergeben, melden wir uns mit einer Alternative, und Sie zahlen nichts.',
+      '',
+      'Fragen? Antworten Sie einfach auf diese E-Mail oder rufen Sie uns an: +43 1 997 15 82.',
+      '',
+      'Herzliche Grüße',
+      'Ihr Yacht-Urlaub-Team',
+    ].join('\n'),
+  }
+}
+
+async function sendeKundenbestaetigung(formKey, data, email) {
+  if (formKey !== 'porto-heli-buchung') return
+  try {
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) return
+    const { subject, text } = kundenMail(data)
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: process.env.RESEND_FROM || 'Yacht-Urlaub Kontakt <kontakt@yacht-urlaub.net>',
+        to: [email],
+        reply_to: process.env.CONTACT_TO || 'info@yacht-urlaub.net',
+        subject,
+        text,
+      }),
+    })
+    console.log(`[buchung] ${formKey}: Eingangsbestaetigung ${res.ok ? 'gesendet' : `fehlgeschlagen (${res.status})`}`)
+  } catch (e) {
+    // darf die Anfrage nicht gefaehrden: das Team hat die Mail schon
+    console.log(`[buchung] ${formKey}: Eingangsbestaetigung nicht moeglich: ${e?.message || e}`)
+  }
+}
+
 export default async (req) => {
   const json = (obj, status = 200) =>
     new Response(JSON.stringify(obj), { status, headers: { 'content-type': 'application/json' } })
@@ -264,5 +352,6 @@ export default async (req) => {
     const detail = await res.text().catch(() => '')
     return json({ error: 'E-Mail konnte nicht gesendet werden.', detail: detail.slice(0, 300) }, 502)
   }
+  await sendeKundenbestaetigung(formKey, data, email)
   return json({ ok: true })
 }

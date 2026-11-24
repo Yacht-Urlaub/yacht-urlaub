@@ -39,7 +39,9 @@ body {
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text);
   background: #fff;
-  overflow-x: hidden;
+  /* clip statt hidden: hidden machte den body zum Scroll-Container und
+     verhinderte jedes position:sticky (z. B. Karte auf der Porto-Heli-Seite) */
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   line-height: 1.6;
 }
