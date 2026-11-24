@@ -20,6 +20,7 @@ const FORM_LABELS = {
   'skipper-anfrage': 'Skipper- und Bord-Service',
   'charter-anfrage': 'Yacht-Charter-Anfrage',
   'crew-anfrage': 'Anfrage an die Crew',
+  'porto-heli-buchung': 'Verbindliche Buchung Porto Heli',
 }
 
 // Felder, die als Absenderangaben gelten und nicht noch einmal
@@ -43,6 +44,13 @@ const LABELS = {
   zahlungsart: 'Zahlungsart', modus: 'Modus', gruppe: 'Gruppe',
   getraenke: 'Getränke', yachtTyp: 'Yacht-Typ', kabinen: 'Kabinen',
   revier: 'Revier', alter: 'Alter', start: 'Start', ende: 'Ende',
+  // Porto-Heli-Buchung (Kalkulation nur intern)
+  yachtIntern: 'Yacht (intern)', bookingManagerYachtId: 'Booking-Manager-Yacht-ID',
+  von: 'Anreise (Freitag)', bis: 'Abreise (Freitag)', naechte: 'Nächte', gaeste: 'Gäste',
+  endpreisKunde: 'Endpreis laut Website (EUR)', listenpreis: 'Listenpreis Charter (EUR)',
+  rabattProzent: 'Rabatt (%)', charterNachRabatt: 'Charter nach Rabatt (EUR)',
+  operationsFee: 'Nebenkosten / Operations-Fee (EUR)', skipper: 'Skipper (EUR)',
+  rundung: 'Rundung (EUR)', preisstand: 'Preisstand', sprache: 'Sprache der Seite',
 }
 
 /**
