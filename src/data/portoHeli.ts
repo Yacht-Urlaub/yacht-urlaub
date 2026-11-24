@@ -93,4 +93,4 @@ export const PH_PHOTOS: Record<string, { by: string; lic: string; url: string }>
  * Leer = der Hinweiskasten wird nicht angezeigt. Link hier eintragen, dann
  * erscheint er automatisch (als "Anzeige" gekennzeichnet, rel="sponsored").
  */
-export const PH_SKYSCANNER_URL = ''
+export const PH_SKYSCANNER_URL = 'https://skyscanner.pxf.io/c/2944578/1027991/13416?associateid=AFF_TRA_19354_00001'
