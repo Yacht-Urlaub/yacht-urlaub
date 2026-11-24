@@ -70,14 +70,15 @@ function BookingModal({ url, onClose }: { url: string | null; onClose: () => voi
 }
 
 // Buchungs-Button: öffnet Planyo im Iframe-Overlay; ohne Planyo-Link Fallback auf interne Buchungsseite
-function BookNowButton({ bookingUrl, fallbackTo, label, className, style }: {
+function BookNowButton({ bookingUrl, fallbackTo, label, className, style, track }: {
   bookingUrl: string | null; fallbackTo: string; label: string; className: string; style?: React.CSSProperties
+  track?: Record<string, unknown>
 }) {
   const [open, setOpen] = useState(false)
   if (!bookingUrl) return <Link to={fallbackTo} className={className} style={style}>{label}</Link>
   return (
     <>
-      <button type="button" onClick={() => { trackEvent('booking_start', { booking_url: bookingUrl }); setOpen(true) }} className={className} style={style}>{label}</button>
+      <button type="button" onClick={() => { trackEvent('booking_start', track); setOpen(true) }} className={className} style={style}>{label}</button>
       <BookingModal url={open ? bookingUrl : null} onClose={() => setOpen(false)} />
     </>
   )
@@ -123,7 +124,7 @@ function AddonCard({ addon }: { addon: Addon }) {
   )
 }
 
-function PriceBlockSection({ block, bookingUrl }: { block: PriceBlock; bookingUrl: string | null }) {
+function PriceBlockSection({ block, bookingUrl, track }: { block: PriceBlock; bookingUrl: string | null; track?: Record<string, unknown> }) {
   const lang = useLang()
   const s = L[lang]
   return (
@@ -145,7 +146,7 @@ function PriceBlockSection({ block, bookingUrl }: { block: PriceBlock; bookingUr
             </li>
           ))}
         </ul>
-        <BookNowButton bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }} label={lang === 'en' ? '▶ Book now!' : '▶ Jetzt buchen!'} />
+        <BookNowButton track={track} bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-gold" style={{ marginLeft: 'auto', fontSize: '0.85rem' }} label={lang === 'en' ? '▶ Book now!' : '▶ Jetzt buchen!'} />
       </div>
 
       {block.notes.map(n => (
@@ -229,6 +230,13 @@ export default function PackageDetailPage() {
   }
 
   const bookingUrl = planyoBookingUrl(pkg.id, lang)
+  // GA4 booking_start: Paketname + Einstiegspreis pro Person (EUR), siehe docs/analytics.md
+  const bookingTrack = {
+    package_name: pkg.title,
+    package_id: pkg.id,
+    value: Number(pkg.price) || undefined,
+    currency: 'EUR',
+  }
 
   const base = isEnHost() ? BASE_EN : BASE_DE
   const pkgPath = lang === 'en' ? `/cruises/book-now/${pkg.id}` : `/packages/${pkg.id}`
@@ -323,7 +331,7 @@ export default function PackageDetailPage() {
               </ul>
             </div>
 
-            <BookNowButton bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }} label={s.book} />
+            <BookNowButton track={bookingTrack} bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }} label={s.book} />
           </div>
 
           {/* Right: Price badge + Route */}
@@ -455,7 +463,7 @@ export default function PackageDetailPage() {
               </div>
             </div>
           ))}
-          <BookNowButton bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-primary" style={{ fontSize: '0.85rem' }} label={s.dates} />
+          <BookNowButton track={bookingTrack} bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-primary" style={{ fontSize: '0.85rem' }} label={s.dates} />
         </div>
 
         {/* Unterkunft */}
@@ -545,7 +553,7 @@ export default function PackageDetailPage() {
 
         {/* Preise */}
         {pkg.priceBlocks.map((block, i) => (
-          <PriceBlockSection key={i} block={block} bookingUrl={bookingUrl} />
+          <PriceBlockSection key={i} block={block} bookingUrl={bookingUrl} track={bookingTrack} />
         ))}
 
         {/* CTA */}
@@ -560,7 +568,7 @@ export default function PackageDetailPage() {
             <Link to={s.planer} className="btn btn-ghost" style={{ fontSize: '0.9rem', padding: '14px 32px' }}>
               {s.start}
             </Link>
-            <BookNowButton bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }} label={s.dates} />
+            <BookNowButton track={bookingTrack} bookingUrl={bookingUrl} fallbackTo={s.buchen} className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '14px 32px' }} label={s.dates} />
           </div>
         </div>
       </div>

@@ -19,3 +19,15 @@ export function setConsent(value: 'accepted' | 'rejected') {
     // localStorage gesperrt (z. B. privater Modus): Einwilligung gilt dann nur fuer diese Sitzung
   }
 }
+
+const OPEN_EVENT = 'yu-open-cookie-settings'
+
+/** Cookie-Banner erneut oeffnen (Footer-Link "Cookie-Einstellungen"), um die Wahl zu aendern/zu widerrufen. */
+export function openCookieSettings() {
+  window.dispatchEvent(new Event(OPEN_EVENT))
+}
+
+export function onOpenCookieSettings(handler: () => void) {
+  window.addEventListener(OPEN_EVENT, handler)
+  return () => window.removeEventListener(OPEN_EVENT, handler)
+}
