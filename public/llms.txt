@@ -9,20 +9,31 @@ Yacht-Urlaub (yacht-urlaub.net, englischsprachig: yacht-holiday.net) vermittelt 
 - [Reise-Packages](https://www.yacht-urlaub.net/toerns): fertige, buchbare Segeltörns mit festem Preis, nach Zielgruppe sortiert (Einsteiger, Familien, Freunde, Luxury)
 - [Kabinen-Angebote](https://www.yacht-urlaub.net/kabinen): einzelne Kabine auf einer Gemeinschaftsyacht buchen, ideal für Alleinreisende und kleine Gruppen
 - [Destinationen](https://www.yacht-urlaub.net/destinationen): Kroatien, Griechenland, Balearen, Kanaren, Karibik (BVI und Windward Islands), Seychellen, Thailand
+- [Jetzt buchen](https://www.yacht-urlaub.net/buchen): Startdatum und Dauer wählen, verfügbare Yachten und Packages finden und direkt online buchen
 - [Urlaubsplaner](https://www.yacht-urlaub.net/urlaubsplaner): individuelle Reise nach eigenen Wünschen zusammenstellen
+- [Yachten](https://www.yacht-urlaub.net/yachten): die Flotte — Segelyachten, Segel-Katamarane, Motoryachten und Motor-Katamarane von 35 bis 55 Fuß (Dufour, Bavaria, Lagoon, Bali u. a.)
 - [Yachtcharter](https://www.yacht-urlaub.net/charter): Yacht ohne Skipper chartern
 - [Skipper & Bordservice](https://www.yacht-urlaub.net/skipper): Crew-Charter, Skipper und Bordservice dazubuchen
 - [Yoga-Retreat](https://www.yacht-urlaub.net/yoga): Segeltörn mit Yoga an Bord
+- [Sailaway](https://www.yacht-urlaub.net/sailaway): 7 Tage Flottillen-Törn mit Freunden und Gleichgesinnten, Kroatien-Route ab Split (Hvar, Brač, Makarska)
+
+## Neuigkeiten
+
+- [News & Aktionen](https://www.yacht-urlaub.net/news): aktuelle Angebote, Kabinen-Deals und Paketreisen
+- [Charter-Modelle 2027](https://www.yacht-urlaub.net/news/charter-modelle-2027): ab 2027 buchbar — Mittwochs-Starts und verlängerte 10-Tage-Törns bei ausgewählten Yachten in Kroatien, zusätzlich zum klassischen Wochencharter
+- [Rückblick „Sail into the Seasons“](https://www.yacht-urlaub.net/news/sail-into-the-seasons-2026): Fotos und Highlights des Yacht-Urlaub-Events am 14.11.2026 in Wien (Einsteiger-Vortrag, British Virgin Islands, Sail-Off, Kojen-Angebote 2027)
 
 ## Hintergrund & Vertrauen
 
 - [FAQ](https://www.yacht-urlaub.net/faq): Antworten zu Buchung, Leben an Bord, Kosten, Bordkassa, Kaution
 - [Törnberichte](https://www.yacht-urlaub.net/toernberichte): Erfahrungsberichte früherer Gäste aus verschiedenen Revieren
+- [Crew](https://www.yacht-urlaub.net/crew): die Stamm-Skipper und das Bord-Personal im Porträt
+- [Kontakt](https://www.yacht-urlaub.net/kontakt): Fragen, Beratung und Anfragen
 - [Reisebüro-Partner](https://www.yacht-urlaub.net/reisebuero): Informationen für Reisebüros und Vertriebspartner
 
 ## Englische Fassung
 
-Die englischsprachige Version läuft unter einer eigenen Domain: https://www.yacht-holiday.net
+Die englischsprachige Version läuft unter einer eigenen Domain: https://www.yacht-holiday.net — dieselben Angebote, eigene englische URLs (z. B. /cruises, /cabin-offers, /destinations, /book-now, /trip-reports).
 
 ## Optional
 
