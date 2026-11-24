@@ -6,8 +6,10 @@
 //             Fehlt eine Yacht bei einem Datum, gilt die Woche als belegt.
 //   - CONFIG.stand: Datum des Preisstands (wird auf der Seite angezeigt).
 // Der Endpreis fuer Kunden ist EIN Preis fuer alles:
-//   Charter nach Rabatt + Nebenkosten (fee) + Skipper, aufgerundet auf ...90
-//   (siehe priceOf() in der Seite).
+//   Charter nach Rabatt + Nebenkosten (fee) + Skipper, als "schoener" Preis
+//   (Ankerpreise X.490/X.990, sonst ...50/...90; siehe nice() in der Seite).
+//   Die Rundungsregeln (nice, ppOf) stehen im Artefakt und muessen mit der Seite
+//   uebereinstimmen — bei Aenderung dort auch in PortoHeliPage.tsx anpassen.
 
 export type PhYacht = {
   id: 'L38' | 'L42' | 'L43' | 'L46'

@@ -21,19 +21,26 @@ import { PH_CONFIG, PH_PHOTOS, PH_PRICES, PH_SEASON, PH_SKYSCANNER_URL, PH_YACHT
 type Lang = 'de' | 'en'
 
 // ───────────────────────── Preislogik ─────────────────────────
-// Ein Preis fuer alles: Charter nach Rabatt + Nebenkosten + Skipper, aufgerundet auf ...90
-const nice = (n: number) => Math.ceil((n + 10) / 100) * 100 - 10
-// Feste Anpassungen einzelner Endpreise (Preisschwelle unter 12.000 €): gilt auch
-// nach jeder woechentlichen Aktualisierung der Daten
-const PRICE_FIX: Record<number, number> = { 12090: 11990 }
-const fixed = (n: number) => PRICE_FIX[n] ?? n
+// Ein Preis fuer alles: Charter nach Rabatt + Nebenkosten + Skipper, als "schoener" Preis
+// (Regel wie im Artefakt "Segeln ab Porto Heli", Stand 24.11.2026):
+//  1) Liegt ein Ankerpreis X.490 / X.990 hoechstens 100 EUR darunter oder 150 EUR darueber,
+//     wird er genommen (z. B. 12.076 -> 11.990)
+//  2) sonst aufrunden auf die naechste Endung ...50 oder ...90 (z. B. 9.196 -> 9.250)
+const nice = (n: number): number => {
+  const anchors: number[] = []
+  for (let k = Math.floor(n / 1000) - 1; k <= Math.floor(n / 1000) + 1; k++) anchors.push(k * 1000 + 490, k * 1000 + 990)
+  const anchor = anchors.filter(v => v >= n - 100 && v <= n + 150).sort((x, y) => x - y)[0]
+  if (anchor) return anchor
+  const h = Math.floor(n / 100) * 100
+  return [h + 50, h + 90, h + 150].find(v => v >= n)!
+}
 const dates = Object.keys(PH_PRICES).filter(d => d >= PH_SEASON[0] && d <= PH_SEASON[1]).sort()
 const priceOf = (y: PhYacht, d: string | null): number | null => {
   const v = d ? PH_PRICES[d]?.[y.id] : undefined
-  return v ? fixed(nice(v[1] + y.fee + PH_CONFIG.skipper)) : null
+  return v ? nice(v[1] + y.fee + PH_CONFIG.skipper) : null
 }
 const minPrice = (y: PhYacht) => Math.min(...dates.map(d => priceOf(y, d)).filter((p): p is number => p !== null))
-const ppOf = (y: PhYacht, p: number) => Math.ceil(p / y.guests / 5) * 5
+const ppOf = (y: PhYacht, p: number) => Math.ceil(p / y.guests / 10) * 10 - 1 // z. B. 1.249 EUR p. P.
 const plus7 = (d: string) => {
   const t = new Date(d + 'T12:00:00Z')
   t.setUTCDate(t.getUTCDate() + 7)
