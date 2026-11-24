@@ -59,7 +59,27 @@ find public -name index.html -delete
 rm -rf dist
 npm run build
 GLOBAL_NM=$(npm root -g) NODE_PATH="$GLOBAL_NM" node scripts/prerender.cjs
+node scripts/update-sitemap-lastmod.cjs
 ```
+
+Der letzte Schritt pflegt `<lastmod>` in beiden Sitemaps (ChatGPT Search/
+OAI-SearchBot, Googlebot & Co. nutzen es zur Re-Crawl-Entscheidung). Das
+Datum wird nur dann auf heute gesetzt, wenn sich der inhaltlich relevante
+Teil des Snapshots geaendert hat (Hash in `scripts/sitemap-lastmod.json`,
+wird mitcommittet) — nicht bei jedem Build/Deploy. Ein reines Neu-Rendern
+ohne Inhaltsaenderung muss `0 geaendert` melden; meldet es viele Seiten,
+ist irgendwo ein nicht-deterministischer Anteil im Snapshot (dann in
+`normalise()` des Skripts ausklammern, wie Inline-Styles/`min`-Datum).
+Neue Route: zuerst in die Sitemap eintragen, dann diese Schritte — sie
+bekommt beim ersten Lauf automatisch ein lastmod.
+
+Die SPA-Huelle fuer den Prerender ist Vites unveraenderte `index.html`
+(von `apply-prerendered-home.cjs` nach `node_modules/.cache/prerender-shell.html`
+gesichert). Nicht `dist/index.html` direkt verwenden: die ist nach dem
+Build schon der eingefrorene Startseiten-Snapshot und liess sonst
+Title/Description der Startseite doppelt in jedem Unterseiten-Snapshot
+landen. Gegenpruefung nach dem Lauf: genau ein `<meta name="description"`
+pro Snapshot.
 
 Das `rm -rf dist` vorneweg ist seit dem Umstieg auf Code-Splitting
 (`React.lazy()` pro Route in `App.tsx`, siehe Kommentar dort) nicht mehr
