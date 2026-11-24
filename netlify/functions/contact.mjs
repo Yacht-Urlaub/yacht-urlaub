@@ -29,7 +29,7 @@ const PHONE_KEYS = ['phone', 'telefon']
 const MESSAGE_KEYS = ['message', 'nachricht', 'anmerkung', 'anmerkungen']
 const CONSUMED = new Set([...NAME_KEYS, ...PHONE_KEYS, ...MESSAGE_KEYS, 'email', 'formName', 'form-name',
   // technisch, gehoert nicht in die Mail
-  'recaptchaToken'])
+  'recaptchaToken', 'recaptchaState'])
 
 const LABELS = {
   destination: 'Destination', toerntyp: 'Törn-Typ', personen: 'Personen',
@@ -113,48 +113,14 @@ const fmt = (v) => {
   return String(v)
 }
 
-export default async (req) => {
-  const json = (obj, status = 200) =>
-    new Response(JSON.stringify(obj), { status, headers: { 'content-type': 'application/json' } })
-
-  if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405)
-
-  let data
-  try { data = await req.json() } catch { return json({ error: 'Ungültige Anfrage' }, 400) }
-
-  const formKey = pick(data, ['formName', 'form-name']) || 'kontakt'
+// Absenderangaben und Mailtext aus den Formulardaten zusammenbauen
+function composeMail(formKey, data) {
   const formLabel = FORM_LABELS[formKey] || formKey
-
-  // Bot-Pruefung zuerst: billiger als alles Weitere, und ein Bot soll nicht
-  // aus den Feldfehlern lernen, welche Angaben das Formular erwartet.
-  const captcha = await pruefeRecaptcha(
-    data.recaptchaToken,
-    req.headers.get('x-nf-client-connection-ip') || req.headers.get('x-forwarded-for')?.split(',')[0]?.trim(),
-    req.headers.get('x-forwarded-host') || req.headers.get('host'),
-  )
-  const enforce = (process.env.RECAPTCHA_MODE || 'monitor').toLowerCase() === 'enforce'
-  if (!captcha.ok) {
-    console.log(`[recaptcha] ${formKey}: ${captcha.grund}${enforce ? ' → abgewiesen' : ' → durchgelassen (monitor)'}`)
-    if (enforce) return json({ error: 'Ihre Anfrage konnte nicht geprüft werden. Bitte laden Sie die Seite neu und versuchen Sie es erneut.' }, 403)
-  } else {
-    console.log(`[recaptcha] ${formKey}: ${captcha.grund}${captcha.score != null ? `, Score ${captcha.score}, Host ${captcha.hostname}` : ''}`)
-  }
-
   const name = pick(data, ['name']) ||
     [pick(data, ['vorname']), pick(data, ['nachname'])].filter(Boolean).join(' ')
   const email = pick(data, ['email'])
   const phone = pick(data, PHONE_KEYS)
   const message = pick(data, MESSAGE_KEYS)
-
-  if (!name || !email) return json({ error: 'Bitte Name und E-Mail ausfüllen.' }, 400)
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'Bitte eine gültige E-Mail angeben.' }, 400)
-
-  const apiKey = process.env.RESEND_API_KEY
-  if (!apiKey) return json({ error: 'Server nicht konfiguriert (RESEND_API_KEY fehlt).' }, 500)
-
-  const to = process.env.CONTACT_TO || 'info@yacht-urlaub.net'
-  // Absender-Domain muss in Resend verifiziert sein; sonst onboarding@resend.dev (nur an Account-Mail)
-  const from = process.env.RESEND_FROM || 'Yacht-Urlaub Kontakt <kontakt@yacht-urlaub.net>'
 
   const extras = Object.entries(data)
     .filter(([k, v]) => !CONSUMED.has(k) && v !== '' && v !== null && v !== undefined &&
@@ -170,6 +136,109 @@ export default async (req) => {
   ]
   if (extras.length) lines.push('', '--- Angaben aus dem Formular ---', ...extras)
   if (message) lines.push('', '--- Nachricht ---', message)
+  return { formLabel, name, email, lines }
+}
+
+/**
+ * Abgewiesene Anfrage melden (nur im Modus "enforce").
+ *
+ * Eine echte Interessentin mit blockiertem Google-Skript, nicht eingetragener
+ * Domain oder zu niedrigem Score sieht nur eine Fehlermeldung — ohne Meldung
+ * ginge die Anfrage unbemerkt verloren. Deshalb geht, wenn Name und gueltige
+ * E-Mail vorliegen, eine Hinweismail mit allen Angaben an CONTACT_TO; der
+ * Betreff beginnt mit "[ABGEWIESEN]" und laesst sich per Filter sortieren.
+ * Fehler hier duerfen die Abweisung nicht verhindern.
+ */
+const HINWEIS_MAX = 5
+const hinweise = [] // { t, email } der zuletzt gesendeten Hinweismails
+
+async function meldeAbgewiesen(formKey, data, grund) {
+  try {
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) return
+    const { formLabel, name, email, lines } = composeMail(formKey, data)
+    if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return
+
+    // Kein Postfach-Flut durch Bots:
+    // 1) Nur Anfragen aus unserem eigenen Formular (traegt "recaptchaState",
+    //    siehe src/lib/sendForm.ts). Direkte Aufrufe der Function bleiben stumm.
+    if (!data.recaptchaState) {
+      console.log(`[recaptcha] ${formKey}: keine Hinweismail (Aufruf nicht aus dem Formular)`)
+      return
+    }
+    // 2) Hoechstens HINWEIS_MAX Mails pro Stunde je Function-Instanz, und je
+    //    E-Mail-Adresse nur eine. (Der Zaehler lebt im Arbeitsspeicher der
+    //    Instanz — Obergrenze gegen Fluten, kein exaktes Limit.)
+    const jetzt = Date.now()
+    while (hinweise.length && jetzt - hinweise[0].t > 3600_000) hinweise.shift()
+    if (hinweise.length >= HINWEIS_MAX || hinweise.some(h => h.email === email.toLowerCase())) {
+      console.log(`[recaptcha] ${formKey}: keine Hinweismail (Limit/Duplikat)`)
+      return
+    }
+    hinweise.push({ t: jetzt, email: email.toLowerCase() })
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: process.env.RESEND_FROM || 'Yacht-Urlaub Kontakt <kontakt@yacht-urlaub.net>',
+        to: [process.env.CONTACT_TO || 'info@yacht-urlaub.net'],
+        reply_to: email,
+        subject: `[ABGEWIESEN] ${formLabel}: Anfrage von ${name}`,
+        text: [
+          'Diese Anfrage wurde von der Bot-Pruefung (reCAPTCHA) abgewiesen und NICHT als normale Anfrage zugestellt.',
+          `Grund: ${grund}`,
+          'Die Person hat auf der Website eine Fehlermeldung gesehen. Sieht die Anfrage echt aus, bitte direkt antworten (Antwort geht an die angegebene E-Mail-Adresse).',
+          '',
+          ...lines,
+        ].join('\n'),
+      }),
+    })
+    console.log(`[recaptcha] ${formKey}: Hinweismail ${res.ok ? 'gesendet' : `fehlgeschlagen (${res.status})`}`)
+  } catch (e) {
+    console.log(`[recaptcha] ${formKey}: Hinweismail nicht moeglich: ${e?.message || e}`)
+  }
+}
+
+export default async (req) => {
+  const json = (obj, status = 200) =>
+    new Response(JSON.stringify(obj), { status, headers: { 'content-type': 'application/json' } })
+
+  if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405)
+
+  let data
+  try { data = await req.json() } catch { return json({ error: 'Ungültige Anfrage' }, 400) }
+
+  const formKey = pick(data, ['formName', 'form-name']) || 'kontakt'
+
+  // Bot-Pruefung zuerst: billiger als alles Weitere, und ein Bot soll nicht
+  // aus den Feldfehlern lernen, welche Angaben das Formular erwartet.
+  const captcha = await pruefeRecaptcha(
+    data.recaptchaToken,
+    req.headers.get('x-nf-client-connection-ip') || req.headers.get('x-forwarded-for')?.split(',')[0]?.trim(),
+    req.headers.get('x-forwarded-host') || req.headers.get('host'),
+  )
+  const enforce = (process.env.RECAPTCHA_MODE || 'monitor').toLowerCase() === 'enforce'
+  if (!captcha.ok) {
+    console.log(`[recaptcha] ${formKey}: ${captcha.grund}${enforce ? ' → abgewiesen' : ' → durchgelassen (monitor)'}`)
+    if (enforce) {
+      await meldeAbgewiesen(formKey, data, captcha.grund)
+      return json({ error: 'Ihre Anfrage konnte nicht geprüft werden. Bitte laden Sie die Seite neu und versuchen Sie es erneut.' }, 403)
+    }
+  } else {
+    console.log(`[recaptcha] ${formKey}: ${captcha.grund}${captcha.score != null ? `, Score ${captcha.score}, Host ${captcha.hostname}` : ''}`)
+  }
+
+  const { formLabel: mailLabel, name, email, lines } = composeMail(formKey, data)
+
+  if (!name || !email) return json({ error: 'Bitte Name und E-Mail ausfüllen.' }, 400)
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ error: 'Bitte eine gültige E-Mail angeben.' }, 400)
+
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) return json({ error: 'Server nicht konfiguriert (RESEND_API_KEY fehlt).' }, 500)
+
+  const to = process.env.CONTACT_TO || 'info@yacht-urlaub.net'
+  // Absender-Domain muss in Resend verifiziert sein; sonst onboarding@resend.dev (nur an Account-Mail)
+  const from = process.env.RESEND_FROM || 'Yacht-Urlaub Kontakt <kontakt@yacht-urlaub.net>'
 
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -178,7 +247,7 @@ export default async (req) => {
       from,
       to: [to],
       reply_to: email,
-      subject: `${formLabel}: Anfrage von ${name}`,
+      subject: `${mailLabel}: Anfrage von ${name}`,
       text: lines.join('\n'),
     }),
   })

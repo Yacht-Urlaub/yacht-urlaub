@@ -12,7 +12,7 @@ const L = {
     messagePh: 'Wie können wir Ihnen helfen?',
     send: 'Nachricht senden', sending: 'Wird gesendet …',
     okH: 'Vielen Dank!', okT: 'Ihre Nachricht wurde gesendet. Wir melden uns so bald wie möglich bei Ihnen.',
-    err: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut – oder rufen Sie uns direkt an.',
+    err: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut, rufen Sie uns direkt an oder schreiben Sie an',
     infoH: 'Direkter Kontakt', phoneL: 'Telefon', mailL: 'E-Mail', newReq: 'Neue Nachricht',
   },
   en: {
@@ -22,7 +22,7 @@ const L = {
     messagePh: 'How can we help you?',
     send: 'Send message', sending: 'Sending …',
     okH: 'Thank you!', okT: 'Your message has been sent. We will get back to you as soon as possible.',
-    err: 'Something went wrong. Please try again later – or give us a call.',
+    err: 'Something went wrong. Please try again later, give us a call or email us at',
     infoH: 'Direct contact', phoneL: 'Phone', mailL: 'Email', newReq: 'New message',
   },
 }
@@ -99,7 +99,7 @@ export default function ContactPage() {
                     <textarea id="cpg-message" required value={form.message} onChange={set('message')} placeholder={s.messagePh} rows={6} style={{ ...inputStyle, resize: 'vertical' }} />
                   </div>
                   {status === 'error' && (
-                    <p style={{ color: '#c0392b', fontSize: '0.85rem', marginBottom: '1rem' }}>{s.err}</p>
+                    <p style={{ color: '#c0392b', fontSize: '0.85rem', marginBottom: '1rem' }}>{s.err} <a href={`mailto:${MAIL[lang]}`} style={{ color: 'inherit', textDecoration: 'underline' }}>{MAIL[lang]}</a>.</p>
                   )}
                   <button type="submit" disabled={status === 'sending'} className="btn btn-primary" style={{ fontSize: '0.85rem', opacity: status === 'sending' ? 0.7 : 1 }}>
                     {status === 'sending' ? s.sending : s.send}

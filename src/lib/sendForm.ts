@@ -29,7 +29,10 @@ export async function sendForm(
     const res = await fetch('/.netlify/functions/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ formName, ...fields, recaptchaToken }),
+      // recaptchaState: Kennung "kommt aus unserem Formular". Ohne Token (Werbeblocker,
+      // Netzausfall) meldet der Server eine abgewiesene Anfrage per Hinweismail an
+      // uns — direkte Bot-Aufrufe der Function tragen sie nicht und bleiben stumm.
+      body: JSON.stringify({ formName, ...fields, recaptchaToken, recaptchaState: recaptchaToken ? 'token' : 'unavailable' }),
     })
     // Schluesselereignis: erfolgreich abgesendete Anfrage (Kontakt, Kabine, Charter, ...)
     if (res.ok) trackEvent('generate_lead', { form_name: formName })

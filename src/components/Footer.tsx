@@ -1,6 +1,7 @@
 import { Link } from '../router'
 import { FacebookIcon, InstagramIcon, YouTubeIcon, LinkedInIcon, XingIcon } from './Icons'
 import { useLang } from '../i18n'
+import { openCookieSettings } from '../consent'
 
 const colsEn = [
   {
@@ -183,7 +184,18 @@ export default function Footer() {
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '1.75rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <Link to={lang === 'en' ? '/en' : '/'}><img src={lang === 'en' ? '/logo-en.webp' : '/logo.webp'} width={lang === 'en' ? 490 : 481} height={136} loading="lazy" alt={lang === 'en' ? 'Yacht-Holiday' : 'Yacht-Urlaub'} style={{ height: '32px', width: 'auto', filter: 'brightness(0) invert(1) opacity(0.7)' }} /></Link>
-            <p style={{ fontSize: '0.78rem' }}>© YACHT-URLAUB Ing. Manuel Göschl, MBA</p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', flexWrap: 'wrap' }}>
+              <p style={{ fontSize: '0.78rem' }}>© YACHT-URLAUB Ing. Manuel Göschl, MBA</p>
+              <button
+                type="button"
+                onClick={openCookieSettings}
+                style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', fontFamily: 'inherit', fontSize: '0.78rem', color: 'rgba(255,255,255,0.65)', textDecoration: 'underline', transition: 'color 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.65)')}
+              >
+                {lang === 'en' ? 'Cookie settings' : 'Cookie-Einstellungen'}
+              </button>
+            </div>
           </div>
 
           <div style={{ display: 'flex', gap: '0.75rem' }}>
