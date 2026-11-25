@@ -135,6 +135,9 @@ async function main() {
     // im Snapshot soll keine eingefrorene Zahl stehen, die fuer Crawler ohne JS
     // veraltet waere.
     await page.addInitScript(() => { window.__PRERENDER__ = true })
+    // Der Google-Tag steht fest in index.html; beim Rendern soll er keine Treffer
+    // senden (Statistik) und nichts nachladen.
+    await page.route(/googletagmanager\.com|google-analytics\.com|analytics\.google\.com|doubleclick\.net/, r => r.abort())
     await page.goto(`http://${host}:${PORT}${urlPath}`, { waitUntil: 'load', timeout: 20000 })
     await page.waitForTimeout(700)
     let html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML)

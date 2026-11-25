@@ -47,6 +47,9 @@ function snapshotFile(host, urlPath) {
 // Nur das behalten, was sich bei einer echten Inhaltsaenderung aendert.
 function normalise(html) {
   return html
+    // Google-Tag-Block aus index.html steht in jedem Snapshot, ist aber kein Seiteninhalt
+    .replace(/<script\b[^>]*data-yu="ga"[^>]*>[\s\S]*?<\/script>/g, '')
+    .replace(/<!-- Google-Tag \(GA4\)[\s\S]*?-->/g, '')
     .replace(/<script\b[^>]*\bsrc=[^>]*>\s*<\/script>/g, '') // gebundelte JS-Chunks (Hash im Dateinamen)
     .replace(/<link\b[^>]*>/g, m => (/rel="(canonical|alternate)"/.test(m) ? m : '')) // preload/stylesheet raus, canonical/hreflang bleiben
     .replace(/<style\b[\s\S]*?<\/style>/g, '')

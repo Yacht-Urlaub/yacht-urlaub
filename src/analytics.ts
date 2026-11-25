@@ -1,35 +1,36 @@
 /**
  * Google Analytics 4 + Google Ads (Conversions per GA4-Import) mit
- * Consent Mode v2 ("Basic"-Variante). Doku: docs/analytics.md
+ * Consent Mode v2 ("Advanced"). Doku: docs/analytics.md
  *
- * - Ohne Einwilligung wird gtag.js gar nicht erst geladen: kein Request an
- *   Google, keine Cookies, keine Messung. Der Consent-Default steht trotzdem
- *   auf "denied" (alle vier v2-Signale), falls das Skript vor dem Update
- *   geladen wird.
- * - "Alle akzeptieren" im CookieBanner -> enableAnalytics(): Skript laden und
- *   alle vier Signale (analytics_storage, ad_storage, ad_user_data,
- *   ad_personalization) auf "granted" setzen. "Nur notwendige" laesst alles
- *   auf "denied".
- * - Gespeicherte Einwilligung wird beim naechsten Besuch sofort wieder
- *   angewendet (initAnalytics).
+ * - Der Google-Tag steht fest im <head> von index.html (Pruefer von Search
+ *   Console/Ads finden ihn dort) und laedt auf jeder Seite. Alle vier
+ *   v2-Signale (analytics_storage, ad_storage, ad_user_data,
+ *   ad_personalization) starten auf "denied". Ohne Einwilligung setzt der Tag
+ *   keine Cookies und sendet nur cookielose Signale, aus denen Google
+ *   Conversions/Verhalten modelliert.
+ * - "Alle akzeptieren" im CookieBanner -> enableAnalytics(): alle vier Signale
+ *   auf "granted". "Nur notwendige" laesst alles auf "denied" (die cookielosen
+ *   Signale laufen weiter).
+ * - Gespeicherte Einwilligung wird beim naechsten Besuch schon in index.html
+ *   vor dem ersten Treffer angewendet (initAnalytics wiederholt das nur).
  * - Widerruf (Footer-Link "Cookie-Einstellungen" -> Banner -> "Nur
- *   notwendige"): disableAnalytics() setzt alle Signale auf "denied", stoppt
- *   die Messung und loescht die Google-Cookies.
+ *   notwendige"): disableAnalytics() setzt alle Signale auf "denied" und
+ *   loescht die Google-Cookies.
  * - Dieselbe Mess-ID fuer beide Domains; GA4 trennt sie ueber den Hostnamen.
  * - Seitenaufrufe sendet die SPA selbst (send_page_view: false; SEO.tsx ruft
  *   trackPageView bei jedem Seitenwechsel), sonst wuerde nur der erste Aufruf
- *   gezaehlt.
+ *   gezaehlt. Nach "Alle akzeptieren" wird fuer GA4 KEIN zweiter page_view
+ *   gesendet: die Seite ist schon als Treffer gezaehlt, ein zweiter waere
+ *   doppelt.
  * - Debug: ?ga_debug=1 an die URL haengen -> Ereignisse erscheinen im
- *   GA4-DebugView (nur mit Einwilligung).
+ *   GA4-DebugView.
  * - Meta-Pixel (src/metaPixel.ts) haengt an denselben Stellen: init/enable/
  *   disable laufen mit, trackEvent/trackPageView senden das Meta-Gegenstueck
- *   (Lead, Contact, InitiateCheckout, PageView). Gleiche Einwilligung, aber
- *   unabhaengig von gtag: ein Werbeblocker gegen Google stoppt Meta nicht.
+ *   (Lead, Contact, InitiateCheckout, PageView). Anders als Google laedt der
+ *   Meta-Pixel strikt nur nach Einwilligung.
  */
 import { getConsent } from './consent'
 import { initMetaPixel, enableMetaPixel, disableMetaPixel, trackMetaEvent, trackMetaPageView } from './metaPixel'
-
-export const GA_ID = 'G-CRH1CYGY1C'
 
 type GtagArgs = unknown[]
 declare global {
@@ -53,54 +54,25 @@ const GRANTED = {
   ad_personalization: 'granted',
 } as const
 
-let scriptLoaded = false
-// true = Einwilligung liegt vor, Ereignisse duerfen gesendet werden
-let active = false
-
-function ensureGtag() {
-  window.dataLayer = window.dataLayer || []
-  if (!window.gtag) {
-    // gtag.js erwartet echte `arguments`-Objekte im dataLayer, keine Arrays.
-    window.gtag = function () {
-      // eslint-disable-next-line prefer-rest-params
-      window.dataLayer!.push(arguments as unknown as GtagArgs)
-    }
-    window.gtag('consent', 'default', { ...DENIED, wait_for_update: 500 })
-  }
+// Der Tag kommt aus index.html; im Prerender und ohne Tag (z. B. Skript
+// blockiert) wird nichts gesendet.
+function gtagReady(): boolean {
+  return typeof window !== 'undefined' && !window.__PRERENDER__ && typeof window.gtag === 'function'
 }
 
-function setDisabledFlag(disabled: boolean) {
-  ;(window as unknown as Record<string, boolean>)[`ga-disable-${GA_ID}`] = disabled
-}
-
-function load() {
-  if (typeof window === 'undefined' || window.__PRERENDER__) return
-  ensureGtag()
-  setDisabledFlag(false)
-  if (!scriptLoaded) {
-    scriptLoaded = true
-    const s = document.createElement('script')
-    s.async = true
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`
-    document.head.appendChild(s)
-    window.gtag!('js', new Date())
-    const debug = /[?&]ga_debug=1\b/.test(window.location.search)
-    window.gtag!('config', GA_ID, { send_page_view: false, ...(debug ? { debug_mode: true } : {}) })
-  }
-  window.gtag!('consent', 'update', GRANTED)
-  active = true
-}
-
-/** Beim App-Start: nur laden, wenn schon frueher zugestimmt wurde. */
+/** Beim App-Start: fruehere Zustimmung (nochmal) anwenden. */
 export function initAnalytics() {
-  if (getConsent() === 'accepted') { load(); initMetaPixel() }
+  if (getConsent() === 'accepted') {
+    if (gtagReady()) window.gtag!('consent', 'update', GRANTED)
+    initMetaPixel()
+  }
 }
 
-/** Direkt nach "Alle akzeptieren": laden und die aktuelle Seite nachmelden. */
+/** Direkt nach "Alle akzeptieren". */
 export function enableAnalytics() {
-  load()
+  if (gtagReady()) window.gtag!('consent', 'update', GRANTED)
   enableMetaPixel()
-  trackPageView(document.title)
+  trackMetaPageView() // Meta laedt erst jetzt; der GA4-Treffer der Seite ist schon gezaehlt
 }
 
 // Google-Cookies (GA4, Ads/Conversion-Linker) beim Widerruf entfernen.
@@ -117,22 +89,18 @@ function deleteGoogleCookies() {
   }
 }
 
-/** Widerruf ("Nur notwendige"): Signale auf denied, Messung aus, Cookies weg. */
+/** Widerruf ("Nur notwendige"): Signale auf denied, Cookies weg. */
 export function disableAnalytics() {
   if (typeof window === 'undefined') return
   disableMetaPixel()
-  active = false
-  if (scriptLoaded && window.gtag) {
-    window.gtag('consent', 'update', DENIED)
-    setDisabledFlag(true)
-  }
+  if (gtagReady()) window.gtag!('consent', 'update', DENIED)
   deleteGoogleCookies()
 }
 
 export function trackEvent(name: string, params: Record<string, unknown> = {}) {
   trackMetaEvent(name, params) // no-op ohne Einwilligung bzw. ohne Meta-Gegenstueck
-  if (!active || !window.gtag) return
-  window.gtag('event', name, params)
+  if (!gtagReady()) return
+  window.gtag!('event', name, params)
 }
 
 /**

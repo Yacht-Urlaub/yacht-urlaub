@@ -30,7 +30,7 @@ const dse = {
 
     hAds_: '5. Google Ads (Conversion-Tracking und Remarketing)',
     pAdsA: 'Mit Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, über den Cookie-Banner) nutzen wir Google Ads der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. Wir verwenden Conversion-Tracking, um zu messen, ob Anzeigen zu Anfragen, Kontaktaufnahmen (Telefon, WhatsApp, E-Mail) oder Buchungsvorgängen auf unserer Website führen, und Remarketing, um Besuchern unserer Website auf anderen Seiten und Diensten von Google passende Werbung anzuzeigen.',
-    pAdsB: 'Dafür werden Cookies bzw. ähnliche Technologien eingesetzt und Informationen über Ihre Nutzung der Website (z. B. aufgerufene Seiten, Kontakt-Ereignisse, Gerätekennungen, gekürzte IP-Adresse) an Google übermittelt; eine Übermittlung in die USA ist dabei nicht ausgeschlossen. Die Daten werden mit Ihrem Google-Konto verknüpft, sofern Sie dort personalisierte Werbung erlaubt haben. Ohne Ihre Einwilligung werden die Google-Dienste nicht geladen.',
+    pAdsB: 'Dafür werden Cookies bzw. ähnliche Technologien eingesetzt und Informationen über Ihre Nutzung der Website (z. B. aufgerufene Seiten, Kontakt-Ereignisse, Gerätekennungen, gekürzte IP-Adresse) an Google übermittelt; eine Übermittlung in die USA ist dabei nicht ausgeschlossen. Die Daten werden mit Ihrem Google-Konto verknüpft, sofern Sie dort personalisierte Werbung erlaubt haben.',
     pAdsC: 'Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen: über den Link „Cookie-Einstellungen“ im Footer dieser Website (Auswahl „Nur notwendige“). Personalisierte Werbung können Sie zusätzlich in Ihren Google-Einstellungen deaktivieren:',
     pAdsLink: 'Google-Anzeigeneinstellungen',
 
@@ -110,7 +110,7 @@ const dse = {
 
     hAds_: '5. Google Ads (conversion tracking and remarketing)',
     pAdsA: 'With your consent (Art. 6(1)(a) GDPR, given via the cookie banner) we use Google Ads, provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. We use conversion tracking to measure whether ads lead to enquiries, contacts (phone, WhatsApp, e-mail) or booking processes on our website, and remarketing to show visitors to our website suitable advertising on other sites and Google services.',
-    pAdsB: 'For this purpose cookies or similar technologies are used and information about your use of the website (e.g. pages viewed, contact events, device identifiers, truncated IP address) is transmitted to Google; a transfer to the USA cannot be ruled out. The data is linked to your Google account if you have allowed personalised advertising there. Without your consent the Google services are not loaded.',
+    pAdsB: 'For this purpose cookies or similar technologies are used and information about your use of the website (e.g. pages viewed, contact events, device identifiers, truncated IP address) is transmitted to Google; a transfer to the USA cannot be ruled out. The data is linked to your Google account if you have allowed personalised advertising there.',
     pAdsC: 'You can withdraw your consent at any time with effect for the future: via the “Cookie settings” link in the footer of this website (choose “Essential only”). You can additionally switch off personalised advertising in your Google settings:',
     pAdsLink: 'Google ad settings',
 

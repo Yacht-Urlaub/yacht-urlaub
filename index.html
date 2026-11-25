@@ -26,6 +26,31 @@
          alle Unterseiten zusaetzlich von scripts/prerender.cjs als
          statisches HTML eingefroren (public/<pfad>/index.html). -->
 
+    <!-- Google-Tag (GA4), Consent Mode v2 "Advanced": Erklaerung in docs/analytics.md und src/analytics.ts -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CRH1CYGY1C" data-yu="ga"></script>
+    <script data-yu="ga">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { window.dataLayer.push(arguments); }
+      gtag('consent', 'default', {
+        analytics_storage: 'denied', ad_storage: 'denied',
+        ad_user_data: 'denied', ad_personalization: 'denied', wait_for_update: 500
+      });
+      gtag('set', 'ads_data_redaction', true);
+      try {
+        if (localStorage.getItem('yu_cookie_consent') === 'accepted') {
+          gtag('consent', 'update', {
+            analytics_storage: 'granted', ad_storage: 'granted',
+            ad_user_data: 'granted', ad_personalization: 'granted'
+          });
+        }
+      } catch (e) { /* localStorage gesperrt: bleibt bei denied */ }
+      gtag('js', new Date());
+      gtag('config', 'G-CRH1CYGY1C', {
+        send_page_view: false,
+        debug_mode: /[?&]ga_debug=1\b/.test(location.search) || undefined
+      });
+    </script>
+
     <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   </head>
   <body>
