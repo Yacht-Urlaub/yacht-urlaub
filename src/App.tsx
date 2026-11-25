@@ -29,7 +29,6 @@ const DatenschutzPage = lazy(() => import('./pages/DatenschutzPage'))
 const AgbPage = lazy(() => import('./pages/AgbPage'))
 const ToernsPage = lazy(() => import('./pages/ToernsPage'))
 const ToernDetailPage = lazy(() => import('./pages/ToernDetailPage'))
-const NewsPage = lazy(() => import('./pages/NewsPage'))
 const NewsCharterModelle2027Page = lazy(() => import('./pages/NewsCharterModelle2027Page'))
 const NewsSailIntoTheSeasons2026Page = lazy(() => import('./pages/NewsSailIntoTheSeasons2026Page'))
 const BuchenPage = lazy(() => import('./pages/BuchenPage'))
@@ -132,7 +131,6 @@ function AnimatedRoutes() {
           <Route path="/charter" element={<CharterPage />} />
           <Route path="/toerns" element={<ToernsPage />} />
           <Route path="/toerns/:id" element={<ToernDetailPage />} />
-          <Route path="/news" element={<NewsPage />} />
           <Route path="/news/charter-modelle-2027" element={<NewsCharterModelle2027Page />} />
           <Route path="/news/sail-into-the-seasons-2026" element={<NewsSailIntoTheSeasons2026Page />} />
           <Route path="/buchen" element={<BuchenPage />} />

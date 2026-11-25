@@ -19,7 +19,18 @@ type Offer = {
 // richtet sich nur an den deutschsprachigen Markt (Event in Wien) — deshalb
 // nur in offersDe, kein Pendant in offersEn. Es fand am 14.11.2026 statt;
 // die Karte verlinkt jetzt auf den Rueckblick /news/sail-into-the-seasons-2026.
+// Reihenfolge: Black-Friday-Karte (solange aktiv) ganz links, dann Porto Heli
+// in der Mitte, danach die Charter-Modelle. Porto Heli gibt es vorerst nur auf
+// Englisch (Deutsch folgt, siehe offersDe).
 const offersEn: Offer[] = [
+  {
+    img: '/images/news/porto-heli.webp',
+    tag: 'New 2027',
+    title: 'SAILING FROM PORTO HELI: THE PELOPONNESE BY CATAMARAN',
+    text: 'Friday-to-Friday weeks on brand-new Lagoon catamarans with skipper, from Nafplio to Monemvasia. Pick your week and see the price straight away.',
+    cta: 'Dates & prices',
+    href: '/en/destinations/porto-heli',
+  },
   {
     img: '/images/news/charter-modelle-2027.webp',
     tag: 'New 2027',
@@ -73,7 +84,6 @@ export default function News() {
             </p>
             <h2 className="section-title">{lang === 'en' ? 'News & offers' : 'Top-News & Angebote'}</h2>
           </div>
-          <Link to="/news" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{lang === 'en' ? 'All offers →' : 'Alle Angebote →'}</Link>
         </motion.div>
 
         <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(offers.length + (bf ? 1 : 0), 3)}, 1fr)`, gap: '2rem' }}>
