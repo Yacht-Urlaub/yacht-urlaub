@@ -40,10 +40,10 @@ Seit PR „Consent Mode Advanced“ steht der Google-Tag fest im `<head>` von
   modelliert Google Conversions und Verhalten für Nutzer, die ablehnen
   (Mindestmengen laut Google beachten, sonst keine Modellierung). Es entstehen
   keine Cookies.
-- **Datenschutz:** Die Datenschutzerklärung beschreibt diese Signale vor der
-  Einwilligung (Stand dieser Doku) **nicht**; der Satz „Ohne Ihre Einwilligung
-  werden die Google-Dienste nicht geladen“ stimmt mit Advanced nicht mehr.
-  Rechtlich zu klären, bevor das live bleibt.
+- **Datenschutz:** Die Datenschutzerklärung beschreibt die Signale vor der
+  Einwilligung bewusst **nicht** (Entscheidung des Betreibers). Der frühere
+  Satz „Ohne Ihre Einwilligung werden die Google-Dienste nicht geladen“ wurde
+  entfernt, weil er mit Advanced nicht mehr stimmt. Rechtlich nicht geklärt.
 - **Widerruf:** Footer-Link „Cookie-Einstellungen“ / „Cookie settings“ öffnet
   den Banner erneut. „Nur notwendige“ setzt alle vier Signale auf `denied` und
   löscht die Google-Cookies (`_ga*`, `_gid`, `_gcl_*`, `_gac_*`). Die
