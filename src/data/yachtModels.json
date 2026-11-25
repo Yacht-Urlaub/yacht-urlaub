@@ -14,13 +14,13 @@
   "videos": [
    {
     "id": "BGjRWOFcMzc",
-    "title": "Die Lagoon 38 im Rundgang",
-    "by": "Walkthrough von Lagoon"
+    "title": "Rundgang: Lagoon 38",
+    "by": "Offizielles Video von Lagoon Catamarans"
    },
    {
-    "id": "_Lei89OMjq4",
-    "title": "Rundgang auf Deutsch",
-    "by": "Erstvorstellung in Bordeaux"
+    "id": "h62qR_y1Hwk",
+    "title": "Lagoon 38 – Offizielles Video",
+    "by": "Offizielles Video von Lagoon Catamarans"
    }
   ],
   "key": [
@@ -166,7 +166,9 @@
   "reviere": [],
   "reviereText": "",
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/lagoon-38.jpg",
+  "card": "/images/yachtmodelle/lagoon-38-card.jpg"
  },
  {
   "id": "lagoon-42",
@@ -188,14 +190,14 @@
   "tagline": "Der beliebteste Charter-Katamaran der Welt: viel Platz für Familie und Freunde, ruhig vor Anker und mit einem Bad für jede Kabine.",
   "videos": [
    {
-    "id": "6JOLPOTUAeA",
-    "title": "Die Lagoon 42 im Film",
-    "by": "Offizielles Video von Lagoon"
+    "id": "wjtDFq0-4KA",
+    "title": "Lagoon 42 – Offizielles Video",
+    "by": "Offizielles Video von Lagoon Catamarans"
    },
    {
-    "id": "SPXANr5RAZI",
-    "title": "Rundgang durch eine Lagoon 42",
-    "by": "Rundgang innen und außen"
+    "id": "-RKQ-A8ivdI",
+    "title": "Lagoon 42 in Fahrt",
+    "by": "Offizielles Video von Lagoon Catamarans"
    }
   ],
   "key": [
@@ -351,7 +353,9 @@
    ]
   ],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/lagoon-42.jpg",
+  "card": "/images/yachtmodelle/lagoon-42-card.jpg"
  },
  {
   "id": "lagoon-43",
@@ -367,14 +371,14 @@
   "tagline": "Die Nachfolgerin des Bestsellers: größere Kabinen, breitere Betten und ein Tisch, an dem bis zu zwölf Gäste gemeinsam essen.",
   "videos": [
    {
-    "id": "W6nq3XWQcsM",
-    "title": "Die Lagoon 43 im Rundgang",
-    "by": "Ausführlicher Walkthrough"
+    "id": "G0BCJXjmy2Q",
+    "title": "Rundgang: Lagoon 43",
+    "by": "Offizielles Video von Lagoon Catamarans"
    },
    {
-    "id": "djrIjSarfls",
-    "title": "Eine Lagoon 43 aus der Charterflotte",
-    "by": "Charteryacht in Trogir, Kroatien"
+    "id": "fy0xWivsaCk",
+    "title": "Lagoon 43 – Offizielles Video",
+    "by": "Offizielles Video von Lagoon Catamarans"
    }
   ],
   "key": [
@@ -534,7 +538,9 @@
   "reviere": [],
   "reviereText": "",
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/lagoon-43.jpg",
+  "card": "/images/yachtmodelle/lagoon-43-card.jpg"
  },
  {
   "id": "lagoon-46",
@@ -550,9 +556,14 @@
   "tagline": "Der meistverkaufte Katamaran seiner Größe: großzügig, hell und mit einer Lounge auf dem Vordeck.",
   "videos": [
    {
-    "id": "XE4DJoPakBo",
-    "title": "Die Lagoon 46 im Rundgang",
-    "by": "Walkthrough mit 45 Degrees Sailing"
+    "id": "PUwrEW22lME",
+    "title": "Rundgang: Lagoon 46",
+    "by": "Offizielles Video von Lagoon Catamarans"
+   },
+   {
+    "id": "kUwL1QaDmTk",
+    "title": "Lagoon 46 in Fahrt",
+    "by": "Offizielles Video von Lagoon Catamarans"
    }
   ],
   "key": [
@@ -693,7 +704,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/lagoon-46.jpg",
+  "card": "/images/yachtmodelle/lagoon-46-card.jpg"
  },
  {
   "id": "lagoon-47",
@@ -710,13 +723,13 @@
   "videos": [
    {
     "id": "3TVWXZW1XuU",
-    "title": "Die neue Lagoon 47",
-    "by": "Offizieller Teaser von Lagoon"
+    "title": "Lagoon 47 – Offizielles Video",
+    "by": "Offizielles Video von Lagoon Catamarans"
    },
    {
-    "id": "2lPauRTRBUc",
-    "title": "Rundgang auf Deutsch",
-    "by": "Walkthrough von der Weltpremiere in Cannes"
+    "id": "dk5MVnook7M",
+    "title": "Lagoon 47 in Fahrt",
+    "by": "Offizielles Video von Lagoon Catamarans"
    }
   ],
   "key": [
@@ -884,7 +897,9 @@
   ],
   "images": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/lagoon-47.jpg",
+  "card": "/images/yachtmodelle/lagoon-47-card.jpg"
  },
  {
   "id": "lagoon-51",
@@ -901,13 +916,13 @@
   "videos": [
    {
     "id": "aavHEzE1FkQ",
-    "title": "Die Lagoon 51 in Kroatien",
-    "by": "Offizielles Video von Lagoon"
+    "title": "Lagoon 51 – Offizielles Video",
+    "by": "Offizielles Video von Lagoon Catamarans"
    },
    {
-    "id": "IeHK6R-Erb4",
-    "title": "Rundgang Lagoon 51 Iconic",
-    "by": "Gefilmt in Cannes 2025"
+    "id": "q9RCW6XdoPY",
+    "title": "Rundgang: Lagoon 51",
+    "by": "Offizielles Video von Lagoon Catamarans"
    }
   ],
   "key": [
@@ -1062,7 +1077,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/lagoon-51.jpg",
+  "card": "/images/yachtmodelle/lagoon-51-card.jpg"
  },
  {
   "id": "lagoon-55",
@@ -1078,9 +1095,14 @@
   "tagline": "Eine Terrasse auf dem Wasser: 25 m² Cockpit, Betten mit Blick nach draußen und bis zu sechs gleich große Kabinen.",
   "videos": [
    {
-    "id": "qMOSWlxcQuQ",
-    "title": "Rundgang Lagoon 55",
-    "by": "Gefilmt in Cannes 2025"
+    "id": "JISlC7Qwcz0",
+    "title": "Rundgang: Lagoon 55",
+    "by": "Offizielles Video von Lagoon Catamarans"
+   },
+   {
+    "id": "nThWIVsBJWI",
+    "title": "Lagoon 55 – Offizielles Video",
+    "by": "Offizielles Video von Lagoon Catamarans"
    }
   ],
   "key": [
@@ -1228,7 +1250,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/lagoon-55.jpg",
+  "card": "/images/yachtmodelle/lagoon-55-card.jpg"
  },
  {
   "id": "bali-catsmart",
@@ -1242,8 +1266,13 @@
   "videos": [
    {
     "id": "mK-5CD7_rHU",
-    "title": "Die Bali Catsmart im Rundgang",
-    "by": "Walkthrough von Bali Catamarans"
+    "title": "Rundgang: Bali Catsmart",
+    "by": "Offizielles Video von Bali Catamarans"
+   },
+   {
+    "id": "jxIy1g_f968",
+    "title": "Bali Catsmart – Offizielles Video",
+    "by": "Offizielles Video von Bali Catamarans"
    }
   ],
   "key": [
@@ -1384,7 +1413,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bali-catsmart.jpg",
+  "card": "/images/yachtmodelle/bali-catsmart-card.jpg"
  },
  {
   "id": "bali-catspace",
@@ -1397,9 +1428,14 @@
   "tagline": "Viel Raum auf 40 Fuß: offener Wohnbereich, Flybridge mit Bimini und eine Küche, die mit Salon und Cockpit verbunden ist.",
   "videos": [
    {
-    "id": "hfwSraJYVOE",
-    "title": "Die Bali Catspace im Rundgang",
-    "by": "Walkthrough von Bali Catamarans"
+    "id": "AonSJjNXl-I",
+    "title": "Rundgang: Bali Catspace",
+    "by": "Offizielles Video von Bali Catamarans"
+   },
+   {
+    "id": "F52VMi71cP8",
+    "title": "Bali Catspace – Offizielles Video",
+    "by": "Offizielles Video von Bali Catamarans"
    }
   ],
   "key": [
@@ -1533,7 +1569,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bali-catspace.jpg",
+  "card": "/images/yachtmodelle/bali-catspace-card.jpg"
  },
  {
   "id": "bali-4-2",
@@ -1547,8 +1585,13 @@
   "videos": [
    {
     "id": "q4d_q-YWx4U",
-    "title": "Die Bali 4.2 im Rundgang",
-    "by": "Walkthrough von Bali Catamarans"
+    "title": "Rundgang: Bali 4.2",
+    "by": "Offizielles Video von Bali Catamarans"
+   },
+   {
+    "id": "0MYw32zHC70",
+    "title": "Bali 4.2 – Offizielles Video",
+    "by": "Offizielles Video von Bali Catamarans"
    }
   ],
   "key": [
@@ -1696,7 +1739,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bali-4-2.jpg",
+  "card": "/images/yachtmodelle/bali-4-2-card.jpg"
  },
  {
   "id": "bali-4-3",
@@ -1710,7 +1755,18 @@
   ],
   "src": "https://www.bali-catamarans.com/en/catamarans/bali-4-3",
   "tagline": "Die neue Bali-Generation: Rooftop in drei Zonen, Bali-Tür zum Cockpit und viel Solarstrom für ruhige Tage vor Anker.",
-  "videos": [],
+  "videos": [
+   {
+    "id": "LWrlA5WhsQk",
+    "title": "Rundgang: Bali 4.3",
+    "by": "Offizielles Video von Bali Catamarans"
+   },
+   {
+    "id": "ifaczL4yWtE",
+    "title": "Bali 4.3 – Offizielles Video",
+    "by": "Offizielles Video von Bali Catamarans"
+   }
+  ],
   "key": [
    [
     "14 m",
@@ -1840,7 +1896,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bali-4-3.jpg",
+  "card": "/images/yachtmodelle/bali-4-3-card.jpg"
  },
  {
   "id": "bali-4-4",
@@ -1853,9 +1911,14 @@
   "tagline": "Open Space für bis zu 15 Personen: eine große Flybridge, eine XXL-Eignerkabine und ein Bad für jede Kabine.",
   "videos": [
    {
-    "id": "V0zOAzhM8yY",
-    "title": "Die Bali 4.4 im Rundgang",
-    "by": "Bootstour"
+    "id": "mvt_5xIvaVQ",
+    "title": "Rundgang: Bali 4.4",
+    "by": "Offizielles Video von Bali Catamarans"
+   },
+   {
+    "id": "utLQopWrxww",
+    "title": "Bali 4.4 – Offizielles Video",
+    "by": "Offizielles Video von Bali Catamarans"
    }
   ],
   "key": [
@@ -1988,7 +2051,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bali-4-4.jpg",
+  "card": "/images/yachtmodelle/bali-4-4-card.jpg"
  },
  {
   "id": "bali-4-6",
@@ -2002,8 +2067,13 @@
   "videos": [
    {
     "id": "it3N6q-2gpE",
-    "title": "Die Bali 4.6 im Rundgang",
-    "by": "Walkthrough von Bali Catamarans"
+    "title": "Rundgang: Bali 4.6",
+    "by": "Offizielles Video von Bali Catamarans"
+   },
+   {
+    "id": "5XvAba51UKM",
+    "title": "Bali 4.6 – Offizielles Video",
+    "by": "Offizielles Video von Bali Catamarans"
    }
   ],
   "key": [
@@ -2147,7 +2217,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bali-4-6.jpg",
+  "card": "/images/yachtmodelle/bali-4-6-card.jpg"
  },
  {
   "id": "bali-5-2",
@@ -2163,9 +2235,14 @@
   "tagline": "Mit Beach Club am Heck: eine hydraulische Plattform zum Baden, ein Tisch für zwölf und bis zu sechs Kabinen.",
   "videos": [
    {
-    "id": "Qy42UngHdns",
-    "title": "Die Bali 5.2 im Rundgang",
-    "by": "Weltpremiere in Cannes"
+    "id": "pgAa4clDdLA",
+    "title": "Bali 5.2 – Offizielles Video",
+    "by": "Offizielles Video von Bali Catamarans"
+   },
+   {
+    "id": "j6DHpqk_UvA",
+    "title": "Bali 5.2 – Offizielles Video (2)",
+    "by": "Offizielles Video von Bali Catamarans"
    }
   ],
   "key": [
@@ -2311,7 +2388,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bali-5-2.jpg",
+  "card": "/images/yachtmodelle/bali-5-2-card.jpg"
  },
  {
   "id": "bali-5-8",
@@ -2328,8 +2407,13 @@
   "videos": [
    {
     "id": "h4vs1McWlDo",
-    "title": "Die Bali 5.8",
-    "by": "Video von Bali Catamarans"
+    "title": "Bali 5.8 – Offizielles Video",
+    "by": "Offizielles Video von Bali Catamarans"
+   },
+   {
+    "id": "gwnnGBLP1lE",
+    "title": "Rundgang: Bali 5.8",
+    "by": "Offizielles Video von Bali Catamarans"
    }
   ],
   "key": [
@@ -2472,7 +2556,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bali-5-8.jpg",
+  "card": "/images/yachtmodelle/bali-5-8-card.jpg"
  },
  {
   "id": "bali-4-8",
@@ -2486,22 +2572,16 @@
   "videos": [
    {
     "id": "gJPzbf8JKoo",
-    "title": "Die Bali 4.8 im Rundgang",
-    "by": "Walkthrough von Bali Catamarans"
+    "title": "Rundgang: Bali 4.8",
+    "by": "Offizielles Video von Bali Catamarans"
    },
    {
-    "id": "_7CcXodRRJs",
-    "title": "Eine Bali 4.8 aus der Charterflotte",
-    "by": "Rundgang in der Karibik (BVI)"
+    "id": "CtPPOkIMwgw",
+    "title": "Bali 4.8 – Offizielles Video",
+    "by": "Offizielles Video von Bali Catamarans"
    }
   ],
-  "tours": [
-   {
-    "id": "FeqDZwFvP2g",
-    "title": "Bali 4.8 „Kalypso“",
-    "by": "Ionian Charter, Griechenland"
-   }
-  ],
+  "tours": [],
   "key": [
    [
     "14,9 m",
@@ -2667,7 +2747,9 @@
   ],
   "badges": [],
   "images": [],
-  "extras": []
+  "extras": [],
+  "poster": "/images/yachtmodelle/bali-4-8.jpg",
+  "card": "/images/yachtmodelle/bali-4-8-card.jpg"
  },
  {
   "id": "sun-odyssey-380",
@@ -2680,14 +2762,14 @@
   "tagline": "Einfach segeln, entspannt wohnen: zwei Steuerräder, sichere Laufdecks und ein helles Inneres für zwei bis drei Paare.",
   "videos": [
    {
-    "id": "tkIEkJOA2b8",
-    "title": "Die Sun Odyssey 380 im Rundgang",
-    "by": "Mit dem Jeanneau-Team"
+    "id": "6T2_TY4DF3o",
+    "title": "Rundgang: Sun Odyssey 380",
+    "by": "Offizielles Video von Jeanneau"
    },
    {
-    "id": "J-vtLuCgOA0",
-    "title": "Rundgang auf Deutsch",
-    "by": "Ausführliche Vorstellung"
+    "id": "c1dzlDOyBhA",
+    "title": "Sun Odyssey 380 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
    }
   ],
   "key": [
@@ -2805,7 +2887,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/sun-odyssey-380.jpg",
+  "card": "/images/yachtmodelle/sun-odyssey-380-card.jpg"
  },
  {
   "id": "sun-odyssey-385",
@@ -2822,7 +2906,12 @@
   "videos": [
    {
     "id": "TsagnLQ5L50",
-    "title": "Die neue Sun Odyssey 385",
+    "title": "Sun Odyssey 385 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
+   },
+   {
+    "id": "1XYHjiseflg",
+    "title": "Sun Odyssey 385 in Fahrt",
     "by": "Offizielles Video von Jeanneau"
    }
   ],
@@ -2951,7 +3040,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/sun-odyssey-385.jpg",
+  "card": "/images/yachtmodelle/sun-odyssey-385-card.jpg"
  },
  {
   "id": "sun-odyssey-410",
@@ -2964,9 +3055,14 @@
   "tagline": "Ein Cockpit, das vor Anker zur Lounge wird: komfortable 41-Fuß-Yacht mit hellem Salon und großem Wassertank.",
   "videos": [
    {
-    "id": "Ubn8frJRHmo",
-    "title": "Die Sun Odyssey 410 im Rundgang",
-    "by": "Version mit 3 Kabinen und 2 Bädern"
+    "id": "KC7XI1bgRtM",
+    "title": "Sun Odyssey 410 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
+   },
+   {
+    "id": "e4pfX9FRVfw",
+    "title": "Sun Odyssey 410 – Offizielles Video (2)",
+    "by": "Offizielles Video von Jeanneau"
    }
   ],
   "key": [
@@ -3099,7 +3195,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/sun-odyssey-410.jpg",
+  "card": "/images/yachtmodelle/sun-odyssey-410-card.jpg"
  },
  {
   "id": "sun-odyssey-415",
@@ -3116,8 +3214,13 @@
   "videos": [
    {
     "id": "9Beg5fe0hI4",
-    "title": "Die Sun Odyssey 415 im Rundgang",
-    "by": "Walkthrough von Jeanneau"
+    "title": "Rundgang: Sun Odyssey 415",
+    "by": "Offizielles Video von Jeanneau"
+   },
+   {
+    "id": "Uk5YUUu7jVA",
+    "title": "Sun Odyssey 415 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
    }
   ],
   "key": [
@@ -3249,7 +3352,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/sun-odyssey-415.jpg",
+  "card": "/images/yachtmodelle/sun-odyssey-415-card.jpg"
  },
  {
   "id": "sun-odyssey-455",
@@ -3266,14 +3371,14 @@
   "tagline": "Das neue Sun-Odyssey-Flaggschiff: Salon für zehn, riesige Badeplattform und bis zu vier Doppelkabinen mit eigenem Bad.",
   "videos": [
    {
-    "id": "EgXe4XR_gZ4",
-    "title": "Die Sun Odyssey 455 im Rundgang",
-    "by": "Walkthrough mit Jeanneau America"
+    "id": "lwlmcbnDvk0",
+    "title": "Rundgang: Sun Odyssey 455",
+    "by": "Offizielles Video von Jeanneau"
    },
    {
-    "id": "LOCtDIQfmxU",
-    "title": "Rundgang auf Deutsch",
-    "by": "Weltpremiere boot Düsseldorf 2026"
+    "id": "MGUPwAdHt34",
+    "title": "Sun Odyssey 455 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
    }
   ],
   "key": [
@@ -3409,7 +3514,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/sun-odyssey-455.jpg",
+  "card": "/images/yachtmodelle/sun-odyssey-455-card.jpg"
  },
  {
   "id": "sun-odyssey-490",
@@ -3422,9 +3529,9 @@
   "tagline": "Großzügig wohnen auf 49 Fuß: Eignersuite mit eigenem Bad, breite Badeplattform und bis zu fünf Kabinen.",
   "videos": [
    {
-    "id": "nkpExbeeEGk",
-    "title": "Die Sun Odyssey 490 im Rundgang",
-    "by": "Walkthrough"
+    "id": "8XPZxmV3yBY",
+    "title": "Sun Odyssey 490 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
    }
   ],
   "key": [
@@ -3567,7 +3674,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/sun-odyssey-490.jpg",
+  "card": "/images/yachtmodelle/sun-odyssey-490-card.jpg"
  },
  {
   "id": "sun-odyssey-440",
@@ -3583,14 +3692,9 @@
   "tagline": "Die Yacht mit den schrägen Laufdecks: sicher um die Steuerräder herum, großes Cockpit und bis zu vier Kabinen für zehn Personen.",
   "videos": [
    {
-    "id": "NBt-xPSmsSU",
-    "title": "Die Sun Odyssey 440 im Rundgang",
-    "by": "European Yacht of the Year"
-   },
-   {
-    "id": "ZuS1L11Tn4s",
-    "title": "Eine Sun Odyssey 440 aus der Charterflotte",
-    "by": "Check-in-Rundgang in Kroatien"
+    "id": "wjbb0DKKXus",
+    "title": "Sun Odyssey 440 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
    }
   ],
   "key": [
@@ -3733,7 +3837,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/sun-odyssey-440.jpg",
+  "card": "/images/yachtmodelle/sun-odyssey-440-card.jpg"
  },
  {
   "id": "jeanneau-yachts-55",
@@ -3750,8 +3856,13 @@
   "videos": [
    {
     "id": "3C9WOZi0QPI",
-    "title": "Die Jeanneau Yachts 55 im Rundgang",
-    "by": "Walkthrough von Jeanneau"
+    "title": "Rundgang: Jeanneau Yachts 55",
+    "by": "Offizielles Video von Jeanneau"
+   },
+   {
+    "id": "fBoAhX2vPuA",
+    "title": "Jeanneau Yachts 55 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
    }
   ],
   "key": [
@@ -3881,7 +3992,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/jeanneau-yachts-55.jpg",
+  "card": "/images/yachtmodelle/jeanneau-yachts-55-card.jpg"
  },
  {
   "id": "jeanneau-yachts-60",
@@ -3897,9 +4010,14 @@
   "tagline": "Große Rumpffenster mit Blick auf Meer und Himmel, eine Beibootgarage und bis zu 19 Raumaufteilungen.",
   "videos": [
    {
-    "id": "2_t2IoG4pME",
-    "title": "Die Jeanneau Yachts 60 im Rundgang",
-    "by": "Walkthrough von Jeanneau"
+    "id": "e81AhqkoukE",
+    "title": "Jeanneau Yachts 60 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
+   },
+   {
+    "id": "GzIGINAseMo",
+    "title": "Rundgang: Jeanneau Yachts 60",
+    "by": "Offizielles Video von Jeanneau"
    }
   ],
   "key": [
@@ -4028,7 +4146,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/jeanneau-yachts-60.jpg",
+  "card": "/images/yachtmodelle/jeanneau-yachts-60-card.jpg"
  },
  {
   "id": "jeanneau-yachts-65",
@@ -4044,9 +4164,14 @@
   "tagline": "Das Flaggschiff von Jeanneau: große Sonnenfläche im Cockpit, elektrische Badeplattform, Beibootgarage und 1.000 Liter Wasser.",
   "videos": [
    {
-    "id": "SQL2i4n9rsI",
-    "title": "Die Jeanneau Yachts 65 im Rundgang",
-    "by": "Walkthrough mit Jeanneau America"
+    "id": "6Gc4HiP4lfk",
+    "title": "Jeanneau Yachts 65 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
+   },
+   {
+    "id": "EW_tJX1C6kI",
+    "title": "Jeanneau Yachts 65 in Fahrt",
+    "by": "Offizielles Video von Jeanneau"
    }
   ],
   "key": [
@@ -4182,7 +4307,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/jeanneau-yachts-65.jpg",
+  "card": "/images/yachtmodelle/jeanneau-yachts-65-card.jpg"
  },
  {
   "id": "oceanis-42",
@@ -4198,9 +4325,9 @@
   "tagline": "Die neue Oceanis für die 40-Fuß-Klasse: fünf Raumaufteilungen, der größte Kühlschrank ihrer Klasse und ein Cockpit, das ins Meer übergeht.",
   "videos": [
    {
-    "id": "hb4rGQPA3ik",
-    "title": "Die neue Oceanis 42",
-    "by": "Vorstellung auf Deutsch"
+    "id": "YVUibbTIIYI",
+    "title": "Rundgang: Oceanis 42",
+    "by": "Offizielles Video von Beneteau"
    }
   ],
   "key": [
@@ -4357,7 +4484,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/oceanis-42.jpg",
+  "card": "/images/yachtmodelle/oceanis-42-card.jpg"
  },
  {
   "id": "oceanis-47",
@@ -4374,8 +4503,13 @@
   "videos": [
    {
     "id": "BwSIdbndjKQ",
-    "title": "Die Oceanis 47 im Rundgang",
-    "by": "Walkthrough von Beneteau"
+    "title": "Rundgang: Oceanis 47",
+    "by": "Offizielles Video von Beneteau"
+   },
+   {
+    "id": "3uKC3uv8URg",
+    "title": "Oceanis 47 – Offizielles Video",
+    "by": "Offizielles Video von Beneteau"
    }
   ],
   "key": [
@@ -4525,7 +4659,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/oceanis-47.jpg",
+  "card": "/images/yachtmodelle/oceanis-47-card.jpg"
  },
  {
   "id": "oceanis-52",
@@ -4541,9 +4677,14 @@
   "tagline": "Ein Cockpit mit Kühlschrank und Plancha, eine absenkbare Badeplattform und eine Charter-Version mit fünf Kabinen.",
   "videos": [
    {
-    "id": "YOHWjxUnSY4",
-    "title": "Die Oceanis 52 im Rundgang",
-    "by": "Walkthrough"
+    "id": "krXRDGIGdZ0",
+    "title": "Rundgang: Oceanis 52",
+    "by": "Offizielles Video von Beneteau"
+   },
+   {
+    "id": "vlzxpdEfENg",
+    "title": "Oceanis 52 – Offizielles Video",
+    "by": "Offizielles Video von Beneteau"
    }
   ],
   "key": [
@@ -4680,7 +4821,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/oceanis-52.jpg",
+  "card": "/images/yachtmodelle/oceanis-52-card.jpg"
  },
  {
   "id": "oceanis-yacht-54",
@@ -4696,9 +4839,14 @@
   "tagline": "Vier Sonnenflächen, eine Beibootgarage unter dem Cockpit und eine große Eignerkabine – Premium-Cruiser für drei Paare.",
   "videos": [
    {
-    "id": "uQxmSmC0FBk",
-    "title": "Die Oceanis Yacht 54 im Rundgang",
-    "by": "Walkthrough"
+    "id": "hYtuLCWC0WQ",
+    "title": "Rundgang: Oceanis Yacht 54",
+    "by": "Offizielles Video von Beneteau"
+   },
+   {
+    "id": "t9ODs93HEHU",
+    "title": "Oceanis Yacht 54 – Offizielles Video",
+    "by": "Offizielles Video von Beneteau"
    }
   ],
   "key": [
@@ -4835,7 +4983,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/oceanis-yacht-54.jpg",
+  "card": "/images/yachtmodelle/oceanis-yacht-54-card.jpg"
  },
  {
   "id": "first-44",
@@ -4849,8 +4999,13 @@
   "videos": [
    {
     "id": "4f-v_VjPBa4",
-    "title": "Die First 44 im Rundgang",
-    "by": "Walkthrough von Beneteau"
+    "title": "Rundgang: First 44",
+    "by": "Offizielles Video von Beneteau"
+   },
+   {
+    "id": "SBD4qLaqzpc",
+    "title": "First 44 – Offizielles Video",
+    "by": "Offizielles Video von Beneteau"
    }
   ],
   "key": [
@@ -4981,7 +5136,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/first-44.jpg",
+  "card": "/images/yachtmodelle/first-44-card.jpg"
  },
  {
   "id": "bavaria-c38",
@@ -4994,9 +5151,14 @@
   "tagline": "Ein Kingsize-Bett im Bug und viel Raum auf 38 Fuß: die kompakte C-Line-Yacht für zwei bis drei Paare.",
   "videos": [
    {
-    "id": "a-Co_0CTCBQ",
-    "title": "Eine Bavaria C38 aus der Charterflotte",
-    "by": "Rundgang mit Sail Ionian"
+    "id": "c8-RxNhzuco",
+    "title": "Rundgang: Bavaria C38",
+    "by": "Offizielles Video von BAVARIA YACHTS"
+   },
+   {
+    "id": "mC3DHw_mETk",
+    "title": "Bavaria C38 in Fahrt",
+    "by": "Offizielles Video von BAVARIA YACHTS"
    }
   ],
   "key": [
@@ -5129,7 +5291,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bavaria-c38.jpg",
+  "card": "/images/yachtmodelle/bavaria-c38-card.jpg"
  },
  {
   "id": "bavaria-c42",
@@ -5145,9 +5309,14 @@
   "tagline": "Kingsize-Bett, Spa-Bad mit separater Dusche und viel Licht: die preisgekrönte 42-Fuß-Yacht für drei Paare.",
   "videos": [
    {
-    "id": "asLYOtY3Hsw",
-    "title": "Eine Bavaria C42 im Rundgang",
-    "by": "Charteryacht-Walkthrough"
+    "id": "jbkGro_gRdI",
+    "title": "Rundgang: Bavaria C42",
+    "by": "Offizielles Video von BAVARIA YACHTS"
+   },
+   {
+    "id": "eOtCaE1uLFI",
+    "title": "Bavaria C42 – Offizielles Video",
+    "by": "Offizielles Video von BAVARIA YACHTS"
    }
   ],
   "key": [
@@ -5283,7 +5452,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bavaria-c42.jpg",
+  "card": "/images/yachtmodelle/bavaria-c42-card.jpg"
  },
  {
   "id": "bavaria-c46",
@@ -5299,9 +5470,14 @@
   "tagline": "Bis zu fünf Kabinen, auf Wunsch jede mit eigenem Bad: die preisgekrönte 46-Fuß-Yacht für Familien und Freunde.",
   "videos": [
    {
-    "id": "r-0kVNd_NOg",
-    "title": "Die Bavaria C46 im Rundgang",
-    "by": "Walkthrough in Cannes"
+    "id": "TziPzIhrcYU",
+    "title": "Bavaria C46 in Fahrt",
+    "by": "Offizielles Video von BAVARIA YACHTS"
+   },
+   {
+    "id": "n-OXNOFxYWQ",
+    "title": "Bavaria C46 – Offizielles Video",
+    "by": "Offizielles Video von BAVARIA YACHTS"
    }
   ],
   "key": [
@@ -5440,7 +5616,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bavaria-c46.jpg",
+  "card": "/images/yachtmodelle/bavaria-c46-card.jpg"
  },
  {
   "id": "bavaria-c50",
@@ -5453,9 +5631,14 @@
   "tagline": "Kingsize-Betten auch in den Gästekabinen, Liegeflächen an Deck und bis zu fünf Kabinen – viel Yacht für große Crews.",
   "videos": [
    {
-    "id": "j0SWTyimTto",
-    "title": "Eine Bavaria C50 im Rundgang",
-    "by": "Charteryacht-Walkthrough"
+    "id": "hFPYpreqcLc",
+    "title": "Bavaria C50 in Fahrt",
+    "by": "Offizielles Video von BAVARIA YACHTS"
+   },
+   {
+    "id": "DAAkTl8wmTA",
+    "title": "Bavaria C50 in Fahrt (2)",
+    "by": "Offizielles Video von BAVARIA YACHTS"
    }
   ],
   "key": [
@@ -5599,7 +5782,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bavaria-c50.jpg",
+  "card": "/images/yachtmodelle/bavaria-c50-card.jpg"
  },
  {
   "id": "bavaria-c57",
@@ -5615,9 +5800,14 @@
   "tagline": "Eine der größten Badeplattformen ihrer Klasse und viel Raum für bis zu fünf Kabinen: das Bavaria-Flaggschiff.",
   "videos": [
    {
-    "id": "A81OTHTdDO0",
-    "title": "Die Bavaria C57 im Rundgang",
-    "by": "Ausführlicher Walkthrough"
+    "id": "0xyUVcZqMlg",
+    "title": "Bavaria C57 – Offizielles Video",
+    "by": "Offizielles Video von BAVARIA YACHTS"
+   },
+   {
+    "id": "S7HOhgnSdYI",
+    "title": "Bavaria C57 in Fahrt",
+    "by": "Offizielles Video von BAVARIA YACHTS"
    }
   ],
   "key": [
@@ -5752,7 +5942,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/bavaria-c57.jpg",
+  "card": "/images/yachtmodelle/bavaria-c57-card.jpg"
  },
  {
   "id": "bavaria-voyager-45",
@@ -5903,8 +6095,13 @@
   "videos": [
    {
     "id": "tHK3NIlunxo",
-    "title": "Die Hanse 410 im Rundgang",
-    "by": "Video von Hanse Yachts"
+    "title": "Rundgang: Hanse 410",
+    "by": "Offizielles Video von HanseYachts AG"
+   },
+   {
+    "id": "6shlfMo6ebk",
+    "title": "Hanse 410 – Offizielles Video",
+    "by": "Offizielles Video von HanseYachts AG"
    }
   ],
   "key": [
@@ -6037,7 +6234,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/hanse-410.jpg",
+  "card": "/images/yachtmodelle/hanse-410-card.jpg"
  },
  {
   "id": "hanse-461",
@@ -6051,13 +6250,7 @@
   ],
   "src": "https://hanseyachts.com/gb/sailing-yachts/hanse-461/",
   "tagline": "Mit Beach Club am Heck: Sitzplätze direkt am Wasser, ein festes Dach über dem Cockpit und drei bis vier Kabinen.",
-  "videos": [
-   {
-    "id": "Ftnec27IomU",
-    "title": "Die neue Hanse 461 im Rundgang",
-    "by": "UK-Premiere"
-   }
-  ],
+  "videos": [],
   "key": [
    [
     "14,6 m",
@@ -6208,9 +6401,9 @@
   "tagline": "Die größte Beibootgarage ihrer Klasse, ein riesiges Cockpit und Platz für bis zu zehn Personen.",
   "videos": [
    {
-    "id": "nupd-notNQ8",
-    "title": "Die Hanse 510",
-    "by": "Vorstellung auf Deutsch"
+    "id": "B-UmCahN_XI",
+    "title": "Hanse 510 – Offizielles Video",
+    "by": "Offizielles Video von HanseYachts AG"
    }
   ],
   "key": [
@@ -6347,7 +6540,9 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/hanse-510.jpg",
+  "card": "/images/yachtmodelle/hanse-510-card.jpg"
  },
  {
   "id": "hanse-590",
@@ -6363,14 +6558,9 @@
   "tagline": "Das Hanse-Flaggschiff: hydraulische Badeplattform, Beibootgarage, Kochinsel und Kojen für bis zu zehn Personen.",
   "videos": [
    {
-    "id": "osiWV0JCxpU",
-    "title": "Die Hanse 590",
-    "by": "Offizielles Video von Hanse"
-   },
-   {
-    "id": "ifNMVvhLink",
-    "title": "Luxuriöses Wohnen unter Deck",
-    "by": "Test auf Deutsch"
+    "id": "4Mhs9eOO7dk",
+    "title": "Hanse 590 – Offizielles Video",
+    "by": "Offizielles Video von HanseYachts AG"
    }
   ],
   "key": [
@@ -6500,6 +6690,8 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "poster": "/images/yachtmodelle/hanse-590.jpg",
+  "card": "/images/yachtmodelle/hanse-590-card.jpg"
  }
 ]

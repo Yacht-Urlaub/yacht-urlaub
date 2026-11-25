@@ -37,18 +37,26 @@ export function Illu({ m }: { m: Model }) {
   )
 }
 
-/** Eigenes Foto des Modells, sonst Illustration. Es werden bewusst KEINE Vorschaubilder von
- *  YouTube oder Matterport geladen: vor dem Klick darf keine Verbindung zu Dritten entstehen. */
-export function Pic({ m, alt = '' }: { m: Model; alt?: string }) {
+/** Bild des Modells: lokal gespeichertes Vorschaubild des offiziellen Hersteller-Videos (bzw. eigenes
+ *  Foto), sonst Illustration. Es wird bewusst NICHTS direkt von YouTube/Matterport geladen: vor dem
+ *  Klick darf keine Verbindung zu Dritten entstehen. */
+export function Pic({ m, variant, eager }: { m: Model; variant: 'card' | 'poster'; eager?: boolean }) {
   const [failed, setFailed] = useState(false)
-  const img = m.images[0]
-  if (!img || failed) return <Illu m={m} />
-  return <img src={img.src} alt={alt} loading="lazy" onError={() => setFailed(true)} />
+  const src = variant === 'card' ? m.card : m.poster
+  if (!src || failed) return <Illu m={m} />
+  const alt = variant === 'card' ? `${m.name}, ${m.typ} von ${m.brand}` : `${m.name}, Vorschaubild des Videos`
+  return (
+    <img
+      src={src} alt={alt} onError={() => setFailed(true)}
+      loading={eager ? 'eager' : 'lazy'} {...(eager ? { fetchPriority: 'high' as const } : {})}
+      width={variant === 'card' ? 640 : 1280} height={variant === 'card' ? 400 : 720}
+    />
+  )
 }
 
 type EmbedProps =
-  | { m: Model; kind: 'video'; id: string; title: string; by: string }
-  | { m: Model; kind: 'tour'; id: string; title: string; by: string }
+  | { m: Model; kind: 'video'; id: string; title: string; by: string; eager?: boolean }
+  | { m: Model; kind: 'tour'; id: string; title: string; by: string; eager?: boolean }
 
 /** Video oder 3D-Rundgang: erst nach Klick wird der Anbieter geladen (YouTube im
  *  Datenschutzmodus bzw. Matterport). */
@@ -69,7 +77,7 @@ export function Embed(p: EmbedProps) {
         />
       ) : (
         <>
-          <Pic m={p.m} />
+          <Pic m={p.m} variant="poster" eager={p.eager} />
           <button className="play" type="button" onClick={() => setOn(true)}
             aria-label={isTour ? `3D-Rundgang starten: ${p.title}` : `Video abspielen: ${p.title}`}>
             <i aria-hidden="true" />

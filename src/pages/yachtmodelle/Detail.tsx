@@ -119,7 +119,7 @@ export default function YachtModellDetailPage() {
       <SEO
         title={modelTitle(m)}
         description={modelDescription(m)}
-        image={m.images[0]?.src}
+        image={m.poster ?? m.images[0]?.src}
         schema={schema}
       />
 
@@ -146,7 +146,7 @@ export default function YachtModellDetailPage() {
           </div>
         </div>
         {v0
-          ? <><Embed m={m} kind="video" id={v0.id} title={v0.title} by={v0.by} /><EmbedNote kind="video" /></>
+          ? <><Embed m={m} kind="video" id={v0.id} title={v0.title} by={v0.by} eager /><EmbedNote kind="video" /></>
           : <div className="novid">Ein Video zur {m.name} folgt. Bis dahin zeigen wir Ihnen gerne Bilder und Grundrisse persönlich.</div>}
       </div></section>
 

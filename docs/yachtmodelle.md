@@ -15,7 +15,8 @@ Menüpunkt auf yacht-holiday.net und kein hreflang. Eine englische Fassung brauc
 | `src/pages/yachtmodelle/shared.tsx` | Illustration, Video-/3D-Einbettung (Klick zum Laden), Icons |
 | `src/pages/yachtmodelle/data.ts` | Typen, Werften-Texte, Kosten/Ausstattung, Title/Description-Regeln |
 | `src/pages/yachtmodelle/yachtmodelle.css` | Alle Styles, strikt unter `.ym` |
-| `public/images/yachtmodelle/` | Eigene Fotos (bisher nur `lagoon-42-1.jpg`) |
+| `public/images/yachtmodelle/` | Vorschau- und Kartenbilder je Modell, ein eigenes Foto (`lagoon-42-1.jpg`) |
+| `scripts/yachtmodelle-thumbs.cjs` | Erzeugt die Vorschau- und Kartenbilder aus dem Hauptvideo |
 
 Vorlage war das Artefakt „Yachtmodelle“ (Daten kamen aus `models.json`, erzeugt mit `build_models.py`
 beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json` ergänzen, die URL in
@@ -24,15 +25,24 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
 ## SEO
 - Title: `<Name> – <Typ> chartern | Yacht-Urlaub`, Description: `<Name>: <Tagline>` (höchstens ~150
   Zeichen, sonst nur die Tagline). Canonical je Seite, JSON-LD `FAQPage` + `BreadcrumbList`.
-- `image`: nur Lagoon 42 hat ein eigenes Foto; alle anderen nutzen das Standardbild.
+- `image` (og:image): das Vorschaubild des Modells (JPG); Voyager 45 und Hanse 461 nutzen das Standardbild.
 - Jede Seite hat einen Snapshot (`scripts/prerender.cjs`), die URLs stehen in `sitemap.xml` und `llms.txt`.
 
-## Datenschutz
-- Videos (YouTube, Datenschutzmodus) und 3D-Rundgänge (Matterport) laden **erst nach Klick** (Vorschau ist
-  die Illustration bzw. das eigene Foto, **keine** YouTube-/Matterport-Vorschaubilder). Unter dem Video
-  steht ein Hinweis, Datenschutzerklärung Abschnitt 7 beschreibt es.
-- Matterport-Rundgänge gehören den jeweiligen Charterfirmen (Bali 4.8: Ionian Charter). Die Quelle
-  steht sichtbar neben dem Rundgang; die Erlaubnis der Firma muss vorliegen.
+## Videos und Bilder
+- **Nur offizielle Hersteller-Videos** (Kanäle Bali Catamarans, Lagoon Catamarans, Jeanneau Officiel, Beneteau Yacht Channel,
+  BAVARIA YACHTS, HanseYachts AG). Keine Videos von Händlern, Charterfirmen oder Magazinen (das wäre Werbung für Dritte).
+  Vor dem Eintragen den Kanal prüfen: `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=<ID>&format=json`
+  liefert `author_name`. Das Feld `by` heißt „Offizielles Video von <Kanal>“. Modelle ohne offizielles Video
+  (Bavaria Voyager 45, Hanse 461) zeigen den Hinweis „Ein Video folgt“.
+- **Vorschaubilder liegen lokal** (`public/images/yachtmodelle/<id>.jpg` 1280 px und `<id>-card.jpg` 640×400, aus dem
+  Hauptvideo). Erzeugt mit `node scripts/yachtmodelle-thumbs.cjs` (braucht Netz auf `i.ytimg.com`, `curl`, ImageMagick).
+  Modelle mit eigenem Foto (`images[0]`) nehmen dieses. Eigene Fotos ersetzen die Vorschaubilder jederzeit: Datei
+  gleichen Namens überschreiben.
+- Die Seite lädt **nichts** direkt von YouTube/Matterport, bevor jemand auf Play klickt. Der Klick lädt YouTube im
+  Datenschutzmodus (`youtube-nocookie.com`); darunter steht ein Hinweis, Datenschutzerklärung Abschnitt 7 beschreibt es.
+- 3D-Rundgänge (`tours`, Matterport) sind im Code vorbereitet, aktuell aber **leer**: der einzige Rundgang (Bali 4.8,
+  Ionian Charter) ist Werbung einer Charterfirma und wurde entfernt. Neue Rundgänge nur mit schriftlicher Erlaubnis
+  des Eigentümers, Quelle sichtbar.
 - Fotos und Grundrisse nur aus eigener Mediathek bzw. Pressebereichen, nie von Werftseiten verlinken.
 
 ## Anfrageformular

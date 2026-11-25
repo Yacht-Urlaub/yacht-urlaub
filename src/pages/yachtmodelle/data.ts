@@ -29,6 +29,9 @@ export interface Model {
   faq: [string, string][]
   tech: [string, string][]
   images: { src: string; alt: string }[]
+  /** Vorschaubild (1280 px) und Kartenbild (640 px) aus dem Hauptvideo; liegen lokal unter public/images/yachtmodelle/ */
+  poster?: string
+  card?: string
   reviere: string[]
   reviereText?: string
   extras: string[]

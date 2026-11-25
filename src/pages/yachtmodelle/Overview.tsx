@@ -10,7 +10,7 @@ function Card({ m }: { m: Model }) {
   return (
     <Link to={modelPath(m.id)} className="card">
       <div className="ph">
-        <Pic m={m} alt={m.images[0]?.alt ?? ''} />
+        <Pic m={m} variant="card" />
         {m.badges[0] && <span className="badge">{m.badges[0]}</span>}
         <span className="tp">{m.typ}</span>
         {m.tours.length > 0 && <span className="d3">3D-Rundgang</span>}
@@ -84,11 +84,13 @@ export default function YachtModelleOverviewPage() {
             </button>
           ))}
         </div>
-        <div className="chipsel">
-          <button className="t3d" type="button" aria-pressed={only3d} onClick={() => setOnly3d(v => !v)}>
-            Mit 3D-Rundgang ({tours})
-          </button>
-        </div>
+        {tours > 0 && (
+          <div className="chipsel">
+            <button className="t3d" type="button" aria-pressed={only3d} onClick={() => setOnly3d(v => !v)}>
+              Mit 3D-Rundgang ({tours})
+            </button>
+          </div>
+        )}
         <input className="srch" type="search" placeholder="Modell suchen" aria-label="Modell suchen" value={q}
           onChange={e => setQ(e.target.value)} />
         <span className="cnt" aria-live="polite">{count}</span>
