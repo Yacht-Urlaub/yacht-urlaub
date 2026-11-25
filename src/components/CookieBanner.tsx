@@ -8,7 +8,7 @@ import { enableAnalytics, disableAnalytics } from '../analytics'
 const cb = {
   de: {
     titel: '🍪 Wir verwenden Cookies',
-    text: 'Wir setzen Cookies ein, um Ihnen die beste Erfahrung auf unserer Website zu bieten, die Nutzung zu analysieren (Google Analytics) und unsere Werbung zu messen und zu verbessern (Google Ads, Remarketing). Ihre Wahl können Sie jederzeit über „Cookie-Einstellungen“ im Footer ändern oder widerrufen.',
+    text: 'Wir setzen Cookies ein, um Ihnen die beste Erfahrung auf unserer Website zu bieten, die Nutzung zu analysieren (Google Analytics) und unsere Werbung zu messen und zu verbessern (Google Ads, Meta (Facebook/Instagram), Remarketing). Ihre Wahl können Sie jederzeit über „Cookie-Einstellungen“ im Footer ändern oder widerrufen.',
     detailsAn: 'Details anzeigen', detailsAus: 'Details verbergen',
     weiter: 'Weitere Informationen finden Sie in unserer', datenschutz: 'Datenschutzerklärung',
     nurNotwendig: 'Nur notwendige', alleAkzeptieren: 'Alle akzeptieren',
@@ -19,13 +19,13 @@ const cb = {
       { name: 'Google Analytics', required: false,
         desc: 'Anonymisierte Nutzungsanalyse (Seitenaufrufe, Verweildauer). Kein personenbezogener Bezug. Anbieter: Google Ireland Ltd.' },
       { name: 'Marketing / Werbung', required: false,
-        desc: 'Google Ads: Messung des Werbeerfolgs (Conversions) und Remarketing, also personalisierte Werbung für Besucher unserer Website. Dabei werden Daten an Google übertragen. Zusätzlich Cookies von Facebook, Instagram und LinkedIn für Social-Media-Funktionen (nur bei direkter Interaktion). Anbieter: Google Ireland Ltd.' },
+        desc: 'Google Ads: Messung des Werbeerfolgs (Conversions) und Remarketing, also personalisierte Werbung für Besucher unserer Website. Dabei werden Daten an Google übertragen. Meta-Pixel (Facebook/Instagram): Messung des Werbeerfolgs und Remarketing; dabei werden Daten an Meta übertragen. Zusätzlich Cookies von Facebook, Instagram und LinkedIn für Social-Media-Funktionen (nur bei direkter Interaktion). Anbieter: Google Ireland Ltd., Meta Platforms Ireland Ltd.' },
     ],
     datenschutzPfad: '/datenschutz',
   },
   en: {
     titel: '🍪 We use cookies',
-    text: 'We use cookies to give you the best experience on our website, to analyse how it is used (Google Analytics) and to measure and improve our advertising (Google Ads, remarketing). You can change or withdraw your choice at any time via “Cookie settings” in the footer.',
+    text: 'We use cookies to give you the best experience on our website, to analyse how it is used (Google Analytics) and to measure and improve our advertising (Google Ads, Meta (Facebook/Instagram), remarketing). You can change or withdraw your choice at any time via “Cookie settings” in the footer.',
     detailsAn: 'Show details', detailsAus: 'Hide details',
     weiter: 'You will find further information in our', datenschutz: 'privacy policy',
     nurNotwendig: 'Essential only', alleAkzeptieren: 'Accept all',
@@ -36,7 +36,7 @@ const cb = {
       { name: 'Google Analytics', required: false,
         desc: 'Anonymised usage analysis (page views, time on site). No personal reference. Provider: Google Ireland Ltd.' },
       { name: 'Marketing / advertising', required: false,
-        desc: 'Google Ads: measuring advertising success (conversions) and remarketing, i.e. personalised ads for visitors to our website. Data is transmitted to Google for this purpose. Also cookies from Facebook, Instagram and LinkedIn for social media functions (only on direct interaction). Provider: Google Ireland Ltd.' },
+        desc: 'Google Ads: measuring advertising success (conversions) and remarketing, i.e. personalised ads for visitors to our website. Data is transmitted to Google for this purpose. Meta Pixel (Facebook/Instagram): measuring advertising success and remarketing; data is transmitted to Meta for this purpose. Also cookies from Facebook, Instagram and LinkedIn for social media functions (only on direct interaction). Providers: Google Ireland Ltd., Meta Platforms Ireland Ltd.' },
     ],
     datenschutzPfad: '/en/data-privacy',
   },
