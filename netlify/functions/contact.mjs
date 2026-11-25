@@ -20,7 +20,7 @@ const FORM_LABELS = {
   'skipper-anfrage': 'Skipper- und Bord-Service',
   'charter-anfrage': 'Yacht-Charter-Anfrage',
   'crew-anfrage': 'Anfrage an die Crew',
-  'porto-heli-buchung': 'Verbindliche Buchung Porto Heli',
+  'porto-heli-buchung': 'Verbindliche Buchungsanfrage Porto Heli',
 }
 
 // Felder, die als Absenderangaben gelten und nicht noch einmal
@@ -239,7 +239,7 @@ function kundenMail(data) {
         `Guests: ${data.gaeste}`,
         `Total price: ${euro(data.endpreisKunde, lang)} including skipper`,
         '',
-        'What happens next: we check availability and send you the booking confirmation shortly, within 24 hours at the latest. It contains all payment details (50% on booking, 50% six weeks before departure). If the week has been taken after all, we will get back to you with an alternative and you pay nothing.',
+        'What happens next: we check availability and confirm the booking to you within 24 hours. The contract only comes into being with our booking confirmation. It contains all contract and payment information (50% on booking, 50% six weeks before departure). If the week is no longer available, we will let you know and, if you wish, offer you an alternative. You pay nothing as long as no booking has been confirmed.',
         '',
         'Questions? Simply reply to this e-mail or call us on +43 1 997 15 82.',
         '',
@@ -261,7 +261,7 @@ function kundenMail(data) {
       `Gäste: ${data.gaeste}`,
       `Gesamtpreis: ${euro(data.endpreisKunde, lang)} inklusive Skipper`,
       '',
-      'So geht es weiter: Wir prüfen die Verfügbarkeit und senden Ihnen die Buchungsbestätigung in Kürze, spätestens innerhalb von 24 Stunden. Sie enthält alle Zahlungsinfos (50 % bei Buchung, 50 % sechs Wochen vor Reiseantritt). Ist die Woche doch vergeben, melden wir uns mit einer Alternative, und Sie zahlen nichts.',
+      'So geht es weiter: Wir prüfen die Verfügbarkeit und bestätigen Ihnen die Buchung innerhalb von 24 Stunden. Erst mit unserer Buchungsbestätigung kommt der Vertrag zustande. Sie enthält alle Vertrags- und Zahlungsinformationen (50 % bei Buchung, 50 % sechs Wochen vor Reiseantritt). Ist die Woche nicht mehr verfügbar, informieren wir Sie und unterbreiten Ihnen auf Wunsch eine Alternative. Sie zahlen nichts, solange keine Buchung bestätigt wurde.',
       '',
       'Fragen? Antworten Sie einfach auf diese E-Mail oder rufen Sie uns an: +43 1 997 15 82.',
       '',

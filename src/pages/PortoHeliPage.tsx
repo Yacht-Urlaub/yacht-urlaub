@@ -129,7 +129,7 @@ const T = {
       L46: { cabins: '4 Doppelkabinen', extra: 'Bugstrahlruder, TV, Wassermacher', pitch: 'Das Flaggschiff: vier Bäder, große Flybridge, Platz für die ganze Familie.', alt: 'Lagoon 46 vor Anker' },
     } as Record<string, YText>,
     bookKick: 'Termine & Preise 2027', bookH2: 'Yacht wählen, Woche wählen, buchen',
-    bookIntro: (stand: string) => `Sie sehen sofort Ihren Endpreis inklusive Skipper. Ihre Buchung ist verbindlich, wir bestätigen sie innerhalb von 24 Stunden. Verfügbarkeit Stand ${stand}.`,
+    bookIntro: (stand: string) => `Wählen Sie Ihre Yacht und Ihre Wunschwoche. Sie sehen sofort den Gesamtpreis für die Yacht inkl. Skipper. Wir prüfen die Verfügbarkeit und bestätigen Ihre Buchungsanfrage innerhalb von 24 Stunden. Erst mit der Buchungsbestätigung ist die Reise bestätigt. Verfügbarkeit Stand ${stand}.`,
     step1: '1 · Yacht', step2: '2 · Woche (Freitag bis Freitag)', step3: '3 · Skipper', step4: '4 · Ihre Daten',
     pillSub: (g: number, p: string): [string, string] => [`bis ${g} Gäste`, `ab ${p}`],
     freeWeeks: (n: number) => `${n} freie Wochen · Preis pro Woche inkl. Skipper`,
@@ -141,7 +141,7 @@ const T = {
     errWeek: 'Bitte wählen Sie eine freie Woche.',
     errFields: (max: number | null) => `Bitte prüfen Sie die markierten Felder${max ? ` (maximal ${max} Gäste)` : ''}.`,
     errTerms: 'Bitte bestätigen Sie AGB und Datenschutz.',
-    errSend: 'Ihre Buchung konnte nicht gesendet werden. Bitte versuchen Sie es erneut, rufen Sie uns an (+43 1 997 15 82) oder schreiben Sie an',
+    errSend: 'Ihre Buchungsanfrage konnte nicht gesendet werden. Bitte versuchen Sie es erneut, rufen Sie uns an (+43 1 997 15 82) oder schreiben Sie an',
     sumH: 'Ihre Buchung', withSkipper: 'mit Skipper', noWeek: 'Noch keine Woche gewählt', nights: '7 Nächte',
     sumPick: (p: string) => `Ab ${p} pro Woche. Wählen Sie eine freie Woche, dann sehen Sie hier Ihren Endpreis.`,
     sumTotal: 'Gesamtpreis für die Yacht, alles inklusive',
@@ -152,10 +152,11 @@ const T = {
       `Kaution ${PH_CONFIG.deposit.toLocaleString('de-DE')} €, vor Ort per Kreditkarte`,
     ],
     termsA: 'Ich akzeptiere die', terms: 'AGB', termsAnd: 'und die', privacy: 'Datenschutzbestimmungen',
-    submit: 'Verbindlich buchen', sending: 'Wird gesendet …', noPay: 'Jetzt noch keine Zahlung: 50 % mit der Buchungsbestätigung, 50 % sechs Wochen vor Reiseantritt.',
-    doneBadge: 'Buchung eingegangen',
-    doneH: (n: string, y: string) => `Danke, ${n}! Ihre ${y} ist für Sie vorgemerkt.`,
-    doneText: (when: string, pax: number, p: string, mail: string) => `${when}, ${pax} Gäste, Gesamtpreis ${p} inklusive Skipper. Eine Zusammenfassung Ihrer Anfrage ist per E-Mail an ${mail} unterwegs. Die Buchungsbestätigung mit allen Zahlungsinfos folgt in Kürze, spätestens innerhalb von 24 Stunden.`,
+    submit: 'Buchungsanfrage verbindlich senden', sending: 'Wird gesendet …', noPay: 'Jetzt noch keine Zahlung. Die Zahlungsinformationen (50/50) erhalten Sie mit unserer Buchungsbestätigung.',
+    doneBadge: 'Buchungsanfrage eingegangen',
+    doneH: 'Danke für Ihre Buchungsanfrage!',
+    doneText: 'Wir prüfen die Verfügbarkeit Ihrer gewählten Yacht und Woche. Eine Zusammenfassung Ihrer Anfrage erhalten Sie per E-Mail. Die Buchungsbestätigung mit allen Vertrags- und Zahlungsinformationen folgt innerhalb von 24 Stunden.',
+    doneSummary: (y: string, when: string, pax: number, p: string) => `Ihre Anfrage: ${y}, ${when}, ${pax} Gäste, Gesamtpreis ${p} inklusive Skipper.`,
     doneWa: 'Fragen per WhatsApp', doneAgain: 'Weitere Woche ansehen',
     flyAd: 'Anzeige', flyH: 'Flüge nach Athen vergleichen',
     flyP: 'Am besten landen Sie am Freitag bis mittags (Check-in ab 17 Uhr). Zurück geht es nach dem Check-out um 9 Uhr, ein Rückflug ab dem frühen Nachmittag passt gut.',
@@ -165,13 +166,13 @@ const T = {
     travIntro: 'Fliegen Sie nach Athen. Bis zum Check-in um 17 Uhr bleibt genug Zeit, ein Flug am Vormittag oder zu Mittag ist ideal.',
     trav: [
       { top: true, badge: 'Unser Tipp', h: 'Schnellfähre ab Piräus', p: 'Über Poros, Hydra und Spetses nach Porto Heli, ca. 2 Std. 40 Min. Schon die Anreise ist ein Ausflug durch den Saronischen Golf.', s: 'Vom Flughafen mit Metro oder Taxi nach Piräus. Fahrplan 2027 vor der Buchung prüfen.' },
-      { h: 'Privat-Transfer', p: 'Direkt vom Flughafen Athen zur Yacht, bis 8 Personen, ca. 2,5 Stunden. Am bequemsten für Gruppen mit Gepäck.', s: '450 € pro Strecke, 900 € hin und zurück. Buchen wir gerne dazu.' },
+      { h: 'Privat-Transfer', p: 'Direkt vom Flughafen Athen zur Yacht, bis 8 Personen, ca. 2,5 Stunden. Am bequemsten für Gruppen mit Gepäck.', s: '450 € pro Strecke, 900 € hin und zurück. Auf Wunsch bestellen wir den Transfer für Sie, bezahlt wird vor Ort (wie bei allen Extras).' },
       { h: 'Bus oder Mietwagen', p: 'KTEL-Bus ab Busbahnhof Kifissos nach Kranidi (ca. 2 Std. 45 Min.), dann Bus oder Taxi in 25 Minuten. Mit dem Mietwagen ca. 2,5 Stunden.', s: 'Die günstigste Variante, mit Umsteigen.' },
     ] as { top?: boolean; badge?: string; h: string; p: string; s: string }[],
     faqH: 'Häufige Fragen',
     faq: [
       ['Brauche ich einen Segelschein?', 'Nein. Unser Skipper ist bei diesem Törn immer dabei und übernimmt die Verantwortung für die Yacht. Mitsegeln ist ausdrücklich erwünscht.'],
-      ['Ist die Buchung sofort verbindlich?', 'Ja, Sie buchen zum angezeigten Endpreis. Wir prüfen die Verfügbarkeit und bestätigen innerhalb von 24 Stunden. Ist die Woche doch vergeben, melden wir uns mit einer Alternative und Sie zahlen nichts.'],
+      ['Ist die Buchung sofort verbindlich?', 'Ihre Buchungsanfrage ist verbindlich. Wir prüfen die Verfügbarkeit und bestätigen Ihnen die Buchung innerhalb von 24 Stunden. Erst mit unserer Buchungsbestätigung kommt der Vertrag zustande. Ist die Woche nicht mehr verfügbar, informieren wir Sie und unterbreiten Ihnen auf Wunsch eine Alternative. Sie zahlen nichts, solange keine Buchung bestätigt wurde.'],
       ['Was ist im Preis enthalten?', 'Ein Preis für alles rund um die Yacht: Katamaran für 7 Nächte, Yacht-Urlaub-Skipper, alle Charter-Nebenkosten, Dinghy mit Außenborder, Bettwäsche, Handtücher und Welcome Pack. Vor Ort zahlen Sie nur die Bordkasse (Treibstoff, Häfen, Verpflegung inkl. Skipper) und hinterlegen die Kaution.'],
       ['Wo schläft der Skipper?', 'In der Crew-Kabine. Die Gäste-Kabinen bleiben für Sie, deshalb nennen wir bei jeder Yacht die Zahl der Gäste ohne Skipper.'],
       ['Wie windig ist es im Argolischen Golf?', 'Der Golf ist gut geschützt und meist ruhiger als die Kykladen. Im Hochsommer weht nachmittags oft eine frische Brise, ideal zum Segeln.'],
@@ -241,7 +242,7 @@ const T = {
       L46: { cabins: '4 double cabins', extra: 'Bow thruster, TV, watermaker', pitch: 'The flagship: four bathrooms, a large flybridge and room for the whole family.', alt: 'Lagoon 46 at anchor' },
     } as Record<string, YText>,
     bookKick: 'Dates & prices 2027', bookH2: 'Choose a yacht, choose a week, book',
-    bookIntro: (stand: string) => `You see your final price including skipper straight away. Your booking is binding and we confirm it within 24 hours. Availability as of ${stand}.`,
+    bookIntro: (stand: string) => `Choose your yacht and your preferred week. You see the total price for the yacht including skipper straight away. We check availability and confirm your booking request within 24 hours. Your trip is only confirmed once you receive our booking confirmation. Availability as of ${stand}.`,
     step1: '1 · Yacht', step2: '2 · Week (Friday to Friday)', step3: '3 · Skipper', step4: '4 · Your details',
     pillSub: (g: number, p: string): [string, string] => [`up to ${g} guests`, `from ${p}`],
     freeWeeks: (n: number) => `${n} free weeks · price per week incl. skipper`,
@@ -253,7 +254,7 @@ const T = {
     errWeek: 'Please choose a free week.',
     errFields: (max: number | null) => `Please check the highlighted fields${max ? ` (maximum ${max} guests)` : ''}.`,
     errTerms: 'Please confirm the terms and the privacy policy.',
-    errSend: 'Your booking could not be sent. Please try again, call us (+43 1 997 15 82) or write to',
+    errSend: 'Your booking request could not be sent. Please try again, call us (+43 1 997 15 82) or write to',
     sumH: 'Your booking', withSkipper: 'with skipper', noWeek: 'No week chosen yet', nights: '7 nights',
     sumPick: (p: string) => `From ${p} per week. Choose a free week and your final price appears here.`,
     sumTotal: 'Total price for the yacht, everything included',
@@ -264,10 +265,11 @@ const T = {
       `Deposit €${PH_CONFIG.deposit.toLocaleString('en-GB')}, paid on site by credit card`,
     ],
     termsA: 'I accept the', terms: 'terms and conditions', termsAnd: 'and the', privacy: 'privacy policy',
-    submit: 'Book now (binding)', sending: 'Sending …', noPay: 'No payment yet: 50% with the booking confirmation, 50% six weeks before departure.',
-    doneBadge: 'Booking received',
-    doneH: (n: string, y: string) => `Thank you, ${n}! Your ${y} is reserved for you.`,
-    doneText: (when: string, pax: number, p: string, mail: string) => `${when}, ${pax} guests, total price ${p} including skipper. A summary of your request is on its way to ${mail}. The booking confirmation with all payment details follows shortly, within 24 hours at the latest.`,
+    submit: 'Send binding booking request', sending: 'Sending …', noPay: 'No payment yet. You will receive the payment information (50/50) with our booking confirmation.',
+    doneBadge: 'Booking request received',
+    doneH: 'Thank you for your booking request!',
+    doneText: 'We are checking the availability of the yacht and week you chose. You will receive a summary of your request by e-mail. The booking confirmation with all contract and payment information follows within 24 hours.',
+    doneSummary: (y: string, when: string, pax: number, p: string) => `Your request: ${y}, ${when}, ${pax} guests, total price ${p} including skipper.`,
     doneWa: 'Questions via WhatsApp', doneAgain: 'View another week',
     flyAd: 'Advertisement', flyH: 'Compare flights to Athens',
     flyP: 'Ideally you land on Friday by lunchtime (check-in from 5 pm). The way back starts after check-out at 9 am, so a flight from early afternoon fits well.',
@@ -277,13 +279,13 @@ const T = {
     travIntro: 'Fly to Athens. There is plenty of time before check-in at 5 pm, so a flight in the morning or around noon is ideal.',
     trav: [
       { top: true, badge: 'Our tip', h: 'High-speed ferry from Piraeus', p: 'Via Poros, Hydra and Spetses to Porto Heli, approx. 2 h 40 min. The journey itself is already an excursion across the Saronic Gulf.', s: 'From the airport to Piraeus by metro or taxi. Check the 2027 timetable before booking.' },
-      { h: 'Private transfer', p: 'Straight from Athens airport to the yacht, up to 8 people, approx. 2.5 hours. The most comfortable option for groups with luggage.', s: '€450 each way, €900 return. We are happy to book it for you.' },
+      { h: 'Private transfer', p: 'Straight from Athens airport to the yacht, up to 8 people, approx. 2.5 hours. The most comfortable option for groups with luggage.', s: '€450 each way, €900 return. On request we will order the transfer for you, paid on site (like all extras).' },
       { h: 'Bus or rental car', p: 'KTEL bus from Kifissos bus station to Kranidi (approx. 2 h 45 min), then a bus or taxi for 25 minutes. By rental car approx. 2.5 hours.', s: 'The cheapest option, with a change.' },
     ] as { top?: boolean; badge?: string; h: string; p: string; s: string }[],
     faqH: 'Frequently asked questions',
     faq: [
       ['Do I need a sailing licence?', 'No. Our skipper is always on board on this cruise and takes responsibility for the yacht. Joining in on the sailing is very welcome.'],
-      ['Is the booking binding straight away?', 'Yes, you book at the final price shown. We check availability and confirm within 24 hours. If the week has been taken after all, we will get back to you with an alternative and you pay nothing.'],
+      ['Is the booking binding straight away?', 'Your booking request is binding. We check availability and confirm the booking to you within 24 hours. The contract only comes into being with our booking confirmation. If the week is no longer available, we will let you know and, if you wish, offer you an alternative. You pay nothing as long as no booking has been confirmed.'],
       ['What is included in the price?', 'One price for everything around the yacht: catamaran for 7 nights, Yacht-Urlaub skipper, all charter extras, dinghy with outboard, bed linen, towels and welcome pack. On site you only pay the kitty (fuel, harbour fees, provisions incl. the skipper) and leave the deposit.'],
       ['Where does the skipper sleep?', 'In the crew cabin. The guest cabins stay yours, which is why we state the number of guests without skipper for each yacht.'],
       ['How windy is it in the Argolic Gulf?', 'The gulf is well sheltered and usually calmer than the Cyclades. In high summer a fresh breeze often blows in the afternoon, ideal for sailing.'],
@@ -564,8 +566,9 @@ export default function PortoHeliPage() {
             <div className="ph-done" role="status">
               <img src={done.yacht.img} alt={t.yachts[done.yacht.id].alt} width={800} height={533} />
               <span className="ph-badge">{t.doneBadge}</span>
-              <h3>{t.doneH(done.name.split(' ')[0], done.yacht.model)}</h3>
-              <p>{t.doneText(`${lang === 'en' ? 'Fri' : 'Fr'} ${dm(done.week, lang)} – ${lang === 'en' ? 'Fri' : 'Fr'} ${dmy(plus7(done.week), lang)}`, done.pax, eur(done.price, lang), done.mail)}</p>
+              <h3>{t.doneH}</h3>
+              <p>{t.doneText}</p>
+              <p>{t.doneSummary(done.yacht.model, `${lang === 'en' ? 'Fri' : 'Fr'} ${dm(done.week, lang)} – ${lang === 'en' ? 'Fri' : 'Fr'} ${dmy(plus7(done.week), lang)}`, done.pax, eur(done.price, lang))}</p>
               <div className="ph-row">
                 <a className="btn ph-wa" href={waHref} target="_blank" rel="noopener noreferrer">{t.doneWa}</a>
                 <button type="button" className="btn btn-navy" onClick={() => { setDone(null); setWeek(null); setAgb(false); setMsg(''); document.getElementById('buchen')?.scrollIntoView() }}>{t.doneAgain}</button>
