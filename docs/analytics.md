@@ -20,24 +20,42 @@ Stand: November 2026. Code: `src/analytics.ts`, `src/metaPixel.ts`,
 - Planyo-Buchungen (`purchase`) sind **nicht** Teil dieses Stands (kommt mit
   dem Umbau der Customer Journey). Der Planyo-iFrame wird nicht angefasst.
 
-## Einwilligung (Consent Mode v2, „Basic“)
+## Einwilligung (Consent Mode v2, „Advanced“)
 
-| Zustand | gtag.js geladen | analytics_storage | ad_storage | ad_user_data | ad_personalization |
-| --- | --- | --- | --- | --- | --- |
-| Noch keine Wahl | nein | denied | denied | denied | denied |
-| „Nur notwendige“ | nein | denied | denied | denied | denied |
-| „Alle akzeptieren“ | ja | granted | granted | granted | granted |
+Seit PR „Consent Mode Advanced“ steht der Google-Tag fest im `<head>` von
+`index.html` und lädt auf **jeder** Seite, auch vor der Einwilligung.
 
-- Der Default (alles `denied`) wird gesetzt, bevor gtag lädt.
-- Ohne Einwilligung geht **kein** Request an Google, es gibt keine Cookies.
-- Die Wahl steht in `localStorage` (`yu_cookie_consent`) und wird beim nächsten
-  Besuch sofort wieder angewendet (`initAnalytics`).
+| Zustand | gtag.js geladen | analytics_storage | ad_storage | ad_user_data | ad_personalization | Cookies | Treffer an Google |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Noch keine Wahl | ja | denied | denied | denied | denied | keine | cookielose Signale |
+| „Nur notwendige“ | ja | denied | denied | denied | denied | keine | cookielose Signale |
+| „Alle akzeptieren“ | ja | granted | granted | granted | granted | `_ga*`, `_gcl_*` | volle Messung |
+
+- Der Default (alles `denied`, `ads_data_redaction: true`) wird in `index.html`
+  gesetzt, bevor gtag lädt. Ein gespeichertes „accepted“ (`localStorage`
+  `yu_cookie_consent`) wird dort sofort wieder angewendet, noch vor dem
+  ersten Treffer; `initAnalytics` wiederholt das nur.
+- Ohne Einwilligung sendet der Tag **cookielose Signale** (u. a. IP-Adresse,
+  Browserdaten, aufgerufene Seite, Ereignisse) an Google. Aus ihnen
+  modelliert Google Conversions und Verhalten für Nutzer, die ablehnen
+  (Mindestmengen laut Google beachten, sonst keine Modellierung). Es entstehen
+  keine Cookies.
+- **Datenschutz:** Die Datenschutzerklärung beschreibt diese Signale vor der
+  Einwilligung (Stand dieser Doku) **nicht**; der Satz „Ohne Ihre Einwilligung
+  werden die Google-Dienste nicht geladen“ stimmt mit Advanced nicht mehr.
+  Rechtlich zu klären, bevor das live bleibt.
 - **Widerruf:** Footer-Link „Cookie-Einstellungen“ / „Cookie settings“ öffnet
-  den Banner erneut. „Nur notwendige“ setzt alle vier Signale auf `denied`,
-  stoppt die Messung (`ga-disable-G-CRH1CYGY1C`) und löscht die Google-Cookies
-  (`_ga*`, `_gid`, `_gcl_*`, `_gac_*`).
-- Der Seitenaufbau-Snapshot (`scripts/prerender.cjs`) lädt nie Analytics
-  (`window.__PRERENDER__`).
+  den Banner erneut. „Nur notwendige“ setzt alle vier Signale auf `denied` und
+  löscht die Google-Cookies (`_ga*`, `_gid`, `_gcl_*`, `_gac_*`). Die
+  cookielosen Signale laufen weiter.
+- Nach „Alle akzeptieren“ wird für GA4 **kein** zweiter `page_view` gesendet
+  (die Seite ist schon als Treffer gezählt). Der Meta-Pixel bekommt seinen
+  `PageView`, weil er erst dann lädt.
+- Der Seitenaufbau-Snapshot (`scripts/prerender.cjs`) blockiert alle Anfragen
+  an Google (`window.__PRERENDER__`), der Tag-Block steht aber im Snapshot-HTML
+  (Prüfer von Search Console/Ads, ChatGPT & Co. sehen ihn).
+- Die Tag-ID `G-CRH1CYGY1C` steht in `index.html` (zweimal) und nicht mehr in
+  `analytics.ts`; bei einem Wechsel nur dort ändern.
 
 ## Meta-Pixel
 
@@ -106,8 +124,10 @@ In GA4 als **Schlüsselereignisse** markiert: `generate_lead`, `contact_click`,
   Ereignisse erscheinen in GA4 → Verwaltung → DebugView.
 - Lokal im Browser: `window.dataLayer` in der Konsole ansehen
   (`Array.from(window.dataLayer.map(a => Array.from(a)))`).
-- Vor der Einwilligung darf kein Request an `googletagmanager.com` /
-  `google-analytics.com` gehen (DevTools → Netzwerk).
+- Vor der Einwilligung gehen Anfragen an `googletagmanager.com` /
+  `google-analytics.com` raus (Advanced), aber **ohne** Cookies: DevTools →
+  Anwendung → Cookies darf keine `_ga*` zeigen. Meta (`facebook`) darf vor der
+  Einwilligung nichts senden.
 - uBlock Origin & Co. blockieren Google Analytics — zum Testen abschalten.
 
 ### Meta-Pixel testen
