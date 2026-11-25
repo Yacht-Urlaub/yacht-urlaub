@@ -1005,7 +1005,7 @@ const enPkgPath: Record<string, string> = Object.fromEntries(Object.entries(enPk
 export default function Packages() {
   const lang = useLang()
   const list = lang === 'en' ? packagesEn : packages
-  const pkgHref = (pid: string) => lang === 'en' ? `/en/cruises/book-now/${enPkgPath[pid] ?? pid}` : `/packages/${pid}`
+  const pkgHref = (pid: string) => lang === 'en' ? `/en/cruises/${enPkgPath[pid] ?? pid}` : `/packages/${pid}`
   return (
     <section style={{ background: '#f4f6f8', padding: '5rem 0' }}>
       <div className="container">

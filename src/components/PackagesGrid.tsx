@@ -17,19 +17,19 @@ import { AnchorIcon } from './Icons'
 const packagesListEn = [
   { title: 'Sailing in Croatia from Split', region: 'Croatia · Dalmatia',
     text: 'Sailing vacations from Split or Trogir to Hvar, Vis, Korcula, Brac and Solta.',
-    img: '/images/packages-grid/dalmatien.webp', alt: 'Palm-lined waterfront and harbour of Split in Dalmatia', href: '/en/cruises/book-now/dalmatia-croatia' },
+    img: '/images/packages-grid/dalmatien.webp', alt: 'Palm-lined waterfront and harbour of Split in Dalmatia', href: '/en/cruises/dalmatia-croatia' },
   { title: 'Caribbean package (BVI)', region: 'Caribbean · British Virgin Islands',
     text: 'Your sailing holidays on a monohull or catamaran in the British Virgin Islands.',
-    img: '/images/packages-grid/karibik-bvi.webp', alt: 'Catamaran off a sandy cay with turquoise water in the British Virgin Islands', href: '/en/cruises/book-now/caribbean-bvi' },
+    img: '/images/packages-grid/karibik-bvi.webp', alt: 'Catamaran off a sandy cay with turquoise water in the British Virgin Islands', href: '/en/cruises/caribbean-bvi' },
   { title: 'Sailing in Greece', region: 'Greece · Aegean & Ionian Sea',
     text: 'Sailing holiday in the Aegean or the Ionian sea — choice of 4 routes.',
-    img: '/images/packages-grid/griechenland.webp', alt: 'Navagio Bay with white cliffs and turquoise water in Greece', href: '/en/cruises/book-now/greece' },
+    img: '/images/packages-grid/griechenland.webp', alt: 'Navagio Bay with white cliffs and turquoise water in Greece', href: '/en/cruises/greece' },
   { title: 'Grenadines-Package', region: 'Caribbean · St. Vincent & Grenadines',
     text: 'Sailing vacation on a monohull or catamaran in the Grenadines.',
-    img: '/images/packages-grid/grenadinen.webp', alt: 'Sunset over sailing yachts at anchor in the Grenadines', href: '/en/cruises/book-now/caribbean-grenadines' },
+    img: '/images/packages-grid/grenadinen.webp', alt: 'Sunset over sailing yachts at anchor in the Grenadines', href: '/en/cruises/caribbean-grenadines' },
   { title: 'Sailing into the Kornati islands', region: 'Croatia · Kornati',
     text: 'Sailing holiday in the Kornati islands from Zadar.',
-    img: '/images/packages-grid/kornaten.webp', alt: 'Sailing yacht in a quiet bay on the Croatian coast', href: '/en/cruises/book-now/kornati-croatia' },
+    img: '/images/packages-grid/kornaten.webp', alt: 'Sailing yacht in a quiet bay on the Croatian coast', href: '/en/cruises/kornati-croatia' },
 ]
 
 const packagesListDe = [

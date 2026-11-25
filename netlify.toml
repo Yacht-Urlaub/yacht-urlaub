@@ -119,61 +119,61 @@
 
 [[redirects]]
   from = "https://www.yacht-holiday.net/cruise/dalmatia-package/"
-  to = "/cruises/book-now/dalmatia-croatia"
+  to = "/cruises/dalmatia-croatia"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.yacht-holiday.net/cruise/dalmatia-package-1/"
-  to = "/cruises/book-now/dalmatia-croatia"
+  to = "/cruises/dalmatia-croatia"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.yacht-holiday.net/cruise/kornati-package/"
-  to = "/cruises/book-now/kornati-croatia"
+  to = "/cruises/kornati-croatia"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.yacht-holiday.net/cruise/kornati-package-1/"
-  to = "/cruises/book-now/kornati-croatia"
+  to = "/cruises/kornati-croatia"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.yacht-holiday.net/cruise/greece-package/"
-  to = "/cruises/book-now/greece"
+  to = "/cruises/greece"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.yacht-holiday.net/cruise/greece-package-1/"
-  to = "/cruises/book-now/greece"
+  to = "/cruises/greece"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.yacht-holiday.net/cruise/caribbean-package/"
-  to = "/cruises/book-now/caribbean-bvi"
+  to = "/cruises/caribbean-bvi"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.yacht-holiday.net/cruise/caribbean-package-1/"
-  to = "/cruises/book-now/caribbean-bvi"
+  to = "/cruises/caribbean-bvi"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.yacht-holiday.net/cruise/grenadines-package/"
-  to = "/cruises/book-now/caribbean-grenadines"
+  to = "/cruises/caribbean-grenadines"
   status = 301
   force = true
 
 [[redirects]]
   from = "https://www.yacht-holiday.net/cruise/grenadines-package-1/"
-  to = "/cruises/book-now/caribbean-grenadines"
+  to = "/cruises/caribbean-grenadines"
   status = 301
   force = true
 
@@ -219,6 +219,100 @@
   from = "https://www.yacht-holiday.net/yoga"
   to = "/__en/yoga"
   status = 200
+  force = true
+
+# --- 1b. Packages: /cruises/book-now/<slug> -> /cruises/<slug> ---
+#     Die Adressen unter book-now waren nur im Neubau in Gebrauch (die alte
+#     TYPO3-Seite hiess /cruise/<name>-package/, siehe unten). Alle Alt-Regeln
+#     zeigen direkt auf das Ziel, keine Weiterleitungskette.
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/dalmatia-croatia"
+  to = "/cruises/dalmatia-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/kornati-croatia"
+  to = "/cruises/kornati-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/greece"
+  to = "/cruises/greece"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/caribbean-bvi"
+  to = "/cruises/caribbean-bvi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-holiday.net/cruises/book-now/caribbean-grenadines"
+  to = "/cruises/caribbean-grenadines"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-urlaub.net/en/cruises/book-now/dalmatia-croatia"
+  to = "https://www.yacht-holiday.net/cruises/dalmatia-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://yacht-urlaub.net/en/cruises/book-now/dalmatia-croatia"
+  to = "https://www.yacht-holiday.net/cruises/dalmatia-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-urlaub.net/en/cruises/book-now/kornati-croatia"
+  to = "https://www.yacht-holiday.net/cruises/kornati-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://yacht-urlaub.net/en/cruises/book-now/kornati-croatia"
+  to = "https://www.yacht-holiday.net/cruises/kornati-croatia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-urlaub.net/en/cruises/book-now/greece"
+  to = "https://www.yacht-holiday.net/cruises/greece"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://yacht-urlaub.net/en/cruises/book-now/greece"
+  to = "https://www.yacht-holiday.net/cruises/greece"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-urlaub.net/en/cruises/book-now/caribbean-bvi"
+  to = "https://www.yacht-holiday.net/cruises/caribbean-bvi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://yacht-urlaub.net/en/cruises/book-now/caribbean-bvi"
+  to = "https://www.yacht-holiday.net/cruises/caribbean-bvi"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-urlaub.net/en/cruises/book-now/caribbean-grenadines"
+  to = "https://www.yacht-holiday.net/cruises/caribbean-grenadines"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://yacht-urlaub.net/en/cruises/book-now/caribbean-grenadines"
+  to = "https://www.yacht-holiday.net/cruises/caribbean-grenadines"
+  status = 301
   force = true
 
 # --- 2. /en/... der deutschen Domain auf die englische Domain ---

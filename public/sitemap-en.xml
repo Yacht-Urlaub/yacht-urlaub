@@ -2,10 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- English — yacht-holiday.net -->
   <url><loc>https://www.yacht-holiday.net/</loc><lastmod>2026-11-25</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/book-now</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/book-now</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/cabin-offers</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/contact</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/cruises</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/cruises</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/data-privacy</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/destinations</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/faq</loc><lastmod>2026-11-24</lastmod></url>
@@ -20,16 +20,16 @@
   <url><loc>https://www.yacht-holiday.net/charter/yacht-charter</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/contact/crew</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/contact/travel-agencies</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/cruises/for-beginners</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/cruises/for-families</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/cruises/for-friends</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/cruises/for-beginners</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/cruises/for-families</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/cruises/for-friends</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/cruises/luxury</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/destinations/balearic-islands</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/destinations/canaries</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/destinations/caribbean-british-virgin-islands</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/destinations/caribbean-windward-islands</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/destinations/croatia</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/destinations/greece</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/destinations/caribbean-british-virgin-islands</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/destinations/caribbean-windward-islands</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/destinations/croatia</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/destinations/greece</loc><lastmod>2026-11-25</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/destinations/seychelles</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/destinations/thailand</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/cruises/porto-heli</loc><lastmod>2026-11-25</lastmod></url>
@@ -46,9 +46,9 @@
   <url><loc>https://www.yacht-holiday.net/trip-reports/split-to-dubrovnik</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/trip-reports/the-dodecanese</loc><lastmod>2026-11-24</lastmod></url>
   <url><loc>https://www.yacht-holiday.net/trip-reports/the-kornati-islands</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/cruises/book-now/caribbean-bvi</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/cruises/book-now/caribbean-grenadines</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/cruises/book-now/dalmatia-croatia</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/cruises/book-now/greece</loc><lastmod>2026-11-24</lastmod></url>
-  <url><loc>https://www.yacht-holiday.net/cruises/book-now/kornati-croatia</loc><lastmod>2026-11-24</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/cruises/caribbean-bvi</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/cruises/caribbean-grenadines</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/cruises/dalmatia-croatia</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/cruises/greece</loc><lastmod>2026-11-25</lastmod></url>
+  <url><loc>https://www.yacht-holiday.net/cruises/kornati-croatia</loc><lastmod>2026-11-25</lastmod></url>
 </urlset>

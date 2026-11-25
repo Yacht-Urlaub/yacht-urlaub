@@ -32,7 +32,7 @@ export default function DestinationDetail({ dest, onBack }: { dest: Destination;
   const lang = useLang()
   const s = dd[lang]
   const pkgList = lang === 'en' ? packagesEn : packages
-  const pkgHref = (pid: string) => lang === 'en' ? `/en/cruises/book-now/${enPkgPath[pid] ?? pid}` : `/packages/${pid}`
+  const pkgHref = (pid: string) => lang === 'en' ? `/en/cruises/${enPkgPath[pid] ?? pid}` : `/packages/${pid}`
   const teasers = dest.packageIds.map(pid => pkgList.find(p => p.id === pid)).filter((p): p is NonNullable<typeof p> => !!p)
   const images = dest.blocks.filter(b => b.t === 'i')
 

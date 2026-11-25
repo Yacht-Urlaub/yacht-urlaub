@@ -7,7 +7,7 @@ import SEO from '../components/SEO'
 import { MapPinIcon } from '../components/Icons'
 import { packages } from '../components/Packages'
 import { packagesEn } from '../data/packagesEn'
-import { useLang, enPkgSlugs, isEnHost, BASE_DE, BASE_EN } from '../i18n'
+import { useLang, enPkgSlugs, enPkgPath, isEnHost, BASE_DE, BASE_EN } from '../i18n'
 import type { PriceBlock, Addon } from '../components/Packages'
 
 // Planyo-Blanko-Buchungslinks pro Package (wie Originalseite yacht-urlaub.net)
@@ -239,7 +239,7 @@ export default function PackageDetailPage() {
   }
 
   const base = isEnHost() ? BASE_EN : BASE_DE
-  const pkgPath = lang === 'en' ? `/cruises/book-now/${pkg.id}` : `/packages/${pkg.id}`
+  const pkgPath = lang === 'en' ? `/cruises/${enPkgPath[pkg.id] ?? pkg.id}` : `/packages/${pkg.id}`
   const pkgUrl = `${base}${pkgPath}`
   const schema = {
     '@context': 'https://schema.org',

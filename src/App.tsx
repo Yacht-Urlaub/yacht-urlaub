@@ -1,5 +1,5 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { LanguageContext, langFromPath, canonicalPath, isEnHost, toInternal, toHref } from './i18n'
+import { BrowserRouter, Routes, Route, useLocation, useParams } from 'react-router-dom'
+import { LanguageContext, langFromPath, canonicalPath, isEnHost, toInternal, toHref, enPkgSlugs } from './i18n'
 import { lazy, Suspense, useEffect, useLayoutEffect } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -52,6 +52,14 @@ function LangProvider({ children }: { children: React.ReactNode }) {
 // Messung (GA4, nur nach Einwilligung): fruehere Zustimmung wiederherstellen
 // und Klicks auf Telefon/WhatsApp/E-Mail erfassen. Seitenaufrufe kommen aus
 // SEO.tsx. Ohne Einwilligung tut trackEvent nichts, siehe analytics.ts.
+// Englisch: /cruises/<slug> ist entweder ein Package (dalmatia-croatia, greece, ...)
+// oder eine Kategorie (for-beginners, luxury, ...). Die Adressen der Packages
+// hiessen frueher /cruises/book-now/<slug> (301 in netlify.toml).
+function CruiseOrPackage() {
+  const { id } = useParams<{ id: string }>()
+  return id && id in enPkgSlugs ? <PackageDetailPage /> : <ToernDetailPage />
+}
+
 function Analytics() {
   useEffect(() => {
     initAnalytics()
@@ -158,12 +166,11 @@ function AnimatedRoutes() {
           <Route path={toHref("/en/destinations")} element={<DestinationenPage />} />
           <Route path={toHref("/en/destinations/:id")} element={<DestinationPage />} />
           <Route path={toHref("/en/yachts")} element={<YachtenPage />} />
-          <Route path={toHref("/en/cruises/book-now/:id")} element={<PackageDetailPage />} />
           <Route path={toHref("/en/faq")} element={<FaqPage />} />
           <Route path={toHref("/en/book-now")} element={<BuchenPage />} />
           <Route path={toHref("/en/cruises")} element={<ToernsPage />} />
           <Route path={toHref("/en/cruises/porto-heli")} element={<PortoHeliPage />} />
-          <Route path={toHref("/en/cruises/:id")} element={<ToernDetailPage />} />
+          <Route path={toHref("/en/cruises/:id")} element={<CruiseOrPackage />} />
           <Route path={toHref("/en/cabin-offers")} element={<KabinenPage />} />
           <Route path={toHref("/en/holiday-planner")} element={<UrlaubsplanerPage />} />
           <Route path={toHref("/en/charter/yacht-charter")} element={<CharterPage />} />
