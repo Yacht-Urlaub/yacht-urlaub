@@ -82,7 +82,7 @@ export default function DestinationenOverview({ standalone = false }: { standalo
         </div>
 
         {/* Neu 2027: eigene Seite mit Buchungsstrecke (PortoHeliPage) */}
-        <Link to={lang === 'en' ? '/en/destinations/porto-heli' : '/destinationen/porto-heli'} className="dest-promo">
+        <Link to={lang === 'en' ? '/en/cruises/porto-heli' : '/toerns/porto-heli'} className="dest-promo">
           <span className="dest-promo-badge">{lang === 'en' ? 'New for 2027' : 'Neu für 2027'}</span>
           <span className="dest-promo-text">
             <strong>{lang === 'en' ? 'Sailing from Porto Heli' : 'Segeln ab Porto Heli'}</strong>

@@ -301,7 +301,7 @@ const T = {
   },
 }
 
-const PH_PATH = { de: '/destinationen/porto-heli', en: '/destinations/porto-heli' }
+const PH_PATH = { de: '/toerns/porto-heli', en: '/cruises/porto-heli' }
 
 // ───────────────────────── Seite ─────────────────────────
 export default function PortoHeliPage() {

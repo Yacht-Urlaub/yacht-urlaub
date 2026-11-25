@@ -94,6 +94,9 @@ export const routePairs: [de: string, en: string][] = [
   ['/toerns/freunde', '/en/cruises/for-friends'],
   ['/toerns/familien', '/en/cruises/for-families'],
   ['/toerns/luxury', '/en/cruises/luxury'],
+  // Porto Heli ist eine buchbare Reise (Wochen Fr-Fr), keine Destination und kein
+  // Package -> unter den Toerns/Cruises, wie die uebrigen Reisen.
+  ['/toerns/porto-heli', '/en/cruises/porto-heli'],
   ['/packages/dalmatien', '/en/cruises/book-now/dalmatia-croatia'],
   ['/packages/kornaten', '/en/cruises/book-now/kornati-croatia'],
   // /packages/istrien hat kein EN-Pendant — bewusst kein Eintrag, sonst
@@ -152,7 +155,6 @@ export const enDestSlugs: Record<string, string> = {
   'caribbean-windward-islands': 'karibik-windward-islands',
   thailand: 'thailand',
   seychelles: 'seychellen',
-  'porto-heli': 'porto-heli', // eigene Seite (PortoHeliPage), kein Eintrag in destinations
 }
 
 /** EN-Package-Slug → interne ID */

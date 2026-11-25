@@ -1,6 +1,6 @@
 {
   "https://www.yacht-holiday.net/": {
-    "hash": "674ea893b85ec51b",
+    "hash": "788400b3888312da",
     "lastmod": "2026-11-25"
   },
   "https://www.yacht-holiday.net/book-now": {
@@ -71,13 +71,17 @@
     "hash": "d570b1870efe315d",
     "lastmod": "2026-11-24"
   },
+  "https://www.yacht-holiday.net/cruises/porto-heli": {
+    "hash": "263149bd3f9f0b2a",
+    "lastmod": "2026-11-25"
+  },
   "https://www.yacht-holiday.net/data-privacy": {
     "hash": "665a504d57c551f4",
     "lastmod": "2026-11-24"
   },
   "https://www.yacht-holiday.net/destinations": {
-    "hash": "c343d624829ee001",
-    "lastmod": "2026-11-24"
+    "hash": "d16b4664e43bd780",
+    "lastmod": "2026-11-25"
   },
   "https://www.yacht-holiday.net/destinations/balearic-islands": {
     "hash": "8e6011a6bb7e7b68",
@@ -102,10 +106,6 @@
   "https://www.yacht-holiday.net/destinations/greece": {
     "hash": "0bfac7fb22188b8e",
     "lastmod": "2026-11-24"
-  },
-  "https://www.yacht-holiday.net/destinations/porto-heli": {
-    "hash": "162a1072f3e1d8e6",
-    "lastmod": "2026-11-25"
   },
   "https://www.yacht-holiday.net/destinations/seychelles": {
     "hash": "993dfe35a564d628",
@@ -224,8 +224,8 @@
     "lastmod": "2026-11-24"
   },
   "https://www.yacht-urlaub.net/destinationen": {
-    "hash": "499d45183f7c5d1b",
-    "lastmod": "2026-11-24"
+    "hash": "3e1c1be58c35f29c",
+    "lastmod": "2026-11-25"
   },
   "https://www.yacht-urlaub.net/destinationen/balearen": {
     "hash": "c53432be0e82f074",
@@ -250,10 +250,6 @@
   "https://www.yacht-urlaub.net/destinationen/kroatien": {
     "hash": "bd3f418cd806810f",
     "lastmod": "2026-11-24"
-  },
-  "https://www.yacht-urlaub.net/destinationen/porto-heli": {
-    "hash": "1c898293c7624e8f",
-    "lastmod": "2026-11-25"
   },
   "https://www.yacht-urlaub.net/destinationen/seychellen": {
     "hash": "b4ada44b8d87b5c3",
@@ -398,6 +394,10 @@
   "https://www.yacht-urlaub.net/toerns/luxury": {
     "hash": "64086b0ca3954d7c",
     "lastmod": "2026-11-24"
+  },
+  "https://www.yacht-urlaub.net/toerns/porto-heli": {
+    "hash": "af5191157a1f6f38",
+    "lastmod": "2026-11-25"
   },
   "https://www.yacht-urlaub.net/urlaubsplaner": {
     "hash": "a9b0d8e71a97180e",

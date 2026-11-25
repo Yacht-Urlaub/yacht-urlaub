@@ -221,6 +221,26 @@
   status = 200
   force = true
 
+# --- 1b. Porto Heli: alte Adresse (Destination) -> neue Adresse (Cruise) ---
+#     Direkt auf das Ziel, ohne Zwischenschritt ueber die /en/*-Regel unten.
+[[redirects]]
+  from = "https://www.yacht-holiday.net/destinations/porto-heli"
+  to = "/cruises/porto-heli"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.yacht-urlaub.net/en/destinations/porto-heli"
+  to = "https://www.yacht-holiday.net/cruises/porto-heli"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://yacht-urlaub.net/en/destinations/porto-heli"
+  to = "https://www.yacht-holiday.net/cruises/porto-heli"
+  status = 301
+  force = true
+
 # --- 2. /en/... der deutschen Domain auf die englische Domain ---
 #     Der leere Splat deckt /en selbst mit ab.
 [[redirects]]
@@ -236,6 +256,13 @@
   force = true
 
 # --- 3. Deutsche Domain: geaenderte Alt-Pfade ---
+# Porto Heli lag kurz unter /destinationen/porto-heli, jetzt /toerns/porto-heli.
+[[redirects]]
+  from = "/destinationen/porto-heli"
+  to = "/toerns/porto-heli"
+  status = 301
+  force = true
+
 # /news (Uebersichtsseite "Top-News & Angebote") ist entfallen — die
 # Artikelseiten unter /news/... bleiben bestehen (die Regel hat keinen Splat).
 # Gilt pfadgleich auch fuer die englische Domain, dort fuehrte /news bisher auf
