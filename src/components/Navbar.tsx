@@ -94,6 +94,7 @@ const navDe = [
       { label: 'Segel-Katamaran', href: '/yachten?tab=katamaran' },
       { label: 'Motoryacht (Monohull)', href: '/yachten?tab=motoryacht' },
       { label: 'Motor-Katamaran', href: '/yachten?tab=motorkat' },
+      { label: 'Yachtmodelle', href: '/yachtmodelle' },
     ]
   },
   {

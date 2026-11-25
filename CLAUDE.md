@@ -159,6 +159,13 @@ dem Artefakt "Segeln ab Porto Heli" und muessen mit ihm uebereinstimmen. Die Buc
 Formular `porto-heli-buchung` ueber `sendForm` an `CONTACT_TO`; die Mail
 enthaelt die interne Kalkulation und die Booking-Manager-Yacht-ID.
 
+## Yachtmodelle
+
+Bereich `/yachtmodelle` (Übersicht + 41 Modellseiten, nur Deutsch). Daten in
+`src/data/yachtModels.json`, Aufbau, Datenschutz-Regeln (Videos/3D erst nach Klick, keine
+Fremd-Vorschaubilder) und Ablauf für neue Modelle: `docs/yachtmodelle.md`. Jede Modellseite steht in
+`public/sitemap.xml` und bekommt einen Snapshot.
+
 # PR- und Preview-Link immer im Chat durchgeben
 
 Änderungen nie nur stillschweigend committen/pushen und als "fertig"

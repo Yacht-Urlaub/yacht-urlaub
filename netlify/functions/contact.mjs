@@ -21,6 +21,7 @@ const FORM_LABELS = {
   'charter-anfrage': 'Yacht-Charter-Anfrage',
   'crew-anfrage': 'Anfrage an die Crew',
   'porto-heli-buchung': 'Verbindliche Buchungsanfrage Porto Heli',
+  'yachtmodell-anfrage': 'Yachtmodell-Anfrage',
 }
 
 // Felder, die als Absenderangaben gelten und nicht noch einmal
@@ -44,6 +45,8 @@ const LABELS = {
   zahlungsart: 'Zahlungsart', modus: 'Modus', gruppe: 'Gruppe',
   getraenke: 'Getränke', yachtTyp: 'Yacht-Typ', kabinen: 'Kabinen',
   revier: 'Revier', alter: 'Alter', start: 'Start', ende: 'Ende',
+  // Yachtmodell-Anfrage (skipperWunsch statt skipper: das Feld 'skipper' heisst bei Porto Heli Kosten)
+  modell: 'Yachtmodell', werft: 'Werft', zeitraum: 'Zeitraum', skipperWunsch: 'Skipper', seite: 'Seite',
   // Porto-Heli-Buchung (Kalkulation nur intern)
   yachtIntern: 'Yacht (intern)', bookingManagerYachtId: 'Booking-Manager-Yacht-ID',
   von: 'Anreise (Freitag)', bis: 'Abreise (Freitag)', naechte: 'Nächte', gaeste: 'Gäste',

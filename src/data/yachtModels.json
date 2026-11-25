@@ -1,0 +1,6505 @@
+[
+ {
+  "id": "lagoon-38",
+  "name": "Lagoon 38",
+  "brand": "Lagoon",
+  "typ": "Katamaran",
+  "len": 11.38,
+  "year": "Neu seit 2025",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.catamarans-lagoon.com/boats/lagoon-38",
+  "tagline": "Der kompakte Lagoon für Familien und kleine Gruppen: viel Wohnraum auf kurzer Länge, ruhig vor Anker und leicht zu handhaben.",
+  "videos": [
+   {
+    "id": "BGjRWOFcMzc",
+    "title": "Die Lagoon 38 im Rundgang",
+    "by": "Walkthrough von Lagoon"
+   },
+   {
+    "id": "_Lei89OMjq4",
+    "title": "Rundgang auf Deutsch",
+    "by": "Erstvorstellung in Bordeaux"
+   }
+  ],
+  "key": [
+   [
+    "11,4 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ],
+   [
+    "6,65 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Lagoon 38 ist der Nachfolger der Lagoon 380, eines der erfolgreichsten Charter-Katamarane überhaupt. Sie ist komplett neu gezeichnet und bietet auf gut elf Metern Rumpflänge erstaunlich viel Platz.",
+   "Cockpit und Salon gehen durch eine große Glasschiebetür ineinander über. Am Salontisch essen bis zu zehn Personen, und die verlängerten Heckstufen sind ideal zum Baden und Springen."
+  ],
+  "plus": [
+   "Wohnraum wie auf einem größeren Katamaran",
+   "Glasschiebetür verbindet Cockpit und Salon",
+   "Breite Heckstufen zum Baden und Springen",
+   "Kaum Schräglage – angenehm für Kinder",
+   "Mehrfach ausgezeichnet als bestes neues Segelboot"
+  ],
+  "minus": [
+   "Kompakter als 42- oder 43-Fuß-Katamarane",
+   "Bei voller Belegung wenig Stauraum pro Person",
+   "Noch nicht in allen Flotten verfügbar"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3 oder 4"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Rumpflänge",
+    "11,38 m"
+   ],
+   [
+    "Breite",
+    "6,65 m"
+   ],
+   [
+    "Tiefgang",
+    "1,26 m"
+   ],
+   [
+    "Typ",
+    "Fahrtenkatamaran"
+   ]
+  ],
+  "life": [
+   [
+    "Ein Raum, drinnen und draußen",
+    "Die Glasschiebetür öffnet den Salon zum Cockpit. Frühstück, Kartenspiel und Sundowner finden an einem Ort statt.",
+    "home"
+   ],
+   [
+    "Tafeln für zehn",
+    "Am Salontisch finden bis zu zehn Personen Platz – auch an Regentagen sitzen alle zusammen.",
+    "sun"
+   ],
+   [
+    "Baden vom Heck",
+    "Die verlängerten Heckstufen sind Badeplattform und Sprungbrett zugleich.",
+    "wave"
+   ],
+   [
+    "Ruhige Nächte",
+    "Zwei Rümpfe, kaum Krängung: Gläser bleiben stehen, Kinder schlafen ruhig.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "Familien und Freundesgruppen",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · Eignerversion",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, die mehr Raum möchten",
+    "note": "Ein Rumpf mit großer Eignerkabine, Bett vorne, Bad achtern"
+   }
+  ],
+  "fitYes": [
+   "mit 4 bis 8 Personen reisen",
+   "einen modernen, kompakten Katamaran suchen",
+   "ein günstigeres Einstiegsmodell möchten"
+  ],
+  "fitNo": [
+   "mit 10 Personen reisen und viel Stauraum brauchen",
+   "jeder Kabine ein eigenes, großes Bad geben möchten"
+  ],
+  "faq": [
+   [
+    "Was ist neu gegenüber der Lagoon 380?",
+    "Die Lagoon 38 ist komplett neu entworfen: mehr Wohnraum, die Glasschiebetür zwischen Salon und Cockpit und breitere Heckstufen zum Baden."
+   ]
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "11,38 m"
+   ],
+   [
+    "Länge über alles",
+    "13,34 m (mit Optionen)"
+   ],
+   [
+    "Breite",
+    "6,65 m"
+   ],
+   [
+    "Tiefgang",
+    "1,26 m"
+   ],
+   [
+    "Wassertank",
+    "300 l (bis 500 l)"
+   ],
+   [
+    "Motoren",
+    "2 × 29 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "lagoon-42",
+  "name": "Lagoon 42",
+  "brand": "Lagoon",
+  "typ": "Katamaran",
+  "len": 12.8,
+  "year": "Charter-Klassiker",
+  "badges": [
+   "In fast allen Revieren"
+  ],
+  "src": "https://www.catamarans-lagoon.com/boats/lagoon-42-millenium",
+  "images": [
+   {
+    "src": "/images/yachtmodelle/lagoon-42-1.jpg",
+    "alt": "Lagoon 42 vor Anker"
+   }
+  ],
+  "tagline": "Der beliebteste Charter-Katamaran der Welt: viel Platz für Familie und Freunde, ruhig vor Anker und mit einem Bad für jede Kabine.",
+  "videos": [
+   {
+    "id": "6JOLPOTUAeA",
+    "title": "Die Lagoon 42 im Film",
+    "by": "Offizielles Video von Lagoon"
+   },
+   {
+    "id": "SPXANr5RAZI",
+    "title": "Rundgang durch eine Lagoon 42",
+    "by": "Rundgang innen und außen"
+   }
+  ],
+  "key": [
+   [
+    "12,8 m",
+    "Länge"
+   ],
+   [
+    "4",
+    "Kabinen"
+   ],
+   [
+    "4",
+    "Bäder"
+   ],
+   [
+    "6–8",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Mit über 1.000 gebauten Yachten ist die Lagoon 42 der Katamaran, den Sie in fast jedem Revier der Welt finden: in Kroatien und Griechenland ebenso wie in der Karibik oder in Thailand. Sie ist geräumig, ohne riesig zu sein, und liegt ruhig im Wasser.",
+   "Das Cockpit geht ebenerdig in den Salon über, am Cockpittisch sitzen bis zu zehn Personen. Am Abend hat jedes Paar seine eigene Kabine mit eigenem Bad."
+  ],
+  "plus": [
+   "Bad mit WC und Dusche für jede Kabine (4/4-Version)",
+   "Kaum Schräglage – angenehm für Kinder und alle, die leicht seekrank werden",
+   "Großes Cockpit mit Tisch für zehn",
+   "Flacher Tiefgang: Ankern nah am Strand",
+   "In fast allen Revieren und Flotten verfügbar"
+  ],
+  "minus": [
+   "Bei voller Belegung wird der Stauraum knapp",
+   "Breiter als eine Segelyacht: in manchen Häfen teurere Liegeplätze",
+   "Der Nachfolger Lagoon 43 bietet etwas mehr Raum"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "4 / 4 (Charter-Version)"
+   ],
+   [
+    "Gäste",
+    "6–8 komfortabel"
+   ],
+   [
+    "Länge",
+    "12,80 m"
+   ],
+   [
+    "Breite",
+    "7,70 m"
+   ],
+   [
+    "Tiefgang",
+    "1,25 m"
+   ],
+   [
+    "Typ",
+    "Fahrtenkatamaran"
+   ]
+  ],
+  "life": [
+   [
+    "Salon und Cockpit auf einer Ebene",
+    "Die große Glastür verbindet beide zu einem Raum. Niemand ist „unten“, alle sitzen zusammen.",
+    "home"
+   ],
+   [
+    "Vordeck und Netze",
+    "Vorne warten Sitzpolster und die Netze zum Liegen über dem Wasser – der Lieblingsplatz am Nachmittag.",
+    "sun"
+   ],
+   [
+    "Baden direkt vom Heck",
+    "Zwei Badetreppen führen ins Wasser, das Beiboot bringt Sie zum Strand oder in die Taverne.",
+    "wave"
+   ],
+   [
+    "Ruhig vor Anker",
+    "Zwei Rümpfe bedeuten kaum Krängung und ruhige Nächte in der Bucht.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 4 Bäder",
+    "cab": "4",
+    "bath": "4",
+    "fit": "Familien, Freundesgruppen, 4 Paare",
+    "note": "Die übliche Charter-Version"
+   },
+   {
+    "v": "3 Kabinen · 3 Bäder (Eigner)",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare, die viel Raum wollen",
+    "note": "Ein ganzer Rumpf für ein Paar – selten in der Charter"
+   }
+  ],
+  "reviere": [
+   "Kroatien",
+   "Porto Heli & Peloponnes",
+   "Saronischer Golf",
+   "Kykladen",
+   "Ionisches Meer",
+   "Sardinien",
+   "Balearen",
+   "Karibik & BVI",
+   "Thailand",
+   "Seychellen"
+  ],
+  "reviereText": "Die Lagoon 42 ist der Klassiker in den Charterflotten. Wir finden sie für Sie in fast jedem Revier, oft sogar in mehreren Baujahren.",
+  "fitYes": [
+   "mit Familie oder Freunden reisen und jede Kabine ein Bad haben soll",
+   "gerne vor Anker liegen, baden und das Leben im Cockpit genießen",
+   "flexibel im Revier sein möchten"
+  ],
+  "fitNo": [
+   "mehr als 8 Gäste mitbringen – dann lieber Lagoon 46 oder 47",
+   "vor allem sportlich segeln möchten"
+  ],
+  "faq": [
+   [
+    "Wird die Lagoon 42 noch gebaut?",
+    "Ihr Nachfolger ist die Lagoon 43. Die 42 wird als Charter-Version „Millenium“ weiter angeboten und ist in den Flotten weit verbreitet."
+   ]
+  ],
+  "tech": [
+   [
+    "Länge",
+    "12,80 m"
+   ],
+   [
+    "Breite",
+    "7,70 m"
+   ],
+   [
+    "Tiefgang",
+    "1,25 m"
+   ],
+   [
+    "Wassertank",
+    "300 l (bis 600 l)"
+   ],
+   [
+    "Motoren",
+    "2 × 45–57 PS"
+   ],
+   [
+    "Design",
+    "VPLP / Nauta Design"
+   ]
+  ],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "lagoon-43",
+  "name": "Lagoon 43",
+  "brand": "Lagoon",
+  "typ": "Katamaran",
+  "len": 12.84,
+  "year": "Nachfolger der Lagoon 42",
+  "badges": [
+   "Neue Generation"
+  ],
+  "src": "https://www.catamarans-lagoon.com/boats/lagoon-43",
+  "tagline": "Die Nachfolgerin des Bestsellers: größere Kabinen, breitere Betten und ein Tisch, an dem bis zu zwölf Gäste gemeinsam essen.",
+  "videos": [
+   {
+    "id": "W6nq3XWQcsM",
+    "title": "Die Lagoon 43 im Rundgang",
+    "by": "Ausführlicher Walkthrough"
+   },
+   {
+    "id": "djrIjSarfls",
+    "title": "Eine Lagoon 43 aus der Charterflotte",
+    "by": "Charteryacht in Trogir, Kroatien"
+   }
+  ],
+  "key": [
+   [
+    "12,8 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "6–13",
+    "Gäste"
+   ],
+   [
+    "7,69 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Lagoon 43 tritt in große Fußstapfen: Sie folgt auf die Lagoon 42, den meistgebauten Katamaran überhaupt. Lagoon hat sie komplett neu entworfen – mit breiteren Rümpfen über der Wasserlinie und dadurch deutlich mehr Platz in den Kabinen.",
+   "Das Highlight für Gäste: Schiebetüren öffnen Salon und Cockpit so weit, dass beide Tische zu einer langen Tafel für bis zu zwölf Personen werden."
+  ],
+  "plus": [
+   "Eine Tafel für bis zu 12 Gäste – drinnen und draußen verbunden",
+   "Größere Kabinen und breitere Betten als auf der 42",
+   "Eigener Zugang achtern an jedem Rumpf – bequem an Bord",
+   "Großer Wassertank (630 l)",
+   "Optional zusätzliche Pullman-Kojen für Kinder"
+  ],
+  "minus": [
+   "Noch weniger Yachten in den Flotten als bei der 42",
+   "Breite verlangt Katamaran-Liegeplätze",
+   "Bei 13 Personen an Bord wird es eng"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3 oder 4, optional mit Pullman-Koje"
+   ],
+   [
+    "Gäste",
+    "6–13"
+   ],
+   [
+    "Rumpflänge",
+    "12,84 m"
+   ],
+   [
+    "Breite",
+    "7,69 m"
+   ],
+   [
+    "Tiefgang",
+    "1,27 m"
+   ],
+   [
+    "Wassertank",
+    "630 l"
+   ]
+  ],
+  "life": [
+   [
+    "Die lange Tafel",
+    "Schiebetüren verbinden Salon- und Cockpittisch zu einem Tisch für bis zu zwölf Personen.",
+    "home"
+   ],
+   [
+    "Mehr Platz zum Schlafen",
+    "Alle Kabinen sind größer, die Betten breiter als beim Vorgänger.",
+    "bed"
+   ],
+   [
+    "Bequem an Bord",
+    "Jeder Rumpf hat achtern einen eigenen Zugang – praktisch am Steg und nach dem Baden.",
+    "wave"
+   ],
+   [
+    "Steuerstand im Schatten",
+    "Der erhöhte Steuerstand liegt unter einem festen Bimini.",
+    "sun"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "Familien, 4 Paare",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen + Pullman-Koje",
+    "cab": "4 + Koje",
+    "bath": "je nach Yacht",
+    "fit": "Familien mit Kindern",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen (Eigner)",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, viel Raum",
+    "note": "Bett wahlweise vorne oder achtern in der Eignerkabine"
+   },
+   {
+    "v": "3 Kabinen + Pullman-Koje",
+    "cab": "3 + Koje",
+    "bath": "je nach Yacht",
+    "fit": "Familie mit Kind",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "mit 6 bis 10 Gästen reisen",
+   "viel Wert auf gemeinsame Mahlzeiten legen",
+   "einen der neuesten Lagoon-Katamarane möchten"
+  ],
+  "fitNo": [
+   "möglichst günstig reisen möchten – dann Lagoon 42",
+   "in kleine Häfen mit wenig Katamaran-Plätzen möchten"
+  ],
+  "faq": [
+   [
+    "Was ist der Unterschied zur Lagoon 42?",
+    "Die 43 ist neu konstruiert: größere Kabinen, breitere Betten, eigene Zugänge in den Rümpfen und die Tafel für bis zu zwölf Gäste."
+   ]
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "12,84 m"
+   ],
+   [
+    "Länge über alles",
+    "13,85 m (mit Optionen)"
+   ],
+   [
+    "Breite",
+    "7,69 m"
+   ],
+   [
+    "Tiefgang",
+    "1,27 m"
+   ],
+   [
+    "Wassertank",
+    "630 l"
+   ],
+   [
+    "Motoren",
+    "2 × 57 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "lagoon-46",
+  "name": "Lagoon 46",
+  "brand": "Lagoon",
+  "typ": "Katamaran",
+  "len": 13.99,
+  "year": "Iconic-Edition",
+  "badges": [
+   "Bewährt"
+  ],
+  "src": "https://www.catamarans-lagoon.com/boats/lagoon-46-iconic",
+  "tagline": "Der meistverkaufte Katamaran seiner Größe: großzügig, hell und mit einer Lounge auf dem Vordeck.",
+  "videos": [
+   {
+    "id": "XE4DJoPakBo",
+    "title": "Die Lagoon 46 im Rundgang",
+    "by": "Walkthrough mit 45 Degrees Sailing"
+   }
+  ],
+  "key": [
+   [
+    "14 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "6–12",
+    "Gäste"
+   ],
+   [
+    "7,96 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Lagoon 46 ist der meistverkaufte Katamaran ihrer Größe und in vielen Flotten zu Hause. Sie bietet deutlich mehr Raum als die 42er-Klasse – ideal, wenn Sie mit acht Gästen oder zwei Familien reisen.",
+   "In der Iconic-Edition hat Lagoon den Vorderbereich neu gestaltet: mehr Sonnenpolster und eine eigene Badeleiter am Bug, damit Sie auch vorne sicher ins Wasser kommen."
+  ],
+  "plus": [
+   "Viel Wohnraum für zwei Familien",
+   "Lounge mit Sonnenpolstern auf dem Vordeck",
+   "Badeleiter am Bug",
+   "Helle Kabinen und Salon",
+   "Eignerkabine mit Inselbett"
+  ],
+  "minus": [
+   "Nachfolgerin Lagoon 47 bietet die neuere Raumaufteilung",
+   "Braucht Katamaran-Liegeplätze",
+   "Größer und teurer als die 42er-Klasse"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3 oder 4"
+   ],
+   [
+    "Gäste",
+    "6–12"
+   ],
+   [
+    "Rumpflänge",
+    "13,99 m"
+   ],
+   [
+    "Breite",
+    "7,96 m"
+   ],
+   [
+    "Tiefgang",
+    "1,37 m"
+   ],
+   [
+    "Typ",
+    "Fahrtenkatamaran"
+   ]
+  ],
+  "life": [
+   [
+    "Vordeck-Lounge",
+    "Mehr Sonnenpolster und ein neu gestalteter Bug machen vorne den schönsten Platz für den Nachmittag.",
+    "sun"
+   ],
+   [
+    "Großes Cockpit",
+    "Am großen Cockpittisch hat die ganze Crew Platz.",
+    "home"
+   ],
+   [
+    "Baden vorne und hinten",
+    "Neben den Heckstufen gibt es eine Badeleiter am Bug.",
+    "wave"
+   ],
+   [
+    "Helle Kabinen",
+    "Viel Licht in Kabinen und Salon, die Eignerkabine mit Inselbett.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "Zwei Familien, 4 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen (Eigner)",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare mit viel Raumwunsch",
+    "note": "Eignerrumpf mit Inselbett"
+   }
+  ],
+  "fitYes": [
+   "mit 6 bis 8 Gästen viel Platz möchten",
+   "gerne vorne an Deck in der Sonne liegen",
+   "ein bewährtes Modell suchen"
+  ],
+  "fitNo": [
+   "Wert auf das allerneueste Modell legen – dann Lagoon 47",
+   "zu viert günstig reisen möchten"
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "13,99 m"
+   ],
+   [
+    "Länge über alles",
+    "14,50 m"
+   ],
+   [
+    "Breite",
+    "7,96 m"
+   ],
+   [
+    "Tiefgang",
+    "1,37 m"
+   ],
+   [
+    "Motoren",
+    "2 × 57 PS"
+   ],
+   [
+    "Design",
+    "VPLP / Nauta Design"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "lagoon-47",
+  "name": "Lagoon 47",
+  "brand": "Lagoon",
+  "typ": "Katamaran",
+  "len": 13.96,
+  "year": "Neu ab Saison 2027",
+  "badges": [
+   "Neu 2027"
+  ],
+  "src": "https://www.catamarans-lagoon.com/boats/lagoon-47",
+  "tagline": "Die neue Generation: Tür zum vorderen Cockpit, Querbetten mit Meerblick und eine Flybridge zum Wohnen.",
+  "videos": [
+   {
+    "id": "3TVWXZW1XuU",
+    "title": "Die neue Lagoon 47",
+    "by": "Offizieller Teaser von Lagoon"
+   },
+   {
+    "id": "2lPauRTRBUc",
+    "title": "Rundgang auf Deutsch",
+    "by": "Walkthrough von der Weltpremiere in Cannes"
+   }
+  ],
+  "key": [
+   [
+    "15 m",
+    "Länge"
+   ],
+   [
+    "3–6",
+    "Kabinen"
+   ],
+   [
+    "6–13",
+    "Gäste"
+   ],
+   [
+    "7,96 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Lagoon 47 folgt auf die Lagoon 46, den meistverkauften Katamaran ihrer Größe. Sie feierte 2026 in Cannes Weltpremiere und kommt zur Saison 2027 in die Charterflotten.",
+   "Das Besondere spüren Sie sofort: Eine Tür führt vom Salon direkt ins vordere Cockpit. So wird der Katamaran vom Heck bis zum Bug zu einem großen Wohnraum, drinnen und draußen zugleich."
+  ],
+  "plus": [
+   "Salon mit Tür ins vordere Cockpit – ein „Zimmer im Freien“",
+   "Querbetten mit Meerblick in den Gästekabinen",
+   "Flybridge mit Lounge und Sonnenliegen",
+   "Kabine mit eigenem Zugang vom Cockpit",
+   "Flexibler Smart Room für Kinder, Skipper oder Gepäck"
+  ],
+  "minus": [
+   "Noch wenige Yachten – früh anfragen lohnt sich",
+   "Größer und damit teurer als die 42er-Klasse",
+   "Braucht Katamaran-Liegeplätze"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3 bis 6"
+   ],
+   [
+    "Gäste",
+    "6–13"
+   ],
+   [
+    "Länge",
+    "14,95 m"
+   ],
+   [
+    "Breite",
+    "7,96 m"
+   ],
+   [
+    "Tiefgang",
+    "1,25 m"
+   ],
+   [
+    "Baujahr",
+    "ab 2027"
+   ]
+  ],
+  "life": [
+   [
+    "Wohnen bis zum Bug",
+    "Die Tür zwischen Salon und vorderem Cockpit macht beide Bereiche zu einer großen Wohnfläche.",
+    "door"
+   ],
+   [
+    "Flybridge als Lounge",
+    "Oben gibt es Sitzecke, Tisch und Sonnenliegen – der beste Platz, um die Küste vorbeiziehen zu sehen.",
+    "sun"
+   ],
+   [
+    "Schlafen mit Meerblick",
+    "Die Doppelbetten stehen quer, mit Fenster aufs Wasser.",
+    "bed"
+   ],
+   [
+    "Privatsphäre",
+    "Eine Kabine hat ihren eigenen Zugang vom Cockpit – ideal für späte Heimkehrer.",
+    "home"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen + Smart Room",
+    "cab": "4 + Smart Room",
+    "bath": "je nach Yacht",
+    "fit": "Familien, 4 Paare",
+    "note": "Smart Room als Kinderkabine, Büro oder Stauraum"
+   },
+   {
+    "v": "5 Kabinen",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Größere Freundesgruppen",
+    "note": ""
+   },
+   {
+    "v": "6 Kabinen",
+    "cab": "6",
+    "bath": "je nach Yacht",
+    "fit": "Große Gruppen bis 12",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen (Eigner)",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare",
+    "note": "Mit Hauswirtschaftsraum oder Zusatzkabine"
+   }
+  ],
+  "reviere": [
+   "Kroatien",
+   "Griechenland",
+   "Sardinien"
+  ],
+  "reviereText": "Ab Saison 2027 kommen die ersten Lagoon 47 in Flotten in Kroatien, Griechenland und auf Sardinien. Weitere Reviere folgen.",
+  "fitYes": [
+   "Wert auf die neueste Generation legen",
+   "mit 8 bis 10 Gästen reisen",
+   "drinnen und draußen ineinander übergehen lassen möchten"
+  ],
+  "fitNo": [
+   "zu viert reisen – dann ist die Lagoon 42 günstiger",
+   "kurzfristig in der Hochsaison buchen möchten"
+  ],
+  "faq": [
+   [
+    "Ab wann kann man die Lagoon 47 buchen?",
+    "Die ersten Yachten fahren ab der Saison 2027. Wir nehmen Ihre Anfrage schon jetzt auf."
+   ],
+   [
+    "Was ist der Smart Room?",
+    "Ein flexibler Raum: je nach Yacht Kinder- oder Skipperkabine, Arbeitsplatz oder Stauraum."
+   ]
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "13,96 m"
+   ],
+   [
+    "Länge über alles",
+    "14,95 m"
+   ],
+   [
+    "Breite",
+    "7,96 m"
+   ],
+   [
+    "Tiefgang",
+    "1,25 m"
+   ],
+   [
+    "Wassertank",
+    "ca. 700 l"
+   ],
+   [
+    "Motoren",
+    "2 × 57 PS"
+   ]
+  ],
+  "images": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "lagoon-51",
+  "name": "Lagoon 51",
+  "brand": "Lagoon",
+  "typ": "Katamaran",
+  "len": 15.35,
+  "year": "Iconic-Edition",
+  "badges": [
+   "Große Gruppen"
+  ],
+  "src": "https://www.catamarans-lagoon.com/boats/lagoon-51-iconic",
+  "tagline": "Für große Gruppen und lange Wochen an Bord: bis zu sechs Kabinen, eine Flybridge mit Meerblick und 500 Liter Kühlraum.",
+  "videos": [
+   {
+    "id": "aavHEzE1FkQ",
+    "title": "Die Lagoon 51 in Kroatien",
+    "by": "Offizielles Video von Lagoon"
+   },
+   {
+    "id": "IeHK6R-Erb4",
+    "title": "Rundgang Lagoon 51 Iconic",
+    "by": "Gefilmt in Cannes 2025"
+   }
+  ],
+  "key": [
+   [
+    "15,4 m",
+    "Länge"
+   ],
+   [
+    "4–6",
+    "Kabinen"
+   ],
+   [
+    "8–14",
+    "Gäste"
+   ],
+   [
+    "8,1 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Lagoon 51 ist gemacht für große Gruppen: Bis zu sechs Kabinen, viele Plätze zum Sitzen und Liegen an Deck und eine Flybridge, auf der die halbe Crew Platz findet.",
+   "In der Iconic-Edition ist der Vorderbereich neu gestaltet – mit einer Lounge, Sonnenpolstern und einer Badeleiter am Bug. Dazu kommen 500 Liter Kühl- und Gefrierraum und viel Wasser im Tank."
+  ],
+  "plus": [
+   "Bis zu 6 Kabinen – ideal für große Gruppen",
+   "Flybridge mit zwei Aufgängen und freiem Blick",
+   "Lounge und Badeleiter am Bug",
+   "500 l Kühl- und Gefrierraum",
+   "Großer Wassertank (830 l)"
+  ],
+  "minus": [
+   "Breite verlangt Katamaran-Liegeplätze",
+   "In der 6/4-Version teilen sich Kabinen Bäder",
+   "Nicht in jedem Revier verfügbar"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "4/3, 4/4, 6/4 oder 6/6"
+   ],
+   [
+    "Gäste",
+    "8–14"
+   ],
+   [
+    "Rumpflänge",
+    "15,35 m"
+   ],
+   [
+    "Breite",
+    "8,10 m"
+   ],
+   [
+    "Tiefgang",
+    "1,40 m"
+   ],
+   [
+    "Wassertank",
+    "830 l"
+   ]
+  ],
+  "life": [
+   [
+    "Flybridge mit Aussicht",
+    "Zwei Aufgänge führen nach oben, wo man beim Segeln mitten in der Natur sitzt.",
+    "sun"
+   ],
+   [
+    "Vordeck-Lounge",
+    "Neue Sitz- und Liegeflächen am Bug, dazu eine Badeleiter direkt ins Wasser.",
+    "wave"
+   ],
+   [
+    "Viele Plätze an Deck",
+    "Die Wege an Bord sind so gelegt, dass sich auch große Gruppen gut verteilen.",
+    "home"
+   ],
+   [
+    "Vorräte für lange Tage",
+    "500 Liter Kühlraum – genug für Getränke und frische Einkäufe für alle.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "6 Kabinen · 6 Bäder",
+    "cab": "6",
+    "bath": "6",
+    "fit": "Große Gruppen bis 12",
+    "note": ""
+   },
+   {
+    "v": "6 Kabinen · 4 Bäder",
+    "cab": "6",
+    "bath": "4",
+    "fit": "Große Gruppen, Kosten teilen",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen · 4 Bäder",
+    "cab": "4",
+    "bath": "4",
+    "fit": "Familien, 4 Paare",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen · 3 Bäder (Eigner)",
+    "cab": "4",
+    "bath": "3",
+    "fit": "Paare mit Gästen",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "mit 8 bis 12 Personen reisen",
+   "viel Raum zum Verteilen an Deck möchten",
+   "länger vor Anker bleiben wollen"
+  ],
+  "fitNo": [
+   "zu viert reisen",
+   "enge Häfen ansteuern möchten"
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "15,35 m"
+   ],
+   [
+    "Länge über alles",
+    "15,60 m"
+   ],
+   [
+    "Breite",
+    "8,10 m"
+   ],
+   [
+    "Tiefgang",
+    "1,40 m"
+   ],
+   [
+    "Wassertank",
+    "830 l"
+   ],
+   [
+    "Motoren",
+    "2 × 80 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "lagoon-55",
+  "name": "Lagoon 55",
+  "brand": "Lagoon",
+  "typ": "Katamaran",
+  "len": 16.56,
+  "year": "Flaggschiff der Charter-Serie",
+  "badges": [
+   "Premium"
+  ],
+  "src": "https://www.catamarans-lagoon.com/boats/lagoon-55",
+  "tagline": "Eine Terrasse auf dem Wasser: 25 m² Cockpit, Betten mit Blick nach draußen und bis zu sechs gleich große Kabinen.",
+  "videos": [
+   {
+    "id": "qMOSWlxcQuQ",
+    "title": "Rundgang Lagoon 55",
+    "by": "Gefilmt in Cannes 2025"
+   }
+  ],
+  "key": [
+   [
+    "16,6 m",
+    "Länge"
+   ],
+   [
+    "4–6",
+    "Kabinen"
+   ],
+   [
+    "8–16",
+    "Gäste"
+   ],
+   [
+    "9 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Lagoon 55 ist der große Auftritt: ein Katamaran mit Wohnflächen wie in einem Ferienhaus. Das Cockpit am Heck ist mit rund 25 Quadratmetern eine echte Terrasse, mit erhöhten Sonnenliegen und Blick aufs Meer.",
+   "In der Charter-Version „Millenium“ gibt es sechs gleich große, gleich ausgestattete Kabinen – niemand bekommt die „schlechtere“ Kabine. Große öffnende Fenster im Aufbau holen das Meer in den Salon."
+  ],
+  "plus": [
+   "Cockpit-Terrasse mit rund 25 m²",
+   "Sechs gleichwertige Kabinen in der Charter-Version",
+   "Betten mit Blick nach draußen",
+   "Große Fenster im Aufbau, die sich öffnen lassen",
+   "Großer Wassertank (960 l)"
+  ],
+  "minus": [
+   "Premium-Preisklasse",
+   "Breite von 9 m – nicht jeder Hafen passt",
+   "Oft mit Crew gebucht"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "4, 5 oder 6"
+   ],
+   [
+    "Gäste",
+    "8–16"
+   ],
+   [
+    "Rumpflänge",
+    "16,56 m"
+   ],
+   [
+    "Breite",
+    "9,00 m"
+   ],
+   [
+    "Tiefgang",
+    "1,60 m"
+   ],
+   [
+    "Wassertank",
+    "960 l"
+   ]
+  ],
+  "life": [
+   [
+    "Terrasse auf dem Wasser",
+    "Rund 25 m² Cockpit mit erhöhten Sonnenliegen – Frühstück mit Panorama.",
+    "sun"
+   ],
+   [
+    "Gleich große Kabinen",
+    "In der Millenium-Version sind alle sechs Kabinen gleich – fair für Freundesgruppen.",
+    "bed"
+   ],
+   [
+    "Licht von oben",
+    "Große öffnende Fenster im Aufbau holen Himmel und Meer in den Salon.",
+    "home"
+   ],
+   [
+    "Rundum-Blick",
+    "Der Steuerstand auf der Flybridge bietet 270° Sicht.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "6 Kabinen (Millenium)",
+    "cab": "6",
+    "bath": "je nach Yacht",
+    "fit": "Große Gruppen bis 12",
+    "note": "Sechs gleich große Kabinen"
+   },
+   {
+    "v": "5 Kabinen",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Familien mit Freunden",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "Paare, viel Raum",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "mit einer großen Gruppe Luxus genießen möchten",
+   "viel Zeit vor Anker verbringen",
+   "eine Yacht mit Crew suchen"
+  ],
+  "fitNo": [
+   "günstig reisen möchten",
+   "kleine Häfen und Buchten ansteuern wollen"
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "16,56 m"
+   ],
+   [
+    "Länge über alles",
+    "18,38 m (mit Optionen)"
+   ],
+   [
+    "Breite",
+    "9,00 m"
+   ],
+   [
+    "Tiefgang",
+    "1,60 m"
+   ],
+   [
+    "Wassertank",
+    "960 l"
+   ],
+   [
+    "Motoren",
+    "2 × 110 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bali-catsmart",
+  "name": "Bali Catsmart",
+  "brand": "Bali",
+  "typ": "Katamaran",
+  "len": 12.07,
+  "year": "Kompaktmodell",
+  "src": "https://www.bali-catamarans.com/en/catamarans/bali-catsmart",
+  "tagline": "Der kleinste Bali mit dem großen Bali-Gefühl: offener Wohnraum, festes Vordeck statt Netzen und ein Tisch für acht.",
+  "videos": [
+   {
+    "id": "mK-5CD7_rHU",
+    "title": "Die Bali Catsmart im Rundgang",
+    "by": "Walkthrough von Bali Catamarans"
+   }
+  ],
+  "key": [
+   [
+    "12,1 m",
+    "Länge"
+   ],
+   [
+    "2–4",
+    "Kabinen"
+   ],
+   [
+    "2",
+    "Bäder"
+   ],
+   [
+    "4–8",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Mit rund 38 Fuß ist die Catsmart der kleinste Katamaran von Bali – und doch steckt alles drin, was die Marke ausmacht: die große Bali-Tür zum Cockpit, ein offener Wohnraum und ein festes Vordeck statt Netzen.",
+   "Eine Flybridge gibt es nicht, gesteuert wird von zwei Steuerständen achtern. Das hält den Katamaran kompakt und alle nah beieinander."
+  ],
+  "plus": [
+   "Offener Wohnraum mit großer Bali-Tür",
+   "Festes Vordeck – sicher für Kinder",
+   "Tisch für bis zu acht Personen",
+   "Steuerstände achtern, nah bei der Crew",
+   "Günstiger Einstieg in die Bali-Welt"
+  ],
+  "minus": [
+   "Nur 2 Bäder, auch in der 4-Kabinen-Version",
+   "Keine Flybridge zum Sonnen",
+   "Kompakter als Bali 4.2 oder 4.4"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "2/2, 3/2 oder 4/2"
+   ],
+   [
+    "Gäste",
+    "4–8"
+   ],
+   [
+    "Länge",
+    "ca. 12,07 m"
+   ],
+   [
+    "Breite",
+    "ca. 6,45 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,09 m"
+   ],
+   [
+    "Typ",
+    "Fahrtenkatamaran"
+   ]
+  ],
+  "life": [
+   [
+    "Open Space",
+    "Die große Bali-Tür öffnet den Salon ganz zum Cockpit.",
+    "door"
+   ],
+   [
+    "Festes Vordeck",
+    "Statt Netzen liegt vorne eine feste Fläche – ideal zum Sonnen und für Kinder.",
+    "sun"
+   ],
+   [
+    "Tisch für acht",
+    "Großer Tisch und breite Sitzbänke für gemeinsame Mahlzeiten.",
+    "home"
+   ],
+   [
+    "Meerblick rundum",
+    "Viele Fenster sorgen für Sicht aufs Wasser von überall.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 2 Bäder",
+    "cab": "4",
+    "bath": "2",
+    "fit": "Familien, Freundesgruppen",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · 2 Bäder",
+    "cab": "3",
+    "bath": "2",
+    "fit": "3 Paare oder Familie",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen · 2 Bäder",
+    "cab": "2",
+    "bath": "2",
+    "fit": "Paare",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "mit 4 bis 6 Personen reisen",
+   "einen kompakten, modernen Katamaran suchen",
+   "Kinder dabei haben (festes Vordeck)"
+  ],
+  "fitNo": [
+   "jeder Kabine ein Bad geben möchten",
+   "eine Flybridge zum Sonnen erwarten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "ca. 12,07 m"
+   ],
+   [
+    "Breite",
+    "ca. 6,45 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,09 m"
+   ],
+   [
+    "Kabinen / Bäder",
+    "2–4 / 2"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bali-catspace",
+  "name": "Bali Catspace",
+  "brand": "Bali",
+  "typ": "Katamaran",
+  "len": 12.32,
+  "year": "40-Fuß-Klasse",
+  "src": "https://www.bali-catamarans.com/en/catamarans/bali-catspace",
+  "tagline": "Viel Raum auf 40 Fuß: offener Wohnbereich, Flybridge mit Bimini und eine Küche, die mit Salon und Cockpit verbunden ist.",
+  "videos": [
+   {
+    "id": "hfwSraJYVOE",
+    "title": "Die Bali Catspace im Rundgang",
+    "by": "Walkthrough von Bali Catamarans"
+   }
+  ],
+  "key": [
+   [
+    "12,3 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "6–8",
+    "Gäste"
+   ],
+   [
+    "6,5 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Catspace ist eines der erfolgreichsten Bali-Modelle: Auf rund 40 Fuß bietet sie ein Raumgefühl, das man eher von größeren Katamaranen kennt.",
+   "Herz des Bootes ist der offene Wohnbereich, in dem Küche, Salon und Cockpit verbunden sind. Oben wartet eine Flybridge mit Bimini als Schattenplatz."
+  ],
+  "plus": [
+   "Offener Wohnbereich – Küche, Salon und Cockpit in einem",
+   "Flybridge mit Bimini",
+   "Festes Vordeck statt Netzen",
+   "Viel Raum für die Größe",
+   "Eignerversion erhältlich"
+  ],
+  "minus": [
+   "Kabinen kompakter als bei 42 Fuß",
+   "Bäder je nach Version geteilt",
+   "Weniger Stauraum bei voller Belegung"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3 oder 4"
+   ],
+   [
+    "Gäste",
+    "6–8"
+   ],
+   [
+    "Länge",
+    "ca. 12,32 m"
+   ],
+   [
+    "Breite",
+    "ca. 6,53 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,19 m"
+   ],
+   [
+    "Typ",
+    "Fahrtenkatamaran"
+   ]
+  ],
+  "life": [
+   [
+    "Kochen mittendrin",
+    "Die Küche ist direkt mit Salon und Cockpit verbunden – wer kocht, ist dabei.",
+    "home"
+   ],
+   [
+    "Flybridge mit Schatten",
+    "Oben gibt es Platz zum Sitzen unter dem Bimini.",
+    "sun"
+   ],
+   [
+    "Festes Vordeck",
+    "Sicher zum Liegen und Spielen, auch für Kinder.",
+    "wave"
+   ],
+   [
+    "Badeleiter am Heck",
+    "Ins Wasser geht es direkt über die Heckleiter.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "Familien, Freundesgruppen",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen (Eigner)",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, Familie",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "mit 6 bis 8 Personen günstig reisen",
+   "einen offenen Wohnbereich mögen",
+   "Kinder an Bord haben"
+  ],
+  "fitNo": [
+   "jedem Paar ein eigenes Bad bieten möchten",
+   "viel Platz pro Person erwarten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "ca. 12,32 m"
+   ],
+   [
+    "Breite",
+    "ca. 6,53 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,19 m"
+   ],
+   [
+    "Kabinen",
+    "3 oder 4"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bali-4-2",
+  "name": "Bali 4.2",
+  "brand": "Bali",
+  "typ": "Katamaran",
+  "len": 12.85,
+  "year": "Beliebt in der Charter",
+  "src": "https://www.bali-catamarans.com/en/catamarans/bali-4-2",
+  "tagline": "Mit Tür von der Küche aufs Vordeck: ein Katamaran, auf dem man vorne isst, hinten badet und oben in der Sonne liegt.",
+  "videos": [
+   {
+    "id": "q4d_q-YWx4U",
+    "title": "Die Bali 4.2 im Rundgang",
+    "by": "Walkthrough von Bali Catamarans"
+   }
+  ],
+  "key": [
+   [
+    "12,9 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "2–4",
+    "Bäder"
+   ],
+   [
+    "6–8",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Bali 4.2 war einer der ersten Katamarane mit einer Tür von der Küche direkt aufs feste Vordeck. Dort gibt es einen Essplatz mit Blick über den Bug – im Charteralltag einer der schönsten Plätze an Bord.",
+   "Mit rund 79 m² nutzbarer Fläche bietet sie für ihre Größe enorm viel Raum, verteilt auf Cockpit, Salon, Vordeck und Flybridge."
+  ],
+  "plus": [
+   "Tür von der Küche aufs feste Vordeck",
+   "Essplatz vorne mit Blick über den Bug",
+   "Flybridge zum Sonnen",
+   "Rund 79 m² nutzbare Fläche",
+   "Versionen mit Bad für jede Kabine"
+  ],
+  "minus": [
+   "In manchen Versionen teilen sich Kabinen die Bäder",
+   "Breiter als Einrumpfyachten: Katamaran-Liegeplatz nötig",
+   "Kompakter als Bali 4.4 und 4.6"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3/2, 3/3, 4/2 oder 4/4"
+   ],
+   [
+    "Gäste",
+    "6–8"
+   ],
+   [
+    "Länge",
+    "ca. 12,85 m"
+   ],
+   [
+    "Breite",
+    "ca. 7,06 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,22 m"
+   ],
+   [
+    "Typ",
+    "Fahrtenkatamaran"
+   ]
+  ],
+  "life": [
+   [
+    "Essen am Bug",
+    "Durch die Küchentür geht es aufs feste Vordeck mit eigenem Essplatz.",
+    "door"
+   ],
+   [
+    "Open Space",
+    "Salon und Cockpit verbinden sich über die große Bali-Tür.",
+    "home"
+   ],
+   [
+    "Flybridge",
+    "Oben liegt man in der Sonne und hat den besten Blick.",
+    "sun"
+   ],
+   [
+    "Bad für jedes Paar",
+    "In der 4/4-Version hat jede Kabine ihr eigenes Bad mit WC.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 4 Bäder",
+    "cab": "4",
+    "bath": "4",
+    "fit": "Familien, 4 Paare",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen · 2 Bäder",
+    "cab": "4",
+    "bath": "2",
+    "fit": "Familien, günstig",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · 3 Bäder",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare mit viel Raum",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · 2 Duschbäder",
+    "cab": "3",
+    "bath": "2",
+    "fit": "3 Paare",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "gerne vorne an Deck essen und liegen",
+   "mit 6 bis 8 Personen reisen",
+   "Wert auf viel Fläche legen"
+  ],
+  "fitNo": [
+   "einen ganz neuen Katamaran suchen – dann Bali 4.3",
+   "10 und mehr Gäste mitbringen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "ca. 12,85 m"
+   ],
+   [
+    "Breite",
+    "ca. 7,06 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,22 m"
+   ],
+   [
+    "Kabinen / Bäder",
+    "3–4 / 2–4"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bali-4-3",
+  "name": "Bali 4.3",
+  "brand": "Bali",
+  "typ": "Katamaran",
+  "len": 14.0,
+  "year": "Neu 2026",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.bali-catamarans.com/en/catamarans/bali-4-3",
+  "tagline": "Die neue Bali-Generation: Rooftop in drei Zonen, Bali-Tür zum Cockpit und viel Solarstrom für ruhige Tage vor Anker.",
+  "videos": [],
+  "key": [
+   [
+    "14 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "3–4",
+    "Bäder"
+   ],
+   [
+    "6–8",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Bali 4.3 ist das jüngste Modell von Bali. Sie verbindet die bekannte Bali-Idee – die große Kipptür, die den Salon ganz zum Cockpit öffnet – mit einem XXL-Rooftop, das in drei Zonen zum Sitzen und Liegen einlädt.",
+   "Moderne Technik sorgt für Ruhe vor Anker: ein 48-Volt-Lithium-System und bis zu 3.000 Watt Solarleistung. Jede Kabine hat ein Doppelbett, die Bäder entsprechen der Kabinenzahl."
+  ],
+  "plus": [
+   "Große Bali-Kipptür zum Cockpit",
+   "XXL-Rooftop mit drei Zonen",
+   "Festes Vordeck mit direktem Zugang aus der Küche",
+   "Bad für jede Kabine",
+   "Bis zu 3.000 W Solar – weniger Generator"
+  ],
+  "minus": [
+   "Ganz neu – noch wenige Yachten in den Flotten",
+   "Video und Fotos folgen",
+   "Breite verlangt Katamaran-Liegeplätze"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3/3 oder 4/4"
+   ],
+   [
+    "Gäste",
+    "6–8"
+   ],
+   [
+    "Länge",
+    "ca. 14,0 m"
+   ],
+   [
+    "Breite",
+    "ca. 7,42 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,40 m"
+   ],
+   [
+    "Baujahr",
+    "ab 2026"
+   ]
+  ],
+  "life": [
+   [
+    "Rooftop in drei Zonen",
+    "Oben gibt es Platz zum Sitzen, Liegen und Steuern – mit Blick über alles.",
+    "sun"
+   ],
+   [
+    "Bali-Tür",
+    "Die Kipptür öffnet den Salon komplett zum Cockpit.",
+    "door"
+   ],
+   [
+    "Vordeck aus der Küche",
+    "Von der Küche geht es direkt ins feste Vordeck-Cockpit.",
+    "home"
+   ],
+   [
+    "Leise vor Anker",
+    "Viel Solarstrom und Lithium-Batterien – weniger Generatorlärm.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 4 Bäder",
+    "cab": "4",
+    "bath": "4",
+    "fit": "Familien, 4 Paare",
+    "note": "Optional mit Bugkojen"
+   },
+   {
+    "v": "3 Kabinen · 3 Bäder (Eigner)",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare",
+    "note": "Optional mit Bugkojen"
+   }
+  ],
+  "fitYes": [
+   "einen brandneuen Katamaran möchten",
+   "viel Zeit vor Anker verbringen",
+   "jeder Kabine ein Bad geben möchten"
+  ],
+  "fitNo": [
+   "kurzfristig und günstig buchen möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "ca. 14,0 m"
+   ],
+   [
+    "Breite",
+    "ca. 7,42 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,40 m"
+   ],
+   [
+    "Elektrik",
+    "48 V Lithium, bis 3.000 W Solar"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bali-4-4",
+  "name": "Bali 4.4",
+  "brand": "Bali",
+  "typ": "Katamaran",
+  "len": 13.49,
+  "year": "Bewährt",
+  "src": "https://www.bali-catamarans.com/en/catamarans/bali-4-4",
+  "tagline": "Open Space für bis zu 15 Personen: eine große Flybridge, eine XXL-Eignerkabine und ein Bad für jede Kabine.",
+  "videos": [
+   {
+    "id": "V0zOAzhM8yY",
+    "title": "Die Bali 4.4 im Rundgang",
+    "by": "Bootstour"
+   }
+  ],
+  "key": [
+   [
+    "13,5 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "3–4",
+    "Bäder"
+   ],
+   [
+    "6–8",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Bali 4.4 bietet einen offenen Wohnbereich, in dem laut Werft bis zu 15 Personen bequem zusammensitzen – ideal, wenn Sie abends Freunde von der Nachbaryacht einladen.",
+   "Große Fenster und Öffnungen bringen viel Licht und Luft hinein. Oben wartet eine große Flybridge, und jede Kabine hat ihr eigenes Bad."
+  ],
+  "plus": [
+   "Wohnbereich für bis zu 15 Personen",
+   "Große Flybridge",
+   "Bad für jede Kabine",
+   "Große Fenster, viel Licht",
+   "XXL-Eignerkabine in der 3er-Version"
+  ],
+  "minus": [
+   "Keine 5-Kabinen-Version",
+   "Breite verlangt Katamaran-Liegeplätze",
+   "Nachfolger-Generation bereits auf dem Markt"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3/3 oder 4/4"
+   ],
+   [
+    "Gäste",
+    "6–8"
+   ],
+   [
+    "Länge",
+    "ca. 13,49 m"
+   ],
+   [
+    "Breite",
+    "ca. 7,39 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,24 m"
+   ],
+   [
+    "Typ",
+    "Fahrtenkatamaran"
+   ]
+  ],
+  "life": [
+   [
+    "Gemeinsam statt getrennt",
+    "Der offene Wohnbereich bietet Platz für bis zu 15 Personen.",
+    "home"
+   ],
+   [
+    "Große Flybridge",
+    "Oben sitzt und liegt man mit Blick übers Meer.",
+    "sun"
+   ],
+   [
+    "Bad für jedes Paar",
+    "Jede Kabine hat ihr eigenes Bad.",
+    "bed"
+   ],
+   [
+    "Licht und Luft",
+    "Große Fenster und Öffnungen sorgen für Durchzug.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 4 Bäder",
+    "cab": "4",
+    "bath": "4",
+    "fit": "Familien, 4 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · 3 Bäder (Eigner)",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare, XXL-Eignerkabine",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "mit 6 bis 8 Gästen reisen",
+   "viel Wert auf eigene Bäder legen",
+   "gerne Gäste an Bord haben"
+  ],
+  "fitNo": [
+   "mit 10 Personen reisen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "ca. 13,49 m"
+   ],
+   [
+    "Breite",
+    "ca. 7,39 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,24 m"
+   ],
+   [
+    "Kabinen / Bäder",
+    "3/3 oder 4/4"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bali-4-6",
+  "name": "Bali 4.6",
+  "brand": "Bali",
+  "typ": "Katamaran",
+  "len": 14.28,
+  "year": "Seit 2020",
+  "src": "https://www.bali-catamarans.com/en/catamarans/bali-4-6",
+  "tagline": "Rund 95 m² Lebensraum, ein Kühlschrank im Haushaltsformat und bis zu fünf Kabinen – der Familien-Bali mit Platz für alle.",
+  "videos": [
+   {
+    "id": "it3N6q-2gpE",
+    "title": "Die Bali 4.6 im Rundgang",
+    "by": "Walkthrough von Bali Catamarans"
+   }
+  ],
+  "key": [
+   [
+    "14,3 m",
+    "Länge"
+   ],
+   [
+    "3–5",
+    "Kabinen"
+   ],
+   [
+    "3–4",
+    "Bäder"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Bali 4.6 bietet rund 95 m² nutzbare Fläche auf festem Vordeck, im Innenraum und auf der Flybridge. Damit gehört sie zu den geräumigsten Katamaranen ihrer Klasse.",
+   "Für längere Tage vor Anker hilft der 615-Liter-Kühlschrank im Haushaltsformat. Die hintere Backbordkabine hat einen direkten Zugang zum Cockpit und zum Wasser."
+  ],
+  "plus": [
+   "Rund 95 m² nutzbare Fläche",
+   "615-Liter-Kühlschrank im Haushaltsformat",
+   "Kabine mit eigenem Zugang zum Cockpit",
+   "Bis zu fünf Kabinen",
+   "Festes Vordeck und Flybridge"
+  ],
+  "minus": [
+   "In der 5-Kabinen-Version teilen sich Kabinen Bäder",
+   "Breite verlangt Katamaran-Liegeplätze",
+   "Größer und teurer als Bali 4.2"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3/3 (Eigner), 4/3 oder 5/4"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Länge",
+    "14,28 m"
+   ],
+   [
+    "Breite",
+    "7,66 m"
+   ],
+   [
+    "Tiefgang",
+    "1,22 m"
+   ],
+   [
+    "Kühlschrank",
+    "615 l"
+   ]
+  ],
+  "life": [
+   [
+    "Platz für alle",
+    "Rund 95 m² auf Vordeck, im Innenraum und auf der Flybridge.",
+    "home"
+   ],
+   [
+    "Vorräte wie zu Hause",
+    "Der 615-Liter-Kühlschrank fasst Einkäufe für die ganze Crew.",
+    "anchor"
+   ],
+   [
+    "Direkt ins Wasser",
+    "Eine Kabine hat ihren eigenen Ausgang zum Cockpit und zur Badeplattform.",
+    "wave"
+   ],
+   [
+    "Bali-Tür",
+    "Die große Tür öffnet den Salon zum Cockpit.",
+    "door"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "5 Kabinen · 4 Bäder",
+    "cab": "5",
+    "bath": "4",
+    "fit": "Große Familien, Freundesgruppen",
+    "note": "Inklusive Kabine mit Pullman-Kojen"
+   },
+   {
+    "v": "4 Kabinen · 3 Bäder",
+    "cab": "4",
+    "bath": "3",
+    "fit": "Familien",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · 3 Bäder (Eigner)",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare",
+    "note": "Eignerrumpf"
+   }
+  ],
+  "fitYes": [
+   "mit Kindern oder großer Familie reisen",
+   "länger vor Anker bleiben möchten",
+   "viel Fläche zum Verteilen brauchen"
+  ],
+  "fitNo": [
+   "Wert auf ein eigenes Bad für jede Kabine in der 5er-Version legen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,28 m"
+   ],
+   [
+    "Breite",
+    "7,66 m"
+   ],
+   [
+    "Tiefgang",
+    "1,22 m"
+   ],
+   [
+    "Kühlschrank",
+    "615 l"
+   ],
+   [
+    "Motoren",
+    "2 × 40–57 PS"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bali-5-2",
+  "name": "Bali 5.2",
+  "brand": "Bali",
+  "typ": "Katamaran",
+  "len": 16.43,
+  "year": "Neu seit 2025",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.bali-catamarans.com/en/catamarans/bali-5-2",
+  "tagline": "Mit Beach Club am Heck: eine hydraulische Plattform zum Baden, ein Tisch für zwölf und bis zu sechs Kabinen.",
+  "videos": [
+   {
+    "id": "Qy42UngHdns",
+    "title": "Die Bali 5.2 im Rundgang",
+    "by": "Weltpremiere in Cannes"
+   }
+  ],
+  "key": [
+   [
+    "16,4 m",
+    "Länge"
+   ],
+   [
+    "3–6",
+    "Kabinen"
+   ],
+   [
+    "bis 16",
+    "Kojen"
+   ],
+   [
+    "8,15 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Bali 5.2 feierte 2025 in Cannes Premiere. Ihr Highlight liegt am Heck: ein Beach Club mit hydraulischer Plattform, die zum Baden abgesenkt wird und gleichzeitig das Beiboot trägt.",
+   "Innen sitzen bis zu zwölf Gäste an einem XXL-Tisch, dazu kommen eine Lounge, eine U-förmige Küche und Bäder aus Holz und Corian. Je nach Version gibt es drei bis sechs Kabinen."
+  ],
+  "plus": [
+   "Beach Club mit hydraulischer Badeplattform",
+   "Tisch für zwölf Personen",
+   "Bis zu sechs Kabinen",
+   "Rooftop mit Lounge",
+   "Hochwertige Bäder aus Holz und Corian"
+  ],
+  "minus": [
+   "Premium-Preisklasse",
+   "Noch wenige Yachten in den Flotten",
+   "Breite verlangt große Liegeplätze"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3, 4, 5 oder 6"
+   ],
+   [
+    "Kojen",
+    "bis 16"
+   ],
+   [
+    "Länge",
+    "ca. 16,43 m"
+   ],
+   [
+    "Breite",
+    "ca. 8,15 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,40 m"
+   ],
+   [
+    "Baujahr",
+    "ab 2025"
+   ]
+  ],
+  "life": [
+   [
+    "Beach Club",
+    "Die hydraulische Plattform wird zum Strand direkt am Heck.",
+    "wave"
+   ],
+   [
+    "Tafel für zwölf",
+    "Der große Salontisch macht gemeinsame Abendessen zum Ereignis.",
+    "home"
+   ],
+   [
+    "Rooftop",
+    "Oben liegt man in der Sonne und hat den Überblick.",
+    "sun"
+   ],
+   [
+    "Arbeiten mit Meerblick",
+    "Der Kartentisch dient auch als Schreibtisch mit Blick aufs Wasser.",
+    "door"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "6 Kabinen",
+    "cab": "6",
+    "bath": "je nach Yacht",
+    "fit": "Große Gruppen",
+    "note": ""
+   },
+   {
+    "v": "5 Kabinen",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Familien mit Freunden",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "4 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen (Eigner)",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, viel Raum",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "mit großer Gruppe Komfort möchten",
+   "viel baden und vor Anker leben",
+   "eine der neuesten Yachten suchen"
+  ],
+  "fitNo": [
+   "günstig reisen möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "ca. 16,43 m"
+   ],
+   [
+    "Breite",
+    "ca. 8,15 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,40 m"
+   ],
+   [
+    "Kojen",
+    "bis 16"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bali-5-8",
+  "name": "Bali 5.8",
+  "brand": "Bali",
+  "typ": "Katamaran",
+  "len": 17.65,
+  "year": "Flaggschiff",
+  "badges": [
+   "Premium"
+  ],
+  "src": "https://www.bali-catamarans.com/en/catamarans/bali-5-8",
+  "tagline": "Das Bali-Flaggschiff: Rooftop-Lounge, Salon, der sich in Sekunden zum Meer öffnet, und bis zu sechs Kabinen plus Crew.",
+  "videos": [
+   {
+    "id": "h4vs1McWlDo",
+    "title": "Die Bali 5.8",
+    "by": "Video von Bali Catamarans"
+   }
+  ],
+  "key": [
+   [
+    "17,7 m",
+    "Länge"
+   ],
+   [
+    "3–6",
+    "Kabinen"
+   ],
+   [
+    "8–12",
+    "Gäste"
+   ],
+   [
+    "9 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Bali 5.8 ist der größte Katamaran der Bali-Serie. Die große Kipptür öffnet den Salon in Sekunden zum Cockpit, Schiebefenster und eine Tür zum festen Vordeck machen den Raum rundum offen.",
+   "Auf dem Dach wartet eine Lounge mit viel Liegefläche. Unter Deck gibt es Versionen bis zu sechs Kabinen, auch mit Kinderkabine mit zwei Einzelbetten und separater Crew- oder Skipperkabine."
+  ],
+  "plus": [
+   "Rooftop mit Lounge",
+   "Salon öffnet sich nach hinten und vorne",
+   "Kinderkabinen mit Einzelbetten möglich",
+   "Eigene Crew-/Skipperkabine möglich",
+   "U-förmige Küche, viel Stauraum"
+  ],
+  "minus": [
+   "Premium-Preisklasse",
+   "Oft mit Crew gebucht",
+   "Breite von 9 m – nicht jeder Hafen passt"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3 bis 6, plus Einzelkabinen"
+   ],
+   [
+    "Gäste",
+    "8–12"
+   ],
+   [
+    "Länge",
+    "ca. 17,65 m"
+   ],
+   [
+    "Breite",
+    "ca. 9,04 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,24 m"
+   ],
+   [
+    "Typ",
+    "Luxuskatamaran"
+   ]
+  ],
+  "life": [
+   [
+    "Rooftop-Lounge",
+    "Oben liegt eine große Lounge – Sundowner mit Rundumblick.",
+    "sun"
+   ],
+   [
+    "Rundum offen",
+    "Kipptür nach hinten, Tür nach vorne, Schiebefenster an den Seiten.",
+    "door"
+   ],
+   [
+    "Für Familien gedacht",
+    "Kinderkabine mit zwei Einzelbetten möglich.",
+    "bed"
+   ],
+   [
+    "Crew an Bord",
+    "Eigene Einzelkabine für den Skipper möglich – Ihre Kabinen bleiben frei.",
+    "home"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "6 Kabinen",
+    "cab": "6",
+    "bath": "je nach Yacht",
+    "fit": "Große Gruppen bis 12",
+    "note": "Auch mit 1–2 zusätzlichen Einzelkabinen"
+   },
+   {
+    "v": "5 Kabinen (Eigner)",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Familien mit Freunden",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen mit 2 Master",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "4 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen mit 2 Master",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, viel Raum",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "Luxus und viel Raum mit Crew genießen möchten",
+   "mit Familie und Kindern reisen",
+   "große Gruppen unterbringen"
+  ],
+  "fitNo": [
+   "günstig reisen möchten",
+   "enge Häfen ansteuern"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "ca. 17,65 m"
+   ],
+   [
+    "Breite",
+    "ca. 9,04 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,24 m"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bali-4-8",
+  "name": "Bali 4.8",
+  "brand": "Bali",
+  "typ": "Katamaran",
+  "len": 14.92,
+  "year": "Charter-Klassiker seit 2020",
+  "src": "https://www.bali-catamarans.com/en/",
+  "tagline": "Bis zu sechs Kabinen, jede mit eigenem Bad, und ein Wohnraum, der sich vom Heck bis zum Bug zum Meer öffnet.",
+  "videos": [
+   {
+    "id": "gJPzbf8JKoo",
+    "title": "Die Bali 4.8 im Rundgang",
+    "by": "Walkthrough von Bali Catamarans"
+   },
+   {
+    "id": "_7CcXodRRJs",
+    "title": "Eine Bali 4.8 aus der Charterflotte",
+    "by": "Rundgang in der Karibik (BVI)"
+   }
+  ],
+  "tours": [
+   {
+    "id": "FeqDZwFvP2g",
+    "title": "Bali 4.8 „Kalypso“",
+    "by": "Ionian Charter, Griechenland"
+   }
+  ],
+  "key": [
+   [
+    "14,9 m",
+    "Länge"
+   ],
+   [
+    "3–6",
+    "Kabinen"
+   ],
+   [
+    "3–6",
+    "Bäder"
+   ],
+   [
+    "6–12",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Bali 4.8 war das erste Modell der neuen Bali-Generation und ist heute in vielen Flotten zu Hause. Ihr großes Plus: In jeder Version hat jede Kabine ihr eigenes Bad – auch in der Version mit sechs Kabinen.",
+   "Achtern öffnet die große Bali-Tür den Salon zum Cockpit, vorne führt eine zweite Tür direkt ins feste Vorder-Cockpit, und das Küchenfenster lässt sich ganz versenken. Frühstück, Mittagessen und Sundowner finden so in einem einzigen, offenen Raum statt."
+  ],
+  "plus": [
+   "Eigenes Bad für jede Kabine – bis zu 6 Kabinen",
+   "Wohnraum vom Heck bis zum Bug, offen zum Meer",
+   "Drei Essplätze: Salon, Vorder-Cockpit, Flybridge",
+   "615-Liter-Kühlschrank und 1.120 l Frischwasser",
+   "Kabinen mit eigenem Zugang vom Cockpit"
+  ],
+  "minus": [
+   "7,88 m Breite: Katamaran-Liegeplatz nötig",
+   "Bei voller Belegung wenig Stauraum pro Person",
+   "Bei Regen oder Klimaanlage bleibt der Salon geschlossen"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3/3, 4/4, 5/5 oder 6/6"
+   ],
+   [
+    "Gäste",
+    "6–12"
+   ],
+   [
+    "Länge",
+    "14,92 m"
+   ],
+   [
+    "Breite",
+    "7,88 m"
+   ],
+   [
+    "Tiefgang",
+    "1,36 m"
+   ],
+   [
+    "Wassertank",
+    "1.120 l"
+   ]
+  ],
+  "life": [
+   [
+    "Offen zum Meer",
+    "Bali-Tür nach achtern, Tür nach vorne, versenkbares Küchenfenster – ein Raum, drinnen und draußen.",
+    "door"
+   ],
+   [
+    "Essen am Bug",
+    "Das feste Vorder-Cockpit hat eine Lounge, Sonnenfläche und einen eigenen Tisch.",
+    "sun"
+   ],
+   [
+    "Flybridge mit Tisch",
+    "Oben sitzen Steuerstand und Crew zusammen – der dritte Essplatz an Bord.",
+    "home"
+   ],
+   [
+    "Bad für jedes Paar",
+    "Jede Kabine hat ihr Bad; in Rümpfen mit zwei Kabinen sind Dusche und WC getrennt.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "6 Kabinen · 6 Bäder",
+    "cab": "6",
+    "bath": "6",
+    "fit": "Große Gruppen",
+    "note": "Komfortabel für 10 Personen"
+   },
+   {
+    "v": "5 Kabinen · 5 Bäder",
+    "cab": "5",
+    "bath": "5",
+    "fit": "Familien mit Kindern, Freundesgruppen",
+    "note": "Komfortabel für 8 Personen"
+   },
+   {
+    "v": "4 Kabinen · 4 Bäder",
+    "cab": "4",
+    "bath": "4",
+    "fit": "Familien, 4 Paare",
+    "note": "Komfortabel für 6–8 Personen"
+   },
+   {
+    "v": "3 Kabinen · 3 Bäder (Eigner)",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare",
+    "note": "Eignerrumpf mit großem Bad"
+   }
+  ],
+  "reviere": [
+   "Griechenland",
+   "Kroatien",
+   "Italien",
+   "Spanien",
+   "Karibik & BVI",
+   "Seychellen",
+   "Thailand"
+  ],
+  "reviereText": "Die Bali 4.8 ist im Mittelmeer und in vielen Fernrevieren in den Flotten zu finden.",
+  "fitYes": [
+   "mit Familie oder Freunden reisen und jede Kabine ein Bad haben soll",
+   "gerne vor Anker liegen und draußen leben",
+   "eine große Crew unterbringen möchten"
+  ],
+  "fitNo": [
+   "meist zu zweit unterwegs sind",
+   "oft enge Häfen ansteuern"
+  ],
+  "faq": [
+   [
+    "Wie viele Personen passen auf die Bali 4.8?",
+    "Bis zu zwölf in den Kabinen der 6/6-Version. Am bequemsten reisen acht bis zehn Personen, weil dann Platz für Gepäck und Vorräte bleibt."
+   ]
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,92 m"
+   ],
+   [
+    "Breite",
+    "7,88 m"
+   ],
+   [
+    "Tiefgang",
+    "1,36 m"
+   ],
+   [
+    "Wassertank",
+    "1.120 l"
+   ],
+   [
+    "Kühlschrank",
+    "615 l"
+   ],
+   [
+    "Motoren",
+    "2 × 45 PS (optional 57/80 PS)"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "extras": []
+ },
+ {
+  "id": "sun-odyssey-380",
+  "name": "Sun Odyssey 380",
+  "brand": "Jeanneau",
+  "typ": "Segelyacht",
+  "len": 11.22,
+  "year": "Seit 2022",
+  "src": "https://www.jeanneau.com/boats/sailboat/2-sun-odyssey/664-sun-odyssey-380",
+  "tagline": "Einfach segeln, entspannt wohnen: zwei Steuerräder, sichere Laufdecks und ein helles Inneres für zwei bis drei Paare.",
+  "videos": [
+   {
+    "id": "tkIEkJOA2b8",
+    "title": "Die Sun Odyssey 380 im Rundgang",
+    "by": "Mit dem Jeanneau-Team"
+   },
+   {
+    "id": "J-vtLuCgOA0",
+    "title": "Rundgang auf Deutsch",
+    "by": "Ausführliche Vorstellung"
+   }
+  ],
+  "key": [
+   [
+    "11,2 m",
+    "Länge"
+   ],
+   [
+    "2–3",
+    "Kabinen"
+   ],
+   [
+    "4–6",
+    "Gäste"
+   ],
+   [
+    "2",
+    "Steuerräder"
+   ]
+  ],
+  "glance": [
+   "Die Sun Odyssey 380 ist eine kompakte Fahrtenyacht, die das Segeln leicht macht: Abgesenkte Laufdecks und zwei Steuerräder sorgen für sichere Wege an Deck und gute Sicht.",
+   "Unter Deck ist sie hell und luftig. Die Bugkabine hat ein rechteckiges Bett, und eine Liege im Salon macht das Ausruhen auch bei Welle bequem."
+  ],
+  "plus": [
+   "Leicht zu segeln – auch für Einsteiger an Bord",
+   "Sichere, abgesenkte Laufdecks",
+   "Helles, freundliches Inneres",
+   "Rechteckiges Bett in der Bugkabine",
+   "Gutes Preis-Leistungs-Verhältnis"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Kompakt – für 6 Gäste eher eng",
+   "Nachfolgerin 385 bietet mehr Raum"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "2 oder 3"
+   ],
+   [
+    "Gäste",
+    "4–6"
+   ],
+   [
+    "Länge",
+    "11,22 m"
+   ],
+   [
+    "Typ",
+    "Segelyacht (Einrumpf)"
+   ]
+  ],
+  "life": [
+   [
+    "Segeln mit Gefühl",
+    "Wenn sich die Segel füllen, spüren Sie, warum Segeln süchtig macht.",
+    "wave"
+   ],
+   [
+    "Sichere Wege",
+    "Abgesenkte Laufdecks führen sicher um die zwei Steuerräder herum.",
+    "anchor"
+   ],
+   [
+    "Helles Inneres",
+    "Klare, moderne Gestaltung und viel Licht unter Deck.",
+    "home"
+   ],
+   [
+    "Ruhen bei Welle",
+    "Eine Liege im Salon bietet Halt, wenn es draußen bewegter wird.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "2–3 Paare",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen",
+    "cab": "2",
+    "bath": "2 Duschräume",
+    "fit": "Paare",
+    "note": "Mit Stauraum statt dritter Kabine"
+   }
+  ],
+  "fitYes": [
+   "richtig segeln und mitmachen möchten",
+   "zu zweit bis zu viert reisen",
+   "ein günstiges Modell suchen"
+  ],
+  "fitNo": [
+   "mit kleinen Kindern viel Ruhe ohne Schräglage möchten",
+   "mit 6 Erwachsenen reisen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "11,22 m"
+   ],
+   [
+    "Kabinen",
+    "2 oder 3"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "sun-odyssey-385",
+  "name": "Sun Odyssey 385",
+  "brand": "Jeanneau",
+  "typ": "Segelyacht",
+  "len": 11.75,
+  "year": "Neu",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.jeanneau.com/boats/sailboat/2-sun-odyssey/731-sun-odyssey-385",
+  "tagline": "Einfach, sicher, frei: die neue 38-Fuß-Yacht mit großem Cockpit, Meerblick aus den Kabinen und nur drei Stufen nach unten.",
+  "videos": [
+   {
+    "id": "TsagnLQ5L50",
+    "title": "Die neue Sun Odyssey 385",
+    "by": "Offizielles Video von Jeanneau"
+   }
+  ],
+  "key": [
+   [
+    "11,8 m",
+    "Länge"
+   ],
+   [
+    "2–3",
+    "Kabinen"
+   ],
+   [
+    "4–6",
+    "Gäste"
+   ],
+   [
+    "330 l",
+    "Wasser"
+   ]
+  ],
+  "glance": [
+   "Die Sun Odyssey 385 ist die überarbeitete Nachfolgerin der 380 – mit mehr Raum und mehr Komfort. Sie ist für Segler jeder Erfahrung gedacht und macht das Leben an Bord unkompliziert.",
+   "Im Cockpit stützen hohe Rückenlehnen beim Segeln und laden vor Anker zum Faulenzen ein. Nach unten geht es über nur drei Stufen, und die Gästekabinen bieten beim Aufwachen Blick aufs Meer."
+  ],
+  "plus": [
+   "Großes Cockpit mit hohen Rückenlehnen",
+   "Nur drei Stufen in den Salon",
+   "Gästekabinen mit Meerblick",
+   "Breite Laufdecks ohne Achterstag",
+   "Vier Innenraum-Varianten"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Noch neu in den Flotten",
+   "Für 6 Erwachsene eher kompakt"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "2 oder 3"
+   ],
+   [
+    "Gäste",
+    "4–6"
+   ],
+   [
+    "Länge",
+    "11,75 m"
+   ],
+   [
+    "Tiefgang",
+    "2,04 m"
+   ],
+   [
+    "Wassertank",
+    "330 l"
+   ]
+  ],
+  "life": [
+   [
+    "Bequemes Cockpit",
+    "Hohe Rückenlehnen geben Halt beim Segeln und Komfort vor Anker.",
+    "sun"
+   ],
+   [
+    "Leicht nach unten",
+    "Nur drei Stufen führen in den hellen Salon.",
+    "home"
+   ],
+   [
+    "Aufwachen mit Meerblick",
+    "Die Gästekabinen haben Fenster mit Blick aufs Wasser.",
+    "bed"
+   ],
+   [
+    "Freie Wege",
+    "Breite Laufdecks ohne Achterstag – sicher und übersichtlich.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "2–3 Paare",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen",
+    "cab": "2",
+    "bath": "je nach Yacht",
+    "fit": "Paare, viel Stauraum",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "eine neue, unkomplizierte Segelyacht möchten",
+   "zu viert reisen",
+   "Wert auf Cockpitkomfort legen"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "11,75 m"
+   ],
+   [
+    "Tiefgang",
+    "2,04 m"
+   ],
+   [
+    "Wassertank",
+    "330 l"
+   ],
+   [
+    "Design",
+    "Marc Lombard"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "sun-odyssey-410",
+  "name": "Sun Odyssey 410",
+  "brand": "Jeanneau",
+  "typ": "Segelyacht",
+  "len": 12.35,
+  "year": "Bewährt",
+  "src": "https://www.jeanneau.com/boats/sailboat/2-sun-odyssey/629-sun-odyssey-410",
+  "tagline": "Ein Cockpit, das vor Anker zur Lounge wird: komfortable 41-Fuß-Yacht mit hellem Salon und großem Wassertank.",
+  "videos": [
+   {
+    "id": "Ubn8frJRHmo",
+    "title": "Die Sun Odyssey 410 im Rundgang",
+    "by": "Version mit 3 Kabinen und 2 Bädern"
+   }
+  ],
+  "key": [
+   [
+    "12,4 m",
+    "Länge"
+   ],
+   [
+    "2–3",
+    "Kabinen"
+   ],
+   [
+    "4–6",
+    "Gäste"
+   ],
+   [
+    "528 l",
+    "Wasser"
+   ]
+  ],
+  "glance": [
+   "Die Sun Odyssey 410 verbindet sportliches Segeln mit viel Lebensqualität an Bord. Das große Cockpit verwandelt sich vor Anker in eine Lounge oder Sonnenfläche.",
+   "Über eine sanfte Treppe mit drei Stufen geht es in den lichtdurchfluteten Salon. Der große Wassertank mit 528 Litern sorgt für entspannte Duschen."
+  ],
+  "plus": [
+   "Cockpit wird vor Anker zur Lounge",
+   "Sanfte Treppe in den Salon",
+   "Großer Wassertank",
+   "Helle, geräumige Kabinen",
+   "Sichere, abgesenkte Laufdecks"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Max. 3 Kabinen",
+   "Nachfolgerin 415 ist neuer"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "2 oder 3"
+   ],
+   [
+    "Gäste",
+    "4–6"
+   ],
+   [
+    "Länge",
+    "12,35 m"
+   ],
+   [
+    "Breite",
+    "3,99 m"
+   ],
+   [
+    "Tiefgang",
+    "2,14 m"
+   ],
+   [
+    "Wassertank",
+    "528 l"
+   ]
+  ],
+  "life": [
+   [
+    "Lounge im Cockpit",
+    "Vor Anker wird das Cockpit zum Außensalon oder zur Sonnenwiese.",
+    "sun"
+   ],
+   [
+    "Heller Salon",
+    "Viel Licht und eine einladende Atmosphäre unter Deck.",
+    "home"
+   ],
+   [
+    "Genug Wasser",
+    "528 Liter im Tank – auch für mehrere Duschen am Tag.",
+    "wave"
+   ],
+   [
+    "Segeln mit Biss",
+    "Ein kraftvoller Rumpf macht das Segeln lebendig.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen · 2 Bäder",
+    "cab": "3",
+    "bath": "2",
+    "fit": "2–3 Paare",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen",
+    "cab": "2",
+    "bath": "je nach Yacht",
+    "fit": "Paare",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "Segeln und Komfort verbinden möchten",
+   "zu viert bis zu sechst reisen",
+   "Wert auf viel Wasser legen"
+  ],
+  "fitNo": [
+   "mehr als drei Kabinen brauchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "12,35 m"
+   ],
+   [
+    "Breite",
+    "3,99 m"
+   ],
+   [
+    "Tiefgang",
+    "2,14 m"
+   ],
+   [
+    "Wassertank",
+    "528 l"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "sun-odyssey-415",
+  "name": "Sun Odyssey 415",
+  "brand": "Jeanneau",
+  "typ": "Segelyacht",
+  "len": 12.35,
+  "year": "Neu seit 2025",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.jeanneau.com/boats/sailboat/2-sun-odyssey/708-sun-odyssey-415",
+  "tagline": "Die neunte Sun-Odyssey-Generation: heller Salon mit Rumpffenstern, Küche direkt am Niedergang und viel cleverer Stauraum.",
+  "videos": [
+   {
+    "id": "9Beg5fe0hI4",
+    "title": "Die Sun Odyssey 415 im Rundgang",
+    "by": "Walkthrough von Jeanneau"
+   }
+  ],
+  "key": [
+   [
+    "12,4 m",
+    "Länge"
+   ],
+   [
+    "2–3",
+    "Kabinen"
+   ],
+   [
+    "4–6",
+    "Gäste"
+   ],
+   [
+    "530 l",
+    "Wasser"
+   ]
+  ],
+  "glance": [
+   "Die Sun Odyssey 415 eröffnet die neunte Generation der beliebten Baureihe. Sie zeigt markante Linien und ein komplett überarbeitetes Inneres.",
+   "Der Salon bietet bis zu fünf Personen Platz und viel Tageslicht durch Rumpffenster. Die L-förmige Küche liegt direkt am Niedergang – praktisch, wenn Snacks ins Cockpit wandern."
+  ],
+  "plus": [
+   "Helles Inneres mit Rumpffenstern",
+   "Küche direkt am Niedergang",
+   "Viel cleverer Stauraum",
+   "Großer Wassertank",
+   "Neueste Generation"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Max. 3 Kabinen",
+   "Salon für 5 Personen – bei 6 eng"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "2 oder 3"
+   ],
+   [
+    "Gäste",
+    "4–6"
+   ],
+   [
+    "Länge",
+    "12,35 m"
+   ],
+   [
+    "Breite",
+    "3,99 m"
+   ],
+   [
+    "Tiefgang",
+    "2,25 m"
+   ],
+   [
+    "Wassertank",
+    "530 l"
+   ]
+  ],
+  "life": [
+   [
+    "Licht von der Seite",
+    "Rumpffenster bringen viel Tageslicht und Meerblick in den Salon.",
+    "home"
+   ],
+   [
+    "Küche am Niedergang",
+    "Kurze Wege vom Herd ins Cockpit.",
+    "sun"
+   ],
+   [
+    "Ordnung an Bord",
+    "Große Staufächer unter den Sitzen schaffen Platz.",
+    "bed"
+   ],
+   [
+    "Segeln mit Freude",
+    "Die 415 kommt bei Wind richtig in Fahrt.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "2–3 Paare",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen",
+    "cab": "2",
+    "bath": "je nach Yacht",
+    "fit": "Paare",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "eine ganz neue Segelyacht möchten",
+   "zu viert reisen",
+   "gerne mitsegeln"
+  ],
+  "fitNo": [
+   "mehr als drei Kabinen brauchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "12,35 m"
+   ],
+   [
+    "Breite",
+    "3,99 m"
+   ],
+   [
+    "Tiefgang",
+    "2,25 m"
+   ],
+   [
+    "Wassertank",
+    "530 l"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "sun-odyssey-455",
+  "name": "Sun Odyssey 455",
+  "brand": "Jeanneau",
+  "typ": "Segelyacht",
+  "len": 14.28,
+  "year": "Neu 2026",
+  "badges": [
+   "Neu",
+   "Flaggschiff"
+  ],
+  "src": "https://www.jeanneau.com/boats/sailboat/2-sun-odyssey/717-sun-odyssey-455",
+  "tagline": "Das neue Sun-Odyssey-Flaggschiff: Salon für zehn, riesige Badeplattform und bis zu vier Doppelkabinen mit eigenem Bad.",
+  "videos": [
+   {
+    "id": "EgXe4XR_gZ4",
+    "title": "Die Sun Odyssey 455 im Rundgang",
+    "by": "Walkthrough mit Jeanneau America"
+   },
+   {
+    "id": "LOCtDIQfmxU",
+    "title": "Rundgang auf Deutsch",
+    "by": "Weltpremiere boot Düsseldorf 2026"
+   }
+  ],
+  "key": [
+   [
+    "14,3 m",
+    "Länge"
+   ],
+   [
+    "bis 4",
+    "Kabinen"
+   ],
+   [
+    "bis 4",
+    "Bäder"
+   ],
+   [
+    "6–8",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Sun Odyssey 455 ist seit 2026 das neue Flaggschiff der Baureihe. Sie verbindet Kraft am Steuer mit viel Wohlgefühl an Bord.",
+   "Am Salontisch sitzen bis zu zehn Personen. Die große Badeplattform am Heck lädt zum Schwimmen ein, und in der Charter-Version gibt es bis zu vier Doppelkabinen mit jeweils eigenem Bad."
+  ],
+  "plus": [
+   "Salontisch für bis zu zehn Personen",
+   "Große Badeplattform am Heck",
+   "Bis zu 4 Doppelkabinen mit eigenem Bad",
+   "Breite Laufdecks ohne Stufen",
+   "Neueste Generation"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "In der 4/4-Version Bäder ohne separate Dusche",
+   "Noch wenige Yachten in den Flotten"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "bis 4 (vier Layouts)"
+   ],
+   [
+    "Gäste",
+    "6–8"
+   ],
+   [
+    "Länge",
+    "14,28 m"
+   ],
+   [
+    "Tiefgang",
+    "2,40 m"
+   ],
+   [
+    "Wassertank",
+    "380 l"
+   ],
+   [
+    "Baujahr",
+    "ab 2026"
+   ]
+  ],
+  "life": [
+   [
+    "Tafel für zehn",
+    "Der helle Salon bietet Platz für die ganze Crew am Tisch.",
+    "home"
+   ],
+   [
+    "Badeplattform",
+    "Die große Plattform am Heck – Schwimmen, Sonnen, Sprung ins Wasser.",
+    "wave"
+   ],
+   [
+    "Bad für jedes Paar",
+    "In der Charter-Version bis zu vier Kabinen mit eigenem Bad.",
+    "bed"
+   ],
+   [
+    "Freie Wege",
+    "Breite Laufdecks führen ohne Stufen um die Steuerräder herum.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 4 Bäder",
+    "cab": "4",
+    "bath": "4",
+    "fit": "4 Paare, Charter",
+    "note": "Bäder ohne separate Duschkabine"
+   },
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, Familie",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "eine neue, große Segelyacht möchten",
+   "mit 6 bis 8 Personen reisen",
+   "jedem Paar ein Bad geben möchten"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,28 m"
+   ],
+   [
+    "Rumpflänge",
+    "13,74 m"
+   ],
+   [
+    "Tiefgang",
+    "2,40 m"
+   ],
+   [
+    "Wassertank",
+    "380 l"
+   ],
+   [
+    "Design",
+    "Marc Lombard"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "sun-odyssey-490",
+  "name": "Sun Odyssey 490",
+  "brand": "Jeanneau",
+  "typ": "Segelyacht",
+  "len": 14.42,
+  "year": "Bewährt",
+  "src": "https://www.jeanneau.com/boats/sailboat/2-sun-odyssey/111-sun-odyssey-490",
+  "tagline": "Großzügig wohnen auf 49 Fuß: Eignersuite mit eigenem Bad, breite Badeplattform und bis zu fünf Kabinen.",
+  "videos": [
+   {
+    "id": "nkpExbeeEGk",
+    "title": "Die Sun Odyssey 490 im Rundgang",
+    "by": "Walkthrough"
+   }
+  ],
+  "key": [
+   [
+    "14,4 m",
+    "Länge"
+   ],
+   [
+    "2–5",
+    "Kabinen"
+   ],
+   [
+    "4–10",
+    "Gäste"
+   ],
+   [
+    "640 l",
+    "Wasser"
+   ]
+  ],
+  "glance": [
+   "Die Sun Odyssey 490 ist eine große Fahrtenyacht mit vielen Raumaufteilungen – von der Eignerversion mit zwei Kabinen bis zur Charter-Version mit fünf.",
+   "Vorne liegt eine Suite mit 1,60 × 2 m großem Bett, Bücherregal und eigenem Bad mit separater Dusche. Vor Anker wird das Cockpit zur Sonnenfläche, und eine breite Badeplattform führt ins Wasser."
+  ],
+  "plus": [
+   "Eignersuite mit eigenem Bad und Dusche",
+   "Bis zu fünf Kabinen",
+   "Cockpit wird vor Anker zur Sonnenfläche",
+   "Breite Badeplattform",
+   "Großer Wassertank (640 l)"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Nachfolgerin 455 ist neuer",
+   "Bei 5 Kabinen teilen sich Gäste Bäder"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "2 bis 5"
+   ],
+   [
+    "Gäste",
+    "4–10"
+   ],
+   [
+    "Länge",
+    "14,42 m"
+   ],
+   [
+    "Tiefgang",
+    "2,24 m"
+   ],
+   [
+    "Wassertank",
+    "640 l"
+   ],
+   [
+    "Typ",
+    "Segelyacht (Einrumpf)"
+   ]
+  ],
+  "life": [
+   [
+    "Suite am Bug",
+    "Großes Bett, Regale und eigenes Bad mit separater Dusche.",
+    "bed"
+   ],
+   [
+    "Sonnenfläche im Cockpit",
+    "Vor Anker verwandelt sich das Cockpit in eine Liegewiese.",
+    "sun"
+   ],
+   [
+    "Breite Badeplattform",
+    "Bequemer Weg ins Wasser und zurück.",
+    "wave"
+   ],
+   [
+    "Leichte Wege",
+    "Durchdachte Wege an Bord machen das Leben einfach.",
+    "home"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "5 Kabinen",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Große Gruppen",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "4 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, Familie",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen (Eigner)",
+    "cab": "2",
+    "bath": "je nach Yacht",
+    "fit": "Paare",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "eine große Segelyacht mit viel Raum suchen",
+   "mit bis zu 8 Personen reisen",
+   "gerne mitsegeln"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,42 m"
+   ],
+   [
+    "Tiefgang",
+    "2,24 m"
+   ],
+   [
+    "Wassertank",
+    "640 l"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "sun-odyssey-440",
+  "name": "Sun Odyssey 440",
+  "brand": "Jeanneau",
+  "typ": "Segelyacht",
+  "len": 13.0,
+  "year": "Charter-Version Millennium",
+  "badges": [
+   "Charter-Klassiker"
+  ],
+  "src": "https://www.jeanneau.com/boats/sailboat/2-sun-odyssey/109-sun-odyssey-440",
+  "tagline": "Die Yacht mit den schrägen Laufdecks: sicher um die Steuerräder herum, großes Cockpit und bis zu vier Kabinen für zehn Personen.",
+  "videos": [
+   {
+    "id": "NBt-xPSmsSU",
+    "title": "Die Sun Odyssey 440 im Rundgang",
+    "by": "European Yacht of the Year"
+   },
+   {
+    "id": "ZuS1L11Tn4s",
+    "title": "Eine Sun Odyssey 440 aus der Charterflotte",
+    "by": "Check-in-Rundgang in Kroatien"
+   }
+  ],
+  "key": [
+   [
+    "13 m",
+    "Länge"
+   ],
+   [
+    "2–4",
+    "Kabinen"
+   ],
+   [
+    "2",
+    "Bäder"
+   ],
+   [
+    "bis 10",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Sun Odyssey 440 wurde als European Yacht of the Year ausgezeichnet und ist in vielen Charterflotten zu Hause. Ihr Markenzeichen sind die schräg ansteigenden Laufdecks: Ohne Stufen geht es von den Steuerrädern bis zum Bug.",
+   "Die Werft baut sie weiter in der Charter-Version „Millennium“. Mit vier Kabinen bietet sie Platz für bis zu zehn Personen, zwei davon im Salon. Die beiden Bäder haben eigene Duschkabinen."
+  ],
+  "plus": [
+   "Laufdecks ohne Stufen vom Steuer bis zum Bug",
+   "Bis zu 4 Kabinen",
+   "Bäder mit separater Dusche",
+   "European Yacht of the Year",
+   "In vielen Flotten verfügbar"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Nur 2 Bäder, auch bei 4 Kabinen",
+   "Nachfolgerin 455 ist neuer und größer"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "2–4 / 2"
+   ],
+   [
+    "Gäste",
+    "bis 10 (2 im Salon)"
+   ],
+   [
+    "Länge",
+    "13,00 m"
+   ],
+   [
+    "Breite",
+    "4,29 m"
+   ],
+   [
+    "Wassertank",
+    "330 l"
+   ],
+   [
+    "Typ",
+    "Segelyacht (Einrumpf)"
+   ]
+  ],
+  "life": [
+   [
+    "Ohne Stufen nach vorne",
+    "Die schrägen Laufdecks führen sicher vom Cockpit zum Bug.",
+    "anchor"
+   ],
+   [
+    "Großes Cockpit",
+    "Viel Platz für die Crew rund um den Cockpittisch.",
+    "sun"
+   ],
+   [
+    "Echte Duschen",
+    "Beide Bäder haben eine separate Duschkabine.",
+    "home"
+   ],
+   [
+    "Mehr Platz im Bug",
+    "Der verbreiterte Rumpf schafft mehr Raum in den Vorschiffskabinen.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 2 Bäder",
+    "cab": "4",
+    "bath": "2",
+    "fit": "Familien, 4 Paare",
+    "note": "Bugbereich in zwei Kabinen geteilt"
+   },
+   {
+    "v": "3 Kabinen · 2 Bäder",
+    "cab": "3",
+    "bath": "2",
+    "fit": "3 Paare",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen",
+    "cab": "2",
+    "bath": "2",
+    "fit": "Paare",
+    "note": "Mit großem Stauraum"
+   }
+  ],
+  "fitYes": [
+   "eine bewährte Charteryacht suchen",
+   "mit bis zu 8 Personen segeln",
+   "sichere Wege an Deck schätzen"
+  ],
+  "fitNo": [
+   "jedem Paar ein eigenes Bad geben möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "13,00 m"
+   ],
+   [
+    "Rumpflänge",
+    "12,64 m"
+   ],
+   [
+    "Breite",
+    "4,29 m"
+   ],
+   [
+    "Wassertank",
+    "330 l"
+   ],
+   [
+    "Motor",
+    "ca. 45–57 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "jeanneau-yachts-55",
+  "name": "Jeanneau Yachts 55",
+  "brand": "Jeanneau",
+  "typ": "Segelyacht",
+  "len": 16.98,
+  "year": "Seit 2023",
+  "badges": [
+   "Premium"
+  ],
+  "src": "https://www.jeanneau.com/boats/sailboat/4-jeanneau-yachts/682-jeanneau-yachts-55",
+  "tagline": "Zwei Cockpit-Lounges, eine riesige Badeplattform und Gästekabinen mit eigenem Eingang – Privatsphäre wie in einem Apartment.",
+  "videos": [
+   {
+    "id": "3C9WOZi0QPI",
+    "title": "Die Jeanneau Yachts 55 im Rundgang",
+    "by": "Walkthrough von Jeanneau"
+   }
+  ],
+  "key": [
+   [
+    "17 m",
+    "Länge"
+   ],
+   [
+    "3",
+    "Kabinen"
+   ],
+   [
+    "3",
+    "Bäder"
+   ],
+   [
+    "6",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Jeanneau Yachts 55 ist das Einstiegsmodell der Luxuslinie von Jeanneau und eine ungewöhnliche Yacht: Die Eignersuite vorne nimmt rund zwei Drittel des Innenraums ein.",
+   "Die beiden Gästekabinen achtern erreicht man über eigene Niedergänge direkt aus dem Cockpit – jede mit eigenem Bad. So hat jedes Paar an Bord seine Privatsphäre. Im Cockpit warten zwei Lounges, die zu Sonnenflächen werden."
+  ],
+  "plus": [
+   "Gästekabinen mit eigenem Eingang und Bad",
+   "Zwei Cockpit-Lounges, die zu Sonnenflächen werden",
+   "Riesige hydraulische Badeplattform",
+   "Geschützter Steuerstand unter festem Dach",
+   "Große Eignersuite"
+  ],
+  "minus": [
+   "Nur 3 Kabinen – für maximal 6 Gäste",
+   "Premium-Preisklasse",
+   "Selten in Charterflotten"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3 / 3"
+   ],
+   [
+    "Gäste",
+    "6"
+   ],
+   [
+    "Länge",
+    "16,98 m"
+   ],
+   [
+    "Breite",
+    "4,99 m"
+   ],
+   [
+    "Tiefgang",
+    "2,45 m"
+   ],
+   [
+    "Wassertank",
+    "760 l"
+   ]
+  ],
+  "life": [
+   [
+    "Privatsphäre für alle",
+    "Die Gästekabinen haben eigene Eingänge vom Cockpit und eigene Bäder.",
+    "bed"
+   ],
+   [
+    "Zwei Lounges",
+    "Eine U- und eine L-förmige Sitzecke im Cockpit, beide werden zu Sonnenflächen.",
+    "sun"
+   ],
+   [
+    "Hydraulische Badeplattform",
+    "Eine riesige Plattform senkt sich bis ans Wasser.",
+    "wave"
+   ],
+   [
+    "Geschützt steuern",
+    "Die Steuerstände liegen unter einem festen Dach mit großer Windschutzscheibe.",
+    "home"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen · 3 Bäder",
+    "cab": "3",
+    "bath": "3",
+    "fit": "3 Paare, Familie",
+    "note": "Eignersuite vorne, zwei Gästekabinen mit eigenem Zugang"
+   }
+  ],
+  "fitYes": [
+   "mit 2 oder 3 Paaren Luxus und Privatsphäre möchten",
+   "viel Zeit an Deck in der Sonne verbringen",
+   "eine besondere Yacht suchen"
+  ],
+  "fitNo": [
+   "mehr als 6 Gäste mitbringen",
+   "günstig reisen möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "16,98 m"
+   ],
+   [
+    "Rumpflänge",
+    "16,15 m"
+   ],
+   [
+    "Breite",
+    "4,99 m"
+   ],
+   [
+    "Tiefgang",
+    "2,45 m"
+   ],
+   [
+    "Wassertank",
+    "760 l"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "jeanneau-yachts-60",
+  "name": "Jeanneau Yachts 60",
+  "brand": "Jeanneau",
+  "typ": "Segelyacht",
+  "len": 18.28,
+  "year": "Luxuslinie",
+  "badges": [
+   "Premium"
+  ],
+  "src": "https://www.jeanneau.com/boats/sailboat/4-jeanneau-yachts/653-jeanneau-yachts-60",
+  "tagline": "Große Rumpffenster mit Blick auf Meer und Himmel, eine Beibootgarage und bis zu 19 Raumaufteilungen.",
+  "videos": [
+   {
+    "id": "2_t2IoG4pME",
+    "title": "Die Jeanneau Yachts 60 im Rundgang",
+    "by": "Walkthrough von Jeanneau"
+   }
+  ],
+  "key": [
+   [
+    "18,3 m",
+    "Länge"
+   ],
+   [
+    "3+",
+    "Kabinen"
+   ],
+   [
+    "5,2 m",
+    "Breite"
+   ],
+   [
+    "6–8",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Jeanneau Yachts 60 ist eine Luxusyacht, die sich ganz nach den Wünschen ihrer Eigner richtet: Es gibt bis zu 19 mögliche Raumaufteilungen, auf Wunsch mit eigener Skipperkabine im Bug.",
+   "Große Rumpffenster fluten die Wohnräume mit Licht und bieten durchgehenden Blick auf Meer und Himmel. Im Heck liegt eine Garage für ein 2,90 Meter langes Beiboot."
+  ],
+  "plus": [
+   "Große Rumpffenster mit Meerblick",
+   "Beibootgarage im Heck",
+   "Skipperkabine im Bug möglich",
+   "Zeitloses, modernes Design",
+   "Sehr viele Raumaufteilungen"
+  ],
+  "minus": [
+   "Jede Yacht ist anders – Kabinen prüfen wir für Sie",
+   "Premium-Preisklasse",
+   "Selten in Charterflotten"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "je nach Yacht"
+   ],
+   [
+    "Gäste",
+    "6–8"
+   ],
+   [
+    "Länge",
+    "18,28 m"
+   ],
+   [
+    "Breite",
+    "5,20 m"
+   ],
+   [
+    "Tiefgang",
+    "2,55 m"
+   ],
+   [
+    "Typ",
+    "Luxus-Segelyacht"
+   ]
+  ],
+  "life": [
+   [
+    "Licht und Aussicht",
+    "Große Rumpffenster zeigen Meer und Himmel von innen.",
+    "home"
+   ],
+   [
+    "Beiboot in der Garage",
+    "Das Beiboot wohnt im Heck – die Badeplattform bleibt frei.",
+    "wave"
+   ],
+   [
+    "Crew an Bord",
+    "Eine Skipperkabine im Bug ist möglich – Ihre Kabinen bleiben frei.",
+    "bed"
+   ],
+   [
+    "Elegantes Design",
+    "Klare Linien und hochwertige Materialien.",
+    "sun"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "Bis zu 19 Layouts",
+    "cab": "je nach Yacht",
+    "bath": "je nach Yacht",
+    "fit": "Familien und Paare mit Crew",
+    "note": "Eignerkabine, Gästekabinen, auf Wunsch Skipperkabine im Bug"
+   }
+  ],
+  "fitYes": [
+   "Luxus und Design auf einer Segelyacht suchen",
+   "mit Crew reisen",
+   "viel Wert auf Licht und Aussicht legen"
+  ],
+  "fitNo": [
+   "günstig reisen möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "18,28 m"
+   ],
+   [
+    "Rumpflänge",
+    "17,41 m"
+   ],
+   [
+    "Breite",
+    "5,20 m"
+   ],
+   [
+    "Tiefgang",
+    "2,55 m"
+   ],
+   [
+    "Wassertank",
+    "380 l"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "jeanneau-yachts-65",
+  "name": "Jeanneau Yachts 65",
+  "brand": "Jeanneau",
+  "typ": "Segelyacht",
+  "len": 20.45,
+  "year": "Flaggschiff",
+  "badges": [
+   "Premium"
+  ],
+  "src": "https://www.jeanneau.com/boats/sailboat/4-jeanneau-yachts/663-jeanneau-yachts-65",
+  "tagline": "Das Flaggschiff von Jeanneau: große Sonnenfläche im Cockpit, elektrische Badeplattform, Beibootgarage und 1.000 Liter Wasser.",
+  "videos": [
+   {
+    "id": "SQL2i4n9rsI",
+    "title": "Die Jeanneau Yachts 65 im Rundgang",
+    "by": "Walkthrough mit Jeanneau America"
+   }
+  ],
+  "key": [
+   [
+    "20,5 m",
+    "Länge"
+   ],
+   [
+    "3–5",
+    "Kabinen"
+   ],
+   [
+    "1.000 l",
+    "Wasser"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Jeanneau Yachts 65 ist das Flaggschiff der Werft und bietet Komfort und Raumgefühl auf Superyacht-Niveau – für Paare, Familien oder Freunde.",
+   "Im Cockpit wartet eine große Sonnenfläche, am Heck eine elektrisch ausfahrbare Badeplattform mit Zugang zur Beibootgarage. Die Eignerkabine liegt je nach Version vorne oder achtern, mit viel Licht."
+  ],
+  "plus": [
+   "Große Sonnenfläche im Cockpit",
+   "Elektrische Badeplattform und Beibootgarage",
+   "3 bis 5 Kabinen",
+   "1.000 Liter Frischwasser",
+   "Eignerkabine vorne oder achtern"
+  ],
+  "minus": [
+   "Premium-Preisklasse",
+   "Oft mit Crew gebucht",
+   "Groß für enge Häfen"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3, 4 oder 5"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Länge",
+    "20,45 m"
+   ],
+   [
+    "Rumpflänge",
+    "19,55 m"
+   ],
+   [
+    "Wassertank",
+    "1.000 l"
+   ],
+   [
+    "Typ",
+    "Luxus-Segelyacht"
+   ]
+  ],
+  "life": [
+   [
+    "Sonnendeck im Cockpit",
+    "Eine große Liegefläche für die ganze Crew.",
+    "sun"
+   ],
+   [
+    "Badeplattform per Knopfdruck",
+    "Elektrisch ausfahrbar, mit Zugang zur Beibootgarage.",
+    "wave"
+   ],
+   [
+    "Viel Wasser",
+    "1.000 Liter Frischwasser für lange Tage vor Anker.",
+    "anchor"
+   ],
+   [
+    "Lichtdurchflutet",
+    "Eignerkabine mit viel Tageslicht, vorne oder achtern.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "5 Kabinen",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Große Familien mit Crew",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "4 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, viel Raum",
+    "note": "Eignerkabine vorne oder achtern"
+   }
+  ],
+  "fitYes": [
+   "Superyacht-Gefühl unter Segeln möchten",
+   "mit Crew reisen",
+   "lange vor Anker bleiben"
+  ],
+  "fitNo": [
+   "günstig reisen möchten",
+   "kleine Häfen ansteuern"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "20,45 m"
+   ],
+   [
+    "Rumpflänge",
+    "19,55 m"
+   ],
+   [
+    "Wassertank",
+    "1.000 l"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "oceanis-42",
+  "name": "Oceanis 42",
+  "brand": "Beneteau",
+  "typ": "Segelyacht",
+  "len": 12.86,
+  "year": "Neu",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.beneteau.com/oceanis/oceanis-42",
+  "tagline": "Die neue Oceanis für die 40-Fuß-Klasse: fünf Raumaufteilungen, der größte Kühlschrank ihrer Klasse und ein Cockpit, das ins Meer übergeht.",
+  "videos": [
+   {
+    "id": "hb4rGQPA3ik",
+    "title": "Die neue Oceanis 42",
+    "by": "Vorstellung auf Deutsch"
+   }
+  ],
+  "key": [
+   [
+    "12,9 m",
+    "Länge"
+   ],
+   [
+    "2–4",
+    "Kabinen"
+   ],
+   [
+    "1–3",
+    "Bäder"
+   ],
+   [
+    "4–8",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Oceanis 42 ist die Nachfolgerin der Oceanis 40.1 und eröffnet ein neues Kapitel in der beliebten 40-Fuß-Klasse. Sie gibt es in fünf Raumaufteilungen – bis zur Charter-Version mit vier Kabinen.",
+   "Die Küche hat mit 215 Litern den größten Kühlraum ihrer Klasse. Im offenen Heck geht das Cockpit fließend in die Badeplattform über, und große Rumpffenster bringen Meerblick in den Salon."
+  ],
+  "plus": [
+   "215 l Kühlraum – größter der Klasse",
+   "Cockpit geht fließend in die Badeplattform über",
+   "Große Rumpffenster mit Meerblick",
+   "Eignerbett 1,60 m, von beiden Seiten zugänglich",
+   "Charter-Version mit 4 Kabinen"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "In der 4-Kabinen-Version nur 2 Bäder",
+   "Noch neu in den Flotten"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "2/1, 3/1, 3/2, 3/3 oder 4/2"
+   ],
+   [
+    "Gäste",
+    "4–8"
+   ],
+   [
+    "Länge",
+    "12,86 m"
+   ],
+   [
+    "Breite",
+    "4,23 m"
+   ],
+   [
+    "Tiefgang",
+    "1,68–2,25 m"
+   ],
+   [
+    "Wassertank",
+    "235 l"
+   ]
+  ],
+  "life": [
+   [
+    "Offenes Heck",
+    "Das Cockpit geht direkt in die Badeplattform über – das Meer kommt an Bord.",
+    "wave"
+   ],
+   [
+    "Kühle Getränke",
+    "215 Liter Kühlraum – genug für die ganze Crew.",
+    "anchor"
+   ],
+   [
+    "Meerblick im Salon",
+    "Große Rumpffenster machen den Salon hell.",
+    "home"
+   ],
+   [
+    "Ruhige Eignerkabine",
+    "1,60 m breites Bett, von beiden Seiten zugänglich, mit Schreibtisch.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 2 Bäder",
+    "cab": "4",
+    "bath": "2",
+    "fit": "Charter, Familien",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · 3 Bäder",
+    "cab": "3",
+    "bath": "3",
+    "fit": "3 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · 2 Bäder",
+    "cab": "3",
+    "bath": "2",
+    "fit": "Familien",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · 1 Bad",
+    "cab": "3",
+    "bath": "1",
+    "fit": "Familie",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen · 1 Bad",
+    "cab": "2",
+    "bath": "1",
+    "fit": "Paare",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "eine neue 40-Fuß-Yacht möchten",
+   "mit 4 bis 6 Personen reisen",
+   "Wert auf Küche und Kühlraum legen"
+  ],
+  "fitNo": [
+   "mit 8 Personen jedem Paar ein Bad geben möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "12,86 m"
+   ],
+   [
+    "Breite",
+    "4,23 m"
+   ],
+   [
+    "Tiefgang",
+    "1,68–2,25 m"
+   ],
+   [
+    "Wassertank",
+    "235 l"
+   ],
+   [
+    "Motor",
+    "45 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "oceanis-47",
+  "name": "Oceanis 47",
+  "brand": "Beneteau",
+  "typ": "Segelyacht",
+  "len": 14.6,
+  "year": "Neu seit 2025",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.beneteau.com/oceanis/oceanis-47",
+  "tagline": "Die achte Oceanis-Generation: L-Cockpit mit verwandelbaren Tischen, extra breiter Zugang zum Meer und bis zu fünf Kabinen.",
+  "videos": [
+   {
+    "id": "BwSIdbndjKQ",
+    "title": "Die Oceanis 47 im Rundgang",
+    "by": "Walkthrough von Beneteau"
+   }
+  ],
+  "key": [
+   [
+    "14,6 m",
+    "Länge"
+   ],
+   [
+    "3–5",
+    "Kabinen"
+   ],
+   [
+    "2–4",
+    "Bäder"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Mit der Oceanis 47 startete Beneteau 2025 die achte Generation seiner bekanntesten Baureihe. Sie ist für lange, entspannte Tage vor Anker ebenso gemacht wie für Freude am Steuer.",
+   "Im L-förmigen Cockpit lassen sich zwei Tische in Esstisch, Couchtisch oder Sonnenliege verwandeln. Am Heck gibt es serienmäßig einen extra breiten Zugang zum Meer, auf Wunsch mit Plancha-Grill."
+  ],
+  "plus": [
+   "L-Cockpit mit verwandelbaren Tischen",
+   "Extra breiter Zugang zum Meer",
+   "Charter-Versionen mit 4 oder 5 Kabinen",
+   "Eignerbett 1,60 m breit",
+   "Sanfteste Treppe nach unten"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "In der 5-Kabinen-Version 3 Bäder",
+   "Noch neu in den Flotten"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3/2, 4/2, 4/4 oder 5/3"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Länge",
+    "14,60 m"
+   ],
+   [
+    "Breite",
+    "4,50 m"
+   ],
+   [
+    "Tiefgang",
+    "1,84–2,44 m"
+   ],
+   [
+    "Wassertank",
+    "370 l"
+   ]
+  ],
+  "life": [
+   [
+    "Cockpit zum Verwandeln",
+    "Zwei Tische werden Esstisch, Couchtisch oder Sonnenliege.",
+    "sun"
+   ],
+   [
+    "Breiter Zugang zum Meer",
+    "Serienmäßig ein extra breiter Weg vom Heck ins Wasser.",
+    "wave"
+   ],
+   [
+    "Grillen am Heck",
+    "Auf Wunsch mit Plancha-Grill im geschlossenen Heckbereich.",
+    "home"
+   ],
+   [
+    "Bad für jedes Paar",
+    "Charter-Version mit 4 Kabinen und 4 Bädern.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 4 Bäder",
+    "cab": "4",
+    "bath": "4",
+    "fit": "4 Paare (Charter)",
+    "note": ""
+   },
+   {
+    "v": "5 Kabinen · 3 Bäder",
+    "cab": "5",
+    "bath": "3",
+    "fit": "Große Gruppen (Charter)",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen · 2 Bäder",
+    "cab": "4",
+    "bath": "2",
+    "fit": "Familien",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · 2 Bäder (Eigner)",
+    "cab": "3",
+    "bath": "2",
+    "fit": "Paare, viel Raum",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "eine neue, große Segelyacht möchten",
+   "mit 6 bis 8 Personen reisen",
+   "gern im Cockpit leben"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,60 m"
+   ],
+   [
+    "Breite",
+    "4,50 m"
+   ],
+   [
+    "Tiefgang",
+    "1,84–2,44 m"
+   ],
+   [
+    "Wassertank",
+    "370 l"
+   ],
+   [
+    "Motor",
+    "bis 80 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "oceanis-52",
+  "name": "Oceanis 52",
+  "brand": "Beneteau",
+  "typ": "Segelyacht",
+  "len": 16.28,
+  "year": "Neu",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.beneteau.com/oceanis/oceanis-52",
+  "tagline": "Ein Cockpit mit Kühlschrank und Plancha, eine absenkbare Badeplattform und eine Charter-Version mit fünf Kabinen.",
+  "videos": [
+   {
+    "id": "YOHWjxUnSY4",
+    "title": "Die Oceanis 52 im Rundgang",
+    "by": "Walkthrough"
+   }
+  ],
+  "key": [
+   [
+    "16,3 m",
+    "Länge"
+   ],
+   [
+    "3–5",
+    "Kabinen"
+   ],
+   [
+    "2–3",
+    "Bäder"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Oceanis 52 ist das Flaggschiff der neuen Oceanis-Generation. Ihr Cockpit bietet rund 30 % mehr Platz als die Vorgängerin – mit zwei höhenverstellbaren Tischen, Kühlschrank und Plancha-Grill direkt im Cockpit.",
+   "Am Heck senkt sich eine Badeplattform mit extra breitem Zugang ins Meer. In der Charter-Version gibt es fünf Kabinen und eine Kücheninsel."
+  ],
+  "plus": [
+   "Cockpit mit Kühlschrank und Plancha",
+   "Absenkbare Badeplattform",
+   "Rund 30 % mehr Cockpitfläche als die Vorgängerin",
+   "Charter-Version mit 5 Kabinen",
+   "Salontisch wird zum Sofa oder Bett"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "5-Kabinen-Version mit 3 Bädern",
+   "Größe verlangt erfahrenen Skipper"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3/2 oder 5/3"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Länge",
+    "16,28 m"
+   ],
+   [
+    "Breite",
+    "4,84 m"
+   ],
+   [
+    "Tiefgang",
+    "1,92–2,36 m"
+   ],
+   [
+    "Wassertank",
+    "420 l"
+   ]
+  ],
+  "life": [
+   [
+    "Outdoor-Küche",
+    "Kühlschrank und Plancha direkt im Cockpit – Grillabend vor Anker.",
+    "sun"
+   ],
+   [
+    "Absenkbare Plattform",
+    "Die Badeplattform senkt sich bis ans Wasser.",
+    "wave"
+   ],
+   [
+    "Flexibler Salon",
+    "Der Tisch wird Esstisch, Couchtisch, Sofa oder Bett.",
+    "home"
+   ],
+   [
+    "Eignersuite",
+    "Großes Bett mit gepolstertem Kopfteil und Fenstern mit Meerblick.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "5 Kabinen · 3 Bäder",
+    "cab": "5",
+    "bath": "3",
+    "fit": "Große Gruppen (Charter)",
+    "note": "Mit Kücheninsel"
+   },
+   {
+    "v": "3 Kabinen · 2 Bäder (Eigner)",
+    "cab": "3",
+    "bath": "2",
+    "fit": "Paare, viel Raum",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "Luxus auf einer Segelyacht genießen möchten",
+   "gerne draußen kochen und essen",
+   "mit bis zu 10 Personen reisen"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten",
+   "jedem Paar ein Bad geben möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "16,28 m"
+   ],
+   [
+    "Breite",
+    "4,84 m"
+   ],
+   [
+    "Tiefgang",
+    "1,92–2,36 m"
+   ],
+   [
+    "Wassertank",
+    "420 l"
+   ],
+   [
+    "Motor",
+    "bis 110 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "oceanis-yacht-54",
+  "name": "Oceanis Yacht 54",
+  "brand": "Beneteau",
+  "typ": "Segelyacht",
+  "len": 17.12,
+  "year": "Premium",
+  "badges": [
+   "Premium"
+  ],
+  "src": "https://www.beneteau.com/oceanis-yacht/oceanis-yacht-54",
+  "tagline": "Vier Sonnenflächen, eine Beibootgarage unter dem Cockpit und eine große Eignerkabine – Premium-Cruiser für drei Paare.",
+  "videos": [
+   {
+    "id": "uQxmSmC0FBk",
+    "title": "Die Oceanis Yacht 54 im Rundgang",
+    "by": "Walkthrough"
+   }
+  ],
+  "key": [
+   [
+    "17,1 m",
+    "Länge"
+   ],
+   [
+    "3",
+    "Kabinen"
+   ],
+   [
+    "2–3",
+    "Bäder"
+   ],
+   [
+    "6",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Oceanis Yacht 54 ist ein Premium-Cruiser für drei Paare. An Deck gibt es vier Sonnenflächen: am Heck, im Cockpit und auf dem Vordeck.",
+   "Das Beiboot verschwindet in einer Garage unter dem Cockpit, die Badeplattform bleibt frei. Unter Deck wartet eine große Eignerkabine mit 1,60 m breitem Inselbett, dazu zwei Achterkabinen mit Doppelbetten."
+  ],
+  "plus": [
+   "Vier Sonnenflächen an Deck",
+   "Beibootgarage unter dem Cockpit",
+   "Großes Inselbett in der Eignerkabine",
+   "Bäder mit separater Dusche und Meerblick",
+   "Festes Bimini als Sonnenschutz"
+  ],
+  "minus": [
+   "Nur 3 Kabinen",
+   "Premium-Preisklasse",
+   "Die Yacht legt sich beim Segeln auf die Seite"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3/2 oder 3/3"
+   ],
+   [
+    "Gäste",
+    "6"
+   ],
+   [
+    "Länge",
+    "17,12 m"
+   ],
+   [
+    "Breite",
+    "5,00 m"
+   ],
+   [
+    "Tiefgang",
+    "2,00–2,50 m"
+   ],
+   [
+    "Wassertank",
+    "720 l"
+   ]
+  ],
+  "life": [
+   [
+    "Vier Sonnenplätze",
+    "Am Heck, im Cockpit und auf dem Vordeck – Platz für alle in der Sonne.",
+    "sun"
+   ],
+   [
+    "Freie Badeplattform",
+    "Das Beiboot wohnt in einer Garage unter dem Cockpit.",
+    "wave"
+   ],
+   [
+    "Eignerkabine",
+    "1,60 m breites Inselbett, viel Stauraum, Fenster auf beiden Seiten.",
+    "bed"
+   ],
+   [
+    "Bäder mit Aussicht",
+    "Separate Duschen und Blick aufs Meer.",
+    "home"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen · 3 Bäder",
+    "cab": "3",
+    "bath": "3",
+    "fit": "3 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen · 2 Bäder",
+    "cab": "3",
+    "bath": "2",
+    "fit": "Familie",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "zu sechst Premium-Komfort möchten",
+   "viel Zeit in der Sonne verbringen",
+   "eine große Segelyacht suchen"
+  ],
+  "fitNo": [
+   "mehr als 6 Gäste mitbringen",
+   "günstig reisen möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "17,12 m"
+   ],
+   [
+    "Breite",
+    "5,00 m"
+   ],
+   [
+    "Tiefgang",
+    "2,00–2,50 m"
+   ],
+   [
+    "Wassertank",
+    "720 l"
+   ],
+   [
+    "Motor",
+    "bis 110 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "first-44",
+  "name": "First 44",
+  "brand": "Beneteau",
+  "typ": "Segelyacht",
+  "len": 14.65,
+  "year": "Performance-Cruiser",
+  "src": "https://www.beneteau.com/first/first-44",
+  "tagline": "Für alle, die schnell und elegant segeln wollen: sportliche Yacht mit drei Kabinen, hellem Interieur und Platz für sechs am Tisch.",
+  "videos": [
+   {
+    "id": "4f-v_VjPBa4",
+    "title": "Die First 44 im Rundgang",
+    "by": "Walkthrough von Beneteau"
+   }
+  ],
+  "key": [
+   [
+    "14,7 m",
+    "Länge"
+   ],
+   [
+    "3",
+    "Kabinen"
+   ],
+   [
+    "2",
+    "Bäder"
+   ],
+   [
+    "6",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die First 44 ist Beneteaus sportliche Fahrtenyacht: schnell, elegant und trotzdem komfortabel. Sie richtet sich an Gäste, die das Segeln selbst als Erlebnis sehen.",
+   "Unter Deck ist sie hell und modern mit weiß lackierten Möbeln. Am querstehenden Salontisch sitzen sechs Personen. Im Cockpit führen breite, ebene Wege zum Vordeck."
+  ],
+  "plus": [
+   "Sportliches, schnelles Segeln",
+   "Helles, modernes Interieur",
+   "Geselliges Cockpit mit Tisch",
+   "Breite, ebene Laufdecks",
+   "Elegantes Design"
+  ],
+  "minus": [
+   "Nur 3 Kabinen und 2 Bäder",
+   "Deutlich mehr Schräglage als ein Katamaran",
+   "Großer Tiefgang – nicht für flache Buchten"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3 / 2"
+   ],
+   [
+    "Gäste",
+    "6"
+   ],
+   [
+    "Länge",
+    "14,65 m"
+   ],
+   [
+    "Breite",
+    "4,25 m"
+   ],
+   [
+    "Tiefgang",
+    "2,15–2,60 m"
+   ],
+   [
+    "Wassertank",
+    "370 l"
+   ]
+  ],
+  "life": [
+   [
+    "Segeln als Erlebnis",
+    "Die First 44 reagiert spürbar auf jede Böe – Segelspaß pur.",
+    "wave"
+   ],
+   [
+    "Geselliges Cockpit",
+    "Ein schöner Tisch und viel Platz für die Crew.",
+    "sun"
+   ],
+   [
+    "Helles Interieur",
+    "Weiße Möbel und indirektes Licht.",
+    "home"
+   ],
+   [
+    "Tisch für sechs",
+    "Am querstehenden Salontisch sitzen alle zusammen.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen · 2 Bäder",
+    "cab": "3",
+    "bath": "2",
+    "fit": "3 Paare, sportliche Crews",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "sportlich segeln und mitmachen möchten",
+   "zu viert bis zu sechst reisen",
+   "Design lieben"
+  ],
+  "fitNo": [
+   "mit Kindern viel Ruhe ohne Schräglage möchten",
+   "flache Buchten ansteuern"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,65 m"
+   ],
+   [
+    "Breite",
+    "4,25 m"
+   ],
+   [
+    "Tiefgang",
+    "2,15–2,60 m"
+   ],
+   [
+    "Wassertank",
+    "370 l"
+   ],
+   [
+    "Motor",
+    "57 PS"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bavaria-c38",
+  "name": "Bavaria C38",
+  "brand": "Bavaria",
+  "typ": "Segelyacht",
+  "len": 11.31,
+  "year": "C-Line",
+  "src": "https://www.bavariayachts.com/sailing-yachts/c38",
+  "tagline": "Ein Kingsize-Bett im Bug und viel Raum auf 38 Fuß: die kompakte C-Line-Yacht für zwei bis drei Paare.",
+  "videos": [
+   {
+    "id": "a-Co_0CTCBQ",
+    "title": "Eine Bavaria C38 aus der Charterflotte",
+    "by": "Rundgang mit Sail Ionian"
+   }
+  ],
+  "key": [
+   [
+    "11,3 m",
+    "Länge"
+   ],
+   [
+    "2–3",
+    "Kabinen"
+   ],
+   [
+    "1–2",
+    "Bäder"
+   ],
+   [
+    "4–6",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Bavaria C38 nutzt jeden Zentimeter: Durch den V-förmigen Bug und den breiten Rumpf bietet sie auf 38 Fuß ungewöhnlich viel Platz.",
+   "Im Bug liegt die Eignerkabine mit einem Bett von 1,73 × 2 Metern. Die Achterkabinen haben Betten mit 1,50 × 2 Metern. Eine Selbstwendefock macht das Segeln einfach."
+  ],
+  "plus": [
+   "Großes Bett im Bug (1,73 × 2 m)",
+   "Viel Raum für die Größe",
+   "Einfaches Segeln mit Selbstwendefock",
+   "Gutes Preis-Leistungs-Verhältnis",
+   "Wahlweise flacher Kiel"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Max. 2 Bäder",
+   "Für 6 Erwachsene eher kompakt"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "2–3 / 1–2"
+   ],
+   [
+    "Gäste",
+    "4–6"
+   ],
+   [
+    "Länge",
+    "11,31 m"
+   ],
+   [
+    "Breite",
+    "3,98 m"
+   ],
+   [
+    "Tiefgang",
+    "1,60–2,00 m"
+   ],
+   [
+    "Typ",
+    "Segelyacht (Einrumpf)"
+   ]
+  ],
+  "life": [
+   [
+    "Großes Bett im Bug",
+    "1,73 × 2 m – mehr als viele Yachten dieser Größe.",
+    "bed"
+   ],
+   [
+    "Einfach segeln",
+    "Die Selbstwendefock wendet von allein.",
+    "wave"
+   ],
+   [
+    "Viel Raum",
+    "Breiter Rumpf, durchdachte Raumnutzung.",
+    "home"
+   ],
+   [
+    "Ankern bei Sonnenuntergang",
+    "Cockpit mit Tisch für entspannte Abende.",
+    "sun"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "1–2",
+    "fit": "2–3 Paare",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen",
+    "cab": "2",
+    "bath": "1–2",
+    "fit": "Paare",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "zu viert segeln möchten",
+   "ein gutes Preis-Leistungs-Verhältnis suchen",
+   "gerne selbst mitsegeln"
+  ],
+  "fitNo": [
+   "mit 6 Erwachsenen viel Platz erwarten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "11,31 m (11,90 m mit Bugspriet)"
+   ],
+   [
+    "Breite",
+    "3,98 m"
+   ],
+   [
+    "Tiefgang",
+    "1,60–2,00 m"
+   ],
+   [
+    "Design",
+    "Cossutti Yacht Design"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bavaria-c42",
+  "name": "Bavaria C42",
+  "brand": "Bavaria",
+  "typ": "Segelyacht",
+  "len": 12.4,
+  "year": "European Yacht of the Year",
+  "badges": [
+   "Ausgezeichnet"
+  ],
+  "src": "https://www.bavariayachts.com/sailing-yachts/c42",
+  "tagline": "Kingsize-Bett, Spa-Bad mit separater Dusche und viel Licht: die preisgekrönte 42-Fuß-Yacht für drei Paare.",
+  "videos": [
+   {
+    "id": "asLYOtY3Hsw",
+    "title": "Eine Bavaria C42 im Rundgang",
+    "by": "Charteryacht-Walkthrough"
+   }
+  ],
+  "key": [
+   [
+    "12,4 m",
+    "Länge"
+   ],
+   [
+    "2–3",
+    "Kabinen"
+   ],
+   [
+    "1–2",
+    "Bäder"
+   ],
+   [
+    "4–6",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Bavaria C42 wurde als European Yacht of the Year ausgezeichnet. Sie bietet ein Raumgefühl, das man in dieser Größe selten findet.",
+   "Im Bug wartet ein echtes Kingsize-Bett mit 1,80 × 2,10 Metern. Das Bad an Steuerbord ist eine kleine Wellness-Ecke mit separater Dusche."
+  ],
+  "plus": [
+   "Kingsize-Bett 1,80 × 2,10 m im Bug",
+   "Bad mit separater Dusche",
+   "European Yacht of the Year",
+   "Viel Stauraum",
+   "Großer Wassertank optional"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Max. 3 Kabinen",
+   "Max. 2 Bäder"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "2–3 / 1–2"
+   ],
+   [
+    "Gäste",
+    "4–6"
+   ],
+   [
+    "Länge",
+    "12,40 m"
+   ],
+   [
+    "Breite",
+    "4,30 m"
+   ],
+   [
+    "Tiefgang",
+    "1,70–2,10 m"
+   ],
+   [
+    "Wassertank",
+    "210 l (bis 460 l)"
+   ]
+  ],
+  "life": [
+   [
+    "Kingsize im Bug",
+    "1,80 × 2,10 m – schlafen wie zu Hause.",
+    "bed"
+   ],
+   [
+    "Kleines Spa",
+    "Bad mit separater Dusche an Steuerbord.",
+    "home"
+   ],
+   [
+    "Leicht zu segeln",
+    "Selbstwendefock und klare Leinenführung.",
+    "wave"
+   ],
+   [
+    "Cockpit für alle",
+    "Großes Cockpit mit Tisch.",
+    "sun"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen · 2 Bäder",
+    "cab": "3",
+    "bath": "2",
+    "fit": "3 Paare",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen",
+    "cab": "2",
+    "bath": "1–2",
+    "fit": "Paare",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "zu viert bis zu sechst komfortabel segeln",
+   "Wert auf ein großes Bett legen",
+   "eine ausgezeichnete Yacht möchten"
+  ],
+  "fitNo": [
+   "mehr als drei Kabinen brauchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "12,40 m (12,90 m mit Bugspriet)"
+   ],
+   [
+    "Breite",
+    "4,30 m"
+   ],
+   [
+    "Tiefgang",
+    "1,70–2,10 m"
+   ],
+   [
+    "Wassertank",
+    "210 l (bis 460 l)"
+   ],
+   [
+    "Design",
+    "Cossutti Yacht Design"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bavaria-c46",
+  "name": "Bavaria C46",
+  "brand": "Bavaria",
+  "typ": "Segelyacht",
+  "len": 14.5,
+  "year": "European Yacht of the Year 2024",
+  "badges": [
+   "Ausgezeichnet"
+  ],
+  "src": "https://www.bavariayachts.com/sailing-yachts/c46",
+  "tagline": "Bis zu fünf Kabinen, auf Wunsch jede mit eigenem Bad: die preisgekrönte 46-Fuß-Yacht für Familien und Freunde.",
+  "videos": [
+   {
+    "id": "r-0kVNd_NOg",
+    "title": "Die Bavaria C46 im Rundgang",
+    "by": "Walkthrough in Cannes"
+   }
+  ],
+  "key": [
+   [
+    "14,5 m",
+    "Länge"
+   ],
+   [
+    "3–5",
+    "Kabinen"
+   ],
+   [
+    "bis 4",
+    "Bäder"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Bavaria C46 wurde 2024 als European Yacht of the Year ausgezeichnet. Ihr breiter Rumpf mit 4,70 m bietet viel Raum für Familien und Freundesgruppen.",
+   "In der Version mit vier Doppelkabinen kann jede Kabine ein eigenes Bad haben. Eine fünfte Kabine mit Etagenbetten bietet Platz für Kinder – so segeln zwei Familien zu fünft entspannt zusammen."
+  ],
+  "plus": [
+   "Bis zu 4 Kabinen mit eigenem Bad",
+   "Fünfte Kabine mit Etagenbetten möglich",
+   "European Yacht of the Year 2024",
+   "Breiter Rumpf, viel Raum",
+   "Großer Wassertank"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Kabinen kleiner als auf Katamaranen",
+   "Nicht jede Yacht hat 4 Bäder"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3 bis 5"
+   ],
+   [
+    "Bäder",
+    "bis 4"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Länge",
+    "14,50 m"
+   ],
+   [
+    "Breite",
+    "4,70 m"
+   ],
+   [
+    "Tiefgang",
+    "1,75–2,30 m"
+   ]
+  ],
+  "life": [
+   [
+    "Bad für jedes Paar",
+    "In der 4-Kabinen-Version mit eigenem Bad pro Kabine.",
+    "bed"
+   ],
+   [
+    "Kinderkabine",
+    "Etagenbetten in der fünften Kabine.",
+    "home"
+   ],
+   [
+    "Viel Raum",
+    "4,70 m Breite – großzügig für eine Segelyacht.",
+    "sun"
+   ],
+   [
+    "Leicht zu segeln",
+    "Alle Leinen laufen zu den Steuerständen.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 4 Bäder",
+    "cab": "4",
+    "bath": "4",
+    "fit": "4 Paare",
+    "note": ""
+   },
+   {
+    "v": "5 Kabinen",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Zwei Familien",
+    "note": "Fünfte Kabine mit Etagenbetten"
+   },
+   {
+    "v": "3 Kabinen (Eigner)",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, große Eignerkabine",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "mit zwei Familien segeln möchten",
+   "jedem Paar ein Bad geben möchten",
+   "eine preisgekrönte Yacht suchen"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,50 m (14,91 m mit Bugspriet)"
+   ],
+   [
+    "Breite",
+    "4,70 m"
+   ],
+   [
+    "Tiefgang",
+    "1,75–2,30 m"
+   ],
+   [
+    "Design",
+    "Cossutti Yacht Design"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bavaria-c50",
+  "name": "Bavaria C50",
+  "brand": "Bavaria",
+  "typ": "Segelyacht",
+  "len": 15.39,
+  "year": "C-Line",
+  "src": "https://www.bavariayachts.com/sailing-yachts/c50",
+  "tagline": "Kingsize-Betten auch in den Gästekabinen, Liegeflächen an Deck und bis zu fünf Kabinen – viel Yacht für große Crews.",
+  "videos": [
+   {
+    "id": "j0SWTyimTto",
+    "title": "Eine Bavaria C50 im Rundgang",
+    "by": "Charteryacht-Walkthrough"
+   }
+  ],
+  "key": [
+   [
+    "15,4 m",
+    "Länge"
+   ],
+   [
+    "3–5",
+    "Kabinen"
+   ],
+   [
+    "3–4",
+    "Bäder"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Bavaria C50 ist für große Crews gemacht: bis zu fünf Kabinen und drei bis vier Bäder. Auch die Gästekabinen an Backbord haben echte Kingsize-Betten.",
+   "An Deck gibt es Sonnen- und Liegeflächen auf dem Aufbau und dem Vordeck – ideal für entspannte Tage in einer geschützten Bucht."
+  ],
+  "plus": [
+   "Kingsize-Betten in Gästekabinen",
+   "Liegeflächen an Deck",
+   "Bis zu 5 Kabinen",
+   "3–4 Bäder",
+   "Großer Wassertank (540 l)"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Bei 5 Kabinen teilen sich Gäste Bäder",
+   "Groß für enge Häfen"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3–5 / 3–4"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Länge",
+    "ca. 15,4 m"
+   ],
+   [
+    "Breite",
+    "5,00 m"
+   ],
+   [
+    "Tiefgang",
+    "1,85–2,30 m"
+   ],
+   [
+    "Wassertank",
+    "540 l"
+   ]
+  ],
+  "life": [
+   [
+    "Kingsize für Gäste",
+    "Auch in den Gästekabinen große Betten.",
+    "bed"
+   ],
+   [
+    "Sonnendeck",
+    "Liegeflächen auf dem Aufbau und dem Vordeck.",
+    "sun"
+   ],
+   [
+    "Gemeinsam am Tisch",
+    "Platz für ein entspanntes Crew-Dinner.",
+    "home"
+   ],
+   [
+    "Segeln mit Kraft",
+    "Viel Segelfläche für flottes Vorankommen.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "5 Kabinen",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Große Gruppen",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "4 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare, Familie",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "mit 8 bis 10 Personen segeln",
+   "Wert auf große Betten legen",
+   "gerne an Deck in der Sonne liegen"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "ca. 15,4 m (15,98 m mit Bugspriet)"
+   ],
+   [
+    "Rumpflänge",
+    "14,99 m"
+   ],
+   [
+    "Breite",
+    "5,00 m"
+   ],
+   [
+    "Tiefgang",
+    "1,85–2,30 m"
+   ],
+   [
+    "Wassertank",
+    "540 l"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bavaria-c57",
+  "name": "Bavaria C57",
+  "brand": "Bavaria",
+  "typ": "Segelyacht",
+  "len": 16.7,
+  "year": "Flaggschiff",
+  "badges": [
+   "Premium"
+  ],
+  "src": "https://www.bavariayachts.com/sailing-yachts/c57",
+  "tagline": "Eine der größten Badeplattformen ihrer Klasse und viel Raum für bis zu fünf Kabinen: das Bavaria-Flaggschiff.",
+  "videos": [
+   {
+    "id": "A81OTHTdDO0",
+    "title": "Die Bavaria C57 im Rundgang",
+    "by": "Ausführlicher Walkthrough"
+   }
+  ],
+  "key": [
+   [
+    "16,7 m",
+    "Länge"
+   ],
+   [
+    "3–5",
+    "Kabinen"
+   ],
+   [
+    "3+",
+    "Bäder"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Bavaria C57 ist das Flaggschiff der Werft. Am Heck bietet sie eine der größten Badeplattformen ihrer Klasse – Ihr Strand direkt am Boot.",
+   "Mit 5,28 Metern Breite gibt es viel Raum unter Deck: großzügige Kabinen, ein heller Salon und eine gut ausgestattete Küche."
+  ],
+  "plus": [
+   "Eine der größten Badeplattformen der Klasse",
+   "Viel Raum unter Deck",
+   "Bis zu 5 Kabinen",
+   "Großer Wassertank",
+   "Premium-Ausstattung"
+  ],
+  "minus": [
+   "Premium-Preisklasse",
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Groß für enge Häfen"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3 bis 5"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Länge",
+    "ca. 16,7 m"
+   ],
+   [
+    "Breite",
+    "5,28 m"
+   ],
+   [
+    "Typ",
+    "Segelyacht (Einrumpf)"
+   ]
+  ],
+  "life": [
+   [
+    "Strand am Heck",
+    "Eine der größten Badeplattformen ihrer Klasse.",
+    "wave"
+   ],
+   [
+    "Raum unter Deck",
+    "5,28 m Breite – großzügige Kabinen und Salon.",
+    "home"
+   ],
+   [
+    "Großzügige Kabinen",
+    "Viel Platz und Stauraum für längere Reisen.",
+    "bed"
+   ],
+   [
+    "Cockpit für alle",
+    "Großes Cockpit für die ganze Crew.",
+    "sun"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "5 Kabinen",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Große Gruppen",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "4 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare, viel Raum",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "eine große Premium-Segelyacht möchten",
+   "viel baden",
+   "mit 6 bis 8 Personen reisen"
+  ],
+  "fitNo": [
+   "günstig reisen möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "ca. 16,7 m"
+   ],
+   [
+    "Rumpflänge",
+    "16,16 m"
+   ],
+   [
+    "Breite",
+    "5,28 m"
+   ],
+   [
+    "Design",
+    "Cossutti Yacht Design"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "bavaria-voyager-45",
+  "name": "Bavaria Voyager 45",
+  "brand": "Bavaria",
+  "typ": "Segelyacht",
+  "len": 14.52,
+  "year": "Neu für die Charter",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.bavariayachts.com",
+  "tagline": "Die Charter-Ausgabe des meistgecharterten Segelboots der Welt: vier Kabinen, große Rumpffenster und viel Ausstattung serienmäßig.",
+  "videos": [],
+  "key": [
+   [
+    "14,5 m",
+    "Länge"
+   ],
+   [
+    "4",
+    "Kabinen"
+   ],
+   [
+    "3",
+    "Bäder"
+   ],
+   [
+    "8",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Voyager 45 ist eine Sonderedition für die Charter. Sie basiert auf der Bavaria Cruiser 46 – mit über 1.100 gebauten Yachten das meistgecharterte Segelboot der Welt.",
+   "Neu sind die großen Rumpffenster, die viel Licht in die Kabinen bringen. Viele Extras, die sonst Aufpreis kosten, sind serienmäßig an Bord."
+  ],
+  "plus": [
+   "Basiert auf dem meistgecharterten Modell der Welt",
+   "Große Rumpffenster",
+   "4 Doppelkabinen für 8 Gäste",
+   "Viel Ausstattung serienmäßig",
+   "Robust und chartererprobt"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "4 Kabinen, aber 3 Bäder",
+   "Video und Fotos folgen"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "4 / 3"
+   ],
+   [
+    "Gäste",
+    "8"
+   ],
+   [
+    "Länge",
+    "14,52 m"
+   ],
+   [
+    "Breite",
+    "4,35 m"
+   ],
+   [
+    "Baujahr",
+    "ab 2026"
+   ],
+   [
+    "Typ",
+    "Segelyacht (Einrumpf)"
+   ]
+  ],
+  "life": [
+   [
+    "Licht in den Kabinen",
+    "Große Rumpffenster bringen Tageslicht und Meerblick.",
+    "bed"
+   ],
+   [
+    "Bewährte Raumaufteilung",
+    "Die Basis ist die Bavaria Cruiser 46 – tausendfach bewährt.",
+    "home"
+   ],
+   [
+    "Badeplattform am Heck",
+    "Über die Badeplattform geht es direkt ins Wasser.",
+    "wave"
+   ],
+   [
+    "Klassisch segeln",
+    "Echtes Segelgefühl für die ganze Crew.",
+    "sun"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen · 3 Bäder",
+    "cab": "4",
+    "bath": "3",
+    "fit": "4 Paare, Familien",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "zu acht günstig segeln möchten",
+   "eine neue Charteryacht suchen",
+   "gerne mitsegeln"
+  ],
+  "fitNo": [
+   "jedem Paar ein eigenes Bad geben möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,52 m"
+   ],
+   [
+    "Breite",
+    "4,35 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 1,7–1,8 m"
+   ],
+   [
+    "Motor",
+    "ca. 60 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "hanse-410",
+  "name": "Hanse 410",
+  "brand": "Hanse",
+  "typ": "Segelyacht",
+  "len": 12.55,
+  "year": "Seit 2023",
+  "src": "https://hanseyachts.com/gb/sailing-yachts/hanse-410/",
+  "tagline": "Das größte Cockpit seiner Klasse, zwei Tische und eine Wetbar mit Grill – segeln ohne Leinenchaos.",
+  "videos": [
+   {
+    "id": "tHK3NIlunxo",
+    "title": "Die Hanse 410 im Rundgang",
+    "by": "Video von Hanse Yachts"
+   }
+  ],
+  "key": [
+   [
+    "12,6 m",
+    "Länge"
+   ],
+   [
+    "2–3",
+    "Kabinen"
+   ],
+   [
+    "1–2",
+    "Bäder"
+   ],
+   [
+    "4–6",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Hanse 410 bietet laut Werft das größte Cockpit ihrer Klasse – mit zwei Tischen und einer Wetbar samt Grill. Weil alle Leinen zum Steuerstand laufen, bleibt das Cockpit frei von Leinen.",
+   "Bis zu 20 Luken und Fenster bringen viel Licht und Luft unter Deck. Es gibt zahlreiche Raumaufteilungen mit zwei oder drei Kabinen."
+  ],
+  "plus": [
+   "Größtes Cockpit der Klasse",
+   "Zwei Cockpittische und Wetbar mit Grill",
+   "Keine Leinen im Cockpit",
+   "Viel Licht durch bis zu 20 Luken",
+   "Leichtes Segeln mit Selbstwendefock"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Max. 3 Kabinen",
+   "Für 6 Erwachsene eher kompakt"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "2 oder 3"
+   ],
+   [
+    "Gäste",
+    "4–6"
+   ],
+   [
+    "Länge",
+    "12,55 m"
+   ],
+   [
+    "Breite",
+    "4,29 m"
+   ],
+   [
+    "Tiefgang",
+    "1,70–2,10 m"
+   ],
+   [
+    "Typ",
+    "Segelyacht (Einrumpf)"
+   ]
+  ],
+  "life": [
+   [
+    "Cockpit wie eine Terrasse",
+    "Zwei Tische, viel Platz und keine Leinen im Weg.",
+    "sun"
+   ],
+   [
+    "Grillen an Bord",
+    "Die Wetbar mit Grill im Cockpit.",
+    "home"
+   ],
+   [
+    "Licht und Luft",
+    "Bis zu 20 Luken und Fenster.",
+    "wave"
+   ],
+   [
+    "Easy Sailing",
+    "Alle Leinen laufen zum Steuerstand.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "1–2",
+    "fit": "2–3 Paare",
+    "note": ""
+   },
+   {
+    "v": "2 Kabinen",
+    "cab": "2",
+    "bath": "1–2",
+    "fit": "Paare",
+    "note": ""
+   }
+  ],
+  "fitYes": [
+   "viel im Cockpit leben möchten",
+   "zu viert segeln",
+   "leichtes Segeln schätzen"
+  ],
+  "fitNo": [
+   "mehr als drei Kabinen brauchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "12,55 m"
+   ],
+   [
+    "Breite",
+    "4,29 m"
+   ],
+   [
+    "Tiefgang",
+    "1,70–2,10 m"
+   ],
+   [
+    "Design",
+    "Berret-Racoupeau"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "hanse-461",
+  "name": "Hanse 461",
+  "brand": "Hanse",
+  "typ": "Segelyacht",
+  "len": 14.6,
+  "year": "Neu 2026",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://hanseyachts.com/gb/sailing-yachts/hanse-461/",
+  "tagline": "Mit Beach Club am Heck: Sitzplätze direkt am Wasser, ein festes Dach über dem Cockpit und drei bis vier Kabinen.",
+  "videos": [
+   {
+    "id": "Ftnec27IomU",
+    "title": "Die neue Hanse 461 im Rundgang",
+    "by": "UK-Premiere"
+   }
+  ],
+  "key": [
+   [
+    "14,6 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "2–3",
+    "Bäder"
+   ],
+   [
+    "6–8",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Hanse 461 ist seit 2026 die Nachfolgerin der erfolgreichen Hanse 460. Ihr auffälligstes Merkmal ist der Beach Club am Heck: Die Badeplattform wird erweitert und bietet Sitzplätze direkt am Wasser.",
+   "Ein festes Dach schützt das Cockpit vor Sonne, und zwei Cockpittische lassen sich auf Wunsch elektrisch zu einer großen Liegefläche absenken."
+  ],
+  "plus": [
+   "Beach Club mit Sitzplätzen am Wasser",
+   "Festes Dach als Sonnenschutz",
+   "Cockpittische werden zur Liegefläche",
+   "Viele Raumaufteilungen",
+   "Leichtes Segeln mit Selbstwendefock"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Ganz neu – noch wenige Yachten in den Flotten",
+   "Bäder ohne separate Duschkabine in manchen Versionen"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3–4 / 2–3"
+   ],
+   [
+    "Gäste",
+    "6–8"
+   ],
+   [
+    "Länge",
+    "14,60 m"
+   ],
+   [
+    "Breite",
+    "4,79 m"
+   ],
+   [
+    "Tiefgang",
+    "1,75–2,25 m"
+   ],
+   [
+    "Wassertank",
+    "450 l"
+   ]
+  ],
+  "life": [
+   [
+    "Beach Club",
+    "Sitzen direkt am Wasser – mit den Füßen im Meer.",
+    "wave"
+   ],
+   [
+    "Schatten im Cockpit",
+    "Ein festes Dach schützt vor der Mittagssonne.",
+    "sun"
+   ],
+   [
+    "Cockpit zum Liegen",
+    "Zwei Tische senken sich zur großen Liegefläche.",
+    "home"
+   ],
+   [
+    "Flexible Kabinen",
+    "Eignerkabine im Bug oder zwei Bugkabinen mit eigenem Bad.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "4 Paare",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "2–3",
+    "fit": "Paare, Familie",
+    "note": "Bug als Eignerkabine oder zwei Kabinen mit eigenem Bad"
+   }
+  ],
+  "fitYes": [
+   "eine brandneue Segelyacht möchten",
+   "gerne am Wasser sitzen und baden",
+   "Schatten im Cockpit schätzen"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,60 m"
+   ],
+   [
+    "Rumpflänge",
+    "13,87 m"
+   ],
+   [
+    "Breite",
+    "4,79 m"
+   ],
+   [
+    "Tiefgang",
+    "1,75–2,25 m"
+   ],
+   [
+    "Wassertank",
+    "450 l"
+   ],
+   [
+    "Motor",
+    "57 PS (opt. 80 PS)"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "hanse-510",
+  "name": "Hanse 510",
+  "brand": "Hanse",
+  "typ": "Segelyacht",
+  "len": 15.97,
+  "year": "Bewährt",
+  "src": "https://hanseyachts.com/gb/sailing-yachts/hanse-510/",
+  "tagline": "Die größte Beibootgarage ihrer Klasse, ein riesiges Cockpit und Platz für bis zu zehn Personen.",
+  "videos": [
+   {
+    "id": "nupd-notNQ8",
+    "title": "Die Hanse 510",
+    "by": "Vorstellung auf Deutsch"
+   }
+  ],
+  "key": [
+   [
+    "16 m",
+    "Länge"
+   ],
+   [
+    "3+",
+    "Kabinen"
+   ],
+   [
+    "bis 3",
+    "Bäder"
+   ],
+   [
+    "bis 10",
+    "Kojen"
+   ]
+  ],
+  "glance": [
+   "Die Hanse 510 verbindet einfaches Segeln mit viel Raum. Das Cockpit ist riesig – ein idealer Ort für Familie und Freunde – und ein festes Bimini spendet Schatten.",
+   "Im Heck wartet die größte Beibootgarage ihrer Klasse. Je nach Ausbau bietet sie Platz von der Eignerversion mit drei Kabinen bis zur Charter-Version mit zehn Kojen und drei Bädern, dazu eine eigene Crewkabine."
+  ],
+  "plus": [
+   "Größte Beibootgarage der Klasse",
+   "Riesiges Cockpit mit festem Bimini",
+   "Bis zu 10 Kojen",
+   "Eigene Crewkabine",
+   "Leichtes Segeln"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Groß für enge Häfen",
+   "Nicht in jedem Revier verfügbar"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3 bis Charter-Version mit 10 Kojen"
+   ],
+   [
+    "Bäder",
+    "bis 3"
+   ],
+   [
+    "Länge",
+    "15,97 m"
+   ],
+   [
+    "Breite",
+    "4,91 m"
+   ],
+   [
+    "Tiefgang",
+    "1,98–2,43 m"
+   ],
+   [
+    "Typ",
+    "Segelyacht (Einrumpf)"
+   ]
+  ],
+  "life": [
+   [
+    "Riesiges Cockpit",
+    "Viel Platz für die ganze Crew, mit festem Bimini.",
+    "sun"
+   ],
+   [
+    "Beiboot-Garage",
+    "Das Beiboot wohnt im Heck – die Badeplattform bleibt frei.",
+    "wave"
+   ],
+   [
+    "Crewkabine",
+    "Eigene Kabine für den Skipper.",
+    "bed"
+   ],
+   [
+    "Eignerkabine",
+    "Großzügige Suite in der Eignerversion.",
+    "home"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "Charter-Version",
+    "cab": "bis 10 Kojen",
+    "bath": "3",
+    "fit": "Große Gruppen",
+    "note": ""
+   },
+   {
+    "v": "3 Kabinen (Eigner)",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, viel Raum",
+    "note": "Mit Crewkabine"
+   }
+  ],
+  "fitYes": [
+   "mit großer Gruppe segeln möchten",
+   "viel Platz im Cockpit schätzen",
+   "gerne mitsegeln"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "15,97 m"
+   ],
+   [
+    "Rumpflänge",
+    "15,25 m"
+   ],
+   [
+    "Breite",
+    "4,91 m"
+   ],
+   [
+    "Tiefgang",
+    "1,98–2,43 m"
+   ],
+   [
+    "Motor",
+    "ca. 80 PS"
+   ]
+  ],
+  "badges": [],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ },
+ {
+  "id": "hanse-590",
+  "name": "Hanse 590",
+  "brand": "Hanse",
+  "typ": "Segelyacht",
+  "len": 17.6,
+  "year": "Flaggschiff seit 2024",
+  "badges": [
+   "Premium"
+  ],
+  "src": "https://hanseyachts.com/gb/sailing-yachts/hanse-590/",
+  "tagline": "Das Hanse-Flaggschiff: hydraulische Badeplattform, Beibootgarage, Kochinsel und Kojen für bis zu zehn Personen.",
+  "videos": [
+   {
+    "id": "osiWV0JCxpU",
+    "title": "Die Hanse 590",
+    "by": "Offizielles Video von Hanse"
+   },
+   {
+    "id": "ifNMVvhLink",
+    "title": "Luxuriöses Wohnen unter Deck",
+    "by": "Test auf Deutsch"
+   }
+  ],
+  "key": [
+   [
+    "17,6 m",
+    "Länge"
+   ],
+   [
+    "bis 10",
+    "Kojen"
+   ],
+   [
+    "bis 3",
+    "Bäder"
+   ],
+   [
+    "5,3 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Hanse 590 ist das größte Modell der aktuellen Hanse-Palette und eine Luxusyacht aus der Serie. Das Cockpit ist das größte seiner Klasse und bietet besten Schatten.",
+   "Eine hydraulische Badeplattform, eine Beibootgarage und eine hydraulische Gangway machen das Leben an Bord bequem. Unter Deck warten eine Eignerkabine mit Ankleidebereich, eine Kochinsel und Kojen für bis zu zehn Personen."
+  ],
+  "plus": [
+   "Hydraulische Badeplattform",
+   "Beibootgarage und hydraulische Gangway",
+   "Kochinsel und großzügige Küche",
+   "Eignerkabine mit Ankleide",
+   "Größtes Cockpit der Klasse"
+  ],
+  "minus": [
+   "Premium-Preisklasse",
+   "Oft mit Crew gebucht",
+   "Groß für enge Häfen"
+  ],
+  "facts": [
+   [
+    "Kojen",
+    "bis 10"
+   ],
+   [
+    "Bäder",
+    "bis 3"
+   ],
+   [
+    "Länge",
+    "ca. 17,6 m"
+   ],
+   [
+    "Breite",
+    "ca. 5,3 m"
+   ],
+   [
+    "Wassertank",
+    "770 l"
+   ],
+   [
+    "Typ",
+    "Luxus-Segelyacht"
+   ]
+  ],
+  "life": [
+   [
+    "Badeplattform per Knopfdruck",
+    "Die hydraulische Plattform senkt sich ins Wasser.",
+    "wave"
+   ],
+   [
+    "Bester Schatten",
+    "Das Cockpit ist für viel Schatten ausgelegt.",
+    "sun"
+   ],
+   [
+    "Kochinsel",
+    "Kochen wie zu Hause – mitten im Geschehen.",
+    "home"
+   ],
+   [
+    "Eignersuite",
+    "Großes Inselbett und eigener Ankleidebereich.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "Mehrere Layouts",
+    "cab": "bis 10 Kojen",
+    "bath": "bis 3",
+    "fit": "Familien und Gruppen mit Crew",
+    "note": "Eignerkabine mit Ankleide, Gästekabinen mit Doppelbetten"
+   }
+  ],
+  "fitYes": [
+   "Luxus auf einer Segelyacht genießen",
+   "mit Crew reisen",
+   "viel Zeit vor Anker verbringen"
+  ],
+  "fitNo": [
+   "günstig reisen möchten",
+   "enge Häfen ansteuern"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "ca. 17,6 m"
+   ],
+   [
+    "Breite",
+    "ca. 5,3 m"
+   ],
+   [
+    "Tiefgang",
+    "ca. 2,5 m"
+   ],
+   [
+    "Wassertank",
+    "770 l"
+   ],
+   [
+    "Motor",
+    "110 PS"
+   ]
+  ],
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": []
+ }
+]
