@@ -1,7 +1,7 @@
 # Analytics, Einwilligung und Ereignisse
 
-Stand: November 2026. Code: `src/analytics.ts`, `src/consent.ts`,
-`src/components/CookieBanner.tsx`.
+Stand: November 2026. Code: `src/analytics.ts`, `src/metaPixel.ts`,
+`src/consent.ts`, `src/components/CookieBanner.tsx`.
 
 ## Aufbau
 
@@ -13,6 +13,10 @@ Stand: November 2026. Code: `src/analytics.ts`, `src/consent.ts`,
 - **Google Ads** (Konto 617-671-8961) ist in GA4 verknüpft. Conversions werden
   aus den GA4-Schlüsselereignissen **importiert** — es gibt keine direkte
   `AW-…`-Conversion im Code.
+- **Meta-Pixel** (Facebook/Instagram), Pixel-ID `934962698069526`, für beide
+  Domains. Läuft über dieselbe Einwilligung und dieselben Aufrufstellen wie
+  GA4 (siehe Abschnitt „Meta-Pixel“ unten). Conversions API (serverseitig) und
+  `Purchase` sind **nicht** Teil dieses Stands.
 - Planyo-Buchungen (`purchase`) sind **nicht** Teil dieses Stands (kommt mit
   dem Umbau der Customer Journey). Der Planyo-iFrame wird nicht angefasst.
 
@@ -34,6 +38,44 @@ Stand: November 2026. Code: `src/analytics.ts`, `src/consent.ts`,
   (`_ga*`, `_gid`, `_gcl_*`, `_gac_*`).
 - Der Seitenaufbau-Snapshot (`scripts/prerender.cjs`) lädt nie Analytics
   (`window.__PRERENDER__`).
+
+## Meta-Pixel
+
+Code: `src/metaPixel.ts` (eingehängt in `src/analytics.ts`).
+
+| Zustand | fbevents.js geladen | fbq-Aufrufe | Cookies |
+| --- | --- | --- | --- |
+| Noch keine Wahl | nein | keine | keine |
+| „Nur notwendige“ | nein | keine | keine |
+| „Alle akzeptieren“ | ja | `set autoConfig false`, `init`, Ereignisse | `_fbp` (`_fbc` nur mit `fbclid`) |
+| Widerruf nach Zustimmung | bleibt im Speicher | nur `consent revoke`, danach keine | `_fbp`/`_fbc` gelöscht |
+
+- Ohne Einwilligung geht **kein** Request an `connect.facebook.net` /
+  `facebook.com`, und es wird kein `fbq(...)` aufgerufen.
+- Wieder zustimmen im selben Seitenaufruf: `fbq('consent','grant')` + PageView.
+- Die automatische Ereigniserkennung (`autoConfig`: Button-Klicks,
+  Seiten-Metadaten) ist ausgeschaltet — es gehen nur die Ereignisse der
+  Tabelle unten raus. Im Events Manager zusätzlich prüfen, dass „Automatischer
+  erweiterter Abgleich“ **aus** ist (wird dort pro Pixel eingestellt).
+- **Domain-Bestätigung:** `<meta name="facebook-domain-verification">` je
+  Domain (yacht-urlaub.net / yacht-holiday.net) in `src/components/SEO.tsx`;
+  steht dadurch auch in den Prerender-Snapshots (Meta-Crawler führt kein JS aus).
+
+| GA4-Ereignis | Meta-Ereignis | Parameter |
+| --- | --- | --- |
+| `page_view` | `PageView` | – |
+| `generate_lead` | `Lead` | `content_name` = `form_name` |
+| `contact_click` | `Contact` | `content_category` = `method` (`phone` \| `whatsapp` \| `email`) |
+| `booking_start` | `InitiateCheckout` | `value`, `currency` = `EUR`, `content_name` = `package_name` |
+
+`booking_search` und `affiliate_click` haben kein Meta-Gegenstück.
+
+**eventID:** Jedes Meta-Ereignis bekommt eine UUID und sendet sie als
+`eventID` mit (`fbq('track', name, params, { eventID })`). `trackMetaEvent` /
+`trackMetaPageView` geben die ID zurück. Für die spätere Conversions API
+muss dieselbe ID als `event_id` serverseitig mitgeschickt werden, dann
+dedupliziert Meta (z. B. die ID im Formular-POST an `contact.mjs`
+mitgeben).
 
 ## Ereignisse
 
@@ -67,3 +109,17 @@ In GA4 als **Schlüsselereignisse** markiert: `generate_lead`, `contact_click`,
 - Vor der Einwilligung darf kein Request an `googletagmanager.com` /
   `google-analytics.com` gehen (DevTools → Netzwerk).
 - uBlock Origin & Co. blockieren Google Analytics — zum Testen abschalten.
+
+### Meta-Pixel testen
+
+- Vor der Einwilligung: DevTools → Netzwerk → nach `facebook` filtern: es
+  darf nichts erscheinen, `window.fbq` ist `undefined`; Meta Pixel Helper
+  zeigt „No pixels found“.
+- Nach „Alle akzeptieren“: Pixel Helper zeigt Pixel `934962698069526` mit
+  `PageView`. Events Manager → Test-Ereignisse → Website-URL der Preview
+  eintragen und dort öffnen: `PageView`, nach Kontakt-Klick `Contact`, nach
+  Formular `Lead`, nach „Jetzt buchen“/Wochenwahl `InitiateCheckout`.
+  Parameter und `eventID` im Pixel Helper bzw. in den Test-Ereignissen prüfen.
+- Widerruf: „Cookie-Einstellungen“ → „Nur notwendige“ → `_fbp` ist gelöscht,
+  weitere Klicks/Seitenwechsel erzeugen keine Requests mehr.
+- Adblocker blockieren auch Meta — zum Testen abschalten.

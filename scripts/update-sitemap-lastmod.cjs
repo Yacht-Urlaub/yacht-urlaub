@@ -52,6 +52,11 @@ function normalise(html) {
     .replace(/<style\b[\s\S]*?<\/style>/g, '')
     .replace(/\/assets\/[\w.-]*?-[A-Za-z0-9_-]{8}\.(js|css)/g, '/assets/x.$1')
     .replace(/\sdata-rh="true"/g, '')
+    // Domain-Bestaetigung (Meta) steht auf jeder Seite, ist aber kein Seiteninhalt.
+    .replace(/<meta name="facebook-domain-verification"[^>]*>/g, '')
+    // Cookie-Banner (Titel + Text) steht in jedem Snapshot, ist aber Boilerplate:
+    // eine Textaenderung dort soll nicht fuer alle Seiten ein neues lastmod setzen.
+    .replace(/🍪[\s\S]*?<\/p><\/div>/g, '')
     // Inline-Styles enthalten Animationszwischenstaende (translateY(3.63px), opacity)
     // und sind nie inhaltlich -> pro Lauf zufaellig verschieden.
     .replace(/\sstyle="[^"]*"/g, '')

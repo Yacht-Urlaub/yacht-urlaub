@@ -11,6 +11,15 @@ type Props = {
   schema?: object
 }
 
+// Meta (Facebook/Instagram) Domain-Bestaetigung. Der Tag muss je Domain im
+// statischen HTML stehen (Meta-Crawler fuehrt kein JS aus) -> er kommt ueber
+// SEO.tsx und damit in die Prerender-Snapshots (EN-Seiten werden auf der
+// EN-Domain gerendert, siehe scripts/prerender.cjs).
+const META_DOMAIN_VERIFICATION = {
+  de: 'sldowotg2xe7kom3os9688ag2vfyie', // yacht-urlaub.net
+  en: 'gdfk400poxutd1yu7411x8kv7wxsn6', // yacht-holiday.net
+}
+
 const DEFAULT_IMAGE = '/images/Destinationsbilder/Header/seychelles1.jpg'
 
 export default function SEO({ title, description, image, schema }: Props) {
@@ -50,6 +59,7 @@ export default function SEO({ title, description, image, schema }: Props) {
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={fullCanonical} />
+      <meta name="facebook-domain-verification" content={META_DOMAIN_VERIFICATION[isEnHost() ? 'en' : 'de']} />
 
       {/* Sprachzuordnung ueber die beiden Domains hinweg */}
       {pair && <link rel="alternate" hrefLang="de" href={`${BASE_DE}${pair.de}`} />}
