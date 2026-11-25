@@ -21,8 +21,13 @@
  *   gezaehlt.
  * - Debug: ?ga_debug=1 an die URL haengen -> Ereignisse erscheinen im
  *   GA4-DebugView (nur mit Einwilligung).
+ * - Meta-Pixel (src/metaPixel.ts) haengt an denselben Stellen: init/enable/
+ *   disable laufen mit, trackEvent/trackPageView senden das Meta-Gegenstueck
+ *   (Lead, Contact, InitiateCheckout, PageView). Gleiche Einwilligung, aber
+ *   unabhaengig von gtag: ein Werbeblocker gegen Google stoppt Meta nicht.
  */
 import { getConsent } from './consent'
+import { initMetaPixel, enableMetaPixel, disableMetaPixel, trackMetaEvent, trackMetaPageView } from './metaPixel'
 
 export const GA_ID = 'G-CRH1CYGY1C'
 
@@ -88,12 +93,13 @@ function load() {
 
 /** Beim App-Start: nur laden, wenn schon frueher zugestimmt wurde. */
 export function initAnalytics() {
-  if (getConsent() === 'accepted') load()
+  if (getConsent() === 'accepted') { load(); initMetaPixel() }
 }
 
 /** Direkt nach "Alle akzeptieren": laden und die aktuelle Seite nachmelden. */
 export function enableAnalytics() {
   load()
+  enableMetaPixel()
   trackPageView(document.title)
 }
 
@@ -114,6 +120,7 @@ function deleteGoogleCookies() {
 /** Widerruf ("Nur notwendige"): Signale auf denied, Messung aus, Cookies weg. */
 export function disableAnalytics() {
   if (typeof window === 'undefined') return
+  disableMetaPixel()
   active = false
   if (scriptLoaded && window.gtag) {
     window.gtag('consent', 'update', DENIED)
@@ -123,6 +130,7 @@ export function disableAnalytics() {
 }
 
 export function trackEvent(name: string, params: Record<string, unknown> = {}) {
+  trackMetaEvent(name, params) // no-op ohne Einwilligung bzw. ohne Meta-Gegenstueck
   if (!active || !window.gtag) return
   window.gtag('event', name, params)
 }
@@ -134,6 +142,7 @@ export function trackEvent(name: string, params: Record<string, unknown> = {}) {
  * vorherigen Seite erwischt.
  */
 export function trackPageView(title: string) {
+  trackMetaPageView()
   trackEvent('page_view', {
     page_title: title,
     page_location: window.location.href,

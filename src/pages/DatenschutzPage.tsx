@@ -34,26 +34,35 @@ const dse = {
     pAdsC: 'Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen: über den Link „Cookie-Einstellungen“ im Footer dieser Website (Auswahl „Nur notwendige“). Personalisierte Werbung können Sie zusätzlich in Ihren Google-Einstellungen deaktivieren:',
     pAdsLink: 'Google-Anzeigeneinstellungen',
 
-    h5_: '6. Google reCAPTCHA',
+    hMeta_: '6. Meta-Pixel (Facebook/Instagram)',
+    pMetaA: 'Mit Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG, über den Cookie-Banner) nutzen wir das Meta-Pixel der Meta Platforms Ireland Limited, Merrion Road, Dublin 4, Irland („Meta“). Wir verwenden es, um zu messen, ob Anzeigen auf Facebook und Instagram zu Anfragen, Kontaktaufnahmen (Telefon, WhatsApp, E-Mail) oder Buchungsvorgängen auf unserer Website führen, und um Besuchern unserer Website auf Facebook und Instagram passende Werbung anzuzeigen (Remarketing).',
+    pMetaB: 'Dafür wird nach Ihrer Einwilligung ein Skript von Meta geladen und es werden Cookies (_fbp, _fbc) gesetzt. An Meta werden folgende Informationen übermittelt: Ihre IP-Adresse, Angaben zu Browser und Gerät, die aufgerufene Seite und die Herkunftsseite, die Cookie-Kennungen sowie die Ereignisse „Seitenaufruf“, „Anfrage abgesendet“ (mit der Bezeichnung des Formulars), „Kontaktaufnahme“ (mit der Art: Telefon, WhatsApp oder E-Mail) und „Buchungsvorgang gestartet“ (mit Bezeichnung und Preis des Angebots). Namen, E-Mail-Adressen oder Telefonnummern aus unseren Formularen werden nicht an Meta übermittelt. Eine Übermittlung in die USA ist nicht ausgeschlossen. Meta kann die Daten mit Ihrem Facebook- bzw. Instagram-Konto verknüpfen, sofern Sie dort angemeldet sind.',
+    pMetaC: 'Für die Erhebung und Übermittlung dieser Daten an Meta sind wir gemeinsam mit Meta verantwortlich (Art. 26 DSGVO); die Vereinbarung dazu finden Sie unter',
+    pMetaD: 'Für die anschließende Verarbeitung durch Meta ist Meta allein verantwortlich; Informationen dazu in der',
+    pMetaDLink: 'Datenschutzrichtlinie von Meta',
+    pMetaE: 'Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen: über den Link „Cookie-Einstellungen“ im Footer dieser Website (Auswahl „Nur notwendige“); dann wird das Pixel deaktiviert und die Meta-Cookies werden gelöscht. Personalisierte Werbung können Sie zusätzlich in Ihren Meta-Einstellungen steuern:',
+    pMetaELink: 'Werbeeinstellungen bei Meta',
+
+    h5_: '7. Google reCAPTCHA',
     p5a: 'Zum Schutz unserer Formulare vor automatisierten Eingaben verwenden wir reCAPTCHA v3 der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. reCAPTCHA prüft im Hintergrund, ob eine Eingabe von einem Menschen stammt. Ein sichtbares Rätsel wird Ihnen dabei nicht gestellt.',
     p5b: 'Bei dieser Prüfung werden Ihre IP-Adresse sowie Angaben zu Gerät und Browser und Ihr Verhalten auf der Seite — etwa Mausbewegungen, Tastatureingaben und Verweildauer — an Google übertragen und dort ausgewertet. Eine Übermittlung in die USA ist dabei nicht ausgeschlossen. Die Prüfung findet nur auf Seiten mit Formular statt und erst, wenn Sie ein Formular absenden.',
     p5c: 'Rechtsgrundlage ist unser berechtigtes Interesse an der Abwehr von Missbrauch und automatisiertem Versand (Art. 6 Abs. 1 lit. f DSGVO). Ergänzend gelten die Datenschutzerklärung und die Nutzungsbedingungen von Google:',
     p5Datenschutz: 'Datenschutzerklärung von Google',
     p5Nutzung: 'Nutzungsbedingungen von Google',
 
-    h6_: '7. Newsletter',
+    h6_: '8. Newsletter',
     p6a: 'Unser Newsletter-Versand erfolgt über das Double Opt-in Verfahren. Das bedeutet, dass wir Ihnen erst dann einen Newsletter per E-Mail zusenden, wenn Sie ausdrücklich bestätigt haben, dass Sie den Newsletter-Service aktivieren möchten.',
     p6b: 'Für den Versand unseres Newsletters nutzen wir den Dienst Mailchimp der Rocket Science Group LLC, 675 Ponce de Leon Ave NE, Suite 5000, Atlanta, GA 30308, USA. Ihre E-Mail-Adresse und weitere für den Newsletter-Versand relevante Daten werden auf Servern von Mailchimp gespeichert.',
     p6c: 'Eine Abmeldung vom Newsletter ist jederzeit möglich. Einen entsprechenden Link finden Sie am Ende jedes Newsletters.',
 
-    h7_: '8. Social Media',
+    h7_: '9. Social Media',
     p7a: 'Auf unserer Website befinden sich Verlinkungen zu folgenden sozialen Netzwerken:',
     p7b: 'Beim Klick auf einen der Verlinkungsbuttons werden Sie direkt zur jeweiligen Plattform weitergeleitet. Beim Aufruf der jeweiligen Seite gelten die Datenschutzbestimmungen des jeweiligen Anbieters. Wir haben keinen Einfluss auf die erhobenen Daten und Datenverarbeitungsvorgänge der sozialen Netzwerke.',
 
-    h8_: '9. Zahlungsabwicklung',
+    h8_: '10. Zahlungsabwicklung',
     p8: 'Für die Abwicklung von Zahlungen nutzen wir folgende Zahlungsdienstleister: PayPal, Sofortüberweisung/Klarna, Visa, Mastercard und American Express (AMEX). Die Übertragung Ihrer Zahlungsdaten erfolgt verschlüsselt. Wir haben keinen Zugriff auf Ihre vollständigen Zahlungsdaten — diese werden ausschließlich durch den jeweiligen Zahlungsdienstleister verarbeitet. Es gelten die Datenschutzbestimmungen des jeweiligen Anbieters.',
 
-    h9_: '10. Ihre Rechte',
+    h9_: '11. Ihre Rechte',
     p9: 'Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:',
     li9: [
       ['Auskunft', ' über die bei uns gespeicherten personenbezogenen Daten'],
@@ -65,10 +74,10 @@ const dse = {
     ],
     p9b: 'Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:',
 
-    h10_: '11. Datensicherheit',
+    h10_: '12. Datensicherheit',
     p10: 'Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL/TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.',
 
-    h11_: '12. Änderungen dieser Datenschutzerklärung',
+    h11_: '13. Änderungen dieser Datenschutzerklärung',
     p11: 'Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.',
     stand: 'Stand: November 2026',
   },
@@ -105,26 +114,35 @@ const dse = {
     pAdsC: 'You can withdraw your consent at any time with effect for the future: via the “Cookie settings” link in the footer of this website (choose “Essential only”). You can additionally switch off personalised advertising in your Google settings:',
     pAdsLink: 'Google ad settings',
 
-    h5_: '6. Google reCAPTCHA',
+    hMeta_: '6. Meta Pixel (Facebook/Instagram)',
+    pMetaA: 'With your consent (Art. 6(1)(a) GDPR, section 25(1) TDDDG, given via the cookie banner) we use the Meta Pixel provided by Meta Platforms Ireland Limited, Merrion Road, Dublin 4, Ireland (“Meta”). We use it to measure whether ads on Facebook and Instagram lead to enquiries, contacts (phone, WhatsApp, e-mail) or booking processes on our website, and to show visitors to our website suitable advertising on Facebook and Instagram (remarketing).',
+    pMetaB: 'For this purpose, after you have given your consent, a script from Meta is loaded and cookies (_fbp, _fbc) are set. The following information is transmitted to Meta: your IP address, information about your browser and device, the page viewed and the referring page, the cookie identifiers, and the events “page view”, “enquiry submitted” (with the name of the form), “contact made” (with the type: phone, WhatsApp or e-mail) and “booking process started” (with the name and price of the offer). Names, e-mail addresses or phone numbers from our forms are not transmitted to Meta. A transfer to the USA cannot be ruled out. Meta may link the data to your Facebook or Instagram account if you are logged in there.',
+    pMetaC: 'We are jointly responsible with Meta for the collection and transmission of this data to Meta (Art. 26 GDPR); the agreement can be found at',
+    pMetaD: 'Meta is solely responsible for any subsequent processing by Meta; for information see the',
+    pMetaDLink: 'Meta privacy policy',
+    pMetaE: 'You can withdraw your consent at any time with effect for the future: via the “Cookie settings” link in the footer of this website (choose “Essential only”); the pixel is then deactivated and the Meta cookies are deleted. You can additionally manage personalised advertising in your Meta settings:',
+    pMetaELink: 'Meta ad settings',
+
+    h5_: '7. Google reCAPTCHA',
     p5a: 'To protect our forms against automated submissions we use reCAPTCHA v3 provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. reCAPTCHA checks in the background whether an entry was made by a human. You are not presented with a visible puzzle.',
     p5b: 'For this check, your IP address, information about your device and browser and your behaviour on the page — such as mouse movements, keyboard input and time spent — are transmitted to Google and evaluated there. A transfer to the USA cannot be ruled out. The check only takes place on pages containing a form, and only once you submit one.',
     p5c: 'The legal basis is our legitimate interest in preventing misuse and automated submissions (Art. 6(1)(f) GDPR). The Google privacy policy and terms of service apply in addition:',
     p5Datenschutz: 'Google privacy policy',
     p5Nutzung: 'Google terms of service',
 
-    h6_: '7. Newsletter',
+    h6_: '8. Newsletter',
     p6a: 'Our newsletter is sent using the double opt-in procedure. This means we will only send you a newsletter by email once you have expressly confirmed that you wish to activate the newsletter service.',
     p6b: 'To send our newsletter we use the Mailchimp service of the Rocket Science Group LLC, 675 Ponce de Leon Ave NE, Suite 5000, Atlanta, GA 30308, USA. Your email address and other data relevant to sending the newsletter are stored on Mailchimp servers.',
     p6c: 'You can unsubscribe from the newsletter at any time. A corresponding link is included at the end of every newsletter.',
 
-    h7_: '8. Social media',
+    h7_: '9. Social media',
     p7a: 'Our website contains links to the following social networks:',
     p7b: 'Clicking one of the link buttons takes you directly to the platform concerned. Once you are on that page, the privacy provisions of the respective provider apply. We have no influence over the data collected by the social networks or over how they process it.',
 
-    h8_: '9. Payment processing',
+    h8_: '10. Payment processing',
     p8: 'For processing payments we use the following payment service providers: PayPal, Sofortüberweisung/Klarna, Visa, Mastercard and American Express (AMEX). Your payment data is transmitted in encrypted form. We have no access to your complete payment data — it is processed exclusively by the respective payment service provider. The privacy provisions of the respective provider apply.',
 
-    h9_: '10. Your rights',
+    h9_: '11. Your rights',
     p9: 'You have the following rights in relation to the personal data concerning you:',
     li9: [
       ['Access', ' to the personal data we hold about you'],
@@ -136,10 +154,10 @@ const dse = {
     ],
     p9b: 'To exercise your rights, please contact:',
 
-    h10_: '11. Data security',
+    h10_: '12. Data security',
     p10: 'For security reasons and to protect the transmission of confidential content, this website uses SSL/TLS encryption. You can recognise an encrypted connection by the browser address bar changing from “http://” to “https://” and by the padlock symbol in your browser bar.',
 
-    h11_: '12. Changes to this privacy policy',
+    h11_: '13. Changes to this privacy policy',
     p11: 'We reserve the right to amend this privacy policy so that it always complies with current legal requirements, or in order to reflect changes to our services. The new privacy policy will then apply to your next visit.',
     stand: 'Last updated: November 2026',
   },
@@ -241,7 +259,26 @@ export default function DatenschutzPage() {
 
             <div style={dividerStyle} />
 
-            {/* 6. Google reCAPTCHA */}
+            {/* 6. Meta-Pixel */}
+            <h2 style={headingStyle}>{s.hMeta_}</h2>
+            <p style={textStyle}>{s.pMetaA}</p>
+            <p style={textStyle}>{s.pMetaB}</p>
+            <p style={textStyle}>
+              {s.pMetaC}{' '}
+              <a href="https://www.facebook.com/legal/controller_addendum" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)' }}>https://www.facebook.com/legal/controller_addendum</a>.
+            </p>
+            <p style={textStyle}>
+              {s.pMetaD}{' '}
+              <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)' }}>{s.pMetaDLink}</a>.
+            </p>
+            <p style={textStyle}>
+              {s.pMetaE}{' '}
+              <a href="https://www.facebook.com/adpreferences/ad_settings" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)' }}>{s.pMetaELink}</a>
+            </p>
+
+            <div style={dividerStyle} />
+
+            {/* 7. Google reCAPTCHA */}
             <h2 style={headingStyle}>{s.h5_}</h2>
             <p style={textStyle}>{s.p5a}</p>
             <p style={textStyle}>{s.p5b}</p>
@@ -257,7 +294,7 @@ export default function DatenschutzPage() {
 
             <div style={dividerStyle} />
 
-            {/* 7. Newsletter */}
+            {/* 8. Newsletter */}
             <h2 style={headingStyle}>{s.h6_}</h2>
             <p style={textStyle}>{s.p6a}</p>
             <p style={textStyle}>{s.p6b}</p>
@@ -265,7 +302,7 @@ export default function DatenschutzPage() {
 
             <div style={dividerStyle} />
 
-            {/* 8. Social Media */}
+            {/* 9. Social Media */}
             <h2 style={headingStyle}>{s.h7_}</h2>
             <p style={textStyle}>{s.p7a}</p>
             <ul style={{ paddingLeft: '1.25rem', marginBottom: '0.75rem' }}>
@@ -279,13 +316,13 @@ export default function DatenschutzPage() {
 
             <div style={dividerStyle} />
 
-            {/* 9. Zahlungsabwicklung */}
+            {/* 10. Zahlungsabwicklung */}
             <h2 style={headingStyle}>{s.h8_}</h2>
             <p style={textStyle}>{s.p8}</p>
 
             <div style={dividerStyle} />
 
-            {/* 10. Ihre Rechte */}
+            {/* 11. Ihre Rechte */}
             <h2 style={headingStyle}>{s.h9_}</h2>
             <p style={textStyle}>{s.p9}</p>
             <ul style={{ paddingLeft: '1.25rem', marginBottom: '0.75rem' }}>
@@ -300,13 +337,13 @@ export default function DatenschutzPage() {
 
             <div style={dividerStyle} />
 
-            {/* 11. Datensicherheit */}
+            {/* 12. Datensicherheit */}
             <h2 style={headingStyle}>{s.h10_}</h2>
             <p style={textStyle}>{s.p10}</p>
 
             <div style={dividerStyle} />
 
-            {/* 12. Änderungen */}
+            {/* 13. Änderungen */}
             <h2 style={headingStyle}>{s.h11_}</h2>
             <p style={textStyle}>{s.p11}</p>
             <p style={{ fontSize: '0.82rem', color: 'var(--gray)', marginTop: '2rem' }}>{s.stand}</p>
