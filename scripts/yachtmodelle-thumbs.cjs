@@ -24,6 +24,9 @@ const path = require('node:path')
 const ROOT = path.resolve(__dirname, '..')
 const OUT = path.join(ROOT, 'public/images/yachtmodelle')
 const models = JSON.parse(readFileSync(path.join(ROOT, 'src/data/yachtModels.json'), 'utf-8'))
+// Hanse hat nach Angabe des Betreibers keine Rechte an den eigenen Bildern: von diesen Werften werden
+// keine Fremdbilder uebernommen (nur eigene Fotos).
+const NO_THIRD_PARTY_IMAGES = new Set(['Hanse'])
 const force = process.argv.includes('--force')
 const tmp = mkdtempSync(path.join(os.tmpdir(), 'ym-thumbs-'))
 
@@ -43,6 +46,7 @@ for (const m of models) {
   const poster = path.join(OUT, `${m.id}.jpg`)
   const card = path.join(OUT, `${m.id}-card.jpg`)
   if (!force && existsSync(poster) && existsSync(card)) continue
+  if (NO_THIRD_PARTY_IMAGES.has(m.brand) && !(m.images && m.images[0])) continue
   let src = null
   if (m.images && m.images[0]) src = path.join(ROOT, 'public', m.images[0].src)
   else if (m.videos && m.videos[0]) src = download(m.videos[0].id)

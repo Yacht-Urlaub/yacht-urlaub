@@ -5,7 +5,7 @@ import { Link } from '../../router'
 import { BASE_DE } from '../../i18n'
 import { sendForm } from '../../lib/sendForm'
 import {
-  BASE_PATH, COSTS, EQUIP, EXTRAS, MODELS, faqsFor, keyValue, modelDescription, modelPath, modelTitle,
+  BASE_PATH, EQUIP, EXTRAS, MODELS, faqsFor, keyValue, modelDescription, modelPath, modelTitle,
   plural, similarModels, type Model,
 } from './data'
 import { Embed, EmbedNote, Icon } from './shared'
@@ -152,9 +152,8 @@ export default function YachtModellDetailPage() {
 
       <nav className="subnav" aria-label="Auf dieser Seite"><div className="wrap">
         <button type="button" className="l" onClick={go('leben')}>Leben an Bord</button>
-        <button type="button" className="l" onClick={go('kabinen')}>Kabinen</button>
+        <button type="button" className="l" onClick={go('kabinen')}>Grundrisse</button>
         {m.tours.length > 0 && <button type="button" className="l" onClick={go('rundgang3d')}>3D</button>}
-        <button type="button" className="l" onClick={go('kosten')}>Kosten</button>
         <button type="button" className="l" onClick={go('faq')}>FAQ</button>
         <Link to={BASE_PATH} className="l">Alle Modelle</Link>
         <button type="button" className="btn btn-gold push" style={{ padding: '8px 18px', minHeight: 40 }} onClick={go('anfrage')}>Anfragen</button>
@@ -202,27 +201,30 @@ export default function YachtModellDetailPage() {
       </div></section>
 
       <section className="band" id="kabinen"><div className="wrap">
-        <p className="kick">Kabinen &amp; Grundrisse</p>
-        <h2>Diese Versionen gibt es</h2>
+        <p className="kick">Grundrisse &amp; Kabinen</p>
+        <h2>So ist die {m.name} aufgeteilt</h2>
         <p className="intro">Die Werft baut die {m.name} in {m.layouts.length === 1 ? 'dieser Version' : `${m.layouts.length} Versionen`}. Welche Version eine bestimmte Charteryacht hat, steht in unserem Angebot.</p>
+        {layImgs.length > 0 ? (
+          <div className="lays">
+            {layImgs.map(l => (
+              <figure className="lay" key={l.v}>
+                <img src={l.img} alt={`Grundriss ${m.name}, ${l.v}`} loading="lazy" />
+                <figcaption>
+                  <b>{l.v}</b>
+                  <span>{l.fit}{l.note ? ` · ${l.note}` : ''}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        ) : (
+          <p className="skip"><b>Grundrisse folgen.</b> Bis dahin finden Sie die Versionen in der Übersicht unten, die genauen Pläne schicken wir Ihnen gern mit dem Angebot.</p>
+        )}
         <div className="scroll"><table className="t">
           <thead><tr><th>Version</th><th>Kabinen</th><th>Bäder</th><th>Passt zu</th><th>Hinweis</th></tr></thead>
           <tbody>{m.layouts.map(l => (
             <tr key={l.v}><td>{l.v}</td><td className="n">{l.cab}</td><td className="n">{l.bath}</td><td>{l.fit}</td><td>{l.note || '–'}</td></tr>
           ))}</tbody>
         </table></div>
-        {layImgs.length > 0 && (
-          <div className="lays">
-            {layImgs.map(l => (
-              <figure className="lay" style={{ margin: 0 }} key={l.v}><img src={l.img} alt={`Grundriss ${m.name}, ${l.v}`} loading="lazy" /><p>{l.v}</p></figure>
-            ))}
-          </div>
-        )}
-        <div className="orig">
-          <div><b>Original-Grundrisse der Werft</b>
-            <p>{layImgs.length ? 'Alle Versionen im Detail finden Sie auch auf der Modellseite der Werft.' : 'Alle Versionen finden Sie auf der Modellseite der Werft.'}</p></div>
-          <a className="btn ym-line" href={m.src} target="_blank" rel="noopener">Grundrisse bei {m.brand} ↗</a>
-        </div>
         <p className="skip"><b>Mit Skipper unterwegs?</b> {skipper}</p>
       </div></section>
 
@@ -271,15 +273,6 @@ export default function YachtModellDetailPage() {
         <p className="kick">Reviere</p><h2>Wo Sie die {m.name} segeln</h2>
         <p className="intro">{m.reviereText || `Für Ihren Wunschtermin prüfen wir, in welchen Revieren eine ${m.name} frei ist – vom Mittelmeer bis in die Karibik.`}</p>
         {m.reviere.length > 0 && <div className="chips">{m.reviere.map(r => <span key={r}>{r}</span>)}</div>}
-      </div></section>
-
-      <section className="band" id="kosten"><div className="wrap">
-        <p className="kick">Kosten</p><h2>Was im Preis steckt – und was dazukommt</h2>
-        <p className="intro">Der Wochenpreis hängt von Revier, Saison und Baujahr ab. In unserem Angebot stehen alle Posten, damit Sie vorher wissen, was die Woche kostet.</p>
-        <div className="cost">
-          <div className="inc"><h3>Im Preis enthalten</h3><ul>{COSTS.inc.map(x => <li key={x}>{x}</li>)}</ul></div>
-          <div><h3>Kommt dazu, je nach Revier und Wunsch</h3><ul>{COSTS.add.map(x => <li key={x}>{x}</li>)}</ul></div>
-        </div>
       </div></section>
 
       <section className="band" id="vergleich"><div className="wrap">

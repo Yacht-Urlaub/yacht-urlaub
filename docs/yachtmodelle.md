@@ -43,7 +43,12 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
 - 3D-Rundgänge (`tours`, Matterport) sind im Code vorbereitet, aktuell aber **leer**: der einzige Rundgang (Bali 4.8,
   Ionian Charter) ist Werbung einer Charterfirma und wurde entfernt. Neue Rundgänge nur mit schriftlicher Erlaubnis
   des Eigentümers, Quelle sichtbar.
-- Fotos und Grundrisse nur aus eigener Mediathek bzw. Pressebereichen, nie von Werftseiten verlinken.
+- **Hanse:** Hanse hat nach Angabe des Betreibers keine Rechte an den eigenen Bildern. Für Hanse-Modelle werden deshalb
+  **keine** Vorschaubilder, Fotos oder Grundrisse der Werft übernommen (Illustration bzw. eigene Fotos). Die Videos
+  bleiben nur eingebettet (YouTube-Player, keine Kopie).
+- Fotos und Grundrisse nur aus eigener Mediathek bzw. Pressebereichen, nie von Werftseiten verlinken. Grundrisse werden
+  direkt auf der Seite gezeigt (Feld `layouts[].img`, Pfad z. B. `/images/yachtmodelle/layouts/<id>-<n>.jpg`).
+- Es gibt bewusst **keinen** Abschnitt „Kosten“ (Preis nur im Angebot).
 
 ## Anfrageformular
 `sendForm('yachtmodell-anfrage', …)` an `netlify/functions/contact.mjs` (Felder `name`, `email`, `zeitraum`,

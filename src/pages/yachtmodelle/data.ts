@@ -50,14 +50,6 @@ export const BRANDS: Record<string, string> = {
   Hanse: 'Easy Sailing aus Greifswald: große Cockpits, alle Leinen zum Steuerstand.',
 }
 
-export const COSTS = {
-  inc: ['Yacht für eine Woche', 'Beiboot mit Außenborder', 'Grundausstattung für Küche und Deck'],
-  add: [
-    'Endreinigung', 'Kaution oder Kautionsversicherung', 'Diesel für die Woche',
-    'Hafen- und Liegegebühren', 'Bordkasse für Lebensmittel und Getränke', 'Skipper oder Hostess, wenn gewünscht',
-  ],
-}
-
 export const EQUIP: Record<Model['typ'], Record<string, string[]>> = {
   Katamaran: {
     Wohlfühlen: ['Bettwäsche und Handtücher (je nach Flotte)', 'Warmwasser', 'Kühlschrank und Gefrierfach', 'Bimini als Sonnenschutz', 'Cockpittisch für die ganze Crew'],

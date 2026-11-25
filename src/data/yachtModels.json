@@ -6234,9 +6234,7 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": [],
-  "poster": "/images/yachtmodelle/hanse-410.jpg",
-  "card": "/images/yachtmodelle/hanse-410-card.jpg"
+  "tours": []
  },
  {
   "id": "hanse-461",
@@ -6540,9 +6538,7 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": [],
-  "poster": "/images/yachtmodelle/hanse-510.jpg",
-  "card": "/images/yachtmodelle/hanse-510-card.jpg"
+  "tours": []
  },
  {
   "id": "hanse-590",
@@ -6690,8 +6686,6 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": [],
-  "poster": "/images/yachtmodelle/hanse-590.jpg",
-  "card": "/images/yachtmodelle/hanse-590-card.jpg"
+  "tours": []
  }
 ]

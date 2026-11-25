@@ -199,3 +199,11 @@
 .ym .cta .ok p{color:var(--ink)}
 .ym .subnav a,.ym .subnav button{display:inline-flex;align-items:center}
 .ym .card .ph .badge{max-width:calc(100% - 118px);line-height:1.25}
+/* Grundrisse gross und direkt auf der Seite */
+.ym .lays{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:24px;margin:8px 0 28px}
+.ym .lay{margin:0;background:#fff;border:1px solid var(--g2);border-radius:3px;overflow:hidden}
+.ym .lay img{display:block;width:100%;height:auto;background:#fff}
+.ym .lay figcaption{display:flex;flex-direction:column;gap:2px;padding:14px 18px;border-top:1px solid var(--g2)}
+.ym .lay figcaption b{color:var(--navy);font-size:17px}
+.ym .lay figcaption span{color:var(--mut);font-size:15px}
+.ym .scroll{margin-top:8px}
