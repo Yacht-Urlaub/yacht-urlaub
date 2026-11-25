@@ -47,7 +47,13 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
   **keine** Vorschaubilder, Fotos oder Grundrisse der Werft übernommen (Illustration bzw. eigene Fotos). Die Videos
   bleiben nur eingebettet (YouTube-Player, keine Kopie).
 - Fotos und Grundrisse nur aus eigener Mediathek bzw. Pressebereichen, nie von Werftseiten verlinken. Grundrisse werden
-  direkt auf der Seite gezeigt (Feld `layouts[].img`, Pfad z. B. `/images/yachtmodelle/layouts/<id>-<n>.jpg`).
+  direkt auf der Seite gezeigt: Feld `plans: [{ img, caption }]`, Dateien unter `public/images/yachtmodelle/plans/<id>-<n>.webp`
+  (weiß hinterlegt, max. 1600 px breit). Die Tabelle der Versionen (`layouts`) bleibt als Text daneben.
+- **Quelle der Grundrisse (Stand November 2026):** Modellseiten der Werften (Lagoon, Bali, Jeanneau, Beneteau), 28 Modelle,
+  nur Pläne des jeweiligen Modells (Unterdeck-/Kabinenpläne, dazu Deck-/Cockpitpläne). Bildunterschriften bei Lagoon, Bali und
+  Beneteau aus den Dateinamen (Kabinen/Bäder), bei Jeanneau neutral „Variante 1/2/3“. **Ohne Plan:** Hanse (keine Rechte an
+  eigenen Bildern), Bavaria (die Werft zeigt nur Teilmodule wie Bug-, Heck- oder Salonbereich, keine Gesamtpläne), Bali 4.8
+  (Modell nicht mehr auf der Bali-Seite), Sun Odyssey 440 und 490 (alte Seiten ohne Pläne), Voyager 45. Dort steht „Grundrisse folgen“.
 - Es gibt bewusst **keinen** Abschnitt „Kosten“ (Preis nur im Angebot).
 
 ## Anfrageformular

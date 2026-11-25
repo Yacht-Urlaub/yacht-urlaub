@@ -83,7 +83,7 @@ export default function YachtModellDetailPage() {
   const vMore = m.videos.slice(1)
   const sib = MODELS.filter(x => x.brand === m.brand && x !== m).sort((a, b) => a.len - b.len)
   const sim = similarModels(m)
-  const layImgs = m.layouts.filter(l => l.img)
+  const plans = m.plans ?? []
   const faqs = faqsFor(m)
   const skipper = m.typ === 'Katamaran'
     ? 'Auf vielen Katamaranen gibt es dafür eine Bugkabine mit eigenem Zugang vom Deck – ob sie vorhanden ist, hängt von der Yacht ab. Wir sagen Ihnen im Angebot genau, wie viele Kabinen für Ihre Gäste frei bleiben.'
@@ -204,15 +204,12 @@ export default function YachtModellDetailPage() {
         <p className="kick">Grundrisse &amp; Kabinen</p>
         <h2>So ist die {m.name} aufgeteilt</h2>
         <p className="intro">Die Werft baut die {m.name} in {m.layouts.length === 1 ? 'dieser Version' : `${m.layouts.length} Versionen`}. Welche Version eine bestimmte Charteryacht hat, steht in unserem Angebot.</p>
-        {layImgs.length > 0 ? (
+        {plans.length > 0 ? (
           <div className="lays">
-            {layImgs.map(l => (
-              <figure className="lay" key={l.v}>
-                <img src={l.img} alt={`Grundriss ${m.name}, ${l.v}`} loading="lazy" />
-                <figcaption>
-                  <b>{l.v}</b>
-                  <span>{l.fit}{l.note ? ` · ${l.note}` : ''}</span>
-                </figcaption>
+            {plans.map(p => (
+              <figure className="lay" key={p.img}>
+                <img src={p.img} alt={`Grundriss ${m.name}: ${p.caption}`} loading="lazy" />
+                <figcaption><b>{p.caption}</b></figcaption>
               </figure>
             ))}
           </div>

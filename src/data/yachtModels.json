@@ -168,7 +168,17 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/lagoon-38.jpg",
-  "card": "/images/yachtmodelle/lagoon-38-card.jpg"
+  "card": "/images/yachtmodelle/lagoon-38-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-38-2.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-38-1.webp",
+    "caption": "Unterdeck: 4 Kabinen"
+   }
+  ]
  },
  {
   "id": "lagoon-42",
@@ -355,7 +365,17 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/lagoon-42.jpg",
-  "card": "/images/yachtmodelle/lagoon-42-card.jpg"
+  "card": "/images/yachtmodelle/lagoon-42-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-42-1.webp",
+    "caption": "4 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-42-2.webp",
+    "caption": "Grundriss"
+   }
+  ]
  },
  {
   "id": "lagoon-43",
@@ -540,7 +560,25 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/lagoon-43.jpg",
-  "card": "/images/yachtmodelle/lagoon-43-card.jpg"
+  "card": "/images/yachtmodelle/lagoon-43-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-43-1.webp",
+    "caption": "Unterdeck: 3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-43-3.webp",
+    "caption": "3 Kabinen (Bett achtern)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-43-2.webp",
+    "caption": "Unterdeck: 4 Kabinen · 4 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-43-4.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "lagoon-46",
@@ -706,7 +744,17 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/lagoon-46.jpg",
-  "card": "/images/yachtmodelle/lagoon-46-card.jpg"
+  "card": "/images/yachtmodelle/lagoon-46-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-46-1.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-46-2.webp",
+    "caption": "4 Kabinen"
+   }
+  ]
  },
  {
   "id": "lagoon-47",
@@ -899,7 +947,17 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/lagoon-47.jpg",
-  "card": "/images/yachtmodelle/lagoon-47-card.jpg"
+  "card": "/images/yachtmodelle/lagoon-47-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-47-1.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-47-2.webp",
+    "caption": "5 Kabinen"
+   }
+  ]
  },
  {
   "id": "lagoon-51",
@@ -1079,7 +1137,21 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/lagoon-51.jpg",
-  "card": "/images/yachtmodelle/lagoon-51-card.jpg"
+  "card": "/images/yachtmodelle/lagoon-51-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-51-1.webp",
+    "caption": "4 Kabinen · 4 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-51-2.webp",
+    "caption": "4 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-51-3.webp",
+    "caption": "6 Kabinen · 6 Bäder"
+   }
+  ]
  },
  {
   "id": "lagoon-55",
@@ -1252,7 +1324,25 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/lagoon-55.jpg",
-  "card": "/images/yachtmodelle/lagoon-55-card.jpg"
+  "card": "/images/yachtmodelle/lagoon-55-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-55-1.webp",
+    "caption": "Unterdeck: 4 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-55-2.webp",
+    "caption": "Unterdeck: 5 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-55-3.webp",
+    "caption": "Hauptdeck (4–5 Kabinen)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-55-4.webp",
+    "caption": "Hauptdeck (6 Kabinen)"
+   }
+  ]
  },
  {
   "id": "bali-catsmart",
@@ -1415,7 +1505,37 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/bali-catsmart.jpg",
-  "card": "/images/yachtmodelle/bali-catsmart-card.jpg"
+  "card": "/images/yachtmodelle/bali-catsmart-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/bali-catsmart-1.webp",
+    "caption": "2 Kabinen · 2 Bäder (Variante 1)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-catsmart-2.webp",
+    "caption": "2 Kabinen · 2 Bäder (Variante 2)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-catsmart-3.webp",
+    "caption": "3 Kabinen · 2 Bäder (Variante 1)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-catsmart-4.webp",
+    "caption": "3 Kabinen · 2 Bäder (Variante 2)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-catsmart-5.webp",
+    "caption": "4 Kabinen · 2 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-catsmart-6.webp",
+    "caption": "Deckplan"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-catsmart-7.webp",
+    "caption": "Vorderes Cockpit (Nacelle)"
+   }
+  ]
  },
  {
   "id": "bali-catspace",
@@ -1571,7 +1691,25 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/bali-catspace.jpg",
-  "card": "/images/yachtmodelle/bali-catspace-card.jpg"
+  "card": "/images/yachtmodelle/bali-catspace-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/bali-catspace-1.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-catspace-2.webp",
+    "caption": "4 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-catspace-3.webp",
+    "caption": "Flybridge"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-catspace-4.webp",
+    "caption": "Vorderes Cockpit (Nacelle)"
+   }
+  ]
  },
  {
   "id": "bali-4-2",
@@ -1741,7 +1879,33 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/bali-4-2.jpg",
-  "card": "/images/yachtmodelle/bali-4-2-card.jpg"
+  "card": "/images/yachtmodelle/bali-4-2-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-2-1.webp",
+    "caption": "3 Kabinen · 2 Duschen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-2-2.webp",
+    "caption": "3 Kabinen · 3 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-2-3.webp",
+    "caption": "4 Kabinen · 4 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-2-4.webp",
+    "caption": "4 Kabinen · 2 Duschen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-2-5.webp",
+    "caption": "Flybridge"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-2-6.webp",
+    "caption": "Vorderes Cockpit (Nacelle)"
+   }
+  ]
  },
  {
   "id": "bali-4-3",
@@ -1898,7 +2062,29 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/bali-4-3.jpg",
-  "card": "/images/yachtmodelle/bali-4-3-card.jpg"
+  "card": "/images/yachtmodelle/bali-4-3-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-3-1.webp",
+    "caption": "3 Kabinen · 3 Bäder (Variante 1)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-3-2.webp",
+    "caption": "3 Kabinen · 3 Bäder (Variante 2)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-3-3.webp",
+    "caption": "4 Kabinen · 4 Bäder (Variante 1)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-3-4.webp",
+    "caption": "4 Kabinen · 4 Bäder (Variante 2)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-3-5.webp",
+    "caption": "Vorderes Cockpit (Nacelle)"
+   }
+  ]
  },
  {
   "id": "bali-4-4",
@@ -2053,7 +2239,29 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/bali-4-4.jpg",
-  "card": "/images/yachtmodelle/bali-4-4-card.jpg"
+  "card": "/images/yachtmodelle/bali-4-4-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-4-1.webp",
+    "caption": "3 Kabinen · 3 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-4-2.webp",
+    "caption": "4 Kabinen · 4 Bäder (Variante 1)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-4-3.webp",
+    "caption": "4 Kabinen · 4 Bäder (Variante 2)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-4-4.webp",
+    "caption": "Deckplan"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-4-5.webp",
+    "caption": "Vorderes Cockpit (Nacelle)"
+   }
+  ]
  },
  {
   "id": "bali-4-6",
@@ -2219,7 +2427,33 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/bali-4-6.jpg",
-  "card": "/images/yachtmodelle/bali-4-6-card.jpg"
+  "card": "/images/yachtmodelle/bali-4-6-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-6-1.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-6-2.webp",
+    "caption": "4 Kabinen (Variante 1)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-6-3.webp",
+    "caption": "4 Kabinen (Variante 2)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-6-4.webp",
+    "caption": "5 Kabinen · 4 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-6-5.webp",
+    "caption": "Deckplan"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-4-6-6.webp",
+    "caption": "Vorderes Cockpit (Nacelle)"
+   }
+  ]
  },
  {
   "id": "bali-5-2",
@@ -2390,7 +2624,29 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/bali-5-2.jpg",
-  "card": "/images/yachtmodelle/bali-5-2-card.jpg"
+  "card": "/images/yachtmodelle/bali-5-2-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-2-1.webp",
+    "caption": "3 Kabinen (Variante 1)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-2-2.webp",
+    "caption": "3 Kabinen (Variante 2)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-2-3.webp",
+    "caption": "4 Kabinen (Variante 1)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-2-4.webp",
+    "caption": "4 Kabinen (Variante 2)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-2-5.webp",
+    "caption": "4 Kabinen (Variante 3)"
+   }
+  ]
  },
  {
   "id": "bali-5-8",
@@ -2558,7 +2814,37 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/bali-5-8.jpg",
-  "card": "/images/yachtmodelle/bali-5-8-card.jpg"
+  "card": "/images/yachtmodelle/bali-5-8-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-8-3.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-8-4.webp",
+    "caption": "4 Kabinen (Variante 1)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-8-5.webp",
+    "caption": "4 Kabinen (Variante 2)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-8-1.webp",
+    "caption": "6 Kabinen (Variante 1)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-8-2.webp",
+    "caption": "6 Kabinen (Variante 2)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-8-6.webp",
+    "caption": "Deckplan"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/bali-5-8-7.webp",
+    "caption": "Vorderes Cockpit (Nacelle)"
+   }
+  ]
  },
  {
   "id": "bali-4-8",
@@ -2889,7 +3175,21 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/sun-odyssey-380.jpg",
-  "card": "/images/yachtmodelle/sun-odyssey-380-card.jpg"
+  "card": "/images/yachtmodelle/sun-odyssey-380-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-380-1.webp",
+    "caption": "Grundriss – Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-380-2.webp",
+    "caption": "Grundriss – Variante 2"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-380-3.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "sun-odyssey-385",
@@ -3042,7 +3342,21 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/sun-odyssey-385.jpg",
-  "card": "/images/yachtmodelle/sun-odyssey-385-card.jpg"
+  "card": "/images/yachtmodelle/sun-odyssey-385-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-385-1.webp",
+    "caption": "Grundriss – Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-385-2.webp",
+    "caption": "Grundriss – Variante 2"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-385-3.webp",
+    "caption": "Grundriss – Variante 3"
+   }
+  ]
  },
  {
   "id": "sun-odyssey-410",
@@ -3197,7 +3511,25 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/sun-odyssey-410.jpg",
-  "card": "/images/yachtmodelle/sun-odyssey-410-card.jpg"
+  "card": "/images/yachtmodelle/sun-odyssey-410-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-410-1.webp",
+    "caption": "Grundriss – Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-410-2.webp",
+    "caption": "Grundriss – Variante 2"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-410-3.webp",
+    "caption": "Grundriss – Variante 3"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-410-4.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "sun-odyssey-415",
@@ -3354,7 +3686,25 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/sun-odyssey-415.jpg",
-  "card": "/images/yachtmodelle/sun-odyssey-415-card.jpg"
+  "card": "/images/yachtmodelle/sun-odyssey-415-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-415-1.webp",
+    "caption": "Grundriss – Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-415-2.webp",
+    "caption": "Grundriss – Variante 2"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-415-3.webp",
+    "caption": "Grundriss – Variante 3"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-415-4.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "sun-odyssey-455",
@@ -3516,7 +3866,25 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/sun-odyssey-455.jpg",
-  "card": "/images/yachtmodelle/sun-odyssey-455-card.jpg"
+  "card": "/images/yachtmodelle/sun-odyssey-455-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-455-1.webp",
+    "caption": "Grundriss – Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-455-2.webp",
+    "caption": "Grundriss – Variante 2"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-455-3.webp",
+    "caption": "Grundriss – Variante 3"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/sun-odyssey-455-4.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "sun-odyssey-490",
@@ -3994,7 +4362,17 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/jeanneau-yachts-55.jpg",
-  "card": "/images/yachtmodelle/jeanneau-yachts-55-card.jpg"
+  "card": "/images/yachtmodelle/jeanneau-yachts-55-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/jeanneau-yachts-55-1.webp",
+    "caption": "Grundriss – Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/jeanneau-yachts-55-2.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "jeanneau-yachts-60",
@@ -4148,7 +4526,21 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/jeanneau-yachts-60.jpg",
-  "card": "/images/yachtmodelle/jeanneau-yachts-60-card.jpg"
+  "card": "/images/yachtmodelle/jeanneau-yachts-60-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/jeanneau-yachts-60-1.webp",
+    "caption": "Grundriss – Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/jeanneau-yachts-60-2.webp",
+    "caption": "Grundriss – Variante 2"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/jeanneau-yachts-60-3.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "jeanneau-yachts-65",
@@ -4309,7 +4701,17 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/jeanneau-yachts-65.jpg",
-  "card": "/images/yachtmodelle/jeanneau-yachts-65-card.jpg"
+  "card": "/images/yachtmodelle/jeanneau-yachts-65-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/jeanneau-yachts-65-1.webp",
+    "caption": "Grundriss – Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/jeanneau-yachts-65-2.webp",
+    "caption": "Grundriss – Variante 2"
+   }
+  ]
  },
  {
   "id": "oceanis-42",
@@ -4486,7 +4888,33 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/oceanis-42.jpg",
-  "card": "/images/yachtmodelle/oceanis-42-card.jpg"
+  "card": "/images/yachtmodelle/oceanis-42-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-42-1.webp",
+    "caption": "2 Kabinen · 1 Bad"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-42-2.webp",
+    "caption": "3 Kabinen · 1 Bad"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-42-3.webp",
+    "caption": "3 Kabinen · 2 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-42-4.webp",
+    "caption": "3 Kabinen · 3 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-42-5.webp",
+    "caption": "4 Kabinen · 2 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-42-6.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "oceanis-47",
@@ -4661,7 +5089,29 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/oceanis-47.jpg",
-  "card": "/images/yachtmodelle/oceanis-47-card.jpg"
+  "card": "/images/yachtmodelle/oceanis-47-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-47-3.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-47-1.webp",
+    "caption": "4 Kabinen · 4 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-47-4.webp",
+    "caption": "4 Kabinen · 2 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-47-2.webp",
+    "caption": "5 Kabinen · 3 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-47-5.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "oceanis-52",
@@ -4823,7 +5273,17 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/oceanis-52.jpg",
-  "card": "/images/yachtmodelle/oceanis-52-card.jpg"
+  "card": "/images/yachtmodelle/oceanis-52-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-52-1.webp",
+    "caption": "5 Kabinen · 3 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-52-2.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "oceanis-yacht-54",
@@ -4985,7 +5445,21 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/oceanis-yacht-54.jpg",
-  "card": "/images/yachtmodelle/oceanis-yacht-54-card.jpg"
+  "card": "/images/yachtmodelle/oceanis-yacht-54-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-yacht-54-1.webp",
+    "caption": "3 Kabinen · 2 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-yacht-54-2.webp",
+    "caption": "3 Kabinen · 3 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-yacht-54-3.webp",
+    "caption": "Deckplan"
+   }
+  ]
  },
  {
   "id": "first-44",
@@ -5138,7 +5612,13 @@
   "extras": [],
   "tours": [],
   "poster": "/images/yachtmodelle/first-44.jpg",
-  "card": "/images/yachtmodelle/first-44-card.jpg"
+  "card": "/images/yachtmodelle/first-44-card.jpg",
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/first-44-1.webp",
+    "caption": "Grundriss"
+   }
+  ]
  },
  {
   "id": "bavaria-c38",

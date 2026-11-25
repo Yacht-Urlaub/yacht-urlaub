@@ -23,7 +23,9 @@ export interface Model {
   minus: string[]
   facts: [string, string][]
   life: [string, string, string][]
-  layouts: { v: string; cab: string; bath: string; fit: string; note?: string; img?: string }[]
+  layouts: { v: string; cab: string; bath: string; fit: string; note?: string }[]
+  /** Grundrisse der Werft (lokal unter public/images/yachtmodelle/plans/), mit Beschriftung */
+  plans?: { img: string; caption: string }[]
   fitYes: string[]
   fitNo: string[]
   faq: [string, string][]
