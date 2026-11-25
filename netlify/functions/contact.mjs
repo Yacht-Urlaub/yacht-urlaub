@@ -20,6 +20,7 @@ const FORM_LABELS = {
   'skipper-anfrage': 'Skipper- und Bord-Service',
   'charter-anfrage': 'Yacht-Charter-Anfrage',
   'crew-anfrage': 'Anfrage an die Crew',
+  'porto-heli-buchung': 'Verbindliche Buchungsanfrage Porto Heli',
 }
 
 // Felder, die als Absenderangaben gelten und nicht noch einmal
@@ -43,6 +44,13 @@ const LABELS = {
   zahlungsart: 'Zahlungsart', modus: 'Modus', gruppe: 'Gruppe',
   getraenke: 'Getränke', yachtTyp: 'Yacht-Typ', kabinen: 'Kabinen',
   revier: 'Revier', alter: 'Alter', start: 'Start', ende: 'Ende',
+  // Porto-Heli-Buchung (Kalkulation nur intern)
+  yachtIntern: 'Yacht (intern)', bookingManagerYachtId: 'Booking-Manager-Yacht-ID',
+  von: 'Anreise (Freitag)', bis: 'Abreise (Freitag)', naechte: 'Nächte', gaeste: 'Gäste',
+  endpreisKunde: 'Endpreis laut Website (EUR)', listenpreis: 'Listenpreis Charter (EUR)',
+  rabattProzent: 'Rabatt (%)', charterNachRabatt: 'Charter nach Rabatt (EUR)',
+  operationsFee: 'Nebenkosten / Operations-Fee (EUR)', skipper: 'Skipper (EUR)',
+  rundung: 'Rundung (EUR)', preisstand: 'Preisstand', sprache: 'Sprache der Seite',
 }
 
 /**
@@ -199,6 +207,94 @@ async function meldeAbgewiesen(formKey, data, grund) {
   }
 }
 
+// ── Eingangsbestaetigung an den Kunden (nur Porto-Heli-Buchung) ──
+// Kurze Mail: was wurde angefragt, und dass die Buchungsbestaetigung folgt.
+// Interne Kalkulation und Booking-Manager-ID stehen bewusst NICHT darin.
+const WOCHENTAG = { de: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'], en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] }
+const MONATE_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+const datum = (iso, lang) => {
+  const d = new Date(`${iso}T12:00:00Z`)
+  if (Number.isNaN(d.getTime())) return String(iso)
+  const [y, m, t] = iso.split('-')
+  return lang === 'en' ? `${WOCHENTAG.en[d.getUTCDay()]} ${+t} ${MONATE_EN[+m - 1]} ${y}` : `${WOCHENTAG.de[d.getUTCDay()]} ${t}.${m}.${y}`
+}
+const euro = (n, lang) =>
+  Number.isFinite(Number(n)) ? (lang === 'en' ? `€${Number(n).toLocaleString('en-GB')}` : `${Number(n).toLocaleString('de-DE')} €`) : String(n)
+
+function kundenMail(data) {
+  const lang = data.sprache === 'en' ? 'en' : 'de'
+  const vorname = String(pick(data, ['name'])).split(/\s+/)[0] || ''
+  const wann = `${datum(data.von, lang)} – ${datum(data.bis, lang)}`
+  if (lang === 'en') {
+    return {
+      subject: 'Your booking request for Porto Heli – we have received it',
+      text: [
+        `Hello ${vorname},`,
+        '',
+        'thank you for your booking request. This is what we received:',
+        '',
+        'Destination: Porto Heli, Peloponnese',
+        `Yacht: ${data.yacht} (with skipper)`,
+        `Trip: ${wann} (7 nights)`,
+        `Guests: ${data.gaeste}`,
+        `Total price: ${euro(data.endpreisKunde, lang)} including skipper`,
+        '',
+        'What happens next: we check availability and confirm the booking to you within 24 hours. The contract only comes into being with our booking confirmation. It contains all contract and payment information (50% on booking, 50% six weeks before departure). If the week is no longer available, we will let you know and, if you wish, offer you an alternative. You pay nothing as long as no booking has been confirmed.',
+        '',
+        'Questions? Simply reply to this e-mail or call us on +43 1 997 15 82.',
+        '',
+        'Kind regards',
+        'Your Yacht-Holiday team',
+      ].join('\n'),
+    }
+  }
+  return {
+    subject: 'Ihre Buchungsanfrage für Porto Heli – wir haben sie erhalten',
+    text: [
+      `Guten Tag ${vorname},`,
+      '',
+      'vielen Dank für Ihre Buchungsanfrage. Das haben wir erhalten:',
+      '',
+      'Destination: Porto Heli, Peloponnes',
+      `Yacht: ${data.yacht} (mit Skipper)`,
+      `Reise: ${wann} (7 Nächte)`,
+      `Gäste: ${data.gaeste}`,
+      `Gesamtpreis: ${euro(data.endpreisKunde, lang)} inklusive Skipper`,
+      '',
+      'So geht es weiter: Wir prüfen die Verfügbarkeit und bestätigen Ihnen die Buchung innerhalb von 24 Stunden. Erst mit unserer Buchungsbestätigung kommt der Vertrag zustande. Sie enthält alle Vertrags- und Zahlungsinformationen (50 % bei Buchung, 50 % sechs Wochen vor Reiseantritt). Ist die Woche nicht mehr verfügbar, informieren wir Sie und unterbreiten Ihnen auf Wunsch eine Alternative. Sie zahlen nichts, solange keine Buchung bestätigt wurde.',
+      '',
+      'Fragen? Antworten Sie einfach auf diese E-Mail oder rufen Sie uns an: +43 1 997 15 82.',
+      '',
+      'Herzliche Grüße',
+      'Ihr Yacht-Urlaub-Team',
+    ].join('\n'),
+  }
+}
+
+async function sendeKundenbestaetigung(formKey, data, email) {
+  if (formKey !== 'porto-heli-buchung') return
+  try {
+    const apiKey = process.env.RESEND_API_KEY
+    if (!apiKey) return
+    const { subject, text } = kundenMail(data)
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: process.env.RESEND_FROM || 'Yacht-Urlaub Kontakt <kontakt@yacht-urlaub.net>',
+        to: [email],
+        reply_to: process.env.CONTACT_TO || 'info@yacht-urlaub.net',
+        subject,
+        text,
+      }),
+    })
+    console.log(`[buchung] ${formKey}: Eingangsbestaetigung ${res.ok ? 'gesendet' : `fehlgeschlagen (${res.status})`}`)
+  } catch (e) {
+    // darf die Anfrage nicht gefaehrden: das Team hat die Mail schon
+    console.log(`[buchung] ${formKey}: Eingangsbestaetigung nicht moeglich: ${e?.message || e}`)
+  }
+}
+
 export default async (req) => {
   const json = (obj, status = 200) =>
     new Response(JSON.stringify(obj), { status, headers: { 'content-type': 'application/json' } })
@@ -256,5 +352,6 @@ export default async (req) => {
     const detail = await res.text().catch(() => '')
     return json({ error: 'E-Mail konnte nicht gesendet werden.', detail: detail.slice(0, 300) }, 502)
   }
+  await sendeKundenbestaetigung(formKey, data, email)
   return json({ ok: true })
 }

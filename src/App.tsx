@@ -43,6 +43,7 @@ const SailAwayPage = lazy(() => import('./pages/SailAwayPage'))
 const ToernberichtDetailPage = lazy(() => import('./pages/ToernberichtDetailPage'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
 const YogaPage = lazy(() => import('./pages/YogaPage'))
+const PortoHeliPage = lazy(() => import('./pages/PortoHeliPage'))
 
 function LangProvider({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation()
@@ -125,6 +126,7 @@ function AnimatedRoutes() {
           {!enHost && <>
           <Route path="/" element={<HomePage />} />
           <Route path="/destinationen" element={<DestinationenPage />} />
+          <Route path="/destinationen/porto-heli" element={<PortoHeliPage />} />
           <Route path="/destinationen/:id" element={<DestinationPage />} />
           <Route path="/yachten" element={<YachtenPage />} />
           <Route path="/charter" element={<CharterPage />} />
@@ -156,6 +158,7 @@ function AnimatedRoutes() {
               unveraendert bleiben. toHref() nimmt das Praefix dort weg. */}
           <Route path={toHref('/en')} element={<HomePage />} />
           <Route path={toHref("/en/destinations")} element={<DestinationenPage />} />
+          <Route path={toHref("/en/destinations/porto-heli")} element={<PortoHeliPage />} />
           <Route path={toHref("/en/destinations/:id")} element={<DestinationPage />} />
           <Route path={toHref("/en/yachts")} element={<YachtenPage />} />
           <Route path={toHref("/en/cruises/book-now/:id")} element={<PackageDetailPage />} />

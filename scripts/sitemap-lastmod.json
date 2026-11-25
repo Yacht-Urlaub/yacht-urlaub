@@ -76,7 +76,7 @@
     "lastmod": "2026-11-24"
   },
   "https://www.yacht-holiday.net/destinations": {
-    "hash": "2de776e438022059",
+    "hash": "c343d624829ee001",
     "lastmod": "2026-11-24"
   },
   "https://www.yacht-holiday.net/destinations/balearic-islands": {
@@ -102,6 +102,10 @@
   "https://www.yacht-holiday.net/destinations/greece": {
     "hash": "0bfac7fb22188b8e",
     "lastmod": "2026-11-24"
+  },
+  "https://www.yacht-holiday.net/destinations/porto-heli": {
+    "hash": "162a1072f3e1d8e6",
+    "lastmod": "2026-11-25"
   },
   "https://www.yacht-holiday.net/destinations/seychelles": {
     "hash": "993dfe35a564d628",
@@ -220,7 +224,7 @@
     "lastmod": "2026-11-24"
   },
   "https://www.yacht-urlaub.net/destinationen": {
-    "hash": "c6388b88a27ef546",
+    "hash": "499d45183f7c5d1b",
     "lastmod": "2026-11-24"
   },
   "https://www.yacht-urlaub.net/destinationen/balearen": {
@@ -246,6 +250,10 @@
   "https://www.yacht-urlaub.net/destinationen/kroatien": {
     "hash": "bd3f418cd806810f",
     "lastmod": "2026-11-24"
+  },
+  "https://www.yacht-urlaub.net/destinationen/porto-heli": {
+    "hash": "1c898293c7624e8f",
+    "lastmod": "2026-11-25"
   },
   "https://www.yacht-urlaub.net/destinationen/seychellen": {
     "hash": "b4ada44b8d87b5c3",

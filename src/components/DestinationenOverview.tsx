@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useNavigate } from '../navigate'
 import { destinations } from './DestinationDetail'
 import { destinationsEn } from '../data/destinationenEn'
+import { Link } from '../router'
 import { useLang, enDestSlugs } from '../i18n'
 
 const enDestPath: Record<string, string> = Object.fromEntries(Object.entries(enDestSlugs).map(([slug, id]) => [id, slug]))
@@ -79,9 +80,35 @@ export default function DestinationenOverview({ standalone = false }: { standalo
             )
           })}
         </div>
+
+        {/* Neu 2027: eigene Seite mit Buchungsstrecke (PortoHeliPage) */}
+        <Link to={lang === 'en' ? '/en/destinations/porto-heli' : '/destinationen/porto-heli'} className="dest-promo">
+          <span className="dest-promo-badge">{lang === 'en' ? 'New for 2027' : 'Neu für 2027'}</span>
+          <span className="dest-promo-text">
+            <strong>{lang === 'en' ? 'Sailing from Porto Heli' : 'Segeln ab Porto Heli'}</strong>
+            {lang === 'en'
+              ? ' – Peloponnese by catamaran, Friday to Friday, with skipper. Pick your week and see the price straight away.'
+              : ' – Peloponnes per Katamaran, Freitag bis Freitag, mit Skipper. Woche wählen und Preis sofort sehen.'}
+          </span>
+          <span className="dest-promo-cta">{lang === 'en' ? 'Dates & prices' : 'Termine & Preise'} →</span>
+        </Link>
       </div>
 
       <style>{`
+        .dest-promo {
+          display: flex; align-items: center; gap: 1rem 1.25rem; flex-wrap: wrap;
+          margin-top: 18px; padding: 16px 22px; border-radius: 12px;
+          background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+          color: #fff; text-decoration: none; transition: background 0.25s ease, border-color 0.25s ease;
+        }
+        .dest-promo:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.3); }
+        .dest-promo-badge {
+          background: var(--gold); color: var(--navy); font-size: 0.7rem; font-weight: 700;
+          letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px;
+        }
+        .dest-promo-text { flex: 1 1 320px; font-size: 0.92rem; line-height: 1.6; color: rgba(255,255,255,0.8); }
+        .dest-promo-text strong { color: #fff; }
+        .dest-promo-cta { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue-light); white-space: nowrap; }
         .dest-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);

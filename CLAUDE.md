@@ -143,6 +143,22 @@ Wenn unklar ist, ob eine Änderung einen Snapshot ungültig macht: lieber
 einmal zu oft neu generieren. Der Lauf dauert für alle ~99 Seiten rund
 3–4 Minuten.
 
+## Porto-Heli-Seite: Preise und Termine aktualisieren
+
+Die Seite `/destinationen/porto-heli` (EN `/destinations/porto-heli`,
+`src/pages/PortoHeliPage.tsx`) zeigt Wochenpreise und Verfuegbarkeit aus
+`src/data/portoHeli.ts`. Die Daten kommen woechentlich aus dem Booking
+Manager: `PH_PRICES` (Freitag -> Yacht -> [Liste, nach Rabatt, Rabatt %];
+fehlt eine Yacht, ist die Woche belegt) und `PH_CONFIG.stand` (Preisstand)
+anpassen, danach den normalen Snapshot-Ablauf (siehe oben) laufen lassen und
+mit committen. Der Endpreis wird in `priceOf()` berechnet (Charter nach
+Rabatt + Nebenkosten + Skipper, dann "schoener" Preis: Ankerpreis X.490/X.990
+wenn hoechstens 100 EUR darunter oder 150 EUR darueber, sonst aufrunden auf
+...50 oder ...90; Preis p. P. in `ppOf()`). Diese Rundungsregeln kommen aus
+dem Artefakt "Segeln ab Porto Heli" und muessen mit ihm uebereinstimmen. Die Buchung geht als
+Formular `porto-heli-buchung` ueber `sendForm` an `CONTACT_TO`; die Mail
+enthaelt die interne Kalkulation und die Booking-Manager-Yacht-ID.
+
 # PR- und Preview-Link immer im Chat durchgeben
 
 Änderungen nie nur stillschweigend committen/pushen und als "fertig"

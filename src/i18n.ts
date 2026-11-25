@@ -152,6 +152,7 @@ export const enDestSlugs: Record<string, string> = {
   'caribbean-windward-islands': 'karibik-windward-islands',
   thailand: 'thailand',
   seychelles: 'seychellen',
+  'porto-heli': 'porto-heli', // eigene Seite (PortoHeliPage), kein Eintrag in destinations
 }
 
 /** EN-Package-Slug → interne ID */
