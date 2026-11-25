@@ -84,7 +84,6 @@ export default function News() {
             </p>
             <h2 className="section-title">{lang === 'en' ? 'News & offers' : 'Top-News & Angebote'}</h2>
           </div>
-          <Link to="/news" style={{ color: 'var(--blue)', fontSize: '0.82rem', fontWeight: 600 }}>{lang === 'en' ? 'All offers →' : 'Alle Angebote →'}</Link>
         </motion.div>
 
         <div className="news-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(offers.length + (bf ? 1 : 0), 3)}, 1fr)`, gap: '2rem' }}>

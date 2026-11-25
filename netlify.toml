@@ -236,6 +236,17 @@
   force = true
 
 # --- 3. Deutsche Domain: geaenderte Alt-Pfade ---
+# /news (Uebersichtsseite "Top-News & Angebote") ist entfallen — die
+# Artikelseiten unter /news/... bleiben bestehen (die Regel hat keinen Splat).
+# Gilt pfadgleich auch fuer die englische Domain, dort fuehrte /news bisher auf
+# den deutschen Snapshot. Seite ggf. aus der Git-Historie wiederherstellen
+# (src/pages/NewsPage.tsx).
+[[redirects]]
+  from = "/news"
+  to = "/"
+  status = 301
+  force = true
+
 # Aus der Search Console nachgetragen: Paket-Adressen mit englischen Slugs,
 # die auf der deutschen Domain indexiert sind (bis 1847 Impressionen).
 # Ohne diese Regeln faengt sie zwar /toern/* ab, aber nur auf der
