@@ -145,7 +145,7 @@ einmal zu oft neu generieren. Der Lauf dauert für alle ~99 Seiten rund
 
 ## Porto-Heli-Seite: Preise und Termine aktualisieren
 
-Die Seite `/destinationen/porto-heli` (EN `/destinations/porto-heli`,
+Die Seite `/toerns/porto-heli` (EN `/cruises/porto-heli`,
 `src/pages/PortoHeliPage.tsx`) zeigt Wochenpreise und Verfuegbarkeit aus
 `src/data/portoHeli.ts`. Die Daten kommen woechentlich aus dem Booking
 Manager: `PH_PRICES` (Freitag -> Yacht -> [Liste, nach Rabatt, Rabatt %];

@@ -29,7 +29,7 @@ const offersEn: Offer[] = [
     title: 'SAILING FROM PORTO HELI: THE PELOPONNESE BY CATAMARAN',
     text: 'Friday-to-Friday weeks on brand-new Lagoon catamarans with skipper, from Nafplio to Monemvasia. Pick your week and see the price straight away.',
     cta: 'Dates & prices',
-    href: '/en/destinations/porto-heli',
+    href: '/en/cruises/porto-heli',
   },
   {
     img: '/images/news/charter-modelle-2027.webp',

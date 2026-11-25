@@ -125,11 +125,11 @@ function AnimatedRoutes() {
           {!enHost && <>
           <Route path="/" element={<HomePage />} />
           <Route path="/destinationen" element={<DestinationenPage />} />
-          <Route path="/destinationen/porto-heli" element={<PortoHeliPage />} />
           <Route path="/destinationen/:id" element={<DestinationPage />} />
           <Route path="/yachten" element={<YachtenPage />} />
           <Route path="/charter" element={<CharterPage />} />
           <Route path="/toerns" element={<ToernsPage />} />
+          <Route path="/toerns/porto-heli" element={<PortoHeliPage />} />
           <Route path="/toerns/:id" element={<ToernDetailPage />} />
           <Route path="/news/charter-modelle-2027" element={<NewsCharterModelle2027Page />} />
           <Route path="/news/sail-into-the-seasons-2026" element={<NewsSailIntoTheSeasons2026Page />} />
@@ -156,13 +156,13 @@ function AnimatedRoutes() {
               unveraendert bleiben. toHref() nimmt das Praefix dort weg. */}
           <Route path={toHref('/en')} element={<HomePage />} />
           <Route path={toHref("/en/destinations")} element={<DestinationenPage />} />
-          <Route path={toHref("/en/destinations/porto-heli")} element={<PortoHeliPage />} />
           <Route path={toHref("/en/destinations/:id")} element={<DestinationPage />} />
           <Route path={toHref("/en/yachts")} element={<YachtenPage />} />
           <Route path={toHref("/en/cruises/book-now/:id")} element={<PackageDetailPage />} />
           <Route path={toHref("/en/faq")} element={<FaqPage />} />
           <Route path={toHref("/en/book-now")} element={<BuchenPage />} />
           <Route path={toHref("/en/cruises")} element={<ToernsPage />} />
+          <Route path={toHref("/en/cruises/porto-heli")} element={<PortoHeliPage />} />
           <Route path={toHref("/en/cruises/:id")} element={<ToernDetailPage />} />
           <Route path={toHref("/en/cabin-offers")} element={<KabinenPage />} />
           <Route path={toHref("/en/holiday-planner")} element={<UrlaubsplanerPage />} />
