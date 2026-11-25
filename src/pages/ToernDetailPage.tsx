@@ -360,7 +360,7 @@ export default function ToernDetailPage() {
   if (!data) return <Navigate to={s.toernsHref} replace />
 
   const pkgList = lang === 'en' ? packagesEn : packages
-  const pkgHref = (pid: string) => lang === 'en' ? `/en/cruises/book-now/${enPkgPath[pid] ?? pid}` : `/packages/${pid}`
+  const pkgHref = (pid: string) => lang === 'en' ? `/en/cruises/${enPkgPath[pid] ?? pid}` : `/packages/${pid}`
   const teaserPackages = data.packageTeasers
     .map(pid => pkgList.find(p => p.id === pid))
     .filter((p): p is NonNullable<typeof p> => !!p)

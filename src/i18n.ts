@@ -97,14 +97,14 @@ export const routePairs: [de: string, en: string][] = [
   // Porto Heli ist eine buchbare Reise (Wochen Fr-Fr), keine Destination und kein
   // Package -> unter den Toerns/Cruises, wie die uebrigen Reisen.
   ['/toerns/porto-heli', '/en/cruises/porto-heli'],
-  ['/packages/dalmatien', '/en/cruises/book-now/dalmatia-croatia'],
-  ['/packages/kornaten', '/en/cruises/book-now/kornati-croatia'],
+  ['/packages/dalmatien', '/en/cruises/dalmatia-croatia'],
+  ['/packages/kornaten', '/en/cruises/kornati-croatia'],
   // /packages/istrien hat kein EN-Pendant — bewusst kein Eintrag, sonst
   // wuerde langPair()/switchLangUrl() faelschlich das Dalmatien-Package
   // als englische Alternative ausgeben (falsches hreflang, falsches Sprachumschalt-Ziel)
-  ['/packages/griechenland', '/en/cruises/book-now/greece'],
-  ['/packages/karibik-bvi', '/en/cruises/book-now/caribbean-bvi'],
-  ['/packages/karibik-grenadinen', '/en/cruises/book-now/caribbean-grenadines'],
+  ['/packages/griechenland', '/en/cruises/greece'],
+  ['/packages/karibik-bvi', '/en/cruises/caribbean-bvi'],
+  ['/packages/karibik-grenadinen', '/en/cruises/caribbean-grenadines'],
   ['/kabinen', '/en/cabin-offers'],
   ['/urlaubsplaner', '/en/holiday-planner'],
   ['/buchen', '/en/book-now'],
@@ -157,7 +157,7 @@ export const enDestSlugs: Record<string, string> = {
   seychelles: 'seychellen',
 }
 
-/** EN-Package-Slug → interne ID */
+/** EN-Package-Slug → interne ID. Die EN-Adresse ist /cruises/<slug> (frueher /cruises/book-now/<slug>, siehe netlify.toml). */
 export const enPkgSlugs: Record<string, string> = {
   'dalmatia-croatia': 'dalmatien',
   'kornati-croatia': 'kornaten',
@@ -165,6 +165,9 @@ export const enPkgSlugs: Record<string, string> = {
   'caribbean-bvi': 'karibik-bvi',
   'caribbean-grenadines': 'karibik-grenadinen',
 }
+
+/** interne Package-ID → EN-Slug */
+export const enPkgPath: Record<string, string> = Object.fromEntries(Object.entries(enPkgSlugs).map(([slug, id]) => [id, slug]))
 
 const enCruiseToDe: Record<string, string> = {
   'for-beginners': 'einsteiger', 'for-friends': 'freunde', 'for-families': 'familien', luxury: 'luxury',
@@ -176,8 +179,10 @@ export function canonicalPath(pathname: string): string {
   for (const [de, en] of routePairs) {
     if (pathname === en) return de
   }
-  let m = pathname.match(/^\/en\/cruises\/book-now\/([^/]+)$/)
-  if (m) return `/packages/${enPkgSlugs[m[1]] ?? m[1]}`
+  // Packages liegen auf EN direkt unter /cruises/<slug> (wie Porto Heli); die
+  // Kategorieseiten (for-beginners ...) stehen weiter unten.
+  let m = pathname.match(/^\/en\/cruises\/([^/]+)$/)
+  if (m && enPkgSlugs[m[1]]) return `/packages/${enPkgSlugs[m[1]]}`
   m = pathname.match(/^\/en\/destinations\/([^/]+)$/)
   if (m) return `/destinationen/${enDestSlugs[m[1]] ?? m[1]}`
   m = pathname.match(/^\/en\/cruises\/([^/]+)$/)
@@ -208,7 +213,7 @@ export function langPair(pathname: string): { de: string; en: string } | null {
   let m = de.match(/^\/packages\/([^/]+)$/)
   if (m) {
     const en = Object.entries(enPkgSlugs).find(([, id]) => id === m![1])?.[0]
-    return en ? { de, en: `/en/cruises/book-now/${en}` } : null
+    return en ? { de, en: `/en/cruises/${en}` } : null
   }
   m = de.match(/^\/destinationen\/([^/]+)$/)
   if (m) {
