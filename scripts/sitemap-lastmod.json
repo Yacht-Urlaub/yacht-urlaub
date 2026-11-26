@@ -408,11 +408,11 @@
     "lastmod": "2026-11-24"
   },
   "https://www.yacht-urlaub.net/yachtmodelle": {
-    "hash": "dc6c92b57f9fe993",
+    "hash": "cb66cfead9128ec1",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/bali-4-2": {
-    "hash": "00d1395fd5ab11d3",
+    "hash": "731c42039aec9758",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/bali-4-3": {
@@ -460,7 +460,7 @@
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/bavaria-c50": {
-    "hash": "95372ca2f40eb8fd",
+    "hash": "5309181ee4ae7151",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/bavaria-c57": {
@@ -496,11 +496,11 @@
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/first-44": {
-    "hash": "e11e241b1f7ec94a",
+    "hash": "35163862b056b75c",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/hanse-410": {
-    "hash": "2a8f20e8dddbd36a",
+    "hash": "158325aa65b6dae3",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/hanse-461": {
@@ -508,27 +508,31 @@
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/hanse-505": {
-    "hash": "10b3b791e20f7176",
+    "hash": "e9a6ef64edb5a7d0",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/hanse-510": {
-    "hash": "3d355c3da24656f0",
+    "hash": "42c40554a48170cb",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/hanse-590": {
     "hash": "04f416fafdb21dd8",
     "lastmod": "2026-11-26"
   },
+  "https://www.yacht-urlaub.net/yachtmodelle/jeanneau-yachts-54": {
+    "hash": "aceda4bea4fed2c2",
+    "lastmod": "2026-11-26"
+  },
   "https://www.yacht-urlaub.net/yachtmodelle/jeanneau-yachts-55": {
-    "hash": "5bfff36ced95361e",
+    "hash": "5c892df96e84503f",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/jeanneau-yachts-60": {
-    "hash": "15a8672506d55556",
+    "hash": "6cb1baccbe330d87",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/jeanneau-yachts-65": {
-    "hash": "92ccd6ea3be82020",
+    "hash": "796c38339ce46b1d",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/lagoon-38": {
@@ -536,7 +540,7 @@
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/lagoon-42": {
-    "hash": "db1d30c4decbdec1",
+    "hash": "c6388e4b491a8bc9",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/lagoon-43": {
@@ -544,7 +548,7 @@
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/lagoon-46": {
-    "hash": "8fa31571db05528e",
+    "hash": "2a3722f8084b83ba",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/lagoon-47": {
@@ -560,55 +564,59 @@
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/lagoon-55": {
-    "hash": "0e29f7aaba1b1a04",
+    "hash": "82d83b93771b7618",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/oceanis-42": {
-    "hash": "bc26fa6f0f1b07aa",
+    "hash": "43422149e3e4a8ff",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/oceanis-47": {
-    "hash": "2034dacfbe371929",
+    "hash": "2718dfb9de417efa",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/oceanis-48": {
-    "hash": "908a667d91561140",
+    "hash": "ead3fd19572e59e1",
+    "lastmod": "2026-11-26"
+  },
+  "https://www.yacht-urlaub.net/yachtmodelle/oceanis-51-1": {
+    "hash": "27b889d2f665cae9",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/oceanis-52": {
-    "hash": "0f0a71512beb507a",
+    "hash": "5cac81bde912f4c3",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/oceanis-yacht-54": {
-    "hash": "548213b5298b1060",
+    "hash": "a7d927391f88ef09",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/sun-odyssey-380": {
-    "hash": "feca4e17f1f1d36b",
+    "hash": "05938d21740a83e4",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/sun-odyssey-385": {
-    "hash": "1bfbe9e515740e7f",
+    "hash": "0841ab29fa99a046",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/sun-odyssey-410": {
-    "hash": "b4ecf5456f1b233c",
+    "hash": "9b5ea4b214aa7351",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/sun-odyssey-415": {
-    "hash": "ccbe550fa32d1b26",
+    "hash": "f87a5ed5fa8da817",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/sun-odyssey-440": {
-    "hash": "15790fe6c4f4b6e4",
+    "hash": "9749ccc8a1d2ce9f",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/sun-odyssey-455": {
-    "hash": "08c6290d0e3c8950",
+    "hash": "15af696fcbbaa2e0",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yachtmodelle/sun-odyssey-490": {
-    "hash": "588c1eff1bc942e6",
+    "hash": "849e41aae8c5d4fd",
     "lastmod": "2026-11-26"
   },
   "https://www.yacht-urlaub.net/yoga": {

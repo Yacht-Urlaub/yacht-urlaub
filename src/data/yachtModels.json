@@ -363,7 +363,13 @@
    ]
   ],
   "extras": [],
-  "tours": [],
+  "tours": [
+   {
+    "id": "nZmztup576T",
+    "title": "Lagoon 42 Premium",
+    "by": "Virtual Agency 3D, Frankreich"
+   }
+  ],
   "poster": "/images/yachtmodelle/lagoon-42.jpg",
   "card": "/images/yachtmodelle/lagoon-42-card.jpg",
   "plans": [
@@ -737,7 +743,13 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": [],
+  "tours": [
+   {
+    "id": "dE22491CWNL",
+    "title": "Lagoon 46 Premium",
+    "by": "Virtual Agency 3D, Martinique"
+   }
+  ],
   "poster": "/images/yachtmodelle/lagoon-46-foto.jpg",
   "card": "/images/yachtmodelle/lagoon-46-foto-card.jpg",
   "plans": [
@@ -1317,7 +1329,13 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": [],
+  "tours": [
+   {
+    "id": "4rr3dvyDjp5",
+    "title": "Lagoon 55 „Blue Mango“",
+    "by": "seeduu.de / Peter Ronsiek, Palma"
+   }
+  ],
   "poster": "/images/yachtmodelle/lagoon-55-foto.jpg",
   "card": "/images/yachtmodelle/lagoon-55-foto-card.jpg",
   "plans": [
@@ -1862,7 +1880,13 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": [],
+  "tours": [
+   {
+    "id": "UXRJ1n9Y55C",
+    "title": "Bali 4.2 „Aquatic Odyssey“",
+    "by": "AndreaMcc, Tortola (BVI)"
+   }
+  ],
   "poster": "/images/yachtmodelle/bali-4-2-foto.jpg",
   "card": "/images/yachtmodelle/bali-4-2-foto-card.jpg",
   "plans": [
@@ -3154,7 +3178,13 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": [],
+  "tours": [
+   {
+    "id": "ptrmFtSmEbD",
+    "title": "Sun Odyssey 380 „Calypso Express“",
+    "by": "Horizon Yacht Charters, BVI"
+   }
+  ],
   "poster": "/images/yachtmodelle/sun-odyssey-380-foto.jpg",
   "card": "/images/yachtmodelle/sun-odyssey-380-foto-card.jpg",
   "plans": [
@@ -4023,7 +4053,13 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": [],
+  "tours": [
+   {
+    "id": "PPqDF2DcX2c",
+    "title": "Sun Odyssey 490 „Cosette II“",
+    "by": "Horizon Yacht Charters, BVI"
+   }
+  ],
   "poster": "/images/yachtmodelle/sun-odyssey-490-foto.jpg",
   "card": "/images/yachtmodelle/sun-odyssey-490-foto-card.jpg"
  },
@@ -4186,7 +4222,13 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": [],
+  "tours": [
+   {
+    "id": "ypg18kFEoQS",
+    "title": "Sun Odyssey 440 „Rhythm & Blues“",
+    "by": "Horizon Yacht Charters, BVI"
+   }
+  ],
   "poster": "/images/yachtmodelle/sun-odyssey-440-foto.jpg",
   "card": "/images/yachtmodelle/sun-odyssey-440-foto-card.jpg"
  },
@@ -6698,14 +6740,6 @@
     "caption": "Variante 1"
    },
    {
-    "img": "/images/yachtmodelle/plans/hanse-410-2-v1.webp",
-    "caption": "Variante 2"
-   },
-   {
-    "img": "/images/yachtmodelle/plans/hanse-410-3-v1.webp",
-    "caption": "Variante 3"
-   },
-   {
     "img": "/images/yachtmodelle/plans/hanse-410-4-v1.webp",
     "caption": "Variante 4"
    }
@@ -8522,7 +8556,7 @@
   "extras": [],
   "tours": [
    {
-    "id": "NRjuFS3e8J9",
+    "id": "twiJYMA24E2",
     "title": "Beneteau Oceanis 48",
     "by": "Ancasta International Boat Sales, England"
    }
@@ -8884,5 +8918,364 @@
   ],
   "poster": "/images/yachtmodelle/lagoon-50-foto.jpg",
   "card": "/images/yachtmodelle/lagoon-50-foto-card.jpg"
+ },
+ {
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [],
+  "videos": [
+   {
+    "id": "dsZjj7-uz1Y",
+    "title": "Oceanis 51.1 – Offizielles Video",
+    "by": "Offizielles Video von Beneteau"
+   },
+   {
+    "id": "X7JuMD_b96Y",
+    "title": "Oceanis 51.1 – Image-Film",
+    "by": "Offizielles Video von Beneteau"
+   }
+  ],
+  "typ": "Segelyacht",
+  "id": "oceanis-51-1",
+  "name": "Oceanis 51.1",
+  "brand": "Beneteau",
+  "len": 15.94,
+  "year": "Charter-Klassiker",
+  "badges": [
+   "Charter-Klassiker"
+  ],
+  "src": "https://www.beneteau.com/en-us/oceanis-2015-2022/oceanis-511",
+  "tagline": "Die erste Oceanis der neuen Generation: gestufter Rumpf, viel Raum und einfaches Segeln dank Dock & Go.",
+  "key": [
+   [
+    "15,94 m",
+    "Länge"
+   ],
+   [
+    "3–5",
+    "Kabinen"
+   ],
+   [
+    "2–3",
+    "Bäder"
+   ],
+   [
+    "4,80 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Mit gespannten Linien, einem neuen gestuften Rumpf und einem eleganten Decksplan war die Oceanis 51.1 die erste Yacht einer neuen Oceanis-Generation. Berret Racoupeau zeichnete den Rumpf, Nauta Design Deck und Innenraum. Sie ist leicht zu segeln, bequem und „smart“.",
+   "Furlingmast, selbstwendende Fock und alle Fallen und Schoten laufen zu einer Winsch an jedem Steuerstand. Beim Manövrieren im Hafen hilft die Dock-&-Go-Technik. Unter Deck gibt es eine Eignerkabine mit 1,60 m breitem Inselbett und eigenem Bad, dazu eine voll ausgestattete U-förmige Pantry."
+  ],
+  "plus": [
+   "Einfach zu segeln: alle Leinen am Steuerstand",
+   "Dock & Go erleichtert das Manövrieren im Hafen",
+   "Eignerkabine mit 1,60 m breitem Inselbett und eigenem Bad",
+   "Voll ausgestattete U-förmige Pantry",
+   "Versionen mit drei, vier oder fünf Kabinen"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Ältere Baureihe, nicht mehr im Neubauprogramm"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3–5 / 2–3"
+   ],
+   [
+    "Länge",
+    "15,94 m"
+   ],
+   [
+    "Breite",
+    "4,80 m"
+   ],
+   [
+    "Tiefgang",
+    "1,92–2,88 m"
+   ],
+   [
+    "Wassertank",
+    "440 l"
+   ],
+   [
+    "Dieseltank",
+    "200 l"
+   ]
+  ],
+  "life": [
+   [
+    "Alles am Steuerstand",
+    "Furlingmast, selbstwendende Fock, Leinen zu einer Winsch.",
+    "wave"
+   ],
+   [
+    "Dock & Go",
+    "Hilft beim Manövrieren im Hafen.",
+    "anchor"
+   ],
+   [
+    "Eignerkabine",
+    "Inselbett 1,60 m, eigenes Bad.",
+    "bed"
+   ],
+   [
+    "U-Pantry",
+    "Voll ausgestattet, bequem unter Segeln und vor Anker.",
+    "home"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen · 2 Bäder",
+    "cab": "3",
+    "bath": "2",
+    "fit": "Familien, Paare mit Freunden",
+    "note": "Ohne Skipperkabine"
+   },
+   {
+    "v": "3 Kabinen · 3 Bäder",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare, Familien",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen · 2 Bäder",
+    "cab": "4",
+    "bath": "2",
+    "fit": "Gruppen bis 8 Personen",
+    "note": "Eignerkabine vorn"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-51-1-1-v1.webp",
+    "caption": "3 Kabinen · 2 Bäder (ohne Skipperkabine)"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-51-1-2-v1.webp",
+    "caption": "3 Kabinen · 3 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-51-1-3-v1.webp",
+    "caption": "4 Kabinen · 2 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-51-1-4-v1.webp",
+    "caption": "Deckplan"
+   }
+  ],
+  "fitYes": [
+   "mit 6 bis 8 Personen reisen",
+   "eine bewährte große Charteryacht suchen",
+   "einfach segeln möchten"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "15,94 m"
+   ],
+   [
+    "Breite",
+    "4,80 m"
+   ],
+   [
+    "Tiefgang",
+    "1,92–2,88 m"
+   ],
+   [
+    "Gewicht (leer)",
+    "13.930 kg"
+   ],
+   [
+    "Wassertank",
+    "440 l"
+   ],
+   [
+    "Dieseltank",
+    "200 l"
+   ],
+   [
+    "Motor",
+    "bis 110 PS"
+   ],
+   [
+    "Konstrukteur",
+    "Berret Racoupeau, Deck und Innenraum Nauta Design"
+   ]
+  ],
+  "poster": "/images/yachtmodelle/oceanis-51-1-foto.jpg",
+  "card": "/images/yachtmodelle/oceanis-51-1-foto-card.jpg"
+ },
+ {
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [],
+  "videos": [
+   {
+    "id": "h45RsNKhLdY",
+    "title": "Jeanneau Yachts 54 – Offizielles Video",
+    "by": "Offizielles Video von Jeanneau"
+   },
+   {
+    "id": "_9XQZ3f8Ym4",
+    "title": "Jeanneau Yachts 54 – Image-Film",
+    "by": "Offizielles Video von Jeanneau"
+   }
+  ],
+  "typ": "Segelyacht",
+  "id": "jeanneau-yachts-54",
+  "name": "Jeanneau Yachts 54",
+  "brand": "Jeanneau",
+  "len": 16.16,
+  "year": "Charter-Klassiker",
+  "badges": [
+   "Charter-Klassiker"
+  ],
+  "src": "https://www.jeanneau.com/boats/sailboat/4-jeanneau-yachts/19-jeanneau-yachts-54",
+  "tagline": "Lange Törns in großem Komfort: Eignerkabine mit Rumpffenstern, gut ausgestattete Pantry und zwei bis sechs Kabinen.",
+  "key": [
+   [
+    "16,16 m",
+    "Länge"
+   ],
+   [
+    "2–6",
+    "Kabinen"
+   ],
+   [
+    "4,92 m",
+    "Breite"
+   ],
+   [
+    "bis 14",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Jeanneau Yachts 54 verbindet Eleganz mit Raffinesse: ein zeitgemäßer Innenraum mit vielen Stauräumen, einer sehr gut ausgestatteten Pantry und einer großzügigen Eignerkabine mit großem Bett, viel Bewegungsfreiheit und Fenstern im Rumpf, durch die man beim Lesen aufs Meer blickt.",
+   "Das Layout ist anpassbar, von zwei bis zu sechs Kabinen. Mit 4,92 m Breite, 724 l Wasser und 17,2 t Verdrängung ist sie für lange Törns gebaut. CE-Kategorie A für bis zu 14 Personen."
+  ],
+  "plus": [
+   "Zwei bis sechs Kabinen",
+   "Eignerkabine mit Rumpffenstern",
+   "Gut ausgestattete Pantry mit viel Stauraum",
+   "724 l Wassertank",
+   "CE-Kategorie A für bis zu 14 Personen"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Große Yacht: höhere Hafengebühren",
+   "Ältere Baureihe, nicht mehr im Neubauprogramm"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "2–6"
+   ],
+   [
+    "Länge",
+    "16,16 m"
+   ],
+   [
+    "Breite",
+    "4,92 m"
+   ],
+   [
+    "Tiefgang",
+    "2,24 m"
+   ],
+   [
+    "Wassertank",
+    "724 l"
+   ],
+   [
+    "Dieseltank",
+    "240 l"
+   ]
+  ],
+  "life": [
+   [
+    "Große Eignerkabine",
+    "Großes Bett, Fenster im Rumpf.",
+    "bed"
+   ],
+   [
+    "Pantry",
+    "Gut ausgestattet mit viel Stauraum.",
+    "home"
+   ],
+   [
+    "Lange Törns",
+    "Für große Strecken ausgelegt.",
+    "wave"
+   ],
+   [
+    "Platz für viele",
+    "Bis zu 14 Personen (CE A).",
+    "door"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "2 bis 6 Kabinen",
+    "cab": "2–6",
+    "bath": "–",
+    "fit": "Familien, Gruppen",
+    "note": "Layout je nach Ausbau"
+   }
+  ],
+  "fitYes": [
+   "weite Törns planen",
+   "mit einer großen Gruppe reisen",
+   "Wert auf Komfort legen"
+  ],
+  "fitNo": [
+   "eine kleine, einfache Yacht suchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "16,16 m"
+   ],
+   [
+    "Rumpflänge",
+    "15,75 m"
+   ],
+   [
+    "Breite",
+    "4,92 m"
+   ],
+   [
+    "Tiefgang",
+    "2,24 m"
+   ],
+   [
+    "Verdrängung",
+    "17.164 kg"
+   ],
+   [
+    "Wassertank",
+    "724 l"
+   ],
+   [
+    "Dieseltank",
+    "240 l"
+   ]
+  ],
+  "poster": "/images/yachtmodelle/jeanneau-yachts-54-foto.jpg",
+  "card": "/images/yachtmodelle/jeanneau-yachts-54-foto-card.jpg"
  }
 ]
