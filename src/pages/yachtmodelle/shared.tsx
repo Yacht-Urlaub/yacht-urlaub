@@ -39,17 +39,25 @@ export function Illu({ m }: { m: Model }) {
 
 /** Bild des Modells: lokal gespeichertes Werft-Foto, sonst Illustration. Es wird bewusst NICHTS direkt von YouTube/Matterport geladen: vor dem
  *  Klick darf keine Verbindung zu Dritten entstehen. */
-export function Pic({ m, variant, eager }: { m: Model; variant: 'card' | 'poster'; eager?: boolean }) {
+export function Pic({ m, variant, eager, alt }: { m: Model; variant: 'card' | 'poster'; eager?: boolean; alt?: string }) {
   const [failed, setFailed] = useState(false)
   const src = variant === 'card' ? m.card : m.poster
   if (!src || failed) return <Illu m={m} />
-  const alt = `${m.name}, ${m.typ} von ${m.brand}`
+  const len = String(m.len).replace('.', ',')
+  const text = alt ?? (variant === 'card'
+    ? `${m.name} – ${m.typ} von ${m.brand}, ${len} m`
+    : `${m.name} – ${m.typ} von ${m.brand} zum Chartern`)
+  // WebP zuerst (rund 40 % kleiner), JPG als Fallback; das JPG bleibt auch die og:image-Datei.
+  const webp = src.replace(/\.jpe?g$/i, '.webp')
   return (
-    <img
-      src={src} alt={alt} onError={() => setFailed(true)}
-      loading={eager ? 'eager' : 'lazy'} {...(eager ? { fetchPriority: 'high' as const } : {})}
-      width={variant === 'card' ? 640 : 1280} height={variant === 'card' ? 400 : 720}
-    />
+    <picture>
+      <source srcSet={webp} type="image/webp" />
+      <img
+        src={src} alt={text} onError={() => setFailed(true)} decoding="async"
+        loading={eager ? 'eager' : 'lazy'} {...(eager ? { fetchPriority: 'high' as const } : {})}
+        width={variant === 'card' ? 640 : 1280} height={variant === 'card' ? 400 : 720}
+      />
+    </picture>
   )
 }
 
@@ -126,7 +134,7 @@ export function Embed(p: EmbedProps) {
         />
       ) : (
         <>
-          <Pic m={p.m} variant="poster" eager={p.eager} />
+          <Pic m={p.m} variant="poster" eager={p.eager} alt={p.eager ? undefined : ''} />
           <button className="play" type="button" onClick={() => setOn(true)}
             aria-label={isTour ? `3D-Rundgang starten: ${p.title}` : `Video abspielen: ${p.title}`}>
             <i aria-hidden="true" />

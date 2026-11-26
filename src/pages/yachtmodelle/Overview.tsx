@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import SEO from '../../components/SEO'
 import { Link } from '../../router'
+import { BASE_DE } from '../../i18n'
 import { BRANDS, MODELS, modelPath, plural, type Model } from './data'
 import { Pic } from './shared'
 
@@ -60,13 +61,33 @@ export default function YachtModelleOverviewPage() {
   return (
     <main className="ym">
       <SEO
-        title="Yachtmodelle: Katamarane & Segelyachten im Überblick"
-        description={`${MODELS.length} Charteryachten im Überblick: Katamarane von Lagoon und Bali, Segelyachten von Jeanneau, Beneteau, Bavaria, Hanse und Dufour.`}
+        title="Yachtmodelle: Katamarane & Segelyachten zum Chartern"
+        description={`${MODELS.length} Charteryachten: Katamarane und Segelyachten von Lagoon, Bali, Jeanneau, Beneteau, Bavaria, Hanse und Dufour – mit Grundrissen, Videos und 3D-Rundgängen.`}
+        image="/images/yachtmodelle/lagoon-42.jpg"
+        schema={{
+          '@context': 'https://schema.org',
+          '@graph': [
+            { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Yachtmodelle', item: `${BASE_DE}/yachtmodelle` }] },
+            {
+              '@type': 'CollectionPage',
+              '@id': `${BASE_DE}/yachtmodelle#seite`,
+              url: `${BASE_DE}/yachtmodelle`,
+              name: 'Yachtmodelle: Katamarane & Segelyachten zum Chartern',
+              inLanguage: 'de-DE',
+              isPartOf: { '@type': 'WebSite', name: 'Yacht-Urlaub', url: BASE_DE },
+              mainEntity: {
+                '@type': 'ItemList',
+                numberOfItems: MODELS.length,
+                itemListElement: MODELS.map((m, i) => ({ '@type': 'ListItem', position: i + 1, name: m.name, url: `${BASE_DE}${modelPath(m.id)}` })),
+              },
+            },
+          ],
+        }}
       />
       <section className="oh"><div className="wrap">
         <p className="eyebrow">Yachtmodelle</p>
-        <h1>Finden Sie die Yacht, die zu Ihrer Crew passt</h1>
-        <p className="lead">Katamarane und Segelyachten der beliebtesten Werften – mit Videos, Kabinenversionen und allem, was für Ihre Woche an Bord zählt.</p>
+        <h1>Yachtmodelle zum Chartern: finden Sie die Yacht, die zu Ihrer Crew passt</h1>
+        <p className="lead">{MODELS.length} Katamarane und Segelyachten von Lagoon, Bali, Jeanneau, Beneteau, Bavaria, Hanse und Dufour – mit Grundrissen, Kabinenversionen, Videos und 3D-Rundgängen. Sie sehen auf einen Blick, wie viele Kabinen und Bäder eine Yacht hat, wie sie sich segelt und für welche Crew sie passt.</p>
       </div></section>
 
       <div className="filt"><div className="wrap">

@@ -159,6 +159,17 @@ dem Artefakt "Segeln ab Porto Heli" und muessen mit ihm uebereinstimmen. Die Buc
 Formular `porto-heli-buchung` ueber `sendForm` an `CONTACT_TO`; die Mail
 enthaelt die interne Kalkulation und die Booking-Manager-Yacht-ID.
 
+## SEO-, AEO- und GEO-Standard (verbindlich, alle 14 Tage prüfen)
+
+Für jede neue oder geänderte Seite, jeden Text und jedes Bild gilt `docs/seo-aeo-geo-standards.md`
+(Title/Description, Überschriften, Antwort-zuerst, strukturierte Daten, Bilder mit Alt-Text, WebP und
+Abmessungen, Texte für DE und EN, Messen). Der Standard trägt ein Stand-Datum und wird alle zwei Wochen
+(1. und 15. des Monats) gegen die aktuellen Google-Leitfäden und belegte KI-Such-Erkenntnisse geprüft. Ist
+das Stand-Datum älter als 14 Tage, vor der Arbeit an Seiten zuerst diese Prüfung nachholen und das Dokument
+aktualisieren. Texte vor dem Veröffentlichen gegen die Regeln in Abschnitt 4 des Dokuments prüfen (belegte
+Fakten, eigener Mehrwert, einzigartig pro Seite). Ein Marketing-Skill ist, wenn in der Sitzung geladen, vorher
+zu nutzen (Markenstimme, Textqualität).
+
 ## Yachtmodelle
 
 Bereich `/yachtmodelle` (Übersicht + 52 Modellseiten, nur Deutsch). Daten in

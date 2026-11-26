@@ -25,12 +25,12 @@ export interface Model {
   life: [string, string, string][]
   layouts: { v: string; cab: string; bath: string; fit: string; note?: string }[]
   /** Grundrisse der Werft (lokal unter public/images/yachtmodelle/plans/), mit Beschriftung */
-  plans?: { img: string; caption: string }[]
+  plans?: { img: string; caption: string; w?: number; h?: number }[]
   fitYes: string[]
   fitNo: string[]
   faq: [string, string][]
   tech: [string, string][]
-  images: { src: string; alt: string }[]
+  images: { src: string; alt: string; w?: number; h?: number }[]
   /** Vorschaubild (1280 px) und Kartenbild (640 px), Werft-Foto; liegen lokal unter public/images/yachtmodelle/ */
   poster?: string
   card?: string
@@ -79,11 +79,18 @@ export const keyValue = (m: Model, labels: string[]) => {
   return '–'
 }
 
-/** Meta-Description: "<Name>: <Tagline>", sonst nur die Tagline. Maximal ~150 Zeichen,
- *  damit Suchergebnisse und Link-Vorschauen den Satz nicht mitten drin abschneiden. */
+/** Meta-Description, je Modell einzigartig: Suchbegriff ("<Name> chartern"), Eckdaten und
+ *  was die Seite bietet; danach – falls Platz ist – der erste Satz der Tagline. Ziel: 120–158 Zeichen,
+ *  damit Suchergebnisse und Link-Vorschauen den Satz nicht abschneiden. */
 export function modelDescription(m: Model): string {
-  const full = `${m.name}: ${m.tagline}`
-  return full.length <= 150 ? full : m.tagline
+  const cab = keyValue(m, ['Kabinen'])
+  const len = String(m.len).replace('.', ',').replace(/,(\d)$/, ',$10')
+  const extras = ['Grundrisse', ...(m.videos.length ? ['Video'] : []), ...(m.tours.length ? ['3D-Rundgang'] : [])]
+  const list = extras.length > 1 ? `${extras.slice(0, -1).join(', ')} & ${extras[extras.length - 1]}` : extras[0]
+  const base = `${m.name} chartern: ${m.typ} von ${m.brand} mit ${cab} Kabinen, ${len} m. ${list} – jetzt Angebot anfragen.`
+  const first = m.tagline.split(/(?<=[.!?])\s/)[0]
+  const withTag = `${base} ${first}`
+  return withTag.length <= 158 ? withTag : base
 }
 
 export function modelTitle(m: Model): string {

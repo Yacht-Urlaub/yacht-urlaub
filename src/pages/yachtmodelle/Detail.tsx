@@ -103,9 +103,28 @@ export default function YachtModellDetailPage() {
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Yachtmodelle', item: `${BASE_DE}${BASE_PATH}` },
-          { '@type': 'ListItem', position: 2, name: m.brand, item: `${BASE_DE}${BASE_PATH}` },
-          { '@type': 'ListItem', position: 3, name: m.name, item: `${BASE_DE}${modelPath(m.id)}` },
+          { '@type': 'ListItem', position: 2, name: m.name, item: `${BASE_DE}${modelPath(m.id)}` },
         ],
+      },
+      {
+        '@type': 'WebPage',
+        '@id': `${BASE_DE}${modelPath(m.id)}#seite`,
+        url: `${BASE_DE}${modelPath(m.id)}`,
+        name: modelTitle(m),
+        description: modelDescription(m),
+        inLanguage: 'de-DE',
+        isPartOf: { '@type': 'WebSite', name: 'Yacht-Urlaub', url: BASE_DE },
+        ...(m.poster ? { primaryImageOfPage: { '@type': 'ImageObject', url: `${BASE_DE}${m.poster}`, width: 1280, height: 720 } } : {}),
+        // Das Boot selbst als Entitaet, mit Verweis auf die Werftseite (sameAs): hilft Such- und KI-Systemen,
+        // das Modell eindeutig zuzuordnen. Bewusst kein Product/Offer: es gibt keinen Preis auf der Seite.
+        about: {
+          '@type': 'Thing',
+          name: m.name,
+          description: m.tagline,
+          url: m.src,
+          sameAs: m.src,
+          ...(m.poster ? { image: `${BASE_DE}${m.poster}` } : {}),
+        },
       },
       {
         '@type': 'FAQPage',
@@ -131,7 +150,7 @@ export default function YachtModellDetailPage() {
               {m.badges.map(b => <span className="badge" key={b}>{b}</span>)}
               <span className="badge dk">{m.typ}</span><span className="badge dk">{m.year}</span>
             </div>
-            <p className="werft">{m.brand}</p>
+            <p className="werft">{m.typ} von {m.brand}</p>
             <h1>{m.name}</h1>
             <p className="lead">{m.tagline}</p>
           </div>
@@ -166,7 +185,7 @@ export default function YachtModellDetailPage() {
       <section className="band" id="ueberblick"><div className="wrap two">
         <div>
           <p className="kick">Auf einen Blick</p>
-          <h2>Die {m.name} für Ihren Segelurlaub</h2>
+          <h2>{m.name} chartern: der Überblick</h2>
           <div className="intro">{m.glance.map(p => <p key={p}>{p}</p>)}</div>
           <div className="pc">
             <div className="y"><h3>Das werden Sie lieben</h3><ul>{m.plus.map(x => <li key={x}>{x}</li>)}</ul></div>
@@ -186,7 +205,7 @@ export default function YachtModellDetailPage() {
           <p className="kick">Bilder</p><h2>Eindrücke von Bord</h2>
           <div className="gal" tabIndex={0} aria-label="Bildergalerie">
             {m.images.map(im => (
-              <figure key={im.src}><img src={im.src} alt={im.alt} loading="lazy" /><figcaption>{im.alt}</figcaption></figure>
+              <figure key={im.src}><img src={im.src} alt={im.alt} loading="lazy" decoding="async" {...(im.w && im.h ? { width: im.w, height: im.h } : {})} /><figcaption>{im.alt}</figcaption></figure>
             ))}
           </div>
         </div></section>
@@ -208,7 +227,7 @@ export default function YachtModellDetailPage() {
           <div className="lays">
             {plans.map(p => (
               <figure className="lay" key={p.img}>
-                <img src={p.img} alt={`Grundriss ${m.name}: ${p.caption}`} loading="lazy" />
+                <img src={p.img} alt={`Grundriss der ${m.name} – ${p.caption}`} loading="lazy" decoding="async" {...(p.w && p.h ? { width: p.w, height: p.h } : {})} />
                 <figcaption><b>{p.caption}</b></figcaption>
               </figure>
             ))}
