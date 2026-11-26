@@ -368,12 +368,12 @@
   "card": "/images/yachtmodelle/lagoon-42-card.jpg",
   "plans": [
    {
-    "img": "/images/yachtmodelle/plans/lagoon-42-1.webp",
-    "caption": "4 Kabinen"
+    "img": "/images/yachtmodelle/plans/lagoon-42-1-v2.webp",
+    "caption": "Unterdeck: 4 Kabinen"
    },
    {
-    "img": "/images/yachtmodelle/plans/lagoon-42-2.webp",
-    "caption": "Grundriss"
+    "img": "/images/yachtmodelle/plans/lagoon-42-2-v2.webp",
+    "caption": "Deckplan"
    }
   ]
  },
@@ -3850,19 +3850,19 @@
   "card": "/images/yachtmodelle/sun-odyssey-455-foto-card.jpg",
   "plans": [
    {
-    "img": "/images/yachtmodelle/plans/sun-odyssey-455-1.webp",
+    "img": "/images/yachtmodelle/plans/sun-odyssey-455-1-v2.webp",
     "caption": "Grundriss – Variante 1"
    },
    {
-    "img": "/images/yachtmodelle/plans/sun-odyssey-455-2.webp",
+    "img": "/images/yachtmodelle/plans/sun-odyssey-455-2-v2.webp",
     "caption": "Grundriss – Variante 2"
    },
    {
-    "img": "/images/yachtmodelle/plans/sun-odyssey-455-3.webp",
+    "img": "/images/yachtmodelle/plans/sun-odyssey-455-3-v2.webp",
     "caption": "Grundriss – Variante 3"
    },
    {
-    "img": "/images/yachtmodelle/plans/sun-odyssey-455-4.webp",
+    "img": "/images/yachtmodelle/plans/sun-odyssey-455-4-v2.webp",
     "caption": "Deckplan"
    }
   ]
