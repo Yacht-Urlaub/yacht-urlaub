@@ -42,6 +42,7 @@ const navEn = [
       { label: 'Sailing catamaran', href: '/en/yachts?tab=katamaran' },
       { label: 'Motor yacht (monohull)', href: '/en/yachts?tab=motoryacht' },
       { label: 'Power catamaran', href: '/en/yachts?tab=motorkat' },
+      { label: 'Yacht models', href: '/en/yacht-models' },
     ]
   },
   {

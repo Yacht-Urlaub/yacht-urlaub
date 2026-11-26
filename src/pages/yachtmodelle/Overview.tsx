@@ -1,20 +1,23 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import SEO from '../../components/SEO'
 import { Link } from '../../router'
-import { BASE_DE } from '../../i18n'
-import { BRANDS, MODELS, modelPath, plural, type Model } from './data'
+import { useLang } from '../../i18n'
+import { type Model } from './data'
+import { BRANDS_L, UI, absUrl, basePath, modelsFor, pathFor, typLabel, typPlural, useEnglishTexts } from './lang'
 import { Pic } from './shared'
 
 type Typ = 'alle' | Model['typ']
 
 function Card({ m }: { m: Model }) {
+  const lang = useLang()
+  const u = UI[lang]
   return (
-    <Link to={modelPath(m.id)} className="card">
+    <Link to={pathFor(m.id, lang)} className="card">
       <div className="ph">
         <Pic m={m} variant="card" />
         {m.badges[0] && <span className="badge">{m.badges[0]}</span>}
-        <span className="tp">{m.typ}</span>
-        {m.tours.length > 0 && <span className="d3">3D-Rundgang</span>}
+        <span className="tp">{typLabel(m.typ, lang)}</span>
+        {m.tours.length > 0 && <span className="d3">{u.badge3d}</span>}
       </div>
       <div className="cb">
         <h3>{m.name}</h3>
@@ -23,13 +26,19 @@ function Card({ m }: { m: Model }) {
         <div className="kfs">
           {m.key.slice(0, 3).map(x => <span key={x[1]}><b>{x[0]}</b> {x[1]}</span>)}
         </div>
-        <span className="go">Modell ansehen →</span>
+        <span className="go">{u.viewModel}</span>
       </div>
     </Link>
   )
 }
 
 export default function YachtModelleOverviewPage() {
+  const lang = useLang()
+  useEnglishTexts(lang)
+  const u = UI[lang]
+  const MODELS = modelsFor(lang)
+  const BRANDS = BRANDS_L[lang]
+  const root = basePath(lang)
   const [typ, setTyp] = useState<Typ>('alle')
   const [brand, setBrand] = useState('alle')
   const [q, setQ] = useState('')
@@ -39,91 +48,88 @@ export default function YachtModelleOverviewPage() {
   // Werften ohne Modelle des gewaehlten Typs ausblenden (Lagoon/Bali bauen nur Katamarane)
   const activeBrand = brand !== 'alle' && !brandHas(brand, typ) ? 'alle' : brand
 
-  const selected = useMemo(() => {
-    const needle = q.trim().toLowerCase()
-    return MODELS.filter(m =>
-      (typ === 'alle' || m.typ === typ) &&
-      (activeBrand === 'alle' || m.brand === activeBrand) &&
-      (!needle || `${m.name} ${m.brand}`.toLowerCase().includes(needle)) &&
-      (!only3d || m.tours.length > 0))
-  }, [typ, activeBrand, q, only3d])
+  // Kein useMemo: der React Compiler memoisiert selbst (Modellliste je Sprache wird in lang.ts gecacht)
+  const needle = q.trim().toLowerCase()
+  const selected = MODELS.filter(m =>
+    (typ === 'alle' || m.typ === typ) &&
+    (activeBrand === 'alle' || m.brand === activeBrand) &&
+    (!needle || `${m.name} ${m.brand}`.toLowerCase().includes(needle)) &&
+    (!only3d || m.tours.length > 0))
 
-  const byBrand = useMemo(() => {
-    const out: Record<string, Model[]> = {}
-    selected.forEach(m => { (out[m.brand] = out[m.brand] || []).push(m) })
-    return out
-  }, [selected])
+  const byBrand: Record<string, Model[]> = {}
+  selected.forEach(m => { (byBrand[m.brand] = byBrand[m.brand] || []).push(m) })
 
-  const count = `${selected.length} ${typ === 'alle' ? (selected.length === 1 ? 'Modell' : 'Modelle') : (selected.length === 1 ? typ : plural(typ))}`
+  const one = selected.length === 1
+  const count = `${selected.length} ${typ === 'alle' ? u.model[one ? 0 : 1] : (one ? typLabel(typ, lang) : typPlural(typ, lang))}`
   const tours = MODELS.filter(m => m.tours.length).length
   const reset = () => { setTyp('alle'); setBrand('alle'); setQ(''); setOnly3d(false) }
 
   return (
     <main className="ym">
       <SEO
-        title="Yachtmodelle: Katamarane & Segelyachten zum Chartern"
-        description={`${MODELS.length} Charteryachten: Katamarane und Segelyachten von Lagoon, Bali, Jeanneau, Beneteau, Bavaria, Hanse und Dufour – mit Grundrissen, Videos und 3D-Rundgängen.`}
+        title={u.ovTitle}
+        description={u.ovDesc(MODELS.length)}
         image="/images/yachtmodelle/lagoon-42.jpg"
         schema={{
           '@context': 'https://schema.org',
           '@graph': [
-            { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Yachtmodelle', item: `${BASE_DE}/yachtmodelle` }] },
+            { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: u.crumbRoot, item: absUrl(root, lang) }] },
             {
               '@type': 'CollectionPage',
-              '@id': `${BASE_DE}/yachtmodelle#seite`,
-              url: `${BASE_DE}/yachtmodelle`,
-              name: 'Yachtmodelle: Katamarane & Segelyachten zum Chartern',
-              inLanguage: 'de-DE',
-              isPartOf: { '@type': 'WebSite', name: 'Yacht-Urlaub', url: BASE_DE },
+              '@id': `${absUrl(root, lang)}#seite`,
+              url: absUrl(root, lang),
+              name: u.ovTitle,
+              inLanguage: u.lang,
+              isPartOf: { '@type': 'WebSite', name: u.site, url: absUrl('/', lang) },
               mainEntity: {
                 '@type': 'ItemList',
                 numberOfItems: MODELS.length,
-                itemListElement: MODELS.map((m, i) => ({ '@type': 'ListItem', position: i + 1, name: m.name, url: `${BASE_DE}${modelPath(m.id)}` })),
+                itemListElement: MODELS.map((m, i) => ({ '@type': 'ListItem', position: i + 1, name: m.name, url: absUrl(pathFor(m.id, lang), lang) })),
               },
             },
           ],
         }}
       />
       <section className="oh"><div className="wrap">
-        <p className="eyebrow">Yachtmodelle</p>
-        <h1>Yachtmodelle zum Chartern: finden Sie die Yacht, die zu Ihrer Crew passt</h1>
-        <p className="lead">{MODELS.length} Katamarane und Segelyachten von Lagoon, Bali, Jeanneau, Beneteau, Bavaria, Hanse und Dufour – mit Grundrissen, Kabinenversionen, Videos und 3D-Rundgängen. Sie sehen auf einen Blick, wie viele Kabinen und Bäder eine Yacht hat, wie sie sich segelt und für welche Crew sie passt.</p>
+        <p className="eyebrow">{u.crumbRoot}</p>
+        <h1>{u.ovH1}</h1>
+        <p className="lead">{u.ovLead(MODELS.length)}</p>
       </div></section>
 
       <div className="filt"><div className="wrap">
-        <div className="seg" role="group" aria-label="Typ">
+        <div className="seg" role="group" aria-label={u.type}>
           {(['alle', 'Katamaran', 'Segelyacht'] as Typ[]).map(t => (
             <button key={t} type="button" aria-pressed={typ === t} onClick={() => setTyp(t)}>
-              {t === 'alle' ? 'Alle' : plural(t)}
+              {t === 'alle' ? u.all : typPlural(t, lang)}
             </button>
           ))}
         </div>
-        <div className="chipsel" role="group" aria-label="Werft">
+        <div className="chipsel" role="group" aria-label={u.yard}>
           {['alle', ...Object.keys(BRANDS)].filter(b => b === 'alle' || brandHas(b, typ)).map(b => (
             <button key={b} type="button" aria-pressed={activeBrand === b} onClick={() => setBrand(b)}>
-              {b === 'alle' ? 'Alle Werften' : b}
+              {b === 'alle' ? u.allYards : b}
             </button>
           ))}
         </div>
         {tours > 0 && (
           <div className="chipsel">
             <button className="t3d" type="button" aria-pressed={only3d} onClick={() => setOnly3d(v => !v)}>
-              Mit 3D-Rundgang ({tours})
+              {u.only3d(tours)}
             </button>
           </div>
         )}
-        <input className="srch" type="search" placeholder="Modell suchen" aria-label="Modell suchen" value={q}
+        <input className="srch" type="search" placeholder={u.search} aria-label={u.search} value={q}
           onChange={e => setQ(e.target.value)} />
         <span className="cnt" aria-live="polite">{count}</span>
       </div></div>
 
       <div className="wrap">
         {selected.length === 0 ? (
-          <p className="empty">Kein Modell passt zu Ihrer Auswahl. <a href="#modelle" onClick={e => { e.preventDefault(); reset() }}>Filter zurücksetzen</a></p>
+          <p className="empty">{u.empty} <a href="#modelle" onClick={e => { e.preventDefault(); reset() }}>{u.reset}</a></p>
         ) : (
           Object.keys(BRANDS).filter(b => byBrand[b]).map(b => (
             <section className="brand" key={b}>
-              <h2>{b} <small>{byBrand[b].length} {byBrand[b].length === 1 ? 'Modell' : 'Modelle'}</small></h2>
+              <h2>{b} <small>{byBrand[b].length} {u.model[byBrand[b].length === 1 ? 0 : 1]}</small></h2>
               <p className="bd">{BRANDS[b]}</p>
               <div className="grid">
                 {[...byBrand[b]].sort((a, c) => a.len - c.len).map(m => <Card key={m.id} m={m} />)}

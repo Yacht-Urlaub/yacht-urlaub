@@ -34,7 +34,7 @@ Yacht-Urlaub (yacht-urlaub.net, englischsprachig: yacht-holiday.net) vermittelt 
 
 ## Englische Fassung
 
-Die englischsprachige Version läuft unter einer eigenen Domain: https://www.yacht-holiday.net — dieselben Angebote, eigene englische URLs (z. B. /cruises, /cabin-offers, /destinations, /book-now, /trip-reports).
+Die englischsprachige Version läuft unter einer eigenen Domain: https://www.yacht-holiday.net — dieselben Angebote, eigene englische URLs (z. B. /cruises, /cabin-offers, /destinations, /book-now, /trip-reports, /yacht-models mit den 52 Charteryachten samt Grundrissen, Videos und 3D-Rundgängen).
 
 ## Optional
 

@@ -1,9 +1,31 @@
 # Yachtmodelle (/yachtmodelle)
 
 Stand: November 2026. Übersicht `/yachtmodelle`, je Modell `/yachtmodelle/<id>` (52 Modelle).
-Bisher **nur Deutsch**: Daten und Texte liegen nur auf Deutsch vor, es gibt keine EN-Route, keinen
-Menüpunkt auf yacht-holiday.net und kein hreflang. Eine englische Fassung braucht übersetzte Daten
-(`src/data/yachtModels.json`, ca. 107 KB) und Routen im Muster `/yacht-models` (siehe `i18n.ts`).
+**Zweisprachig:** Deutsch auf yacht-urlaub.net, Englisch auf yacht-holiday.net unter `/yacht-models` und
+`/yacht-models/<id>` (intern `/en/yacht-models/...`, Paar in `i18n.ts`, damit hreflang und Sprachumschalter
+stimmen). Dieselben Komponenten, die Sprache kommt aus `useLang()`.
+
+## Englische Fassung pflegen
+
+- **Eine Datenquelle:** `src/data/yachtModels.json` bleibt deutsch. Die englischen Texte stehen in
+  `src/data/yachtModels.en.json` als Wörterbuch „deutscher Satz → englischer Satz“ (Schlüssel ist der
+  deutsche Text exakt wie in der JSON). `src/pages/yachtmodelle/lang.ts` übersetzt damit beim Rendern
+  (`localizeModel`). Reine Zahlen mit Einheit (`11,4 m`, `1.120 l`, `2 × 45 PS`) rechnet `lang.ts` selbst um
+  (Dezimalpunkt, Tausenderkomma, PS → hp) und brauchen keinen Eintrag.
+- **Nach jeder Textänderung in `yachtModels.json` (neues Modell, geänderter Satz):**
+  `node scripts/check-yachtmodelle-en.cjs` – meldet fehlende, leere und veraltete Einträge. Fehlende Sätze
+  ins Wörterbuch eintragen (britisches Englisch, Bootsbegriffe: Salon = saloon, Krängung = heel, Heckstufen = stern
+  steps, Beiboot = tender/dinghy, Laufdeck = side deck, Eignerkabine = owner's cabin). Ohne Eintrag bleibt der
+  Satz auf der englischen Seite deutsch.
+- **Oberflächentexte** (Überschriften, Formular, Hinweise, Werften-Texte, Ausstattung): `lang.ts` (`UI`, `BRANDS_L`,
+  `EQUIP_L`, `EXTRAS_L`); Title/Description/FAQ-Standardfragen: `data.ts` (`modelTitle`, `modelDescription`, `faqsFor`
+  mit Parameter `lang`).
+- **Wörterbuch wird nur auf der englischen Seite geladen** (`useEnglishTexts()`, eigener Chunk), deutsche Besucher
+  laden es nicht.
+- **Neue Sitemap-Einträge** für jedes neue Modell in `public/sitemap.xml` (DE) **und** `public/sitemap-en.xml`
+  (`/yacht-models/<id>`).
+- **Prüfen:** gerenderte `description`/`og:description`, Schema und Alt-Texte auf `en.localhost` auf deutsche
+  Reststrings und `yacht-urlaub.net`-URLs ansehen (siehe CLAUDE.md).
 
 ## Dateien
 

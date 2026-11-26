@@ -1,15 +1,18 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from '../../router'
+import { useLang } from '../../i18n'
 import type { Model } from './data'
+import { UI } from './lang'
 import './yachtmodelle.css'
 
 /** Illustration, solange es kein eigenes Foto des Modells gibt. */
 export function Illu({ m }: { m: Model }) {
+  const u = UI[useLang()]
   const gid = useId().replace(/:/g, '')
   const cat = m.typ === 'Katamaran'
   const mx = cat ? 290 : 300
   return (
-    <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label={`${m.name}, Illustration`}>
+    <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label={u.illu(m.name)}>
       <defs>
         <linearGradient id={gid} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#0f2d47" /><stop offset=".7" stopColor="#0275b2" /><stop offset="1" stopColor="#0ea5e9" />
@@ -40,13 +43,13 @@ export function Illu({ m }: { m: Model }) {
 /** Bild des Modells: lokal gespeichertes Werft-Foto, sonst Illustration. Es wird bewusst NICHTS direkt von YouTube/Matterport geladen: vor dem
  *  Klick darf keine Verbindung zu Dritten entstehen. */
 export function Pic({ m, variant, eager, alt }: { m: Model; variant: 'card' | 'poster'; eager?: boolean; alt?: string }) {
+  const lang = useLang()
+  const u = UI[lang]
   const [failed, setFailed] = useState(false)
   const src = variant === 'card' ? m.card : m.poster
   if (!src || failed) return <Illu m={m} />
-  const len = String(m.len).replace('.', ',')
-  const text = alt ?? (variant === 'card'
-    ? `${m.name} – ${m.typ} von ${m.brand}, ${len} m`
-    : `${m.name} – ${m.typ} von ${m.brand} zum Chartern`)
+  const len = lang === 'en' ? String(m.len) : String(m.len).replace('.', ',')
+  const text = alt ?? (variant === 'card' ? u.picCard(m, len) : u.picPoster(m))
   // WebP zuerst (rund 40 % kleiner), JPG als Fallback; das JPG bleibt auch die og:image-Datei.
   const webp = src.replace(/\.jpe?g$/i, '.webp')
   return (
@@ -73,10 +76,10 @@ const YT_ORIGIN = 'https://www.youtube-nocookie.com'
  *  disablekb=1 (keine Tastenkuerzel), cc_load_policy=0 (keine Untertitel erzwingen), fs=1 (Vollbild erlaubt),
  *  playsinline=1. enablejsapi=1 + origin: damit meldet der Player per postMessage, wann das Video zu
  *  Ende ist (siehe Embed: dann wird der Player entfernt, es erscheinen keine Vorschlaege). */
-function youtubeSrc(id: string) {
+function youtubeSrc(id: string, hl: string) {
   const q = new URLSearchParams({
     autoplay: '1', rel: '0', iv_load_policy: '3', disablekb: '1', cc_load_policy: '0', fs: '1',
-    playsinline: '1', modestbranding: '1', hl: 'de', enablejsapi: '1',
+    playsinline: '1', modestbranding: '1', hl, enablejsapi: '1',
   })
   if (typeof window !== 'undefined') q.set('origin', window.location.origin)
   return `${YT_ORIGIN}/embed/${encodeURIComponent(id)}?${q.toString()}`
@@ -88,12 +91,13 @@ function youtubeSrc(id: string) {
  *  nichts. Ist das Video zu Ende, wird der Player entfernt und das Vorschaubild mit Play-Knopf
  *  erscheint wieder - so zeigt YouTube nie seine Endbildschirm-Vorschlaege. */
 export function Embed(p: EmbedProps) {
+  const u = UI[useLang()]
   const [on, setOn] = useState(false)
   const frame = useRef<HTMLIFrameElement>(null)
   const isTour = p.kind === 'tour'
   const src = isTour
     ? `https://my.matterport.com/show/?m=${encodeURIComponent(p.id)}&play=1&qs=1&brand=0`
-    : youtubeSrc(p.id)
+    : youtubeSrc(p.id, u.ytHl)
 
   useEffect(() => {
     if (!on || isTour) return
@@ -126,7 +130,7 @@ export function Embed(p: EmbedProps) {
           ref={frame}
           src={src}
           onLoad={isTour ? undefined : listen}
-          title={isTour ? `3D-Rundgang: ${p.title}` : `Video: ${p.title}`}
+          title={isTour ? u.tourTitle(p.title) : u.videoTitle(p.title)}
           allow={isTour ? 'fullscreen; xr-spatial-tracking' : 'autoplay; encrypted-media; fullscreen'}
           allowFullScreen
           referrerPolicy="strict-origin-when-cross-origin"
@@ -136,9 +140,9 @@ export function Embed(p: EmbedProps) {
         <>
           <Pic m={p.m} variant="poster" eager={p.eager} alt={p.eager ? undefined : ''} />
           <button className="play" type="button" onClick={() => setOn(true)}
-            aria-label={isTour ? `3D-Rundgang starten: ${p.title}` : `Video abspielen: ${p.title}`}>
+            aria-label={isTour ? u.tourStartAria(p.title) : u.videoPlay(p.title)}>
             <i aria-hidden="true" />
-            <b>{isTour ? '3D-Rundgang starten' : p.title}</b>
+            <b>{isTour ? u.tourStart : p.title}</b>
             <small>{isTour ? `${p.title} · Matterport` : `${p.by} · YouTube`}</small>
           </button>
         </>
@@ -148,12 +152,11 @@ export function Embed(p: EmbedProps) {
 }
 
 export function EmbedNote({ kind, dark }: { kind: 'video' | 'tour'; dark?: boolean }) {
+  const u = UI[useLang()]
   return (
     <p className={`privnote${dark ? ' dk' : ''}`}>
-      {kind === 'tour'
-        ? 'Mit dem Klick laden Sie den 3D-Rundgang von Matterport. Dabei werden Daten an Matterport übertragen. '
-        : 'Mit dem Klick laden Sie das Video von YouTube (Datenschutzmodus). Dabei werden Daten an YouTube übertragen. '}
-      <Link to="/datenschutz">Mehr in der Datenschutzerklärung</Link>.
+      {kind === 'tour' ? u.noteTour : u.noteVideo}
+      <Link to={u.privacyPath}>{u.noteLink}</Link>.
     </p>
   )
 }

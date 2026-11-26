@@ -79,7 +79,9 @@ gesichert). Nicht `dist/index.html` direkt verwenden: die ist nach dem
 Build schon der eingefrorene Startseiten-Snapshot und liess sonst
 Title/Description der Startseite doppelt in jedem Unterseiten-Snapshot
 landen. Gegenpruefung nach dem Lauf: genau ein `<meta name="description"`
-pro Snapshot.
+pro Snapshot und genau ein `<title>` (zaehlen mit `<title[^>]*>[^<]+</title>`, weil der Kommentar in
+`index.html` das Wort selbst enthaelt; der statische Platzhalter-Title der Huelle wird im Skript
+entfernt; zwei Titel wuerden je nach Crawler den falschen Seitentitel liefern).
 
 Das `rm -rf dist` vorneweg ist seit dem Umstieg auf Code-Splitting
 (`React.lazy()` pro Route in `App.tsx`, siehe Kommentar dort) nicht mehr
@@ -172,7 +174,7 @@ zu nutzen (Markenstimme, Textqualität).
 
 ## Yachtmodelle
 
-Bereich `/yachtmodelle` (Übersicht + 52 Modellseiten, nur Deutsch). Daten in
+Bereich `/yachtmodelle` (Übersicht + 52 Modellseiten) mit englischem Gegenstück `/yacht-models` auf yacht-holiday.net (EN-Texte: `src/data/yachtModels.en.json`, Prüfung `node scripts/check-yachtmodelle-en.cjs`). Daten in
 `src/data/yachtModels.json`, Aufbau, Datenschutz-Regeln (Videos/3D erst nach Klick, keine
 Fremd-Vorschaubilder) und Ablauf für neue Modelle: `docs/yachtmodelle.md`. Jede Modellseite steht in
 `public/sitemap.xml` und bekommt einen Snapshot.

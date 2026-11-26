@@ -132,6 +132,7 @@ export const routePairs: [de: string, en: string][] = [
   ['/destinationen/thailand', '/en/destinations/thailand'],
   ['/destinationen/seychellen', '/en/destinations/seychelles'],
   ['/yachten', '/en/yachts'],
+  ['/yachtmodelle', '/en/yacht-models'],
   ['/charter', '/en/charter/yacht-charter'],
   ['/skipper', '/en/charter/crew-charter'],
   ['/crew', '/en/contact/crew'],
@@ -185,6 +186,9 @@ export function canonicalPath(pathname: string): string {
   if (m && enPkgSlugs[m[1]]) return `/packages/${enPkgSlugs[m[1]]}`
   m = pathname.match(/^\/en\/destinations\/([^/]+)$/)
   if (m) return `/destinationen/${enDestSlugs[m[1]] ?? m[1]}`
+  // Yachtmodelle: gleiche Modell-ID in beiden Sprachen
+  m = pathname.match(/^\/en\/yacht-models\/([^/]+)$/)
+  if (m) return `/yachtmodelle/${m[1]}`
   m = pathname.match(/^\/en\/cruises\/([^/]+)$/)
   if (m) return `/toerns/${enCruiseToDe[m[1]] ?? m[1]}`
   return pathname
@@ -220,6 +224,8 @@ export function langPair(pathname: string): { de: string; en: string } | null {
     const en = Object.entries(enDestSlugs).find(([, id]) => id === m![1])?.[0]
     return en ? { de, en: `/en/destinations/${en}` } : null
   }
+  m = de.match(/^\/yachtmodelle\/([^/]+)$/)
+  if (m) return { de, en: `/en/yacht-models/${m[1]}` }
   m = de.match(/^\/toerns\/([^/]+)$/)
   if (m) {
     const en = Object.entries(enCruiseToDe).find(([, id]) => id === m![1])?.[0]

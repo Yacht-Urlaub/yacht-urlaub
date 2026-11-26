@@ -41,71 +41,65 @@ export interface Model {
 
 export const MODELS: Model[] = raw as unknown as Model[]
 
-export const BASE_PATH = '/yachtmodelle'
+// Pfade, Werften-/Ausstattungstexte und Oberflaechentexte je Sprache: siehe lang.ts
 
-export const BRANDS: Record<string, string> = {
-  Lagoon: 'Der Weltmarktführer bei Fahrtenkatamaranen – in fast jedem Charterrevier zu Hause.',
-  Bali: 'Katamarane mit „Open Space“: große Tür zum Cockpit und festes Vordeck statt Netzen.',
-  Jeanneau: 'Sun-Odyssey-Fahrtenyachten mit sicheren Laufdecks und die Luxuslinie Jeanneau Yachts.',
-  Beneteau: 'Oceanis und First – die bekanntesten Fahrten- und Sportyachten aus Frankreich.',
-  Bavaria: 'Deutsche Segelyachten mit viel Raum und großen Betten.',
-  Hanse: 'Easy Sailing aus Greifswald: große Cockpits, alle Leinen zum Steuerstand.',
-  Dufour: 'Französische Fahrtenyachten nach der Idee „Instinctive Sailing“: sportlich zu segeln und viel Leben im Freien.',
-}
-
-export const EQUIP: Record<Model['typ'], Record<string, string[]>> = {
-  Katamaran: {
-    Wohlfühlen: ['Bettwäsche und Handtücher (je nach Flotte)', 'Warmwasser', 'Kühlschrank und Gefrierfach', 'Bimini als Sonnenschutz', 'Cockpittisch für die ganze Crew'],
-    'Spaß am Wasser': ['Badeplattform und Badeleiter', 'Beiboot mit Außenborder', 'Sonnenpolster'],
-  },
-  Segelyacht: {
-    Wohlfühlen: ['Bettwäsche und Handtücher (je nach Flotte)', 'Warmwasser', 'Kühlschrank', 'Sprayhood und Bimini', 'Cockpittisch'],
-    'Spaß am Wasser': ['Badeplattform und Badeleiter', 'Beiboot mit Außenborder'],
-  },
-}
-
-export const EXTRAS = ['Klimaanlage', 'Generator', 'Wassermacher', 'SUP-Board', 'Schnorchelausrüstung', 'Skipper', 'Hostess oder Koch']
-
-export const plural = (t: Model['typ']) => (t === 'Katamaran' ? 'Katamarane' : 'Segelyachten')
-
-export const modelPath = (id: string) => `${BASE_PATH}/${id}`
-
-/** Wert einer Kennzahl ("Kabinen", "Länge" ...) aus model.key */
+/** Wert einer Kennzahl aus model.key. Labels deutsch; bei einem englisch lokalisierten Modell
+ *  (siehe lang.ts) werden die englischen Gegenstuecke mitgesucht. */
+const KEY_EN: Record<string, string> = { Länge: 'Length', Kabinen: 'Cabins', Gäste: 'Guests', Kojen: 'Berths' }
 export const keyValue = (m: Model, labels: string[]) => {
   for (const l of labels) {
-    const k = m.key.find(y => y[1] === l)
+    const k = m.key.find(y => y[1] === l || y[1] === KEY_EN[l])
     if (k) return k[0]
   }
   return '–'
 }
 
-/** Meta-Description, je Modell einzigartig: Suchbegriff ("<Name> chartern"), Eckdaten und
- *  was die Seite bietet; danach – falls Platz ist – der erste Satz der Tagline. Ziel: 120–158 Zeichen,
- *  damit Suchergebnisse und Link-Vorschauen den Satz nicht abschneiden. */
-export function modelDescription(m: Model): string {
+/** Meta-Description, je Modell einzigartig: Suchbegriff ("<Name> chartern" / "Charter the <Name>"), Eckdaten und
+ *  was die Seite bietet; danach - falls Platz ist - der erste Satz der Tagline. Ziel: 100-158 Zeichen,
+ *  damit Suchergebnisse und Link-Vorschauen den Satz nicht abschneiden.
+ *  Erwartet bei lang === 'en' ein englisch lokalisiertes Modell (lang.ts localizeModel). */
+export function modelDescription(m: Model, lang: 'de' | 'en' = 'de'): string {
   const cab = keyValue(m, ['Kabinen'])
-  const len = String(m.len).replace('.', ',').replace(/,(\d)$/, ',$10')
-  const extras = ['Grundrisse', ...(m.videos.length ? ['Video'] : []), ...(m.tours.length ? ['3D-Rundgang'] : [])]
+  const en = lang === 'en'
+  const len = en ? String(m.len).replace(/\.(\d)$/, '.$10') : String(m.len).replace('.', ',').replace(/,(\d)$/, ',$10')
+  const extras = en
+    ? ['Floor plans', ...(m.videos.length ? ['video'] : []), ...(m.tours.length ? ['3D tour'] : [])]
+    : ['Grundrisse', ...(m.videos.length ? ['Video'] : []), ...(m.tours.length ? ['3D-Rundgang'] : [])]
   const list = extras.length > 1 ? `${extras.slice(0, -1).join(', ')} & ${extras[extras.length - 1]}` : extras[0]
-  const base = `${m.name} chartern: ${m.typ} von ${m.brand} mit ${cab} Kabinen, ${len} m. ${list} – jetzt Angebot anfragen.`
+  const typ = en ? (m.typ === 'Katamaran' ? 'catamaran' : 'sailing yacht') : m.typ
+  const base = en
+    ? `Charter the ${m.name}: ${typ} by ${m.brand} with ${cab} cabins, ${len} m. ${list} – request an offer now.`
+    : `${m.name} chartern: ${typ} von ${m.brand} mit ${cab} Kabinen, ${len} m. ${list} – jetzt Angebot anfragen.`
   const first = m.tagline.split(/(?<=[.!?])\s/)[0]
   const withTag = `${base} ${first}`
   return withTag.length <= 158 ? withTag : base
 }
 
-export function modelTitle(m: Model): string {
+export function modelTitle(m: Model, lang: 'de' | 'en' = 'de'): string {
+  if (lang === 'en') return `${m.name} – ${m.typ === 'Katamaran' ? 'catamaran' : 'sailing yacht'} charter`
   return `${m.name} – ${m.typ} chartern`
 }
 
 /** Vergleichbare Modelle gleichen Typs, nach Laenge nahe an m */
-export function similarModels(m: Model): Model[] {
-  return MODELS.filter(x => x.typ === m.typ)
+export function similarModels(m: Model, pool: Model[] = MODELS): Model[] {
+  return pool.filter(x => x.typ === m.typ)
     .sort((a, b) => Math.abs(a.len - m.len) - Math.abs(b.len - m.len))
     .slice(0, 4)
     .sort((a, b) => a.len - b.len)
 }
 
-export function faqsFor(m: Model): [string, string][] {
+export function faqsFor(m: Model, lang: 'de' | 'en' = 'de'): [string, string][] {
+  if (lang === 'en') {
+    const base: [string, string][] = m.typ === 'Katamaran'
+      ? [['Do you get seasick on a catamaran?', 'Much less often than on a monohull. A catamaran hardly heels and lies calmly at anchor.']]
+      : [['Does the yacht heel when sailing?', 'Yes, that is part of the sailing feel. If you prefer it calmer, plan shorter legs in suitable wind – or choose a catamaran.']]
+    return [
+      ...m.faq,
+      ...base,
+      ['Can I charter with or without a skipper?', 'Both are possible. Without a skipper you need a valid boat licence and experience, and depending on the area a radio certificate too. With a skipper, your skipper takes care of navigation and manoeuvres – and you enjoy the week.'],
+      [`What does a week on the ${m.name} cost?`, 'It depends on area, season and year of build. We send you an offer including all extra costs, so you know in advance what the week will cost.'],
+    ]
+  }
   const base: [string, string][] = m.typ === 'Katamaran'
     ? [['Wird man auf einem Katamaran seekrank?', 'Deutlich seltener als auf einer Segelyacht. Ein Katamaran legt sich kaum zur Seite und liegt vor Anker ruhig.']]
     : [['Legt sich die Yacht beim Segeln auf die Seite?', 'Ja, das gehört zum Segelgefühl dazu. Wer es ruhiger mag, plant kürzere Etappen bei passendem Wind – oder wählt einen Katamaran.']]
