@@ -1,3 +1,21 @@
+# Zweisprachigkeit: immer Deutsch UND Englisch (verbindlich)
+
+Jede neue Seite, jede neue Funktion und **jede nachträgliche Änderung** (Text, Bild, Preis, Menüpunkt,
+Formular, SEO-Angabe, Sitemap, llms.txt) gilt für **beide Sprachen**: Deutsch auf yacht-urlaub.net und Englisch
+auf yacht-holiday.net. Das ist der Normalfall und wird ohne Nachfrage so umgesetzt – auch bei kleinen Korrekturen
+im Nachgang, nicht nur beim ersten Anlegen.
+
+- **Nie nur eine Sprache liefern.** Ein Fix oder Inhalt nur auf der deutschen Seite gilt als unfertig.
+- **Im Zweifel fragen.** Ist nicht zu 100 % klar, ob etwas in beiden Sprachen angelegt werden soll (z. B. Inhalt,
+  der nur für den deutschen Markt gilt, rechtliche Texte, Angebote ohne englisches Pendant), **vor dem Umsetzen
+  mit `AskUserQuestion` nachfragen**, nicht raten. Wird bewusst nur eine Sprache umgesetzt, das im Chat benennen.
+- **Beim Planen immer mitdenken:** EN-Route und Paar in `src/i18n.ts` (hreflang, Sprachumschalter), Menüpunkt in
+  beiden Navigationen (`Navbar.tsx`), Sitemap `public/sitemap.xml` **und** `public/sitemap-en.xml`, englische
+  Texte/Alt-Texte/Description/Schema, Snapshots für beide Domains.
+- **Gegenprüfen** wie im SEO-Check oben (gerenderte Meta-Tags auf `localhost` und `en.localhost`).
+- **Yachtmodelle:** Texte-Änderung in `src/data/yachtModels.json` → `src/data/yachtModels.en.json` mitpflegen und
+  `node scripts/check-yachtmodelle-en.cjs` laufen lassen (siehe `docs/yachtmodelle.md`).
+
 # SEO-Check bei neuen/geänderten Seiten
 
 Bei jeder neuen Seite und jeder inhaltlichen Änderung an einer bestehenden

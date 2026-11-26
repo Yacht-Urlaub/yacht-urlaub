@@ -46,7 +46,7 @@ niemand prüfen kann, stehen hier nicht.
 - **Einzigartig pro Seite:** Tagline, Description und „Leben an Bord“ je Modell eigenständig. Keine Satzbausteine, die auf 50 Seiten identisch stehen (Ausnahme: sachliche Standardantworten in der FAQ).
 - **Glaubwürdigkeit:** nur belegbare Aussagen; Quellen sichtbar (z. B. Quelle des 3D-Rundgangs); Vertrauenssignale nur, wenn echt (Trusted Shops, Google-Bewertungen).
 - **Handlungsaufforderung** je Seite eindeutig („Verfügbarkeit anfragen“).
-- **Beide Sprachen:** Deutsche und englische Fassung getrennt texten; englische Seiten auf `yacht-holiday.net` mit eigener Description, eigenen Alt-Texten und Schema (keine deutschen Reststrings, keine `yacht-urlaub.net`-URLs). `/yachtmodelle` (DE) und `/yacht-models` (EN) teilen Komponenten und Daten, die englischen Texte pflegt `src/data/yachtModels.en.json`, siehe `docs/yachtmodelle.md`.
+- **Beide Sprachen, immer (auch bei nachträglichen Änderungen; im Zweifel nachfragen, siehe CLAUDE.md):** Deutsche und englische Fassung getrennt texten; englische Seiten auf `yacht-holiday.net` mit eigener Description, eigenen Alt-Texten und Schema (keine deutschen Reststrings, keine `yacht-urlaub.net`-URLs). `/yachtmodelle` (DE) und `/yacht-models` (EN) teilen Komponenten und Daten, die englischen Texte pflegt `src/data/yachtModels.en.json`, siehe `docs/yachtmodelle.md`.
 
 ## 5. Messen
 
