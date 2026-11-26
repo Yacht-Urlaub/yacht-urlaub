@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 //
 // Erzeugt die lokalen Modellbilder fuer /yachtmodelle aus Fotos der Werft-Websites
-// (public/images/yachtmodelle/<id>.jpg = 1280x720, <id>-card.jpg = 640x400).
+// (public/images/yachtmodelle/<id>-foto.jpg = 1280x720, <id>-foto-card.jpg = 640x400;
+// der Zusatz "-foto" im Namen umgeht den 30-Tage-Browser-Cache fuer /images/*).
 //
 // Quellen stehen in scripts/yachtmodelle-photos.json (Modell-ID -> Foto-URL auf der
 // Werft-Seite). Es wird bewusst ein Aussenfoto/Segelfoto gewaehlt, kein Video-Vorschaubild.
@@ -19,7 +20,7 @@
 //   node scripts/yachtmodelle-photos.cjs --force    # alle neu
 //
 // Danach in src/data/yachtModels.json `poster`/`card` eintragen (Muster
-// /images/yachtmodelle/<id>.jpg bzw. <id>-card.jpg) und den Snapshot-Ablauf aus CLAUDE.md laufen lassen.
+// /images/yachtmodelle/<id>-foto.jpg bzw. <id>-foto-card.jpg) und den Snapshot-Ablauf aus CLAUDE.md laufen lassen.
 
 const { execFileSync } = require('node:child_process')
 const { existsSync, readFileSync, mkdtempSync } = require('node:fs')
@@ -36,8 +37,8 @@ const tmp = mkdtempSync(path.join(os.tmpdir(), 'ym-photos-'))
 for (const m of models) {
   const url = photos[m.id]
   if (!url || m.brand === 'Hanse') continue
-  const poster = path.join(OUT, `${m.id}.jpg`)
-  const card = path.join(OUT, `${m.id}-card.jpg`)
+  const poster = path.join(OUT, `${m.id}-foto.jpg`)
+  const card = path.join(OUT, `${m.id}-foto-card.jpg`)
   if (!force && existsSync(poster) && existsSync(card)) continue
   const src = path.join(tmp, `${m.id}.img`)
   try {

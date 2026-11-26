@@ -34,7 +34,7 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
   Vor dem Eintragen den Kanal prüfen: `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=<ID>&format=json`
   liefert `author_name`. Das Feld `by` heißt „Offizielles Video von <Kanal>“. Modelle ohne passendes Video
   (Bavaria Voyager 45, Hanse 461) zeigen den Hinweis „Ein Video folgt“.
-- **Modellbilder liegen lokal** (`public/images/yachtmodelle/<id>.jpg` 1280×720 und `<id>-card.jpg` 640×400). Es sind
+- **Modellbilder liegen lokal** (`public/images/yachtmodelle/<id>-foto.jpg` 1280×720 und `<id>-foto-card.jpg` 640×400; „-foto“ im Namen umgeht den 30-Tage-Cache, ersetzte Bilder immer unter neuem Namen ablegen). Es sind
   Außen-/Segelfotos von den Websites der Werften (Lagoon, Bali, Jeanneau, Beneteau, Bavaria), **keine** YouTube-Vorschaubilder.
   Die Quell-URL je Modell steht in `scripts/yachtmodelle-photos.json`; erzeugt mit `node scripts/yachtmodelle-photos.cjs`
   (braucht Netz auf die Werft-Hosts, `curl`, ImageMagick). Lagoon 42 nutzt das eigene Foto; Hanse und Voyager 45 haben kein Bild (Illustration).
