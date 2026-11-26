@@ -1,6 +1,6 @@
 # Yachtmodelle (/yachtmodelle)
 
-Stand: November 2026. Übersicht `/yachtmodelle`, je Modell `/yachtmodelle/<id>` (41 Modelle).
+Stand: November 2026. Übersicht `/yachtmodelle`, je Modell `/yachtmodelle/<id>` (47 Modelle).
 Bisher **nur Deutsch**: Daten und Texte liegen nur auf Deutsch vor, es gibt keine EN-Route, keinen
 Menüpunkt auf yacht-holiday.net und kein hreflang. Eine englische Fassung braucht übersetzte Daten
 (`src/data/yachtModels.json`, ca. 107 KB) und Routen im Muster `/yacht-models` (siehe `i18n.ts`).
@@ -30,7 +30,7 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
 
 ## Videos und Bilder
 - **Nur offizielle Hersteller-Videos** (Kanäle Bali Catamarans, Lagoon Catamarans, Jeanneau Officiel, Beneteau Yacht Channel,
-  BAVARIA YACHTS, HanseYachts AG). Keine Videos von Händlern, Charterfirmen oder Magazinen (das wäre Werbung für Dritte).
+  BAVARIA YACHTS, HanseYachts AG, Dufour). Keine Videos von Händlern, Charterfirmen oder Magazinen (das wäre Werbung für Dritte).
   Vor dem Eintragen den Kanal prüfen: `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=<ID>&format=json`
   liefert `author_name`. Das Feld `by` heißt „Offizielles Video von <Kanal>“. Modelle ohne passendes Video
   (Bavaria Voyager 45, Hanse 461) zeigen den Hinweis „Ein Video folgt“.
@@ -63,6 +63,7 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
   Beneteau aus den Dateinamen (Kabinen/Bäder), bei Jeanneau neutral „Variante 1/2/3“. **Ohne Plan:** Hanse (keine Rechte an
   eigenen Bildern), Bavaria (die Werft zeigt nur Teilmodule wie Bug-, Heck- oder Salonbereich, keine Gesamtpläne), Bali 4.8
   (Modell nicht mehr auf der Bali-Seite), Sun Odyssey 440 und 490 (alte Seiten ohne Pläne), Voyager 45. Dort steht „Grundrisse folgen“.
+- **Dufour** (November 2026, 6 aktuelle Modelle 37, 39, 41, 44, 48, 54): Daten, Fotos und Pläne von www.dufour-yachts.com, Videos vom offiziellen Kanal. Die Pläne sind dort hochkant (Bug oben) mit Zusatzmodulen am Rand; sie wurden auf den Rumpf zugeschnitten und um 90° gedreht, damit alle Pläne der Seite quer liegen. Bewusst nicht aufgenommen: ältere Baureihen (z. B. Dufour 390, 412, 430, 460, 470, 520, 530), die in Charterflotten häufig sind; für die Dufour 48 gibt es nur einen französisch betitelten Image-Film (daher kein Video).
 - Es gibt bewusst **keinen** Abschnitt „Kosten“ (Preis nur im Angebot).
 
 ## Anfrageformular

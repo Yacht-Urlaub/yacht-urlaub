@@ -7138,5 +7138,1110 @@
   "faq": [],
   "extras": [],
   "tours": []
+ },
+ {
+  "brand": "Dufour",
+  "typ": "Segelyacht",
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [],
+  "id": "dufour-37",
+  "name": "Dufour 37",
+  "len": 10.77,
+  "year": "Neu seit 2025",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.dufour-yachts.com/en/sailboats/dufour-37/",
+  "tagline": "Die kompakte Dufour für Familientörns: viel Platz im Vorschiff, Außenküche im Cockpit und leicht zu segeln.",
+  "videos": [
+   {
+    "id": "DJ2S0MbusZ4",
+    "title": "Dufour 37 – Offizielles Video",
+    "by": "Offizielles Video von Dufour"
+   }
+  ],
+  "key": [
+   [
+    "10,77 m",
+    "Länge"
+   ],
+   [
+    "2–3",
+    "Kabinen"
+   ],
+   [
+    "1–2",
+    "Bäder"
+   ],
+   [
+    "4–6",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Dufour 37 ist für entspanntes Küstensegeln mit Familie oder Freunden gebaut. Der nach vorn verbreiterte Rumpf schenkt dem Eignerbereich im Bug ein echtes Mittelbett, wie man es sonst nur auf größeren Yachten findet.",
+   "Das Leben spielt sich draußen ab: Ein großzügiges, durchgehendes Cockpit und die Außenküche machen den Platz hinter dem Steuerstand zum Treffpunkt der Crew. Unter Deck gibt es je nach Version eine große Achterkabine oder zwei symmetrische Achterkabinen."
+  ],
+  "plus": [
+   "Echtes Mittelbett in der Bugkabine",
+   "Außenküche im Cockpit",
+   "Zwei Versionen: große oder zwei Achterkabinen",
+   "Überschaubare Größe, leicht zu handhaben",
+   "Viel Licht und helle Holztöne unter Deck"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Bei der 2-Kabinen-Version nur ein Bad",
+   "Für größere Gruppen zu klein"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "2–3 / 1–2"
+   ],
+   [
+    "Gäste",
+    "4–6"
+   ],
+   [
+    "Länge",
+    "10,77 m"
+   ],
+   [
+    "Breite",
+    "3,80 m"
+   ],
+   [
+    "Tiefgang",
+    "1,90 m"
+   ],
+   [
+    "Wassertank",
+    "160 l"
+   ]
+  ],
+  "life": [
+   [
+    "Außenküche",
+    "Kochen und Essen im Freien, mit Blick aufs Meer.",
+    "sun"
+   ],
+   [
+    "Bugkabine mit Mittelbett",
+    "Von beiden Seiten zugänglich, viel Volumen im Vorschiff.",
+    "bed"
+   ],
+   [
+    "Cockpit für alle",
+    "Durchgehend und großzügig, auch beim Manövrieren übersichtlich.",
+    "door"
+   ],
+   [
+    "Küstentörn mit Familie",
+    "Kurze Etappen, viel Zeit zum Baden und Ankern.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "2 Kabinen · 1 Bad",
+    "cab": "2",
+    "bath": "1",
+    "fit": "Paare, kleine Familien",
+    "note": "Eignerkabine vorn, große Achterkabine"
+   },
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "1–2",
+    "fit": "Familien mit Kindern, Freunde",
+    "note": "Zwei symmetrische Achterkabinen"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/dufour-37-1-v1.webp",
+    "caption": "2 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-37-2-v1.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-37-3-v1.webp",
+    "caption": "Deckplan"
+   }
+  ],
+  "fitYes": [
+   "Küstentörns mit der Familie planen",
+   "eine handliche Yacht suchen",
+   "gern im Cockpit leben"
+  ],
+  "fitNo": [
+   "mit mehr als 6 Personen reisen",
+   "sehr viel Stauraum brauchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "10,77 m"
+   ],
+   [
+    "Breite",
+    "3,80 m"
+   ],
+   [
+    "Tiefgang",
+    "1,90 m"
+   ],
+   [
+    "Verdrängung",
+    "6.747 kg"
+   ],
+   [
+    "Wassertank",
+    "160 l"
+   ],
+   [
+    "Dieseltank",
+    "160 l"
+   ],
+   [
+    "Motor",
+    "29 PS"
+   ],
+   [
+    "Konstrukteur",
+    "Umberto Felci"
+   ]
+  ],
+  "poster": "/images/yachtmodelle/dufour-37-foto.jpg",
+  "card": "/images/yachtmodelle/dufour-37-foto-card.jpg"
+ },
+ {
+  "brand": "Dufour",
+  "typ": "Segelyacht",
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [],
+  "id": "dufour-39",
+  "name": "Dufour 39",
+  "len": 12.0,
+  "year": "Neu seit 2026",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.dufour-yachts.com/en/sailboats/dufour-39/",
+  "tagline": "Zwölf Meter, drei Wege zu segeln: minimalistisch, komfortabel oder sportlich – mit großem Dachfenster in der Eignerkabine.",
+  "videos": [
+   {
+    "id": "A1dd9uApIlM",
+    "title": "Dufour 39 – Image-Film",
+    "by": "Offizielles Video von Dufour"
+   }
+  ],
+  "key": [
+   [
+    "12,00 m",
+    "Länge"
+   ],
+   [
+    "2–3",
+    "Kabinen"
+   ],
+   [
+    "1–2",
+    "Bäder"
+   ],
+   [
+    "4–6",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Dufour 39 entstand aus der Zusammenarbeit von Umberto Felci und Luca Ardizio. Der Knickspantrumpf mit viel Breite nach vorn schafft innen mehr Raum, als man bei 39 Fuß erwartet, ein großes Aufbaufenster in der Eignerkabine holt den Himmel herein.",
+   "Die Yacht gibt es in drei Cockpit-Varianten: schlicht mit offenem Heck, als Komfort-Version mit „Skylounge“-Cockpit, Außenküche und Badeplattform – oder als Performance-Version mit sechs Winschen. Unter Deck gibt es zwei oder drei Kabinen."
+  ],
+  "plus": [
+   "Drei Cockpit-Varianten: Minimal, Komfort, Performance",
+   "Großes Dachfenster in der Eignerkabine",
+   "Umwandelbarer Salon mit längs angeordneter Pantry",
+   "Zwei Steuerstände",
+   "Rumpf im Vakuuminfusionsverfahren"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Welche Cockpit-Variante eine Charteryacht hat, ist offen",
+   "Brandneu: Erfahrungsberichte fehlen noch"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "2–3 / 1–2"
+   ],
+   [
+    "Gäste",
+    "4–6"
+   ],
+   [
+    "Länge",
+    "12,00 m"
+   ],
+   [
+    "Breite",
+    "4,10 m"
+   ],
+   [
+    "Tiefgang",
+    "1,95 m"
+   ],
+   [
+    "Wassertank",
+    "160 l"
+   ]
+  ],
+  "life": [
+   [
+    "Skylounge-Cockpit",
+    "Durchgehende Heckbank, Klapp-Steuersitze und großer Cockpittisch.",
+    "sun"
+   ],
+   [
+    "Dachfenster",
+    "Licht und Sternenhimmel in der Eignerkabine.",
+    "home"
+   ],
+   [
+    "Seaside-Küche",
+    "In der Komfort-Version im Cockpit integriert.",
+    "wave"
+   ],
+   [
+    "Drei Charaktere",
+    "Minimal, Komfort oder Performance, je nach Ausstattung.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "2 Kabinen · 1 Bad",
+    "cab": "2",
+    "bath": "1",
+    "fit": "Paare, kleine Familien",
+    "note": "Eignerkabine vorn, große Achterkabine"
+   },
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "1–2",
+    "fit": "Familien, Freunde",
+    "note": "Zwei Achterkabinen"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/dufour-39-1-v1.webp",
+    "caption": "2 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-39-2-v1.webp",
+    "caption": "3 Kabinen"
+   }
+  ],
+  "fitYes": [
+   "sportlich und doch bequem segeln möchten",
+   "Wert auf ein modernes Design legen",
+   "mit 4 bis 6 Personen reisen"
+  ],
+  "fitNo": [
+   "mehr als 6 Gäste mitnehmen",
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "12,00 m"
+   ],
+   [
+    "Breite",
+    "4,10 m"
+   ],
+   [
+    "Tiefgang",
+    "1,95 m"
+   ],
+   [
+    "Verdrängung",
+    "8.600 kg"
+   ],
+   [
+    "Wassertank",
+    "160 l"
+   ],
+   [
+    "Dieseltank",
+    "160 l"
+   ],
+   [
+    "Motor",
+    "30 PS, optional 45 PS"
+   ],
+   [
+    "Konstrukteur",
+    "Umberto Felci, Design Luca Ardizio"
+   ]
+  ],
+  "poster": "/images/yachtmodelle/dufour-39-foto.jpg",
+  "card": "/images/yachtmodelle/dufour-39-foto-card.jpg"
+ },
+ {
+  "brand": "Dufour",
+  "typ": "Segelyacht",
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [],
+  "id": "dufour-41",
+  "name": "Dufour 41",
+  "len": 12.75,
+  "year": "Neu seit 2025",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.dufour-yachts.com/en/sailboats/dufour-41/",
+  "tagline": "Sportlich und komfortabel: Platz für bis zu zehn Gäste, riesiges Cockpit und fast 60 % mehr Fensterfläche als in dieser Klasse üblich.",
+  "videos": [
+   {
+    "id": "ROA_tGmL3uc",
+    "title": "Dufour 41 – Offizielles Video",
+    "by": "Offizielles Video von Dufour"
+   }
+  ],
+  "key": [
+   [
+    "12,75 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "2–3",
+    "Bäder"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Dufour 41 war das erste Modell der Reihe aus der Feder von Umberto Felci, ergänzt durch das Design von Luca Ardizio. Sie verbindet Segelspaß mit Komfort: schlanker Rigg, ein Ruder und direktes Gefühl am Steuer, dazu viel Licht unter Deck.",
+   "Der Knickspantrumpf bietet viel Raum, im Bug entweder eine Eignersuite mit 1,65 × 2,04 m großem Mittelbett oder zwei Kojen. Mit bis zu zehn Schlafplätzen ist sie für ein 41-Fuß-Boot ungewöhnlich gesellig."
+  ],
+  "plus": [
+   "Bis zu zehn Schlafplätze",
+   "XXL-Cockpit mit viel Bewegungsfreiheit",
+   "Eignersuite mit Mittelbett und separater Dusche",
+   "Fast 60 % mehr Verglasung als in dieser Klasse üblich",
+   "Optional Hybridantrieb"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Wer möglichst wenig Bewegung möchte, ist auf einem Katamaran besser aufgehoben"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3–4 / 2–3"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Länge",
+    "12,75 m"
+   ],
+   [
+    "Breite",
+    "4,30 m"
+   ],
+   [
+    "Tiefgang",
+    "2,10 m"
+   ],
+   [
+    "Wassertank",
+    "430 l"
+   ]
+  ],
+  "life": [
+   [
+    "XXL-Cockpit",
+    "Platz zum Trimmen der Segel und zum Entspannen vor Anker.",
+    "sun"
+   ],
+   [
+    "Viel Licht",
+    "Großzügige Verglasung bis in die Bugkabine.",
+    "home"
+   ],
+   [
+    "Eignersuite vorn",
+    "Mittelbett und Bad mit separater Dusche.",
+    "bed"
+   ],
+   [
+    "Bis zu zehn Gäste",
+    "Vier Kabinen für Freundesgruppen.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "2–3",
+    "fit": "Familien, Paare mit Freunden",
+    "note": "Eignerkabine vorn mit eigenem Bad"
+   },
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "2–3",
+    "fit": "Gruppen bis 8 Personen",
+    "note": "Zwei Kojen statt Eignersuite vorn"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/dufour-41-1-v1.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-41-2-v1.webp",
+    "caption": "4 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-41-3-v1.webp",
+    "caption": "Deckplan"
+   }
+  ],
+  "fitYes": [
+   "sportlich segeln und trotzdem bequem wohnen möchten",
+   "mit bis zu 8 Personen unterwegs sind",
+   "viel Licht an Bord mögen"
+  ],
+  "fitNo": [
+   "eine ganz kleine, einfache Yacht suchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "12,75 m"
+   ],
+   [
+    "Breite",
+    "4,30 m"
+   ],
+   [
+    "Tiefgang",
+    "2,10 m"
+   ],
+   [
+    "Verdrängung",
+    "9.840 kg"
+   ],
+   [
+    "Wassertank",
+    "430 l"
+   ],
+   [
+    "Dieseltank",
+    "250 l"
+   ],
+   [
+    "Motor",
+    "45 PS, optional 57 PS"
+   ],
+   [
+    "Konstrukteur",
+    "Umberto Felci, Design Luca Ardizio"
+   ]
+  ],
+  "poster": "/images/yachtmodelle/dufour-41-foto.jpg",
+  "card": "/images/yachtmodelle/dufour-41-foto-card.jpg"
+ },
+ {
+  "brand": "Dufour",
+  "typ": "Segelyacht",
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [],
+  "id": "dufour-44",
+  "name": "Dufour 44",
+  "len": 13.9,
+  "year": "Neu seit 2025",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.dufour-yachts.com/en/sailboats/dufour-44/",
+  "tagline": "Schneller Fahrtenyacht-Klassiker: hoher Freibord, breite Seitendecks und Salon mit sechseckigem Tisch.",
+  "videos": [
+   {
+    "id": "4MXZ4SmbI2k",
+    "title": "Dufour 44 – Trailer",
+    "by": "Offizielles Video von Dufour"
+   }
+  ],
+  "key": [
+   [
+    "13,90 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "2–4",
+    "Bäder"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Dufour 44 ist eine schnelle Fahrtenyacht, die sich sicher und lebendig segelt: hoher Freibord, breite Seitendecks und ein tiefes Cockpit geben Vertrauen. Der Mast steht mit vier Grad etwas stärker geneigt als üblich, die selbstwendende Fock macht das Segeln einfach.",
+   "Unter Deck gibt es drei oder vier Kabinen, alle mit eigenem Bad. Im Zentrum steht ein sechseckiger Tisch, vorn die Pantry mit neuen Arbeitsflächen. Die Eignersuite im Bug hat ein Mittelbett und zwei getrennte Bäder."
+  ],
+  "plus": [
+   "Alle Kabinen mit eigenem Bad",
+   "Sechseckiger Tisch im Salon",
+   "Selbstwendende Fock, einfach zu bedienen",
+   "Hoher Freibord und breite Seitendecks",
+   "Optional Hybridantrieb"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Wer möglichst wenig Bewegung möchte, ist auf einem Katamaran besser aufgehoben"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3–4 / 2–4"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Länge",
+    "13,90 m"
+   ],
+   [
+    "Breite",
+    "4,45 m"
+   ],
+   [
+    "Tiefgang",
+    "2,20 m"
+   ],
+   [
+    "Wassertank",
+    "430 l"
+   ]
+  ],
+  "life": [
+   [
+    "Sicheres Gefühl an Deck",
+    "Hoher Freibord und breite Seitendecks.",
+    "door"
+   ],
+   [
+    "Sechseckiger Tisch",
+    "Gemeinsames Essen im hellen Salon.",
+    "home"
+   ],
+   [
+    "Eignersuite",
+    "Mittelbett und zwei getrennte Bäder.",
+    "bed"
+   ],
+   [
+    "Lange Schläge",
+    "Schnell und ausgewogen auch bei mehr Wind.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "2–4",
+    "fit": "Familien, Paare",
+    "note": "Eignersuite vorn, zwei Achterkabinen"
+   },
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "2–4",
+    "fit": "Gruppen bis 8 Personen",
+    "note": "Jede Kabine mit eigenem Bad"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/dufour-44-1-v1.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-44-2-v1.webp",
+    "caption": "4 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-44-3-v1.webp",
+    "caption": "Deckplan"
+   }
+  ],
+  "fitYes": [
+   "zügig segeln und weite Törns planen",
+   "mit 6 bis 8 Personen reisen",
+   "Wert auf Sicherheit an Deck legen"
+  ],
+  "fitNo": [
+   "eine kleine, einfache Yacht suchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "13,90 m"
+   ],
+   [
+    "Breite",
+    "4,45 m"
+   ],
+   [
+    "Tiefgang",
+    "2,20 m"
+   ],
+   [
+    "Verdrängung",
+    "11.000 kg"
+   ],
+   [
+    "Wassertank",
+    "430 l"
+   ],
+   [
+    "Dieseltank",
+    "250 l"
+   ],
+   [
+    "Motor",
+    "45 PS, optional 57 PS"
+   ],
+   [
+    "Konstrukteur",
+    "Umberto Felci"
+   ]
+  ],
+  "poster": "/images/yachtmodelle/dufour-44-foto.jpg",
+  "card": "/images/yachtmodelle/dufour-44-foto-card.jpg"
+ },
+ {
+  "brand": "Dufour",
+  "typ": "Segelyacht",
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [],
+  "id": "dufour-48",
+  "name": "Dufour 48",
+  "len": 15.29,
+  "year": "Neu seit 2025",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.dufour-yachts.com/en/sailboats/dufour-48/",
+  "tagline": "Fahrtenyacht für lange Törns: bis zu zwölf Gäste, Außenküche und Salon mit verschiebbaren Sitzen.",
+  "videos": [],
+  "key": [
+   [
+    "15,29 m",
+    "Länge"
+   ],
+   [
+    "3–5",
+    "Kabinen"
+   ],
+   [
+    "2–4",
+    "Bäder"
+   ],
+   [
+    "6–12",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Dufour 48 ist für lange Strecken gemacht: seetüchtige Linien, kraftvoller Rumpf und ein präzises Steuergefühl auch über viele Meilen. Mit drei, vier oder fünf Kabinen bietet sie bis zu zwölf Gästen Platz, mehr als in dieser Klasse üblich.",
+   "Die Außenküche erweitert das Skylounge-Cockpit zum zentralen Treffpunkt. Unter Deck gibt es einen großen Salon mit sechseckigem Tisch; je nach Version lassen sich Pullman-Kabine, Büro, Waschraum oder Stauraum einbauen. Optional gibt es ein festes Hardtop mit 1.300 W Solar und einen emissionsfreien Antrieb."
+  ],
+  "plus": [
+   "Bis zu zwölf Gäste",
+   "Außenküche im Skylounge-Cockpit",
+   "Modulare Räume: Pullman-Kabine, Büro oder Stauraum",
+   "Optional Hardtop mit 1.300 W Solar",
+   "Optional Hybridantrieb"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Für kleinere Crews überdimensioniert",
+   "Mehr Aufwand beim Anlegen als bei kleineren Yachten"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3–5 / 2–4"
+   ],
+   [
+    "Gäste",
+    "6–12"
+   ],
+   [
+    "Länge",
+    "15,29 m"
+   ],
+   [
+    "Breite",
+    "4,85 m"
+   ],
+   [
+    "Tiefgang",
+    "2,35 m"
+   ],
+   [
+    "Wassertank",
+    "530 l"
+   ]
+  ],
+  "life": [
+   [
+    "Außenküche",
+    "Zentraler Treffpunkt im Cockpit.",
+    "sun"
+   ],
+   [
+    "XXL-Salon",
+    "Sechseckiger Tisch, verschiebbare Sitze.",
+    "home"
+   ],
+   [
+    "Raum für Ideen",
+    "Pullman, Büro, Waschraum oder Stauraum.",
+    "door"
+   ],
+   [
+    "Leise unterwegs",
+    "Optional Hardtop mit Solar und elektrischem Antrieb.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "2–4",
+    "fit": "Paare, Familien",
+    "note": "Eignersuite vorn, zwei Achterkabinen"
+   },
+   {
+    "v": "4 Kabinen · Pantry längs",
+    "cab": "4",
+    "bath": "2–4",
+    "fit": "Gruppen bis 8 Personen",
+    "note": ""
+   },
+   {
+    "v": "4 Kabinen · Pantry vorn",
+    "cab": "4",
+    "bath": "2–4",
+    "fit": "Gruppen bis 8 Personen",
+    "note": "Mehr Platz im Salon"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/dufour-48-1-v1.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-48-2-v1.webp",
+    "caption": "4 Kabinen · Pantry längs"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-48-3-v1.webp",
+    "caption": "4 Kabinen · Pantry vorn"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-48-4-v1.webp",
+    "caption": "Deckplan"
+   }
+  ],
+  "fitYes": [
+   "mit einer großen Gruppe reisen",
+   "weite Törns planen",
+   "viel Raum an Deck und im Salon möchten"
+  ],
+  "fitNo": [
+   "eine kleine, einfache Yacht suchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "15,29 m"
+   ],
+   [
+    "Breite",
+    "4,85 m"
+   ],
+   [
+    "Tiefgang",
+    "2,35 m"
+   ],
+   [
+    "Verdrängung",
+    "13.900 kg"
+   ],
+   [
+    "Wassertank",
+    "530 l"
+   ],
+   [
+    "Dieseltank",
+    "250 l"
+   ],
+   [
+    "Motor",
+    "57 PS, optional 80 PS"
+   ],
+   [
+    "Konstrukteur",
+    "Umberto Felci"
+   ]
+  ],
+  "poster": "/images/yachtmodelle/dufour-48-foto.jpg",
+  "card": "/images/yachtmodelle/dufour-48-foto-card.jpg"
+ },
+ {
+  "brand": "Dufour",
+  "typ": "Segelyacht",
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [],
+  "id": "dufour-54",
+  "name": "Dufour 54",
+  "len": 16.84,
+  "year": "Neu seit 2025",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.dufour-yachts.com/en/sailboats/dufour-54/",
+  "tagline": "Das Flaggschiff: bis zu 14 Gäste, Eignersuite im Bug mit Querbett und Skylounge-Cockpit mit zwei absenkbaren Tischen.",
+  "videos": [
+   {
+    "id": "iMKN3jk2YKc",
+    "title": "Dufour 54 – Offizieller Film",
+    "by": "Offizielles Video von Dufour"
+   }
+  ],
+  "key": [
+   [
+    "16,84 m",
+    "Länge"
+   ],
+   [
+    "3–6",
+    "Kabinen"
+   ],
+   [
+    "2–4",
+    "Bäder"
+   ],
+   [
+    "6–14",
+    "Gäste"
+   ]
+  ],
+  "glance": [
+   "Die Dufour 54 ist das Flaggschiff der Flotte und für große Törns gebaut. Der ausgewogene Rumpf liegt ruhig im Wasser, am Steuer ist die Verbindung direkt und natürlich. Optional gibt es ein festes Hardtop mit bis zu 1.300 W Solar und einen Hybridantrieb.",
+   "Im Bug liegt eine Eignersuite mit quer eingebautem Kingsize-Bett, eigenem Bad und Ankleidebereich. Im Skylounge-Cockpit mit U-förmiger Sitzgruppe lassen sich zwei Tische absenken, so entstehen große Sonnenflächen. Große Aufbaufenster lassen Licht und Sterne herein."
+  ],
+  "plus": [
+   "Bis zu 14 Gäste, drei bis sechs Kabinen",
+   "Eignersuite vorn mit Querbett",
+   "Skylounge-Cockpit mit zwei absenkbaren Tischen",
+   "Optional Hardtop mit 1.300 W Solar",
+   "Optional Hybridantrieb"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Große Yacht: höhere Hafengebühren und mehr Aufwand beim Manövrieren",
+   "Für kleine Crews zu groß"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3–6 / 2–4"
+   ],
+   [
+    "Gäste",
+    "6–14"
+   ],
+   [
+    "Länge",
+    "16,84 m"
+   ],
+   [
+    "Breite",
+    "5,25 m"
+   ],
+   [
+    "Tiefgang",
+    "2,40 m"
+   ],
+   [
+    "Wassertank",
+    "450 l"
+   ]
+  ],
+  "life": [
+   [
+    "Eignersuite vorn",
+    "Querbett, privates Bad und Ankleidebereich.",
+    "bed"
+   ],
+   [
+    "Skylounge-Cockpit",
+    "U-Sitzgruppe, zwei absenkbare Tische.",
+    "sun"
+   ],
+   [
+    "Licht und Sterne",
+    "Große Fenster im Aufbau.",
+    "home"
+   ],
+   [
+    "Große Fahrt",
+    "Ausgelegt für lange Strecken.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "2–4",
+    "fit": "Familien, Gruppen",
+    "note": ""
+   },
+   {
+    "v": "5 Kabinen",
+    "cab": "5",
+    "bath": "2–4",
+    "fit": "Große Gruppen",
+    "note": ""
+   },
+   {
+    "v": "Eignerversion",
+    "cab": "3",
+    "bath": "2–4",
+    "fit": "Paare, Eigner",
+    "note": "Eignersuite und zwei Gästekabinen"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/dufour-54-1-v1.webp",
+    "caption": "4 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-54-2-v1.webp",
+    "caption": "5 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-54-3-v1.webp",
+    "caption": "Eignerversion"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/dufour-54-4-v1.webp",
+    "caption": "Deckplan"
+   }
+  ],
+  "fitYes": [
+   "mit einer großen Gruppe oder Gästen reisen",
+   "Luxus und viel Raum möchten",
+   "lange Strecken segeln"
+  ],
+  "fitNo": [
+   "eine kleine, einfache Yacht suchen",
+   "möglichst günstig chartern wollen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "16,84 m"
+   ],
+   [
+    "Breite",
+    "5,25 m"
+   ],
+   [
+    "Tiefgang",
+    "2,40 m"
+   ],
+   [
+    "Verdrängung",
+    "16.590 kg"
+   ],
+   [
+    "Wassertank",
+    "450 l"
+   ],
+   [
+    "Dieseltank",
+    "430 l"
+   ],
+   [
+    "Motor",
+    "80 PS, optional 110 PS"
+   ],
+   [
+    "Konstrukteur",
+    "Umberto Felci, Design Luca Ardizio"
+   ]
+  ],
+  "poster": "/images/yachtmodelle/dufour-54-foto.jpg",
+  "card": "/images/yachtmodelle/dufour-54-foto-card.jpg"
  }
 ]

@@ -50,6 +50,7 @@ export const BRANDS: Record<string, string> = {
   Beneteau: 'Oceanis und First – die bekanntesten Fahrten- und Sportyachten aus Frankreich.',
   Bavaria: 'Deutsche Segelyachten mit viel Raum und großen Betten.',
   Hanse: 'Easy Sailing aus Greifswald: große Cockpits, alle Leinen zum Steuerstand.',
+  Dufour: 'Französische Fahrtenyachten nach der Idee „Instinctive Sailing“: sportlich zu segeln und viel Leben im Freien.',
 }
 
 export const EQUIP: Record<Model['typ'], Record<string, string[]>> = {

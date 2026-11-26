@@ -61,7 +61,7 @@ export default function YachtModelleOverviewPage() {
     <main className="ym">
       <SEO
         title="Yachtmodelle: Katamarane & Segelyachten im Überblick"
-        description={`${MODELS.length} Charteryachten im Überblick: Katamarane von Lagoon und Bali, Segelyachten von Jeanneau, Beneteau, Bavaria und Hanse.`}
+        description={`${MODELS.length} Charteryachten im Überblick: Katamarane von Lagoon und Bali, Segelyachten von Jeanneau, Beneteau, Bavaria, Hanse und Dufour.`}
       />
       <section className="oh"><div className="wrap">
         <p className="eyebrow">Yachtmodelle</p>
