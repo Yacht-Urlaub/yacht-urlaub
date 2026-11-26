@@ -42,6 +42,11 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
   Lagoon 46 und 51, Bali Catspace/5.2/5.8 – dort lohnt ein besseres Foto.
 - **Videos: Image-Filme, keine Walkthroughs, nichts auf Französisch.** Pro Modell 1–2 offizielle Image-/Markenfilme
   (englisch oder ohne Sprache), keine Rundgänge/Guided Tours/Interviews.
+- **YouTube-Player reduziert** (`youtubeSrc()`/`Embed` in `shared.tsx`): Standardleiste (Play/Pause, Lautstärke, Qualität, Vollbild),
+  dazu `rel=0`, `iv_load_policy=3`, `disablekb=1`, `modestbranding=1`; der iframe ist ein Sandbox-iframe **ohne** `allow-popups`,
+  Links im Player (Titel, „Auf YouTube ansehen“, Teilen) öffnen also nichts. Am Videoende meldet der Player per postMessage
+  den Status „beendet“, die Seite entfernt den Player und zeigt wieder Vorschaubild + Play – so erscheinen keine
+  Endbildschirm-Vorschläge. Nicht abschaltbar (YouTube-Vorgabe): Titelzeile während Pause/Start und Overlay beim Pausieren.
 - Die Seite lädt **nichts** direkt von YouTube/Matterport, bevor jemand auf Play klickt. Der Klick lädt YouTube im
   Datenschutzmodus (`youtube-nocookie.com`); darunter steht ein Hinweis, Datenschutzerklärung Abschnitt 7 beschreibt es.
 - 3D-Rundgänge (`tours`, Matterport): aktuell nur Bali 4.8 („Kalypso“, Quelle sichtbar: Ionian Charter, Griechenland).

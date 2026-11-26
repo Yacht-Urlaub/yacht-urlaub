@@ -1,4 +1,4 @@
-import { useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import { Link } from '../../router'
 import type { Model } from './data'
 import './yachtmodelle.css'
@@ -57,22 +57,72 @@ type EmbedProps =
   | { m: Model; kind: 'video'; id: string; title: string; by: string; eager?: boolean }
   | { m: Model; kind: 'tour'; id: string; title: string; by: string; eager?: boolean }
 
+const YT_ORIGIN = 'https://www.youtube-nocookie.com'
+
+/** YouTube-Player-Parameter: nur Wiedergabe, Lautstaerke, Qualitaet und Vollbild.
+ *  controls=1 liefert genau diese Leiste; alles andere wird abgeschaltet bzw. verhindert:
+ *  rel=0 (Empfehlungen nur vom eigenen Kanal, nie fremde), iv_load_policy=3 (keine Einblendungen),
+ *  disablekb=1 (keine Tastenkuerzel), cc_load_policy=0 (keine Untertitel erzwingen), fs=1 (Vollbild erlaubt),
+ *  playsinline=1. enablejsapi=1 + origin: damit meldet der Player per postMessage, wann das Video zu
+ *  Ende ist (siehe Embed: dann wird der Player entfernt, es erscheinen keine Vorschlaege). */
+function youtubeSrc(id: string) {
+  const q = new URLSearchParams({
+    autoplay: '1', rel: '0', iv_load_policy: '3', disablekb: '1', cc_load_policy: '0', fs: '1',
+    playsinline: '1', modestbranding: '1', hl: 'de', enablejsapi: '1',
+  })
+  if (typeof window !== 'undefined') q.set('origin', window.location.origin)
+  return `${YT_ORIGIN}/embed/${encodeURIComponent(id)}?${q.toString()}`
+}
+
 /** Video oder 3D-Rundgang: erst nach Klick wird der Anbieter geladen (YouTube im
- *  Datenschutzmodus bzw. Matterport). */
+ *  Datenschutzmodus bzw. Matterport). Das YouTube-Video laeuft in einem Sandbox-iframe ohne
+ *  allow-popups: Links im Player (Titel, "Auf YouTube ansehen", Teilen, Spaeter ansehen) oeffnen
+ *  nichts. Ist das Video zu Ende, wird der Player entfernt und das Vorschaubild mit Play-Knopf
+ *  erscheint wieder - so zeigt YouTube nie seine Endbildschirm-Vorschlaege. */
 export function Embed(p: EmbedProps) {
   const [on, setOn] = useState(false)
+  const frame = useRef<HTMLIFrameElement>(null)
   const isTour = p.kind === 'tour'
   const src = isTour
     ? `https://my.matterport.com/show/?m=${encodeURIComponent(p.id)}&play=1&qs=1&brand=0`
-    : `https://www.youtube-nocookie.com/embed/${encodeURIComponent(p.id)}?autoplay=1&rel=0`
+    : youtubeSrc(p.id)
+
+  useEffect(() => {
+    if (!on || isTour) return
+    const onMessage = (e: MessageEvent) => {
+      if (e.origin !== YT_ORIGIN || e.source !== frame.current?.contentWindow) return
+      let data: unknown = e.data
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data) } catch { return }
+      }
+      const d = data as { event?: string; info?: unknown } | null
+      // YT.PlayerState.ENDED === 0
+      if (d && ((d.event === 'onStateChange' && d.info === 0) ||
+        (d.event === 'infoDelivery' && (d.info as { playerState?: number } | undefined)?.playerState === 0))) {
+        setOn(false)
+      }
+    }
+    window.addEventListener('message', onMessage)
+    return () => window.removeEventListener('message', onMessage)
+  }, [on, isTour])
+
+  // Nach dem Laden beim Player anmelden, damit er Statusmeldungen (u. a. "Ende") schickt.
+  const listen = () => {
+    frame.current?.contentWindow?.postMessage(JSON.stringify({ event: 'listening', id: 1, channel: 'widget' }), YT_ORIGIN)
+  }
+
   return (
     <div className="vid">
       {on ? (
         <iframe
+          ref={frame}
           src={src}
+          onLoad={isTour ? undefined : listen}
           title={isTour ? `3D-Rundgang: ${p.title}` : `Video: ${p.title}`}
-          allow={isTour ? 'fullscreen; xr-spatial-tracking' : 'autoplay; encrypted-media; picture-in-picture; fullscreen'}
+          allow={isTour ? 'fullscreen; xr-spatial-tracking' : 'autoplay; encrypted-media; fullscreen'}
           allowFullScreen
+          referrerPolicy="strict-origin-when-cross-origin"
+          {...(isTour ? {} : { sandbox: 'allow-scripts allow-same-origin allow-presentation' })}
         />
       ) : (
         <>
