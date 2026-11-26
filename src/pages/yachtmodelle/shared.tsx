@@ -37,14 +37,13 @@ export function Illu({ m }: { m: Model }) {
   )
 }
 
-/** Bild des Modells: lokal gespeichertes Vorschaubild des offiziellen Hersteller-Videos (bzw. eigenes
- *  Foto), sonst Illustration. Es wird bewusst NICHTS direkt von YouTube/Matterport geladen: vor dem
+/** Bild des Modells: lokal gespeichertes Werft-Foto, sonst Illustration. Es wird bewusst NICHTS direkt von YouTube/Matterport geladen: vor dem
  *  Klick darf keine Verbindung zu Dritten entstehen. */
 export function Pic({ m, variant, eager }: { m: Model; variant: 'card' | 'poster'; eager?: boolean }) {
   const [failed, setFailed] = useState(false)
   const src = variant === 'card' ? m.card : m.poster
   if (!src || failed) return <Illu m={m} />
-  const alt = variant === 'card' ? `${m.name}, ${m.typ} von ${m.brand}` : `${m.name}, Vorschaubild des Videos`
+  const alt = `${m.name}, ${m.typ} von ${m.brand}`
   return (
     <img
       src={src} alt={alt} onError={() => setFailed(true)}
