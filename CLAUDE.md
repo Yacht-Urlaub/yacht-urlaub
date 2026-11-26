@@ -161,7 +161,7 @@ enthaelt die interne Kalkulation und die Booking-Manager-Yacht-ID.
 
 ## Yachtmodelle
 
-Bereich `/yachtmodelle` (Übersicht + 47 Modellseiten, nur Deutsch). Daten in
+Bereich `/yachtmodelle` (Übersicht + 50 Modellseiten, nur Deutsch). Daten in
 `src/data/yachtModels.json`, Aufbau, Datenschutz-Regeln (Videos/3D erst nach Klick, keine
 Fremd-Vorschaubilder) und Ablauf für neue Modelle: `docs/yachtmodelle.md`. Jede Modellseite steht in
 `public/sitemap.xml` und bekommt einen Snapshot.

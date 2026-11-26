@@ -1,6 +1,6 @@
 # Yachtmodelle (/yachtmodelle)
 
-Stand: November 2026. Übersicht `/yachtmodelle`, je Modell `/yachtmodelle/<id>` (47 Modelle).
+Stand: November 2026. Übersicht `/yachtmodelle`, je Modell `/yachtmodelle/<id>` (50 Modelle).
 Bisher **nur Deutsch**: Daten und Texte liegen nur auf Deutsch vor, es gibt keine EN-Route, keinen
 Menüpunkt auf yacht-holiday.net und kein hreflang. Eine englische Fassung braucht übersetzte Daten
 (`src/data/yachtModels.json`, ca. 107 KB) und Routen im Muster `/yacht-models` (siehe `i18n.ts`).
@@ -49,19 +49,20 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
   Endbildschirm-Vorschläge. Nicht abschaltbar (YouTube-Vorgabe): Titelzeile während Pause/Start und Overlay beim Pausieren.
 - Die Seite lädt **nichts** direkt von YouTube/Matterport, bevor jemand auf Play klickt. Der Klick lädt YouTube im
   Datenschutzmodus (`youtube-nocookie.com`); darunter steht ein Hinweis, Datenschutzerklärung Abschnitt 7 beschreibt es.
-- 3D-Rundgänge (`tours`, Matterport): aktuell nur Bali 4.8 („Kalypso“, Quelle sichtbar: Ionian Charter, Griechenland).
-  Der Rundgang gehört einer Charterfirma; die Erlaubnis von Ionian Charter muss der Betreiber einholen. Neue Rundgänge
-  nur mit Erlaubnis des Eigentümers, Quelle sichtbar.
+- 3D-Rundgänge (`tours`, Matterport; Stand November 2026): Bali 4.8 („Kalypso“, Ionian Charter, Griechenland), First 44,
+  Oceanis 48 und Lagoon 50 (alle Ancasta International Boat Sales, England) und Hanse 505 „Furia“ (Sailing Forever). Es sind
+  Rundgänge von Charterfirmen bzw. Händlern: die Quelle steht sichtbar am Rundgang, die Erlaubnis der jeweiligen Firma muss
+  der Betreiber einholen. Neue Rundgänge nur nach Freigabe durch den Betreiber.
 - **Hanse:** Hanse hat nach Angabe des Betreibers keine Rechte an den eigenen Bildern. Für Hanse-Modelle werden deshalb
-  **keine** Vorschaubilder, Fotos oder Grundrisse der Werft übernommen (Illustration bzw. eigene Fotos). Die Videos
+  **keine** Fotos übernommen (Illustration bzw. eigene Fotos; Klärung läuft). **Grundrisse** der Hanse dürfen verwendet werden
+  (Betreiber, November 2026): sie stammen von hanseyachts.hr, wurden auf den Rumpf zugeschnitten und gedreht. Die Videos
   bleiben nur eingebettet (YouTube-Player, keine Kopie).
 - Fotos und Grundrisse nur aus eigener Mediathek bzw. Pressebereichen, nie von Werftseiten verlinken. Grundrisse werden
   direkt auf der Seite gezeigt: Feld `plans: [{ img, caption }]`, Dateien unter `public/images/yachtmodelle/plans/<id>-<n>.webp`
   (weiß hinterlegt, max. 1600 px breit). Die Tabelle der Versionen (`layouts`) bleibt als Text daneben.
 - **Quelle der Grundrisse (Stand November 2026):** Modellseiten der Werften (Lagoon, Bali, Jeanneau, Beneteau), 28 Modelle,
   nur Pläne des jeweiligen Modells (Unterdeck-/Kabinenpläne, dazu Deck-/Cockpitpläne). Bildunterschriften bei Lagoon, Bali und
-  Beneteau aus den Dateinamen (Kabinen/Bäder), bei Jeanneau neutral „Variante 1/2/3“. **Ohne Plan:** Hanse (keine Rechte an
-  eigenen Bildern), Bavaria (die Werft zeigt nur Teilmodule wie Bug-, Heck- oder Salonbereich, keine Gesamtpläne), Bali 4.8
+  Beneteau aus den Dateinamen (Kabinen/Bäder), bei Jeanneau neutral „Variante 1/2/3“. **Ohne Plan:** Bavaria (die Werft zeigt nur Teilmodule wie Bug-, Heck- oder Salonbereich, keine Gesamtpläne), Bali 4.8
   (Modell nicht mehr auf der Bali-Seite), Sun Odyssey 440 und 490 (alte Seiten ohne Pläne), Voyager 45. Dort steht „Grundrisse folgen“.
 - **Dufour** (November 2026, 6 aktuelle Modelle 37, 39, 41, 44, 48, 54): Daten, Fotos und Pläne von www.dufour-yachts.com, Videos vom offiziellen Kanal. Die Pläne sind dort hochkant (Bug oben) mit Zusatzmodulen am Rand; sie wurden auf den Rumpf zugeschnitten und um 90° gedreht, damit alle Pläne der Seite quer liegen. Bewusst nicht aufgenommen: ältere Baureihen (z. B. Dufour 390, 412, 430, 460, 470, 520, 530), die in Charterflotten häufig sind; für die Dufour 48 gibt es nur einen französisch betitelten Image-Film (daher kein Video).
 - Es gibt bewusst **keinen** Abschnitt „Kosten“ (Preis nur im Angebot).

@@ -5586,7 +5586,13 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": [],
+  "tours": [
+   {
+    "id": "RYM1L1ptnYz",
+    "title": "Beneteau First 44",
+    "by": "Ancasta International Boat Sales, England"
+   }
+  ],
   "poster": "/images/yachtmodelle/first-44-foto.jpg",
   "card": "/images/yachtmodelle/first-44-foto-card.jpg",
   "plans": [
@@ -6685,7 +6691,25 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/hanse-410-1-v1.webp",
+    "caption": "Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-410-2-v1.webp",
+    "caption": "Variante 2"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-410-3-v1.webp",
+    "caption": "Variante 3"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-410-4-v1.webp",
+    "caption": "Variante 4"
+   }
+  ]
  },
  {
   "id": "hanse-461",
@@ -6837,7 +6861,25 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/hanse-461-1-v1.webp",
+    "caption": "Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-461-2-v1.webp",
+    "caption": "Variante 2"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-461-3-v1.webp",
+    "caption": "Variante 3"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-461-4-v1.webp",
+    "caption": "Variante 4"
+   }
+  ]
  },
  {
   "id": "hanse-510",
@@ -6989,7 +7031,29 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/hanse-510-1-v1.webp",
+    "caption": "Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-510-2-v1.webp",
+    "caption": "Variante 2"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-510-3-v1.webp",
+    "caption": "Variante 3"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-510-4-v1.webp",
+    "caption": "Variante 4"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-510-5-v1.webp",
+    "caption": "Variante 5"
+   }
+  ]
  },
  {
   "id": "hanse-590",
@@ -7137,7 +7201,21 @@
   "reviereText": "",
   "faq": [],
   "extras": [],
-  "tours": []
+  "tours": [],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/hanse-590-1-v1.webp",
+    "caption": "Variante 1"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-590-2-v1.webp",
+    "caption": "Variante 2"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-590-3-v1.webp",
+    "caption": "Variante 3"
+   }
+  ]
  },
  {
   "brand": "Dufour",
@@ -8243,5 +8321,568 @@
   ],
   "poster": "/images/yachtmodelle/dufour-54-foto.jpg",
   "card": "/images/yachtmodelle/dufour-54-foto-card.jpg"
+ },
+ {
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [
+   {
+    "id": "cjnfb5k1Ms1",
+    "title": "Hanse 505 „Furia“",
+    "by": "Sailing Forever"
+   }
+  ],
+  "videos": [],
+  "id": "hanse-505",
+  "name": "Hanse 505",
+  "brand": "Hanse",
+  "typ": "Segelyacht",
+  "len": 15.4,
+  "year": "Charter-Klassiker",
+  "badges": [
+   "Charter-Klassiker"
+  ],
+  "src": "https://hanseyachts.com/us/historical-models/hanse-505/",
+  "tagline": "Große Hanse mit langer Wasserlinie: sicheres Cockpit mit zwei Tischen, Eignerkabine vorn und zwei Achterkabinen.",
+  "key": [
+   [
+    "15,4 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "2–3",
+    "Bäder"
+   ],
+   [
+    "4,75 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Hanse 505 ist eine 50-Fuß-Fahrtenyacht von Judel/Vrolijk. Ein langer Wasserlinienrumpf, ein leistungsorientierter Segelplan mit selbstwendender Fock und ein sicheres, bequemes Cockpit stehen für entspanntes Segeln über lange Strecken.",
+   "Die beiden Cockpittische lassen sich zu einer vorstehenden Lounge umbauen. Unter Deck gibt es eine Eignerkabine mit Inselbett vorn oder zwei Bugkabinen, dazu zwei Achterkabinen. Wahlweise gibt es eine Crewkabine oder einen Hauswirtschaftsraum."
+  ],
+  "plus": [
+   "Zwei Cockpittische, umbaubar zur Lounge",
+   "Eignerkabine mit Inselbett und eigenem Bad",
+   "Zwei Achterkabinen mit Inselbetten",
+   "Wahlweise zweites großes Bad oder Hauswirtschaftsraum",
+   "Selbstwendende Fock, einfach zu bedienen"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Ältere Baureihe, nicht mehr im Neubauprogramm",
+   "Mehr Aufwand beim Anlegen als bei kleineren Yachten"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "3–4 / 2–3"
+   ],
+   [
+    "Länge",
+    "15,40 m"
+   ],
+   [
+    "Breite",
+    "4,75 m"
+   ],
+   [
+    "Tiefgang",
+    "2,38 m"
+   ],
+   [
+    "Wassertank",
+    "650 l"
+   ],
+   [
+    "Dieseltank",
+    "300 l"
+   ]
+  ],
+  "life": [
+   [
+    "Cockpit zum Verwandeln",
+    "Zwei Tische werden zur Lounge.",
+    "sun"
+   ],
+   [
+    "Eignerkabine vorn",
+    "Inselbett, eigenes Bad und separate Dusche.",
+    "bed"
+   ],
+   [
+    "Zwei Achterkabinen",
+    "Inselbetten, getrennt vom Salon.",
+    "door"
+   ],
+   [
+    "Lange Schläge",
+    "Lange Wasserlinie für Tempo und Ruhe.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "2",
+    "fit": "Familien, Paare mit Freunden",
+    "note": "Eignerkabine vorn, zwei Achterkabinen"
+   },
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "3",
+    "fit": "Gruppen",
+    "note": "Zwei Bugkabinen statt Eignerkabine"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/hanse-505-1-v1.webp",
+    "caption": "3 Kabinen · Eignerkabine vorn"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-505-2-v1.webp",
+    "caption": "3 Kabinen · zweites großes Bad"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-505-3-v1.webp",
+    "caption": "4 Kabinen · zwei Bugkabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/hanse-505-4-v1.webp",
+    "caption": "4 Kabinen + Crewkabine · mit Hauswirtschaftsraum"
+   }
+  ],
+  "fitYes": [
+   "weite Törns planen",
+   "mit 6 bis 8 Personen reisen",
+   "ein großes, bewährtes Schiff möchten"
+  ],
+  "fitNo": [
+   "eine kleine, einfache Yacht suchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "15,40 m"
+   ],
+   [
+    "Rumpflänge",
+    "14,85 m"
+   ],
+   [
+    "Breite",
+    "4,75 m"
+   ],
+   [
+    "Tiefgang",
+    "2,38 m"
+   ],
+   [
+    "Verdrängung",
+    "14,0 t"
+   ],
+   [
+    "Segelfläche am Wind",
+    "129 m²"
+   ],
+   [
+    "Wassertank",
+    "650 l"
+   ],
+   [
+    "Dieseltank",
+    "300 l"
+   ],
+   [
+    "Motor",
+    "Volvo D2-75, 72 PS"
+   ],
+   [
+    "Konstrukteur",
+    "Judel/Vrolijk & Co."
+   ]
+  ]
+ },
+ {
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [
+   {
+    "id": "NRjuFS3e8J9",
+    "title": "Beneteau Oceanis 48",
+    "by": "Ancasta International Boat Sales, England"
+   }
+  ],
+  "videos": [
+   {
+    "id": "zel59C62zos",
+    "title": "Oceanis 48 – Offizielles Video",
+    "by": "Offizielles Video von Beneteau"
+   }
+  ],
+  "id": "oceanis-48",
+  "name": "Oceanis 48",
+  "brand": "Beneteau",
+  "typ": "Segelyacht",
+  "len": 14.6,
+  "year": "Charter-Klassiker",
+  "badges": [
+   "Charter-Klassiker"
+  ],
+  "src": "https://www.beneteau.com/en-us/oceanis-2005-2014/oceanis-48",
+  "tagline": "Der Charter-Klassiker mit 45°-Niedergang, Eignersuite im Bug und bis zu vier Kabinen.",
+  "key": [
+   [
+    "14,6 m",
+    "Länge"
+   ],
+   [
+    "2–4",
+    "Kabinen"
+   ],
+   [
+    "2–4",
+    "Bäder"
+   ],
+   [
+    "4,74 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die Oceanis 48 hat eine elegante, schlanke Silhouette und ein auf Fahrtensegeln ausgelegtes Deckslayout. Berret Racoupeau zeichnete den Rumpf, Nauta Design die Innenräume. Viele Optionen für Raum und Ergonomie machen sie zur beliebten Charteryacht.",
+   "Der 45°-Niedergang verbindet das große Cockpit mit dem geräumigen Salon und erleichtert das Auf und Ab. Die Bugkabine ist eine echte Suite mit Dusche im italienischen Stil. Es gibt Versionen mit drei Kabinen oder mit bis zu vier Kabinen."
+  ],
+  "plus": [
+   "45°-Niedergang, bequem begehbar",
+   "Eignersuite mit separater Dusche",
+   "Große Cockpit mit viel Platz",
+   "Versionen mit drei oder bis zu vier Kabinen",
+   "Optional Performance-Pack mit Segeln von Incidences"
+  ],
+  "minus": [
+   "Die Yacht legt sich beim Segeln auf die Seite",
+   "Ältere Baureihe, nicht mehr im Neubauprogramm"
+  ],
+  "facts": [
+   [
+    "Kabinen / Bäder",
+    "2–4 / 2–4"
+   ],
+   [
+    "Länge",
+    "14,60 m"
+   ],
+   [
+    "Breite",
+    "4,74 m"
+   ],
+   [
+    "Tiefgang",
+    "ab 1,83 m"
+   ],
+   [
+    "Wassertank",
+    "370 l"
+   ],
+   [
+    "Dieseltank",
+    "200 l"
+   ]
+  ],
+  "life": [
+   [
+    "45°-Niedergang",
+    "Bequemer Weg vom Cockpit in den Salon.",
+    "door"
+   ],
+   [
+    "Eignersuite",
+    "Bugkabine mit Dusche im italienischen Stil.",
+    "bed"
+   ],
+   [
+    "Großes Cockpit",
+    "Platz für die ganze Crew.",
+    "sun"
+   ],
+   [
+    "Performance-Pack",
+    "Optional mit Segeln von Incidences.",
+    "wave"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "2 Kabinen · 2 Bäder",
+    "cab": "2",
+    "bath": "2",
+    "fit": "Paare, kleine Familien",
+    "note": "Eignersuite vorn, große Achterkabine"
+   },
+   {
+    "v": "3 Kabinen · 2 Bäder",
+    "cab": "3",
+    "bath": "2",
+    "fit": "Familien, Freunde",
+    "note": "Zwei Achterkabinen"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-48-1-v1.webp",
+    "caption": "2 Kabinen · 2 Bäder"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/oceanis-48-2-v1.webp",
+    "caption": "3 Kabinen · 2 Bäder"
+   }
+  ],
+  "fitYes": [
+   "eine bewährte Charteryacht suchen",
+   "mit 6 bis 8 Personen reisen",
+   "gern im Cockpit leben"
+  ],
+  "fitNo": [
+   "möglichst wenig Schräglage möchten"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,60 m"
+   ],
+   [
+    "Breite",
+    "4,74 m"
+   ],
+   [
+    "Tiefgang",
+    "ab 1,83 m"
+   ],
+   [
+    "Gewicht (leer)",
+    "12.594 kg"
+   ],
+   [
+    "Wassertank",
+    "370 l"
+   ],
+   [
+    "Dieseltank",
+    "200 l"
+   ],
+   [
+    "Konstrukteur",
+    "Berret Racoupeau, Innenraum Nauta Design"
+   ]
+  ],
+  "poster": "/images/yachtmodelle/oceanis-48-foto.jpg",
+  "card": "/images/yachtmodelle/oceanis-48-foto-card.jpg"
+ },
+ {
+  "images": [],
+  "reviere": [],
+  "reviereText": "",
+  "faq": [],
+  "extras": [],
+  "tours": [
+   {
+    "id": "rJ9xbeJ7UXQ",
+    "title": "Lagoon 50",
+    "by": "Ancasta International Boat Sales, England"
+   }
+  ],
+  "videos": [],
+  "id": "lagoon-50",
+  "name": "Lagoon 50",
+  "brand": "Lagoon",
+  "typ": "Katamaran",
+  "len": 14.75,
+  "year": "Charter-Klassiker",
+  "badges": [
+   "Charter-Klassiker"
+  ],
+  "src": "https://www.catamarans-lagoon.com/boats/lagoon-50",
+  "tagline": "Seetüchtig und geräumig: der Lagoon 50 mit drei, vier oder sogar sechs Kabinen für große Crews.",
+  "key": [
+   [
+    "14,75 m",
+    "Länge"
+   ],
+   [
+    "3–6",
+    "Kabinen"
+   ],
+   [
+    "6–14",
+    "Gäste"
+   ],
+   [
+    "8,10 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Der Lagoon 50 bietet bemerkenswert viel Raum innen und außen. Mit drei, vier oder sechs Kabinen passt er zu Familien, Freundesgruppen und zur Charter. Für einen Katamaran dieser Klasse segelt er schnell und liegt ruhig im Wasser.",
+   "Salon und Cockpit gehen großzügig ineinander über, die Kabinen sind geräumig. Mit 144 m² Segelfläche am Wind, zwei 80-PS-Motoren und gutem Handling ist er auch für weniger erfahrene Crews gut zu fahren."
+  ],
+  "plus": [
+   "Drei, vier oder sechs Kabinen",
+   "Bis zu 14 Schlafplätze",
+   "Ruhige Lage im Wasser, wenig Schräglage",
+   "Großzügiger Salon und Cockpit",
+   "Zwei Motoren mit je 80 PS"
+  ],
+  "minus": [
+   "Große Yacht: höhere Hafengebühren",
+   "Ältere Baureihe, nicht mehr im Neubauprogramm"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3–6"
+   ],
+   [
+    "Länge",
+    "14,75 m"
+   ],
+   [
+    "Breite",
+    "8,10 m"
+   ],
+   [
+    "Tiefgang",
+    "1,40 m"
+   ],
+   [
+    "Wassertank",
+    "480 l"
+   ],
+   [
+    "Dieseltank",
+    "1.040 l"
+   ]
+  ],
+  "life": [
+   [
+    "Raum für alle",
+    "Bis zu 14 Schlafplätze.",
+    "home"
+   ],
+   [
+    "Cockpit und Salon",
+    "Großzügig und fließend verbunden.",
+    "sun"
+   ],
+   [
+    "Ruhig vor Anker",
+    "Kaum Schräglage, stabil.",
+    "anchor"
+   ],
+   [
+    "Sechs Kabinen",
+    "Ein Bad je Kabine in der großen Version.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "3 Kabinen",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Familien, Paare",
+    "note": "Eignerhälfte"
+   },
+   {
+    "v": "4 Kabinen",
+    "cab": "4",
+    "bath": "4",
+    "fit": "Gruppen",
+    "note": ""
+   },
+   {
+    "v": "6 Kabinen",
+    "cab": "6",
+    "bath": "6",
+    "fit": "Große Gruppen, Charter",
+    "note": ""
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-50-1-v1.webp",
+    "caption": "3 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-50-2-v1.webp",
+    "caption": "4 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-50-3-v1.webp",
+    "caption": "6 Kabinen"
+   },
+   {
+    "img": "/images/yachtmodelle/plans/lagoon-50-4-v1.webp",
+    "caption": "Cockpit und Deck"
+   }
+  ],
+  "fitYes": [
+   "mit einer großen Gruppe reisen",
+   "viel Platz möchten",
+   "ruhig und stabil segeln wollen"
+  ],
+  "fitNo": [
+   "eine kleine, einfache Yacht suchen"
+  ],
+  "tech": [
+   [
+    "Länge",
+    "14,75 m"
+   ],
+   [
+    "Breite",
+    "8,10 m"
+   ],
+   [
+    "Tiefgang",
+    "1,40 m"
+   ],
+   [
+    "Masthöhe",
+    "26,51 m"
+   ],
+   [
+    "Segelfläche am Wind",
+    "144 m²"
+   ],
+   [
+    "Motor",
+    "2 × 80 PS"
+   ],
+   [
+    "Wassertank",
+    "480 l"
+   ],
+   [
+    "Dieseltank",
+    "1.040 l"
+   ]
+  ],
+  "poster": "/images/yachtmodelle/lagoon-50-foto.jpg",
+  "card": "/images/yachtmodelle/lagoon-50-foto-card.jpg"
  }
 ]
