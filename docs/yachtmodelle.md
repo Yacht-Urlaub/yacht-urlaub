@@ -49,8 +49,8 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
   Endbildschirm-Vorschläge. Nicht abschaltbar (YouTube-Vorgabe): Titelzeile während Pause/Start und Overlay beim Pausieren.
 - Die Seite lädt **nichts** direkt von YouTube/Matterport, bevor jemand auf Play klickt. Der Klick lädt YouTube im
   Datenschutzmodus (`youtube-nocookie.com`); darunter steht ein Hinweis, Datenschutzerklärung Abschnitt 7 beschreibt es.
-- 3D-Rundgänge (`tours`, Matterport; Stand November 2026, 13 Modelle): Bali 4.2, 4.8, Lagoon 42, 46, 50, 55, Sun Odyssey 380, 440, 490,
-  First 44, Oceanis 48 und Hanse 505. Es sind Rundgänge von Charterfirmen, Maklern und Händlern (Ionian Charter, Horizon Yacht Charters,
+- 3D-Rundgänge (`tours`, Matterport; Stand November 2026, 14 Modelle): Bali 4.2, 4.8, Lagoon 42, 46, 50, 55, Sun Odyssey 380, 440, 490,
+  First 44, Oceanis 48, Oceanis 51.1 und Hanse 505. Es sind Rundgänge von Charterfirmen, Maklern und Händlern (Ionian Charter, Horizon Yacht Charters,
   Ancasta, Virtual Agency 3D, seeduu.de, Sailing Forever, AndreaMcc): die Quelle steht sichtbar am Rundgang, die Erlaubnis der jeweiligen
   Firma muss der Betreiber einholen. Beim Lagoon 46 ist die Beschreibung des Rundgangs französisch. Neue Rundgänge nur nach Freigabe
   durch den Betreiber.
@@ -60,7 +60,7 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
   bleiben nur eingebettet (YouTube-Player, keine Kopie).
 - Fotos und Grundrisse nur aus eigener Mediathek bzw. Pressebereichen, nie von Werftseiten verlinken. Grundrisse werden
   direkt auf der Seite gezeigt: Feld `plans: [{ img, caption }]`, Dateien unter `public/images/yachtmodelle/plans/<id>-<n>.webp`
-  (weiß hinterlegt, max. 1600 px breit). Die Tabelle der Versionen (`layouts`) bleibt als Text daneben.
+  (weiß hinterlegt, max. 1600 px breit; alle Pläne eines Modells haben dieselbe Leinwandgröße, damit die Karten auf einer Höhe sitzen – Dateiendung `-n.webp`). Die Tabelle der Versionen (`layouts`) bleibt als Text daneben.
 - **Quelle der Grundrisse (Stand November 2026):** Modellseiten der Werften (Lagoon, Bali, Jeanneau, Beneteau), 28 Modelle,
   nur Pläne des jeweiligen Modells (Unterdeck-/Kabinenpläne, dazu Deck-/Cockpitpläne). Bildunterschriften bei Lagoon, Bali und
   Beneteau aus den Dateinamen (Kabinen/Bäder), bei Jeanneau neutral „Variante 1/2/3“. Hanse 410: nur Variante 1 und 4 (Wunsch des Betreibers). Jeanneau Yachts 54: die Werftseite hat keine Pläne („Grundrisse folgen“). **Ohne Plan:** Bavaria (die Werft zeigt nur Teilmodule wie Bug-, Heck- oder Salonbereich, keine Gesamtpläne), Bali 4.8
