@@ -13,7 +13,7 @@ import { useMemo, useRef, useState } from 'react'
 import SEO from '../components/SEO'
 import RecaptchaHinweis from '../components/RecaptchaHinweis'
 import { Link } from '../router'
-import { useLang, isEnHost, BASE_DE, BASE_EN, MAIL } from '../i18n'
+import { useLang, isEnHost, BASE_DE, BASE_EN, MAIL, yachtModelPath } from '../i18n'
 import { sendForm } from '../lib/sendForm'
 import { trackEvent } from '../analytics'
 import { PH_CONFIG, PH_PHOTOS, PH_PRICES, PH_SEASON, PH_SKYSCANNER_URL, PH_YACHTS, type PhYacht } from '../data/portoHeli'
@@ -119,6 +119,7 @@ const T = {
     extText: 'Hinter Kap Maleas warten der Simos-Strand auf Elafonisos und die Insel Kythira. Mit 10 bis 14 Nächten ohne Hetze machbar, wir planen das gerne mit Ihnen.',
     extAlt: 'Simos-Strand auf Elafonisos', extCta: 'Längeren Törn anfragen',
     fleetKick: 'Die Flotte in Porto Heli', fleetH2: 'Vier Lagoon-Katamarane, zwei davon nagelneu',
+    modelLink: (m: string) => `Grundrisse und Details zur ${m}`,
     fleetIntro: 'Die Lagoon 38 und die Lagoon 43 kommen 2026 neu in die Flotte und bieten in ihrer Größe besonders viel Platz und Komfort. Alle Preise inklusive Yacht-Urlaub-Skipper.',
     catamaran: 'Katamaran', built: 'Baujahr', labCabins: 'Kabinen', labGuests: 'Gäste', labExtra: 'Extra', guestsUpTo: (n: number) => `bis ${n} + Skipper`,
     newBadge: 'Neu 2026', weekFrom: 'Woche inkl. Skipper', from: 'ab', pp: (p: string) => `${p} p. P.`, dates: 'Termine',
@@ -232,6 +233,7 @@ const T = {
     extText: 'Beyond Cape Maleas you will find Simos beach on Elafonisos and the island of Kythira. Doable without rushing in 10 to 14 nights, and we are happy to plan it with you.',
     extAlt: 'Simos beach on Elafonisos', extCta: 'Enquire about a longer cruise',
     fleetKick: 'The fleet in Porto Heli', fleetH2: 'Four Lagoon catamarans, two of them brand new',
+    modelLink: (m: string) => `Floor plans and details of the ${m}`,
     fleetIntro: 'The Lagoon 38 and the Lagoon 43 join the fleet new in 2026 and offer particularly generous space and comfort for their size. All prices include a Yacht-Urlaub skipper.',
     catamaran: 'Catamaran', built: 'built', labCabins: 'Cabins', labGuests: 'Guests', labExtra: 'Extras', guestsUpTo: (n: number) => `up to ${n} + skipper`,
     newBadge: 'New 2026', weekFrom: 'Week incl. skipper', from: 'from', pp: (p: string) => `${p} p. p.`, dates: 'Dates',
@@ -543,6 +545,8 @@ export default function PortoHeliPage() {
                       <li><b>{t.labExtra}</b>{yy.extra}</li>
                     </ul>
                     <p style={{ fontSize: '0.95rem' }}>{yy.pitch}</p>
+                    {/* Neuer Tab: wer in der Buchung steckt, soll Auswahl und Wunschwoche nicht verlieren */}
+                    <Link className="ml" to={yachtModelPath(y.model.toLowerCase().replace(/\s+/g, '-'), lang)} target="_blank" rel="noopener">{t.modelLink(y.model)} →</Link>
                     <div className="pz">
                       <div><small>{t.weekFrom}</small><strong>{t.from} {eur(p, lang)}</strong><small>{t.pp(eur(ppOf(y, p), lang))}</small></div>
                       <button type="button" className="btn btn-navy" onClick={() => pickYacht(y.id, true)}>{t.dates}</button>
@@ -809,6 +813,8 @@ const CSS = `
 .ph-yc .bd{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
 .ph-yc h3{font-family:'DM Sans',sans-serif;font-size:1.25rem;color:var(--navy);line-height:1.25}
 .ph-yc .sub{font-size:.88rem;color:var(--gray)}
+.ph-yc .ml{font-size:.9rem;font-weight:600;color:var(--blue);text-decoration:none}
+.ph-yc .ml:hover,.ph-yc .ml:focus-visible{text-decoration:underline}
 .ph-yc ul{list-style:none;margin:0;padding:10px 0;border-top:1px solid var(--gray-mid);border-bottom:1px solid var(--gray-mid);display:grid;gap:4px;font-size:.9rem}
 .ph-yc li{display:grid;grid-template-columns:76px minmax(0,1fr);gap:0 8px}
 .ph-yc li b{color:var(--navy)}

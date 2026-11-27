@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { useLang } from '../i18n'
+import { useLang, yachtModelPath } from '../i18n'
+import { Link } from '../router'
 import { WhatsAppIcon } from './Icons'
 import Lightbox, { type LightboxState } from './Lightbox'
 
@@ -129,6 +130,7 @@ const t = {
     yachtText: 'Der Bali 4.2 (Baujahr 2024) ist ein rund 12,85 m langer Katamaran mit vier Doppelkabinen und vier Bädern für die Gäste, dazu eine eigene Skipperkabine mit WC. Typisch Bali: ein großes vorderes Cockpit statt Trampolin, ein offener Salon, der direkt ins Achtercockpit übergeht, und eine Flybridge mit Liegefläche. Dazu wenig Tiefgang für die flachen Riffbuchten vor Anegada und Jost Van Dyke.',
     equipment: 'Ausstattung',
     equipmentList: ['Autopilot, GPS-Kartenplotter auf der Flybridge, elektrische Winsch', 'Pantry mit Backofen, Herd, Kühlschrank und Tiefkühlfach, Warmwasser', 'Beiboot, Badeplattform mit Heckdusche, Bimini, Cockpittisch', 'Sonnenpolster für Vordeck und Kajütdach, Außenlautsprecher, Inverter'],
+    modelLink: 'Alle Details zur Bali 4.2: Grundrisse, Video und 3D-Rundgang →',
     layoutCaption: 'Grundriss Bali 4.2 (4 Doppelkabinen + Skipperkabine)',
     route: 'Die Route', routeText: 'Rundtörn ab der Hodge’s Creek Marina auf Tortola über Peter Island, Salt Island und Cooper Island zu The Baths auf Virgin Gorda, durch den North Sound nach Anegada und über Marina Cay, Cane Garden Bay und Jost Van Dyke zurück: insgesamt rund 100 Seemeilen. Meist 1 bis 3 Stunden pro Tag unterwegs, die längste Etappe (Jost Van Dyke – Hodge’s Creek, ca. 20 sm) dauert 3 bis 4 Stunden.',
     routeMapAlt: 'Routenkarte British Virgin Islands: Tortola – Peter Island – Salt Island – Cooper Island – The Baths – Spanish Town – Bitter End – Anegada – Marina Cay – Cane Garden Bay – Jost Van Dyke – Tortola',
@@ -172,6 +174,7 @@ const t = {
     yachtText: "The Bali 4.2 (built 2024) is a roughly 12.85 m catamaran with four double cabins and four heads for guests, plus a separate skipper's cabin with its own toilet. Typically Bali: a large forward cockpit instead of a trampoline, an open salon that flows straight into the aft cockpit, and a flybridge with a sun deck. Plus a shallow draft for the flat, reef-lined bays off Anegada and Jost Van Dyke.",
     equipment: 'Equipment',
     equipmentList: ['Autopilot, GPS chartplotter on the flybridge, electric winch', 'Galley with oven, stove, fridge and freezer compartment, hot water', 'Dinghy, swim platform with aft shower, bimini, cockpit table', 'Sun pads for foredeck and coachroof, outdoor speakers, inverter'],
+    modelLink: 'All details on the Bali 4.2: floor plans, video and 3D tour →',
     layoutCaption: "Layout Bali 4.2 (4 double cabins + skipper's cabin)",
     route: 'The route', routeText: 'A round trip from Hodge’s Creek Marina on Tortola via Peter Island, Salt Island and Cooper Island to the Baths on Virgin Gorda, through the North Sound to Anegada and back via Marina Cay, Cane Garden Bay and Jost Van Dyke: around 100 nautical miles in total. Usually 1 to 3 hours of sailing per day, with the longest leg (Jost Van Dyke – Hodge’s Creek, approx. 20 nm) taking 3 to 4 hours.',
     routeMapAlt: 'Route map of the British Virgin Islands: Tortola – Peter Island – Salt Island – Cooper Island – The Baths – Spanish Town – Bitter End – Anegada – Marina Cay – Cane Garden Bay – Jost Van Dyke – Tortola',
@@ -360,7 +363,7 @@ export default function BviOffer({ onRequest }: { onRequest: () => void }) {
           <section style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <h2 style={h2Style}>{s.yacht}</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '1px', background: 'var(--gray-mid)', border: '1px solid var(--gray-mid)', borderRadius: '8px', overflow: 'hidden' }}>
-              <div style={factStyle}><span style={factLabel}>{s.model}</span><span style={factValue}>Bali 4.2</span></div>
+              <div style={factStyle}><span style={factLabel}>{s.model}</span><span style={factValue}><Link to={yachtModelPath('bali-4-2', lang)} target="_blank" rel="noopener" style={{ color: 'inherit', textDecoration: 'underline', textDecorationColor: 'var(--blue)', textUnderlineOffset: '3px' }}>Bali 4.2</Link></span></div>
               <div style={factStyle}><span style={factLabel}>{s.year}</span><span style={factValue}>2024</span></div>
               <div style={factStyle}><span style={factLabel}>{s.length}</span><span style={factValue}>{s.lengthVal}</span></div>
               <div style={factStyle}><span style={factLabel}>{s.cabins}</span><span style={factValue}>{s.cabinsVal}</span></div>
@@ -382,6 +385,8 @@ export default function BviOffer({ onRequest }: { onRequest: () => void }) {
                 <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.75, color: 'var(--gray)' }}>
                   {s.yachtText}
                 </p>
+                {/* Neuer Tab: wer das Angebot ansieht, soll Seite und Auswahl nicht verlieren */}
+                <Link to={yachtModelPath('bali-4-2', lang)} target="_blank" rel="noopener" style={{ margin: 0, fontSize: '0.92rem', fontWeight: 600, color: 'var(--blue)', textDecoration: 'none' }}>{s.modelLink}</Link>
                 <div style={{ background: 'var(--gray-light)', border: '1px solid var(--gray-mid)', borderRadius: '8px', padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                   <span style={{ fontWeight: 700, fontSize: '0.92rem', color: 'var(--navy)' }}>{s.equipment}</span>
                   <ul style={{ margin: 0, paddingLeft: '1.1rem', display: 'flex', flexDirection: 'column', gap: '0.3rem', fontSize: '0.86rem', lineHeight: 1.5, color: '#444' }}>
