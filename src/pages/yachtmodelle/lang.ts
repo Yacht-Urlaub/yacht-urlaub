@@ -81,6 +81,13 @@ export function modelsFor(lang: Lang): Model[] {
   return (cache[lang] ??= MODELS.map(m => localizeModel(m, lang)))
 }
 
+/** "A, B und C" / "A, B and C" aus den Werften, die sichtbare Modelle haben (Reihenfolge wie BRANDS_L) */
+export function brandList(models: Model[], lang: Lang): string {
+  const names = Object.keys(BRANDS_L[lang]).filter(b => models.some(m => m.brand === b))
+  const and = lang === 'en' ? ' and ' : ' und '
+  return names.length < 2 ? names.join('') : `${names.slice(0, -1).join(', ')}${and}${names[names.length - 1]}`
+}
+
 export const typLabel = (typ: Model['typ'], lang: Lang) =>
   lang === 'en' ? (typ === 'Katamaran' ? 'Catamaran' : 'Sailing yacht') : typ
 
@@ -99,6 +106,7 @@ export const BRANDS_L: Record<Lang, Record<string, string>> = {
   de: {
     Lagoon: 'Der Weltmarktführer bei Fahrtenkatamaranen – in fast jedem Charterrevier zu Hause.',
     Bali: 'Katamarane mit „Open Space“: große Tür zum Cockpit und festes Vordeck statt Netzen.',
+    'Fountaine Pajot': 'Französische Fahrtenkatamarane aus der Nähe von La Rochelle – mit Doppelsteuerstand, offenen Salons und optionalem Hybridantrieb.',
     Jeanneau: 'Sun-Odyssey-Fahrtenyachten mit sicheren Laufdecks und die Luxuslinie Jeanneau Yachts.',
     Beneteau: 'Oceanis und First – die bekanntesten Fahrten- und Sportyachten aus Frankreich.',
     Bavaria: 'Deutsche Segelyachten mit viel Raum und großen Betten.',
@@ -108,6 +116,7 @@ export const BRANDS_L: Record<Lang, Record<string, string>> = {
   en: {
     Lagoon: 'The world market leader in cruising catamarans – at home in almost every charter area.',
     Bali: 'Catamarans with "Open Space": a big door to the cockpit and a solid foredeck instead of nets.',
+    'Fountaine Pajot': 'French cruising catamarans from near La Rochelle – with a double helm station, open saloons and optional hybrid drive.',
     Jeanneau: 'Sun Odyssey cruising yachts with safe side decks, plus the luxury Jeanneau Yachts line.',
     Beneteau: 'Oceanis and First – the best-known cruising and sport yachts from France.',
     Bavaria: 'German sailing yachts with lots of space and big beds.',
@@ -150,9 +159,9 @@ export const UI = {
     lang: 'de-DE', ytHl: 'de', site: 'Yacht-Urlaub',
     crumbRoot: 'Yachtmodelle',
     ovTitle: 'Yachtmodelle: Katamarane & Segelyachten zum Chartern',
-    ovDesc: (n: number) => `${n} Charteryachten: Katamarane und Segelyachten von Lagoon, Bali, Jeanneau, Beneteau, Bavaria, Hanse und Dufour – mit Grundrissen, Videos und 3D-Rundgängen.`,
+    ovDesc: (n: number, brands: string) => `${n} Charteryachten: Katamarane und Segelyachten von ${brands} – mit Grundrissen, Videos und 3D-Rundgängen.`,
     ovH1: 'Yachtmodelle zum Chartern: finden Sie die Yacht, die zu Ihrer Crew passt',
-    ovLead: (n: number) => `${n} Katamarane und Segelyachten von Lagoon, Bali, Jeanneau, Beneteau, Bavaria, Hanse und Dufour – mit Grundrissen, Kabinenversionen, Videos und 3D-Rundgängen. Sie sehen auf einen Blick, wie viele Kabinen und Bäder eine Yacht hat, wie sie sich segelt und für welche Crew sie passt.`,
+    ovLead: (n: number, brands: string) => `${n} Katamarane und Segelyachten von ${brands} – mit Grundrissen, Kabinenversionen, Videos und 3D-Rundgängen. Sie sehen auf einen Blick, wie viele Kabinen und Bäder eine Yacht hat, wie sie sich segelt und für welche Crew sie passt.`,
     type: 'Typ', all: 'Alle', allYards: 'Alle Werften', yard: 'Werft',
     only3d: (n: number) => `Mit 3D-Rundgang (${n})`,
     search: 'Modell suchen',
@@ -217,9 +226,9 @@ export const UI = {
     lang: 'en-GB', ytHl: 'en', site: 'Yacht-Holiday',
     crumbRoot: 'Yacht models',
     ovTitle: 'Yacht models: charter catamarans & sailing yachts',
-    ovDesc: (n: number) => `${n} charter yachts: catamarans and sailing yachts from Lagoon, Bali, Jeanneau, Beneteau, Bavaria, Hanse and Dufour – with floor plans, videos and 3D tours.`,
+    ovDesc: (n: number, brands: string) => `${n} charter yachts: catamarans and sailing yachts from ${brands} – with floor plans, videos and 3D tours.`,
     ovH1: 'Yacht models to charter: find the yacht that suits your crew',
-    ovLead: (n: number) => `${n} catamarans and sailing yachts from Lagoon, Bali, Jeanneau, Beneteau, Bavaria, Hanse and Dufour – with floor plans, cabin versions, videos and 3D tours. See at a glance how many cabins and bathrooms a yacht has, how it sails and which crew it suits.`,
+    ovLead: (n: number, brands: string) => `${n} catamarans and sailing yachts from ${brands} – with floor plans, cabin versions, videos and 3D tours. See at a glance how many cabins and bathrooms a yacht has, how it sails and which crew it suits.`,
     type: 'Type', all: 'All', allYards: 'All yards', yard: 'Yard',
     only3d: (n: number) => `With 3D tour (${n})`,
     search: 'Search models',

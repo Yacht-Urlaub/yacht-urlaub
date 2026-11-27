@@ -3,7 +3,7 @@ import SEO from '../../components/SEO'
 import { Link } from '../../router'
 import { useLang } from '../../i18n'
 import { type Model } from './data'
-import { BRANDS_L, UI, absUrl, basePath, modelsFor, pathFor, typLabel, typPlural, useEnglishTexts } from './lang'
+import { BRANDS_L, UI, brandList, absUrl, basePath, modelsFor, pathFor, typLabel, typPlural, useEnglishTexts } from './lang'
 import { Pic } from './shared'
 
 type Typ = 'alle' | Model['typ']
@@ -68,7 +68,7 @@ export default function YachtModelleOverviewPage() {
     <main className="ym">
       <SEO
         title={u.ovTitle}
-        description={u.ovDesc(MODELS.length)}
+        description={u.ovDesc(MODELS.length, brandList(MODELS, lang))}
         image="/images/yachtmodelle/lagoon-42.jpg"
         schema={{
           '@context': 'https://schema.org',
@@ -93,7 +93,7 @@ export default function YachtModelleOverviewPage() {
       <section className="oh"><div className="wrap">
         <p className="eyebrow">{u.crumbRoot}</p>
         <h1>{u.ovH1}</h1>
-        <p className="lead">{u.ovLead(MODELS.length)}</p>
+        <p className="lead">{u.ovLead(MODELS.length, brandList(MODELS, lang))}</p>
       </div></section>
 
       <div className="filt"><div className="wrap">

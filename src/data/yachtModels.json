@@ -6954,7 +6954,8 @@
     "w": 912,
     "h": 408
    }
-  ]
+  ],
+  "hidden": true
  },
  {
   "id": "hanse-461",
@@ -7132,7 +7133,8 @@
     "w": 1543,
     "h": 580
    }
-  ]
+  ],
+  "hidden": true
  },
  {
   "id": "hanse-510",
@@ -7316,7 +7318,8 @@
     "w": 955,
     "h": 432
    }
-  ]
+  ],
+  "hidden": true
  },
  {
   "id": "hanse-590",
@@ -7484,7 +7487,8 @@
     "w": 848,
     "h": 368
    }
-  ]
+  ],
+  "hidden": true
  },
  {
   "brand": "Dufour",
@@ -8827,7 +8831,8 @@
     "Konstrukteur",
     "Judel/Vrolijk & Co."
    ]
-  ]
+  ],
+  "hidden": true
  },
  {
   "images": [],
@@ -9584,5 +9589,1067 @@
   ],
   "poster": "/images/yachtmodelle/jeanneau-yachts-54-foto.jpg",
   "card": "/images/yachtmodelle/jeanneau-yachts-54-foto-card.jpg"
+ },
+ {
+  "id": "fountaine-pajot-fp41",
+  "name": "Fountaine Pajot FP41",
+  "brand": "Fountaine Pajot",
+  "typ": "Katamaran",
+  "len": 12.1,
+  "year": "Neue Generation",
+  "badges": [
+   "Neue Generation"
+  ],
+  "src": "https://www.catamarans-fountaine-pajot.com/en/sailing-catamarans/catamaran-fp41/",
+  "tagline": "Der Einstieg in die neue Fountaine-Pajot-Generation: 12 Meter Länge, Doppelsteuerstand, Sonnenliegen auf Bimini und Vordeck und ein Salon, der sich ganz zum Cockpit öffnet.",
+  "videos": [
+   {
+    "id": "1sBKGgXnoWw",
+    "title": "FP41 – Offizielles Video",
+    "by": "Offizielles Video von Fountaine Pajot"
+   }
+  ],
+  "tours": [],
+  "key": [
+   [
+    "12,1 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "6–8",
+    "Gäste"
+   ],
+   [
+    "6,92 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die FP41 ist mit 12,10 m Rumpflänge die kleinste Yacht der aktuellen Fountaine-Pajot-Palette. Die Werft hat die horizontalen Linien gestreckt, damit der Katamaran eleganter wirkt, als man es bei 41 Fuß erwartet. Auf langen Strecken kommt sie gut voran, nahe der Küste bleibt sie leicht zu handhaben.",
+   "Im Salon öffnen sich drei Fenster zum Achtercockpit, und durch eine große Klappe reicht man Getränke von der Küche nach vorn. Draußen gibt es Sonnenliegen auf dem Bimini und vor dem Aufbau, dazu eine Liege im Backbordheck."
+  ],
+  "plus": [
+   "Doppelsteuerstand in mittlerer Höhe mit Blick auf Wasser und Segel",
+   "Salon öffnet sich ganz zum Cockpit",
+   "Sonnenliegen auf dem Bimini, vor dem Aufbau und im Heck",
+   "Breite Betten dank Knickspant im Rumpf",
+   "Auf Wunsch mit Hybridantrieb (ODSea+)"
+  ],
+  "minus": [
+   "6,92 m Breite: braucht einen Katamaran-Liegeplatz",
+   "Je nach Version 3 oder 4 Kabinen – die Flotte entscheidet"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3–4"
+   ],
+   [
+    "Gäste",
+    "6–8"
+   ],
+   [
+    "Rumpflänge",
+    "12,10 m"
+   ],
+   [
+    "Breite",
+    "6,92 m"
+   ],
+   [
+    "Tiefgang",
+    "1,35 m"
+   ],
+   [
+    "Wassertank",
+    "2 × 300 l"
+   ]
+  ],
+  "life": [
+   [
+    "Salon und Cockpit als ein Raum",
+    "Drei Fenster öffnen den Salon ganz zum Achtercockpit, durch die Klappe an der Küche geht es nach vorn.",
+    "home"
+   ],
+   [
+    "Sonnenplätze rundum",
+    "Liegen auf dem Bimini, vor dem Aufbau und im Backbordheck – jeder findet seinen Platz.",
+    "sun"
+   ],
+   [
+    "Steuern mit Überblick",
+    "Der Doppelsteuerstand in mittlerer Höhe hält den Kontakt zur Crew im Cockpit und zu den Segeln.",
+    "anchor"
+   ],
+   [
+    "Breite Betten",
+    "Der Knickspant im Rumpf schafft breite Betten mit Blick durch große Fenster.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "Maestro (Eignerversion)",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare und kleine Familien",
+    "note": "Backbordrumpf als Eignersuite"
+   },
+   {
+    "v": "Quatuor (4 Kabinen)",
+    "cab": "4",
+    "bath": "2–4",
+    "fit": "Freundesgruppen und Familien",
+    "note": "Optional mit Crewkabine"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp41-1-n.webp",
+    "caption": "Maestro, Variante 1",
+    "w": 1513,
+    "h": 861
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp41-2-n.webp",
+    "caption": "Maestro, Variante 2",
+    "w": 1513,
+    "h": 861
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp41-3-n.webp",
+    "caption": "Quatuor, Variante 1",
+    "w": 1513,
+    "h": 861
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp41-4-n.webp",
+    "caption": "Quatuor, Variante 2",
+    "w": 1513,
+    "h": 861
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp41-5-n.webp",
+    "caption": "Salon und Cockpit",
+    "w": 1513,
+    "h": 861
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp41-6-n.webp",
+    "caption": "Lounge-Deck",
+    "w": 1513,
+    "h": 861
+   }
+  ],
+  "fitYes": [
+   "eine kompakte, moderne 12-Meter-Yacht suchen",
+   "mit bis zu 8 Personen reisen",
+   "Sonnenplätze und einen offenen Wohnbereich schätzen"
+  ],
+  "fitNo": [
+   "mit 9 oder mehr Personen reisen"
+  ],
+  "faq": [
+   [
+    "Gibt es die FP41 mit Hybridantrieb?",
+    "Ja. Die FP41 gibt es mit Verbrennungs- oder Elektro-/Hybridantrieb (ODSea+). Welche Variante eine Charteryacht hat, steht im Angebot."
+   ],
+   [
+    "Hat die FP41 eine Crewkabine?",
+    "In den beiden Quatuor-Versionen ist optional eine Crewkabine möglich."
+   ]
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "12,10 m"
+   ],
+   [
+    "Breite",
+    "6,92 m"
+   ],
+   [
+    "Tiefgang",
+    "1,35 m"
+   ],
+   [
+    "Großsegel",
+    "65 m²"
+   ],
+   [
+    "Genua",
+    "35 m²"
+   ],
+   [
+    "Motoren",
+    "2 × 20 PS (optional 2 × 40 PS)"
+   ],
+   [
+    "Wassertank",
+    "2 × 300 l"
+   ],
+   [
+    "Dieseltank",
+    "350 l"
+   ],
+   [
+    "Masthöhe über Wasser",
+    "20,06 m"
+   ]
+  ],
+  "reviere": [],
+  "reviereText": "",
+  "extras": [],
+  "images": [],
+  "poster": "/images/yachtmodelle/fountaine-pajot-fp41-foto.jpg",
+  "card": "/images/yachtmodelle/fountaine-pajot-fp41-foto-card.jpg"
+ },
+ {
+  "id": "fountaine-pajot-fp44",
+  "name": "Fountaine Pajot FP44",
+  "brand": "Fountaine Pajot",
+  "typ": "Katamaran",
+  "len": 13.26,
+  "year": "Neu seit 2025",
+  "badges": [
+   "Neu"
+  ],
+  "src": "https://www.catamarans-fountaine-pajot.com/en/sailing-catamarans/catamaran-fp44/",
+  "tagline": "Die neue Generation für lange Törns: größerer Vorbau mit mehr Stauraum, Kochinsel und ein Salonfenster, das sich vollständig öffnet.",
+  "videos": [
+   {
+    "id": "uX1vgcB3rM0",
+    "title": "FP44 – Offizielles Video",
+    "by": "Offizielles Video von Fountaine Pajot"
+   }
+  ],
+  "tours": [],
+  "key": [
+   [
+    "13,3 m",
+    "Länge"
+   ],
+   [
+    "3–4",
+    "Kabinen"
+   ],
+   [
+    "6–8",
+    "Gäste"
+   ],
+   [
+    "7,44 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die FP44 ist ein Katamaran der neuen Generation für lange Strecken und Törns mit Familie oder Freunden. Der vergrößerte Vorbau (Nacelle) bringt mehr Volumen und Stauraum. Ein komplett zu öffnendes Fenster, eine Kochinsel und eine Durchreiche nach vorn lassen die Grenze zwischen innen und außen verschwimmen.",
+   "Cockpit, Flybridge und der Bereich vor dem Aufbau bieten viel Platz zum Entspannen. Der Steuerstand in mittlerer Höhe gibt gute Sicht aufs Wasser. In der Maestro-Version lässt sich der vordere Bereich der Eignerhälfte zur Baby-Kabine oder Werkstatt umbauen."
+  ],
+  "plus": [
+   "Großer Vorbau mit viel Stauraum",
+   "Fenster öffnet sich ganz, Kochinsel und Durchreiche nach vorn",
+   "Entspannungsbereiche in Cockpit, auf der Flybridge und vor dem Aufbau",
+   "Steuerstand in mittlerer Höhe mit gutem Überblick",
+   "Versionen mit 3 oder 4 Kabinen"
+  ],
+  "minus": [
+   "7,44 m Breite: braucht einen Katamaran-Liegeplatz",
+   "Die Kabinenzahl hängt von der Version ab"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3–4"
+   ],
+   [
+    "Gäste",
+    "6–8"
+   ],
+   [
+    "Rumpflänge",
+    "13,26 m"
+   ],
+   [
+    "Breite",
+    "7,44 m"
+   ],
+   [
+    "Tiefgang",
+    "1,57 m"
+   ],
+   [
+    "Wassertank",
+    "2 × 300 l"
+   ]
+  ],
+  "life": [
+   [
+    "Innen und außen verbunden",
+    "Ein Fenster, das sich ganz öffnet, die Kochinsel und die Durchreiche nach vorn machen Salon und Cockpit zu einem Raum.",
+    "home"
+   ],
+   [
+    "Platz zum Entspannen",
+    "Cockpit, Flybridge und der Bereich vor dem Aufbau bieten Sitz- und Liegeplätze.",
+    "sun"
+   ],
+   [
+    "Gut steuern",
+    "Der Steuerstand in mittlerer Höhe gibt freie Sicht aufs Wasser und hält den Kontakt zur Crew.",
+    "anchor"
+   ],
+   [
+    "Eigner- oder Gästeversion",
+    "Maestro und Full Maestro sind Eignerversionen, die Quatuor-Version bietet bis zu vier Kabinen.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "Maestro",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare und Familien",
+    "note": "Eignersuite mit Zusatzraum (Ankleide oder Kinderkabine)"
+   },
+   {
+    "v": "Full Maestro",
+    "cab": "3",
+    "bath": "je nach Yacht",
+    "fit": "Paare, viel Raum",
+    "note": "Backbordrumpf komplett als Eignerbereich"
+   },
+   {
+    "v": "Quatuor",
+    "cab": "3–4",
+    "bath": "je nach Yacht",
+    "fit": "Freundesgruppen und Familien",
+    "note": "Doppelkabinen in beiden Rümpfen"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp44-1-n.webp",
+    "caption": "Maestro",
+    "w": 1522,
+    "h": 905
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp44-2-n.webp",
+    "caption": "Full Maestro",
+    "w": 1522,
+    "h": 905
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp44-3-n.webp",
+    "caption": "Quatuor",
+    "w": 1522,
+    "h": 905
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp44-4-n.webp",
+    "caption": "Salon und Cockpit",
+    "w": 1522,
+    "h": 905
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp44-5-n.webp",
+    "caption": "Lounge-Deck",
+    "w": 1522,
+    "h": 905
+   }
+  ],
+  "fitYes": [
+   "lange Törns mit Familie oder Freunden planen",
+   "mit bis zu 8 Personen reisen",
+   "viel Platz drinnen und draußen möchten"
+  ],
+  "fitNo": [
+   "mit 9 oder mehr Personen reisen",
+   "kleine Häfen mit wenigen Katamaran-Plätzen anlaufen"
+  ],
+  "faq": [
+   [
+    "Was bedeuten Maestro, Full Maestro und Quatuor?",
+    "Maestro und Full Maestro sind Eignerversionen mit Suite im Backbordrumpf, bei Full Maestro nimmt sie den ganzen Rumpf ein. Die Quatuor-Version hat Doppelkabinen in beiden Rümpfen."
+   ]
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "13,26 m"
+   ],
+   [
+    "Breite",
+    "7,44 m"
+   ],
+   [
+    "Tiefgang",
+    "1,57 m"
+   ],
+   [
+    "Großsegel",
+    "78 m²"
+   ],
+   [
+    "Genua",
+    "45 m²"
+   ],
+   [
+    "Motoren",
+    "2 × 30 PS"
+   ],
+   [
+    "Wassertank",
+    "2 × 300 l"
+   ],
+   [
+    "Dieseltank",
+    "2 × 350 l"
+   ]
+  ],
+  "reviere": [],
+  "reviereText": "",
+  "extras": [],
+  "images": [],
+  "poster": "/images/yachtmodelle/fountaine-pajot-fp44-foto.jpg",
+  "card": "/images/yachtmodelle/fountaine-pajot-fp44-foto-card.jpg"
+ },
+ {
+  "id": "fountaine-pajot-fp48",
+  "name": "Fountaine Pajot FP48",
+  "brand": "Fountaine Pajot",
+  "typ": "Katamaran",
+  "len": 14.43,
+  "year": "Neu 2026",
+  "badges": [
+   "Neu 2026"
+  ],
+  "src": "https://www.catamarans-fountaine-pajot.com/en/sailing-catamarans/catamaran-fp48/",
+  "tagline": "Weite Törns in Komfort: drei Meter breite Schiebetür zwischen Salon und Cockpit, Tisch für acht und eine Eignerhälfte mit Zusatzraum – bis zu fünf Kabinen.",
+  "videos": [
+   {
+    "id": "_R3-T9k6l5Q",
+    "title": "FP48 – Offizielles Video",
+    "by": "Offizielles Video von Fountaine Pajot"
+   }
+  ],
+  "tours": [],
+  "key": [
+   [
+    "14,4 m",
+    "Länge"
+   ],
+   [
+    "3–5",
+    "Kabinen"
+   ],
+   [
+    "6–10",
+    "Gäste"
+   ],
+   [
+    "7,90 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die FP48 ist ein Hochsee-Katamaran, der Salon und Cockpit über eine drei Meter breite Schiebetür zu einem großen Raum verbindet. Am Cockpittisch sitzen acht Gäste, ebenso auf der Dachlounge – ideal für den Sundowner unter Sternen.",
+   "In der Full-Maestro-Version gehört der ganze Backbordrumpf zur Eignersuite, mit einem Zusatzraum, der sich optional zur begehbaren Garderobe machen lässt. Die Küche hat eine zentrale Insel mit Bar, viel Stauraum und einen direkten Zugang zum vorderen Cockpit. Fountaine Pajot nennt die FP48 in einem offiziellen Film den würdigen Nachfolger der Tanna 47."
+  ],
+  "plus": [
+   "Drei Meter breite Schiebetür zwischen Salon und Cockpit",
+   "Tisch für 8 im Cockpit und auf der Dachlounge",
+   "Eignerbereich im ganzen Backbordrumpf (Full Maestro)",
+   "Kochinsel mit Bar und Zugang zum vorderen Cockpit",
+   "Drei Versionen, bis zu 5 Kabinen (Quintet)"
+  ],
+  "minus": [
+   "7,90 m Breite: braucht einen Katamaran-Liegeplatz",
+   "Brandneu: Erfahrungen aus der Charter fehlen noch",
+   "Nicht jede Version ist in jeder Flotte verfügbar"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "3–5"
+   ],
+   [
+    "Gäste",
+    "6–10"
+   ],
+   [
+    "Rumpflänge",
+    "14,43 m"
+   ],
+   [
+    "Breite",
+    "7,90 m"
+   ],
+   [
+    "Tiefgang",
+    "1,64 m"
+   ],
+   [
+    "Wassertank",
+    "2 × 450 l"
+   ]
+  ],
+  "life": [
+   [
+    "Ein großer Wohnraum",
+    "Die drei Meter breite Schiebetür öffnet Salon und Cockpit zu einer durchgehenden Fläche.",
+    "home"
+   ],
+   [
+    "Sundowner auf dem Dach",
+    "Die Dachlounge bietet Platz für acht – dazu Sonnenliegen auf dem Dach und auf dem Vordeck.",
+    "sun"
+   ],
+   [
+    "Kochen mit Anschluss",
+    "Kochinsel mit Bar, ein großes Kühlfach in Reichweite und direkter Zugang zum vorderen Cockpit.",
+    "anchor"
+   ],
+   [
+    "Suite im Rumpf",
+    "In der Full-Maestro-Version gehört der ganze Backbordrumpf der Eignersuite.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "Full Maestro",
+    "cab": "3",
+    "bath": "3",
+    "fit": "Paare und Familien",
+    "note": "Ganzer Backbordrumpf als Eignersuite"
+   },
+   {
+    "v": "Classic Maestro",
+    "cab": "je nach Yacht",
+    "bath": "je nach Yacht",
+    "fit": "Paare, Familien mit Freunden",
+    "note": "Eignerkabine achtern im Backbordrumpf"
+   },
+   {
+    "v": "Quintet (5 Kabinen)",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Freundesgruppen und große Familien",
+    "note": "Drei Kabinen im Backbord-, zwei im Steuerbordrumpf"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp48-1-n.webp",
+    "caption": "Full Maestro",
+    "w": 1538,
+    "h": 818
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp48-2-n.webp",
+    "caption": "Classic Maestro",
+    "w": 1538,
+    "h": 818
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp48-3-n.webp",
+    "caption": "Quintet (5 Kabinen)",
+    "w": 1538,
+    "h": 818
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp48-4-n.webp",
+    "caption": "Lounge-Deck",
+    "w": 1538,
+    "h": 818
+   }
+  ],
+  "fitYes": [
+   "weite Törns mit Familie oder Freunden planen",
+   "mit 6 bis 10 Personen reisen",
+   "Wert auf einen großen, offenen Wohnraum legen"
+  ],
+  "fitNo": [
+   "mit 11 oder mehr Personen reisen",
+   "in kleine Häfen mit wenigen Katamaran-Plätzen möchten"
+  ],
+  "faq": [
+   [
+    "Ist die FP48 der Nachfolger der Tanna 47?",
+    "Fountaine Pajot nennt sie in einem offiziellen Film den würdigen Nachfolger der Tanna 47."
+   ]
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "14,43 m"
+   ],
+   [
+    "Breite",
+    "7,90 m"
+   ],
+   [
+    "Tiefgang",
+    "1,64 m"
+   ],
+   [
+    "Großsegel",
+    "85 m²"
+   ],
+   [
+    "Genua",
+    "49 m²"
+   ],
+   [
+    "Motoren",
+    "2 × 45 PS"
+   ],
+   [
+    "Wassertank",
+    "2 × 450 l"
+   ],
+   [
+    "Dieseltank",
+    "2 × 350 l"
+   ]
+  ],
+  "reviere": [],
+  "reviereText": "",
+  "extras": [],
+  "images": [],
+  "poster": "/images/yachtmodelle/fountaine-pajot-fp48-foto.jpg",
+  "card": "/images/yachtmodelle/fountaine-pajot-fp48-foto-card.jpg"
+ },
+ {
+  "id": "fountaine-pajot-fp51",
+  "name": "Fountaine Pajot FP51",
+  "brand": "Fountaine Pajot",
+  "typ": "Katamaran",
+  "len": 15.91,
+  "year": "Aktuelle Baureihe",
+  "badges": [
+   "Mit Fly-Version"
+  ],
+  "src": "https://www.catamarans-fountaine-pajot.com/en/sailing-catamarans/catamaran-fp51/",
+  "tagline": "Zwei Versionen, bis zu sechs Kabinen: Lounge Deck oder Flybridge, dazu ein eingebauter 253-Liter-Kühlschrank im Salon.",
+  "videos": [
+   {
+    "id": "LFAFy6MdQFc",
+    "title": "FP51 – Offizielles Video",
+    "by": "Offizielles Video von Fountaine Pajot"
+   }
+  ],
+  "tours": [],
+  "key": [
+   [
+    "15,9 m",
+    "Länge"
+   ],
+   [
+    "4–6",
+    "Kabinen"
+   ],
+   [
+    "8–12",
+    "Gäste"
+   ],
+   [
+    "8,08 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die FP51 gibt es in zwei sich ergänzenden Versionen: als Lounge Deck mit der typischen Entspannungsfläche und als FP51 FLY mit zentralem Steuerstand vorn und einem neuen Aufenthaltsbereich achtern.",
+   "Je nach Konfiguration bieten die Rümpfe bis zu zwei Eignersuiten, Salon und Achtercockpit bilden eine große Wohnfläche, die sich nach außen öffnet. Im Salon gibt es einen eingebauten Kühlschrank mit 253 Litern."
+  ],
+  "plus": [
+   "Zwei Versionen: Lounge Deck oder Flybridge (FP51 FLY)",
+   "Bis zu zwei Eignersuiten",
+   "Salon und Achtercockpit als eine große Wohnfläche",
+   "Eingebauter 253-Liter-Kühlschrank im Salon",
+   "Versionen mit 4, 5 oder 6 Kabinen"
+  ],
+  "minus": [
+   "8,08 m Breite: braucht große Katamaran-Liegeplätze",
+   "Die Größe verlangt einen erfahrenen Skipper"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "4–6"
+   ],
+   [
+    "Gäste",
+    "8–12"
+   ],
+   [
+    "Rumpflänge",
+    "15,91 m"
+   ],
+   [
+    "Breite",
+    "8,08 m"
+   ],
+   [
+    "Tiefgang",
+    "1,58 m"
+   ],
+   [
+    "Wassertank",
+    "2 × 450 l"
+   ]
+  ],
+  "life": [
+   [
+    "Wohnen mit Weitblick",
+    "Salon und Achtercockpit gehen ineinander über und öffnen sich ganz nach außen.",
+    "home"
+   ],
+   [
+    "Lounge Deck oder Fly",
+    "Entspannen auf dem Lounge Deck – oder steuern von der Flybridge mit neuem Aufenthaltsbereich achtern.",
+    "sun"
+   ],
+   [
+    "Vorräte für die ganze Crew",
+    "Der eingebaute 253-Liter-Kühlschrank im Salon fasst Getränke und frische Einkäufe.",
+    "anchor"
+   ],
+   [
+    "Viel Privatsphäre",
+    "Bis zu sechs Kabinen, in der Double-Maestro-Version zwei Eignersuiten.",
+    "bed"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "Double Maestro",
+    "cab": "4",
+    "bath": "4",
+    "fit": "Zwei Paare mit Gästen",
+    "note": "Zwei Eignersuiten und zwei Doppelkabinen"
+   },
+   {
+    "v": "Full Maestro",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "Paare und Familien",
+    "note": "Backbordrumpf als Eignerbereich"
+   },
+   {
+    "v": "Maestro · 5 Kabinen",
+    "cab": "5",
+    "bath": "je nach Yacht",
+    "fit": "Familien und Freundesgruppen",
+    "note": ""
+   },
+   {
+    "v": "6 Kabinen",
+    "cab": "6",
+    "bath": "je nach Yacht",
+    "fit": "Große Gruppen",
+    "note": "Drei Kabinen je Rumpf"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp51-1-n.webp",
+    "caption": "Double Maestro",
+    "w": 1600,
+    "h": 835
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp51-2-n.webp",
+    "caption": "Full Maestro",
+    "w": 1600,
+    "h": 835
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp51-3-n.webp",
+    "caption": "Maestro · 5 Kabinen",
+    "w": 1600,
+    "h": 835
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp51-4-n.webp",
+    "caption": "6 Kabinen",
+    "w": 1600,
+    "h": 835
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp51-5-n.webp",
+    "caption": "Deckplan",
+    "w": 1600,
+    "h": 835
+   }
+  ],
+  "fitYes": [
+   "mit 8 bis 12 Personen reisen",
+   "zwischen Lounge Deck und Flybridge wählen möchten",
+   "viel Raum und Privatsphäre schätzen"
+  ],
+  "fitNo": [
+   "zu viert reisen und es kompakter möchten",
+   "kleine Häfen anlaufen möchten"
+  ],
+  "faq": [
+   [
+    "Was ist der Unterschied zwischen FP51 und FP51 FLY?",
+    "Die FP51 hat das Lounge Deck als Entspannungsbereich. Die FP51 FLY hat eine Flybridge mit zentralem Steuerstand vorn und einem neuen Aufenthaltsbereich achtern."
+   ]
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "15,91 m"
+   ],
+   [
+    "Breite",
+    "8,08 m"
+   ],
+   [
+    "Tiefgang",
+    "1,58 m"
+   ],
+   [
+    "Großsegel",
+    "95 m²"
+   ],
+   [
+    "Genua",
+    "59 m²"
+   ],
+   [
+    "Motoren",
+    "2 × 57 PS"
+   ],
+   [
+    "Wassertank",
+    "2 × 450 l"
+   ],
+   [
+    "Dieseltank",
+    "2 × 450 l"
+   ]
+  ],
+  "reviere": [],
+  "reviereText": "",
+  "extras": [],
+  "images": [],
+  "poster": "/images/yachtmodelle/fountaine-pajot-fp51-foto.jpg",
+  "card": "/images/yachtmodelle/fountaine-pajot-fp51-foto-card.jpg"
+ },
+ {
+  "id": "fountaine-pajot-fp55",
+  "name": "Fountaine Pajot FP55",
+  "brand": "Fountaine Pajot",
+  "typ": "Katamaran",
+  "len": 17.35,
+  "year": "Neu 2026",
+  "badges": [
+   "Neu 2026"
+  ],
+  "src": "https://www.catamarans-fountaine-pajot.com/en/sailing-catamarans/catamaran-fp55/",
+  "tagline": "Der erste Flybridge-Katamaran der Palette: Tür zum vorderen Cockpit, Suiten in beiden Rümpfen und eine Charter-Version mit sechs Doppelkabinen.",
+  "videos": [
+   {
+    "id": "gqJQlKe_sRQ",
+    "title": "FP55 – Offizielles Video",
+    "by": "Offizielles Video von Fountaine Pajot"
+   }
+  ],
+  "tours": [],
+  "key": [
+   [
+    "17,4 m",
+    "Länge"
+   ],
+   [
+    "4–6",
+    "Kabinen"
+   ],
+   [
+    "8–12",
+    "Gäste"
+   ],
+   [
+    "8,80 m",
+    "Breite"
+   ]
+  ],
+  "glance": [
+   "Die FP55 ist der erste Flybridge-Katamaran der Fountaine-Pajot-Palette, gebaut für lange Strecken mit einer Verarbeitung, die bisher den größten Yachten der Werft vorbehalten war. Laut Werft ist sie der einzige Fahrtenkatamaran dieser Größe mit zwei vollwertigen Suiten, eine in jedem Rumpf.",
+   "Zum ersten Mal führt bei Fountaine Pajot eine Tür vom Salon direkt ins vordere Cockpit. Entspannungsbereiche liegen vorn und hinten, die Flybridge bündelt die Manöver. In der Charter-Version gibt es sechs gleiche Doppelkabinen und zwei vollständig getrennte Crewkabinen mit eigenem Bad."
+  ],
+  "plus": [
+   "Erster Flybridge-Katamaran der Palette",
+   "Tür vom Salon ins vordere Cockpit",
+   "Zwei Suiten, eine pro Rumpf (Double Maestro)",
+   "Charter-Version mit 6 gleichen Doppelkabinen",
+   "Zwei getrennte Crewkabinen mit eigenem Bad"
+  ],
+  "minus": [
+   "8,80 m Breite: nur große Katamaran-Liegeplätze",
+   "Brandneu: noch kaum Yachten in den Flotten"
+  ],
+  "facts": [
+   [
+    "Kabinen",
+    "4–6"
+   ],
+   [
+    "Gäste",
+    "8–12"
+   ],
+   [
+    "Rumpflänge",
+    "17,35 m"
+   ],
+   [
+    "Breite",
+    "8,80 m"
+   ],
+   [
+    "Tiefgang",
+    "1,85 m"
+   ],
+   [
+    "Wassertank",
+    "2 × 400 l"
+   ]
+  ],
+  "life": [
+   [
+    "Flybridge zum Wohnen",
+    "Oben bündelt die Flybridge die Manöver und bietet weite Sicht über die Umgebung.",
+    "sun"
+   ],
+   [
+    "Tür nach vorn",
+    "Vom Salon geht es direkt ins vordere Cockpit – frische Luft und Gäste fließen durchs ganze Schiff.",
+    "home"
+   ],
+   [
+    "Gleich große Kabinen",
+    "In der Charter-Version sind alle sechs Doppelkabinen gleich – fair für Freundesgruppen.",
+    "bed"
+   ],
+   [
+    "Crew an Bord",
+    "Zwei vollständig getrennte Crewkabinen mit eigenem Bad lassen Ihre Kabinen frei.",
+    "anchor"
+   ]
+  ],
+  "layouts": [
+   {
+    "v": "Maestro · 5 Kabinen",
+    "cab": "5",
+    "bath": "5",
+    "fit": "Familien und Paare mit Gästen",
+    "note": "Eignersuite und vier Doppelkabinen"
+   },
+   {
+    "v": "Double Maestro · 4 Kabinen",
+    "cab": "4",
+    "bath": "je nach Yacht",
+    "fit": "Zwei Paare mit Gästen",
+    "note": "Zwei Suiten, zwei Gästekabinen, zwei Crewkabinen"
+   },
+   {
+    "v": "Charter · 6 Kabinen",
+    "cab": "6",
+    "bath": "je nach Yacht",
+    "fit": "Große Gruppen",
+    "note": "Sechs gleiche Doppelkabinen, zwei Crewkabinen"
+   }
+  ],
+  "plans": [
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp55-1-n.webp",
+    "caption": "Maestro · 5 Kabinen",
+    "w": 1510,
+    "h": 801
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp55-2-n.webp",
+    "caption": "Double Maestro · 4 Kabinen",
+    "w": 1510,
+    "h": 801
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp55-3-n.webp",
+    "caption": "Charter · 6 Kabinen",
+    "w": 1510,
+    "h": 801
+   },
+   {
+    "img": "/images/yachtmodelle/plans/fountaine-pajot-fp55-4-n.webp",
+    "caption": "Flybridge",
+    "w": 1510,
+    "h": 801
+   }
+  ],
+  "fitYes": [
+   "mit einer großen Gruppe reisen und Luxus möchten",
+   "eine Yacht mit Crew suchen",
+   "viel Raum auf drei Ebenen schätzen"
+  ],
+  "fitNo": [
+   "zu viert oder zu sechst reisen",
+   "günstig chartern möchten"
+  ],
+  "faq": [
+   [
+    "Was ist neu an der FP55?",
+    "Sie ist der erste Flybridge-Katamaran der Palette und der erste Fountaine-Pajot-Fahrtenkatamaran mit einer Tür vom Salon ins vordere Cockpit."
+   ]
+  ],
+  "tech": [
+   [
+    "Rumpflänge",
+    "17,35 m"
+   ],
+   [
+    "Breite",
+    "8,80 m"
+   ],
+   [
+    "Tiefgang",
+    "1,85 m"
+   ],
+   [
+    "Großsegel",
+    "110 m²"
+   ],
+   [
+    "Genua",
+    "66 m²"
+   ],
+   [
+    "Motoren",
+    "2 × 80 PS"
+   ],
+   [
+    "Wassertank",
+    "2 × 400 l"
+   ],
+   [
+    "Dieseltank",
+    "2 × 610 l"
+   ]
+  ],
+  "reviere": [],
+  "reviereText": "",
+  "extras": [],
+  "images": [],
+  "poster": "/images/yachtmodelle/fountaine-pajot-fp55-foto.jpg",
+  "card": "/images/yachtmodelle/fountaine-pajot-fp55-foto-card.jpg"
  }
 ]

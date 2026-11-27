@@ -1,6 +1,19 @@
 # Yachtmodelle (/yachtmodelle)
 
-Stand: November 2026. Übersicht `/yachtmodelle`, je Modell `/yachtmodelle/<id>` (52 Modelle).
+Stand: November 2026. Übersicht `/yachtmodelle`, je Modell `/yachtmodelle/<id>` (57 Modelle in den Daten, 52 sichtbar: Hanse ausgeblendet, siehe unten).
+
+## Hanse ausgeblendet (seit 27.11.2026)
+
+Zwischen der Hansewerft und ihren Fotografen läuft ein Rechtsstreit (Angabe des Betreibers). Bis zur Klärung zeigt die
+Seite nichts von Hanse: die 5 Modelle (hanse-410, -461, -505, -510, -590) tragen in `src/data/yachtModels.json` das Feld
+`"hidden": true`. Daten, Pläne und englische Übersetzungen bleiben erhalten (Prüfskript prüft sie weiter). Wirkung: keine Seite,
+nicht in Übersicht, Filter, Schema (ItemList), Sitemaps (DE und EN) und `llms.txt`; Aufrufe von `/yachtmodelle/hanse-*` bzw.
+`/yacht-models/hanse-*` leitet `netlify.toml` per 302 auf die Übersicht. Bildmaterial von Hanse wurde ohnehin nie
+verwendet (Illustration statt Foto; die Pläne hat der Betreiber freigegeben).
+**Wieder einblenden:** `hidden` entfernen, die zwei Redirect-Regeln in `netlify.toml` löschen, die 5 Modelle in beide Sitemaps
+eintragen, `llms.txt` (Zahl, Werftliste) anpassen, Snapshots neu erzeugen. Wichtig: Presseberichte zum Streit habe ich bei einer
+Suche nicht gefunden (nur den unverwandten Plagiatsstreit Hanse gegen Cantiere del Pardo); die Entscheidung beruht auf der Angabe
+des Betreibers.
 **Zweisprachig:** Deutsch auf yacht-urlaub.net, Englisch auf yacht-holiday.net unter `/yacht-models` und
 `/yacht-models/<id>` (intern `/en/yacht-models/...`, Paar in `i18n.ts`, damit hreflang und Sprachumschalter
 stimmen). Dieselben Komponenten, die Sprache kommt aus `useLang()`.
@@ -88,6 +101,7 @@ beim Artefakt-Ersteller). Ein neues Modell: weiteres Objekt in `yachtModels.json
   Beneteau aus den Dateinamen (Kabinen/Bäder), bei Jeanneau neutral „Variante 1/2/3“. Hanse 410: nur Variante 1 und 4 (Wunsch des Betreibers). Jeanneau Yachts 54: die Werftseite hat keine Pläne („Grundrisse folgen“). **Ohne Plan:** Bavaria (die Werft zeigt nur Teilmodule wie Bug-, Heck- oder Salonbereich, keine Gesamtpläne), Bali 4.8
   (Modell nicht mehr auf der Bali-Seite), Sun Odyssey 440 und 490 (alte Seiten ohne Pläne), Voyager 45. Dort steht „Grundrisse folgen“.
 - **Dufour** (November 2026, 6 aktuelle Modelle 37, 39, 41, 44, 48, 54): Daten, Fotos und Pläne von www.dufour-yachts.com, Videos vom offiziellen Kanal. Die Pläne sind dort hochkant (Bug oben) mit Zusatzmodulen am Rand; sie wurden auf den Rumpf zugeschnitten und um 90° gedreht, damit alle Pläne der Seite quer liegen. Bewusst nicht aufgenommen: ältere Baureihen (z. B. Dufour 390, 412, 430, 460, 470, 520, 530), die in Charterflotten häufig sind; für die Dufour 48 gibt es nur einen französisch betitelten Image-Film (daher kein Video).
+- **Fountaine Pajot** (November 2026, 5 aktuelle Modelle FP41, FP44, FP48, FP51, FP55): Daten, Fotos und Pläne von catamarans-fountaine-pajot.com (Host in der Sandbox-Freigabe), Videos vom offiziellen Kanal „Fountaine Pajot“ (jeweils der Image-Film, keine Walkthroughs). Die Pläne sind dort hochkant (Bug oben), wurden um 90° gedreht und je Modell auf eine gemeinsame Leinwand gebracht (`-n.webp`). Bewusst nicht aufgenommen: ältere Baureihen (Isla 40, Astrea 42, Elba 45, Tanna 47, Aura 51 – die Werftseite leitet sie auf die Nachfolger um, es gibt dort kein Werftmaterial), die großen FPY 59S/70S/80S/120S und Motoryachten. Die Beschriftungen der FP41-Pläne („Variante 1/2“) folgen nicht den Werftnamen (Maestro 2/3, Quatuor 2/4), weil die Zuordnung der vier Bilder aus der Seite nicht eindeutig war; Gästezahlen sind aus den Doppelkabinen abgeleitet (Kabinen × 2). 3D-Rundgänge: keine Matterport-Links bekannt (die Werftseite hat einen eigenen „Virtual visit“).
 - Es gibt bewusst **keinen** Abschnitt „Kosten“ (Preis nur im Angebot).
 
 ## Anfrageformular

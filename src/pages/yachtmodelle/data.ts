@@ -37,9 +37,17 @@ export interface Model {
   reviere: string[]
   reviereText?: string
   extras: string[]
+  /** true = Modell ist ausgeblendet (keine Seite, nicht in Übersicht/Sitemap/Schema). Daten und Übersetzung bleiben erhalten. */
+  hidden?: boolean
 }
 
-export const MODELS: Model[] = raw as unknown as Model[]
+/** Alle Modelle inkl. ausgeblendeter (nur fuer Pruefskripte/Daten; die Seiten nutzen MODELS). */
+export const ALL_MODELS: Model[] = raw as unknown as Model[]
+
+/** Sichtbare Modelle. Hanse ist seit 27.11.2026 ausgeblendet (`hidden: true` in yachtModels.json): Rechtsstreit
+ *  zwischen der Hansewerft und ihren Fotografen, bis zur Klaerung nichts von Hanse zeigen. Wieder einblenden:
+ *  `hidden` entfernen, Sitemaps und Snapshots ergaenzen (docs/yachtmodelle.md). */
+export const MODELS: Model[] = ALL_MODELS.filter(m => !m.hidden)
 
 // Pfade, Werften-/Ausstattungstexte und Oberflaechentexte je Sprache: siehe lang.ts
 

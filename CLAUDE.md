@@ -192,7 +192,7 @@ zu nutzen (Markenstimme, Textqualität).
 
 ## Yachtmodelle
 
-Bereich `/yachtmodelle` (Übersicht + 52 Modellseiten) mit englischem Gegenstück `/yacht-models` auf yacht-holiday.net (EN-Texte: `src/data/yachtModels.en.json`, Prüfung `node scripts/check-yachtmodelle-en.cjs`). Daten in
+Bereich `/yachtmodelle` (Übersicht + 52 sichtbare Modellseiten; die 5 Hanse-Modelle sind per `hidden: true` ausgeblendet, siehe `docs/yachtmodelle.md`) mit englischem Gegenstück `/yacht-models` auf yacht-holiday.net (EN-Texte: `src/data/yachtModels.en.json`, Prüfung `node scripts/check-yachtmodelle-en.cjs`). Daten in
 `src/data/yachtModels.json`, Aufbau, Datenschutz-Regeln (Videos/3D erst nach Klick, keine
 Fremd-Vorschaubilder) und Ablauf für neue Modelle: `docs/yachtmodelle.md`. Jede Modellseite steht in
 `public/sitemap.xml` und bekommt einen Snapshot.
