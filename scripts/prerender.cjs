@@ -140,7 +140,15 @@ async function main() {
     await page.route(/googletagmanager\.com|google-analytics\.com|analytics\.google\.com|doubleclick\.net/, r => r.abort())
     await page.goto(`http://${host}:${PORT}${urlPath}`, { waitUntil: 'load', timeout: 20000 })
     await page.waitForTimeout(700)
-    let html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML)
+    // Doppelten <title> verhindern: react-helmet-async setzt den Seitentitel als ersten
+    // <title> im <head>, der statische Platzhalter aus index.html (generischer
+    // Startseitentitel) bleibt dahinter stehen. Crawler ohne JS wuerden sonst je nach
+    // Parser den falschen nehmen. Es bleibt nur der erste (der Seitentitel) stehen.
+    let html = await page.evaluate(() => {
+      const titles = [...document.head.querySelectorAll('title')]
+      titles.slice(1).forEach(t => t.remove())
+      return '<!doctype html>\n' + document.documentElement.outerHTML
+    })
     // Das vom Loader in index.html eingefuegte Trusted-Shops-Skript nicht als
     // festes <script async src> einfrieren — sonst laedt es auf jeder Seite
     // sofort beim Parsen, obwohl der Loader es absichtlich erst nach dem

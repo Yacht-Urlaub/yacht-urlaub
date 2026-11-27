@@ -108,7 +108,8 @@ mitgeben).
 `generate_lead` – `form_name`-Werte: `anfrage` (Kontaktformular auf den
 Seiten, u. a. Yoga), `kontakt` (Kontaktseite), `urlaubsplaner`,
 `kabinen-buchung`, `charter-anfrage`, `skipper-anfrage`, `crew-anfrage`,
-`partner-anfrage` (Reisebüro), `sailaway-anfrage`.
+`partner-anfrage` (Reisebüro), `sailaway-anfrage`, `yachtmodell-anfrage`
+(Yachtmodell-Detailseiten), `porto-heli-buchung`.
 
 `link_location`: `fab` = schwebender WhatsApp-Button, `side_contact` =
 Kontaktleiste am rechten Rand, `header`/`footer` = Navigation bzw. Fußzeile,

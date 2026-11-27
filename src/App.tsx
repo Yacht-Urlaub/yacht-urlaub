@@ -33,6 +33,8 @@ const NewsCharterModelle2027Page = lazy(() => import('./pages/NewsCharterModelle
 const NewsSailIntoTheSeasons2026Page = lazy(() => import('./pages/NewsSailIntoTheSeasons2026Page'))
 const BuchenPage = lazy(() => import('./pages/BuchenPage'))
 const PackageDetailPage = lazy(() => import('./pages/PackageDetailPage'))
+const YachtModelleOverviewPage = lazy(() => import('./pages/yachtmodelle/Overview'))
+const YachtModellDetailPage = lazy(() => import('./pages/yachtmodelle/Detail'))
 const KabinenPage = lazy(() => import('./pages/KabinenPage'))
 const UrlaubsplanerPage = lazy(() => import('./pages/UrlaubsplanerPage'))
 const CrewPage = lazy(() => import('./pages/CrewPage'))
@@ -135,6 +137,9 @@ function AnimatedRoutes() {
           <Route path="/destinationen" element={<DestinationenPage />} />
           <Route path="/destinationen/:id" element={<DestinationPage />} />
           <Route path="/yachten" element={<YachtenPage />} />
+          {/* Yachtmodelle: deutsche Fassung; die englische steht unten (/en/yacht-models) */}
+          <Route path="/yachtmodelle" element={<YachtModelleOverviewPage />} />
+          <Route path="/yachtmodelle/:id" element={<YachtModellDetailPage />} />
           <Route path="/charter" element={<CharterPage />} />
           <Route path="/toerns" element={<ToernsPage />} />
           <Route path="/toerns/porto-heli" element={<PortoHeliPage />} />
@@ -166,6 +171,8 @@ function AnimatedRoutes() {
           <Route path={toHref("/en/destinations")} element={<DestinationenPage />} />
           <Route path={toHref("/en/destinations/:id")} element={<DestinationPage />} />
           <Route path={toHref("/en/yachts")} element={<YachtenPage />} />
+          <Route path={toHref("/en/yacht-models")} element={<YachtModelleOverviewPage />} />
+          <Route path={toHref("/en/yacht-models/:id")} element={<YachtModellDetailPage />} />
           <Route path={toHref("/en/faq")} element={<FaqPage />} />
           <Route path={toHref("/en/book-now")} element={<BuchenPage />} />
           <Route path={toHref("/en/cruises")} element={<ToernsPage />} />

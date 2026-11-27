@@ -1,3 +1,21 @@
+# Zweisprachigkeit: immer Deutsch UND Englisch (verbindlich)
+
+Jede neue Seite, jede neue Funktion und **jede nachträgliche Änderung** (Text, Bild, Preis, Menüpunkt,
+Formular, SEO-Angabe, Sitemap, llms.txt) gilt für **beide Sprachen**: Deutsch auf yacht-urlaub.net und Englisch
+auf yacht-holiday.net. Das ist der Normalfall und wird ohne Nachfrage so umgesetzt – auch bei kleinen Korrekturen
+im Nachgang, nicht nur beim ersten Anlegen.
+
+- **Nie nur eine Sprache liefern.** Ein Fix oder Inhalt nur auf der deutschen Seite gilt als unfertig.
+- **Im Zweifel fragen.** Ist nicht zu 100 % klar, ob etwas in beiden Sprachen angelegt werden soll (z. B. Inhalt,
+  der nur für den deutschen Markt gilt, rechtliche Texte, Angebote ohne englisches Pendant), **vor dem Umsetzen
+  mit `AskUserQuestion` nachfragen**, nicht raten. Wird bewusst nur eine Sprache umgesetzt, das im Chat benennen.
+- **Beim Planen immer mitdenken:** EN-Route und Paar in `src/i18n.ts` (hreflang, Sprachumschalter), Menüpunkt in
+  beiden Navigationen (`Navbar.tsx`), Sitemap `public/sitemap.xml` **und** `public/sitemap-en.xml`, englische
+  Texte/Alt-Texte/Description/Schema, Snapshots für beide Domains.
+- **Gegenprüfen** wie im SEO-Check oben (gerenderte Meta-Tags auf `localhost` und `en.localhost`).
+- **Yachtmodelle:** Texte-Änderung in `src/data/yachtModels.json` → `src/data/yachtModels.en.json` mitpflegen und
+  `node scripts/check-yachtmodelle-en.cjs` laufen lassen (siehe `docs/yachtmodelle.md`).
+
 # SEO-Check bei neuen/geänderten Seiten
 
 Bei jeder neuen Seite und jeder inhaltlichen Änderung an einer bestehenden
@@ -79,7 +97,9 @@ gesichert). Nicht `dist/index.html` direkt verwenden: die ist nach dem
 Build schon der eingefrorene Startseiten-Snapshot und liess sonst
 Title/Description der Startseite doppelt in jedem Unterseiten-Snapshot
 landen. Gegenpruefung nach dem Lauf: genau ein `<meta name="description"`
-pro Snapshot.
+pro Snapshot und genau ein `<title>` (zaehlen mit `<title[^>]*>[^<]+</title>`, weil der Kommentar in
+`index.html` das Wort selbst enthaelt; der statische Platzhalter-Title der Huelle wird im Skript
+entfernt; zwei Titel wuerden je nach Crawler den falschen Seitentitel liefern).
 
 Das `rm -rf dist` vorneweg ist seit dem Umstieg auf Code-Splitting
 (`React.lazy()` pro Route in `App.tsx`, siehe Kommentar dort) nicht mehr
@@ -158,6 +178,24 @@ wenn hoechstens 100 EUR darunter oder 150 EUR darueber, sonst aufrunden auf
 dem Artefakt "Segeln ab Porto Heli" und muessen mit ihm uebereinstimmen. Die Buchung geht als
 Formular `porto-heli-buchung` ueber `sendForm` an `CONTACT_TO`; die Mail
 enthaelt die interne Kalkulation und die Booking-Manager-Yacht-ID.
+
+## SEO-, AEO- und GEO-Standard (verbindlich, alle 14 Tage prüfen)
+
+Für jede neue oder geänderte Seite, jeden Text und jedes Bild gilt `docs/seo-aeo-geo-standards.md`
+(Title/Description, Überschriften, Antwort-zuerst, strukturierte Daten, Bilder mit Alt-Text, WebP und
+Abmessungen, Texte für DE und EN, Messen). Der Standard trägt ein Stand-Datum und wird alle zwei Wochen
+(1. und 15. des Monats) gegen die aktuellen Google-Leitfäden und belegte KI-Such-Erkenntnisse geprüft. Ist
+das Stand-Datum älter als 14 Tage, vor der Arbeit an Seiten zuerst diese Prüfung nachholen und das Dokument
+aktualisieren. Texte vor dem Veröffentlichen gegen die Regeln in Abschnitt 4 des Dokuments prüfen (belegte
+Fakten, eigener Mehrwert, einzigartig pro Seite). Ein Marketing-Skill ist, wenn in der Sitzung geladen, vorher
+zu nutzen (Markenstimme, Textqualität).
+
+## Yachtmodelle
+
+Bereich `/yachtmodelle` (Übersicht + 52 sichtbare Modellseiten; die 5 Hanse-Modelle sind per `hidden: true` ausgeblendet, siehe `docs/yachtmodelle.md`) mit englischem Gegenstück `/yacht-models` auf yacht-holiday.net (EN-Texte: `src/data/yachtModels.en.json`, Prüfung `node scripts/check-yachtmodelle-en.cjs`). Daten in
+`src/data/yachtModels.json`, Aufbau, Datenschutz-Regeln (Videos/3D erst nach Klick, keine
+Fremd-Vorschaubilder) und Ablauf für neue Modelle: `docs/yachtmodelle.md`. Jede Modellseite steht in
+`public/sitemap.xml` und bekommt einen Snapshot.
 
 # PR- und Preview-Link immer im Chat durchgeben
 

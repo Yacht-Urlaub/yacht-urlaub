@@ -38,6 +38,23 @@
   status = 301
   force = true
 
+# --- 0b. Hanse-Modelle voruebergehend ausgeblendet ---
+#     Rechtsstreit zwischen der Hansewerft und ihren Fotografen: bis zur Klaerung zeigen die
+#     Yachtmodelle nichts von Hanse (`hidden: true` in src/data/yachtModels.json). 302 statt 301,
+#     weil die Seiten spaeter wiederkommen koennen. Beim Wiedereinblenden diese beiden Regeln entfernen.
+
+[[redirects]]
+  from = "/yachtmodelle/hanse-*"
+  to = "/yachtmodelle"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/yacht-models/hanse-*"
+  to = "/yacht-models"
+  status = 302
+  force = true
+
 # --- 1. Englische Domain: geaenderte Alt-Pfade ---
 [[redirects]]
   from = "https://www.yacht-holiday.net/charter/"

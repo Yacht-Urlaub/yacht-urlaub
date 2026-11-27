@@ -43,26 +43,33 @@ const dse = {
     pMetaE: 'Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen: über den Link „Cookie-Einstellungen“ im Footer dieser Website (Auswahl „Nur notwendige“); dann wird das Pixel deaktiviert und die Meta-Cookies werden gelöscht. Personalisierte Werbung können Sie zusätzlich in Ihren Meta-Einstellungen steuern:',
     pMetaELink: 'Werbeeinstellungen bei Meta',
 
-    h5_: '7. Google reCAPTCHA',
+    hMedia_: '7. Eingebettete Medien (YouTube, Matterport)',
+    pMediaA: 'Auf den Seiten unserer Yachtmodelle können Videos von YouTube (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland) und 3D-Rundgänge von Matterport (Matterport, Inc., USA) eingebunden sein.',
+    pMediaB: 'Diese Inhalte werden erst geladen, wenn Sie auf die jeweilige Vorschau klicken. Vorher findet keine Verbindung zu YouTube oder Matterport statt. Mit dem Klick willigen Sie in das Laden ein (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG): Ihr Browser verbindet sich dann mit dem jeweiligen Anbieter, dabei werden u. a. Ihre IP-Adresse, Angaben zu Browser und Gerät sowie die aufgerufene Seite übermittelt. YouTube-Videos binden wir im erweiterten Datenschutzmodus (youtube-nocookie.com) ein. Eine Übermittlung in die USA ist nicht ausgeschlossen. Sind Sie bei einem Anbieter angemeldet, kann dieser die Nutzung Ihrem Konto zuordnen.',
+    pMediaC: 'Weitere Informationen finden Sie in den Datenschutzerklärungen der Anbieter:',
+    pMediaYt: 'Datenschutzerklärung von Google (YouTube)',
+    pMediaMp: 'Datenschutzerklärung von Matterport',
+
+    h5_: '8. Google reCAPTCHA',
     p5a: 'Zum Schutz unserer Formulare vor automatisierten Eingaben verwenden wir reCAPTCHA v3 der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland. reCAPTCHA prüft im Hintergrund, ob eine Eingabe von einem Menschen stammt. Ein sichtbares Rätsel wird Ihnen dabei nicht gestellt.',
     p5b: 'Bei dieser Prüfung werden Ihre IP-Adresse sowie Angaben zu Gerät und Browser und Ihr Verhalten auf der Seite — etwa Mausbewegungen, Tastatureingaben und Verweildauer — an Google übertragen und dort ausgewertet. Eine Übermittlung in die USA ist dabei nicht ausgeschlossen. Die Prüfung findet nur auf Seiten mit Formular statt und erst, wenn Sie ein Formular absenden.',
     p5c: 'Rechtsgrundlage ist unser berechtigtes Interesse an der Abwehr von Missbrauch und automatisiertem Versand (Art. 6 Abs. 1 lit. f DSGVO). Ergänzend gelten die Datenschutzerklärung und die Nutzungsbedingungen von Google:',
     p5Datenschutz: 'Datenschutzerklärung von Google',
     p5Nutzung: 'Nutzungsbedingungen von Google',
 
-    h6_: '8. Newsletter',
+    h6_: '9. Newsletter',
     p6a: 'Unser Newsletter-Versand erfolgt über das Double Opt-in Verfahren. Das bedeutet, dass wir Ihnen erst dann einen Newsletter per E-Mail zusenden, wenn Sie ausdrücklich bestätigt haben, dass Sie den Newsletter-Service aktivieren möchten.',
     p6b: 'Für den Versand unseres Newsletters nutzen wir den Dienst Mailchimp der Rocket Science Group LLC, 675 Ponce de Leon Ave NE, Suite 5000, Atlanta, GA 30308, USA. Ihre E-Mail-Adresse und weitere für den Newsletter-Versand relevante Daten werden auf Servern von Mailchimp gespeichert.',
     p6c: 'Eine Abmeldung vom Newsletter ist jederzeit möglich. Einen entsprechenden Link finden Sie am Ende jedes Newsletters.',
 
-    h7_: '9. Social Media',
+    h7_: '10. Social Media',
     p7a: 'Auf unserer Website befinden sich Verlinkungen zu folgenden sozialen Netzwerken:',
     p7b: 'Beim Klick auf einen der Verlinkungsbuttons werden Sie direkt zur jeweiligen Plattform weitergeleitet. Beim Aufruf der jeweiligen Seite gelten die Datenschutzbestimmungen des jeweiligen Anbieters. Wir haben keinen Einfluss auf die erhobenen Daten und Datenverarbeitungsvorgänge der sozialen Netzwerke.',
 
-    h8_: '10. Zahlungsabwicklung',
+    h8_: '11. Zahlungsabwicklung',
     p8: 'Für die Abwicklung von Zahlungen nutzen wir folgende Zahlungsdienstleister: PayPal, Sofortüberweisung/Klarna, Visa, Mastercard und American Express (AMEX). Die Übertragung Ihrer Zahlungsdaten erfolgt verschlüsselt. Wir haben keinen Zugriff auf Ihre vollständigen Zahlungsdaten — diese werden ausschließlich durch den jeweiligen Zahlungsdienstleister verarbeitet. Es gelten die Datenschutzbestimmungen des jeweiligen Anbieters.',
 
-    h9_: '11. Ihre Rechte',
+    h9_: '12. Ihre Rechte',
     p9: 'Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:',
     li9: [
       ['Auskunft', ' über die bei uns gespeicherten personenbezogenen Daten'],
@@ -74,10 +81,10 @@ const dse = {
     ],
     p9b: 'Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:',
 
-    h10_: '12. Datensicherheit',
+    h10_: '13. Datensicherheit',
     p10: 'Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL/TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://" auf „https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.',
 
-    h11_: '13. Änderungen dieser Datenschutzerklärung',
+    h11_: '14. Änderungen dieser Datenschutzerklärung',
     p11: 'Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen in der Datenschutzerklärung umzusetzen. Für Ihren erneuten Besuch gilt dann die neue Datenschutzerklärung.',
     stand: 'Stand: November 2026',
   },
@@ -123,26 +130,33 @@ const dse = {
     pMetaE: 'You can withdraw your consent at any time with effect for the future: via the “Cookie settings” link in the footer of this website (choose “Essential only”); the pixel is then deactivated and the Meta cookies are deleted. You can additionally manage personalised advertising in your Meta settings:',
     pMetaELink: 'Meta ad settings',
 
-    h5_: '7. Google reCAPTCHA',
+    hMedia_: '7. Embedded media (YouTube, Matterport)',
+    pMediaA: 'The pages of our yacht models may contain videos from YouTube (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland) and 3D tours from Matterport (Matterport, Inc., USA).',
+    pMediaB: 'This content is only loaded when you click the respective preview. Before that, no connection to YouTube or Matterport is made. By clicking you consent to the loading (Art. 6(1)(a) GDPR, section 25(1) TDDDG): your browser then connects to the respective provider and, among other things, your IP address, information about your browser and device and the page viewed are transmitted. We embed YouTube videos in enhanced privacy mode (youtube-nocookie.com). A transfer to the USA cannot be ruled out. If you are logged in with a provider, it may assign your use to your account.',
+    pMediaC: 'You will find further information in the providers’ privacy policies:',
+    pMediaYt: 'Google privacy policy (YouTube)',
+    pMediaMp: 'Matterport privacy policy',
+
+    h5_: '8. Google reCAPTCHA',
     p5a: 'To protect our forms against automated submissions we use reCAPTCHA v3 provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. reCAPTCHA checks in the background whether an entry was made by a human. You are not presented with a visible puzzle.',
     p5b: 'For this check, your IP address, information about your device and browser and your behaviour on the page — such as mouse movements, keyboard input and time spent — are transmitted to Google and evaluated there. A transfer to the USA cannot be ruled out. The check only takes place on pages containing a form, and only once you submit one.',
     p5c: 'The legal basis is our legitimate interest in preventing misuse and automated submissions (Art. 6(1)(f) GDPR). The Google privacy policy and terms of service apply in addition:',
     p5Datenschutz: 'Google privacy policy',
     p5Nutzung: 'Google terms of service',
 
-    h6_: '8. Newsletter',
+    h6_: '9. Newsletter',
     p6a: 'Our newsletter is sent using the double opt-in procedure. This means we will only send you a newsletter by email once you have expressly confirmed that you wish to activate the newsletter service.',
     p6b: 'To send our newsletter we use the Mailchimp service of the Rocket Science Group LLC, 675 Ponce de Leon Ave NE, Suite 5000, Atlanta, GA 30308, USA. Your email address and other data relevant to sending the newsletter are stored on Mailchimp servers.',
     p6c: 'You can unsubscribe from the newsletter at any time. A corresponding link is included at the end of every newsletter.',
 
-    h7_: '9. Social media',
+    h7_: '10. Social media',
     p7a: 'Our website contains links to the following social networks:',
     p7b: 'Clicking one of the link buttons takes you directly to the platform concerned. Once you are on that page, the privacy provisions of the respective provider apply. We have no influence over the data collected by the social networks or over how they process it.',
 
-    h8_: '10. Payment processing',
+    h8_: '11. Payment processing',
     p8: 'For processing payments we use the following payment service providers: PayPal, Sofortüberweisung/Klarna, Visa, Mastercard and American Express (AMEX). Your payment data is transmitted in encrypted form. We have no access to your complete payment data — it is processed exclusively by the respective payment service provider. The privacy provisions of the respective provider apply.',
 
-    h9_: '11. Your rights',
+    h9_: '12. Your rights',
     p9: 'You have the following rights in relation to the personal data concerning you:',
     li9: [
       ['Access', ' to the personal data we hold about you'],
@@ -154,10 +168,10 @@ const dse = {
     ],
     p9b: 'To exercise your rights, please contact:',
 
-    h10_: '12. Data security',
+    h10_: '13. Data security',
     p10: 'For security reasons and to protect the transmission of confidential content, this website uses SSL/TLS encryption. You can recognise an encrypted connection by the browser address bar changing from “http://” to “https://” and by the padlock symbol in your browser bar.',
 
-    h11_: '13. Changes to this privacy policy',
+    h11_: '14. Changes to this privacy policy',
     p11: 'We reserve the right to amend this privacy policy so that it always complies with current legal requirements, or in order to reflect changes to our services. The new privacy policy will then apply to your next visit.',
     stand: 'Last updated: November 2026',
   },
@@ -278,7 +292,23 @@ export default function DatenschutzPage() {
 
             <div style={dividerStyle} />
 
-            {/* 7. Google reCAPTCHA */}
+            {/* 7. Eingebettete Medien */}
+            <h2 style={headingStyle}>{s.hMedia_}</h2>
+            <p style={textStyle}>{s.pMediaA}</p>
+            <p style={textStyle}>{s.pMediaB}</p>
+            <p style={textStyle}>{s.pMediaC}</p>
+            <ul style={{ paddingLeft: '1.25rem', marginBottom: '0.75rem' }}>
+              <li style={liStyle}>
+                <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)' }}>{s.pMediaYt}</a>
+              </li>
+              <li style={liStyle}>
+                <a href="https://matterport.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--blue)' }}>{s.pMediaMp}</a>
+              </li>
+            </ul>
+
+            <div style={dividerStyle} />
+
+            {/* 8. Google reCAPTCHA */}
             <h2 style={headingStyle}>{s.h5_}</h2>
             <p style={textStyle}>{s.p5a}</p>
             <p style={textStyle}>{s.p5b}</p>
@@ -294,7 +324,7 @@ export default function DatenschutzPage() {
 
             <div style={dividerStyle} />
 
-            {/* 8. Newsletter */}
+            {/* 9. Newsletter */}
             <h2 style={headingStyle}>{s.h6_}</h2>
             <p style={textStyle}>{s.p6a}</p>
             <p style={textStyle}>{s.p6b}</p>
@@ -302,7 +332,7 @@ export default function DatenschutzPage() {
 
             <div style={dividerStyle} />
 
-            {/* 9. Social Media */}
+            {/* 10. Social Media */}
             <h2 style={headingStyle}>{s.h7_}</h2>
             <p style={textStyle}>{s.p7a}</p>
             <ul style={{ paddingLeft: '1.25rem', marginBottom: '0.75rem' }}>
@@ -316,13 +346,13 @@ export default function DatenschutzPage() {
 
             <div style={dividerStyle} />
 
-            {/* 10. Zahlungsabwicklung */}
+            {/* 11. Zahlungsabwicklung */}
             <h2 style={headingStyle}>{s.h8_}</h2>
             <p style={textStyle}>{s.p8}</p>
 
             <div style={dividerStyle} />
 
-            {/* 11. Ihre Rechte */}
+            {/* 12. Ihre Rechte */}
             <h2 style={headingStyle}>{s.h9_}</h2>
             <p style={textStyle}>{s.p9}</p>
             <ul style={{ paddingLeft: '1.25rem', marginBottom: '0.75rem' }}>
@@ -337,13 +367,13 @@ export default function DatenschutzPage() {
 
             <div style={dividerStyle} />
 
-            {/* 12. Datensicherheit */}
+            {/* 13. Datensicherheit */}
             <h2 style={headingStyle}>{s.h10_}</h2>
             <p style={textStyle}>{s.p10}</p>
 
             <div style={dividerStyle} />
 
-            {/* 13. Änderungen */}
+            {/* 14. Änderungen */}
             <h2 style={headingStyle}>{s.h11_}</h2>
             <p style={textStyle}>{s.p11}</p>
             <p style={{ fontSize: '0.82rem', color: 'var(--gray)', marginTop: '2rem' }}>{s.stand}</p>
