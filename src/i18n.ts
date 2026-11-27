@@ -234,6 +234,10 @@ export function langPair(pathname: string): { de: string; en: string } | null {
   return null
 }
 
+/** Interner Pfad der Yachtmodell-Seite (Daten: src/data/yachtModels.json) in der Sprache. Bewusst hier und nicht in
+ *  src/pages/yachtmodelle/lang.ts, damit andere Seiten fuer einen Link nicht die Modelldaten mitladen. */
+export const yachtModelPath = (id: string, lang: Lang) => (lang === 'en' ? `/en/yacht-models/${id}` : `/yachtmodelle/${id}`)
+
 /** Vollstaendige Adresse einer Seite in der Zielsprache — inklusive
  *  Domainwechsel, weil die Sprachen auf verschiedenen Domains liegen. */
 export function switchLangUrl(pathname: string, target: Lang): string {

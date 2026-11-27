@@ -40,6 +40,15 @@ stimmen). Dieselben Komponenten, die Sprache kommt aus `useLang()`.
 - **Prüfen:** gerenderte `description`/`og:description`, Schema und Alt-Texte auf `en.localhost` auf deutsche
   Reststrings und `yacht-urlaub.net`-URLs ansehen (siehe CLAUDE.md).
 
+## Links von anderen Seiten auf die Modelle
+
+Wo eine Seite ein konkretes Modell nennt, das eine eigene Modellseite hat, steht ein Link darauf (Deutsch und Englisch). Adresse
+immer über `yachtModelPath(id, lang)` aus `src/i18n.ts` bilden (lädt keine Modelldaten mit). Stand: Porto-Heli-Flottenkarten
+(Lagoon 38, 42, 43, 46), BVI-Kabinenangebot (Bali 4.2: Datenfeld „Modell“ und Link unter dem Yachttext) und die News-Seite zum Event
+(nur Deutsch, Bali 4.2). Links aus Buchungs- und Angebotsseiten öffnen im neuen Tab, damit Auswahl und Wunschwoche nicht verloren gehen.
+Ohne eigene Modellseite, deshalb ohne Link: Bali 4.1 (Dubrovnik-Angebot), Fountaine Pajot Saona 47 (Phuket-Angebot), Lagoon 400/450
+und Dufour 45/512 in Törnberichten und Flottenbildern. Wird ein Modell neu aufgenommen, das auf der Website erwähnt ist, den Link ergänzen.
+
 ## Dateien
 
 | Datei | Inhalt |

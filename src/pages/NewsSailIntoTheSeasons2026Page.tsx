@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { BASE_DE } from '../i18n'
+import { BASE_DE, yachtModelPath } from '../i18n'
 import { Link } from '../router'
 import SEO from '../components/SEO'
 
@@ -54,6 +54,8 @@ const angebote = [
     region: 'Karibik · Winter',
     title: 'British Virgin Islands: 10 Nächte zwischen Tortola, Jost Van Dyke, Anegada und Virgin Gorda',
     date: '27.02.–09.03.2027',
+    // model: Yachtmodell mit eigener Seite; der Name im ersten Punkt wird zum Link (Bali 4.1 hat keine Modellseite)
+    model: { id: 'bali-4-2', label: 'Bali 4.2' },
     facts: ['Katamaran Bali 4.2 mit Skipper Manuel', 'Start ab Tortola', 'The Baths, Anegada-Hummer, Painkiller an der White Bay'],
     old: '€ 2.910,–',
     price: '€ 2.330,–',
@@ -241,7 +243,12 @@ export default function NewsSailIntoTheSeasons2026Page() {
                   <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--blue)' }}>{a.date}</span>
                   <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.15rem', color: 'var(--navy)', lineHeight: 1.3, fontWeight: 700 }}>{a.title}</h3>
                   <ul style={{ margin: 0, padding: '0.8rem 0', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '0.92rem', color: 'var(--text)' }}>
-                    {a.facts.map(f => <li key={f}>› {f}</li>)}
+                    {a.facts.map((f, i) => {
+                      const m = i === 0 && 'model' in a ? a.model : undefined
+                      if (!m || !f.includes(m.label)) return <li key={f}>› {f}</li>
+                      const [before, after] = f.split(m.label)
+                      return <li key={f}>› {before}<Link to={yachtModelPath(m.id, 'de')} style={{ color: 'inherit', textDecoration: 'underline', textDecorationColor: 'var(--blue)', textUnderlineOffset: '3px' }}>{m.label}</Link>{after}</li>
+                    })}
                   </ul>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '10px', flexWrap: 'wrap' }}>
                     <s style={{ color: 'var(--gray)', fontSize: '0.9rem' }}>{a.old}</s>
