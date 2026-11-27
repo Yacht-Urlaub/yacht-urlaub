@@ -4,7 +4,7 @@ import { Link } from '../router'
 import { motion, AnimatePresence } from 'framer-motion'
 import { yachtCards, yachtCategories } from '../data/yachten'
 import { yachtCardsEn, yachtCategoriesEn } from '../data/yachtenEn'
-import { useLang } from '../i18n'
+import { useLang, yachtModelsOverviewPath } from '../i18n'
 
 const validTabs = yachtCategories.map(c => c.id)
 
@@ -108,6 +108,26 @@ export default function Yachten() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Hinweis auf die konkreten Modelle (Yachtmodelle-Bereich) */}
+          <div className="yacht-models-cta" style={{
+            marginTop: '2rem', background: '#fff', border: '1px solid var(--gray-mid)', borderLeft: '4px solid var(--blue)', borderRadius: '6px',
+            padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.25rem', flexWrap: 'wrap',
+          }}>
+            <div style={{ flex: '1 1 380px' }}>
+              <h2 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '1.05rem', fontWeight: 700, color: 'var(--navy)', marginBottom: '0.3rem' }}>
+                {lang === 'en' ? 'Looking for a specific model?' : 'Sie suchen ein bestimmtes Modell?'}
+              </h2>
+              <p style={{ fontSize: '0.9rem', color: '#555', lineHeight: 1.6 }}>
+                {lang === 'en'
+                  ? 'Our yacht models show catamarans and sailing yachts from the leading yards, with floor plans, cabin versions, videos and 3D tours.'
+                  : 'In unseren Yachtmodellen finden Sie Katamarane und Segelyachten der bekannten Werften – mit Grundrissen, Kabinenversionen, Videos und 3D-Rundgängen.'}
+              </p>
+            </div>
+            <Link to={yachtModelsOverviewPath(lang)} className="btn btn-primary" style={{ fontSize: '0.8rem', padding: '10px 20px', whiteSpace: 'nowrap' }}>
+              {lang === 'en' ? 'View all yacht models →' : 'Alle Yachtmodelle ansehen →'}
+            </Link>
           </div>
         </div>
       </section>

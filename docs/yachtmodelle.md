@@ -46,6 +46,7 @@ Wo eine Seite ein konkretes Modell nennt, das eine eigene Modellseite hat, steht
 immer über `yachtModelPath(id, lang)` aus `src/i18n.ts` bilden (lädt keine Modelldaten mit). Stand: Porto-Heli-Flottenkarten
 (Lagoon 38, 42, 43, 46), BVI-Kabinenangebot (Bali 4.2: Datenfeld „Modell“ und Link unter dem Yachttext) und die News-Seite zum Event
 (nur Deutsch, Bali 4.2). Links aus Buchungs- und Angebotsseiten öffnen im neuen Tab, damit Auswahl und Wunschwoche nicht verloren gehen.
+Die Seite „Yachten“ (`/yachten`, `/yachts`) hat unter den Kategoriekarten einen Hinweis „Sie suchen ein bestimmtes Modell?“ mit Link auf die Übersicht (`yachtModelsOverviewPath(lang)`).
 Ohne eigene Modellseite, deshalb ohne Link: Bali 4.1 (Dubrovnik-Angebot), Fountaine Pajot Saona 47 (Phuket-Angebot), Lagoon 400/450
 und Dufour 45/512 in Törnberichten und Flottenbildern. Wird ein Modell neu aufgenommen, das auf der Website erwähnt ist, den Link ergänzen.
 
